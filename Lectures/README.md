@@ -2,7 +2,7 @@
 <li><a href="#course1">Thermodynamics of Materials</a></li>
 <li><a href="#course2">Principles of Engineering Practice</a></li>
 <li><a href="#course3">Introduction to Modeling and Simulation</a></li>
-<li><a href="#course4">Project Evaluation</a></li>
+<li><a href="#course4">Mathematics for Materials Scientists and Engineers</a></li>
 <li><a href="#course5">Ecology I: The Earth System</a></li>
 <li><a href="#course6">Ecology II: Engineering for Sustainability</a></li>
 <li><a href="#course7">Transport Processes in the Environment</a></li>
@@ -595,4 +595,8 @@
 </tbody>
 </table>
 </br>
+<h2 id="course4">Mathematics for Materials Scientists and Engineers</h2>
+
+
+
 

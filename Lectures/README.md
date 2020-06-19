@@ -1,7 +1,7 @@
 <ul>
 <li><a href="#course1">Thermodynamics of Materials</a></li>
 <li><a href="#course2">Principles of Engineering Practice</a></li>
-<li><a href="#course3">Computing and Data Analysis for Environmental Applications</a></li>
+<li><a href="#course3">Introduction to Modeling and Simulation</a></li>
 <li><a href="#course4">Project Evaluation</a></li>
 <li><a href="#course5">Ecology I: The Earth System</a></li>
 <li><a href="#course6">Ecology II: Engineering for Sustainability</a></li>
@@ -510,8 +510,89 @@
 </tbody>
 </table>
 </br>
+<h2 id="course3">Introduction to Modeling and Simulation</h2>
 
-
-
-
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">LECTURES</th>
+<th scope="col">ADDITIONAL&nbsp;RESOURCES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td colspan="2"><strong>Part I: Particle and Continuum Methods</strong></td>
+</tr>
+<tr class="alt-row">
+<td>Introduction</td>
+<td><a href="MIT3_021JS12_P1_L1.pdf">Lecture notes (PDF - 2.4MB)</a></td>
+</tr>
+<tr class="row">
+<td>Basic molecular dynamics</td>
+<td>
+<p><a href="MIT3_021JS12_P1_L2.pdf">Lecture notes (PDF - 4.3MB)</a></p>
+<p>Komanduri, R., N. Chandrasekaran, et al. "<a href="http://dx.doi.org/10.1016/S0020-7403(01)00043-1">Molecular Dynamics (MD) Simulation of Uniaxial Tension of Some Single-Crystal Cubic Metals at Nanolevel</a>."&nbsp;<em>International Journal of Mechanical Sciences</em>&nbsp;43, no. 10 (2001): 2237&ndash;60.</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>Property calculation I</td>
+<td>
+<p><a href="MIT3_021JS12_P1_L3.pdf">Lecture notes (PDF)</a></p>
+<p>Alder, J., and T. Wainwright. "<a href="http://dx.doi.org/10.1063/1.1743957">Phase Transition for a Hard Sphere System</a>."&nbsp;<em>Journal of Chemical Physics</em>&nbsp;27 (1957): 1208&ndash;09.</p>
+<p>Rahman, A. "<a href="http://dx.doi.org/10.1103/PhysRev.136.A405">Correlations in the Motion of Atoms in Liquid Argon</a>."&nbsp;<em>Physical Review</em>&nbsp;136, no. 2A (1964): A405&ndash;11.</p>
+<p>Gibson, J. B., et al. "<a href="http://prola.aps.org/abstract/PR/v120/i4/p1229_1">Dynamics of Radiation Damage</a>."&nbsp;<em>Physical Review</em>&nbsp;120, no. 4 (1960): 1229&ndash;53.</p>
+</td>
+</tr>
+<tr class="row">
+<td>Property calculation II</td>
+<td>
+<p><a href="MIT3_021JS12_P1_L4.pdf">Lecture notes (PDF - 1.8MB)</a></p>
+<p>Cleri, F., et al. "<a href="http://dx.doi.org/10.1103/PhysRevLett.79.1309">Atomic-Scale Mechanism of Crack-Tip Plasticity: Dislocation Nucleation and Crack-Tip Shielding</a>."&nbsp;<em>Physical Review Letters</em>&nbsp;79, no. 7 (1997): 1309&ndash;12.</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>How to model chemical interactions I</td>
+<td>
+<p><a href="MIT3_021JS12_P1_L5.pdf">Lecture notes (PDF - 1.9MB)</a></p>
+<p>Daw, M., and M. Baskes. "<a href="http://dx.doi.org/10.1103/PhysRevB.29.6443">Embedded-Atom Method: Derivation and Application to Impurities, Surfaces, and Other Defects in Metals</a>."&nbsp;<em>Physical Review B</em>&nbsp;29, no. 12 (1984): 6443&ndash;53.</p>
+<p>Van Duin, A., et al. "<a href="http://dx.doi.org/10.1021/jp004368u">ReaxFF: A Reactive Force Field for Hydrocarbons</a>."&nbsp;<em>Journal of Chemical Physics A</em>&nbsp;105, no. 41 (2001): 9396&ndash;409.</p>
+<p>Buehler, M., et al. "<a href="http://dx.doi.org/10.1007/s10409-005-0019-9">The Dynamical Complexity of Work-Hardening: A Large-Scale Molecular Dynamics Simulation</a>."&nbsp;<em><span class="container">Acta Mechanica Sinica</span></em>&nbsp;21, no. 2 (2005): 103&ndash;11.</p>
+</td>
+</tr>
+<tr class="row">
+<td>How to model chemical interactions II</td>
+<td><a href="MIT3_021JS12_P1_L6.pdf">Lecture notes (PDF - 3.1MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Application to modeling brittle materials</td>
+<td><a href="MIT3_021JS12_P1_L7.pdf">Lecture notes (PDF - 1.4MB)</a></td>
+</tr>
+<tr class="row">
+<td>Reactive potentials and applications I</td>
+<td><a href="MIT3_021JS12_P1_L8.pdf">Lecture notes (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Reactive potentials and applications II</td>
+<td><a href="MIT3_021JS12_P1_L9.pdf">Lecture notes (PDF - 1.3MB)</a></td>
+</tr>
+<tr class="row">
+<td>Applications to biophysics and bionanomechanics I</td>
+<td><a href="MIT3_021JS12_P1_L10.pdf">Lecture notes (PDF - 2.7MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Applications to biophysics and bionanomechanics II</td>
+<td>
+<p><a href="MIT3_021JS12_P1_L11.pdf">Lecture notes (PDF - 2.1MB)</a></p>
+<p>Buehler, M.&nbsp;<a href="http://dx.doi.org/10.2140/jomms.2007.2.1019">"Hierarchical Chemo-Nanomechanics of Proteins: Entropic Elasticity, Protein Unfolding and Molecular Fracture</a>."&nbsp;<em>Journal of Mechanics of Materials and Structures</em>&nbsp;2, no. 6 (2007): 1019&ndash;57.</p>
+<p>Ackbarow, T., et al. "<a href="http://dx.doi.org/10.1073/pnas.0705759104">Hierarchies, Multiple Energy Barriers, and Robustness Govern the Fracture Mechanics of &alpha;-helical and &beta;-sheet Protein Domains</a>."&nbsp;<em>Proceedings of the National Academy of Sciences</em>&nbsp;104, no. 42 (2007): 16410&ndash;15.</p>
+<p>Ackbarow, T., et al. "<a href="http://dx.doi.org/10.1371/journal.pone.0006015">Alpha-Helical Protein Networks are Self-Protective and Flaw-Tolerant</a>."&nbsp;<em>PLoS ONE</em>&nbsp;4, no. 6 (2009).</p>
+</td>
+</tr>
+<tr class="row">
+<td>Review session - Preparation Quiz 1</td>
+<td><a href="MIT3_021JS12_P1_L12.pdf">Lecture notes (PDF - 4.4MB)</a></td>
+</tr>
+</tbody>
+</table>
+</br>
 

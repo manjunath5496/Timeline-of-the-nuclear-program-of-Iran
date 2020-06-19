@@ -1,6 +1,6 @@
 <ul>
 <li><a href="#course1">Thermodynamics of Materials</a></li>
-<li><a href="#course2">Uncertainty in Engineering</a></li>
+<li><a href="#course2">Principles of Engineering Practice</a></li>
 <li><a href="#course3">Computing and Data Analysis for Environmental Applications</a></li>
 <li><a href="#course4">Project Evaluation</a></li>
 <li><a href="#course5">Ecology I: The Earth System</a></li>
@@ -270,7 +270,246 @@
 </tbody>
 </table>
 </br>
+<h2 id="course2">Principles of Engineering Practice</h2>
 
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+<th scope="col" width="30%">SLIDES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Introduction to course, content, process, solar energy</td>
+<td>
+<p>(<a href="MIT3_003S10_lec01.pdf">PDF</a>)</p>
+<p>Handout (<a href="MIT3_003S10_notes01.pdf">PDF</a>)</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>Lab 1: Index of Refraction</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Case Study 1: An Ethical Engineer</td>
+<td>(<a href="MIT3_003S10_lec03.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Lab 2: Communications: Oral/Written</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Lab 3: Measure the Speed of Light</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Photons, Semiconductors, and Energy</td>
+<td>(<a href="MIT3_003S10_lec06.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Guest Lecture:&nbsp;<a href="http://cee.mit.edu/salvucci">Fred Salvucci</a>, "History of Boston Transportation, 1630-2007."</td>
+<td><span class="nobr">(<a href="MIT3_003S10_lec07.pdf">PDF - 1.5MB</a>)</span>&nbsp;(Courtesy of Frederick Salvucci. Used with permission.)</td>
+</tr>
+<tr class="alt-row">
+<td>The Solar Cell Lecture</td>
+<td>(<a href="MIT3_003S10_lec08.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Guest Lecture:&nbsp;<a href="http://dmse.mit.edu/faculty/profile/fitzgerald">Prof. Eugene Fitzgerald</a>, "Platforms and Learning Curves."</td>
+<td><span class="nobr">(<a href="MIT3_003S10_lec09.pdf">PDF - 1.9MB</a>)</span>&nbsp;(Courtesy of Eugene Fitzgerald. Used with permission.)</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Guest Lecture:&nbsp;<a href="http://cmsw.mit.edu/profile/william-uricchio/">Prof. William Uricchio</a>, "Putting Human Agency Back Into the Equation."</p>
+<p>Reading:&nbsp;"Mechanically Scanned Television," "Electronically Scanned Television," and "Television Spin-Offs and Redundancies." Chapters 5-7 in Winston, Brian.&nbsp;<em>Media Technology and Society: A History from the Telegraph to the Internet</em>. New York, NY: Routledge, 1998. ISBN: 9780415142304.</p>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Lab 4: Simulation of Solar Cells</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Guest Lecture: Prof. Randolph Kirchain, "Moving Towards Sustainable Materials Use."</td>
+<td><span class="nobr">(<a href="MIT3_003S10_lec12.pdf">PDF - 1.2MB</a>)</span>&nbsp;(Courtesy of Randolph Kirchain. Used with permission.)</td>
+</tr>
+<tr class="row">
+<td>Cultural Differences in Engineering Practice: Introduction to collaboration with University of Tokyo</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Engineering the Future of Solar Electricity</p>
+<p>Reading: Slides 15-27 in "Year 11 Preliminary Engineering Studies Focus Module: Photovoltaic Engineering." Engineering Studies Package, UNSW School of Photovoltaics &amp; Renewable Energy Engineering, 2010.</p>
+</td>
+<td>(<a href="MIT3_003S10_lec14.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Field Trip with Fred Salvucci: Walk the Big Dig</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Project 1A: Electricity Generation System Constraints</td>
+<td>
+<p>(<a href="MIT3_003S10_lec16.pdf">PDF</a>)</p>
+</td>
+</tr>
+<tr class="row">
+<td>Project 2A: Solar cell materials; assignment of teams</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Guest Lecture: Prof. Toshihiko Koseki (<a href="MIT3_003S10_bio18.pdf">PDF</a>), "Progress and Future of Structural Steels."</p>
+<p>Project 1B: Materials Selection</p>
+</td>
+<td>(<a href="MIT3_003S10_lec18.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Project 2B: Solar Cell Performance</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Project 1C: Engineering the Future of Solar Electricity</td>
+<td>(<a href="MIT3_003S10_lec20.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Guest Lecture: Prof. Akira Toriumi (<a href="MIT3_003S10_bio21.pdf">PDF</a>), "Semiconductor Technology Evolution and Generalized Moore's Law."</td>
+<td>
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>Class discussion of draft written reports</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Guest Lecture: Prof. Kazumi Wada (<a href="MIT3_003S10_bio23.pdf">PDF</a>), "Solar Cell."</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Project 1D: Final project team presentations and written reports</td>
+<td>
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr class="row">
+<td>Editing of report for final project</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Guest Lecture:&nbsp;<a href="http://www.convergenceculture.org/aboutc3/people.php#chris">Prof. Christopher Weaver</a>, "How To Be a Big Engineer and What You Can Do for Society."</td>
+<td><span class="nobr">(<a href="MIT3_003S10_lec26.pdf">PDF - 4.8MB</a>)</span>&nbsp;(Courtesy of Christopher Weaver. Used with permission.)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<table class="tablewidth100" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">RESOURCES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>An Ethical Engineer? (<a href="MIT3_003S10_cs1.pdf">PDF</a>)</td>
+<td>Pinker, Steven. "<a href="http://www.nytimes.com/2008/01/13/magazine/13Psychology-t.html">The Moral Instinct</a>." New York Times, January 13, 2008.</td>
+</tr>
+<tr class="alt-row">
+<td>Big Infrastructure Engineering (<a href="MIT3_003S10_cs2.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Social Construction of TV History (<a href="MIT3_003S10_cs3.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Semiconductors and Learning Curves; Steel Technology and Big Infrastructure (<a href="MIT3_003S10_cs4.pdf">PDF</a>)</td>
+<td>
+<h3 class="subsubhead">Student Work</h3>
+<p>"Semiconductors and Learning Curves." (<a href="MIT3_003S10_cs4_sw1.pdf">PDF</a>)</p>
+<p>"Steel Technology and Big Infrastructure." (<a href="MIT3_003S10_cs4_sw2.pdf">PDF</a>)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ACTIVITIES</th>
+<th scope="col">STUDENT&nbsp;WORK</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Project 1A: Electricity Generation System Constraints (<a href="MIT3_003S10_project1A.pdf">PDF</a>)</td>
+<td>
+<p>Group 1 (<a href="MIT3_003S10_proj1A_sw1.pdf">PDF</a>)</p>
+<p>Group 2 (<a href="MIT3_003S10_proj1A_sw2.pdf">PDF</a>)</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>Project 1B: Materials Selection (<a href="MIT3_003S10_project1B.pdf">PDF</a>)</td>
+<td>
+<p>Group 1 (<a href="MIT3_003S10_project1B_sw1.pdf">PDF</a>)</p>
+<p>Group 2 (<a href="MIT3_003S10_proj1B_sw2.pdf">PDF</a>)</p>
+</td>
+</tr>
+<tr class="row">
+<td>
+<p>Project 1C: Solar Cell Design and Manufacturing Platform (<a href="MIT3_003S10_project1C.pdf">PDF</a>)</p>
+</td>
+<td>
+<p>Group 1 (<a href="MIT3_003S10_project1C_sw1.pdf">PDF</a>)</p>
+<p>Group 2 (<a href="MIT3_003S10_project1C_sw2.pdf">PDF</a>)</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Project 1D: Final Poster (<a href="MIT3_003S10_proj1D_chart.pdf">PDF</a>), Presentation, and Report</p>
+<h3 class="subsubhead">Background</h3>
+<p>"Future of Solar Electricity." (<a href="MIT3_003S10_solar_future.pdf">PDF</a>). Adapted from&nbsp;<em>High Impact Supply Chain R&amp;D for PV Technologies and Systems</em>. U.S. Department of Energy (April 21, 2010): DE-FOA-0000234.</p>
+</td>
+<td>
+<p>"Solar Electricity: Problem, Constraints and Solutions."</p>
+<ul>
+<li>Poster (<a href="MIT3_003S10_swE_chart.pdf">PDF</a>)</li>
+<li>Presentation (<a href="MIT3_003S10_swE_pres.pdf">PDF</a>)</li>
+<li>Report (<a href="MIT3_003S10_swE_report.pdf">PDF</a>)</li>
+</ul>
+<p>"Local Generation of Solar Electricity: Problem and Constraints for the Emergence of Significant Capacity."</p>
+<ul>
+<li>Poster (<a href="MIT3_003S10_swD_chart.pdf">PDF</a>)</li>
+<li>Presentation (<a href="MIT3_003S10_swD_pres.pdf">PDF</a>)</li>
+<li>Report (<a href="MIT3_003S10_swD_report.pdf">PDF</a>)</li>
+</ul>
+<p>"Design of CdTe Thin Film Solar Cell and the Basis of its Emergence as a Significant Factor in Grid Electricity Capacity."</p>
+<ul>
+<li>Poster (<img src="https://ocw.mit.edu/images/inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="MIT3_003S10_swC_chart.pdf">PDF</a>)</li>
+<li>Presentation (<a href="MIT3_003S10_swC_pres.pdf">PDF</a>)</li>
+<li>Report (<a href="MIT3_003S10_swC_report.pdf">PDF</a>)</li>
+</ul>
+<p>"Design of Si Thin Film Solar Cell and the Basis of its Emergence as a Significant Factor in Local Electricity Power Generation."</p>
+<ul>
+<li>Poster (<a href="MIT3_003S10_swB_chart.pdf">PDF</a>)</li>
+<li>Presentation (<a href="MIT3_003S10_swB_pres.pdf">PDF</a>)</li>
+<li>Report (<a href="MIT3_003S10_swB_report.pdf">PDF</a>)</li>
+</ul>
+<p>"Summary of Options for the Growth of Solar Electricity."</p>
+<ul>
+<li>Poster (<a href="MIT3_003S10_swA_chart.pdf">PDF</a>)</li>
+<li>Presentation (<a href="MIT3_003S10_swA_pres.pdf">PDF</a>)</li>
+<li>Report (<a href="MIT3_003S10_swA_report.pdf">PDF</a>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</br>
 
 
 

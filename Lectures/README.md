@@ -27,7 +27,7 @@
 <li><a href="#course26">Atomistic Computer Modeling of Materials</a></li>
 <li><a href="#course27">Electrical, Optical, and Magnetic Properties of Materials</a></li>
 <li><a href="#course28">Electronic and Mechanical Properties of Materials</a></li>
-<li><a href="#course29">Transportation Policy and Environmental Limits</a></li>
+<li><a href="#course29">Kinetic Processes in Materials</a></li>
 <li><a href="#course30">Urban Transportation Planning</a></li>
 <li><a href="#course31">The Impact of Globalization on the Built Environment</a></li>
 <li><a href="#course32">Strategic Management in the Design and Construction Value Chain</a></li>
@@ -3801,4 +3801,132 @@
 <p>2007 (<a href="8/e2007.pdf">PDF</a>)</p>
 <p>Solutions 2003-2006 (<a href="8/e03_06sol.pdf">PDF</a>)</p>
 </br>
+<h2 id="course29">Kinetic Processes in Materials</h2>
+
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+<th scope="col">SUPPORTING&nbsp;FILES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Introduction: Fields and Gradients; Fluxes; Continuity Equation (<a href="8/ls1.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Irreversible Thermodynamics (<a href="8/ls2.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Driving Forces and Fluxes for Diffusion; Self-Diffusion and Interdiffusion (<a href="8/ls3.pdf">PDF</a>)</td>
+<td>Scalar Fields, Fluxes, and Accumulation, scalar_field.nb (<a href="8/scalar_field.nb">NB</a>) (Courtesy of Prof. Craig Carter. Used with permission.)
+<p>&nbsp;</p>
+Illustrates the behavior of the concentration around a line source that is diffusing into an infinite isotropic medium.</td>
+</tr>
+<tr class="alt-row">
+<td>Interdiffusion; Effects of Electrical Potential, Capillarity, and Stress on Diffusion Potential (<a href="8/ls4.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Effects of Capillarity and Stress on Diffusion (<a href="8/ls5.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>The Diffusion Equation (<a href="8/ls6.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Solutions to the Diffusion Equation - I (<a href="8/ls7.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Solutions to the Diffusion Equation - II (<a href="8/ls8.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Solutions to the Diffusion Equation - III (<a href="8/ls9.pdf">PDF</a>)</td>
+<td>Solutions to the Diffusion Equation, diffusion_soln.nb (<a href="8/diffusion_soln.nb">NB</a>) (Courtesy of Miguel Marioni. Used with permission.)<br /><br />Numerical work illustrating some solutions to diffusion boundary-value problems; plots of closed form solutions as well as solutions by finite differences.</td>
+</tr>
+<tr class="alt-row">
+<td>Activated Jump Processes (<a href="8/ls10.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Diffusion Resulting from Discrete Jumps (<a href="8/ls11.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Diffusion in Crystals (<a href="8/ls12.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Atomic Models for Diffusivities - I (<a href="8/ls13.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Atomic Models for Diffusivities - II (<a href="8/ls14.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Short-Circuit Diffusion in Crystals (<a href="8/ls15.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Diffusion in Noncrystalline Materials (<a href="8/ls16.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Surface Evolution Due to Capillary Forces (<a href="8/ls17.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Particle Coarsening (<a href="8/ls18.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Grain Growth (<a href="8/ls19.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Diverse Short Topics: Anisotropic Surfaces, Diffusional Creep, and Sintering (<a href="8/ls20.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>General Features of Phase Transformations (<a href="8/ls21.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Spinodal Decomposition and Continuous Ordering (<a href="8/ls22.pdf">PDF</a>)</td>
+<td>BCC Alloys in the Bragg-Williams Approximation, bcc_alloys.nb (<a href="8/bcc_alloys.nb">NB</a>)<br /><br />Free energy model for BCC and CsCl structure with first-neighbor interactions. Calculates miscibility gap for W &lt; 0 and excess free energy per unit area of diffuse interface.</td>
+</tr>
+<tr class="row">
+<td>Spinodal Decomposition Kinetics (<a href="8/ls23.pdf">PDF</a>)</td>
+<td>Kinetics of Spinodal Decomposition, spinodal.nb (<a href="8/spinodal.nb">NB</a>)<br /><br />Extension of the prior lecture's Mathematica notebook, to cover kinetics of spinodal decomposition including kinetic and thermodynamic wavenumbers, temperature dependence, etc.</td>
+</tr>
+<tr class="alt-row">
+<td>Nucleation (<a href="8/ls24.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Heterogeneous Nucleation (<a href="8/ls25.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Diffusional Growth (<a href="8/ls26.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Morphological Stability of Moving Interfaces (<a href="8/ls27.pdf">PDF</a>)</td>
+<td>Diffusional Growth, diffusion_growth.nb (<a href="8/diffusion_growth.nb">NB</a>)<br /><br />This Mathematica notebook covers growth of a spherical precipitate from supersaturated solution. Calculates rate constant for diffusional growth, interfacial velocity, concentration profile in matrix using exact solution. Explores using stationary-field approximation to calculate interface velocity and concentration profile. Introduces spherical harmonic functions for describing shape perturbations of a sphere.<br /><br />Ni-Cr Equilibrium Diagram, CrNi.tif (<a href="8/CrNi.tif">TIF</a>) (Reprinted with permission of&nbsp;<a href="http://www.asminternational.org/">ASM International&reg;</a>. All rights reserved.)<br /><br />This illustration accompanies the Mathematica notebook on Diffusional Growth. To load in the notebook, place this file in your user directory.</td>
+</tr>
+<tr class="alt-row">
+<td>Kinetics of Nucleation and Growth Transformations (<a href="8/ls28.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</br>
+
 

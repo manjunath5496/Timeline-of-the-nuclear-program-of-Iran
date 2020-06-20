@@ -19,7 +19,7 @@
 <li><a href="#course18">Polymer Physics</a></li>
 <li><a href="#course19">Cellular Solids: Structure, Properties and Applications</a></li>
 <li><a href="#course20">Materials for Biomedical Applications</a></li>
-<li><a href="#course21">Transportation Systems Analysis: Demand and Economics</a></li>
+<li><a href="#course21">Electrochemical Processing of Materials</a></li>
 <li><a href="#course22">Introduction to Transportation Systems</a></li>
 <li><a href="#course23">Probability and Statistics in Engineering</a></li>
 <li><a href="#course24">Transportation Systems</a></li>
@@ -3017,6 +3017,33 @@
 <p>Solutions to the Sample Final Exam (<a href="5/pracfinalsol.pdf">PDF</a>)</p>
 
 </br>
+<h2 id="course21">Electrochemical Processing of Materials</h2>
 
-
+<p>Problem Set 1 (<a href="6/ps1_2001.pdf">PDF</a>)<br />Problem Set 1 Solution (<a href="6/ps1sol.pdf">PDF</a>)</p>
+<p>Model Solutions for Problem Set 2 (<a href="6/ps2sol.pdf">PDF</a>)</p>
+<p>Model Solutions for Problem Set 3 (<a href="6/ps3sol.pdf">PDF</a>)</p>
+<p>Model Solutions for Problem Set 4 (<a href="6/ps4sol.pdf">PDF</a>)</p>
+<p>Model Solutions for Problem Set 5 (<a href="6/ps5sol.pdf">PDF</a>)</p>
+<p>Model Solutions for Problem Set 6 (<a href="6/ps6sol.pdf">PDF</a>)</p>
+<p>Model Solutions for Problem Set 7 (<a href="6/ps7sol.pdf">PDF</a>)</p>
+</br>
+<table class="tablewidth50" summary="Course Table Listing">
+<thead>
+<tr class="tableheader">
+<th id="col1" scope="col">EXAMS</th>
+<th id="col2" scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="gray-row">
+<td headers="col1">Test 1 (<a href="6/test1_2001.pdf">PDF</a>)</td>
+<td headers="col2">Test 1 Solution (<a href="6/test1sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="white-row">
+<td headers="col1">Test 2 (<a href="6/test2_2001.pdf">PDF</a>)</td>
+<td headers="col2">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</br>
 

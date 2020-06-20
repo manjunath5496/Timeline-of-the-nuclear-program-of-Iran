@@ -13,7 +13,7 @@
 <li><a href="#course12">Nanomechanics of Materials and Biomaterials</a></li>
 <li><a href="#course13">Materials Processing</a></li>
 <li><a href="#course14">Organic & Biomaterials Chemistry</a></li>
-<li><a href="#course15">Introduction to Network Models</a></li>
+<li><a href="#course15">Mechanical Behavior of Materials</a></li>
 <li><a href="#course16">Mechanics of Material Systems: An Energy Approach</a></li>
 <li><a href="#course17">Transportation Flow Systems</a></li>
 <li><a href="#course18">Carrier Systems</a></li>
@@ -2203,8 +2203,255 @@
 </table>
 </br>
 
+<h2 id="course15">Mechanical Behavior of Materials</h2>
 
 
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr class="alt-row">
+<th scope="col">TOPICS</th>
+<th scope="col">LECTURE&nbsp;NOTES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Introduction</td>
+<td>(<a href="3/lec1.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Force distributions</td>
+<td>(<a href="3/lec2.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Deformation under force</td>
+<td>(<a href="3/lec3.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Stress distributions in materials</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Strain and stress</td>
+<td>(<a href="3/lec5.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Pressure vessels</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Stress transformations</td>
+<td>(<a href="3/lec7.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Stress transformations: 2D - 3D</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Stress transformations: 3D</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Elasticity</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Continuum linear elasticity</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Linear elasticity</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Linear elasticity (cont.)</td>
+<td>(<a href="3/lec13.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Superelasticity</td>
+<td>(<a href="3/lec14.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Nonlinear elasticity</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Viscoelasticity</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Rubber elasticity</td>
+<td>(<a href="3/lec17.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Continuum plasticity</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Plasticity in crystals</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Plasticity in crystals (cont.)</td>
+<td>(<a href="3/lec20.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Plasticity in amorphous materials</td>
+<td>(<a href="3/lec21.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Controlling plasticity onset</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Controlling plasticity onset (cont.)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Plasticity at surfaces</td>
+<td>(<a href="3/lec24.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>EGs of engineering elastoplastic deformation mechanisms</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Time-dependent plasticity</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Time-dependent plasticity (cont.)</td>
+<td>(<a href="3/lec27.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Creep deformation mechanisms</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Designing against creep</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Continuum fracture</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Continuum fracture (cont.)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Fracture in crystals</td>
+<td>(<a href="3/lec32.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Fracture in crystals (cont.)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Fracture in amorphous materials</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Fatigue</td>
+<td>(<a href="3/lec35.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Fatigue (cont.)</td>
+<td>(<a href="3/lec36.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Fatigue (cont.)</td>
+<td>(<a href="3/lec37.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
 
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Problem set 1 (<a href="3/ps1_07.pdf">PDF</a>)</td>
+<td>(<a href="3/sol1_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 2 (<a href="3/ps2_07.pdf">PDF</a>)</td>
+<td>(<a href="3/sol2_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 3 (<a href="3/ps3_07.pdf">PDF</a>)</td>
+<td>(<a href="3/sol3_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 4 (<a href="3/ps4_07.pdf">PDF</a>)</td>
+<td>(<a href="3/sol4_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 5 (<a href="3/ps5_07.pdf">PDF</a>)</td>
+<td>(<a href="3/sol5_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 6 (<a href="3/ps6_07.pdf">PDF</a>)</td>
+<td>(<a href="3/sol6_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 7 (<a href="3/ps7_07.pdf">PDF</a>)</td>
+<td>(<a href="3/sol7_07.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<h2 class="subhead">Fall 2006</h2>
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr class="alt-row">
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">&nbsp;</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Problem set 1 (<a href="3/ps1_06.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>(<a href="3/sol1_06.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 2 (<a href="3/ps2_06.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>(<a href="3/sol2_06.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 3 (<a href="3/ps3_06.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>(<a href="3/sol3_06.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 4 (<a href="3/ps4_06.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>(<a href="3/sol4_06.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 5</td>
+<td>&nbsp;</td>
+<td>(<a href="3/sol5_06.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 6</td>
+<td>&nbsp;</td>
+<td>(<a href="3/sol6_06.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 7 (<a href="3/ps7_06.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>(<a href="3/sol7_06.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
 
+</br>
 

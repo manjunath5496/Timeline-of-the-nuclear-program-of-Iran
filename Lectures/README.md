@@ -15,7 +15,7 @@
 <li><a href="#course14">Organic & Biomaterials Chemistry</a></li>
 <li><a href="#course15">Mechanical Behavior of Materials</a></li>
 <li><a href="#course16">Introduction to Solid State Chemistry</a></li>
-<li><a href="#course17">Transportation Flow Systems</a></li>
+<li><a href="#course17">Economic & Environmental Issues in Materials Selection</a></li>
 <li><a href="#course18">Carrier Systems</a></li>
 <li><a href="#course19">Airline Schedule Planning</a></li>
 <li><a href="#course20">Computer Algorithms in Systems Engineering</a></li>
@@ -2473,5 +2473,135 @@
 <li><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a title="Open in a new window." href="3/MIT3_091SCF09_sa1_supp_sol.pdf" target="_blank">Supplemental exam solutions key (PDF)</a></li>
 </ul>
 </br>
+<h2 id="course17">Economic & Environmental Issues in Materials Selection</h2>
+
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th id="tbl374id0_1" scope="col">TOPICS</th>
+<th id="tbl374id0_2" scope="col">SUPPLEMENTAL FILES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td headers="tbl374id0_1">Introduction (<a href="3/lec_intro.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td colspan="2" headers="tbl374id0_0"><strong>Engineering Economics</strong></td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Introduction, Time Value of Money, Single Payment Discounting (<a href="3/lec_ee1.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Value, Multi-payment Discounting, Non-uniform Cash Flows (<a href="3/lec_ee2.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Effective Interest Rates (<a href="3/lec_ee3.pdf">PDF</a>)<br /><br />Evaluating Alternatives, MARR, PW, AW, IRR</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Uncertainty</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Comparing Alternatives (<a href="3/lec_ee5.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Dealing with Changing Prices (<a href="3/lec_ee6.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Combining Concepts (<a href="3/lec_ee7datatable.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">Class Examples (<a href="3/lec_ee7examples.xls">XLS</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Presentations and Review</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Exam 1</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td colspan="2" headers="tbl374id0_0"><strong>Materials Selection</strong></td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Concepts of Materials Indices, Software Introduction (Guest lecturer: Jeremy Gregory)&nbsp;(<img src="https://ocw.mit.edu/images/inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/lec_ms1.pdf">PDF - 1.5 MB</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Material and Shape Selection (Guest lecturer: Jeremy Gregory)&nbsp;(<img src="https://ocw.mit.edu/images/inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/lec_ms2.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Process Selection, In-class Examples (Guest lecturer: Jeremy Gregory)&nbsp;(<a href="3/lec_ms3.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Presentations and Review</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td colspan="2" headers="tbl374id0_0"><strong>Cost Modeling</strong></td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Using Cost Models: Concepts and Principles (<a href="3/lec_cm1.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Tackling Variable Costs (<a href="3/lec_cm2_3.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">Pizza Model (<a href="3/MIT_MSL_pizzamodel.xls">XLS</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Modeling Fixed Costs (<a href="3/lec_cm2_3.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">Pizza Model (<a href="3/MIT_MSL_pizzamodel.xls">XLS</a>)</td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Presentations and Review</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Exam 2</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td colspan="2" headers="tbl374id0_0"><strong>LCA</strong>&nbsp;<strong>(Life Cycle Assessment)</strong></td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Introduction: What is the Cost of Materials Usage? (<a href="3/lec_lca1.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">An Overview of Life Cycle Assessment (<a href="3/lec_lca2.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Analysis Goal and Scope; Inventory Methods (<a href="3/lec_lca3.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl374id0_1">Impact Assessment (<a href="3/lec_lca4.pdf">PDF</a>)</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl374id0_1">Presentations and Wrap-up</td>
+<td headers="tbl374id0_2">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+</br>
+
+<h2 class="subhead">Engineering Economics</h2>
+<p>Homework EE1 (<a href="3/ee1.pdf">PDF</a>)<br />Homework EE2 (<a href="3/ee2.pdf">PDF</a>)<br />Homework EE3 (<a href="3/ee3.pdf">PDF</a>)</p>
+<h2 class="subhead">Cost Modeling</h2>
+<p>Homework CM1 (<a href="3/cm1.pdf">PDF</a>)<br />CM Injection Molding Tool (<a href="3/cm_inject.xls">XLS</a>)</p>
+<h2 class="subhead">Life Cycle Assessment</h2>
+<p>Homework LC1 (<a href="3/lc1.pdf">PDF</a>)</p>
 
 
+</br>

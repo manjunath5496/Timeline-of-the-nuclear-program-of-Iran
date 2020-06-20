@@ -26,7 +26,7 @@
 <li><a href="#course25">Fracture and Fatigue</a></li>
 <li><a href="#course26">Atomistic Computer Modeling of Materials</a></li>
 <li><a href="#course27">Electrical, Optical, and Magnetic Properties of Materials</a></li>
-<li><a href="#course28">Foundations of Software Engineering</a></li>
+<li><a href="#course28">Electronic and Mechanical Properties of Materials</a></li>
 <li><a href="#course29">Transportation Policy and Environmental Limits</a></li>
 <li><a href="#course30">Urban Transportation Planning</a></li>
 <li><a href="#course31">The Impact of Globalization on the Built Environment</a></li>
@@ -3717,5 +3717,88 @@
 </tr>
 </tbody>
 </table>
+</br>
+<h2 id="course28">Electronic and Mechanical Properties of Materials</h2>
+<p>Elasticity topics (<a href="8/elasticity.pdf">PDF</a>)</p>
+<div class="maintabletemplate">
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr style="height: 13px;">
+<th style="height: 13px;" scope="col">TOPICS</th>
+<th style="height: 13px;" scope="col">LECTURES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row" style="height: 13px;">
+<td style="height: 13px;" colspan="2"><strong>Electrical, optical, and magnetic properties</strong></td>
+</tr>
+<tr class="alt-row" style="height: 13px;">
+<td style="height: 13px;">Micro to macro: conductivity</td>
+<td style="height: 13px;">(<a href="8/lecture_1.pdf">PDF</a>)</td>
+</tr>
+<tr class="row" style="height: 13px;">
+<td style="height: 13px;">Electromagnetic waves in materials</td>
+<td style="height: 13px;">(<a href="8/lecture_2.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row" style="height: 13px;">
+<td style="height: 13px;">Wave-particle duality</td>
+<td style="height: 13px;">(<a href="8/lecture_3.pdf">PDF - 1.2 MB</a>)</td>
+</tr>
+<tr class="row" style="height: 13px;">
+<td style="height: 13px;">Fermi-Dirac, energy levels</td>
+<td style="height: 13px;">(<a href="8/lecture_4.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row" style="height: 13px;">
+<td style="height: 13px;">Bloch model, band gaps</td>
+<td style="height: 13px;">(<a href="8/lecture_5.pdf">PDF</a>)</td>
+</tr>
+<tr class="row" style="height: 13px;">
+<td style="height: 13px;">Metals and insulators</td>
+<td style="height: 13px;">(<a href="8/lecture_6.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row" style="height: 13px;">
+<td style="height: 13px;">Semiconductors</td>
+<td style="height: 13px;">(<a href="8/lecture_7.pdf">PDF</a>)</td>
+</tr>
+<tr class="row" style="height: 13px;">
+<td style="height: 13px;">Doping and conductivity</td>
+<td style="height: 13px;">(<a href="8/lecture_8.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row" style="height: 13px;">
+<td style="height: 13px;">p-n junctions</td>
+<td style="height: 13px;">(<a href="8/lecture_9.pdf">PDF</a>)</td>
+</tr>
+<tr class="row" style="height: 13px;">
+<td style="height: 13px;">Dielectrics and polarization</td>
+<td style="height: 13px;">(<a href="8/lecture_10.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row" style="height: 13px;">
+<td style="height: 13px;">Optical fiber properties</td>
+<td style="height: 13px;">(<a href="8/lecture_11.pdf">PDF</a>)</td>
+</tr>
+<tr class="row" style="height: 13px;">
+<td style="height: 13px;">Magnetic materials</td>
+<td style="height: 13px;">(<a href="8/lecture_12.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+</div>
+<h2 class="subhead">Mechanical Properties</h2>
+<p>2001 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="8/m2001.pdf">PDF - 4.3 MB</a>)</p>
+<p>2002 (<a href="8/m2002.pdf">PDF - 5.6 MB</a>)</p>
+<p>2003 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="8/m2003.pdf">PDF - 3.4 MB</a>)</p>
+<p>2004 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="8/m2004.pdf">PDF - 2.5 MB</a>)</p>
+<p>2005 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="8/m2005.pdf">PDF - 1.1 MB</a>)</p>
+<p>2006 (<a href="8/m2006.pdf">PDF</a>)</p>
+<p>2007 (<a href="8/m2007.pdf">PDF</a>)</p>
+<p>Solution 2007 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="8/m2007sol.pdf">PDF</a>)</p>
+<h2 class="subhead">Electrical, Optical, and Magnetic Properties</h2>
+<p>2003 (<a href="8/e2003.pdf">PDF</a>)</p>
+<p>2004 (<a href="8/e2004.pdf">PDF</a>)</p>
+<p>2005 (<a href="8/e2005.pdf">PDF</a>)</p>
+<p>2006 (<a href="8/e2006.pdf">PDF</a>)</p>
+<p>2007 (<a href="8/e2007.pdf">PDF</a>)</p>
+<p>Solutions 2003-2006 (<a href="8/e03_06sol.pdf">PDF</a>)</p>
 </br>
 

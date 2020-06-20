@@ -4,7 +4,7 @@
 <li><a href="#course3">Introduction to Modeling and Simulation</a></li>
 <li><a href="#course4">Mathematics for Materials Scientists and Engineers</a></li>
 <li><a href="#course5">Materials Laboratory</a></li>
-<li><a href="#course6">Ecology II: Engineering for Sustainability</a></li>
+<li><a href="#course6">Fundamentals of Materials Science</a></li>
 <li><a href="#course7">Transport Processes in the Environment</a></li>
 <li><a href="#course8">Engineering Mechanics II</a></li>
 <li><a href="#course9">Mechanics and Design of Concrete Structures</a></li>
@@ -849,3 +849,313 @@
 <p>Grading Approach (<a href="memo_grading.pdf">PDF</a>)</p>
 <p>Example (<a href="memo_example.pdf">PDF</a>)</p>
 </br>
+<h2 id="course6">Fundamentals of Materials Science</h2>
+
+
+
+
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th colspan="2" scope="col">STRUCTURE&nbsp;AND&nbsp;BONDING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th colspan="2" scope="col">THERMODYNAMICS</th>
+</tr>
+<tr>
+<th scope="col">TOPICS</th>
+<th scope="col">ANNOTATED&nbsp;SLIDES</th>
+<th scope="col">TOPICS</th>
+<th scope="col">ANNOTATED&nbsp;SLIDES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td colspan="4">Orientation: Research and Careers in Materials Science and Engineering (<a href="lec0_orientation.pdf">PDF - 2.6 MB</a>) (Courtesy of Prof. Caroline Ross. Used with permission.)</td>
+</tr>
+<tr class="alt-row">
+<td>Classical or Quantum: Electrons as Waves, Wave Mechanics (<a href="lec01b.pdf">PDF 1</a>) (<a href="lec01b_bis.pdf">PDF 2</a>)</td>
+<td>(<a href="lec01b_note.pdf">PDF 1</a>)<sup><br /><br /></sup>(<a href="lec01b_bis_note.pdf">PDF 2</a>)</td>
+<td>Fundamental Concepts (<a href="lec01t.pdf">PDF - 3.2 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec01t_note.pdf">PDF - 1.5 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Schr&ouml;dinger's Equation and Discrete Energy States of a Confined Electron (<a href="lec02b.pdf">PDF</a>)</td>
+<td>(<a href="lec02b_note.pdf">PDF</a>)</td>
+<td>Fundamental Concepts (cont.) (<a href="lec02t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec02t_note.pdf">PDF - 2.6 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Free Electrons, Electrons in a Metal, and the Scanning Tunneling Microscope (<a href="lec03b.pdf">PDF</a>)</td>
+<td>(<a href="lec03b_note.pdf">PDF</a>)</td>
+<td>First Law of Thermodynamics (<a href="lec03t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec03t_note.pdf">PDF - 2.2 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Curiosity Killed the Cat: General Principles of Quantum Mechanics (<a href="lec04b.pdf">PDF</a>)</td>
+<td>(<a href="lec04b_note.pdf">PDF - 1.0 MB</a>)</td>
+<td>Temperature, Heat, and Entropy (<a href="lec04t.pdf">PDF - 1.2 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec04t_note.pdf">PDF - 1.0 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>The Hydrogen Atom (<a href="lec05_06b.pdf">PDF</a>)</td>
+<td>(<a href="lec05_06b_note.pdf">PDF</a>)</td>
+<td>Heat Storage and Release in Phase Transitions (<a href="lec05t.pdf">PDF - 1.1 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec05t_note.pdf">PDF - 2.1 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>The Hydrogen Atom (cont.) (<a href="lec05_06b.pdf">PDF</a>)</td>
+<td>(<a href="lec05_06b_note.pdf">PDF</a>)</td>
+<td>Examples of Work Important in Materials Science and Engineering: Polarization, Magnetic, Chemical (<a href="lec06t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec06t_note.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Alphabet Soup: The Periodic Table (<a href="lec07b.pdf">PDF</a>)</td>
+<td>(<a href="lec07b_note.pdf">PDF</a>)</td>
+<td>Thermal Properties of Materials; Fundamental Equations (<a href="lec07t.pdf">PDF - 3.9 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec07t_note.pdf">PDF - 1.9 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>The Periodic Table (cont.) (<a href="lec08b.pdf">PDF</a>)</td>
+<td>(<a href="lec08b_note.pdf">PDF</a>)</td>
+<td>Fundamental Equations (cont.); Equilibrium and the Second Law (<a href="lec08t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec08t_note.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>The Variational Principle; Application to Hydrogen Atom (<a href="lec09b.pdf">PDF</a>)</td>
+<td>(<a href="lec09b_note.pdf">PDF</a>)</td>
+<td>Free Energy; Applying the Second Law in Laboratory Conditions (<a href="lec09t.pdf">PDF - 1.7 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec09t_note.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Molecules from Atoms: Energy Minimization, Hybridization of Atomic Orbitals (<a href="lec10b.pdf">PDF</a>)</td>
+<td>(<a href="lec10b_note.pdf">PDF</a>)</td>
+<td>Chemical Potentials and the Gibbs Free Energy (<a href="lec10t.pdf">PDF - 1.1 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec10t_note.pdf">PDF - 2.4 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Bonding in Molecules: Hartree and Hartree-Fock Equations, Symmetries, Bond Order (<a href="lec11b.pdf">PDF</a>)</td>
+<td>(<a href="lec11b_note.pdf">PDF</a>)</td>
+<td>Models of the Chemical Potential (<a href="lec11t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec11t_note.pdf">PDF - 1.2 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Polymers Part 1: Diagonalization on a Basis, Huckel Model (<a href="lec12b.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>Chemical Reaction Equilibria (<a href="lec12t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec12t_note.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Quantum Oscillation (<a href="lec13b.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>Electrochemical Equilibria (<a href="lec13t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec13t_note.pdf">PDF - 3.4 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Point Groups and Bravais Lattices (<a href="lec14b.pdf">PDF - 1.8 MB</a>)</td>
+<td>&nbsp;</td>
+<td>Batteries; Thermodynamic Stability (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec14t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec14t_note.pdf">PDF - 2.8 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Symmetry Operations (<a href="lec15b.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>Phase Changes and Phase Diagrams of Single-Component Materials (<a href="lec15t.pdf">PDF - 1.8 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec15t_note.pdf">PDF - 9.0 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Structure of Solids (<a href="lec16b.pdf">PDF - 1.8 MB</a>)</td>
+<td>(<a href="lec16b_note.pdf">PDF - 1.9 MB</a>)</td>
+<td>Single-Component Phase Diagrams (cont.); Thermodynamics of Solutions (<a href="lec16t.pdf">PDF - 2.7 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec16t_note.pdf">PDF - 1.9 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>X-ray Diffraction (<a href="lec17b.pdf">PDF - 1.4 MB</a>)</td>
+<td>(<a href="lec17b_note.pdf">PDF - 1.5 MB</a>)</td>
+<td>Free Energy of Multi-phase Solutions at Equilibrium (<a href="lec17t.pdf">PDF - 1.1 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec17t_note.pdf">PDF - 2.3 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>X-rays at Work: Laue Condition, Ewald Construction, Bragg's Law, Powder Diffraction (<a href="lec18b.pdf">PDF - 1.7 MB</a>)</td>
+<td>(<a href="lec18b_note.pdf">PDF - 2.0 MB</a>)</td>
+<td>Binary Phase Diagrams: Miscibility Gaps and Eutectics (<a href="lec18t.pdf">PDF - 1.9 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec18t_note.pdf">PDF - 1.8 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>From Diffraction to Structure (<a href="lec19b.pdf">PDF - 1.1 MB</a>)</td>
+<td>(<a href="lec19b_note.pdf">PDF - 1.2 MB</a>)</td>
+<td>Binary Phase Diagrams (cont.) (<a href="lec19t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec19t_note.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Symmetries and Tensors (<a href="lec20b.pdf">PDF</a>)</td>
+<td>(<a href="lec20b_note.pdf">PDF</a>)</td>
+<td>Spinodals and Binodals; Continuous Phase Transitions; Introduction to Statistical Mechanics (<a href="lec20t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec20t_note.pdf">PDF - 2.5 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Non-crystalline Materials (<a href="lec21b.pdf">PDF - 2.3 MB</a>)</td>
+<td>(<a href="lec21b_note.pdf">PDF - 1.9 MB</a>)</td>
+<td>Connecting Events at the Atomic/Molecular Level to Macroscopic Thermodynamic Behavior: Two Postulates of Statistical Mechanics; Microscopic Definition of Entropy (<a href="lec21t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec21t_note.pdf">PDF - 1.2 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Polymers Part 2 (<a href="lec22b.pdf">PDF</a>)</td>
+<td>(<a href="lec22b_note.pdf">PDF</a>)</td>
+<td>Connecting Events at the Atomic/Molecular Level to Macroscopic Thermodynamic Behavior (cont.): The Boltzman Factor and Partition Function; Thermal Behavior of the Einstein Solid (<a href="lec22t.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec22t_note.pdf">PDF - 2.0 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Glasses (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec23b.pdf">PDF - 2.3 MB</a>)</td>
+<td>(<a href="lec23b_note.pdf">PDF - 1.2 MB</a>)</td>
+<td>Lattice Models of Materials; Modeling Polymer Solutions (<a href="lec23t.pdf">PDF - 4.1 MB</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="lec23t_note.pdf">PDF - 3.4 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Liquid Crystals (<a href="lec24b.pdf">PDF - 9.3 MB</a>)</td>
+<td>(<a href="lec24b_note.pdf">PDF - 9.4 MB</a>)</td>
+<td>Flory-Huggins Theory (<a href="lec24t.pdf">PDF - 1.5 MB</a>)</td>
+<td>(<a href="lec24t_note.pdf">PDF - 2.6 MB</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Problem Set 1 (<a href="1/ps01.pdf">PDF</a>)</td>
+<td>(<a href="1/ps01_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 2 (<a href="1/ps02.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/ps02_sol.pdf">PDF - 5.0 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 3 (<a href="1/ps03.pdf">PDF</a>)</td>
+<td>(<a href="1/ps03_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 4 (<a href="1/ps04.pdf">PDF</a>)</td>
+<td>(<a href="1/ps04_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 5 (<a href="1/ps05.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/ps05_sol.pdf">PDF - 1 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 6 (<a href="1/ps06.pdf">PDF</a>)</td>
+<td>Thermodynamics (<a href="1/ps06_sol.pdf">PDF - 3.0 MB</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Problem Set 1 (<a href="1/f04ps1.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04ps1_sol_struc.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 2 (<a href="1/f04ps2.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04ps2_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 3 (<a href="1/f04ps3.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04ps3_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 4 (<a href="1/f04ps4.pdf">PDF</a>)</td>
+<td>(<a href="1/f04ps4_sol.pdf">PDF - 1.5 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 5 (<a href="1/f04ps5.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04ps5_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 6 (<a href="1/f04ps6.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04ps6_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 7 (<a href="1/f04ps7.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04ps7_sol.pdf">PDF - 1.0 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 8 (<a href="1/f04ps8.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04ps8_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 9 (<a href="1/f04ps9.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04ps9_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 10 (<a href="1/f04ps10.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04ps10_sol_t.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">QUIZZES</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Quiz 1 (<a href="1/quiz1_v2.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/quiz1_soln.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Quiz 2 (<a href="1/quiz2.pdf">PDF</a>)</td>
+<td>Thermodynamics (<a href="1/quiz2_sol_thermo.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Quiz 3 (<a href="1/quiz3.pdf">PDF</a>)</td>
+<td>Bonding (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/quiz3_sol_bond.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">QUIZZES</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Quiz 1 (<a href="1/f04_quiz1.pdf">PDF</a>)</td>
+<td>Thermodynamics (<a href="1/f04_q1_sol_t.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Quiz 2 (<a href="1/f04_quiz2.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04_quiz2_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td colspan="2">Quiz 3 with Solutions (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04_quiz3_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Quiz 4 (<a href="1/f04_quiz4.pdf">PDF</a>)</td>
+<td>Thermodynamics (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/f04_q4_sol_t.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+

@@ -1,0 +1,17 @@
+SIZE   	   32      #length of cell (i.e. 32x32 sites)
+V1   	   1.0     #NN interaction
+V2         -2.0    #NNN interaction
+NUM_EQ    4000      #equilibration steps
+NUM_PASS  40000     #total number of passes
+T_START   7.0    #starting temperature
+T_FINAL   7.0    #final temp
+T_INC     -1       #temp increment
+MU_START  -4.0      #initial, final and increment in mu
+MU_FINAL  0.0
+MU_INC    0.1
+INIT_CONFIG 1      #starting config 1 (all -1), 2 (all +1), 3 (2x2 ordering), 4 (random)
+#T_INSIDE_LOOP      #make temperature loop inside loop (default mu is inside loop)
+#PRINT_ALL_DATA    #print all samples
+#PRINT_LAST_CONFIG #print the last config of each (T,MU) trajectory
+
+

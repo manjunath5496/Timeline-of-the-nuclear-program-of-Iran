@@ -3,7 +3,7 @@
 <li><a href="#course2">Principles of Engineering Practice</a></li>
 <li><a href="#course3">Introduction to Modeling and Simulation</a></li>
 <li><a href="#course4">Mathematics for Materials Scientists and Engineers</a></li>
-<li><a href="#course5">Ecology I: The Earth System</a></li>
+<li><a href="#course5">Materials Laboratory</a></li>
 <li><a href="#course6">Ecology II: Engineering for Sustainability</a></li>
 <li><a href="#course7">Transport Processes in the Environment</a></li>
 <li><a href="#course8">Engineering Mechanics II</a></li>
@@ -833,5 +833,19 @@
 </tbody>
 </table>
 </br>
+<h2 id="course5">Materials Laboratory</h2>
 
-
+<h2 class="subhead">Week 1: Poster Session</h2>
+<p>Format Guidelines (<a href="poster_format.pdf">PDF</a>)</p>
+<p>Grading Approach (<a href="poster_grading.pdf">PDF</a>)</p>
+<h2 class="subhead">Week 2: Journal Article</h2>
+<p>Format Guidelines (<a href="journal_format.pdf">PDF</a>)</p>
+<p>Grading Approach (<a href="journal_grading.pdf">PDF</a>)</p>
+<h2 class="subhead">Week 3: Technical Report</h2>
+<p>Format Guidelines (<a href="techrep_format.pdf">PDF</a>)</p>
+<p>Grading Approach (<a href="techrep_grading.pdf">PDF</a>)</p>
+<h2 class="subhead">Week 4: Memo (To be Written as Final Exam)</h2>
+<p>Format Guidelines (<a href="memo_format.pdf">PDF</a>)</p>
+<p>Grading Approach (<a href="memo_grading.pdf">PDF</a>)</p>
+<p>Example (<a href="memo_example.pdf">PDF</a>)</p>
+</br>

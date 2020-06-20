@@ -2457,8 +2457,8 @@
 <h2 id="course16">Introduction to Solid State Chemistry</h2>
 
 <p><a title="Open in a new window." href="3/MIT3_091SCF09_lec1.pdf" target="_blank">Lecture Slides (PDF - 3.2MB)</a></p>
-<p><a href="https://ocw.mit.edu/courses/materials-science-and-engineering/3-091sc-introduction-to-solid-state-chemistry-fall-2010/syllabus/suggested-textbooks#ref">Periodic Table and Table of Constants</a></p>
-<h3 class="subsubhead">&nbsp;</h3>
+<p><a title="Open in a new window." href="3/MIT3_091SCF09_per_table.pdf" target="_blank">Periodic Table of the Elements (PDF)</a></p>
+<p><a title="Open in a new window." href="3/MIT3_091SCF09_constants.pdf" target="_blank">Fundamental Physical Constants (PDF)</a></p>
 <p><a title="Open in a new window." href="3/MIT3_091SCF09_hw1.pdf" target="_blank">Problems (PDF)</a></p>
 <p><a title="Open in a new window." href="3/MIT3_091SCF09_hw1_sol.pdf" target="_blank">Solutions (PDF)</a></p>
 

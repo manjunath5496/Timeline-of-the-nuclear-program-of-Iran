@@ -16,7 +16,7 @@
 <li><a href="#course15">Mechanical Behavior of Materials</a></li>
 <li><a href="#course16">Introduction to Solid State Chemistry</a></li>
 <li><a href="#course17">Economic & Environmental Issues in Materials Selection</a></li>
-<li><a href="#course18">Carrier Systems</a></li>
+<li><a href="#course18">Polymer Physics</a></li>
 <li><a href="#course19">Airline Schedule Planning</a></li>
 <li><a href="#course20">Computer Algorithms in Systems Engineering</a></li>
 <li><a href="#course21">Transportation Systems Analysis: Demand and Economics</a></li>
@@ -2605,3 +2605,101 @@
 
 
 </br>
+<h2 id="course18">Polymer Physics</h2>
+
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Introduction; hard vs. soft solids; polymerization (<a href="4/lec1_07.pdf">PDF - 1.5 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Chains; thermodynamics of polymer solutions (<a href="4/lec2_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Thermodynamics (cont.): Mean field; Flory Huggins and lattice theory; entropy and enthalpy of mixing; phase diagrams (<a href="4/lec3_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Polymer blends; viscosity; osmometry (<a href="4/lec4_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Osmometry (cont.); SEC (size exclusion chromatography) and GPC (gel permeation chromatography) (<a href="4/lec5_07.pdf">PDF - 1.3 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Scattering; Zimm plots (<a href="4/lec6_07.pdf">PDF - 1.1 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Glass transition temperature T<sub>g</sub>&nbsp;(<a href="4/lec7_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Diffusion of polymers; reptation; elasticity (<a href="4/lec8_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Gels; Flory-Rehner theory (<a href="4/lec9_07.pdf">PDF - 2.0 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Self organization (<a href="4/lec10.pdf">PDF - 2.0 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Intermaterial dividing surface (IMDS); polymer-based photonics (<a href="4/lec11_07.pdf">PDF - 3.0 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Photonic crystals (<a href="4/lec12_07.pdf">PDF - 2.2 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Influence of chain architecture on microdomain characteristics (<a href="4/lec13_07.pdf">PDF - 1.8 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Block copolymer-homopolymer blends (<a href="4/lec14_07.pdf">PDF - 1.2 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Hierarchically ordered BCP-nanoparticle composites (<a href="4/lec15_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Top down meets bottom up (<a href="4/lec16_07.pdf">PDF - 1.6 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Chain folding; polyethylene and nylon; spherulites (<a href="4/lec17_07.pdf">PDF - 1.2 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Mechanical properties; crazing; microframes and millitrusses (<a href="4/lec18_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Mechanical properties (cont.) (<a href="4/lec19_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Single wall and multi-wall nanotubes (SWNT, MWNT) (<a href="4/lec20_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Electronic polymers (<a href="4/lec21_07.pdf">PDF - 2.3 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Polymer conductives; polypyrrole chains; optical interactions (<a href="4/lec22_07.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Wrap-up and review</td>
+</tr>
+</tbody>
+</table>
+</br>
+<h2 class="subhead">Problem Sets</h2>
+<p>Problem Set 1 (<a href="4/ps1.pdf">PDF</a>)</p>
+<p>Problem Set 2 (<a href="4/ps2.pdf">PDF</a>)</p>
+<p>Problem Set 3 (<a href="4/ps3.pdf">PDF</a>)</p>
+<p>Problem Set 4 (<a href="4/ps4.pdf">PDF</a>)</p>
+<p>Problem Set 5 (<a href="4/ps5.pdf">PDF</a>)</p>
+<h2 class="subhead">Project Essay</h2>
+<p>Students are required to write a substantial essay on an area concerning the structure, processing, and physical properties of polymers. A two page detailed outline is due on Lec #13 and the paper is due seven days after Lec #23.</p>
+<p>Essay Assignment (<a href="4/report.pdf">PDF</a>)</p>
+<h3 class="subsubhead">Student Essays</h3>
+<p>These papers are presented courtesy of the students and used with permission.</p>
+<p>"OLEDs: Modifiability and Applications," by Jill A. Rowehl (<a href="4/modifiability.pdf">PDF</a>)</p>
+<p>"Polymer Foams," by Katrine Sivertsen (<a href="4/polymer_foams.pdf">PDF</a>)</p>
+</br>
+
+
+

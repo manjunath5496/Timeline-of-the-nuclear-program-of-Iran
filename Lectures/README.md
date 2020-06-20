@@ -31,7 +31,7 @@
 <li><a href="#course30">Thermodynamics and Kinetics of Materials</a></li>
 <li><a href="#course31">Materials at Equilibrium</a></li>
 <li><a href="#course32">Transport Phenomena in Materials Engineering</a></li>
-<li><a href="#course33">E-Commerce and the Internet in Real Estate and Construction</a></li>
+<li><a href="#course33">Electrical, Optical & Magnetic Materials and Devices</a></li>
 <li><a href="#course34">Waste Containment and Remediation Technology</a></li>
 <li><a href="#course35">Soil Behavior</a></li>
 <li><a href="#course36">Public Transportation Systems</a></li>
@@ -4353,3 +4353,141 @@ Illustrates the behavior of the concentration around a line source that is diffu
 </tbody>
 </table>
 </br>
+<h2 id="course33">Electrical, Optical & Magnetic Materials and Devices</h2>
+
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Overview, Carrier Fundamentals (<a href="11/lecture1.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Drift and Diffusion of Carriers (<a href="11/lecture2.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>PN Junctions (<a href="11/lecture4_5_6.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Bipolar Junction Transistor (<a href="11/lecture7.pdf">PDF 1</a>) (<a href="11/lecture7b.pdf">PDF 2</a>)</td>
+</tr>
+<tr class="row">
+<td>Photodetectors and Photovoltaics (<a href="11/lecture9.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>LEDs, Lasers (<a href="11/lecture11_12_13.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Displays (<a href="11/lecture14.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Optical Fibers, Photonic Devices</td>
+</tr>
+<tr class="row">
+<td>Magnetic Fundamentals (<a href="11/ho9_magnetic_fundamentals.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Transformers and DC Motors (<a href="11/lecture19_21.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Data Storage (<a href="11/lecture22_23_24.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">OPICS</th>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Semiconductor Fundamentals</td>
+<td>Problem Set 1 (<a href="12/ps1.pdf">PDF</a>)</td>
+<td>(<a href="12/ps1_solution.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Carriers and PN Junctions</td>
+<td>Problem Set 2 (<a href="12/ps2.pdf">PDF</a>)</td>
+<td>(<a href="12/ps2_solution.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>PN Junctions, BJTs, and MOS</td>
+<td>Problem Set 3 (<a href="12/ps3.pdf">PDF</a>)</td>
+<td>(<a href="12/ps3_solution.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Photodevices</td>
+<td>Problem Set 4 (<a href="12/ps4.pdf">PDF</a>)</td>
+<td>(<a href="12/ps4_solution.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Lasers and LEDs</td>
+<td>Problem Set 5 (<a href="12/ps5.pdf">PDF</a>)</td>
+<td>(<a href="12/ps5_solution.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Magnetic Fundamentals</td>
+<td>Problem Set 6 (<a href="12/ps6.pdf">PDF</a>)</td>
+<td>(<a href="12/ps6_solution.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Magnetic Devices</td>
+<td>Problem Set 7 (<a href="12/ps7.pdf">PDF</a>)</td>
+<td>(<a href="12/ps7_solution.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">EXAMS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td colspan="2"><strong>EXAM 1</strong></td>
+</tr>
+<tr class="alt-row">
+<td>Sample Exam (<a href="11/sample_exam1.pdf">PDF</a>)</td>
+<td>(<a href="11/sample_exam1sols.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Exam (<a href="11/exam1.pdf">PDF</a>)</td>
+<td>(<a href="11/exam1_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td colspan="2"><strong>EXAM 2</strong></td>
+</tr>
+<tr class="row">
+<td>Sample Exam (<a href="11/sample_exam2.pdf">PDF - 1.3 MB</a>)</td>
+<td>(<a href="11/prac_exam2sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Exam (<a href="11/exam2.pdf">PDF</a>)</td>
+<td>(<a href="11/exam2_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td colspan="2"><strong>FINAL EXAM</strong></td>
+</tr>
+<tr class="alt-row">
+<td>Sample Exam (<a href="11/sample_final.pdf">PDF</a>)</td>
+<td>(<a href="11/prac_final_sol.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+
+

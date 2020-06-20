@@ -10,7 +10,7 @@
 <li><a href="#course9">Mechanics of Materials</a></li>
 <li><a href="#course10">Physical Metallurgy</a></li>
 <li><a href="#course11">Amorphous Materials</a></li>
-<li><a href="#course12">Engineering Mechanics I</a></li>
+<li><a href="#course12">Nanomechanics of Materials and Biomaterials</a></li>
 <li><a href="#course13">Project Management</a></li>
 <li><a href="#course14">Advanced Soil Mechanics</a></li>
 <li><a href="#course15">Introduction to Network Models</a></li>
@@ -1640,5 +1640,168 @@
 </tbody>
 </table>
 </br>
+
+<h2 id="course12">Nanomechanics of Materials and Biomaterials</h2>
+
+
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Introduction to nanomechanics (<a href="2/lec1.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>High resolution force spectroscopy (HRFS): The force transducer (<a href="2/lec2.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Additional nanomechanics instrumentation components (<a href="2/lec3.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Force versus distance curves (<a href="2/lec4.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Atomic force microscope (AFM) imaging (<a href="2/lec5.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>AFM imaging II: Artifacts and applications (<a href="2/lec6.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Single cell mechanics (<a href="2/lec7.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Qualitative Introduction to intra- and intermolecular forces (<a href="2/lec8.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Quantitative description of intra- and intermolecular forces (<a href="2/lec9.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Molecule-surface interactions (<a href="2/lec10.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Colloids and interparticle potentials (<a href="2/lec11.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Van der Waals forces at work: Gecko feet adhesion (<a href="2/lec12.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Midterm exam solutions review (<a href="2/lec13.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>The electrical double layer (EDL) - part 1 (<a href="2/lec14.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>The electrical double layer (EDL) - part 2 (<a href="2/lec15.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Nanomechanics of cartilage (<a href="2/lec16.pdf">PDF - 2.0 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Protein-surface interactions (<a href="2/lec17.pdf">PDF - 1.3 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Nanomechanics and biocompatibility: Protein-biomaterial interactions, part 2 (<a href="2/lec18.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Elasticity of single polymer chains: Theoretical formulations (<a href="2/lec19.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Theoretical aspects of single molecule force spectroscopy: Extensibility and the worm-like chain (WLC) (<a href="2/lec20.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Single chain elasticity of biomacromolecules: The giant protein titin and DNA (<a href="2/lec21.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Theoretical aspects of nanoindentation (<a href="2/lec22.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Nanoindentation 2: Oliver-Pharr method and one literature example: Nacre (<a href="2/lec23.pdf">PDF - 1.0 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Intermolecular interactions in motility of a biological spring (guest lecture by Danielle France, course TA)</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+<table class="100%" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SUPPORTING&nbsp;FILES</th>
+<th scope="col">SOLUTIONS</th>
+<th scope="col">SUPPORTING&nbsp;FILES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Homework 1 (<a href="2/hw1.pdf">PDF</a>)</td>
+<td>Data for problem 1 (<a href="2/hw1_q1_data.xls">XLS</a>)</td>
+<td>(<a href="2/hw1_sol.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Homework 2 (<a href="2/hw2.pdf">PDF</a>)</td>
+<td>
+<p>Data for problem 2 (<a href="2/hw2_q2_data.txt">TXT</a>)</p>
+<p>** WSxM image for problem 3&nbsp;(<a href="2/hw2_wsxm_nanoparticle.zip">ZIP</a>)</p>
+</td>
+<td>(<a href="2/hw2_sol.pdf">PDF</a>)</td>
+<td>Solution data for problem 2 (<a href="2/hw2_sol_q2_data.xls">XLS</a>)</td>
+</tr>
+<tr class="row">
+<td>Homework 3 (<a href="2/hw3.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>(<a href="2/hw3_sol.pdf">PDF</a>)</td>
+<td>Solution data for problem 2b (<a href="2/hw3_sol_q2.xls">XLS</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Homework 4 (<a href="2/hw4.pdf">PDF</a>)</td>
+<td>
+<p>Bare mica data for problem 2d (<a href="2/hw4_q2_data.xls">XLS</a>)</p>
+<p>Amino acid sequence of the protein core backbone, for problem 3d (<a href="2/hw4_q3d_seq.pdf">PDF</a>)</p>
+</td>
+<td>(<a href="2/hw4_sol.pdf">PDF</a>)</td>
+<td>Solution data for problem 1a (<a href="2/hw4_sol_q1a.xls">XLS</a>)</td>
+</tr>
+<tr class="row">
+<td>Homework 5 (<a href="2/hw5.pdf">PDF</a>)</td>
+<td>
+<p>** WSxM image for problem 1b (<a href="2/hw5_wsxm_chondrocyte.zip">ZIP</a>)</p>
+<p>Data for problem 1d (<a href="2/hw5_q1d.xls">XLS</a>)</p>
+<p>Data for problem 3b (<a href="2/hw5_q3b.xls">XLS</a>)</p>
+</td>
+<td>(<a href="2/hw5_sol.pdf">PDF</a>)</td>
+<td>
+<p>Solution data for problem 1 (<a href="2/hw5_sol_q1.xls">XLS</a>)</p>
+<p>Solution data for problem 2 (<a href="2/hw5_sol_q2.xls">XLS</a>)</p>
+<p>Solution data for problem 3 (<a href="2/hw5_sol_q3.xls">XLS</a>)</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>Homework 6 (<a href="2/hw6.pdf">PDF</a>)</td>
+<td>
+<p>AFM image for problem 3b: hw6_nacre_afm.stp (<a href="2/hw6_nacre_afm.stp">STP</a>)</p>
+<p>Data for problem 3c (<a href="2/hw6_q3c.xls">XLS</a>) (Courtesy of Benjamin Bruet. Used with permission.)</p>
+</td>
+<td>(<a href="2/hw6_sol.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+</br>
+<p>Sample Problems from Prior Years (<a href="2/smplprblem.pdf">PDF</a>)</p>
+<p>Midterm Review (<a href="2/midtrm_revie.pdf">PDF</a>)</p>
+<p>Midterm Exam (<a href="2/midterm.pdf">PDF</a>)</p>
+<p>Midterm Exam Solutions (<a href="2/midterm_sol.pdf">PDF</a>)</p>
+<p>Final Exam (<a href="2/final.pdf">PDF</a>)</p>
+<p>Final Exam Solutions (<a href="2/final_sol.pdf">PDF</a>)</p>
+
+</br>
+
 
 

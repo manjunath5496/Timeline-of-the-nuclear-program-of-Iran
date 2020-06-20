@@ -597,6 +597,241 @@
 </br>
 <h2 id="course4">Mathematics for Materials Scientists and Engineers</h2>
 
+<p>Style Sheet for 3.016 Mathematica&reg; Notebooks: (<a href="3016_Carter.nb">NB</a>).<br />The style sheet defines the presentation of this course's .nb files, and should be downloaded to a local directory before opening other .nb files.</p>
+</br>
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+<th scope="col">LECTURE&nbsp;NOTES</th>
+<th scope="col">MATHEMATICA&reg;&nbsp;NOTES: MATHML</th>
+<th scope="col">MATHEMATICA&reg;&nbsp;NOTES: NOTEBOOK</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Course Organization and Introduction to Mathematica&reg;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Introduction to Mathematica&reg;, Assignment and Evaluation, Rules and Replacement, Procedural and Functional Programming</td>
+<td>(<a href="lecture_02.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-02.xml">MathML</a>)</td>
+<td>(<a href="Lecture02.nb">NB</a>)</td>
+</tr>
+<tr class="row">
+<td>Mathematica&reg; Graphics: Basic Plotting, Data, Two- and Three-dimensional Plotting, Graphics Primitives, Formatting</td>
+<td>(<a href="lecture_03.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-03.xml">MathML</a>)</td>
+<td>(<a href="Lecture03.nb">NB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Mathematica&reg;: Symbolic and Numeric Calculations, Linear Algebra, Roots of Equations</td>
+<td>(<a href="lecture_04.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-04.xml">MathML</a>)</td>
+<td>(<a href="Lecture04.nb">NB</a>)</td>
+</tr>
+<tr class="row">
+<td>Mathematica&reg;: Functional Programming, Packages, and File Input/Output</td>
+<td>(<a href="lecture_05.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-05.xml">MathML</a>)</td>
+<td>(<a href="Lecture05.zip">ZIP</a>) (The ZIP file contains: Lecture-05.nb.)</td>
+</tr>
+<tr class="alt-row">
+<td>Linear Algebra: Matrix Operations, Interpretations of Matrix Operations, Multiplication, Transposes, Index Notation</td>
+<td>(<a href="lecture_06.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-06.xml">MathML</a>)</td>
+<td>(<a href="Lecture06.nb">NB</a>)</td>
+</tr>
+<tr class="row">
+<td>Linear Algebra: Solutions to Linear Systems of Equations, Determinants, Matrix Inverses, Linear Transformations and Vector Spaces</td>
+<td>(<a href="lecture_07.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-07.xml">MathML</a>)</td>
+<td>(<a href="Lecture07.nb">NB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td colspan="3"><strong><a href="https://ocw.mit.edu/courses/materials-science-and-engineering/3-014-materials-laboratory-fall-2006/labs">3.014</a>&nbsp;Lab Week 1; 3.016 does not meet.</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Complex Numbers: Complex Plane, Addition and Multiplication, Complex Conjugates, Polar Form of Complex Numbers, Powers and Roots, Exponentiation, Hyperbolic and Trigonometric Forms</td>
+<td>(<a href="lecture_08.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-08.xml">MathML</a>)</td>
+<td>(<a href="Lecture08.nb">NB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Matrix Eigenvalues: Eigenvalue/Eigenvector Definitions, Invariants, Principal Directions and Values, Symmetric, Skew-symmetric, and Orthogonal Systems, Orthogonal Transformations</td>
+<td>(<a href="lecture_09.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-09.xml">MathML</a>)</td>
+<td>(<a href="Lecture09.nb">NB</a>)</td>
+</tr>
+<tr class="row">
+<td>Hermitian Forms, Similar Matrices, Eigenvalue Basis, Diagonal Forms</td>
+<td>(<a href="lecture_10.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-10.xml">MathML</a>)</td>
+<td>(<a href="Lecture10.nb">NB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Vector Calculus: Vector Algebra, Inner Products, Cross Products, Determinants as Triple Products, Derivatives of Vectors</td>
+<td>(<a href="lecture_11.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-11.xml">MathML</a>)</td>
+<td>(<a href="Lecture11.zip">ZIP - 14.4 MB</a>) (The ZIP file contains: Lecture-11.nb.)</td>
+</tr>
+<tr class="row">
+<td>Multi-variable Calculus: Curves and Arc Length, Differentials of Scalar Functions of Vector Arguments, Chain Rules for Several Variables, Change of Variable and Thermodynamic Notation, Gradients and Directional Derivatives</td>
+<td>(<a href="lecture_12.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-12.xml">MathML</a>)</td>
+<td>(<a href="Lecture12.zip">ZIP - 3.6 MB</a>) (The ZIP file contains: Lecture-12.nb.)</td>
+</tr>
+<tr class="alt-row">
+<td>Vector Differential Operations: Divergence and its Interpretation, Curl and its Interpretation</td>
+<td>(<a href="lecture_13.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-13.xml">MathML</a>)</td>
+<td>(<a href="Lecture13.zip">ZIP - 1.1 MB</a>) (The ZIP file contains: Lecture-13.nb.)</td>
+</tr>
+<tr class="row">
+<td>Path Integration: Integral over a Curve, Change of Variables, Multidimensional Integrals</td>
+<td>(<a href="lecture_14.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-14.xml">MathML</a>)</td>
+<td>(<a href="Lecture14.zip">ZIP</a>) (The ZIP file contains: Lecture-14.nb.)</td>
+</tr>
+<tr class="alt-row">
+<td>Multidimensional Forms of the Fundamental Theorem of Calculus: Green's Theorem in the Plane, Surface Representations and Integrals</td>
+<td>(<a href="lecture_15.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-15.xml">MathML</a>)</td>
+<td>(<a href="Lecture15.zip">ZIP - 7.5 MB</a>) (The ZIP file contains: Lecture-15.nb.)</td>
+</tr>
+<tr class="row">
+<td colspan="3"><strong><a href="https://ocw.mit.edu/courses/materials-science-and-engineering/3-014-materials-laboratory-fall-2006/labs">3.014</a>&nbsp;Lab Week 2; 3.016 does not meet.</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Multi-variable Calculus: Triple Integrals and Divergence Theorem, Applications and Interpretation of the Divergence Theorem, Stokes' Theorem.</td>
+<td>(<a href="lecture_16.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-16.xml">MathML</a>)</td>
+<td>(<a href="Lecture16.nb">NB</a>)</td>
+</tr>
+<tr class="row">
+<td>Periodic Functions: Fourier Series, Interpretation of Fourier Coefficients, Convergence, Odd and Even Expansions</td>
+<td>(<a href="lecture_17.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-17.xml">MathML</a>)</td>
+<td>(<a href="Lecture17.zip">ZIP - 1.2 MB</a>) (The ZIP file contains: Lecture-17.nb.)</td>
+</tr>
+<tr class="alt-row">
+<td>Fourier Theory: Complex Form of Fourier Series, Fourier Integrals, Fourier Cosine and Sine Transforms, The Fourier Transforms</td>
+<td>(<a href="lecture_18.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-18.xml">MathML</a>)</td>
+<td>(<a href="Lecture18.zip">ZIP - 33.7 MB</a>) (The ZIP file contains: Lecture-18.nb.)</td>
+</tr>
+<tr class="row">
+<td>Ordinary Differential Equations: Physical Interpretations, Geometrical Interpretations, Separable Equations</td>
+<td>(<a href="lecture_19.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-19.xml">MathML</a>)</td>
+<td>(<a href="Lecture19.zip">ZIP</a>) (The ZIP file contains: Lecture-19.nb.)</td>
+</tr>
+<tr class="alt-row">
+<td>ODEs: Derivations for Simple Models, Exact Equations and Integrating Factors, The Bernoulli Equation</td>
+<td>(<a href="lecture_20.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-20.xml">MathML</a>)</td>
+<td>(<a href="Lecture20.nb">NB</a>)</td>
+</tr>
+<tr class="row">
+<td>Higher Order Differential Equations: Homogeneous Second Order, Initial Value Problems, Second Order with Constant Coefficients, Solution Behavior</td>
+<td>(<a href="lecture_21.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-21.xml">MathML</a>)</td>
+<td>(<a href="Lecture21.nb">NB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td colspan="3"><strong><a href="https://ocw.mit.edu/courses/materials-science-and-engineering/3-014-materials-laboratory-fall-2006/labs">3.014</a>&nbsp;Lab Week 3; 3.016 does not meet.</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Differential Operators, Damped and Forced Harmonic Oscillators, Non-homogeneous Equations</td>
+<td>(<a href="lecture_22.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-22.xml">MathML</a>)</td>
+<td>(<a href="Lecture22.nb">NB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Resonance Phenomena, Higher Order Equations, Beam Theory</td>
+<td>(<a href="lecture_23.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-23.xml">MathML</a>)</td>
+<td>(<a href="Lecture23.zip">ZIP</a>) (The ZIP file contains: Lecture-23.nb.)</td>
+</tr>
+<tr class="row">
+<td>Systems of Differential Equations, Linearization, Stable Points, Classification of Stable Points</td>
+<td>(<a href="lecture_24.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-24.xml">MathML</a>)</td>
+<td>(<a href="Lecture24.zip">ZIP</a>) (The ZIP file contains: Lecture-24.nb.)</td>
+</tr>
+<tr class="alt-row">
+<td>Linear Differential Equations: Phase Plane Analysis and Visualization</td>
+<td>(<a href="lecture_25.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-25.xml">MathML</a>)</td>
+<td>(<a href="Lecture25.zip">ZIP - 3.1 MB</a>) (The ZIP file contains: Lecture-25.nb.)</td>
+</tr>
+<tr class="row">
+<td>Solutions to Differential Equations: Legendre's Equation, Orthogonality of Legendre Polynomials, Bessel's Equation and Bessel Functions</td>
+<td>(<a href="lecture_26.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-26.xml">MathML</a>)</td>
+<td>(<a href="Lecture26.zip">ZIP - 4.0 MB</a>) (The ZIP file contains: Lecture-26.nb.)</td>
+</tr>
+<tr class="alt-row">
+<td>Sturm-Louiville Problems: Eigenfunction, Orthogonal Functional Series, Eigenfunction Expansions</td>
+<td>(<a href="lecture_27.pdf">PDF</a>)</td>
+<td>(<a href="Lecture-27.xml">MathML</a>)</td>
+<td>(<a href="Lecture27.nb">NB</a>)</td>
+</tr>
+<tr class="row">
+<td colspan="3"><strong><a href="https://ocw.mit.edu/courses/materials-science-and-engineering/3-014-materials-laboratory-fall-2006/labs">3.014</a>&nbsp;Lab Week 4; 3.016 does not meet.</strong></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 
+</br>
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">HOMEWORKS</th>
+<th scope="col">SOLUTIONS</th>
+<th scope="col">GRADING&nbsp;WEIGHTS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Problem Set 1 (<a href="ps1.pdf">PDF</a>)</td>
+<td>ps1_sol.nb (<a href="ps1_sol.nb">NB</a>)</td>
+<td>0.5</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 2 (<a href="ps2.pdf">PDF</a>)</td>
+<td>ps2_setup.nb (<a href="ps2_setup.nb">NB</a>)<br /><br />ps2_sol.nb (<a href="ps2_sol.nb">NB</a>)</td>
+<td>1.0</td>
+</tr>
+<tr class="row">
+<td>Problem Set 3 (<a href="ps3.pdf">PDF</a>)</td>
+<td>ps3_sol.nb (<a href="ps3_sol.nb">NB</a>)</td>
+<td>1.5</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 4 (<a href="ps4.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>2.0</td>
+</tr>
+<tr class="row">
+<td>Problem Set 5 (<a href="ps5.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>2.0</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 6 (<a href="ps6.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+</br>
 
 

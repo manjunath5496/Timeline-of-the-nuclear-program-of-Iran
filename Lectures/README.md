@@ -8,7 +8,7 @@
 <li><a href="#course7">Electronic, Optical and Magnetic Properties of Materials</a></li>
 <li><a href="#course8">Polymer Engineering</a></li>
 <li><a href="#course9">Mechanics of Materials</a></li>
-<li><a href="#course10">Structural Engineering Design</a></li>
+<li><a href="#course10">Physical Metallurgy</a></li>
 <li><a href="#course11">Solid Mechanics</a></li>
 <li><a href="#course12">Engineering Mechanics I</a></li>
 <li><a href="#course13">Project Management</a></li>
@@ -1443,6 +1443,124 @@
 <td><a href="1/MIT3_11F99_props.pdf">Material Properties (PDF)</a><br /><br /><a href="1/MIT3_11F99_index.pdf">Matrix and Index Notation (PDF)</a><br /><br /><a href="1/MIT3_11F99_sym.pdf">List of Symbols (PDF)</a><br /><br /><a href="1/MIT3_11F99_units.pdf">Unit Conversion Factors (PDF)</a></td>
 </tr>
 
+</tbody>
+</table>
+</br>
+<h2 id="course10">Physical Metallurgy</h2>
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">PROBLEMS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>HW 1 (<a href="1/MIT3_40JF09_ps1.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/MIT3_40JF09_sol1.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>HW 2 (<a href="1/MIT3_40JF09_ps2.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/MIT3_40JF09_sol2.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>HW 3 (<a href="1/MIT3_40JF09_ps3.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/MIT3_40JF09_sol3.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>HW 4 (<a href="1/MIT3_40JF09_ps4.pdf">PDF</a>)&nbsp;</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/MIT3_40JF09_sol4.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<h2 class="subhead">Review Assignments (all students)</h2>
+<p>Four recent research articles will be listed for each review paper. Two will be experiment-oriented (Group A) and two will be simulation-oriented (Group B).</p>
+<p>Undergraduates: Select one article from the four choices, submit one document.</p>
+<p>Graduates: Select one article from each of Groups A &amp; B, submit two documents.</p>
+<p>After selecting an article, read it carefully, and think critically about what you have read. You will then prepare a short review of the article, in about 2 pages. About the first third of your review should be a synopsis of the paper, inclusive of methods and main results. The remainder of the review should offer a critique of the paper, and present some creative thoughts for future questions to be addressed. For example, some things to discuss may include:</p>
+<ul>
+<li>Does anything in this paper contradict the "textbook" knowledge that you are learning in class?</li>
+<li>Alternatively, does this paper significantly add to our understanding of something to the point where we should add this new knowledge to our textbook?</li>
+<li>Are the methods used in the work sufficient to support the conclusions drawn by the authors?</li>
+<li>Is the logic internally consistent? Do all of the data support the same conclusion?</li>
+<li>Can you suggest a better way to resolve one or more of the open questions in this work?</li>
+<li>Is there a simple experiment that can either refute or substantially support the authors' claims?</li>
+<li>How general are the conclusions of this paper; are these results to be expected for other metals or materials?</li>
+<li>What doors does this work open for future research?</li>
+<li>What doors does this work open for industrial development or usage of metals?</li>
+</ul>
+</br>
+<table class="tablewidth" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">GROUP A</th>
+<th scope="col">GROUP B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Review #1 (<a href="1/MIT3_40JF09_ra1.pdf">PDF</a>)</td>
+<td>
+<p>Douin, J., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2008.09.027">Direct Measurement of the Variation in the Energy of a Dislocation Locked in Specific Orientations.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;57 (January 2009): 466-473.</p>
+<p>Norfleet, D. M., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2008.02.046">Dislocation Structures and their Relationship to Strength in Deformed Nickel Microcrystals.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;56 (August 2008): 2988-3001.</p>
+</td>
+<td>
+<p>Wang, H., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2008.05.019">The Transformation of Edge Dislocation Dipoles in Aluminum.</a>"&nbsp;<em>Acta Materialia&nbsp;</em>56 (October 2008): 4608-4620.</p>
+<p>Jin, Z.-H., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2007.11.020">Interactions Between Non-Screw Lattice Dislocations and Coherent Twin Boundaries in Face-Centered Cubic Metals.</a>"&nbsp;<em>Acta Materialia&nbsp;</em>56 (March 2008): 1126-1135.</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>Review #2 (<a href="1/MIT3_40JF09_ra2.pdf">PDF</a>)</td>
+<td>
+<p>Field, D. P., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2007.03.021">The Role of Annealing Twins During Recrystallization of Cu.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;55 (July 2007): 4233-4241.</p>
+<p>Zhang, Y. B., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2009.01.039">Analysis of the Growth of Individual Grains During Recrystallization in Pure Nickel.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;57 (May 2009): 2631-2639.</p>
+</td>
+<td>
+<p>Ivasishin, O. M., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2009.02.034">Implementation of Exact Grain-Boundary Geometry into a 3-D Monte-Carlo (Potts) Model for Microstructure Evolution.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;57 (May 2009): 2834-2844.</p>
+<p>Lim, A. T., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2009.07.003">Low-angle Grain Boundary Migration in the Presence of Extrinsic Dislocations.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;57 (October 2009): 5013-5022.</p>
+</td>
+</tr>
+<tr class="row">
+<td>Review #3 (<a href="1/MIT3_40JF09_ra3.pdf">PDF</a>)</td>
+<td>
+<p>Krug, Matthew E., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2009.08.074">Core-shell Nanoscale Precipitates in Al-0.06 at.% Sc Microalloyed with Tb, Ho, Tm, or Lu.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;58 (January 2010): 134-145.</p>
+<p>Adachi, Yoshitaka, et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2008.08.017">Computer-Aided Three-Dimensional Visualization of Twisted Cementite Lamellae in Eutectoid Steel.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;56 (December 2008): 5995-6002.</p>
+</td>
+<td>
+<p>Perez, M., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2007.12.050">Implementation of Classical Nucleation and Growth Theories for Precipitation.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;56 (May 2008): 2119-2132.</p>
+<p>Terentyev, D. A., et al. "<a href="http://dx.doi.org/10.1016/j.actamat.2008.03.004">Strengthening due to Coherent Cr Precipitates in Fe-Cr Alloys: Atomistic Simulations and Theoretical Models.</a>"&nbsp;<em>Acta Materialia</em>&nbsp;56 (August 2008): 3229-3235.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</br>
+<h2 class="subhead">Fall 2008</h2>
+<p>Exam 1 (<a href="1/MIT3_40JF09_quiz1_08.pdf">PDF</a>)</p>
+<p>Exam 2 (<a href="1/MIT3_40JF09_quiz2_08.pdf">PDF</a>)</p>
+<p>Exam 3 (<a href="1/MIT3_40JF09_quiz3_08.pdf">PDF - 1.1MB</a>)</p>
+<h2 class="subhead">Fall 2009</h2>
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">EXAMS</th>
+<th scope="col">PROBLEMS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Exam 1</td>
+<td>(<a href="1/MIT3_40JF09_exam1.pdf">PDF</a>)</td>
+<td>(<a href="1/MIT3_40JF09_exam1_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Exam 2</td>
+<td><span class="nobr">(<a href="1/MIT3_40JF09_exam2.pdf">PDF - 2.4MB</a>)</span></td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="1/MIT3_40JF09_exam2_sol.pdf">PDF</a>)</td>
+</tr>
 </tbody>
 </table>
 </br>

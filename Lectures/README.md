@@ -723,7 +723,7 @@
 <td>Fourier Theory: Complex Form of Fourier Series, Fourier Integrals, Fourier Cosine and Sine Transforms, The Fourier Transforms</td>
 <td>(<a href="lecture_18.pdf">PDF</a>)</td>
 <td>(<a href="Lecture-18.xml">MathML</a>)</td>
-<td>(<a href="Lecture18.zip">ZIP - 33.7 MB</a>) (The ZIP file contains: Lecture-18.nb.)</td>
+<td>(<a href="Lecture18.rar">ZIP - 33.7 MB</a>) (The ZIP file contains: Lecture-18.nb.)</td>
 </tr>
 <tr class="row">
 <td>Ordinary Differential Equations: Physical Interpretations, Geometrical Interpretations, Separable Equations</td>

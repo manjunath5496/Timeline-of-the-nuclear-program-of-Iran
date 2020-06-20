@@ -9,7 +9,7 @@
 <li><a href="#course8">Polymer Engineering</a></li>
 <li><a href="#course9">Mechanics of Materials</a></li>
 <li><a href="#course10">Physical Metallurgy</a></li>
-<li><a href="#course11">Solid Mechanics</a></li>
+<li><a href="#course11">Amorphous Materials</a></li>
 <li><a href="#course12">Engineering Mechanics I</a></li>
 <li><a href="#course13">Project Management</a></li>
 <li><a href="#course14">Advanced Soil Mechanics</a></li>
@@ -1564,3 +1564,81 @@
 </tbody>
 </table>
 </br>
+<h2 id="course11">Amorphous Materials</h2>
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">LECTURE&nbsp;NOTES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td><a href="1/MIT3_071F15_Lecture1.pdf">Fundamentals of the Amorphous State (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="1/MIT3_071F15_Lecture2.pdf">Classes of Amorphous Materials (PDF - 1.2MB)</a></td>
+</tr>
+<tr class="row">
+<td><a href="1/MIT3_071F15_Lecture3.pdf">Glass Forming Theories (PDF - 1.4MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="1/MIT3_071F15_Lecture4.pdf">Phase Change Data Storage (PDF - 1.2MB)</a></td>
+</tr>
+<tr class="row">
+<td><a href="1/MIT3_071F15_Lecture5.pdf">Viscocity of Glass (PDF - 1.1MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="1/MIT3_071F15_Lecture6.pdf">Glass Shaping (PDF - 1.4MB)</a></td>
+</tr>
+<tr class="row">
+<td><a href="1/MIT3_071F15_Lecture7.pdf">Viscoelasticity and Relaxation (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="1/MIT3_071F15_Lecture8.pdf">Mechanical Properties (PDF)</a></td>
+</tr>
+<tr class="row">
+<td><a href="1/MIT3_071F15_Lecture9.pdf">Glass Strengthening (PDF - 1.3MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="1/MIT3_071F15_Lecture10.pdf">Electrical and Transport Properties (PDF)</a></td>
+</tr>
+<tr class="row">
+<td><a href="1/MIT3_071F15_Lecture11.pdf">Amorphous Silicon Macroelectronics (PDF - 1.4MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="1/MIT3_071F15_Lecture12.pdf">Optical Properties (PDF - 2.2MB)</a></td>
+</tr>
+<tr class="row">
+<td><a href="1/MIT3_071F15_Lecture13.pdf">Optical Fibers and Waveguides (PDF - 1.3MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="1/MIT3_071F15_Lecture14.pdf">Characterizing the Amorphous State (PDF - 1.3MB)</a></td>
+</tr>
+</tbody>
+</table>
+</br>
+
+<table class="tablewidth100" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">EXAM&nbsp;REVIEWS</th>
+<th scope="col">EXAMS</th>
+<th scope="col">EXAM&nbsp;SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td><a href="1/MIT3_071F14_MidTermReview.pdf">Mid-term Exam Review (PDF)</a></td>
+<td><a href="1/MIT3_071F14_Exam_I.pdf">Mid-term Exam (PDF)</a></td>
+<td><a href="1/MIT3_071F14_ExamISolutio.pdf">Mid-term Exam Solutions (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="1/MIT3_071F14_FinalReview.pdf">Final Exam Review (PDF)</a></td>
+<td><a href="1/MIT3_071F14_Exam_II.pdf">Final Exam (PDF)</a></td>
+<td><a href="1/MIT3_071F14_ExamIISoluti.pdf">Final Exam Solutions (PDF)</a></td>
+</tr>
+</tbody>
+</table>
+</br>
+
+

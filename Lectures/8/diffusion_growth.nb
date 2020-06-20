@@ -1,0 +1,469 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     11768,        362]*)
+(*NotebookOutlinePosition[     12444,        385]*)
+(*  CellTagsIndexPosition[     12400,        381]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["\<\
+Diffusional Growth of a Spherical Precipitate from Supersaturated \
+Solution\
+\>", "Title"],
+
+Cell[CellGroupData[{
+
+Cell["Samuel M. Allen\tApril 28, 2006", "Subsection"],
+
+Cell[BoxData[
+    \(Clear["\<Global`*\>"]\)], "Input"],
+
+Cell["The Problem", "Subtitle"],
+
+Cell["\<\
+Let's model the growth kinetics in an Ni\[Dash] 48 at.% Cr alloy \
+that has been solution treated by annealling at 1573 K and quenched to 1273 K \
+where it nucleates a Cr-rich particle.The Ni\[Dash]Cr equilibrium diagram \
+appears below.\
+\>", "Text"],
+
+Cell[BoxData[{
+    StyleBox[\(At\ 1573\ K\ the\ alloy\ composition\ is\ \((c\^\[Alpha]\
+\[Infinity] = 0.48)\)\),
+      FontFamily->"Helvetica"], "\[IndentingNewLine]", 
+    StyleBox[\(At\ 1273\ K\ the\ Ni\ phase\ composition\ is\ \((c\^\[Alpha]\
+\[Beta] = 0.44)\)\),
+      FontFamily->"Helvetica"], "\n", 
+    StyleBox[\(At\ 1273\ K\ the\ Cr\ phase\ composition\ is\ \((c\^\[Beta]\
+\[Alpha] = 0.93)\)\),
+      FontFamily->"Helvetica"]}], "Text"],
+
+Cell["\<\
+Assume growth of a single spherical \[Beta] particle in an infinite \
+matrix and follow the formulation in KoM Section 20.2.1, page 513.\
+\>", \
+"Text"],
+
+Cell[BoxData[
+    \(Show[Import["\<CrNi.tiff\>"]]\)], "Input"],
+
+Cell[BoxData[{
+    \(\(c\[Alpha]\[Infinity] = 0.48;\)\), "\[IndentingNewLine]", 
+    \(\(c\[Alpha]\[Beta] = 0.44;\)\), "\[IndentingNewLine]", 
+    \(\(c\[Beta]\[Alpha] = 0.93;\)\)}], "Input"],
+
+Cell["The Solution", "Subtitle"],
+
+Cell[TextData[{
+  "The solution to this growth problem is governed by the supersaturation \
+parameter ",
+  Cell[BoxData[
+      \(\(c\[Alpha]\[Infinity] - c\[Alpha]\[Beta]\)\/\(c\[Beta]\[Alpha] - c\
+\[Alpha]\[Beta]\)\)]],
+  ": "
+}], "Text"],
+
+Cell[BoxData[
+    \(SaturationPar = \(c\[Alpha]\[Infinity] - c\[Alpha]\[Beta]\)\/\(c\[Beta]\
+\[Alpha] - c\[Alpha]\[Beta]\)\)], "Input"],
+
+Cell["Solve Eq. 20.45 for \[Eta]R", "Text"],
+
+Cell[BoxData[
+    \(Sol = 
+      FindRoot[\[Eta]R\^3 \[Equal] \ \(SaturationPar\/2\) 
+            Exp[\(-\[Eta]R\^2\)]\/\(\((1/\[Eta]R)\) Exp[\(-\[Eta]R\^2\)] - \(\
+\@\[Pi]\) Erfc[\[Eta]R]\), {\[Eta]R, 0.5}]\)], "Input"],
+
+Cell[BoxData[
+    \(EtaR = Sol[\([1, 2]\)]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Particle Size and Growth Rate", "Subsection"],
+
+Cell["The particle growth is parabolic, given by KoM Eq. 20.40", "Text"],
+
+Cell[BoxData[
+    \(R[t_] := EtaR\ \@\(4\ D\[Alpha]\ t\)\)], "Input"],
+
+Cell[TextData[{
+  "Let the diffusivity D\[Alpha] = ",
+  Cell[BoxData[
+      \(10\^\(-16\)\ m\^2/s\)]],
+  ".\nCalculate the particle radius and growth rate of a particle that has \
+been growing for 100 s:"
+}], "Text"],
+
+Cell[BoxData[{
+    \(\(tGrowth = 100;\)\), "\[IndentingNewLine]", 
+    \(\(D\[Alpha] = 10\^\(-16\);\)\), "\[IndentingNewLine]", 
+    \(R[tGrowth]\)}], "Input"],
+
+Cell[BoxData[
+    \(Vel[t_] := \[PartialD]\_t\ R[t]\)], "Input"],
+
+Cell[BoxData[
+    \(Vel[t] /. t \[Rule] tGrowth\)], "Input"],
+
+Cell["\<\
+So at 1273 K a particle grows to about 50 nm in radius in 100 s, \
+and the growth rate at that time is about 2.5 \[CapitalARing]ngstrom/s.\
+\>", \
+"Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Concentration profile in Matrix", "Subsection"],
+
+Cell["\<\
+The concentration is given as a function of the scaling parameter, \
+\[Eta], by KoM Eq. 20.43\
+\>", "Text"],
+
+Cell[BoxData[
+    \(cOfEta[\[Eta]_] := 
+      c\[Alpha]\[Infinity] - \((c\[Alpha]\[Infinity] - 
+              c\[Alpha]\[Beta])\) \(\((1/\[Eta])\) Exp[\(-\[Eta]\^2\)] - \(\@\
+\[Pi]\) Erfc[\[Eta]]\)\/\(\((1/EtaR)\) Exp[\(-EtaR\^2\)] - \(\@\[Pi]\) \
+Erfc[EtaR]\)\)], "Input"],
+
+Cell[BoxData[
+    \(Plot[cOfEta[\[Eta]], {\[Eta],  .001, 1}, PlotRange \[Rule] {0, 1}, 
+      AxesLabel \[Rule] {"\<\[Eta]\>", "\<c\>"}, 
+      PlotLabel -> "\<Composition vs. Scaling Variable\>"]\)], "Input"],
+
+Cell["\<\
+The c(\[Eta]) plot is a \"master plot\" that characterizes all \
+diffusional growth at a given supersaturation parameter. From it, one can \
+compute c(r) for any growth time. An example follows for a particle that has \
+grown for 100 s.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(cOfR[R_, t_] := 
+      cOfEta[\[Eta]] /. \[Eta] \[Rule] r/\@\(4\ D\[Alpha]\ t\)\)], "Input"],
+
+Cell[BoxData[
+    \(P1 = 
+      Plot[cOfR[r, tGrowth], {r, R[tGrowth], 0.5\[Times]10\^\(-6\)}, 
+        PlotRange \[Rule] {0.4, 0.5}, AxesLabel \[Rule] {"\<r\>", "\<c\>"}, 
+        PlotLabel -> "\<Composition vs. Radius (m)\>"]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Comparison with Solution via Invariant-Field Approximation ", \
+"Subsection"],
+
+Cell[TextData[{
+  "Recall that the invariant-field approximation involves assuming that the \
+composition profile is given by the solution to Laplace's equation ",
+  Cell[BoxData[
+      \(\[Del]\^2 c = 0\)]],
+  ", with the boundary concentrations being c(\[Infinity]) = c\[Alpha]\
+\[Infinity] and c(RInterface) = c\[Alpha]\[Beta]. Hence"
+}], "Text"],
+
+Cell[BoxData[
+    \(cIFA[r_] := 
+      c\[Alpha]\[Infinity] - \(\((c\[Alpha]\[Infinity] - c\[Alpha]\[Beta])\) \
+R[tGrowth]\)\/r\)], "Input"],
+
+Cell[BoxData[
+    \(P2 = 
+      Plot[cIFA[r], {r, R[tGrowth], 0.5\[Times]10\^\(-6\)}, 
+        PlotRange \[Rule] {0.4, 0.5}, AxesLabel \[Rule] {"\<r\>", "\<c\>"}, 
+        PlotLabel -> "\<Composition vs. Radius (m)\>", 
+        PlotStyle \[Rule] Dashing[{ .01,  .01}]]\)], "Input"],
+
+Cell["Now superpose the two plots for a comparison", "Text"],
+
+Cell[BoxData[
+    \(Show[P1, P2]\)], "Input"],
+
+Cell["\<\
+The invariant-field approximation is seen to underestimate the \
+composition at a given radius, and hence overestimate the spatial extent of \
+the diffusion field around the particle. \
+\>", "Text"],
+
+Cell["\<\
+The particle growth rate is also underestimated in the \
+invariant-field approximation:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(VelIFA[
+        t_] := \(D\[Alpha]\ \[PartialD]\_r\ cIFA[r]\)\/\(c\[Beta]\[Alpha] - c\
+\[Alpha]\[Beta]\)\)], "Input"],
+
+Cell[BoxData[
+    \(VelIFA[t] /. {r \[Rule] R[tGrowth], t \[Rule] tGrowth}\)], "Input"],
+
+Cell["\<\
+The invariant-field approximation is valid in the limit of small \
+supersaturation (in this example the supersaturation is about 8%). I've \
+written this notebook so it is easy to adjust the supersaturation and explore \
+just how small the supersaturation needs to be for a given error in the \
+composition profile or the interface velocity.\
+\>", "Text"],
+
+Cell["Spherical Harmonics", "Title"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Samuel M. Allen\tMay 2, 2006", "Subsection"],
+
+Cell[BoxData[{
+    \(Clear["\<Global`*\>"]\), "\[IndentingNewLine]", 
+    \(<< Graphics`Graphics3D`\), "\[IndentingNewLine]", 
+    \(<< Calculus`VectorAnalysis`\), "\[IndentingNewLine]", 
+    \(\(SetCoordinates[Spherical[r, \[Theta], \[Phi]]];\)\)}], "Input"],
+
+Cell["\<\
+Spherical harmonics arise from the solution to Laplace's equation \
+in spherical coordinates. They are useful for describing shape perturbations \
+of a sphere, and they take two parameters that relate to the number of \
+\"bumps\" that distort the sperical shape.\
+\>", "Text"],
+
+Cell["\<\
+Consider first a subset of spherical harmonics that describe the \
+shape of a circle that has its radius perturbed by a periodic shperical \
+harmonic function. Here the parameter n corresponds to the \"wavelength\" of \
+the perturbation of the circle and the second parameter m is set to \
+zero.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(SHmzero[n_, \[Theta]_] := 
+      SphericalHarmonicY[n, 0, \[Theta], 0]\)], "Input"],
+
+Cell["Here is a perturbation with 5 maxima", "Text"],
+
+Cell[BoxData[
+    \(SHmzero[5, \[Theta]]\)], "Input"],
+
+Cell["\<\
+In the plots below the undistorted circle/sphere has unit radius. \
+The variable \"amp\" sets the amplitude of the perturbation.\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(\(Amp =  .2;\)\), "\[IndentingNewLine]", 
+    \(\(n = 4;\)\), "\[IndentingNewLine]", 
+    \(ParametricPlot[{\((1 + Amp\ SHmzero[n, \[Theta]])\) 
+          Cos[\[Theta]], \((1 + Amp\ SHmzero[n, \[Theta]])\) 
+          Sin[\[Theta]]}, {\[Theta], 0, \ 2  \[Pi]}, 
+      AspectRatio \[Rule] 1]\)}], "Input"],
+
+Cell["\<\
+Now look at perturbations of a sphere. This routine plots an \
+unperturbed sphere:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(ParametricPlot3D[{Cos[\[Theta]] Cos[\[Phi]], 
+        Sin[\[Theta]] Cos[\[Phi]], \ Sin[\[Phi]]}, {\[Theta], 0, 
+        2  \[Pi]}, {\[Phi], \(-\[Pi]\)/2, \[Pi]/2}, 
+      PlotPoints \[Rule] 50]\)], "Input"],
+
+Cell["\<\
+The following routine allows you to input the parameters n and m to \
+the shperical harmonic function and plot the shape of a sphere that is \
+modified by this type of perturbation.\
+\>", "Text"],
+
+Cell["\<\
+First I plot n = 4 and m = 0, for which the horizontal mid-cross \
+section should correspond to the perturbed circle illustrated above.\
+\>", \
+"Text"],
+
+Cell[BoxData[{
+    \(\(Amp = 0.2;\)\), "\[IndentingNewLine]", 
+    \(n = 4; m = 0; 
+    ParametricPlot3D[{Abs[\((1 + 
+                Amp\ SphericalHarmonicY[n, m, \[Theta], \[Phi]])\)] 
+          Cos[\[Theta]] Cos[\[Phi]], 
+        Abs[\((1 + Amp\ SphericalHarmonicY[n, m, \[Theta], \[Phi]])\)] 
+          Sin[\[Theta]] Cos[\[Phi]], 
+        Abs[\((1 + Amp\ SphericalHarmonicY[n, m, \[Theta], \[Phi]])\)] 
+          Sin[\[Phi]]}, {\[Theta], 0, 
+        2  \[Pi]}, {\[Phi], \(-\[Pi]\)/2, \[Pi]/2}, 
+      PlotPoints \[Rule] 50]\)}], "Input"],
+
+Cell["\<\
+Now I show the n = 4 and m = 2 distortion, for comparison with the \
+previous plot. Note the vertical \"broadening\" of the lobes in the 4, 2 \
+harmonic function.\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(\(Amp = 0.2;\)\), "\[IndentingNewLine]", 
+    \(n = 4; m = 2; 
+    ParametricPlot3D[{Abs[\((1 + 
+                Amp\ SphericalHarmonicY[n, m, \[Theta], \[Phi]])\)] 
+          Cos[\[Theta]] Cos[\[Phi]], 
+        Abs[\((1 + Amp\ SphericalHarmonicY[n, m, \[Theta], \[Phi]])\)] 
+          Sin[\[Theta]] Cos[\[Phi]], 
+        Abs[\((1 + Amp\ SphericalHarmonicY[n, m, \[Theta], \[Phi]])\)] 
+          Sin[\[Phi]]}, {\[Theta], 0, 
+        2  \[Pi]}, {\[Phi], \(-\[Pi]\)/2, \[Pi]/2}, 
+      PlotPoints \[Rule] 50]\)}], "Input"]
+}, Open  ]]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{0, 1148}, {0, 746}},
+WindowSize->{855, 647},
+WindowMargins->{{109, Automatic}, {Automatic, 21}},
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 101, 3, 112, "Title"],
+
+Cell[CellGroupData[{
+Cell[1880, 58, 53, 0, 65, "Subsection"],
+Cell[1936, 60, 54, 1, 50, "Input"],
+Cell[1993, 63, 31, 0, 48, "Subtitle"],
+Cell[2027, 65, 261, 5, 86, "Text"],
+Cell[2291, 72, 445, 9, 102, "Text"],
+Cell[2739, 83, 162, 4, 66, "Text"],
+Cell[2904, 89, 62, 1, 50, "Input"],
+Cell[2969, 92, 191, 3, 90, "Input"],
+Cell[3163, 97, 32, 0, 48, "Subtitle"],
+Cell[3198, 99, 239, 7, 49, "Text"],
+Cell[3440, 108, 135, 2, 76, "Input"],
+Cell[3578, 112, 43, 0, 46, "Text"],
+Cell[3624, 114, 220, 4, 115, "Input"],
+Cell[3847, 120, 55, 1, 50, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3939, 126, 51, 0, 65, "Subsection"],
+Cell[3993, 128, 72, 0, 46, "Text"],
+Cell[4068, 130, 69, 1, 57, "Input"],
+Cell[4140, 133, 216, 6, 78, "Text"],
+Cell[4359, 141, 159, 3, 91, "Input"],
+Cell[4521, 146, 64, 1, 50, "Input"],
+Cell[4588, 149, 60, 1, 50, "Input"],
+Cell[4651, 152, 164, 4, 66, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4852, 161, 53, 0, 65, "Subsection"],
+Cell[4908, 163, 117, 3, 46, "Text"],
+Cell[5028, 168, 273, 5, 92, "Input"],
+Cell[5304, 175, 209, 3, 70, "Input"],
+Cell[5516, 180, 260, 5, 66, "Text"],
+Cell[5779, 187, 112, 2, 59, "Input"],
+Cell[5894, 191, 240, 4, 92, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6171, 200, 83, 1, 65, "Subsection"],
+Cell[6257, 203, 349, 7, 86, "Text"],
+Cell[6609, 212, 140, 3, 74, "Input"],
+Cell[6752, 217, 281, 5, 92, "Input"],
+Cell[7036, 224, 60, 0, 46, "Text"],
+Cell[7099, 226, 45, 1, 50, "Input"],
+Cell[7147, 229, 208, 4, 66, "Text"],
+Cell[7358, 235, 111, 3, 46, "Text"],
+Cell[7472, 240, 137, 3, 76, "Input"],
+Cell[7612, 245, 87, 1, 50, "Input"],
+Cell[7702, 248, 365, 6, 86, "Text"],
+Cell[8070, 256, 36, 0, 64, "Title"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8143, 261, 50, 0, 65, "Subsection"],
+Cell[8196, 263, 259, 4, 110, "Input"],
+Cell[8458, 269, 286, 5, 86, "Text"],
+Cell[8747, 276, 319, 6, 86, "Text"],
+Cell[9069, 284, 103, 2, 50, "Input"],
+Cell[9175, 288, 52, 0, 46, "Text"],
+Cell[9230, 290, 53, 1, 50, "Input"],
+Cell[9286, 293, 152, 3, 66, "Text"],
+Cell[9441, 298, 324, 6, 110, "Input"],
+Cell[9768, 306, 106, 3, 46, "Text"],
+Cell[9877, 311, 226, 4, 70, "Input"],
+Cell[10106, 317, 205, 4, 66, "Text"],
+Cell[10314, 323, 161, 4, 66, "Text"],
+Cell[10478, 329, 541, 11, 170, "Input"],
+Cell[11022, 342, 186, 4, 66, "Text"],
+Cell[11211, 348, 541, 11, 170, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

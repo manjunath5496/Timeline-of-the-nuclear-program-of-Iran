@@ -1,0 +1,1307 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     36639,       1087]*)
+(*NotebookOutlinePosition[     37340,       1111]*)
+(*  CellTagsIndexPosition[     37296,       1107]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[TextData[{
+  StyleBox["Massachusetts Institute of Technology",
+    FontSize->21],
+  "\n",
+  StyleBox["Department of Materials Science and Engineering\n77 Massachusetts \
+Avenue, Cambridge, MA 02139-4307\n",
+    FontSlant->"Italic"],
+  "\n",
+  StyleBox["3.21 Kinetic Processes in Materials --- Spring 2006",
+    FontWeight->"Bold"]
+}], "Text",
+  TextAlignment->Center],
+
+Cell["Some numerical work with diffusion boundary-value problems", "Title"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Miguel Marioni, DMSE Ph.D. 2003, made this impressive ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " worksheet while he was TA in 3.21, adapting a MathCad worksheet I had \
+previously developed with similar content.\n\nSome of the coding in this \
+notebook is pretty sophisticated; the main thing to be grasped is the \
+behavior of the various forms of the solutions to the diffusion equation that \
+are evaluated and plotted.  I encourage you to experiment with changing \
+values of variables, etc., to get comfortable with how the equations depict \
+the physical problem being represented.\n\nThose of you who are learning ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " and using it for solving a variety of problems may find some useful \
+sections of code in this notebook that can be adapted for other purposes."
+}], "Subsection"],
+
+Cell["A word on Mathematica", "Subtitle"],
+
+Cell[TextData[{
+  "Executable inputs to ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " receive a label of the form ",
+  StyleBox["In[",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["number",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontSlant->"Italic",
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["]",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontColor->RGBColor[0, 0, 1]],
+  ", where number is a counter for each expression. Each  ",
+  StyleBox["In[",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["number",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontSlant->"Italic",
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["]",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontColor->RGBColor[0, 0, 1]],
+  " statement will be followed by a corresponding  ",
+  StyleBox["Out[",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["number",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontSlant->"Italic",
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["]",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontColor->RGBColor[0, 0, 1]],
+  " right after it, unless printing of the output is suppressed by appending \
+a colon \";\" to the end of each ",
+  StyleBox["In[",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["number",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontSlant->"Italic",
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["]",
+    FontFamily->"Arial",
+    FontSize->14,
+    FontColor->RGBColor[0, 0, 1]],
+  " statement."
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell["A couple of hints", "Subsubsection"],
+
+Cell[TextData[{
+  "The infinity sign (\[Infinity]) is typed in from the pallette, or \
+otherwise pressing the sequence of keys:\n<ESC> + \"inf\"  +<ESC>   ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[LongRightArrow]\&produces\)\)]],
+  " \[Infinity]\nWorks the same for other symbols:\n<ESC> + \"a\"  +<ESC>   \
+",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[LongRightArrow]\&produces\)\)]],
+  " \[Alpha]\n<ESC> + \"b\"  +<ESC>   ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[LongRightArrow]\&produces\)\)]],
+  " \[Beta]\nOne particular example:\n<ESC> + \"ee\"  +<ESC>   ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[LongRightArrow]\&produces\)\)]],
+  " \[ExponentialE]   (which is the same as capital \"E\", and is a shortcut \
+for the Exp[] operator."
+}], "Text"],
+
+Cell["\<\
+Note: like capital \"E\", other letters are reserved. Such is the case of \"I\
+\", equivalently written \[ImaginaryI] (<ESC>+\"ii\"+<ESC>) which stands for \
+the imaginary constant, and (to our great grief) \"D\", which is the \
+derivation operator. To circumvent this inconvenience to our usual symbol for \
+diffusion, we use the calligraphic D,  <ESC>+\"scD\"+<ESC> \[LongRightArrow]\
+\[ScriptCapitalD].\
+\>", "Text"],
+
+Cell[TextData[{
+  "Function arguments are given between brackets \"[\" and \"]\" and are \
+separated by commas \",\".  In the definition, the functions take named \
+patterns really (name followed by an underscore \"_\"), so for instance one \
+would define the function ",
+  Cell[BoxData[
+      \(TraditionalForm\`f[x_] := x\^2\)]],
+  "   A statement like  ",
+  Cell[BoxData[
+      \(TraditionalForm\`f[x_:  1.234] := x\^2\)]],
+  "  defines the same function but using 1.234 as the default value for x.   \
+\nFor more information look in ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  "'s Help Browser!"
+}], "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Some default packages and definitions for this notebook", \
+"Subsubsection"],
+
+Cell[BoxData[{
+    \(<< Graphics`Legend`\), "\[IndentingNewLine]", 
+    \(<< Calculus`FourierTransform`\), "\[IndentingNewLine]", 
+    \(<< Graphics`MultipleListPlot`\)}], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+The following lines set options that define styles for all plots in this \
+notebook.\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(\(myt = AbsoluteThickness[2];\)\), "\[IndentingNewLine]", 
+    \(\(Color = {PlotStyle \[Rule] {{myt, Hue[0]}, {myt, Hue[ .2]}, {myt, 
+                Hue[ .4]}, {myt, Hue[ .6]}, {myt, Hue[1]}}, 
+          LegendShadow \[Rule] None, 
+          LegendPosition \[Rule] {1, \(- .2\)}};\)\), "\n", 
+    \(\(Black = {PlotStyle \[Rule] {AbsoluteDashing[{}], 
+              AbsoluteDashing[{2, 2}], AbsoluteDashing[{4, 4}], 
+              AbsoluteDashing[{4, 2, 1, 2}], AbsoluteDashing[{2, 2, 2, 4}]}, 
+          LegendShadow \[Rule] None, 
+          LegendPosition \[Rule] {1, \(- .2\)}};\)\)}], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(SetOptions[Plot, 
+      AxesLabel \[Rule] {"\<x [m]\>", \*"\"\<c [\!\(m\^\(-3\)\)]\>\""}, 
+      DefaultFont \[Rule] {"\<Times\>", 14}]; 
+    SetOptions[MultipleListPlot, 
+      AxesLabel \[Rule] {"\<x [m]\>", \*"\"\<c [\!\(m\^\(-3\)\)]\>\""}, 
+      DefaultFont \[Rule] {"\<Times\>", 14}, PlotJoined \[Rule] False, 
+      SymbolShape \[Rule] PlotSymbol[Box], 
+      SymbolStyle \[Rule] {Hue[0], Hue[0.2`], Hue[0.4`], Hue[0.6`], Hue[1]}, 
+      PlotStyle \[Rule] {Hue[0], Hue[0.2`], Hue[0.4`], Hue[0.6`], 
+          Hue[1]}];\), "\[IndentingNewLine]", 
+    \(\(SetOptions[ListPlot, PlotJoined \[Rule] False, 
+        PlotStyle \[Rule] AbsolutePointSize[5], 
+        DefaultFont \[Rule] {"\<Times\>", 14}, 
+        AxesLabel \[Rule] {"\<x [m]\>", \*"\"\<c \
+[\!\(m\^\(-3\)\)]\>\""}];\)\)}], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+Now check to see that they have been set properly\[Ellipsis]\
+\>", "Text"],
+
+Cell[BoxData[
+    \(Options[ListPlot]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["equation and rule manipulation", "Subsubsection"],
+
+Cell[BoxData[{
+    \(\(\(ClearAll[S, M, Op];\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(S[a_ < b_, c_ < d_] := a + c < b + d\), "\[IndentingNewLine]", 
+    \(S[a_ \[LessEqual] b_, c_ \[LessEqual] d_] := 
+      a + c \[LessEqual] b + d\), "\[IndentingNewLine]", 
+    \(S[a_ > b_, c_ > d_] := a + c > b + d\), "\[IndentingNewLine]", 
+    \(S[a_ \[GreaterEqual] b_, c_ \[GreaterEqual] d_] := 
+      a + c \[GreaterEqual] b + d\), "\[IndentingNewLine]", 
+    \(S[a_ \[Equal] b_, c_ \[Equal] d_] := 
+      a\  + c \[Equal] \(\(b + d\)\(\[IndentingNewLine]\)
+        \)\), "\[IndentingNewLine]", 
+    \(S[a_ < b_, c_] := a + c < b + c\), "\[IndentingNewLine]", 
+    \(S[a_ \[LessEqual] b_, c_] := 
+      a + c \[LessEqual] b + c\), "\[IndentingNewLine]", 
+    \(S[a_ > b_, c_] := a + c > b + c\), "\[IndentingNewLine]", 
+    \(S[a_ \[GreaterEqual] b_, c_] := 
+      a + c \[GreaterEqual] b + c\), "\[IndentingNewLine]", 
+    \(S[a_ \[Equal] b_, c_] := 
+      a\  + c \[Equal] \(\(b + c\)\(\[IndentingNewLine]\)
+        \)\), "\[IndentingNewLine]", 
+    \(M[a_ < b_, c_] := a\ c < b\ c\), "\[IndentingNewLine]", 
+    \(M[a_ \[LessEqual] b_, c_] := 
+      a\ c \[LessEqual] b\ c\), "\[IndentingNewLine]", 
+    \(M[a_ > b_, c_] := a\ c > b\ c\), "\[IndentingNewLine]", 
+    \(M[a_ \[GreaterEqual] b_, c_] := 
+      a\ c \[GreaterEqual] b\ c\), "\[IndentingNewLine]", 
+    \(M[a_ \[Equal] b_, c_] := 
+      a\ c \[Equal] \(\(b\ c\)\(\[IndentingNewLine]\)
+        \)\), "\[IndentingNewLine]", 
+    \(Op[a_ < b_, c_] := c[a] < c[b]\), "\[IndentingNewLine]", 
+    \(Op[a_ \[LessEqual] b_, c_] := 
+      c[a] \[LessEqual] c[b]\), "\[IndentingNewLine]", 
+    \(Op[a_ > b_, c_] := c[a] > c[b]\), "\[IndentingNewLine]", 
+    \(Op[a_ \[GreaterEqual] b_, c_] := 
+      c[a] \[GreaterEqual] c[b]\), "\[IndentingNewLine]", 
+    \(Op[a_ \[Equal] b_, c_] := c[a] \[Equal] \ c[b]\)}], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(L[a_ < _] := a\ \), "\[IndentingNewLine]", 
+    \(L[a_ \[LessEqual] _] := a\), "\[IndentingNewLine]", 
+    \(L[a_ > _] := a\), "\[IndentingNewLine]", 
+    \(L[a_ \[GreaterEqual] _] := a\), "\[IndentingNewLine]", 
+    \(\(\(L[a_ \[Equal] _] := a\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(R[_ < a_] := a\ \), "\[IndentingNewLine]", 
+    \(R[_ \[LessEqual] a_] := a\), "\[IndentingNewLine]", 
+    \(R[_ > a_] := a\), "\[IndentingNewLine]", 
+    \(R[_ \[GreaterEqual] a_] := a\), "\[IndentingNewLine]", 
+    \(R[_ \[Equal] a_] := a\)}], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[{
+    \(RS[Rule[a_, b_]] := Rule[a, Simplify[b]]\), "\[IndentingNewLine]", 
+    \(RS[Rule[a_, b_], op_] := Rule[a, op[b]]\)}], "Input",
+  InitializationCell->True],
+
+Cell["Diffusion couple: two semi-infinite solids", "Subtitle"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Error function", "Subsubsection"],
+
+Cell[TextData[{
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " has a built in definition for the error function, ",
+  Cell[BoxData[
+      \(TraditionalForm\`Erf[
+          z] = \(2\/\@\[Pi]\) \(\[Integral]\_0\%z\( \
+\[ExponentialE]\^\(-u\^2\)\) \[DifferentialD]u\)\)]],
+  ".  Some of it's properties are exacted below:"
+}], "Text"],
+
+Cell[BoxData[
+    \(Erf[0]\)], "Input"],
+
+Cell[BoxData[
+    \(Erf[\[Infinity]]\)], "Input"],
+
+Cell[BoxData[
+    \(Erf[\(-\[Infinity]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(Erf[\(-z\)]\)], "Input"],
+
+Cell["Diffusion couple comprised of two semi-infinite bars", "Subtitle"],
+
+Cell[TextData[{
+  "Consider two semi-infinite solids joined at ",
+  Cell[BoxData[
+      \(TraditionalForm\`x = 0\)]],
+  ",  and a constant and uniform diffusivity ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptCapitalD]\_1\)]],
+  ":"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\[ScriptCapitalD]\_1 = 10\^\(-16\);\)\)], "Input"],
+
+Cell[TextData[{
+  "(we have suppressed the units, ",
+  Cell[BoxData[
+      \(TraditionalForm\`m\^2/s\)]],
+  " for convenience but we should keep in mind that they are implicit.) We \
+know that the solution to the diffusion equation with constant diffusivity \
+\[ScriptCapitalD] for the step composition profile:\n\n",
+  Cell[BoxData[
+      FormBox[
+        RowBox[{\(c[x, t = 0]\), "=", 
+          RowBox[{
+            TagBox[
+              StyleBox[
+                RowBox[{"{", 
+                  StyleBox[GridBox[{
+                        {"0"},
+                        {\(c\_o\)}
+                        }],
+                    ShowAutoStyles->True]}],
+                ShowAutoStyles->False],
+              (#&)], "     ", GridBox[{
+                {\(if\ x < 0\)},
+                {\(if\ x > 0\)}
+                }]}]}], TraditionalForm]]],
+  "\n\nis the following c1[x,t]:"
+}], "Text"],
+
+Cell[BoxData[{
+    \(c1[x_, t_, \[ScriptCapitalD]_:  \[ScriptCapitalD]\_1, 
+        c_:  c\_o] := \(c\/2\) \((1 + 
+              Erf[x\/\@\(4  \[ScriptCapitalD]\ t\)])\) /; 
+        t > 0\), "\[IndentingNewLine]", 
+    \(c1[x_, t_, \[ScriptCapitalD]_:  \[ScriptCapitalD]\_1, c_:  c\_o] := 
+      If[x > 0, c, 0] /; t \[LessEqual] 0\)}], "Input"],
+
+Cell[TextData[{
+  "where the second line is the initial condition, written explicitly so as \
+not to generate division by zero errors when ",
+  Cell[BoxData[
+      \(TraditionalForm\`t = 0\)]],
+  ", and where in this case we define"
+}], "Text"],
+
+Cell[BoxData[
+    \(c\_o = 1\)], "Input"],
+
+Cell["We can plot the solutions for different times:", "Text"],
+
+Cell[BoxData[
+    \(\(Plot[{c1[x, 0], c1[x, 10\^1], c1[x, 10\^2], 
+          c1[x, 10\^3]}, {x, \(-\ 10\^\(-6\)\), 10\^\(-6\)}, Color, 
+        PlotLegend \[Rule] {"\<t=0\>", \*"\"\<t=\!\(10\^1\)s\>\"", \
+\*"\"\<t=\!\(10\^2\)s\>\"", \*"\"\<t=\!\(10\^3\)s\>\""}];\)\)], "Input"],
+
+Cell["Diffusion from a plate of finite thickness", "Subtitle"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Uniform concentration", "Subsubsection"],
+
+Cell[TextData[{
+  "Consider a semi-infinite slab of thickness ",
+  Cell[BoxData[
+      \(TraditionalForm\`L = L\_o\)]],
+  ", at uniform concentration ",
+  Cell[BoxData[
+      \(TraditionalForm\`c\_o\)]],
+  " of a diffusant. The diffusant can leave the material at it's boundaries, \
+so that at ",
+  Cell[BoxData[
+      \(TraditionalForm\`x = 0\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`x = L\)]],
+  " the concentration is always 0."
+}], "Text"],
+
+Cell["With:", "Text"],
+
+Cell[BoxData[
+    \(\(L\_o = 10\^\(-6\);\)\)], "Input"],
+
+Cell[TextData[{
+  "where again, we left out the units which are implicitly MKS, we obtain for \
+the solution c2[x,t] (see ",
+  StyleBox["Kinetics of Materials",
+    FontSlant->"Italic"],
+  ", Eq. (5.49):"
+}], "Text"],
+
+Cell[BoxData[{
+    \(c2[x_, t_, n_:  10, \[ScriptCapitalD]_:  \[ScriptCapitalD]\_1, 
+        c_:  c\_o, 
+        L_:  L\_o] := \(\(4  
+                c\)\/\[Pi]\) \(\[Sum]\+\(j = 0\)\%n\( 1\/\(2  j + 1\)\) 
+              Sin[\(\(2  j + 
+                        1\)\/L\) \[Pi]\ x] \[ExponentialE]\^\(\(-\((\(\(2  j \
++ 1\)\/L\) \[Pi])\)\^2\) \[ScriptCapitalD]\ t\)\) /; 
+        t > 0\), "\[IndentingNewLine]", 
+    \(c2[x_, t_, \[ScriptCapitalD]_:  \[ScriptCapitalD]\_1, c_:  c\_o, 
+        L_:  L\_o] := 
+      If[0 < x && x < L, c, 0] /; t \[LessEqual] 0\)}], "Input"],
+
+Cell[TextData[{
+  "where ",
+  Cell[BoxData[
+      \(TraditionalForm\`n = \[Infinity]\)]],
+  ", but we will generally use a sufficiently large finite number, in this \
+case 10. (More terms may be necessary for shorter times. The effect of the \
+number of terms is shown on the next subsection.) We can plot the solutions \
+for different times:"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(Plot[{c2[x, 0], c2[x, 10\^1], c2[x, 10\^2], c2[x, 10\^3]}, {x, 0, 
+          L\_o}, PlotRange \[Rule] {0, c\_o}, Color, 
+        PlotLegend \[Rule] {"\<t=0\>", \*"\"\<t=\!\(10\^1\)s\>\"", \
+\*"\"\<t=\!\(10\^2\)s\>\"", \*"\"\<t=\!\(10\^3\)s\>\""}];\)\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The effect of the number of terms in the summation:", "Subsubsection"],
+
+Cell["\<\
+We now plot the profile as above for time t=10s, but taking different number \
+of terms for the summations. More terms give a more accurate result. About \
+ten terms are sufficient for this particular case. If the time was shorter, \
+more terms in the summation would be necessary.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(Plot[{c2[x, 10\^1, 10], c2[x, 10\^1, 5], c2[x, 10\^1, 3]}, {x, 0, 
+          L\_o}, PlotRange \[Rule] {0, 1.2  c\_o}, Color, 
+        PlotLegend \[Rule] {"\<n=10\>", "\<n=5\>", "\<n=3\>"}];\)\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Arbitrary initial concentration", "Subsubsection"],
+
+Cell[TextData[{
+  "Now look at the problem with arbitrary ",
+  Cell[BoxData[
+      \(TraditionalForm\`c[x, 0]\)]],
+  ", in this example a linear function, and again solve for the same boundary \
+conditions (at ",
+  Cell[BoxData[
+      \(TraditionalForm\`x = 0\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`x = L\)]],
+  " the concentration is always 0.) So we just use the Fourier sine-series:"
+}], "Text"],
+
+Cell["With ", "Text"],
+
+Cell[BoxData[{
+    \(\(c\_1 = 0.5;\)\), "\[IndentingNewLine]", 
+    \(\(c\_2 = 1;\)\)}], "Input"],
+
+Cell[TextData[{
+  "we write the initial condition as a linear function of ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  ":"
+}], "Text"],
+
+Cell[BoxData[
+    \(c3[x_, t_, n_:  10, L_:  L\_o, cL_:  c\_1, 
+        cR_:  c\_2, \[ScriptCapitalD]_:  \[ScriptCapitalD]\_1] := 
+      If[0 < x && x < L, cL + \((cR - cL)\) x/L, 0] /; 
+        t \[LessEqual] 0\)], "Input"],
+
+Cell[TextData[{
+  "and find its Fourier coefficients  (see ",
+  StyleBox["Kinetics of Materials",
+    FontSlant->"Italic"],
+  ", eq. (5.45):"
+}], "Text"],
+
+Cell[BoxData[
+    \(A[n_] := \((\(2\/L\_o\) \(\[Integral]\_0\%\(L\_o\)c3[x, 0] 
+              Sin[\(n\ \[Pi]\ x\)\/L\_o] \[DifferentialD]x\))\)\)], "Input"],
+
+Cell[TextData[{
+  "There is a little numerical problem for ",
+  Cell[BoxData[
+      \(TraditionalForm\`L\_o = \(10\^\(-6\)\) m\)]],
+  " with the precision loss during the numerical integration (a computational \
+problem -- note that other programs wouldn't even report this):"
+}], "Text"],
+
+Cell[BoxData[
+    \(A[30]\)], "Input"],
+
+Cell[TextData[{
+  "There are several tactics to avoid these problems:  in this simple case we \
+could integrate analytically (done below in Ab[n]). We could instead change \
+variables ",
+  Cell[BoxData[
+      \(TraditionalForm\`u = n\ x/L\_o\)]],
+  " which circumvents the difficulty and is more general (done below in \
+Ac[n]) or we could turn off the warnings with\n",
+  StyleBox["Off[FactorSquareFree::\"lrgexp\"];\n",
+    FontWeight->"Bold"],
+  "and hope for the best (but we want to check that the result is okay, and \
+will therefore compare the coefficients below):"
+}], "Text"],
+
+Cell[BoxData[
+    \(Ab[n_] := \((\(2\/L\_o\) \(\[Integral]\_0\%\(L\_o\)c3[x, 0] 
+                Sin[\(nn\ \[Pi]\ x\)\/L\_o] \[DifferentialD]x\))\) /. 
+        nn \[Rule] n\)], "Input",
+  Background->None],
+
+Cell[BoxData[
+    \(Ac[n_] := 
+      N[\(2\/n\) \(\[Integral]\_0\%n c3[\(u\ L\_o\)\/n, 0] 
+                Sin[u\ \[Pi]] \[DifferentialD]u\)] /; n > 0\)], "Input"],
+
+Cell["\<\
+A comparison of coefficients follows: (NOTE The table below likely extends \
+off the right-hand side of your screen and you will have to scroll over to \
+see that part if this is of interest to you.)\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(\(Off[FactorSquareFree::"\<lrgexp\>"];\)\), "\[IndentingNewLine]", 
+    \(Prepend[
+        Table[{n, A[n], Ab[n], Ac[n]}, {n, 1, 
+            30}], {"\<n\>", "\<A[n]\>", "\<Ab[n]\>", "\<Ac[n]\>"}] // 
+      TableForm\), "\[IndentingNewLine]", 
+    \(\(On[FactorSquareFree::"\<lrgexp\>"];\)\)}], "Input"],
+
+Cell["We finally define the composition ", "Text"],
+
+Cell[BoxData[
+    \(c3[x_, t_, n_:  10, L_:  L\_o, cL_:  c\_1, 
+        cR_:  c\_2, \[ScriptCapitalD]_:  \[ScriptCapitalD]\_1] := \[Sum]\+\(k \
+= 1\)\%n Ac[k] 
+            Sin[\(k\ \[Pi]\ x\)\/L] \[ExponentialE]\^\(\(-\((\(k\/L\) \
+\[Pi])\)\^2\) \[ScriptCapitalD]\ t\) /; t > 0\)], "Input"],
+
+Cell["\<\
+ We can plot the solutions for different times. We have the problem of \
+underflow, however, when the argument of the exponential (T[t])\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(Plot[{c3[x, 0], c3[x, 10\^1, 20], c3[x, 10\^2], c3[x, 10\^3]}, {x, 0, 
+          L\_o}, PlotRange \[Rule] {0, c\_o}, Color, 
+        PlotLegend \[Rule] {"\<t=0\>", \*"\"\<t=\!\(10\^1\)s\>\"", \
+\*"\"\<t=\!\(10\^2\)s\>\"", \*"\"\<t=\!\(10\^3\)s\>\""}];\)\)], "Input"],
+
+Cell["Finite-difference method of solving the diffusion equation", "Subtitle"],
+
+Cell[TextData[{
+  "Finite-difference methods are useful for solving all sorts of diffusion \
+problems when closed-form analytical solutions are not available.  Here we \
+set out the basic method for representing derivatives in terms of a discrete \
+representation of the composition profile, that is, the value of ",
+  StyleBox["c",
+    FontSlant->"Italic"],
+  " is known at a set of discrete points and these data are used to \
+approximate derivatives and perform an iterative calculation to project the \
+evolution of the concentration field.\nWe do this below for one-dimensional \
+diffusion and ultimately apply the result to diffusion in a finite diffusion \
+couple with a concentration-dependent diffusivity."
+}], "Text"],
+
+Cell["\<\
+We now consider the case of a diffusion couple of pure A and pure B. Let each \
+piece be 1 \[Mu]m thick:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(L\_1 = 10\^\(-6\);\)\)], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+ and pick a time short enough so that they are effectively semi-infinite. The \
+maximum time will be 10 s.\
+\>", "Text"],
+
+Cell["We will tackle this problem with finite differences. ", "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Finite differences", "Subsubsection"],
+
+Cell[TextData[{
+  "We start by expanding an arbitrary ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptCapitalC]\^1\)]],
+  " function ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  " at ",
+  Cell[BoxData[
+      \(TraditionalForm\`x + \[CapitalDelta]x\)]],
+  " in powers of \[CapitalDelta]x."
+}], "Text"],
+
+Cell[BoxData[{
+    \(f1p = 
+      u[x + \[CapitalDelta]x] \[Equal] 
+          Series[u[x + \[CapitalDelta]x], {\[CapitalDelta]x, 0, 2}] // 
+        Normal\), "\[IndentingNewLine]", 
+    \(f1m = 
+      u[x - \[CapitalDelta]x] \[Equal] 
+          Series[u[x - \[CapitalDelta]x], {\[CapitalDelta]x, 0, 2}] // 
+        Normal\)}], "Input"],
+
+Cell[TextData[{
+  "We now construct the",
+  StyleBox[" centered differences",
+    FontSlant->"Italic"],
+  " by solving the above equations for ",
+  Cell[BoxData[
+      RowBox[{
+        SuperscriptBox["u", "\[Prime]",
+          MultilineFunction->None], "[", "x", "]"}]]],
+  " and ",
+  Cell[BoxData[
+      RowBox[{
+        SuperscriptBox["u", "\[Prime]\[Prime]",
+          MultilineFunction->None], "[", "x", "]"}]]],
+  "."
+}], "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"{", 
+        RowBox[{
+          RowBox[{"Solve", "[", 
+            RowBox[{\(S[f1p, M[f1m, \(-1\)]]\), ",", 
+              RowBox[{
+                SuperscriptBox["u", "\[Prime]",
+                  MultilineFunction->None], "[", "x", "]"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Solve", "[", 
+            RowBox[{\(S[f1p, f1m]\), ",", 
+              RowBox[{
+                SuperscriptBox[
+                  SuperscriptBox["u", "\[Prime]",
+                    MultilineFunction->None], "\[Prime]",
+                  MultilineFunction->None], "[", "x", "]"}]}], "]"}]}], "}"}],
+       "//", "Flatten"}]], "Input"],
+
+Cell[TextData[{
+  "For the time domain, we take the forward difference, so that we can refer \
+the concentration at time ",
+  Cell[BoxData[
+      \(TraditionalForm\`t + \[CapitalDelta]t\)]],
+  " to that of time ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\)]],
+  ". For consistency we use a similar derivation to the above one, but will \
+end up obtaining the very expression of the derivative, before taking the \
+limit ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalDelta]t \[RightArrow] 0\)]],
+  "."
+}], "Text"],
+
+Cell[BoxData[
+    \(u[t + \[CapitalDelta]t] == 
+        Series[u[t + \[CapitalDelta]t], {\[CapitalDelta]t, 0, 1}] // 
+      Normal\)], "Input"],
+
+Cell[BoxData[
+    \(Solve[%, \(u'\)[t]] // Flatten\)], "Input"],
+
+Cell["Putting these results together:", "Text"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"fd", "=", 
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{
+              RowBox[{
+                SuperscriptBox["c", 
+                  TagBox[\((1, 0)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(x, t\), "]"}], 
+              "\[Rule]", \(\(c[x + \[CapitalDelta]x, t] - 
+                    c[x - \[CapitalDelta]x, t]\)\/\(2\ \[CapitalDelta]x\)\)}],
+             ",", "\[IndentingNewLine]", 
+            RowBox[{
+              RowBox[{
+                SuperscriptBox["c", 
+                  TagBox[\((2, 0)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(x, t\), "]"}], 
+              "\[Rule]", \(\(c[x + \[CapitalDelta]x, t] + 
+                    c[x - \[CapitalDelta]x, t] - 
+                    2  c[x, t]\)\/\[CapitalDelta]x\^2\)}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+              RowBox[{
+                SuperscriptBox["c", 
+                  TagBox[\((0, 1)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(x, t\), "]"}], 
+              "\[Rule]", \(\(c[x, t + \[CapitalDelta]t] - 
+                    c[x, t]\)\/\[CapitalDelta]t\)}]}], "}"}]}], 
+      ";"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Diffusion equation with finite differences", "Subsubsection"],
+
+Cell["\<\
+The diffusion equation can now be written in its full non-linear form in one \
+dimension as\
+\>", "Text"],
+
+Cell[BoxData[
+    \(eq1 = \[PartialD]\_t c[x, 
+              t] == \[PartialD]\_x\((\[ScriptCapitalD][
+                  c[x, t]] \[PartialD]\_x c[x, t])\) // Simplify\)], "Input"],
+
+Cell["We turn to the finite difference version:", "Text"],
+
+Cell[BoxData[
+    \(eq2 = eq1 /. fd\)], "Input"],
+
+Cell[TextData[{
+  "And solve for the concentration at point ",
+  Cell[BoxData[
+      \(TraditionalForm\`t + \(\(\[CapitalDelta]t\)\(.\)\)\)]]
+}], "Text"],
+
+Cell[BoxData[
+    \(eq3 = Solve[eq2, c[x, t + \[CapitalDelta]t]] // Flatten\)], "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Solution for concentration-dependent diffusivity \[ScriptCapitalD]2 \
+(quadratic in ",
+  StyleBox["c",
+    FontSlant->"Italic"],
+  ")"
+}], "Subsection"],
+
+Cell[TextData[{
+  "Assume ",
+  "\[ScriptCapitalD]2",
+  " varies parabolically with ",
+  StyleBox["c",
+    FontSlant->"Italic"],
+  " and increases by an order of magnitude as ",
+  StyleBox["c",
+    FontSlant->"Italic"],
+  " goes from 0 to 1"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\[ScriptCapitalD]2[c_] := 
+        10\^\(-17\) +  .9\ \(10\^\(-16\)\) c\^2;\)\)], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(Plot[\[ScriptCapitalD]2[c], {c, 0, 1}, 
+        AxesLabel \[Rule] {"\<c\>", "\<\[ScriptCapitalD]2[c]\>"}];\)\)], \
+"Input"],
+
+Cell[TextData[{
+  "we compute and define the derivative of ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[ScriptCapitalD]2\)]],
+  ":"
+}], "Text"],
+
+Cell[BoxData[
+    \(\[PartialD]\_c\((10\^\(-17\) +  .9\ \(10\^\(-16\)\) c\^2)\)\)], "Input"],
+
+Cell[BoxData[
+    \(d\[ScriptCapitalD]2[c_] := 1.8\ 10\^\(-16\)\ c\)], "Input",
+  InitializationCell->True],
+
+Cell[TextData[{
+  "Our initial condition ",
+  Cell[BoxData[
+      \(TraditionalForm\`c[x, t = 0]\)]],
+  " and subsequent composition profiles ",
+  Cell[BoxData[
+      \(TraditionalForm\`c[x, t]\)]],
+  " will be discretized as well, ie., written as a list of ",
+  Cell[BoxData[
+      \(TraditionalForm\`2\ n + 1\)]],
+  " points. The spatial difference or increment will thus be",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(\ \)\(L/n\)\)\)]]
+}], "Text"],
+
+Cell[TextData[{
+  "We now have to note that the finite difference scheme is approximate, and \
+that the truncation errors might destabilize our solution or even preclude \
+convergence to the real solution. It can be shown for the uniform \
+\[ScriptCapitalD]-case that  stability ",
+  StyleBox["and",
+    FontSlant->"Italic"],
+  " convergence are assured provided that ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalDelta]t < \[CapitalDelta]x\^2\/\(2  \
+\[ScriptCapitalD]\)\)]],
+  "\n\nWithout analyzing the full problem at hand, we take ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalDelta]t < \[CapitalDelta]x\^2\/\(2  \
+\[ScriptCapitalD]\_max\) = \((L\_1/n)\)\^2\/\(2  \[ScriptCapitalD]2[1]\)\)]],
+  ". For example ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[CapitalDelta]t = \(1\/2\) \((L\_1/n)\)\^2\/\(2  \
+\[ScriptCapitalD]2[1]\)\)]]
+}], "Text"],
+
+Cell[BoxData[
+    \(\(\(c[x, t + \[CapitalDelta]t] /. 
+            eq3\) /. {t \[Rule] j\ \[CapitalDelta]t, 
+            x \[Rule] i\ \[CapitalDelta]x}\) /. j \[Rule] j - 1 // 
+      Simplify\)], "Input"],
+
+Cell[TextData[{
+  "With ",
+  Cell[BoxData[
+      \(TraditionalForm\`c[i, j] = 
+        c[i\ \[CapitalDelta]x, \ j\[CapitalDelta]t]\)]],
+  ":"
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Recursive option   (slow!!!)", "Subsubsection",
+  FontWeight->"Bold"],
+
+Cell[BoxData[{
+    \(ClearAll[c4]\), "\n", 
+    \(c4[i_, j_, n_:  20, L_:  L\_1] := 0 /; \(\(i == \(-n\)\)\(\n\)
+        \( (*c4[i_, j_, n_:  20, L_:  L\_1] :=  .5 /; i == 0*) \)\)\), "\n", 
+    \(c4[i_, j_, n_:  20, L_:  L\_1] := 1 /; i == n\), "\n", 
+    \(c4[i_, j_, n_:  20, L_:  L\_1] := 
+      0.5 +  .5\ Sign[i] /; j == 0\), "\[IndentingNewLine]", 
+    \(\[CapitalDelta]t4[n_:  20, 
+        L_:  L\_1] := \((L/n)\)\^2/\((4  \[ScriptCapitalD]2[1])\)\)}], "Input",\
+
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(c4[i_, j_, n_:  20, 
+        L_:  L\_1] := \[IndentingNewLine]\(c4[i, j, n, 
+          L] = \[CapitalDelta]t\ \((c4[i\ , j - 1\ ]\/\[CapitalDelta]t + \
+\(\((c4[i - 1, j - 1] - 2\ c4[i\ , j - 1] + c4[i + 1, j - 1])\)\ \
+\[ScriptCapitalD]2[c4[i, j - 1]]\)\/\[CapitalDelta]x\^2 + \(\((c4[i - 1, j - \
+1] - c4[i + 1, j - 1])\)\^2\ d\[ScriptCapitalD]2[c4[i, j - 1]]\)\/\(4\ \
+\[CapitalDelta]x\^2\))\) /. {\[CapitalDelta]x \[Rule] 
+              L/n, \[CapitalDelta]t \[Rule] \[CapitalDelta]t4[n, 
+                L]}\)\)], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+Note: the above definition is convenient in that it \"remembers\" previously \
+calculated values. Let's now calculate the profile for a given time:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(CL4[m_, n_:  20, L_:  L\_1] := 
+        Table[{1.  i\ L/n, c4[i, m, n, L]}, {i, \(-n\), n}];\)\)], "Input"],
+
+Cell["examples:", "Text"],
+
+Cell[BoxData[
+    \(c4[1, 1]\)], "Input"],
+
+Cell[BoxData[
+    \(CL4[1]\)], "Input"],
+
+Cell[TextData[{
+  "Unfortunately, caluculation proceeds very slowly. Let's try something \
+else. We have an array ",
+  Cell[BoxData[
+      \(TraditionalForm\`cc\)]],
+  " of the form ",
+  Cell[BoxData[
+      \(TraditionalForm\`{t, {c[x\_\(-n\), t],  ... , c[0, t], \(\(...\)\(.\)\
+\), c[x\_n, t]}}\_t\)]]
+}], "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Storing results in array", "Subsubsection"],
+
+Cell["These are the x-coords of the points considered:", "Text"],
+
+Cell[BoxData[
+    \(\(\(\(np = 20;\)\  (*\ number\ of\ points\ *) \[IndentingNewLine]
+    \(xx = Table[L\_1/np\ \ i, {i, \(-np\), np}];\)\)\(\ \ \)\)\)], "Input",
+  InitializationCell->True],
+
+Cell["\<\
+These is the concentration array, which contains only the initial conditions \
+for now.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(cc = {{0, Table[c4[i, 0, np, L\_1], {i, \(-np\), np}]}};\)\)], "Input",\
+
+  InitializationCell->True],
+
+Cell[TextData[{
+  "Now ",
+  Cell[BoxData[
+      \(TraditionalForm\`c4[i, j]\)]],
+  " is really ",
+  Cell[BoxData[
+      \(TraditionalForm\`cc\[LeftDoubleBracket]j + 1, 2, 
+        i + np + 1\[RightDoubleBracket]\)]],
+  ":"
+}], "Text"],
+
+Cell[BoxData[{
+    \(\(ClearAll[CL5];\)\), "\[IndentingNewLine]", 
+    \(CL5[j_, debug_:  True] := 
+      Module[\[IndentingNewLine]{\[Delta]t, \[Delta]x}, \[IndentingNewLine]\
+\[Delta]x = 
+          L\_1/np; \[IndentingNewLine]\[Delta]t = \[CapitalDelta]t4[np, 
+            L\_1]; \[IndentingNewLine]If\ [
+          j + 1 \[Equal] Length[cc] + 1, \[IndentingNewLine]If[debug, 
+            Print["\<new calc\>"]]; \[IndentingNewLine]AppendTo[
+            cc, \[IndentingNewLine]{j\ \[Delta]t, \[IndentingNewLine]Flatten[\
+\[IndentingNewLine]{0, \[IndentingNewLine]Table[\[IndentingNewLine]\[Delta]t\ \
+\((cc\[LeftDoubleBracket]j, 2, 1 + i + np\[RightDoubleBracket]\/\[Delta]t + \
+\(d\[ScriptCapitalD]2[cc\[LeftDoubleBracket]j, 2, 1 + i + np\
+\[RightDoubleBracket]]\ \((cc\[LeftDoubleBracket]j, 2, i + np\
+\[RightDoubleBracket] - cc\[LeftDoubleBracket]j, 2, 2 + i + np\
+\[RightDoubleBracket])\)\^2\)\/\(4\ \[Delta]x\^2\) + \(1\/\[Delta]x\^2\) \
+\((\((cc\[LeftDoubleBracket]j, 2, i + np\[RightDoubleBracket] - 
+                                    2\ cc\[LeftDoubleBracket]j, 2, 
+                                        1 + i + np\[RightDoubleBracket] + 
+                                    cc\[LeftDoubleBracket]j, 2, 
+                                      2 + i + 
+                                        np\[RightDoubleBracket])\)\ \
+\[ScriptCapitalD]2[cc\[LeftDoubleBracket]j, 2, 
+                                    1 + i + 
+                                      np\[RightDoubleBracket]])\))\), \
+\[IndentingNewLine]{i, \(-np\) + 1, np - 1}\[IndentingNewLine]], 
+                  1}\[IndentingNewLine]]}\[IndentingNewLine]]; 
+          If[debug, 
+            cc\[LeftDoubleBracket]j + 1, 
+              2\[RightDoubleBracket]]\[IndentingNewLine], \
+\[IndentingNewLine]If[
+            j + 1 > Length[cc] + 1, \[IndentingNewLine]If[debug, 
+              Print["\<Needs iteration \>", j - 1]], \[IndentingNewLine]If[
+              debug, Print["\<old calc\>"]]; \[IndentingNewLine]If[debug, 
+              cc\[LeftDoubleBracket]j + 1, 
+                2\[RightDoubleBracket]]\[IndentingNewLine]]\[IndentingNewLine]\
+]\[IndentingNewLine]]\)}], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(CL5[1]\)], "Input"],
+
+Cell["Now we plot different profiles! First, we compute the data:", "Text"],
+
+Cell[BoxData[
+    \(\(For[i = 1, i \[LessEqual] 100, \(i++\), CL5[i, False]];\)\)], "Input"],
+
+Cell["Next we un-scale the x coordinates:", "Text"],
+
+Cell[BoxData[{
+    \(\(prof[n_] := 
+        Transpose[{xx, 
+            cc\[LeftDoubleBracket]n + 1, 
+              2\[RightDoubleBracket]}];\)\), "\[IndentingNewLine]", 
+    \(label[n_] := "\<t = \>" <> 
+        ToString[
+          cc\[LeftDoubleBracket]n + 1, 
+            1\[RightDoubleBracket]] <> "\< s\>"\)}], "Input",
+  InitializationCell->True],
+
+Cell[BoxData[
+    \(\(MultipleListPlot[prof[0], prof[10], prof[20], prof[30], 
+        PlotLegend \[Rule] {label[0], label[10], label[20], label[30], }, 
+        PlotJoined \[Rule] True];\)\)], "Input"],
+
+Cell[TextData[{
+  "Note: in this approximation we set the concentration constant on the \
+edges. This is not really correct and only valid for short times. The real \
+boundary would be that the flux on ",
+  Cell[BoxData[
+      \(TraditionalForm\`x = \(-L\)\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`x = L\)]],
+  " is positive and negative respectively. The difference for long times is \
+that the profile will become uniform, instead of the sloped line that we will \
+eventually get."
+}], "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Teaser", "Subsubsection"],
+
+Cell["Select all the graphs and press <CTRL>+\"y\"", "Text"],
+
+Cell[BoxData[
+    \(\(For[i = 100, i \[LessEqual] 200, \(i++\), 
+        CL5[i, False]];\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(mv = Table[ListPlot[prof[i]], {i, 0, 200}];\)\)], "Input"]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{0, 1148}, {0, 746}},
+AutoGeneratedPackage->None,
+WindowSize->{915, 724},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 372, 11, 179, "Text"],
+Cell[2129, 64, 75, 0, 112, "Title"],
+
+Cell[CellGroupData[{
+Cell[2229, 68, 877, 15, 233, "Subsection"],
+Cell[3109, 85, 41, 0, 48, "Subtitle"],
+Cell[3153, 87, 1644, 62, 89, "Text"],
+
+Cell[CellGroupData[{
+Cell[4822, 153, 42, 0, 43, "Subsubsection"],
+Cell[4867, 155, 773, 17, 238, "Text"],
+Cell[5643, 174, 429, 7, 86, "Text"],
+Cell[6075, 183, 624, 15, 140, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6736, 203, 82, 1, 43, "Subsubsection"],
+Cell[6821, 206, 208, 4, 90, "Input",
+  InitializationCell->True],
+Cell[7032, 212, 108, 3, 46, "Text"],
+Cell[7143, 217, 646, 11, 210, "Input",
+  InitializationCell->True],
+Cell[7792, 230, 847, 16, 175, "Input",
+  InitializationCell->True],
+Cell[8642, 248, 84, 2, 46, "Text"],
+Cell[8729, 252, 50, 1, 50, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8816, 258, 55, 0, 43, "Subsubsection"],
+Cell[8874, 260, 1919, 37, 530, "Input",
+  InitializationCell->True],
+Cell[10796, 299, 613, 12, 250, "Input",
+  InitializationCell->True],
+Cell[11412, 313, 176, 3, 70, "Input",
+  InitializationCell->True],
+Cell[11591, 318, 62, 0, 48, "Subtitle"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[11690, 323, 39, 0, 43, "Subsubsection"],
+Cell[11732, 325, 340, 9, 75, "Text"],
+Cell[12075, 336, 39, 1, 50, "Input"],
+Cell[12117, 339, 49, 1, 50, "Input"],
+Cell[12169, 342, 54, 1, 50, "Input"],
+Cell[12226, 345, 44, 1, 50, "Input"],
+Cell[12273, 348, 72, 0, 48, "Subtitle"],
+Cell[12348, 350, 250, 8, 46, "Text"],
+Cell[12601, 360, 72, 1, 52, "Input"],
+Cell[12676, 363, 891, 25, 215, "Text"],
+Cell[13570, 390, 345, 6, 111, "Input"],
+Cell[13918, 398, 244, 6, 66, "Text"],
+Cell[14165, 406, 41, 1, 50, "Input"],
+Cell[14209, 409, 62, 0, 46, "Text"],
+Cell[14274, 411, 277, 4, 74, "Input"],
+Cell[14554, 417, 62, 0, 48, "Subtitle"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[14653, 422, 46, 0, 43, "Subsubsection"],
+Cell[14702, 424, 459, 15, 66, "Text"],
+Cell[15164, 441, 21, 0, 46, "Text"],
+Cell[15188, 443, 55, 1, 52, "Input"],
+Cell[15246, 446, 216, 6, 66, "Text"],
+Cell[15465, 454, 571, 11, 145, "Input"],
+Cell[16039, 467, 355, 8, 86, "Text"],
+Cell[16397, 477, 284, 4, 93, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[16718, 486, 76, 0, 43, "Subsubsection"],
+Cell[16797, 488, 305, 5, 86, "Text"],
+Cell[17105, 495, 226, 3, 72, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[17368, 503, 56, 0, 43, "Subsubsection"],
+Cell[17427, 505, 416, 12, 66, "Text"],
+Cell[17846, 519, 21, 0, 46, "Text"],
+Cell[17870, 521, 97, 2, 70, "Input"],
+Cell[17970, 525, 136, 5, 46, "Text"],
+Cell[18109, 532, 224, 4, 70, "Input"],
+Cell[18336, 538, 153, 5, 46, "Text"],
+Cell[18492, 545, 156, 2, 76, "Input"],
+Cell[18651, 549, 288, 6, 68, "Text"],
+Cell[18942, 557, 38, 1, 50, "Input"],
+Cell[18983, 560, 585, 12, 170, "Text"],
+Cell[19571, 574, 205, 4, 60, "Input"],
+Cell[19779, 580, 163, 3, 74, "Input"],
+Cell[19945, 585, 223, 4, 66, "Text"],
+Cell[20171, 591, 324, 6, 110, "Input"],
+Cell[20498, 599, 50, 0, 46, "Text"],
+Cell[20551, 601, 290, 5, 103, "Input"],
+Cell[20844, 608, 160, 3, 66, "Text"],
+Cell[21007, 613, 288, 4, 93, "Input"],
+Cell[21298, 619, 78, 0, 48, "Subtitle"],
+Cell[21379, 621, 727, 12, 158, "Text"],
+Cell[22109, 635, 128, 3, 46, "Text"],
+Cell[22240, 640, 83, 2, 52, "Input",
+  InitializationCell->True],
+Cell[22326, 644, 130, 3, 46, "Text"],
+Cell[22459, 649, 69, 0, 46, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[22565, 654, 43, 0, 43, "Subsubsection"],
+Cell[22611, 656, 312, 11, 48, "Text"],
+Cell[22926, 669, 335, 8, 70, "Input"],
+Cell[23264, 679, 434, 15, 46, "Text"],
+Cell[23701, 696, 685, 17, 70, "Input"],
+Cell[24389, 715, 521, 14, 86, "Text"],
+Cell[24913, 731, 143, 3, 50, "Input"],
+Cell[25059, 736, 63, 1, 50, "Input"],
+Cell[25125, 739, 47, 0, 46, "Text"],
+Cell[25175, 741, 1284, 32, 170, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[26496, 778, 67, 0, 43, "Subsubsection"],
+Cell[26566, 780, 115, 3, 46, "Text"],
+Cell[26684, 785, 180, 3, 50, "Input"],
+Cell[26867, 790, 57, 0, 46, "Text"],
+Cell[26927, 792, 48, 1, 50, "Input"],
+Cell[26978, 795, 153, 4, 46, "Text"],
+Cell[27134, 801, 88, 1, 50, "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[27271, 808, 171, 6, 65, "Subsection"],
+Cell[27445, 816, 252, 10, 46, "Text"],
+Cell[27700, 828, 140, 3, 52, "Input",
+  InitializationCell->True],
+Cell[27843, 833, 145, 3, 50, "Input"],
+Cell[27991, 838, 144, 5, 46, "Text"],
+Cell[28138, 845, 92, 1, 52, "Input"],
+Cell[28233, 848, 107, 2, 52, "Input",
+  InitializationCell->True],
+Cell[28343, 852, 453, 13, 66, "Text"],
+Cell[28799, 867, 864, 19, 162, "Text"],
+Cell[29666, 888, 204, 4, 50, "Input"],
+Cell[29873, 894, 153, 6, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[30051, 904, 75, 1, 43, "Subsubsection"],
+Cell[30129, 907, 499, 10, 151, "Input",
+  InitializationCell->True],
+Cell[30631, 919, 574, 10, 272, "Input",
+  InitializationCell->True],
+Cell[31208, 931, 171, 3, 66, "Text"],
+Cell[31382, 936, 129, 2, 50, "Input"],
+Cell[31514, 940, 25, 0, 46, "Text"],
+Cell[31542, 942, 41, 1, 50, "Input"],
+Cell[31586, 945, 39, 1, 50, "Input"],
+Cell[31628, 948, 315, 9, 63, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[31980, 962, 49, 0, 43, "Subsubsection"],
+Cell[32032, 964, 64, 0, 46, "Text"],
+Cell[32099, 966, 190, 3, 70, "Input",
+  InitializationCell->True],
+Cell[32292, 971, 111, 3, 46, "Text"],
+Cell[32406, 976, 123, 3, 50, "Input",
+  InitializationCell->True],
+Cell[32532, 981, 234, 9, 46, "Text"],
+Cell[32769, 992, 2179, 37, 799, "Input",
+  InitializationCell->True],
+Cell[34951, 1031, 39, 1, 50, "Input"],
+Cell[34993, 1034, 75, 0, 46, "Text"],
+Cell[35071, 1036, 92, 1, 50, "Input"],
+Cell[35166, 1039, 51, 0, 46, "Text"],
+Cell[35220, 1041, 352, 9, 70, "Input",
+  InitializationCell->True],
+Cell[35575, 1052, 202, 3, 70, "Input"],
+Cell[35780, 1057, 511, 12, 106, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[36328, 1074, 31, 0, 43, "Subsubsection"],
+Cell[36362, 1076, 60, 0, 46, "Text"],
+Cell[36425, 1078, 103, 2, 50, "Input"],
+Cell[36531, 1082, 80, 1, 50, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

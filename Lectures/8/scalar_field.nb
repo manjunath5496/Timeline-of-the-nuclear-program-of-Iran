@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252"></HEAD>
+<BODY><PRE>(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      7046,        220]*)
+(*NotebookOutlinePosition[      7832,        245]*)
+(*  CellTagsIndexPosition[      7788,        241]*)
+(*WindowFrame-&gt;Normal*)
+
+
+
+Notebook[{
+Cell["\&lt;\
+Time-Dependent Solution to the Diffusion Equation in the Plane with \
+a Point Source at the Origin.\
+\&gt;", "Subtitle"],
+
+Cell[BoxData[
+    StyleBox[\(&lt;&lt; Graphics`\),
+      FontWeight-&gt;"Bold"]], "Input"],
+
+Cell["\&lt;\
+These notes are based on notes written by Prof. W.C. Carter for MIT \
+subject 3.016.  These are excerpts with some additional comments and \
+extensions for MIT subject 3.21. \
+\&gt;", "Text",
+  CellFrame-&gt;True,
+  Background-&gt;GrayLevel[0.833326]],
+
+Cell["\&lt;\
+Note: This notebook will produce some neat animations but they each \
+take some time to compute. And, if you save the notebook with the graphics, \
+it will require 30MB or so of hard disk space.\
+\&gt;", "Text",
+  CellFrame-&gt;True,
+  Background-&gt;GrayLevel[0.833326]],
+
+Cell["\&lt;\
+You should definitely take the time to learn how to make your own \
+animations because the results can be really instructive. You can even save \
+animations as Quicktime files and import and play them back in other programs \
+such as PowerPoint.\
+\&gt;", "Text",
+  CellFrame-&gt;True,
+  Background-&gt;GrayLevel[0.833326]],
+
+Cell["Scalar field: concentration", "Subsubtitle"],
+
+Cell["\&lt;\
+As an example we will look at the concentration field arising from \
+a line source in an isotropic medium (e.g. think of a Cu wire embedded in a \
+block of Ni; allow interdiffusion to occur for time t &gt; 0).\
+\&gt;", "Text",
+  CellFrame-&gt;True,
+  Background-&gt;GrayLevel[0.833326]],
+
+Cell["\&lt;\
+Define the concentration c(x,y,t) by the following (we will soon \
+learn where this equation comes from):\
+\&gt;", "Text",
+  CellFrame-&gt;True,
+  Background-&gt;GrayLevel[0.833326]],
+
+Cell[BoxData[
+    \(concentration\  = 
+      Exp[\(-\((x^2\  + \ y^2)\)\)/t]/\((\(\@\[Pi]\) t)\)\)], "Input"],
+
+Cell["\&lt;\
+Illustrate the time dependence of this scalar field with a seqence \
+of plots...\
+\&gt;", "Text",
+  CellFrame-&gt;True,
+  Background-&gt;GrayLevel[0.833326]],
+
+Cell[BoxData[
+    StyleBox[\(&lt;&lt; Graphics`Animation`\),
+      FontWeight-&gt;"Bold"]], "Input"],
+
+Cell["\&lt;\
+To see animations,use the menu command to group all the graphics \
+cells together, and then animate\
+\&gt;", "Text",
+  CellFrame-&gt;True,
+  Background-&gt;GrayLevel[0.833326]],
+
+Cell[BoxData[
+    \(MoviePlot3D[
+      concentration, {x, \(-4\), 4}, {y, \(-4\), 4}, {t, 0.01, 2.51,  .05}, 
+      PlotPoints \[Rule] 40, PlotRange \[Rule] {0, 2}, 
+      DisplayFunction \[Rule] Identity]\)], "Input"],
+
+Cell["\&lt;\
+Gradient of a scalar field and relation to flux in a concentration \
+field\
+\&gt;", "Subsubtitle"],
+
+Cell[TextData[{
+  "Now look at the ",
+  StyleBox["gradient",
+    FontSlant-&gt;"Italic"],
+  " of this scalar field.  The gradient at a point is a vector directed \
+toward the fastest rate of change (\"steepest ascent\") of the scalar field."
+}], "Text",
+  CellFrame-&gt;True,
+  Background-&gt;GrayLevel[0.833326]],
+
+Cell["\&lt;\
+Flux is a vector that points in the direction of the flow and is a \
+measure of how much is flowing per unit time.  This illustration is a simple \
+but common situation in which the flux is antiparallel to the concentration \
+gradient, so the resulting vector field also illustrates the negative of the \
+gradient of the concentration field.\
+\&gt;", "Text",
+  CellFrame-&gt;True,
+  Background-&gt;GrayLevel[0.833326]],
+
+Cell[BoxData[
+    \(&lt;&lt; Graphics`PlotField`\)], "Input"],
+
+Cell[BoxData[
+    \(flux\  = \ {\(-D[concentration, x]\), \(-D[concentration, 
+            y]\)}\)], "Input"],
+
+Cell[BoxData[
+    \(This\ is\ an\ example\ of\ a\ time - 
+      dependent\ vector\ field\ \(j\&amp;\[LongRightArrow]\) \((x, y, 
+          t)\)\)], "Text"],
+
+Cell[BoxData[
+    \({\(2\ \[ExponentialE]\^\(\(\(-x\^2\) - y\^2\)\/t\)\ x\)\/\(\@\[Pi]\ \
+t\^2\), \(2\ \[ExponentialE]\^\(\(\(-x\^2\) - y\^2\)\/t\)\ y\)\/\(\@\[Pi]\ \
+t\^2\)}\)], "Output"],
+
+Cell[BoxData[
+    \(Animate[
+      PlotVectorField[flux, {x, \(-2\), 2}, {y, \(-2\), 2}, 
+        PlotPoints \[Rule] 20, 
+        ScaleFunction \[Rule] \((If[# &lt;  .05, 0, \((100.0  #)\)] &amp;)\), 
+        ColorFunction \[Rule] \((Hue[1 - 0.75  #] &amp;)\)], {t, 0.01, 
+        4.01,  .05}]\)], "Input"],
+
+Cell["\&lt;\
+Divergence and relation to accumulation in a concentration \
+field\
+\&gt;", "Subsubtitle"],
+
+Cell["\&lt;\
+Now look at the accumulation which is the negative of the \
+divergence of the flux.\
+\&gt;", "Text"],
+
+Cell["\&lt;\
+Define a function that takes a two-dimensional vector function of \
+(x,y) as an argument and returns its divergence\
+\&gt;", "Text"],
+
+Cell[BoxData[
+    \(divergence[{xcomp_\ , \ ycomp_}]\  := \ 
+      Simplify[D[xcomp, x]\  + \ D[ycomp, y]]\)], "Input"],
+
+Cell[BoxData[
+    \(divgradptsource\  = \ divergence[\(-flux\)]\)], "Input"],
+
+Cell[BoxData[
+    \(Plotting\ the\ divergence\ of\ the\ gradient\ \((\[Del]\(\(\[CenterDot]\
+\)\((\[Del]\ f)\)\)\ is\ the\ ``Laplacian''\ \[Del]\^2\ f, \ 
+        sometimes\ indicated\ with\ symbol\ \[CapitalDelta]f)\)\)], "Text",
+  FontFamily-&gt;"Helvetica"],
+
+Cell[BoxData[
+    \(MoviePlot3D[
+      divgradptsource, {x, \(-4\), 4}, {y, \(-4\), 4}, {t, 0.01, 2.51,  .05}, 
+      PlotPoints \[Rule] 40, PlotRange \[Rule] {\(-2\), 2}, 
+      DisplayFunction \[Rule] Identity]\)], "Input"],
+
+Cell["\&lt;\
+You should review these animations and ensure that you understand \
+their behavior, particularly the time and position dependence of the flux \
+vector, and the time and position dependence of the accumulation.\
+\&gt;", "Text"]
+},
+FrontEndVersion-&gt;"5.2 for Macintosh",
+ScreenRectangle-&gt;{{0, 1148}, {0, 746}},
+ScreenStyleEnvironment-&gt;"Presentation",
+WindowSize-&gt;{890, 631},
+WindowMargins-&gt;{{4, Automatic}, {Automatic, 1}},
+WindowTitle-&gt;"Lecture 11 MIT 3.016   \[Copyright] W. Craig Carter 2003",
+StyleDefinitions -&gt; "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex-&gt;{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex-&gt;{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 127, 3, 88, "Subtitle"],
+Cell[1884, 56, 81, 2, 56, "Input"],
+Cell[1968, 60, 252, 6, 86, "Text"],
+Cell[2223, 68, 272, 6, 113, "Text"],
+Cell[2498, 76, 323, 7, 113, "Text"],
+Cell[2824, 85, 50, 0, 104, "Subsubtitle"],
+Cell[2877, 87, 284, 6, 113, "Text"],
+Cell[3164, 95, 183, 5, 86, "Text"],
+Cell[3350, 102, 109, 2, 66, "Input"],
+Cell[3462, 106, 158, 5, 59, "Text"],
+Cell[3623, 113, 91, 2, 56, "Input"],
+Cell[3717, 117, 177, 5, 86, "Text"],
+Cell[3897, 124, 218, 4, 79, "Input"],
+Cell[4118, 130, 105, 3, 104, "Subsubtitle"],
+Cell[4226, 135, 304, 8, 86, "Text"],
+Cell[4533, 145, 419, 8, 140, "Text"],
+Cell[4955, 155, 55, 1, 56, "Input"],
+Cell[5013, 158, 109, 2, 56, "Input"],
+Cell[5125, 162, 151, 3, 60, "Text"],
+Cell[5279, 167, 188, 3, 103, "Output"],
+Cell[5470, 172, 295, 6, 102, "Input"],
+Cell[5768, 180, 97, 3, 104, "Subsubtitle"],
+Cell[5868, 185, 107, 3, 59, "Text"],
+Cell[5978, 190, 139, 3, 86, "Text"],
+Cell[6120, 195, 119, 2, 56, "Input"],
+Cell[6242, 199, 76, 1, 56, "Input"],
+Cell[6321, 202, 257, 4, 87, "Text"],
+Cell[6581, 208, 225, 4, 102, "Input"],
+Cell[6809, 214, 233, 4, 113, "Text"]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
+</PRE></BODY></HTML>

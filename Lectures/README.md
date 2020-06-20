@@ -23,7 +23,7 @@
 <li><a href="#course22">Photonic Materials and Devices</a></li>
 <li><a href="#course23">Welding and Joining Processes</a></li>
 <li><a href="#course24">Magnetic Materials</a></li>
-<li><a href="#course25">An Introduction to Intelligent Transportation Systems</a></li>
+<li><a href="#course25">Fracture and Fatigue</a></li>
 <li><a href="#course26">Logistical and Transportation Planning Methods</a></li>
 <li><a href="#course27">Masters of Engineering Concepts of Engineering Practice</a></li>
 <li><a href="#course28">Foundations of Software Engineering</a></li>
@@ -3267,3 +3267,52 @@
 <p>2002 with solution (<a href="6/sample_exam_2002.pdf">PDF</a>)</p>
 
 </br>
+<h2 id="course25">Fracture and Fatigue</h2>
+
+<p>Guest Lecture Notes: Prof. Parks (<a href="7/prof_parks.pdf">PDF</a>) Courtesy of Professor David Parks; Used with Permission.</p>
+<p>NLEFM: Prof. Suresh (<a href="7/nlefm.pdf">PDF</a>)</p>
+<p>Total Life Approach: Tim Hanlon (<a href="7/total_life.pdf">PDF - 2.2 MB</a>) Courtesy of Timothy Hanlon; Used with Permission.</p>
+<p>Fatigue Crack Growth: Prof. Suresh (<a href="7/fatigue_crack_growth.pdf">PDF - 2.1 MB</a>)</p>
+</br>
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Problem Set 1 (<a href="7/ps1.pdf">PDF</a>)</td>
+<td>(<a href="7/ps1_soln.pdf">PDF - 1.26 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 2 (<a href="7/ps2.pdf">PDF</a>)</td>
+<td>(<a href="7/ps2_soln.pdf">PDF - 2.7 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 3 (<a href="7/ps3.pdf">PDF</a>)</td>
+<td>(<a href="7/ps3_soln.pdf">PDF - 1.7 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 4 (<a href="7/ps4.pdf">PDF - 1.6 MB</a>)</td>
+<td>(<a href="7/ps4_soln.pdf">PDF - 1.8 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 5 (<a href="7/ps5.pdf">PDF</a>)</td>
+<td>(<a href="7/ps5_soln.pdf">PDF - 1.7 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 6 (<a href="7/ps_6.pdf">PDF</a>)<br /><br />Cotterell and Rice (1980)<br />Suresh and Shih (1986)</td>
+<td>(<a href="7/ps6_soln.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 7 (<a href="7/ps7.pdf">PDF</a>)</td>
+<td>(<a href="7/ps7_soln.pdf">PDF - 1.8 MB</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+
+

@@ -5,7 +5,7 @@
 <li><a href="#course4">Mathematics for Materials Scientists and Engineers</a></li>
 <li><a href="#course5">Materials Laboratory</a></li>
 <li><a href="#course6">Fundamentals of Materials Science</a></li>
-<li><a href="#course7">Transport Processes in the Environment</a></li>
+<li><a href="#course7">Electronic, Optical and Magnetic Properties of Materials</a></li>
 <li><a href="#course8">Engineering Mechanics II</a></li>
 <li><a href="#course9">Mechanics and Design of Concrete Structures</a></li>
 <li><a href="#course10">Structural Engineering Design</a></li>
@@ -1158,4 +1158,127 @@
 </tbody>
 </table>
 </br>
+<h2 id="course7">Electronic, Optical and Magnetic Properties of Materials</h2>
 
+
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+<th scope="col">LECTURE&nbsp;NOTES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>
+<p>Introduction and course overview</p>
+<p>The Hamiltonian approach to classical mechanics: Analysis of a simple oscillator</p>
+</td>
+<td>
+<p><a href="1/MIT3_024S13_2012lec1Intro.pdf">Intro (PDF - 1.5MB)</a></p>
+<p><a href="1/MIT3_024S13_2012lec1.pdf">Lecture 1 (PDF)</a></p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>The Hamiltonian approach to classical mechanics: Analysis of vibrations in one-dimensional lattice</td>
+<td><a href="1/MIT3_024S13_2012lec2.pdf">Lecture 2 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>The Hamiltonian analysis of lattice vibrations: Phononic bandgap</td>
+<td><a href="1/MIT3_024S13_2012lec3.pdf">Lecture 3 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Introduction to quantum mechanical way of thinking</td>
+<td><a href="1/MIT3_024S13_2012lec4.pdf">Lecture 4 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Quantum mechanical systems and measurements: Observables</td>
+<td><a href="1/MIT3_024S13_2012lec5.pdf">Lecture 5 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Quantum mechanical systems and measurements: Spectral decomposition</td>
+<td><a href="1/MIT3_024S13_2012lec6.pdf">Lecture 6 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Quantum mechanical measurements: Symmetries, conserved quantities, and the labeling of states</td>
+<td><a href="1/MIT3_024S13_2012lec7.pdf">Lecture 7 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Symmetries, conserved quantities, and the labeling of states: Angular momentum</td>
+<td><a href="1/MIT3_024S13_2012lec8.pdf">Lecture 8 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>The hydrogen atom</td>
+<td><a href="1/MIT3_024S13_2012lec9.pdf">Lecture 9 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Waves in periodic potentials: Part I</td>
+<td><a href="1/MIT3_024S13_2012lec10.pdf">Lecture 10 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Waves in periodic potentials: Part II</td>
+<td><a href="1/MIT3_024S13_2012lec11.pdf">Lecture 11 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Band gap</td>
+<td><a href="1/MIT3_024S13_2012lec12.pdf">Lecture 12 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Band diagrams</td>
+<td><a href="1/MIT3_024S13_2012lec13.pdf">Lecture 13 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>The free electron gas: Density of states</td>
+<td><a href="1/MIT3_024S13_2012lec14.pdf">Lecture 14 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Fermi-Dirac distribution</td>
+<td><a href="1/MIT3_024S13_2012lec15.pdf">Lecture 15 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Carriers in intrinsic semiconductors</td>
+<td><a href="1/MIT3_024S13_2012lec16.pdf">Lecture 16 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Engineering conductivity through doping</td>
+<td><a href="1/MIT3_024S13_2012lec17.pdf">Lecture 17 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>The P-N junction (the diode)</td>
+<td><a href="1/MIT3_024S13_2012lec18.pdf"><span class="nobr">Lecture 18 (PDF - 1.8MB)</span></a></td>
+</tr>
+<tr class="row">
+<td>Light emitting diodes</td>
+<td><a href="1/MIT3_024S13_2012lec19-20.pdf"><span class="nobr">Lecture 19-20 (PDF)</span></a></td>
+</tr>
+<tr class="alt-row">
+<td>Reminder / introduction to wave optics</td>
+<td><a href="1/MIT3_024S13_2012lec21.pdf">Lecture 21 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Electromagnetic waves</td>
+<td><a href="1/MIT3_024S13_2012lec22.pdf">Lecture 22 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Layered materials and photonic band diagrams</td>
+<td><a href="1/MIT3_024S13_2012lec23.pdf">Lecture 23 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Origins of magnetization</td>
+<td><a href="1/MIT3_024S13_2012lec24.pdf">Lecture 24 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Hysteresis in ferromagnetic materials</td>
+<td><a href="1/MIT3_024S13_2012lec25.pdf">Lecture 25 (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Magnetic domains</td>
+<td><a href="1/MIT3_024S13_2012lec26.pdf">Lecture 26 (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Course summary and review for final exam</td>
+<td><a href="1/MIT3_024S13_2012lec27.pdf">Lecture 27 (PDF)</a></td>
+</tr>
+</tbody>
+</table>
+</br>

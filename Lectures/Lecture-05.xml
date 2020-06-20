@@ -1,0 +1,9241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 05 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2005
+ </title>
+ <link href="HTMLFiles/Lecture-05.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ Graphics and Plotting
+</p>
+
+
+
+<p class="Text">
+ Mathematica has a large number of built-in graphics programs for plotting and exploring mathematics graphically and for plotting and visualizing data.&nbsp;&nbsp;Graphs and plots are effective ways of conveying complex information.&nbsp;&nbsp;It is important to learn how to create and manipulate plots and graphics.&nbsp;&nbsp;Mathematica is very rich in its graphical functions&mdash;we will explore just a small subset of all its capabilities.&nbsp;&nbsp;We can get an idea of how many plotting routines are available byusing a wildcard:
+</p>
+
+
+
+<p class="CellLabel">
+ In[116]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>?</mo>
+  <mtext>*Plot*</mtext>
+ </mrow>
+</math>
+</p>
+
+<table class='Print' style='background-color: #F6EDD6;margin-left: 20px;'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>System`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ArrayPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListContourPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ParametricPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>Plot3Matrix</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotLabel</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotRegion</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ContourPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListDensityPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>MaxPlotPoints</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>Plot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotDivision</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotPoints</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotStyle</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>DensityPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ParametricPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>Plot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotJoined</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotRange</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Global`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>GammaPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`Animation`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>MovieContourPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>MovieDensityPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>MovieParametricPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>MoviePlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>MoviePlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`ContourPlot3D`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ContourPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListContourPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`FilledPlot`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>FilledListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>FilledPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListFilledPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`Graphics`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ErrorListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>LinearLogListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListAndCurvePlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>LogLinearPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>LogLogListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>LogPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PolarPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ScaledPlot</mi>
+ </maction>
+</math></span></td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>LabeledListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>LinearLogPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>LogLinearListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>LogListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>LogLogPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PolarListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ScaledListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>TextListPlot</mi>
+ </maction>
+</math></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`Graphics3D`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListShadowPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListSurfacePlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ScatterPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ShadowPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`ImplicitPlot`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ImplicitPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`InequalityGraphics`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ComplexInequalityPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>InequalityPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>InequalityPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`Legend`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotLegend</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`MultipleListPlot`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>MultipleListPlot</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotSymbol</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`ParametricPlot3D`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>CylindricalPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PointParametricPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>SphericalPlot3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`PlotField`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListPlotVectorField</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotGradientField</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotHamiltonianField</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotPolyaField</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotVectorField</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><span style='font-size: 12px;font-family: Helvetica;font-weight: bold;'>Graphics`PlotField3D`</span></span></td>
+ </tr>
+ <tr>
+  <td><table class='PrintInline'>
+ <tr>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>ListPlotVectorField3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotGradientField3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'><math xmlns='http://www.w3.org/1998/Math/MathML'
+    mathematica:form='StandardForm'
+    xmlns:mathematica='http://www.wolfram.com/XML/'>
+ <maction actiontype='highlight'>
+  <mi>PlotVectorField3D</mi>
+ </maction>
+</math></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+  <td><span class='PrintInline' style='background-color: #F6EDD6;'></span></td>
+ </tr>
+</table>
+
+</td>
+ </tr>
+</table>
+
+<p class="Text">
+ This is much less than are available in the standard packages; these will be discussed later, but here's what becomes available after loading the Graphics Packages:
+</p>
+
+
+
+<p class="CellLabel">
+ In[117]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_graphics_package"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Graphics`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <a id="mmtag_05_init.m__example_of_using_to_change_default_graphics"></a>
+ While Mathematica has a large number of plotting routines, no one program does everything we need.&nbsp;&nbsp;It can be useful to export numbers and graphics from Mathematica and operate on them individually or with other specialized programs.&nbsp;&nbsp;The number of different creative graphical solutions available grows geometrically with the number of different graphical tools that are mastered.<br />Here, we will just produce a number of examples of plots and graphics... (Note, I use a file &quot;init.m&quot; to set some options.&nbsp;&nbsp;Your plots may look different from what we see in lecture. If you want to use my init.m you can download it from <span class="TextInline"><a href="http://pruffle.mit.edu/3.016/init.m"><span class="HyperlinkInline">here</span></a></span>. Where to locate your init.m file depends on the operating system you are using, check out init.m in the Master Index in the Help Browser.
+</p>
+
+
+
+<p class="Section">
+ Two-Dimensional Graphics
+</p>
+
+
+
+<p class="Subsection">
+ Plot, ParametricPlot, LogPlot, etc
+</p>
+
+
+
+<p class="CellLabel">
+ In[119]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_plot__examples_with_options"></a>
+ <a id="mmtag_05_Plotxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>/</mo>
+    <mi>x</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>5</mn>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mn>5</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_1.gif" alt="[Graphics:HTMLFiles/Lecture-05_1.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[119]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[120]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Options</mi>
+  <mo>[</mo>
+  <mi>Plot</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[120]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mfrac>
+     <mn>1</mn>
+     <mi>GoldenRatio</mi>
+    </mfrac>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Axes</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mi>None</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesOrigin</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>Thickness</mi>
+      <mo>[</mo>
+      <mn>0.01</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Background</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ColorOutput</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Compiled</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>DefaultColor</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>DefaultFont</mi>
+    <mo>&RuleDelayed;</mo>
+    <mi>$DefaultFont</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>DisplayFunction</mi>
+    <mo>&RuleDelayed;</mo>
+    <mi>$DisplayFunction</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Epilog</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>FormatType</mi>
+    <mo>&RuleDelayed;</mo>
+    <mi>$FormatType</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Frame</mi>
+    <mo>&rightarrow;</mo>
+    <mi>False</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>FrameLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mi>None</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>FrameStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>FrameTicks</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>GridLines</mi>
+    <mo>&rightarrow;</mo>
+    <mi>None</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ImageSize</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>MaxBend</mi>
+    <mo>&rightarrow;</mo>
+    <mn>10.</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotDivision</mi>
+    <mo>&rightarrow;</mo>
+    <mn>30.</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mi>None</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotPoints</mi>
+    <mo>&rightarrow;</mo>
+    <mn>25</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRegion</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mi>Thickness</mi>
+        <mo>[</mo>
+        <mn>0.0075</mn>
+        <mo>]</mo>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>PointSize</mi>
+        <mo>[</mo>
+        <mn>0.01</mn>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Prolog</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>RotateLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>TextStyle</mi>
+    <mo>&RuleDelayed;</mo>
+    <mi>$TextStyle</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Ticks</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Automatic</mi>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[121]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>/</mo>
+    <mi>x</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>5</mn>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mn>5</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>0.25</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>1.25</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_2.gif" alt="[Graphics:HTMLFiles/Lecture-05_2.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[121]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[122]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_labels_on_plots"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>/</mo>
+    <mi>x</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>5</mn>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mn>5</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>0.25</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>1.25</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <ms>x</ms>
+      <mo>,</mo>
+      <semantics>
+       <mrow>
+        <mfrac>
+         <mrow>
+          <ms>Sin</ms>
+          <mrow>
+           <ms>(</ms>
+           <ms>x</ms>
+           <ms>)</ms>
+          </mrow>
+         </mrow>
+         <ms>x</ms>
+        </mfrac>
+       </mrow>
+       <annotation encoding='Mathematica'>&quot;\&quot;\!\(\(Sin \((x)\)\)\/x\)\&quot;&quot;</annotation>
+      </semantics>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_3.gif" alt="[Graphics:HTMLFiles/Lecture-05_3.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[122]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[123]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>/</mo>
+      <mi>x</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mi>Tan</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>/</mo>
+      <mi>x</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>5</mn>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mn>5</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>0.25</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>1.25</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_4.gif" alt="[Graphics:HTMLFiles/Lecture-05_4.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[123]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[124]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>/</mo>
+      <mi>x</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mi>Tan</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>/</mo>
+      <mi>x</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>5</mn>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mn>5</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>0.25</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>1.25</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mtext>&#62371;</mtext>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.01</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.005</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mrow>
+          <mn>2</mn>
+          <mo>/</mo>
+          <mn>3</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_5.gif" alt="[Graphics:HTMLFiles/Lecture-05_5.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[124]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ ParametricPlot produces a 2-D graph as a function of a single parameter, e.g. <span style='font-style: italic;'>t</span>. The cartesian coordinates, e.g. <span style='font-style: italic;'>x</span> and <span style='font-style: italic;'>y</span>, are specified as functions <span style='font-style: italic;'>x</span>(<span style='font-style: italic;'>t</span>) and <span style='font-style: italic;'>y</span>(<span style='font-style: italic;'>t</span>). Thus, a continuous variation of the single parameter <span style='font-style: italic;'>t</span> will trace out a trajectory in the <span style='font-style: italic;'>x-y&circ;plane.</span>
+</p>
+
+
+
+<p class="CellLabel">
+ In[125]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_parametric_plots"></a>
+ <a id="mmtag_05_plots__2Dxparametric_example"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>?</mo>
+  <mi>ParametricPlot</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <a id="Info3335784960-7107419"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mtext>ParametricPlot[{fx, fy}, {u, umin, umax}] produces a parametric plot of a curve with x and y coordinates fx and fy generated as a function of u. ParametricPlot[{{fx, fy}, {gx, gy}, ... }, {u, umin, umax}] plots several parametric curves.</mtext>
+  <mtext> </mtext>
+  <maction actiontype='highlight'>
+   <mi>More&hellip;</mi>
+  </maction>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[126]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>LuckyClover</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>t_</mtext>
+    <mtext>  </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>n_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mn>1</mn>
+     <mo>/</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mi>n</mi>
+       <mo>+</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mrow>
+          <mo>(</mo>
+          <mrow>
+           <mi>n</mi>
+           <mo>+</mo>
+           <mn>1</mn>
+          </mrow>
+          <mo>)</mo>
+         </mrow>
+         <mo>&InvisibleTimes;</mo>
+         <mi>t</mi>
+        </mrow>
+        <mtext> </mtext>
+        <mo>-</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>Pi</mi>
+         <mo>/</mo>
+         <mn>4</mn>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mtext> </mtext>
+      <mo>-</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <mi>n</mi>
+         <mo>+</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>t</mi>
+         <mtext> </mtext>
+         <mo>-</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mi>Pi</mi>
+          <mo>/</mo>
+          <mn>4</mn>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mrow>
+          <mo>(</mo>
+          <mrow>
+           <mi>n</mi>
+           <mo>+</mo>
+           <mn>1</mn>
+          </mrow>
+          <mo>)</mo>
+         </mrow>
+         <mo>&InvisibleTimes;</mo>
+         <mi>t</mi>
+        </mrow>
+        <mtext> </mtext>
+        <mo>-</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>Pi</mi>
+         <mo>/</mo>
+         <mn>4</mn>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mtext> </mtext>
+      <mo>-</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <mi>n</mi>
+         <mo>+</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>t</mi>
+         <mtext> </mtext>
+         <mo>-</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mi>Pi</mi>
+          <mo>/</mo>
+          <mn>4</mn>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[127]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_ParametricPlotxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ParametricPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>LuckyClover</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>4</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_6.gif" alt="[Graphics:HTMLFiles/Lecture-05_6.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[127]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[128]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_plots__2Dxparametric_example_of_superposed"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ParametricPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>LuckyClover</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>4</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_7.gif" alt="[Graphics:HTMLFiles/Lecture-05_7.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[128]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ The next statement attempts to use the Table function to produce a list of six LuckyClover functions and then make one parametric plot of all of them.
+</p>
+
+
+
+<p class="CellLabel">
+ In[129]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ParametricPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>LuckyClover</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>t</mi>
+       <mo>,</mo>
+       <mi>i</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mn>2</mn>
+       <mo>,</mo>
+       <mn>7</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ParametricPlot</mi>
+   <mtext>::</mtext>
+   <mi>pptr</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>LuckyClover</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>t</mi>
+        <mo>,</mo>
+        <mi>i</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mn>2</mn>
+        <mo>,</mo>
+        <mn>7</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mtext> does not evaluate to a pair of real numbers at </mtext>
+    <mi>t</mi>
+    <mtext> = </mtext>
+    <mrow>
+     <mn>2.617993877991494</mn>
+     <mo>&times;</mo>
+     <msup>
+      <mn>10</mn>
+      <mrow>
+       <mo>-</mo>
+       <mn>7</mn>
+      </mrow>
+     </msup>
+    </mrow>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;\\!\\(Table[\\(\\(\\(\\(LuckyClover[\\(\\(t, i\\)\\)]\\)\\), \\(\\({i, 2, 7}\\)\\)\\)\\)]\\) does not evaluate to a pair of real numbers at \\!\\(t\\) = \\!\\(2.617993877991494`*^-7\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;ParametricPlot::pptr\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ParametricPlot</mi>
+   <mtext>::</mtext>
+   <mi>pptr</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>LuckyClover</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>t</mi>
+        <mo>,</mo>
+        <mi>i</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mn>2</mn>
+        <mo>,</mo>
+        <mn>7</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mtext> does not evaluate to a pair of real numbers at </mtext>
+    <mi>t</mi>
+    <mtext> = </mtext>
+    <mn>0.25488992540742256</mn>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;\\!\\(Table[\\(\\(\\(\\(LuckyClover[\\(\\(t, i\\)\\)]\\)\\), \\(\\({i, 2, 7}\\)\\)\\)\\)]\\) does not evaluate to a pair of real numbers at \\!\\(t\\) = \\!\\(0.25488992540742256`\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;ParametricPlot::pptr\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ParametricPlot</mi>
+   <mtext>::</mtext>
+   <mi>pptr</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>LuckyClover</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>t</mi>
+        <mo>,</mo>
+        <mi>i</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mn>2</mn>
+        <mo>,</mo>
+        <mn>7</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mtext> does not evaluate to a pair of real numbers at </mtext>
+    <mi>t</mi>
+    <mtext> = </mtext>
+    <mn>0.5328694051959509</mn>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;\\!\\(Table[\\(\\(\\(\\(LuckyClover[\\(\\(t, i\\)\\)]\\)\\), \\(\\({i, 2, 7}\\)\\)\\)\\)]\\) does not evaluate to a pair of real numbers at \\!\\(t\\) = \\!\\(0.5328694051959509`\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;ParametricPlot::pptr\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>stop</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Further output of </mtext>
+    <mrow>
+     <mi>ParametricPlot</mi>
+     <mtext>::</mtext>
+     <ms>pptr</ms>
+    </mrow>
+    <mtext> will be suppressed during this calculation. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Further output of \\!\\(ParametricPlot :: \\\&quot;pptr\\\&quot;\\) will be suppressed during this calculation. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::stop\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_8.gif" alt="[Graphics:HTMLFiles/Lecture-05_8.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[129]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <a id="mmtag_05_Evaluatexx_and_Plotxx"></a>
+ <a id="mmtag_05_plot_does_not_appear__Evaluatexx"></a>
+ It is necessary to use the Evaluate command to get this to work.
+</p>
+
+
+
+<p class="CellLabel">
+ In[130]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>?</mo>
+  <mi>Evaluate</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <a id="Info3335784961-4475676"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mtext>Evaluate[expr] causes expr to be evaluated even if it appears as the argument of a function whose attributes specify that it should be held unevaluated.</mtext>
+  <mtext> </mtext>
+  <maction actiontype='highlight'>
+   <mi>More&hellip;</mi>
+  </maction>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[131]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ParametricPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>LuckyClover</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>t</mi>
+        <mo>,</mo>
+        <mi>i</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mn>2</mn>
+        <mo>,</mo>
+        <mn>7</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_9.gif" alt="[Graphics:HTMLFiles/Lecture-05_9.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[131]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[132]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_colors__examples_in_plotting"></a>
+ <a id="mmtag_05_Huexx__use_in_graphics"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ParametricPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>LuckyClover</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>t</mi>
+        <mo>,</mo>
+        <mi>i</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mn>2</mn>
+        <mo>,</mo>
+        <mn>7</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.005</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mrow>
+          <mrow>
+           <mo>(</mo>
+           <mrow>
+            <mn>2</mn>
+            <mo>/</mo>
+            <mn>3</mn>
+           </mrow>
+           <mo>)</mo>
+          </mrow>
+          <mo>*</mo>
+          <mrow>
+           <mrow>
+            <mo>(</mo>
+            <mrow>
+             <mi>i</mi>
+             <mo>-</mo>
+             <mn>2</mn>
+            </mrow>
+            <mo>)</mo>
+           </mrow>
+           <mo>/</mo>
+           <mn>5</mn>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mn>2</mn>
+        <mo>,</mo>
+        <mn>7</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_10.gif" alt="[Graphics:HTMLFiles/Lecture-05_10.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[132]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[133]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_Packages__PhysicalConstants"></a>
+ <a id="mmtag_05_physical_constants_package"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Miscellaneous`PhysicalConstants`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[134]:=
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-05_11.gif" alt="BoltzmannConstant"  width="160" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-05_12.gif" alt="ElectronCharge"  width="129" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-05_13.gif" alt="SpeedOfLight"  width="111" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[134]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mrow>
+   <mrow>
+    <mn>1.3806503</mn>
+    <mo>&times;</mo>
+    <msup>
+     <mn>10</mn>
+     <mrow>
+      <mo>-</mo>
+      <mn>23</mn>
+     </mrow>
+    </msup>
+   </mrow>
+   <mtext> </mtext>
+   <mi>Joule</mi>
+  </mrow>
+  <mi>Kelvin</mi>
+ </mfrac>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[135]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mn>1.602176462</mn>
+   <mo>&times;</mo>
+   <msup>
+    <mn>10</mn>
+    <mrow>
+     <mo>-</mo>
+     <mn>19</mn>
+    </mrow>
+   </msup>
+  </mrow>
+  <mtext> </mtext>
+  <mi>Coulomb</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[136]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mrow>
+   <mn>299792458</mn>
+   <mo>&InvisibleTimes;</mo>
+   <mi>Meter</mi>
+  </mrow>
+  <mi>Second</mi>
+ </mfrac>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[137]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Kelvin</mi>
+   <mo>[</mo>
+   <mtext>TempCelcius_</mtext>
+   <mtext> </mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mn>273.15</mn>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mi>TempCelcius</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[138]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_Arrhenius_function"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Arrhenius</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>EnergyEV_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>TempCelcius_</mtext>
+   </mrow>
+   <mtext> </mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Exp</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mi>EnergyEV</mi>
+       <mo>*</mo>
+       <mi>Joule</mi>
+       <mo>*</mo>
+       <mi>ElectronCharge</mi>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mo>/</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mi>Kelvin</mi>
+       <mo>[</mo>
+       <mi>TempCelcius</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>*</mo>
+      <mi>BoltzmannConstant</mi>
+      <mo>*</mo>
+      <mi>Kelvin</mi>
+      <mo>*</mo>
+      <mi>Coulomb</mi>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[139]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Arrhenius</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>e</mi>
+   <mo>,</mo>
+   <mi>t</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[139]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <mi>&ExponentialE;</mi>
+  <mrow>
+   <mo>-</mo>
+   <mfrac>
+    <mrow>
+     <mn>11604.505949116876</mn>
+     <mtext> </mtext>
+     <mi>e</mi>
+    </mrow>
+    <mrow>
+     <mrow>
+      <mn>273.15</mn>
+      <mtext>&ZeroWidthSpace;</mtext>
+     </mrow>
+     <mo>+</mo>
+     <mi>t</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+ </msup>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[140]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_Arrhenius_plot_example"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ParametricPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mn>1</mn>
+      <mo>/</mo>
+      <mrow>
+       <mi>Kelvin</mi>
+       <mo>[</mo>
+       <mi>T</mi>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>Log</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Arrhenius</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>1.</mn>
+        <mo>,</mo>
+        <mi>T</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>T</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>1000</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_14.gif" alt="[Graphics:HTMLFiles/Lecture-05_14.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[140]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[141]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>arrhenplot</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>ParametricPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Evaluate</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>Table</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mn>1</mn>
+          <mo>/</mo>
+          <mrow>
+           <mi>Kelvin</mi>
+           <mo>[</mo>
+           <mi>T</mi>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Log</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>Arrhenius</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>ev</mi>
+            <mo>,</mo>
+            <mi>T</mi>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mi>ev</mi>
+         <mo>,</mo>
+         <mn>1</mn>
+         <mo>,</mo>
+         <mn>5</mn>
+         <mo>,</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>T</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>200</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>1000</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>PlotStyle</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mi>Table</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mi>Thickness</mi>
+          <mo>[</mo>
+          <mn>0.005</mn>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Hue</mi>
+          <mo>[</mo>
+          <mrow>
+           <mrow>
+            <mo>(</mo>
+            <mrow>
+             <mn>2</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+            <mo>)</mo>
+           </mrow>
+           <mo>*</mo>
+           <mrow>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>5</mn>
+              <mo>-</mo>
+              <mi>i</mi>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mo>/</mo>
+            <mn>4</mn>
+           </mrow>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mi>i</mi>
+         <mo>,</mo>
+         <mn>1</mn>
+         <mo>,</mo>
+         <mn>5</mn>
+         <mo>,</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_15.gif" alt="[Graphics:HTMLFiles/Lecture-05_15.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[141]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[142]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>arrhenplot</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>Ticks</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>Table</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mrow>
+           <mn>1</mn>
+           <mo>/</mo>
+           <mrow>
+            <mi>Kelvin</mi>
+            <mo>[</mo>
+            <mi>T</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mi>StringJoin</mi>
+           <mo>[</mo>
+           <mrow>
+            <ms>1/</ms>
+            <mo>,</mo>
+            <mrow>
+             <mi>ToString</mi>
+             <mo>[</mo>
+             <mi>T</mi>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mi>T</mi>
+          <mo>,</mo>
+          <mrow>
+           <mo>-</mo>
+           <mn>200</mn>
+          </mrow>
+          <mo>,</mo>
+          <mn>500</mn>
+          <mo>,</mo>
+          <mn>100</mn>
+         </mrow>
+         <mtext>&#62371;</mtext>
+         <mo>}</mo>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mi>Automatic</mi>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_16.gif" alt="[Graphics:HTMLFiles/Lecture-05_16.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[142]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[143]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>BankAccount</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>InitialInvestment_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>AnnualInterest_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>NYears_</mtext>
+   </mrow>
+   <mtext> </mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>InitialInvestment</mi>
+   <mo>*</mo>
+   <mrow>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mn>1</mn>
+      <mtext> </mtext>
+      <mo>+</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>AnnualInterest</mi>
+       <mo>/</mo>
+       <mn>100</mn>
+      </mrow>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+    <mo>^</mo>
+    <mi>NYears</mi>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[144]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>BankAccount</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>100</mn>
+     <mo>,</mo>
+     <mn>8.5</mn>
+     <mo>,</mo>
+     <mi>t</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>50</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_17.gif" alt="[Graphics:HTMLFiles/Lecture-05_17.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[144]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[145]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Graphics`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[146]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_LogPlotxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>LogPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>BankAccount</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>100</mn>
+     <mo>,</mo>
+     <mn>8.5</mn>
+     <mo>,</mo>
+     <mi>t</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>50</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_18.gif" alt="[Graphics:HTMLFiles/Lecture-05_18.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[146]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Section">
+ Plotting Data
+</p>
+
+
+
+<p class="Subsection">
+ ListPlot, PieChart, Histogram, Barchart, etc
+</p>
+
+
+
+<p class="CellLabel">
+ In[147]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_Packages__ChemicalElements"></a>
+ <a id="mmtag_05_chemical_elements_package"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Miscellaneous`ChemicalElements`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[148]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Elements</mi>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[148]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <list>
+    <mi>Hydrogen</mi>
+   </list>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[149]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>e190</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Elements</mi>
+   <mo>[</mo>
+   <mrow>
+    <mo>[</mo>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>90</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[149]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mi>Hydrogen</mi>
+   <mo>,</mo>
+   <mi>Helium</mi>
+   <mo>,</mo>
+   <mi>Lithium</mi>
+   <mo>,</mo>
+   <mi>Beryllium</mi>
+   <mo>,</mo>
+   <mi>Boron</mi>
+   <mo>,</mo>
+   <mi>Carbon</mi>
+   <mo>,</mo>
+   <mi>Nitrogen</mi>
+   <mo>,</mo>
+   <mi>Oxygen</mi>
+   <mo>,</mo>
+   <mi>Fluorine</mi>
+   <mo>,</mo>
+   <mi>Neon</mi>
+   <mo>,</mo>
+   <mi>Sodium</mi>
+   <mo>,</mo>
+   <mi>Magnesium</mi>
+   <mo>,</mo>
+   <mi>Aluminium</mi>
+   <mo>,</mo>
+   <mi>Silicon</mi>
+   <mo>,</mo>
+   <mi>Phosphorus</mi>
+   <mo>,</mo>
+   <mi>Sulfur</mi>
+   <mo>,</mo>
+   <mi>Chlorine</mi>
+   <mo>,</mo>
+   <mi>Argon</mi>
+   <mo>,</mo>
+   <mi>Potassium</mi>
+   <mo>,</mo>
+   <mi>Calcium</mi>
+   <mo>,</mo>
+   <mi>Scandium</mi>
+   <mo>,</mo>
+   <mi>Titanium</mi>
+   <mo>,</mo>
+   <mi>Vanadium</mi>
+   <mo>,</mo>
+   <mi>Chromium</mi>
+   <mo>,</mo>
+   <mi>Manganese</mi>
+   <mo>,</mo>
+   <mi>Iron</mi>
+   <mo>,</mo>
+   <mi>Cobalt</mi>
+   <mo>,</mo>
+   <mi>Nickel</mi>
+   <mo>,</mo>
+   <mi>Copper</mi>
+   <mo>,</mo>
+   <mi>Zinc</mi>
+   <mo>,</mo>
+   <mi>Gallium</mi>
+   <mo>,</mo>
+   <mi>Germanium</mi>
+   <mo>,</mo>
+   <mi>Arsenic</mi>
+   <mo>,</mo>
+   <mi>Selenium</mi>
+   <mo>,</mo>
+   <mi>Bromine</mi>
+   <mo>,</mo>
+   <mi>Krypton</mi>
+   <mo>,</mo>
+   <mi>Rubidium</mi>
+   <mo>,</mo>
+   <mi>Strontium</mi>
+   <mo>,</mo>
+   <mi>Yttrium</mi>
+   <mo>,</mo>
+   <mi>Zirconium</mi>
+   <mo>,</mo>
+   <mi>Niobium</mi>
+   <mo>,</mo>
+   <mi>Molybdenum</mi>
+   <mo>,</mo>
+   <mi>Technetium</mi>
+   <mo>,</mo>
+   <mi>Ruthenium</mi>
+   <mo>,</mo>
+   <mi>Rhodium</mi>
+   <mo>,</mo>
+   <mi>Palladium</mi>
+   <mo>,</mo>
+   <mi>Silver</mi>
+   <mo>,</mo>
+   <mi>Cadmium</mi>
+   <mo>,</mo>
+   <mi>Indium</mi>
+   <mo>,</mo>
+   <mi>Tin</mi>
+   <mo>,</mo>
+   <mi>Antimony</mi>
+   <mo>,</mo>
+   <mi>Tellurium</mi>
+   <mo>,</mo>
+   <mi>Iodine</mi>
+   <mo>,</mo>
+   <mi>Xenon</mi>
+   <mo>,</mo>
+   <mi>Caesium</mi>
+   <mo>,</mo>
+   <mi>Barium</mi>
+   <mo>,</mo>
+   <mi>Lanthanum</mi>
+   <mo>,</mo>
+   <mi>Cerium</mi>
+   <mo>,</mo>
+   <mi>Praseodymium</mi>
+   <mo>,</mo>
+   <mi>Neodymium</mi>
+   <mo>,</mo>
+   <mi>Promethium</mi>
+   <mo>,</mo>
+   <mi>Samarium</mi>
+   <mo>,</mo>
+   <mi>Europium</mi>
+   <mo>,</mo>
+   <mi>Gadolinium</mi>
+   <mo>,</mo>
+   <mi>Terbium</mi>
+   <mo>,</mo>
+   <mi>Dysprosium</mi>
+   <mo>,</mo>
+   <mi>Holmium</mi>
+   <mo>,</mo>
+   <mi>Erbium</mi>
+   <mo>,</mo>
+   <mi>Thulium</mi>
+   <mo>,</mo>
+   <mi>Ytterbium</mi>
+   <mo>,</mo>
+   <mi>Lutetium</mi>
+   <mo>,</mo>
+   <mi>Hafnium</mi>
+   <mo>,</mo>
+   <mi>Tantalum</mi>
+   <mo>,</mo>
+   <mi>Tungsten</mi>
+   <mo>,</mo>
+   <mi>Rhenium</mi>
+   <mo>,</mo>
+   <mi>Osmium</mi>
+   <mo>,</mo>
+   <mi>Iridium</mi>
+   <mo>,</mo>
+   <mi>Platinum</mi>
+   <mo>,</mo>
+   <mi>Gold</mi>
+   <mo>,</mo>
+   <mi>Mercury</mi>
+   <mo>,</mo>
+   <mi>Thallium</mi>
+   <mo>,</mo>
+   <mi>Lead</mi>
+   <mo>,</mo>
+   <mi>Bismuth</mi>
+   <mo>,</mo>
+   <mi>Polonium</mi>
+   <mo>,</mo>
+   <mi>Astatine</mi>
+   <mo>,</mo>
+   <mi>Radon</mi>
+   <mo>,</mo>
+   <mi>Francium</mi>
+   <mo>,</mo>
+   <mi>Radium</mi>
+   <mo>,</mo>
+   <mi>Actinium</mi>
+   <mo>,</mo>
+   <mi>Thorium</mi>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[150]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>mps</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>Map</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>MeltingPoint</mi>
+       <mo>[</mo>
+       <mtext>#</mtext>
+       <mo>]</mo>
+      </mrow>
+      <mo>&amp;</mo>
+     </mrow>
+     <mo>,</mo>
+     <mi>e190</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>/.</mo>
+   <mrow>
+    <mi>Kelvin</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>MeltingPoint</mi>
+   <mtext>::</mtext>
+   <mi>form</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Melting point is for the </mtext>
+    <ms>diamond</ms>
+    <mtext> form of </mtext>
+    <mi>Carbon</mi>
+    <mo>.</mo>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Melting point is for the \\!\\(\\\&quot;diamond\\\&quot;\\) form of \\!\\(Carbon\\).&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>MeltingPoint</mi>
+   <mtext>::</mtext>
+   <mi>form</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Melting point is for the </mtext>
+    <ms>P4</ms>
+    <mtext> form of </mtext>
+    <mi>Phosphorus</mi>
+    <mo>.</mo>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Melting point is for the \\!\\(\\\&quot;P4\\\&quot;\\) form of \\!\\(Phosphorus\\).&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>MeltingPoint</mi>
+   <mtext>::</mtext>
+   <mi>form</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Melting point is for the </mtext>
+    <ms>alpha</ms>
+    <mtext> form of </mtext>
+    <mi>Sulfur</mi>
+    <mo>.</mo>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Melting point is for the \\!\\(\\\&quot;alpha\\\&quot;\\) form of \\!\\(Sulfur\\).&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>stop</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Further output of </mtext>
+    <mrow>
+     <mi>MeltingPoint</mi>
+     <mtext>::</mtext>
+     <ms>form</ms>
+    </mrow>
+    <mtext> will be suppressed during this calculation. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Further output of \\!\\(MeltingPoint :: \\\&quot;form\\\&quot;\\) will be suppressed during this calculation. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::stop\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[150]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>14.01</mn>
+   <mo>,</mo>
+   <mn>0.95</mn>
+   <mo>,</mo>
+   <mn>453.69</mn>
+   <mo>,</mo>
+   <mn>1551.</mn>
+   <mo>,</mo>
+   <mn>2573.</mn>
+   <mo>,</mo>
+   <mn>3820.</mn>
+   <mo>,</mo>
+   <mn>63.29</mn>
+   <mo>,</mo>
+   <mn>54.8</mn>
+   <mo>,</mo>
+   <mn>53.53</mn>
+   <mo>,</mo>
+   <mn>24.48</mn>
+   <mo>,</mo>
+   <mn>370.96</mn>
+   <mo>,</mo>
+   <mn>922.</mn>
+   <mo>,</mo>
+   <mn>933.5</mn>
+   <mo>,</mo>
+   <mn>1683.</mn>
+   <mo>,</mo>
+   <mn>317.3</mn>
+   <mo>,</mo>
+   <mn>386.</mn>
+   <mo>,</mo>
+   <mn>172.2</mn>
+   <mo>,</mo>
+   <mn>83.8</mn>
+   <mo>,</mo>
+   <mn>336.8</mn>
+   <mo>,</mo>
+   <mn>1112.</mn>
+   <mo>,</mo>
+   <mn>1814.</mn>
+   <mo>,</mo>
+   <mn>1933.</mn>
+   <mo>,</mo>
+   <mn>2160.</mn>
+   <mo>,</mo>
+   <mn>2130.</mn>
+   <mo>,</mo>
+   <mn>1517.</mn>
+   <mo>,</mo>
+   <mn>1808.</mn>
+   <mo>,</mo>
+   <mn>1768.</mn>
+   <mo>,</mo>
+   <mn>1726.</mn>
+   <mo>,</mo>
+   <mn>1356.6</mn>
+   <mo>,</mo>
+   <mn>692.73</mn>
+   <mo>,</mo>
+   <mn>302.93</mn>
+   <mo>,</mo>
+   <mn>1210.6</mn>
+   <mo>,</mo>
+   <mn>83.78</mn>
+   <mo>,</mo>
+   <mn>490.</mn>
+   <mo>,</mo>
+   <mn>265.9</mn>
+   <mo>,</mo>
+   <mn>116.6</mn>
+   <mo>,</mo>
+   <mn>312.2</mn>
+   <mo>,</mo>
+   <mn>1042.</mn>
+   <mo>,</mo>
+   <mn>1795.</mn>
+   <mo>,</mo>
+   <mn>2125.</mn>
+   <mo>,</mo>
+   <mn>2741.</mn>
+   <mo>,</mo>
+   <mn>2890.</mn>
+   <mo>,</mo>
+   <mn>2445.</mn>
+   <mo>,</mo>
+   <mn>2583.</mn>
+   <mo>,</mo>
+   <mn>2239.</mn>
+   <mo>,</mo>
+   <mn>1825.</mn>
+   <mo>,</mo>
+   <mn>1235.08</mn>
+   <mo>,</mo>
+   <mn>594.1</mn>
+   <mo>,</mo>
+   <mn>429.32</mn>
+   <mo>,</mo>
+   <mn>505.118</mn>
+   <mo>,</mo>
+   <mn>903.89</mn>
+   <mo>,</mo>
+   <mn>722.7</mn>
+   <mo>,</mo>
+   <mn>386.7</mn>
+   <mo>,</mo>
+   <mn>161.3</mn>
+   <mo>,</mo>
+   <mn>301.55</mn>
+   <mo>,</mo>
+   <mn>1002.</mn>
+   <mo>,</mo>
+   <mn>1194.</mn>
+   <mo>,</mo>
+   <mn>1072.</mn>
+   <mo>,</mo>
+   <mn>1204.</mn>
+   <mo>,</mo>
+   <mn>1294.</mn>
+   <mo>,</mo>
+   <mn>1441.</mn>
+   <mo>,</mo>
+   <mn>1350.</mn>
+   <mo>,</mo>
+   <mn>1095.</mn>
+   <mo>,</mo>
+   <mn>1586.</mn>
+   <mo>,</mo>
+   <mn>1629.</mn>
+   <mo>,</mo>
+   <mn>1685.</mn>
+   <mo>,</mo>
+   <mn>1747.</mn>
+   <mo>,</mo>
+   <mn>1802.</mn>
+   <mo>,</mo>
+   <mn>1818.</mn>
+   <mo>,</mo>
+   <mn>1097.</mn>
+   <mo>,</mo>
+   <mn>1936.</mn>
+   <mo>,</mo>
+   <mn>2503.</mn>
+   <mo>,</mo>
+   <mn>3269.</mn>
+   <mo>,</mo>
+   <mn>3680.</mn>
+   <mo>,</mo>
+   <mn>3453.</mn>
+   <mo>,</mo>
+   <mn>3327.</mn>
+   <mo>,</mo>
+   <mn>2683.</mn>
+   <mo>,</mo>
+   <mn>2045.</mn>
+   <mo>,</mo>
+   <mn>1337.58</mn>
+   <mo>,</mo>
+   <mn>234.28</mn>
+   <mo>,</mo>
+   <mn>576.6</mn>
+   <mo>,</mo>
+   <mn>600.65</mn>
+   <mo>,</mo>
+   <mn>544.5</mn>
+   <mo>,</mo>
+   <mn>527.</mn>
+   <mo>,</mo>
+   <mn>575.</mn>
+   <mo>,</mo>
+   <mn>202.</mn>
+   <mo>,</mo>
+   <mn>300.</mn>
+   <mo>,</mo>
+   <mn>973.</mn>
+   <mo>,</mo>
+   <mn>1320.</mn>
+   <mo>,</mo>
+   <mn>2023.</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The next plot illustrates the variation of melting temperature as a function of atomic number&hellip;
+</p>
+
+
+
+<p class="CellLabel">
+ In[151]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mi>mps</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_19.gif" alt="[Graphics:HTMLFiles/Lecture-05_19.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[151]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[152]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>mps</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotJoined</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_20.gif" alt="[Graphics:HTMLFiles/Lecture-05_20.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[152]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[153]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_Mapxx_example"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Dens</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>Map</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>Density</mi>
+       <mo>[</mo>
+       <mtext>#</mtext>
+       <mo>]</mo>
+      </mrow>
+      <mo>&amp;</mo>
+     </mrow>
+     <mo>,</mo>
+     <mi>e190</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>/.</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>Kilogram</mi>
+      <mo>&rightarrow;</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>Meter</mi>
+      <mo>&rightarrow;</mo>
+      <mn>1</mn>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>temp</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Density is for </mtext>
+    <mi>Hydrogen</mi>
+    <mtext> at </mtext>
+    <mn>11</mn>
+    <mtext> Kelvin.</mtext>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Density is for \\!\\(Hydrogen\\) at \\!\\(11\\) Kelvin.&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>tempform</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Density is for the </mtext>
+    <ms>liquid</ms>
+    <mtext> form of </mtext>
+    <mi>Helium</mi>
+    <mtext> at </mtext>
+    <mn>4</mn>
+    <mtext> Kelvin.</mtext>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Density is for the \\!\\(\\\&quot;liquid\\\&quot;\\) form of \\!\\(Helium\\) at \\!\\(4\\) Kelvin.&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>form</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Density is for the </mtext>
+    <ms>diamond</ms>
+    <mtext> form of </mtext>
+    <mi>Carbon</mi>
+    <mo>.</mo>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Density is for the \\!\\(\\\&quot;diamond\\\&quot;\\) form of \\!\\(Carbon\\).&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>temp</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Density is for </mtext>
+    <mi>Nitrogen</mi>
+    <mtext> at </mtext>
+    <mn>21</mn>
+    <mtext> Kelvin.</mtext>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Density is for \\!\\(Nitrogen\\) at \\!\\(21\\) Kelvin.&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>temp</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Density is for </mtext>
+    <mi>Oxygen</mi>
+    <mtext> at </mtext>
+    <mn>55</mn>
+    <mtext> Kelvin.</mtext>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Density is for \\!\\(Oxygen\\) at \\!\\(55\\) Kelvin.&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>stop</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Further output of </mtext>
+    <mrow>
+     <mi>Density</mi>
+     <mtext>::</mtext>
+     <ms>temp</ms>
+    </mrow>
+    <mtext> will be suppressed during this calculation. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Further output of \\!\\(Density :: \\\&quot;temp\\\&quot;\\) will be suppressed during this calculation. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::stop\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>tempform</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Density is for the </mtext>
+    <ms>liquid</ms>
+    <mtext> form of </mtext>
+    <mi>Fluorine</mi>
+    <mtext> at </mtext>
+    <mn>85</mn>
+    <mtext> Kelvin.</mtext>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Density is for the \\!\\(\\\&quot;liquid\\\&quot;\\) form of \\!\\(Fluorine\\) at \\!\\(85\\) Kelvin.&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>form</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Density is for the </mtext>
+    <ms>P4</ms>
+    <mtext> form of </mtext>
+    <mi>Phosphorus</mi>
+    <mo>.</mo>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Density is for the \\!\\(\\\&quot;P4\\\&quot;\\) form of \\!\\(Phosphorus\\).&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>form</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Density is for the </mtext>
+    <ms>alpha</ms>
+    <mtext> form of </mtext>
+    <mi>Sulfur</mi>
+    <mo>.</mo>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Density is for the \\!\\(\\\&quot;alpha\\\&quot;\\) form of \\!\\(Sulfur\\).&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>stop</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Further output of </mtext>
+    <mrow>
+     <mi>Density</mi>
+     <mtext>::</mtext>
+     <ms>form</ms>
+    </mrow>
+    <mtext> will be suppressed during this calculation. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Further output of \\!\\(Density :: \\\&quot;form\\\&quot;\\) will be suppressed during this calculation. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::stop\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>unknown</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>The density of </mtext>
+    <mi>Astatine</mi>
+    <mtext> is not known.</mtext>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;The density of \\!\\(Astatine\\) is not known.&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>tempform</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Density is for the </mtext>
+    <ms>liquid</ms>
+    <mtext> form of </mtext>
+    <mi>Radon</mi>
+    <mtext> at </mtext>
+    <mn>211</mn>
+    <mtext> Kelvin.</mtext>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Density is for the \\!\\(\\\&quot;liquid\\\&quot;\\) form of \\!\\(Radon\\) at \\!\\(211\\) Kelvin.&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>stop</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Further output of </mtext>
+    <mrow>
+     <mi>Density</mi>
+     <mtext>::</mtext>
+     <ms>tempform</ms>
+    </mrow>
+    <mtext> will be suppressed during this calculation. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Further output of \\!\\(Density :: \\\&quot;tempform\\\&quot;\\) will be suppressed during this calculation. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::stop\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Density</mi>
+   <mtext>::</mtext>
+   <mi>unknown</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>The density of </mtext>
+    <mi>Francium</mi>
+    <mtext> is not known.</mtext>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;The density of \\!\\(Francium\\) is not known.&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[153]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>76.</mn>
+   <mo>,</mo>
+   <mn>124.8</mn>
+   <mo>,</mo>
+   <mn>534.</mn>
+   <mo>,</mo>
+   <mn>1847.7</mn>
+   <mo>,</mo>
+   <mn>2340.</mn>
+   <mo>,</mo>
+   <mn>3513.</mn>
+   <mo>,</mo>
+   <mn>1026.</mn>
+   <mo>,</mo>
+   <mn>2000.</mn>
+   <mo>,</mo>
+   <mn>1516.</mn>
+   <mo>,</mo>
+   <mn>1444.</mn>
+   <mo>,</mo>
+   <mn>971.</mn>
+   <mo>,</mo>
+   <mn>1738.</mn>
+   <mo>,</mo>
+   <mn>2698.</mn>
+   <mo>,</mo>
+   <mn>2329.</mn>
+   <mo>,</mo>
+   <mn>1820.</mn>
+   <mo>,</mo>
+   <mn>2070.</mn>
+   <mo>,</mo>
+   <mn>2030.</mn>
+   <mo>,</mo>
+   <mn>1656.</mn>
+   <mo>,</mo>
+   <mn>862.</mn>
+   <mo>,</mo>
+   <mn>1550.</mn>
+   <mo>,</mo>
+   <mn>2989.</mn>
+   <mo>,</mo>
+   <mn>4540.</mn>
+   <mo>,</mo>
+   <mn>6110.</mn>
+   <mo>,</mo>
+   <mn>7190.</mn>
+   <mo>,</mo>
+   <mn>7440.</mn>
+   <mo>,</mo>
+   <mn>7874.</mn>
+   <mo>,</mo>
+   <mn>8900.</mn>
+   <mo>,</mo>
+   <mn>8902.</mn>
+   <mo>,</mo>
+   <mn>8960.</mn>
+   <mo>,</mo>
+   <mn>7133.</mn>
+   <mo>,</mo>
+   <mn>5907.</mn>
+   <mo>,</mo>
+   <mn>5323.</mn>
+   <mo>,</mo>
+   <mn>5780.</mn>
+   <mo>,</mo>
+   <mn>4790.</mn>
+   <mo>,</mo>
+   <mn>4050.</mn>
+   <mo>,</mo>
+   <mn>2823.</mn>
+   <mo>,</mo>
+   <mn>1532.</mn>
+   <mo>,</mo>
+   <mn>2540.</mn>
+   <mo>,</mo>
+   <mn>4469.</mn>
+   <mo>,</mo>
+   <mn>6506.</mn>
+   <mo>,</mo>
+   <mn>8570.</mn>
+   <mo>,</mo>
+   <mn>10220.</mn>
+   <mo>,</mo>
+   <mn>11500.</mn>
+   <mo>,</mo>
+   <mn>12370.</mn>
+   <mo>,</mo>
+   <mn>12410.</mn>
+   <mo>,</mo>
+   <mn>12020.</mn>
+   <mo>,</mo>
+   <mn>10500.</mn>
+   <mo>,</mo>
+   <mn>8650.</mn>
+   <mo>,</mo>
+   <mn>7310.</mn>
+   <mo>,</mo>
+   <mn>7310.</mn>
+   <mo>,</mo>
+   <mn>6691.</mn>
+   <mo>,</mo>
+   <mn>6240.</mn>
+   <mo>,</mo>
+   <mn>4930.</mn>
+   <mo>,</mo>
+   <mn>3540.</mn>
+   <mo>,</mo>
+   <mn>1873.</mn>
+   <mo>,</mo>
+   <mn>3594.</mn>
+   <mo>,</mo>
+   <mn>6145.</mn>
+   <mo>,</mo>
+   <mn>8240.</mn>
+   <mo>,</mo>
+   <mn>6773.</mn>
+   <mo>,</mo>
+   <mn>7007.</mn>
+   <mo>,</mo>
+   <mn>7220.</mn>
+   <mo>,</mo>
+   <mn>7520.</mn>
+   <mo>,</mo>
+   <mn>5243.</mn>
+   <mo>,</mo>
+   <mn>7900.4</mn>
+   <mo>,</mo>
+   <mn>8229.</mn>
+   <mo>,</mo>
+   <mn>8550.</mn>
+   <mo>,</mo>
+   <mn>8795.</mn>
+   <mo>,</mo>
+   <mn>9066.</mn>
+   <mo>,</mo>
+   <mn>9321.</mn>
+   <mo>,</mo>
+   <mn>6965.</mn>
+   <mo>,</mo>
+   <mn>9840.</mn>
+   <mo>,</mo>
+   <mn>13310.</mn>
+   <mo>,</mo>
+   <mn>16654.</mn>
+   <mo>,</mo>
+   <mn>19300.</mn>
+   <mo>,</mo>
+   <mn>21020.</mn>
+   <mo>,</mo>
+   <mn>22590.</mn>
+   <mo>,</mo>
+   <mn>22420.</mn>
+   <mo>,</mo>
+   <mn>21450.</mn>
+   <mo>,</mo>
+   <mn>19320.</mn>
+   <mo>,</mo>
+   <mn>13546.</mn>
+   <mo>,</mo>
+   <mn>11850.</mn>
+   <mo>,</mo>
+   <mn>11350.</mn>
+   <mo>,</mo>
+   <mn>9747.</mn>
+   <mo>,</mo>
+   <mn>9320.</mn>
+   <mo>,</mo>
+   <mi>Unknown</mi>
+   <mo>,</mo>
+   <mn>4400.</mn>
+   <mo>,</mo>
+   <mi>Unknown</mi>
+   <mo>,</mo>
+   <mn>5000.</mn>
+   <mo>,</mo>
+   <mn>10060.</mn>
+   <mo>,</mo>
+   <mn>11720.</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The next line matches up values of density with melting temperature&hellip;
+</p>
+
+
+
+<p class="CellLabel">
+ In[154]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>dmdata</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Transpose</mi>
+   <mo>[</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>Dens</mi>
+     <mo>,</mo>
+     <mi>mps</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[154]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>76.</mn>
+     <mo>,</mo>
+     <mn>14.01</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>124.8</mn>
+     <mo>,</mo>
+     <mn>0.95</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>534.</mn>
+     <mo>,</mo>
+     <mn>453.69</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1847.7</mn>
+     <mo>,</mo>
+     <mn>1551.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>2340.</mn>
+     <mo>,</mo>
+     <mn>2573.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>3513.</mn>
+     <mo>,</mo>
+     <mn>3820.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1026.</mn>
+     <mo>,</mo>
+     <mn>63.29</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>2000.</mn>
+     <mo>,</mo>
+     <mn>54.8</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1516.</mn>
+     <mo>,</mo>
+     <mn>53.53</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1444.</mn>
+     <mo>,</mo>
+     <mn>24.48</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>971.</mn>
+     <mo>,</mo>
+     <mn>370.96</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1738.</mn>
+     <mo>,</mo>
+     <mn>922.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>2698.</mn>
+     <mo>,</mo>
+     <mn>933.5</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>2329.</mn>
+     <mo>,</mo>
+     <mn>1683.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1820.</mn>
+     <mo>,</mo>
+     <mn>317.3</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>2070.</mn>
+     <mo>,</mo>
+     <mn>386.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>2030.</mn>
+     <mo>,</mo>
+     <mn>172.2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1656.</mn>
+     <mo>,</mo>
+     <mn>83.8</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>862.</mn>
+     <mo>,</mo>
+     <mn>336.8</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1550.</mn>
+     <mo>,</mo>
+     <mn>1112.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>2989.</mn>
+     <mo>,</mo>
+     <mn>1814.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>4540.</mn>
+     <mo>,</mo>
+     <mn>1933.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>6110.</mn>
+     <mo>,</mo>
+     <mn>2160.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7190.</mn>
+     <mo>,</mo>
+     <mn>2130.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7440.</mn>
+     <mo>,</mo>
+     <mn>1517.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7874.</mn>
+     <mo>,</mo>
+     <mn>1808.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>8900.</mn>
+     <mo>,</mo>
+     <mn>1768.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>8902.</mn>
+     <mo>,</mo>
+     <mn>1726.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>8960.</mn>
+     <mo>,</mo>
+     <mn>1356.6</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7133.</mn>
+     <mo>,</mo>
+     <mn>692.73</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>5907.</mn>
+     <mo>,</mo>
+     <mn>302.93</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>5323.</mn>
+     <mo>,</mo>
+     <mn>1210.6</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>5780.</mn>
+     <mo>,</mo>
+     <mn>83.78</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>4790.</mn>
+     <mo>,</mo>
+     <mn>490.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>4050.</mn>
+     <mo>,</mo>
+     <mn>265.9</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>2823.</mn>
+     <mo>,</mo>
+     <mn>116.6</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1532.</mn>
+     <mo>,</mo>
+     <mn>312.2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>2540.</mn>
+     <mo>,</mo>
+     <mn>1042.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>4469.</mn>
+     <mo>,</mo>
+     <mn>1795.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>6506.</mn>
+     <mo>,</mo>
+     <mn>2125.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>8570.</mn>
+     <mo>,</mo>
+     <mn>2741.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>10220.</mn>
+     <mo>,</mo>
+     <mn>2890.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>11500.</mn>
+     <mo>,</mo>
+     <mn>2445.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>12370.</mn>
+     <mo>,</mo>
+     <mn>2583.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>12410.</mn>
+     <mo>,</mo>
+     <mn>2239.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>12020.</mn>
+     <mo>,</mo>
+     <mn>1825.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>10500.</mn>
+     <mo>,</mo>
+     <mn>1235.08</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>8650.</mn>
+     <mo>,</mo>
+     <mn>594.1</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7310.</mn>
+     <mo>,</mo>
+     <mn>429.32</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7310.</mn>
+     <mo>,</mo>
+     <mn>505.118</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>6691.</mn>
+     <mo>,</mo>
+     <mn>903.89</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>6240.</mn>
+     <mo>,</mo>
+     <mn>722.7</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>4930.</mn>
+     <mo>,</mo>
+     <mn>386.7</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>3540.</mn>
+     <mo>,</mo>
+     <mn>161.3</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1873.</mn>
+     <mo>,</mo>
+     <mn>301.55</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>3594.</mn>
+     <mo>,</mo>
+     <mn>1002.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>6145.</mn>
+     <mo>,</mo>
+     <mn>1194.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>8240.</mn>
+     <mo>,</mo>
+     <mn>1072.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>6773.</mn>
+     <mo>,</mo>
+     <mn>1204.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7007.</mn>
+     <mo>,</mo>
+     <mn>1294.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7220.</mn>
+     <mo>,</mo>
+     <mn>1441.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7520.</mn>
+     <mo>,</mo>
+     <mn>1350.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>5243.</mn>
+     <mo>,</mo>
+     <mn>1095.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>7900.4</mn>
+     <mo>,</mo>
+     <mn>1586.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>8229.</mn>
+     <mo>,</mo>
+     <mn>1629.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>8550.</mn>
+     <mo>,</mo>
+     <mn>1685.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>8795.</mn>
+     <mo>,</mo>
+     <mn>1747.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>9066.</mn>
+     <mo>,</mo>
+     <mn>1802.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>9321.</mn>
+     <mo>,</mo>
+     <mn>1818.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>6965.</mn>
+     <mo>,</mo>
+     <mn>1097.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>9840.</mn>
+     <mo>,</mo>
+     <mn>1936.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>13310.</mn>
+     <mo>,</mo>
+     <mn>2503.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>16654.</mn>
+     <mo>,</mo>
+     <mn>3269.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>19300.</mn>
+     <mo>,</mo>
+     <mn>3680.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>21020.</mn>
+     <mo>,</mo>
+     <mn>3453.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>22590.</mn>
+     <mo>,</mo>
+     <mn>3327.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>22420.</mn>
+     <mo>,</mo>
+     <mn>2683.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>21450.</mn>
+     <mo>,</mo>
+     <mn>2045.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>19320.</mn>
+     <mo>,</mo>
+     <mn>1337.58</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>13546.</mn>
+     <mo>,</mo>
+     <mn>234.28</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>11850.</mn>
+     <mo>,</mo>
+     <mn>576.6</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>11350.</mn>
+     <mo>,</mo>
+     <mn>600.65</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>9747.</mn>
+     <mo>,</mo>
+     <mn>544.5</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>9320.</mn>
+     <mo>,</mo>
+     <mn>527.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>Unknown</mi>
+     <mo>,</mo>
+     <mn>575.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>4400.</mn>
+     <mo>,</mo>
+     <mn>202.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>Unknown</mi>
+     <mo>,</mo>
+     <mn>300.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>5000.</mn>
+     <mo>,</mo>
+     <mn>973.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>10060.</mn>
+     <mo>,</mo>
+     <mn>1320.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>11720.</mn>
+     <mo>,</mo>
+     <mn>2023.</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[155]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_ListPlotxx_example_with_chemical_elements"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mi>dmdata</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Graphics</mi>
+   <mtext>::</mtext>
+   <mi>gptn</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Coordinate </mtext>
+    <mi>Unknown</mi>
+    <mtext> in </mtext>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>Unknown</mi>
+      <mo>,</mo>
+      <mn>575.</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mtext> is not a floating-point number. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Coordinate \\!\\(Unknown\\) in \\!\\({Unknown, 575.`}\\) is not a floating-point number. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;Graphics::gptn\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Graphics</mi>
+   <mtext>::</mtext>
+   <mi>gptn</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Coordinate </mtext>
+    <mi>Unknown</mi>
+    <mtext> in </mtext>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>Unknown</mi>
+      <mo>,</mo>
+      <mn>300.</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mtext> is not a floating-point number. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Coordinate \\!\\(Unknown\\) in \\!\\({Unknown, 300.`}\\) is not a floating-point number. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;Graphics::gptn\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_21.gif" alt="[Graphics:HTMLFiles/Lecture-05_21.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[155]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[156]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>dmdata</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotJoined</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Graphics</mi>
+   <mtext>::</mtext>
+   <mi>gptn</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Coordinate </mtext>
+    <mi>Unknown</mi>
+    <mtext> in </mtext>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>Unknown</mi>
+      <mo>,</mo>
+      <mn>575.</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mtext> is not a floating-point number. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Coordinate \\!\\(Unknown\\) in \\!\\({Unknown, 575.`}\\) is not a floating-point number. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;Graphics::gptn\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Graphics</mi>
+   <mtext>::</mtext>
+   <mi>gptn</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Coordinate </mtext>
+    <mi>Unknown</mi>
+    <mtext> in </mtext>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>Unknown</mi>
+      <mo>,</mo>
+      <mn>300.</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mtext> is not a floating-point number. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Coordinate \\!\\(Unknown\\) in \\!\\({Unknown, 300.`}\\) is not a floating-point number. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;Graphics::gptn\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_22.gif" alt="[Graphics:HTMLFiles/Lecture-05_22.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[156]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Section">
+ Three-Dimensional Graphics
+</p>
+
+
+
+<p class="Subsection">
+ Plot3D, ContourPlot, DensityPlot, etc
+</p>
+
+
+
+<p class="CellLabel">
+ In[157]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_electical_potential_above_lattice_of_charges"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>EPot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>x_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>y_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>z_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>xo_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>yo_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mfrac>
+   <mn>1</mn>
+   <msqrt>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mi>x</mi>
+        <mo>-</mo>
+        <mi>xo</mi>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+      <mo>^</mo>
+      <mn>2</mn>
+     </mrow>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mi>y</mi>
+        <mo>-</mo>
+        <mi>yo</mi>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+      <mo>^</mo>
+      <mn>2</mn>
+     </mrow>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>z</mi>
+      <mo>^</mo>
+      <mn>2</mn>
+     </mrow>
+    </mrow>
+   </msqrt>
+  </mfrac>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[158]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>SheetOLatticeCharge</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>x_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>y_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>z_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Sum</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>EPot</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mi>y</mi>
+      <mo>,</mo>
+      <mi>z</mi>
+      <mo>,</mo>
+      <mi>xo</mi>
+      <mo>,</mo>
+      <mi>yo</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>xo</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>5</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>5</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>yo</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>5</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>5</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <span style='font-weight: bold;'>SheetOLatticeCharge</span> represents the electric field produced by an 11 by 11 array of point charges arranged on the <span style='font-style: italic;'>x-y</span> plane at <span style='font-style: italic;'>z</span> = 0. The following command evaluates and plots the field variation in the plane <span style='font-style: italic;'>z</span> = 0.25:
+</p>
+
+
+
+<p class="CellLabel">
+ In[159]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_Graphics__example_of_electical_potential_above_lattice_of_charges"></a>
+ <a id="mmtag_05_Plot3Dxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot3D</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>SheetOLatticeCharge</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mi>y</mi>
+      <mo>,</mo>
+      <mn>0.25</mn>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>6</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>6</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>6</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>6</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_23.gif" alt="[Graphics:HTMLFiles/Lecture-05_23.gif]"  width="576" height="467"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[159]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>SurfaceGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Note below how <span style='font-weight: bold;'>theplot</span> is set to contain the output of the Plot3D command.
+</p>
+
+
+
+<p class="CellLabel">
+ In[160]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>theplot</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Plot3D</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Evaluate</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>SheetOLatticeCharge</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mi>y</mi>
+       <mo>,</mo>
+       <mn>0.25</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>6</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>6</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>y</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>6</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>6</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>PlotPoints</mi>
+     <mo>&rightarrow;</mo>
+     <mn>120</mn>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_24.gif" alt="[Graphics:HTMLFiles/Lecture-05_24.gif]"  width="576" height="467"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[160]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>SurfaceGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Now we can adjust the viewpoint of <span style='font-weight: bold;'>theplot</span>, without recalculating the entire plot, using the <span style='font-weight: bold;'>Show</span> command:
+</p>
+
+
+
+<p class="CellLabel">
+ In[161]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>?</mo>
+  <mi>Show</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <a id="Info3335784966-5618393"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mtext>Show[graphics, options] displays two- and three-dimensional graphics, using the options specified. Show[g1, g2, ... ] shows several plots combined.</mtext>
+  <mtext> </mtext>
+  <maction actiontype='highlight'>
+   <mi>More&hellip;</mi>
+  </maction>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[162]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>?</mo>
+  <mi>Show</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <a id="Info3335784967-3850736"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mtext>Show[graphics, options] displays two- and three-dimensional graphics, using the options specified. Show[g1, g2, ... ] shows several plots combined.</mtext>
+  <mtext> </mtext>
+  <maction actiontype='highlight'>
+   <mi>More&hellip;</mi>
+  </maction>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[163]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>theplot</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>ViewPoint</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>5</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_25.gif" alt="[Graphics:HTMLFiles/Lecture-05_25.gif]"  width="576" height="387"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[163]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>SurfaceGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[164]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>theconplot</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>ContourPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Evaluate</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>SheetOLatticeCharge</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mi>y</mi>
+       <mo>,</mo>
+       <mn>0.25</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>6</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>6</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>y</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>6</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>6</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>PlotPoints</mi>
+     <mo>&rightarrow;</mo>
+     <mn>120</mn>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_26.gif" alt="[Graphics:HTMLFiles/Lecture-05_26.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[164]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>ContourGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[165]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>theconplot</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>ContourPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Evaluate</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>SheetOLatticeCharge</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mi>y</mi>
+       <mo>,</mo>
+       <mn>0.25</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>4</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>4</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>y</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>4</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>4</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>PlotPoints</mi>
+     <mo>&rightarrow;</mo>
+     <mn>120</mn>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>ColorFunction</mi>
+     <mo>&rightarrow;</mo>
+     <mi>Hue</mi>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Contours</mi>
+     <mo>&rightarrow;</mo>
+     <mn>24</mn>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_27.gif" alt="[Graphics:HTMLFiles/Lecture-05_27.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[165]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>ContourGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[166]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>thedenplot</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>DensityPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Evaluate</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>SheetOLatticeCharge</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mi>y</mi>
+       <mo>,</mo>
+       <mn>0.25</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>4</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>4</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>y</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>4</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>4</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>PlotPoints</mi>
+     <mo>&rightarrow;</mo>
+     <mn>120</mn>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>ColorFunction</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mi>Hue</mi>
+        <mo>[</mo>
+        <mrow>
+         <mn>1</mn>
+         <mo>-</mo>
+         <mrow>
+          <mtext>#</mtext>
+          <mo>*</mo>
+          <mn>0.66</mn>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>&amp;</mo>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_28.gif" alt="[Graphics:HTMLFiles/Lecture-05_28.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[166]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>DensityGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[167]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_Showxx"></a>
+ <a id="mmtag_05_Graphics__superposing_with_Showxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>thedenplot</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>Mesh</mi>
+    <mo>&rightarrow;</mo>
+    <mi>False</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_29.gif" alt="[Graphics:HTMLFiles/Lecture-05_29.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[167]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>DensityGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Section">
+ Graphics Primitives
+</p>
+
+
+
+<p class="Text">
+ It can be useful to be able to build up arbitrary graphics objects piece-by-piece using simple &quot;graphics primitives&quot; like <span style='font-weight: bold;'>Circle</span>:
+</p>
+
+
+
+<p class="CellLabel">
+ In[168]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_drawing_with_graphics_primitives"></a>
+ <a id="mmtag_05_graphics_primitives"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>Graphics</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>Circle</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>,</mo>
+       <mn>2</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mn>1.5</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_30.gif" alt="[Graphics:HTMLFiles/Lecture-05_30.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[168]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[169]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Graphics</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Circle</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>,</mo>
+        <mn>2</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mn>1.5</mn>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Axes</mi>
+    <mo>-&gt;</mo>
+    <mi>True</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_31.gif" alt="[Graphics:HTMLFiles/Lecture-05_31.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[169]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[170]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Graphics</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Circle</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>,</mo>
+        <mn>2</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mn>1.5</mn>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Axes</mi>
+    <mo>-&gt;</mo>
+    <mi>True</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesOrigin</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_32.gif" alt="[Graphics:HTMLFiles/Lecture-05_32.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[170]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Now we take a simple plot&hellip;
+</p>
+
+
+
+<p class="CellLabel">
+ In[171]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>cosplot</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Plot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Cos</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mrow>
+       <mn>4</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>Pi</mi>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_33.gif" alt="[Graphics:HTMLFiles/Lecture-05_33.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[171]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ and overlay some text in places of our own choosing&hellip;
+</p>
+
+
+
+<p class="CellLabel">
+ In[172]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_plots__annotating__example"></a>
+ <a id="mmtag_05_Textxx__in_graphics"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>cosplot</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>Graphics</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Text</mi>
+     <mo>[</mo>
+     <mrow>
+      <ms>One Wavelength</ms>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>Pi</mi>
+        </mrow>
+        <mo>,</mo>
+        <mn>1.1</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Graphics</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Text</mi>
+     <mo>[</mo>
+     <mrow>
+      <ms>Two Wavelengths</ms>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mn>4</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>Pi</mi>
+        </mrow>
+        <mo>,</mo>
+        <mn>1.1</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mi>All</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_34.gif" alt="[Graphics:HTMLFiles/Lecture-05_34.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[172]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Many processes in the natural world can be modelled by <span style='font-style: italic;'>random walks</span>. An example is the trajectory of a particular&nbsp;&nbsp;molecule in a gas at low pressure.&nbsp;&nbsp;The next few lines of code produce random walks and display them graphically: 
+</p>
+
+
+
+<p class="CellLabel">
+ In[173]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_simulation_of_2D_random_walk"></a>
+ <a id="mmtag_05_random_walk__illustration"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>randomwalk</mi>
+   <mo>[</mo>
+   <mn>0</mn>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mn>0</mn>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[173]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>0</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[174]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>randomwalk</mi>
+   <mo>[</mo>
+   <mn>0</mn>
+   <mo>]</mo>
+  </mrow>
+  <mo>[</mo>
+  <mrow>
+   <mo>[</mo>
+   <mn>2</mn>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[174]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[175]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>randomwalk</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>nstep_Integer</mtext>
+    <mo>?</mo>
+    <mi>Positive</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>randomwalk</mi>
+    <mo>[</mo>
+    <mi>nstep</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>=</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>nstep</mi>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mi>randomwalk</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>nstep</mi>
+         <mo>-</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>[</mo>
+       <mrow>
+        <mo>[</mo>
+        <mn>2</mn>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mtext> </mtext>
+      <mo>+</mo>
+      <mtext> </mtext>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mrow>
+        <mi>Random</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>Real</mi>
+         <mo>,</mo>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mn>0</mn>
+           <mo>,</mo>
+           <mn>0.5</mn>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>*</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mi>Cos</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>theta</mi>
+           <mtext> </mtext>
+           <mo>=</mo>
+           <mrow>
+            <mn>2</mn>
+            <mo>&InvisibleTimes;</mo>
+            <mi>Pi</mi>
+            <mo>&InvisibleTimes;</mo>
+            <mrow>
+             <mi>Random</mi>
+             <mo>[</mo>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Sin</mi>
+          <mo>[</mo>
+          <mi>theta</mi>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[176]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>randomwalk</mi>
+  <mo>[</mo>
+  <mn>4</mn>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[176]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>4</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>0.5993225470251821</mn>
+     <mo>,</mo>
+     <mn>0.19324709113253935</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[177]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>Graphics</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Text</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>ToString</mi>
+         <mo>[</mo>
+         <mrow>
+          <mrow>
+           <mi>randomwalk</mi>
+           <mo>[</mo>
+           <mi>i</mi>
+           <mo>]</mo>
+          </mrow>
+          <mo>[</mo>
+          <mrow>
+           <mo>[</mo>
+           <mn>1</mn>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mrow>
+          <mi>randomwalk</mi>
+          <mo>[</mo>
+          <mi>i</mi>
+          <mo>]</mo>
+         </mrow>
+         <mo>[</mo>
+         <mrow>
+          <mo>[</mo>
+          <mn>2</mn>
+          <mo>]</mo>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>100</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mi>All</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesOrigin</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_35.gif" alt="[Graphics:HTMLFiles/Lecture-05_35.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[177]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[178]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mtext>&#62371;</mtext>
+  <mrow>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>Graphics</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Text</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>ToString</mi>
+         <mo>[</mo>
+         <mrow>
+          <mrow>
+           <mi>randomwalk</mi>
+           <mo>[</mo>
+           <mi>i</mi>
+           <mo>]</mo>
+          </mrow>
+          <mo>[</mo>
+          <mrow>
+           <mo>[</mo>
+           <mn>1</mn>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mrow>
+          <mi>randomwalk</mi>
+          <mo>[</mo>
+          <mi>i</mi>
+          <mo>]</mo>
+         </mrow>
+         <mo>[</mo>
+         <mrow>
+          <mo>[</mo>
+          <mn>2</mn>
+          <mo>]</mo>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>50</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext>&#62371;</mtext>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>Graphics</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Line</mi>
+       <mo>[</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mrow>
+           <mi>randomwalk</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>j</mi>
+            <mo>-</mo>
+            <mn>1</mn>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>[</mo>
+          <mrow>
+           <mo>[</mo>
+           <mn>2</mn>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mrow>
+           <mi>randomwalk</mi>
+           <mo>[</mo>
+           <mi>j</mi>
+           <mo>]</mo>
+          </mrow>
+          <mo>[</mo>
+          <mrow>
+           <mo>[</mo>
+           <mn>2</mn>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>j</mi>
+       <mo>,</mo>
+       <mn>1</mn>
+       <mo>,</mo>
+       <mn>50</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext>&#62371;</mtext>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mi>All</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesOrigin</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_36.gif" alt="[Graphics:HTMLFiles/Lecture-05_36.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[178]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[179]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Graphics`Animation`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[180]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ShowAnimation</mi>
+  <mo>[</mo>
+  <mtext>&#62371;</mtext>
+  <mrow>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mtext>&#62371;</mtext>
+    <mrow>
+     <mrow>
+      <mi>Graphics</mi>
+      <mo>[</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Text</mi>
+         <mo>[</mo>
+         <mtext>&#62371;</mtext>
+         <mrow>
+          <mrow>
+           <mi>ToString</mi>
+           <mo>[</mo>
+           <mrow>
+            <mrow>
+             <mi>randomwalk</mi>
+             <mo>[</mo>
+             <mi>i</mi>
+             <mo>]</mo>
+            </mrow>
+            <mo>[</mo>
+            <mrow>
+             <mo>[</mo>
+             <mn>1</mn>
+             <mo>]</mo>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mrow>
+            <mi>randomwalk</mi>
+            <mo>[</mo>
+            <mi>i</mi>
+            <mo>]</mo>
+           </mrow>
+           <mo>[</mo>
+           <mrow>
+            <mo>[</mo>
+            <mn>2</mn>
+            <mo>]</mo>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mtext>                    </mtext>
+        <mtext>&#62371;</mtext>
+        <mrow>
+         <mi>Line</mi>
+         <mo>[</mo>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mrow>
+            <mrow>
+             <mi>randomwalk</mi>
+             <mo>[</mo>
+             <mi>i</mi>
+             <mo>]</mo>
+            </mrow>
+            <mo>[</mo>
+            <mrow>
+             <mo>[</mo>
+             <mn>2</mn>
+             <mo>]</mo>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mrow>
+             <mi>randomwalk</mi>
+             <mo>[</mo>
+             <mrow>
+              <mi>i</mi>
+              <mo>+</mo>
+              <mn>1</mn>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>[</mo>
+            <mrow>
+             <mo>[</mo>
+             <mn>2</mn>
+             <mo>]</mo>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mtext>&#62371;</mtext>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>49</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mtext>&#62371;</mtext>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext>&#62371;</mtext>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>3</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>3</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>3</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>3</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesOrigin</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mtext>&#62371;</mtext>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <a href="HTMLLinks/Lecture-05_1.xml"><img src="HTMLFiles/Lecture-05_87.gif" alt="[Graphics:HTMLFiles/Lecture-05_87.gif]"  width="576" height="576"  style="vertical-align:middle" /></a>
+</p>
+
+<p class="CellLabel">
+ In[181]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ShowAnimation</mi>
+  <mo>[</mo>
+  <mtext>&#62371;</mtext>
+  <mrow>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mtext>&#62371;</mtext>
+    <mrow>
+     <mrow>
+      <mi>Graphics</mi>
+      <mo>[</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>Table</mi>
+       <mo>[</mo>
+       <mtext>&#62371;</mtext>
+       <mrow>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mrow>
+           <mi>Text</mi>
+           <mo>[</mo>
+           <mtext>&#62371;</mtext>
+           <mrow>
+            <mrow>
+             <mi>ToString</mi>
+             <mo>[</mo>
+             <mrow>
+              <mrow>
+               <mi>randomwalk</mi>
+               <mo>[</mo>
+               <mi>j</mi>
+               <mo>]</mo>
+              </mrow>
+              <mo>[</mo>
+              <mrow>
+               <mo>[</mo>
+               <mn>1</mn>
+               <mo>]</mo>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mrow>
+              <mi>randomwalk</mi>
+              <mo>[</mo>
+              <mi>j</mi>
+              <mo>]</mo>
+             </mrow>
+             <mo>[</mo>
+             <mrow>
+              <mo>[</mo>
+              <mn>2</mn>
+              <mo>]</mo>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>,</mo>
+          <mtext>                    </mtext>
+          <mtext>&#62371;</mtext>
+          <mrow>
+           <mi>Line</mi>
+           <mo>[</mo>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mrow>
+              <mrow>
+               <mi>randomwalk</mi>
+               <mo>[</mo>
+               <mi>j</mi>
+               <mo>]</mo>
+              </mrow>
+              <mo>[</mo>
+              <mrow>
+               <mo>[</mo>
+               <mn>2</mn>
+               <mo>]</mo>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+             <mo>,</mo>
+             <mrow>
+              <mrow>
+               <mi>randomwalk</mi>
+               <mo>[</mo>
+               <mrow>
+                <mi>j</mi>
+                <mo>+</mo>
+                <mn>1</mn>
+               </mrow>
+               <mo>]</mo>
+              </mrow>
+              <mo>[</mo>
+              <mrow>
+               <mo>[</mo>
+               <mn>2</mn>
+               <mo>]</mo>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mtext>&#62371;</mtext>
+         <mo>}</mo>
+        </mrow>
+        <mo>,</mo>
+        <mtext>&#62371;</mtext>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mi>j</mi>
+          <mo>,</mo>
+          <mn>0</mn>
+          <mo>,</mo>
+          <mi>i</mi>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+       </mrow>
+       <mtext>&#62371;</mtext>
+       <mo>]</mo>
+      </mrow>
+      <mtext>&#62371;</mtext>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>49</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mtext>&#62371;</mtext>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext>&#62371;</mtext>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>3</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>3</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>3</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>3</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesOrigin</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mtext>&#62371;</mtext>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <a href="HTMLLinks/Lecture-05_2.xml"><img src="HTMLFiles/Lecture-05_138.gif" alt="[Graphics:HTMLFiles/Lecture-05_138.gif]"  width="576" height="576"  style="vertical-align:middle" /></a>
+</p>
+
+<p class="CellLabel">
+ In[182]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_Wulff_construction__function_example"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>wulffline</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mtext>x_</mtext>
+      <mo>,</mo>
+      <mtext>y_</mtext>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext>wulfflength_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Module</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>theta</mi>
+      <mo>,</mo>
+      <mrow>
+       <mi>wulffhalflength</mi>
+       <mo>=</mo>
+       <mrow>
+        <mi>wulfflength</mi>
+        <mo>*</mo>
+        <mn>0.5</mn>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mi>x1</mi>
+      <mo>,</mo>
+      <mi>x2</mi>
+      <mo>,</mo>
+      <mi>y1</mi>
+      <mo>,</mo>
+      <mi>y2</mi>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mrow>
+      <mi>theta</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>ArcTan</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>x</mi>
+        <mo>,</mo>
+        <mi>y</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext> </mtext>
+     <mrow>
+      <mi>x1</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>x</mi>
+       <mtext> </mtext>
+       <mo>+</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>wulffhalflength</mi>
+        <mo>*</mo>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>theta</mi>
+          <mtext> </mtext>
+          <mo>+</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>Pi</mi>
+           <mo>/</mo>
+           <mn>2</mn>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext> </mtext>
+     <mrow>
+      <mi>x2</mi>
+      <mo>=</mo>
+      <mtext>  </mtext>
+      <mrow>
+       <mi>x</mi>
+       <mtext> </mtext>
+       <mo>+</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>wulffhalflength</mi>
+        <mo>*</mo>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>theta</mi>
+          <mtext> </mtext>
+          <mo>-</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>Pi</mi>
+           <mo>/</mo>
+           <mn>2</mn>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext> </mtext>
+     <mrow>
+      <mi>y1</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>y</mi>
+       <mtext> </mtext>
+       <mo>+</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>wulffhalflength</mi>
+        <mo>*</mo>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>theta</mi>
+          <mtext> </mtext>
+          <mo>+</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>Pi</mi>
+           <mo>/</mo>
+           <mn>2</mn>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>y2</mi>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>y</mi>
+       <mtext> </mtext>
+       <mo>+</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>wulffhalflength</mi>
+        <mo>*</mo>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>theta</mi>
+          <mtext> </mtext>
+          <mo>-</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>Pi</mi>
+           <mo>/</mo>
+           <mn>2</mn>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>Graphics</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Line</mi>
+       <mo>[</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mi>x1</mi>
+           <mo>,</mo>
+           <mi>y1</mi>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mi>x2</mi>
+           <mo>,</mo>
+           <mi>y2</mi>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mtext>&#62371;</mtext>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[182]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ These last two plots have to do with the orientation dependence of the surface energy of a 2-D crystal (<span style='font-weight: bold;'>GammaPlot</span>)and the equilibrium shape that a single crystal having this surface energy will adopt to minimize its total surface energy.
+</p>
+
+
+
+<p class="CellLabel">
+ In[183]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_05_surface_tension__in_Wulff_construction"></a>
+ <a id="mmtag_05_surface_tension__anisotropic_example__Wulff_construction"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>gammaplot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>theta_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>anisotropy_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>nfold_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mi>Cos</mi>
+      <mo>[</mo>
+      <mi>theta</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>anisotropy</mi>
+      <mo>*</mo>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mi>nfold</mi>
+          <mo>+</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>*</mo>
+        <mi>theta</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mi>theta</mi>
+      <mo>]</mo>
+     </mrow>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>anisotropy</mi>
+      <mo>*</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mi>nfold</mi>
+          <mo>+</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>*</mo>
+        <mi>theta</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[184]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>GammaPlot</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>ParametricPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>gammaplot</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>t</mi>
+      <mo>,</mo>
+      <mn>0.1</mn>
+      <mo>,</mo>
+      <mn>4</mn>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>t</mi>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>Pi</mi>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>AspectRatio</mi>
+     <mo>&rightarrow;</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>PlotStyle</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.005</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>RGBColor</mi>
+         <mo>[</mo>
+         <mrow>
+          <mn>1</mn>
+          <mo>,</mo>
+          <mn>0</mn>
+          <mo>,</mo>
+          <mn>0</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_139.gif" alt="[Graphics:HTMLFiles/Lecture-05_139.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[184]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[185]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>wulffline</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mi>gammaplot</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>t</mi>
+         <mo>,</mo>
+         <mn>0.1</mn>
+         <mo>,</mo>
+         <mn>4</mn>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>,</mo>
+       <mn>2</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>t</mi>
+       <mo>,</mo>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>Pi</mi>
+       </mrow>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Pi</mi>
+         <mo>/</mo>
+         <mn>100</mn>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mi>GammaPlot</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-05_140.gif" alt="[Graphics:HTMLFiles/Lecture-05_140.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[185]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The inner envelope of the tangent lines to the <span style='font-weight: bold;'>GammaPlot</span> in the figure above illustrates the energy-minimizing shape of the crystal. For this particular <span style='font-weight: bold;'>GammaPlot</span>, the shape is approximately a square but the corners are rounded.
+</p>
+
+
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mtext>XML`MathML`BoxesToMathML</mtext>
+   <mtext>::</mtext>
+   <mi>notboxes</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <ms>BoltzmannConstant</ms>
+      <mo>,</mo>
+      <ms>ElectronCharge</ms>
+      <mo>,</mo>
+      <ms>SpeedOfLight</ms>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mtext> is not a valid box structure. The first argument in </mtext>
+    <mrow>
+     <mtext>XML`MathML`BoxesToMathML</mtext>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <ms>BoltzmannConstant</ms>
+        <mo>,</mo>
+        <ms>ElectronCharge</ms>
+        <mo>,</mo>
+        <ms>SpeedOfLight</ms>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>&#63329;</mo>
+       <mn>2</mn>
+       <mo>&#63330;</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mrow>
+        <ms></ms>
+        <mo>&hellip;</mo>
+        <ms></ms>
+       </mrow>
+       <mo>&rightarrow;</mo>
+       <mrow>
+        <ms></ms>
+        <mo>&hellip;</mo>
+        <ms></ms>
+       </mrow>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mtext> must be a valid box structure. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;\\!\\({\\\&quot;BoltzmannConstant\\\&quot;, \\\&quot;ElectronCharge\\\&quot;, \\\&quot;SpeedOfLight\\\&quot;}\\) is not a valid box structure. The first argument in \\!\\(XML`MathML`BoxesToMathML[\\(\\(\\(\\({\\\&quot;BoltzmannConstant\\\&quot;, \\\&quot;ElectronCharge\\\&quot;, \\\&quot;SpeedOfLight\\\&quot;}\\)\\), \\(\\(\[LeftSkeleton] 2 \[RightSkeleton]\\)\\), \\(\\(\\(\\(\\\&quot;\\\&quot;\[Ellipsis]\\\&quot;\\\&quot;\\)\\) \[Rule] \\(\\(\\\&quot;\\\&quot;\[Ellipsis]\\\&quot;\\\&quot;\\)\\)\\)\\)\\)\\)]\\) must be a valid box structure. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;XML`MathML`BoxesToMathML::notboxes\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Export</mi>
+   <mtext>::</mtext>
+   <mi>noopen</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Cannot open </mtext>
+    <mrow>
+     <ms>/Volumes/Users_Partition_Primary/ccarter/c</ms>
+     <mo>&hellip;</mo>
+     <ms>6/Web/MathMATHML/Lecture-05/Lecture-05.xml</ms>
+    </mrow>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Cannot open \\!\\(\\\&quot;/Volumes/Users_Partition_Primary/ccarter/c\\\&quot;\[Ellipsis]\\\&quot;6/Web/MathMATHML/Lecture-05/Lecture-05.xml\\\&quot;\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::noopen\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Export</mi>
+   <mtext>::</mtext>
+   <mi>noopen</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Cannot open </mtext>
+    <mrow>
+     <ms>/Volumes/Users_Partition_Primary/ccarter/c</ms>
+     <mo>&hellip;</mo>
+     <ms>6/Web/MathMATHML/Lecture-05/Lecture-05.xml</ms>
+    </mrow>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Cannot open \\!\\(\\\&quot;/Volumes/Users_Partition_Primary/ccarter/c\\\&quot;\[Ellipsis]\\\&quot;6/Web/MathMATHML/Lecture-05/Lecture-05.xml\\\&quot;\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::noopen\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Export</mi>
+   <mtext>::</mtext>
+   <mi>noopen</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Cannot open </mtext>
+    <mrow>
+     <ms>/Volumes/Users_Partition_Primary/ccarter/c</ms>
+     <mo>&hellip;</mo>
+     <ms>6/Web/MathMATHML/Lecture-05/Lecture-05.xml</ms>
+    </mrow>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Cannot open \\!\\(\\\&quot;/Volumes/Users_Partition_Primary/ccarter/c\\\&quot;\[Ellipsis]\\\&quot;6/Web/MathMATHML/Lecture-05/Lecture-05.xml\\\&quot;\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::noopen\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Export</mi>
+   <mtext>::</mtext>
+   <mi>noopen</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Cannot open </mtext>
+    <mrow>
+     <ms>/Volumes/Users_Partition_Primary/ccarter/c</ms>
+     <mo>&hellip;</mo>
+     <ms>6/Web/MathMATHML/Lecture-05/Lecture-05.xml</ms>
+    </mrow>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Cannot open \\!\\(\\\&quot;/Volumes/Users_Partition_Primary/ccarter/c\\\&quot;\[Ellipsis]\\\&quot;6/Web/MathMATHML/Lecture-05/Lecture-05.xml\\\&quot;\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::noopen\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(September 15, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

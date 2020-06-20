@@ -1,0 +1,6859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 18 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2005
+ </title>
+ <link href="HTMLFiles/Lecture-18.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ <a id="mmtag_18_Fourier_transform__discrete"></a>
+ Fourier Theory and Fourier Transforms
+</p>
+
+
+
+<p class="Subtitle">
+ Discrete Fourier Transforms on very simple lattices
+</p>
+
+
+
+<p class="Text">
+ <a id="mmtag_18_lattice_images__example_creating"></a>
+ Create a simple lattice to upon which a fourier transform will&nbsp;&nbsp;taken
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_Joinxx"></a>
+ <img src="HTMLFiles/Lecture-18_1.gif" alt="WhiteSquare = Table[1, {i, 8}, {j, 8}] ;"  width="318" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_Joinxx"></a>
+ <img src="HTMLFiles/Lecture-18_2.gif" alt="BlackSquare = Table[0, {i, 8}, {j, 8}] ;"  width="312" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_Joinxx"></a>
+ <img src="HTMLFiles/Lecture-18_3.gif" alt="Join[WhiteSquare, BlackSquare, BlackSquare]//MatrixForm"  width="537" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Example of construction of a&nbsp;&nbsp;slightly larger structure
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_Transposexx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>latcell</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mrow>
+    <mi>Join</mi>
+    <mo>[</mo>
+    <mtext>&#62371;</mtext>
+    <mrow>
+     <mrow>
+      <mi>Transpose</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Join</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>Transpose</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Join</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>WhiteSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>Transpose</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Join</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>WhiteSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>Transpose</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Join</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+        <mo>,</mo>
+        <mi>BlackSquare</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mtext>&#62371;</mtext>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Visualize structure:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_ListDensityPlotxx__example_on_created_lattice_image"></a>
+ <a id="mmtag_18_MeshStyle__option"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ListDensityPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>latcell</mi>
+    <mo>,</mo>
+    <mrow>
+     <mi>MeshStyle</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>Hue</mi>
+       <mo>[</mo>
+       <mn>1</mn>
+       <mo>]</mo>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_4.gif" alt="[Graphics:HTMLFiles/Lecture-18_4.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ The following duplicates an input matrix and creates <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <mn>2</mn>
+  <mi>n</mi>
+ </msup>
+</math></span></span> copies alligned in a column:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_Nestxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ColumnDuplicateNsq</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>matrix_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>nlog2_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Nest</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mi>Join</mi>
+      <mo>[</mo>
+      <mrow>
+       <mtext>#</mtext>
+       <mo>,</mo>
+       <mtext>#</mtext>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>&amp;</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>matrix</mi>
+    <mo>,</mo>
+    <mi>nlog2</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ example:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListDensityPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>ColumnDuplicateNsq</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>latcell</mi>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>MeshStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>Hue</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_5.gif" alt="[Graphics:HTMLFiles/Lecture-18_5.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>DensityGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The following duplicates an input matrix and create <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <mn>2</mn>
+  <mi>n</mi>
+ </msup>
+</math></span></span> copies alligned in a row
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>RowDuplicateNsq</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>matrix_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>nlog2_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mrow>
+   <mi>Transpose</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>ColumnDuplicateNsq</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>matrix</mi>
+     <mo>,</mo>
+     <mi>nlog2</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ example:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListDensityPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>RowDuplicateNsq</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>latcell</mi>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>MeshStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>Hue</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_6.gif" alt="[Graphics:HTMLFiles/Lecture-18_6.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>DensityGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Create a 256 by 256 data set
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>XtalData</mi>
+    <mtext> </mtext>
+    <mo>=</mo>
+    <mrow>
+     <mi>Transpose</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>ColumnDuplicateNsq</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mi>RowDuplicateNsq</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>latcell</mi>
+         <mo>,</mo>
+         <mn>3</mn>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>,</mo>
+       <mn>3</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>;</mo>
+  </mrow>
+  <mtext> </mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Function to create graphics for delayed display
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_DisplayNow_DisplayLater__example_of_option_definition"></a>
+ <img src="HTMLFiles/Lecture-18_7.gif" alt="DisplayLater = DisplayFunction&rarr;Identity ;"  width="390" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_DisplayNow_DisplayLater__example_of_option_definition"></a>
+ <img src="HTMLFiles/Lecture-18_8.gif" alt="DisplayNow = DisplayFunction&rarr; $DisplayFunction ;"  width="471" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ImagePlot</mi>
+   <mo>[</mo>
+   <mtext>data_</mtext>
+   <mtext> </mtext>
+   <mo>]</mo>
+  </mrow>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>ListDensityPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>data</mi>
+    <mo>,</mo>
+    <mrow>
+     <mi>Mesh</mi>
+     <mo>-&gt;</mo>
+     <mi>False</mi>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>ImageSize</mi>
+     <mo>&rightarrow;</mo>
+     <mn>144</mn>
+    </mrow>
+    <mo>,</mo>
+    <mi>DisplayLater</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Example
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>XtalImage</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>ImagePlot</mi>
+   <mo>[</mo>
+   <mi>XtalData</mi>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>DensityGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ To see the data:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_ImageSize__option"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>XtalImage</mi>
+   <mo>,</mo>
+   <mi>DisplayNow</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>ImageSize</mi>
+    <mo>&rightarrow;</mo>
+    <mn>400</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_9.gif" alt="[Graphics:HTMLFiles/Lecture-18_9.gif]"  width="400" height="400"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>DensityGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Take Discrete Fourier Transform of constructed simple lattice
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_Fourierxx__example_on_constructed_data"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>FourierData</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Fourier</mi>
+    <mo>[</mo>
+    <mi>XtalData</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Create Image of Fourier Transform (Here a special color function is used (but not really explained). Red is high intensity, blue is low, gray is roughly zero)<br />Abs is used to get intensities of spots at each of the N&times;M wavevectors
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_ColorFunction__example_of_option_definition"></a>
+ <img src="HTMLFiles/Lecture-18_10.gif" alt="FourierColorFunctionWhiteBack := ColorFunction&rarr; (If[#&lt;.05, Hue[1, 0, #], Hue[.66 * (1 - #), #, 1]] &amp;) ;"  width="885" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_ColorFunction__example_of_option_definition"></a>
+ <img src="HTMLFiles/Lecture-18_11.gif" alt="FourierColorFunctionBlackBack := ColorFunction&rarr; (If[#&lt;.1, Hue[1, 0, 5 * #], Hue[.66 * (1 - #), .75 (1 + #/3), 1]] &amp;) ;"  width="990" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_ColorFunction__example_of_option_definition"></a>
+ <img src="HTMLFiles/Lecture-18_12.gif" alt="FourierImagePlot[data_ ] := ListDensityPlot[Abs[data], Mesh-&gt;False, ImageSize&rarr;144, FourierColorFunctionBlackBack, DisplayLater]"  width="1210" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>FourierImage</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>FourierImagePlot</mi>
+   <mo>[</mo>
+   <mi>FourierData</mi>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>DensityGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Show original,its Fourier Transform (FT), and the FT the&nbsp;&nbsp;FT:<br />Use Chop to remove small spurious imaginary values.&nbsp;&nbsp;Because the lattice is very perfect, the fourier spots are very small. One could use the magnification feature to improve the visibility of the spots.
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_GraphicsArrayxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>GraphicsArray</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>XtalImage</mi>
+      <mo>,</mo>
+      <mi>FourierImage</mi>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>ImagePlot</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Chop</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>InverseFourier</mi>
+         <mo>[</mo>
+         <mi>FourierData</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ImageSize</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1000</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mi>DisplayNow</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_13.gif" alt="[Graphics:HTMLFiles/Lecture-18_13.gif]"  width="1000" height="312"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ Some notes on the plots above: The spot pattern in the Fourier transform extends over the entire pane but is hard to resolve except around the perimeter. Note periodic array of sharp spots in the Fourier transform, and note that there are some &quot;missing&quot; columns of spots that also repeat periodically. Note that the Fourier transform of the Fourier transform reconstructs the orignial object quite faithfully.
+</p>
+
+
+
+<p class="Subsection">
+ Microscopists are used to seeing the &quot;k=0&quot; point in the center of the fourier image (i.e., the periodic information at the center). We can write a function that translates the k=0 point to the center of the image and redisplay the result:<br />
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_LinearAlgebra_MatrixManipulation__Package"></a>
+ <a id="mmtag_18_Fourier_analysis__example_of_moving_origin"></a>
+ <a id="mmtag_18_Takexx"></a>
+ <a id="mmtag_18_Fourier_transforms__images_of"></a>
+ <a id="mmtag_18_InverseFourierxx"></a>
+ <img src="HTMLFiles/Lecture-18_14.gif" alt="&lt;&lt;LinearAlgebra`MatrixManipulation`"  width="338" height="44"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_LinearAlgebra_MatrixManipulation__Package"></a>
+ <a id="mmtag_18_Fourier_analysis__example_of_moving_origin"></a>
+ <a id="mmtag_18_Takexx"></a>
+ <a id="mmtag_18_Fourier_transforms__images_of"></a>
+ <a id="mmtag_18_InverseFourierxx"></a>
+ <img src="HTMLFiles/Lecture-18_15.gif" width="962" height="296"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_LinearAlgebra_MatrixManipulation__Package"></a>
+ <a id="mmtag_18_Fourier_analysis__example_of_moving_origin"></a>
+ <a id="mmtag_18_Takexx"></a>
+ <a id="mmtag_18_Fourier_transforms__images_of"></a>
+ <a id="mmtag_18_InverseFourierxx"></a>
+ <img src="HTMLFiles/Lecture-18_16.gif" alt="FourierImagePlot[data_ ] := ListDensityPlot[KZeroAtCenter[Abs[data]], Mesh-&gt;False, ImageSize&rarr;144, FourierColorFunctionBlackBack, DisplayLater] "  width="1357" height="44"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_LinearAlgebra_MatrixManipulation__Package"></a>
+ <a id="mmtag_18_Fourier_analysis__example_of_moving_origin"></a>
+ <a id="mmtag_18_Takexx"></a>
+ <a id="mmtag_18_Fourier_transforms__images_of"></a>
+ <a id="mmtag_18_InverseFourierxx"></a>
+ <img src="HTMLFiles/Lecture-18_17.gif" alt="FourierImage = FourierImagePlot[FourierData] "  width="421" height="44"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_LinearAlgebra_MatrixManipulation__Package"></a>
+ <a id="mmtag_18_Fourier_analysis__example_of_moving_origin"></a>
+ <a id="mmtag_18_Takexx"></a>
+ <a id="mmtag_18_Fourier_transforms__images_of"></a>
+ <a id="mmtag_18_InverseFourierxx"></a>
+ <img src="HTMLFiles/Lecture-18_18.gif" alt="Show[GraphicsArray[{XtalImage, FourierImage, ImagePlot[Chop[InverseFourier[FourierData]]]}], ImageSize&rarr;1000, DisplayNow]"  width="1146" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>DensityGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_19.gif" alt="[Graphics:HTMLFiles/Lecture-18_19.gif]"  width="1000" height="312"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Create a function to create a defect in the lattice...(there will be a small portion of the white rectangle at the lower left that is missing; otherwise the object will be the same as above).
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>HoleFunc</mi>
+    <mo>[</mo>
+    <mrow>
+     <mtext>data_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>xc_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>yc_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>twicew_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>twiceh_</mtext>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>:=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Module</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>nrows</mi>
+       <mo>,</mo>
+       <mi>ncols</mi>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mi>nrows</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mrow>
+         <mi>Dimensions</mi>
+         <mo>[</mo>
+         <mi>data</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mrow>
+       <mi>ncols</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mrow>
+         <mi>Dimensions</mi>
+         <mo>[</mo>
+         <mi>data</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mn>2</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mrow>
+       <mi>Table</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>If</mi>
+         <mo>[</mo>
+         <mrow>
+          <mrow>
+           <mi>And</mi>
+           <mo>[</mo>
+           <mrow>
+            <mrow>
+             <mrow>
+              <mi>Abs</mi>
+              <mo>[</mo>
+              <mrow>
+               <mi>j</mi>
+               <mo>-</mo>
+               <mi>xc</mi>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+             <mtext> </mtext>
+             <mo>&lt;=</mo>
+             <mtext> </mtext>
+             <mi>twicew</mi>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mrow>
+              <mi>Abs</mi>
+              <mo>[</mo>
+              <mrow>
+               <mi>i</mi>
+               <mtext> </mtext>
+               <mo>-</mo>
+               <mtext> </mtext>
+               <mi>yc</mi>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+             <mtext> </mtext>
+             <mo>&lt;=</mo>
+             <mtext> </mtext>
+             <mi>twiceh</mi>
+            </mrow>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>,</mo>
+          <mn>0</mn>
+          <mo>,</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mi>i</mi>
+          <mo>,</mo>
+          <mi>nrows</mi>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mi>j</mi>
+          <mo>,</mo>
+          <mi>ncols</mi>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>nrows</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>rows</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(nrows\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(rows\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>ncols</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>cols</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(ncols\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(cols\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>XtalData</mi>
+    <mtext> </mtext>
+    <mo>=</mo>
+    <mrow>
+     <mi>Transpose</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>ColumnDuplicateNsq</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mi>RowDuplicateNsq</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>latcell</mi>
+         <mo>,</mo>
+         <mn>3</mn>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>,</mo>
+       <mn>3</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>;</mo>
+  </mrow>
+  <mtext> </mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Create template for defect creation
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>hole</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>HoleFunc</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>XtalData</mi>
+     <mo>,</mo>
+     <mn>28</mn>
+     <mo>,</mo>
+     <mn>28</mn>
+     <mo>,</mo>
+     <mn>6</mn>
+     <mo>,</mo>
+     <mn>6</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Recreate Images and Redisplay
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-18_20.gif" alt="XtalData = Transpose[ColumnDuplicateNsq[RowDuplicateNsq[latcell, 3], 3]] ; "  width="688" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-18_21.gif" alt="XtalData = hole * XtalData ;"  width="244" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-18_22.gif" alt="XtalImage = ImagePlot[XtalData] ;"  width="307" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-18_23.gif" alt="FourierData = Fourier[XtalData] ;"  width="295" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-18_24.gif" alt="FourierImage = FourierImagePlot[FourierData] ;"  width="427" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Note curious result that the position of the defect has changed to a symmetric position in the reconstructed image
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_Fourier_transform__on_lattice_with_defect"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>GraphicsArray</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>XtalImage</mi>
+      <mo>,</mo>
+      <mi>FourierImage</mi>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>ImagePlot</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Chop</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>InverseFourier</mi>
+         <mo>[</mo>
+         <mi>FourierData</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ImageSize</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1000</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mi>DisplayNow</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_25.gif" alt="[Graphics:HTMLFiles/Lecture-18_25.gif]"  width="1000" height="312"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Note above that the Fourier transform continues to have the sharp spots associated with the perfect crystal, but that &quot;diffuse&quot; intensity (colored contours) now arises throughout reciprocal space.&nbsp;&nbsp;The details of the diffuse intensity distribution contain information about the structure of the defect. Once again, except for orientation, the &quot;backtransform&quot; gives a very accurate reconstruction of the original.
+</p>
+
+
+
+<p class="Subtitle">
+ Visualization of the Fourier Transform of a lattice that has a little &quot;thermal&quot; noise in the lattice positions
+</p>
+
+
+
+<p class="Text">
+ Function to make a square with a specified size, with a lattice composed of lattice vectors:<br />MakeLattice[Width, Height, {<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>a</mi>
+  <mi>x</mi>
+ </msub>
+</math></span></span>, <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>a</mi>
+  <mi>y</mi>
+ </msub>
+</math></span></span>, repeats}, {<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>b</mi>
+  <mi>x</mi>
+ </msub>
+</math></span></span>, <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>b</mi>
+  <mi>y</mi>
+ </msub>
+</math></span></span>, repeats}, AtomSize, {noise_back, noise_forward}]<br /><span style='font-style: italic;'>Function is not ideal, works best when the lattice vectors are perfect divisors of the width and height</span>
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_two_dimensiona_lattices___example_creating"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mtext>&#62371;</mtext>
+  <mrow>
+   <mrow>
+    <mi>MakeLattice</mi>
+    <mo>[</mo>
+    <mrow>
+     <mtext>W_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>H_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>latvecA_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>latvecB_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>size_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>randrange_</mtext>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>:=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Module</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mi>result</mi>
+        <mo>=</mo>
+        <mrow>
+         <mi>Table</mi>
+         <mo>[</mo>
+         <mrow>
+          <mn>0</mn>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>i</mi>
+            <mo>,</mo>
+            <mi>H</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>j</mi>
+            <mo>,</mo>
+            <mi>W</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>lata</mi>
+        <mo>=</mo>
+        <mrow>
+         <mo>-</mo>
+         <mn>1</mn>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>latb</mi>
+        <mo>=</mo>
+        <mrow>
+         <mo>-</mo>
+         <mn>1</mn>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mi>xpos</mi>
+       <mo>,</mo>
+       <mi>ypos</mi>
+       <mo>,</mo>
+       <mtext>  </mtext>
+       <mrow>
+        <mi>untouched</mi>
+        <mtext> </mtext>
+        <mo>=</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>Table</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>True</mi>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>i</mi>
+            <mo>,</mo>
+            <mi>H</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>j</mi>
+            <mo>,</mo>
+            <mi>W</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mrow>
+       <mi>For</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>lata</mi>
+         <mtext> </mtext>
+         <mo>=</mo>
+         <mtext> </mtext>
+         <mn>0</mn>
+        </mrow>
+        <mo>,</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>lata</mi>
+         <mtext> </mtext>
+         <mo>&leq;</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mi>latvecA</mi>
+          <mo>[</mo>
+          <mrow>
+           <mo>[</mo>
+           <mn>3</mn>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mtext>&#62371;</mtext>
+        <mrow>
+         <mrow>
+          <mi>For</mi>
+          <mo>[</mo>
+          <mrow>
+           <mrow>
+            <mi>latb</mi>
+            <mo>=</mo>
+            <mn>0</mn>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mi>latb</mi>
+            <mo>&leq;</mo>
+            <mtext> </mtext>
+            <mrow>
+             <mi>latvecB</mi>
+             <mo>[</mo>
+             <mrow>
+              <mo>[</mo>
+              <mn>3</mn>
+              <mo>]</mo>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mrow>
+             <mi>xpos</mi>
+             <mo>=</mo>
+             <mrow>
+              <mi>Mod</mi>
+              <mo>[</mo>
+              <mrow>
+               <mrow>
+                <mrow>
+                 <mi>lata</mi>
+                 <mo>*</mo>
+                 <mrow>
+                  <mi>latvecA</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mo>[</mo>
+                   <mn>1</mn>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                </mrow>
+                <mtext> </mtext>
+                <mo>+</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>latb</mi>
+                 <mo>*</mo>
+                 <mrow>
+                  <mi>latvecB</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mo>[</mo>
+                   <mn>1</mn>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                </mrow>
+               </mrow>
+               <mo>,</mo>
+               <mi>H</mi>
+               <mo>,</mo>
+               <mn>1</mn>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+            </mrow>
+            <mtext> </mtext>
+            <mo>;</mo>
+            <mrow>
+             <mi>ypos</mi>
+             <mtext> </mtext>
+             <mo>=</mo>
+             <mtext> </mtext>
+             <mrow>
+              <mi>Mod</mi>
+              <mo>[</mo>
+              <mrow>
+               <mrow>
+                <mrow>
+                 <mi>lata</mi>
+                 <mo>*</mo>
+                 <mrow>
+                  <mi>latvecA</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mo>[</mo>
+                   <mn>2</mn>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                </mrow>
+                <mtext> </mtext>
+                <mo>+</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>latb</mi>
+                 <mo>*</mo>
+                 <mrow>
+                  <mi>latvecB</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mo>[</mo>
+                   <mn>2</mn>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                </mrow>
+               </mrow>
+               <mo>,</mo>
+               <mi>W</mi>
+               <mo>,</mo>
+               <mn>1</mn>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+            </mrow>
+            <mtext> </mtext>
+            <mo>;</mo>
+            <mrow>
+             <mi>If</mi>
+             <mo>[</mo>
+             <mrow>
+              <mrow>
+               <mi>untouched</mi>
+               <mo>[</mo>
+               <mrow>
+                <mo>[</mo>
+                <mrow>
+                 <mi>ypos</mi>
+                 <mo>,</mo>
+                 <mi>xpos</mi>
+                </mrow>
+                <mo>]</mo>
+               </mrow>
+               <mo>]</mo>
+              </mrow>
+              <mo>,</mo>
+              <mrow>
+               <mrow>
+                <mrow>
+                 <mi>untouched</mi>
+                 <mo>[</mo>
+                 <mrow>
+                  <mo>[</mo>
+                  <mrow>
+                   <mi>ypos</mi>
+                   <mo>,</mo>
+                   <mi>xpos</mi>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                 <mo>]</mo>
+                </mrow>
+                <mo>=</mo>
+                <mi>False</mi>
+               </mrow>
+               <mo>;</mo>
+               <mrow>
+                <mi>xpos</mi>
+                <mtext> </mtext>
+                <mo>+=</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>Random</mi>
+                 <mo>[</mo>
+                 <mrow>
+                  <mi>Integer</mi>
+                  <mo>,</mo>
+                  <mi>randrange</mi>
+                 </mrow>
+                 <mo>]</mo>
+                </mrow>
+               </mrow>
+               <mo>;</mo>
+               <mtext> </mtext>
+               <mrow>
+                <mi>ypos</mi>
+                <mtext> </mtext>
+                <mo>+=</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>Random</mi>
+                 <mo>[</mo>
+                 <mrow>
+                  <mi>Integer</mi>
+                  <mo>,</mo>
+                  <mi>randrange</mi>
+                 </mrow>
+                 <mo>]</mo>
+                </mrow>
+               </mrow>
+               <mo>;</mo>
+               <mtext>&#62371;</mtext>
+               <mrow>
+                <mi>For</mi>
+                <mo>[</mo>
+                <mrow>
+                 <mrow>
+                  <mi>j</mi>
+                  <mtext> </mtext>
+                  <mo>=</mo>
+                  <mtext> </mtext>
+                  <mn>1</mn>
+                 </mrow>
+                 <mtext> </mtext>
+                 <mo>,</mo>
+                 <mrow>
+                  <mi>j</mi>
+                  <mo>&leq;</mo>
+                  <mtext> </mtext>
+                  <mi>size</mi>
+                 </mrow>
+                 <mo>,</mo>
+                 <mrow>
+                  <mrow>
+                   <mi>For</mi>
+                   <mo>[</mo>
+                   <mrow>
+                    <mrow>
+                     <mi>i</mi>
+                     <mtext> </mtext>
+                     <mo>=</mo>
+                     <mtext> </mtext>
+                     <mn>1</mn>
+                    </mrow>
+                    <mo>,</mo>
+                    <mtext> </mtext>
+                    <mrow>
+                     <mi>i</mi>
+                     <mtext> </mtext>
+                     <mo>&leq;</mo>
+                     <mtext> </mtext>
+                     <mi>size</mi>
+                    </mrow>
+                    <mo>,</mo>
+                    <mrow>
+                     <mrow>
+                      <mrow>
+                       <mi>result</mi>
+                       <mo>[</mo>
+                       <mrow>
+                        <mo>[</mo>
+                        <mrow>
+                         <mrow>
+                          <mi>Mod</mi>
+                          <mo>[</mo>
+                          <mrow>
+                           <mrow>
+                            <mi>ypos</mi>
+                            <mo>+</mo>
+                            <mi>j</mi>
+                           </mrow>
+                           <mo>,</mo>
+                           <mi>H</mi>
+                           <mo>,</mo>
+                           <mn>1</mn>
+                          </mrow>
+                          <mo>]</mo>
+                         </mrow>
+                         <mo>,</mo>
+                         <mrow>
+                          <mi>Mod</mi>
+                          <mo>[</mo>
+                          <mrow>
+                           <mrow>
+                            <mi>xpos</mi>
+                            <mo>+</mo>
+                            <mi>i</mi>
+                           </mrow>
+                           <mo>,</mo>
+                           <mi>W</mi>
+                           <mo>,</mo>
+                           <mn>1</mn>
+                          </mrow>
+                          <mo>]</mo>
+                         </mrow>
+                        </mrow>
+                        <mo>]</mo>
+                       </mrow>
+                       <mo>]</mo>
+                      </mrow>
+                      <mo>=</mo>
+                      <mn>1</mn>
+                     </mrow>
+                     <mo>;</mo>
+                     <mrow>
+                      <mi>i</mi>
+                      <mo>++</mo>
+                     </mrow>
+                    </mrow>
+                   </mrow>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>;</mo>
+                  <mrow>
+                   <mi>j</mi>
+                   <mo>++</mo>
+                  </mrow>
+                 </mrow>
+                </mrow>
+                <mo>]</mo>
+               </mrow>
+              </mrow>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>;</mo>
+            <mtext>&#62371;</mtext>
+            <mrow>
+             <mi>latb</mi>
+             <mo>++</mo>
+            </mrow>
+           </mrow>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>;</mo>
+         <mtext>&#62371;</mtext>
+         <mrow>
+          <mi>lata</mi>
+          <mo>++</mo>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>;</mo>
+      <mi>result</mi>
+     </mrow>
+    </mrow>
+    <mtext>&#62371;</mtext>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>ypos</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>xpos</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(ypos\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(xpos\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>lata</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>data</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(lata\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(data\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>latb</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>lata</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(latb\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(lata\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>stop</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Further output of </mtext>
+    <mrow>
+     <mi>General</mi>
+     <mtext>::</mtext>
+     <ms>spell1</ms>
+    </mrow>
+    <mtext> will be suppressed during this calculation. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Further output of \\!\\(General :: \\\&quot;spell1\\\&quot;\\) will be suppressed during this calculation. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::stop\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Example of a lattice with no noise:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>latdata</mi>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>MakeLattice</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>400</mn>
+     <mo>,</mo>
+     <mn>400</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>20</mn>
+       <mo>,</mo>
+       <mn>40</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>16</mn>
+       <mo>,</mo>
+       <mn>4</mn>
+       <mo>,</mo>
+       <mn>25</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mn>4</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>0</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>fourlat</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Fourier</mi>
+    <mo>[</mo>
+    <mi>latdata</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>GraphicsArray</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>ImagePlot</mi>
+       <mo>[</mo>
+       <mi>latdata</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>FourierImagePlot</mi>
+       <mo>[</mo>
+       <mi>fourlat</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>ImagePlot</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Chop</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>InverseFourier</mi>
+         <mo>[</mo>
+         <mi>fourlat</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ImageSize</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1000</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mi>DisplayNow</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_26.gif" alt="[Graphics:HTMLFiles/Lecture-18_26.gif]"  width="1000" height="312"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Make identical lattice, but add a little noise to the system:
+</p>
+
+
+
+<p class="Text">
+ <a id="mmtag_18_two_dimensiona_lattices___example_creating_with_thermal_fluctuations"></a>
+ The noise is simulated by making small random displacements of each &quot;atom&quot; about its site in the perfect crystal, then computing the Fourier transform of the resulting somewhat imperfect crystal...
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>thermallatdata</mi>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>MakeLattice</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>400</mn>
+     <mo>,</mo>
+     <mn>400</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>20</mn>
+       <mo>,</mo>
+       <mn>40</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>16</mn>
+       <mo>,</mo>
+       <mn>4</mn>
+       <mo>,</mo>
+       <mn>25</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mn>4</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>2</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>2</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>thermalfourlat</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Fourier</mi>
+    <mo>[</mo>
+    <mi>thermallatdata</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Visualization of the original image, its fourier transform, and them inverse fourier transform of the fourier transform..
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>GraphicsArray</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>ImagePlot</mi>
+       <mo>[</mo>
+       <mi>thermallatdata</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>FourierImagePlot</mi>
+       <mo>[</mo>
+       <mi>thermalfourlat</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>ImagePlot</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Chop</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>InverseFourier</mi>
+         <mo>[</mo>
+         <mi>thermalfourlat</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ImageSize</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1000</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mi>DisplayNow</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_27.gif" alt="[Graphics:HTMLFiles/Lecture-18_27.gif]"  width="1000" height="312"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Notes on these images: The periodic array of spots seen in previous Fourier transforms from &quot;crystals&quot; are not visible here, but they <span style='font-style: italic;'>are</span> present. Once again, the imperfection of the object gives rise to a distribution of &quot;diffuse&quot; intensity in reciprocal space. Careful observation indicates that the back-transform on the right is rotated 180&deg; with respect to the original, as in the example above that contained the single defect.
+</p>
+
+
+
+<p class="Subtitle">
+ Using an Aperature to look at a particular region of reciprocal space and visualizing its effect 
+</p>
+
+
+
+<p class="Text">
+ <a id="mmtag_18_Fourier_transform__example_of_selecting_regions_of_k_space"></a>
+ The following is a fairly baroque function to do something what is conceptually straightforward:<br />&nbsp;&nbsp;&nbsp;&nbsp;The function takes original data from a lattice and its fourier transform and graphically compares those to data from a &quot;noised-up&quot; lattice. <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The function allows the user to specify the center of the aperature in reciprocal space as well as (twice) the aperature width and height.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The function will display eight images in two columns. The left column of graphics illustrates (from top to bottom)the &quot;clean&quot; input image, the entire fourier transform with the rectangular aperature illustrated, the &quot;reconstructed image&quot; that derives from the fourier transform of the aperature region, and finally a magnified image of the fourier transform within the aperature only.<br />&nbsp;&nbsp;&nbsp;&nbsp;The right column is the same sequence of images for the &quot;noised-up&quot; initial data
+</p>
+
+
+
+<p class="Subsubsection">
+ Compare[] takes 8 arguments:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The first four are&nbsp;&nbsp;&nbsp;&nbsp;1) The input discrete lattice reference data<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) The fourier transform of the input reference data<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3)&nbsp;&nbsp;The input &quot;perturbed&quot; data<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4)&nbsp;&nbsp;The fourier transform of the perturbed data<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second four are<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1-2) the x and y lattice coordinates of the center of the square &quot;aperature&quot; in fourier space (0,0) is the center and the<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edge depends on the size of the data.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-4)&nbsp;&nbsp;twice the width and height of the aperature.
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>Compare</mi>
+    <mo>[</mo>
+    <mrow>
+     <mtext>sharpdata_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>sharpfourierdata_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>diffusedata_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>diffusefourierdata_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>ApCenterx_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext>ApCentery_</mtext>
+     <mo>,</mo>
+     <mtext>  </mtext>
+     <mtext>ApTwicewidth_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>ApTwiceheight_</mtext>
+    </mrow>
+    <mtext> </mtext>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>:=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Module</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>sharpfourieraperature</mi>
+       <mo>,</mo>
+       <mi>diffusefourieraperature</mi>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>dims</mi>
+        <mtext> </mtext>
+        <mo>=</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>Dimensions</mi>
+         <mo>[</mo>
+         <mi>sharpdata</mi>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mi>nrows</mi>
+       <mo>,</mo>
+       <mi>ncols</mi>
+       <mo>,</mo>
+       <mi>sharpfourimage</mi>
+       <mo>,</mo>
+       <mi>sharpapimage</mi>
+       <mo>,</mo>
+       <mi>diffusefourierimage</mi>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mi>diffuseapimage</mi>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mi>sharprevfourimage</mi>
+       <mo>,</mo>
+       <mi>diffusefourimage</mi>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mi>sharpfourmagimage</mi>
+       <mo>,</mo>
+       <mi>diffusefourmagimage</mi>
+       <mo>,</mo>
+       <mi>aperature</mi>
+       <mo>,</mo>
+       <mi>xll</mi>
+       <mo>,</mo>
+       <mi>yll</mi>
+       <mo>,</mo>
+       <mi>xur</mi>
+       <mo>,</mo>
+       <mi>yur</mi>
+       <mo>,</mo>
+       <mi>theShiftedAperature</mi>
+       <mo>,</mo>
+       <mi>shiftedsharpfourier</mi>
+       <mo>,</mo>
+       <mi>shifteddiffusefourier</mi>
+       <mo>,</mo>
+       <mi>xc</mi>
+       <mo>,</mo>
+       <mi>yc</mi>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mrow>
+       <mi>nrows</mi>
+       <mo>=</mo>
+       <mrow>
+        <mi>dims</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>ncols</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>dims</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mn>2</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>shiftedsharpfourier</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>KZeroAtCenter</mi>
+        <mo>[</mo>
+        <mi>sharpfourierdata</mi>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>shifteddiffusefourier</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>KZeroAtCenter</mi>
+        <mo>[</mo>
+        <mi>diffusefourierdata</mi>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>sharpfourimage</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>ListDensityPlot</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>Abs</mi>
+          <mo>[</mo>
+          <mi>shiftedsharpfourier</mi>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Mesh</mi>
+          <mo>-&gt;</mo>
+          <mi>False</mi>
+         </mrow>
+         <mo>,</mo>
+         <mi>FourierColorFunctionBlackBack</mi>
+         <mo>,</mo>
+         <mtext>&#62371;</mtext>
+         <mrow>
+          <mtext>(*</mtext>
+          <mrow>
+           <mrow>
+            <mi>ColorFunctionScaling</mi>
+            <mo>&rightarrow;</mo>
+            <mi>False</mi>
+           </mrow>
+           <mo>,</mo>
+          </mrow>
+          <mtext>*)</mtext>
+         </mrow>
+         <mo>&InvisibleTimes;</mo>
+         <mtext>&#62371;</mtext>
+         <mi>DisplayLater</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>diffusefourimage</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>ListDensityPlot</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>Abs</mi>
+          <mo>[</mo>
+          <mi>shifteddiffusefourier</mi>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Mesh</mi>
+          <mo>-&gt;</mo>
+          <mi>False</mi>
+         </mrow>
+         <mo>,</mo>
+         <mi>FourierColorFunctionBlackBack</mi>
+         <mo>,</mo>
+         <mtext>&#62371;</mtext>
+         <mrow>
+          <mtext>(*</mtext>
+          <mrow>
+           <mrow>
+            <mi>ColorFunctionScaling</mi>
+            <mo>&rightarrow;</mo>
+            <mi>False</mi>
+           </mrow>
+           <mo>,</mo>
+          </mrow>
+          <mtext>*)</mtext>
+         </mrow>
+         <mo>&InvisibleTimes;</mo>
+         <mtext>&#62371;</mtext>
+         <mi>DisplayLater</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>xc</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mrow>
+        <mrow>
+         <mi>Round</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>ncols</mi>
+          <mo>/</mo>
+          <mn>2</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mtext> </mtext>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mi>ApCenterx</mi>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>yc</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mrow>
+         <mi>Round</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>nrows</mi>
+          <mo>/</mo>
+          <mn>2</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mtext> </mtext>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mi>ApCentery</mi>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>xll</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>xc</mi>
+        <mtext> </mtext>
+        <mo>-</mo>
+        <mi>ApTwicewidth</mi>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>yll</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>yc</mi>
+        <mtext> </mtext>
+        <mo>-</mo>
+        <mtext> </mtext>
+        <mi>ApTwiceheight</mi>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>xur</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>xc</mi>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mi>ApTwicewidth</mi>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>yur</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>yc</mi>
+        <mtext> </mtext>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mi>ApTwicewidth</mi>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>And</mi>
+         <mo>[</mo>
+         <mrow>
+          <mrow>
+           <mi>xll</mi>
+           <mtext> </mtext>
+           <mo>&lt;</mo>
+           <mtext> </mtext>
+           <mn>1</mn>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mi>yll</mi>
+           <mo>&lt;</mo>
+           <mn>1</mn>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mi>xur</mi>
+           <mo>&gt;</mo>
+           <mi>ncols</mi>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mi>yur</mi>
+           <mo>&gt;</mo>
+           <mi>nrows</mi>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mrow>
+          <mi>sharpfourieraperature</mi>
+          <mo>=</mo>
+          <mi>shiftedsharpfourier</mi>
+         </mrow>
+         <mo>;</mo>
+         <mrow>
+          <mi>diffusefourieraperature</mi>
+          <mo>=</mo>
+          <mi>shifteddiffusefourier</mi>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mtext>&#62371;</mtext>
+        <mrow>
+         <mrow>
+          <mi>aperature</mi>
+          <mo>=</mo>
+          <mrow>
+           <mi>Table</mi>
+           <mo>[</mo>
+           <mrow>
+            <mrow>
+             <mi>If</mi>
+             <mo>[</mo>
+             <mrow>
+              <mrow>
+               <mi>And</mi>
+               <mo>[</mo>
+               <mrow>
+                <mrow>
+                 <mrow>
+                  <mi>Abs</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mi>i</mi>
+                   <mo>-</mo>
+                   <mi>yc</mi>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                 <mtext> </mtext>
+                 <mo>&lt;=</mo>
+                 <mtext> </mtext>
+                 <mi>ApTwiceheight</mi>
+                </mrow>
+                <mo>,</mo>
+                <mrow>
+                 <mrow>
+                  <mi>Abs</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mi>j</mi>
+                   <mtext> </mtext>
+                   <mo>-</mo>
+                   <mtext> </mtext>
+                   <mi>xc</mi>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                 <mtext> </mtext>
+                 <mo>&lt;=</mo>
+                 <mtext> </mtext>
+                 <mi>ApTwicewidth</mi>
+                </mrow>
+               </mrow>
+               <mo>]</mo>
+              </mrow>
+              <mo>,</mo>
+              <mn>1</mn>
+              <mo>,</mo>
+              <mn>0</mn>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mo>{</mo>
+             <mrow>
+              <mi>i</mi>
+              <mo>,</mo>
+              <mi>nrows</mi>
+             </mrow>
+             <mo>}</mo>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mo>{</mo>
+             <mrow>
+              <mi>j</mi>
+              <mo>,</mo>
+              <mi>ncols</mi>
+             </mrow>
+             <mo>}</mo>
+            </mrow>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>;</mo>
+         <mtext>&#62371;</mtext>
+         <mrow>
+          <mi>sharpfourieraperature</mi>
+          <mo>=</mo>
+          <mrow>
+           <mi>aperature</mi>
+           <mo>*</mo>
+           <mi>shiftedsharpfourier</mi>
+          </mrow>
+         </mrow>
+         <mo>;</mo>
+         <mrow>
+          <mi>diffusefourieraperature</mi>
+          <mo>=</mo>
+          <mrow>
+           <mi>aperature</mi>
+           <mo>*</mo>
+           <mi>shifteddiffusefourier</mi>
+          </mrow>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>theShiftedAperature</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mrow>
+        <mi>Line</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mrow>
+           <mo>{</mo>
+           <mtext> </mtext>
+           <mrow>
+            <mrow>
+             <mi>xll</mi>
+             <mo>-</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>,</mo>
+            <mtext> </mtext>
+            <mrow>
+             <mi>yll</mi>
+             <mo>-</mo>
+             <mn>1</mn>
+            </mrow>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mtext> </mtext>
+           <mrow>
+            <mrow>
+             <mi>xur</mi>
+             <mo>+</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>,</mo>
+            <mtext> </mtext>
+            <mrow>
+             <mi>yll</mi>
+             <mo>-</mo>
+             <mn>1</mn>
+            </mrow>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mrow>
+             <mi>xur</mi>
+             <mo>+</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>,</mo>
+            <mtext> </mtext>
+            <mrow>
+             <mi>yur</mi>
+             <mo>+</mo>
+             <mn>1</mn>
+            </mrow>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mtext> </mtext>
+           <mrow>
+            <mrow>
+             <mi>xll</mi>
+             <mo>-</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>,</mo>
+            <mtext> </mtext>
+            <mrow>
+             <mi>yur</mi>
+             <mo>+</mo>
+             <mn>1</mn>
+            </mrow>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mrow>
+             <mi>xll</mi>
+             <mo>-</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>yll</mi>
+             <mo>-</mo>
+             <mn>1</mn>
+            </mrow>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mtext> </mtext>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>sharpapimage</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>Show</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>sharpfourimage</mi>
+         <mo>,</mo>
+         <mrow>
+          <mi>Graphics</mi>
+          <mo>[</mo>
+          <mrow>
+           <mo>{</mo>
+           <mtext>&#62371;</mtext>
+           <mrow>
+            <mtext>(*</mtext>
+            <mrow>
+             <mi>Hue</mi>
+             <mo>[</mo>
+             <mrow>
+              <mtext>.5</mtext>
+              <mo>,</mo>
+              <mtext>.5</mtext>
+              <mo>,</mo>
+              <mn>1</mn>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mtext>*)</mtext>
+           </mrow>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mrow>
+             <mi>Hue</mi>
+             <mo>[</mo>
+             <mrow>
+              <mtext>.1667</mtext>
+              <mo>,</mo>
+              <mn>1</mn>
+              <mo>,</mo>
+              <mn>1</mn>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>Thickness</mi>
+             <mo>[</mo>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mi>nrows</mi>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mi>theShiftedAperature</mi>
+           </mrow>
+           <mtext>&#62371;</mtext>
+           <mo>}</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>diffuseapimage</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>Show</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>diffusefourimage</mi>
+         <mo>,</mo>
+         <mrow>
+          <mi>Graphics</mi>
+          <mo>[</mo>
+          <mrow>
+           <mo>{</mo>
+           <mtext>&#62371;</mtext>
+           <mrow>
+            <mtext>(*</mtext>
+            <mrow>
+             <mi>Hue</mi>
+             <mo>[</mo>
+             <mrow>
+              <mtext>.5</mtext>
+              <mo>,</mo>
+              <mtext>.5</mtext>
+              <mo>,</mo>
+              <mn>1</mn>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mtext>*)</mtext>
+           </mrow>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mrow>
+             <mi>Hue</mi>
+             <mo>[</mo>
+             <mrow>
+              <mtext>.1667</mtext>
+              <mo>,</mo>
+              <mn>1</mn>
+              <mo>,</mo>
+              <mn>1</mn>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>Thickness</mi>
+             <mo>[</mo>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mi>nrows</mi>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mtext>&#62371;</mtext>
+            <mi>theShiftedAperature</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mtext>(*</mtext>
+       <mrow>
+        <mrow>
+         <mi>Print</mi>
+         <mo>[</mo>
+         <mrow>
+          <ms>data is </ms>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <mi>nrows</mi>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <ms> wide, and </ms>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <mi>ncols</mi>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <ms> high\n</ms>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <ms>Aperature is x&Element;(</ms>
+          <mo>,</mo>
+          <mi>xll</mi>
+          <mo>,</mo>
+          <ms>,</ms>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <mi>xur</mi>
+          <mo>,</mo>
+          <ms>)  y&Element;(</ms>
+          <mo>,</mo>
+          <mi>yll</mi>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <ms>,</ms>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <mi>yur</mi>
+          <mo>,</mo>
+          <ms>)</ms>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>;</mo>
+       </mrow>
+       <mtext>*)</mtext>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mtext>&#62371;</mtext>
+      <mtext>&#62371;</mtext>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>xll</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>If</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>xll</mi>
+          <mo>&lt;</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>,</mo>
+         <mn>1</mn>
+         <mo>,</mo>
+         <mi>xll</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>xur</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>If</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>xur</mi>
+          <mo>&gt;</mo>
+          <mi>nrows</mi>
+         </mrow>
+         <mo>,</mo>
+         <mi>nrows</mi>
+         <mo>,</mo>
+         <mi>xur</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>yll</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>If</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>yll</mi>
+          <mo>&lt;</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>,</mo>
+         <mn>1</mn>
+         <mo>,</mo>
+         <mi>yll</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>yur</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mrow>
+        <mi>If</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>yur</mi>
+          <mo>&gt;</mo>
+          <mi>ncols</mi>
+         </mrow>
+         <mo>,</mo>
+         <mi>ncols</mi>
+         <mo>,</mo>
+         <mi>yur</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>sharpfourmagimage</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>ListDensityPlot</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mrow>
+           <mi>Abs</mi>
+           <mo>[</mo>
+           <mi>shiftedsharpfourier</mi>
+           <mo>]</mo>
+          </mrow>
+          <mo>[</mo>
+          <mrow>
+           <mo>[</mo>
+           <mrow>
+            <mrow>
+             <mi>Range</mi>
+             <mo>[</mo>
+             <mrow>
+              <mi>yll</mi>
+              <mo>,</mo>
+              <mi>yur</mi>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>Range</mi>
+             <mo>[</mo>
+             <mrow>
+              <mi>xll</mi>
+              <mo>,</mo>
+              <mi>xur</mi>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Mesh</mi>
+          <mo>-&gt;</mo>
+          <mi>False</mi>
+         </mrow>
+         <mo>,</mo>
+         <mi>FourierColorFunctionBlackBack</mi>
+         <mo>,</mo>
+         <mrow>
+          <mtext>(*</mtext>
+          <mrow>
+           <mrow>
+            <mi>ColorFunctionScaling</mi>
+            <mo>&rightarrow;</mo>
+            <mi>False</mi>
+           </mrow>
+           <mo>,</mo>
+          </mrow>
+          <mtext>*)</mtext>
+         </mrow>
+         <mo>&InvisibleTimes;</mo>
+         <mi>DisplayLater</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>diffusefourmagimage</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>ListDensityPlot</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mrow>
+           <mi>Abs</mi>
+           <mo>[</mo>
+           <mi>shifteddiffusefourier</mi>
+           <mo>]</mo>
+          </mrow>
+          <mo>[</mo>
+          <mrow>
+           <mo>[</mo>
+           <mrow>
+            <mrow>
+             <mi>Range</mi>
+             <mo>[</mo>
+             <mrow>
+              <mi>yll</mi>
+              <mo>,</mo>
+              <mi>yur</mi>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>Range</mi>
+             <mo>[</mo>
+             <mrow>
+              <mi>xll</mi>
+              <mo>,</mo>
+              <mi>xur</mi>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Mesh</mi>
+          <mo>-&gt;</mo>
+          <mi>False</mi>
+         </mrow>
+         <mo>,</mo>
+         <mi>FourierColorFunctionBlackBack</mi>
+         <mo>,</mo>
+         <mrow>
+          <mtext>(*</mtext>
+          <mrow>
+           <mrow>
+            <mi>ColorFunctionScaling</mi>
+            <mo>&rightarrow;</mo>
+            <mi>False</mi>
+           </mrow>
+           <mo>,</mo>
+          </mrow>
+          <mtext>*)</mtext>
+         </mrow>
+         <mo>&InvisibleTimes;</mo>
+         <mi>DisplayLater</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>sharprevfourimage</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>ListDensityPlot</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>Abs</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>Chop</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>InverseFourier</mi>
+            <mo>[</mo>
+            <mrow>
+             <mi>KZeroAtCenter</mi>
+             <mo>[</mo>
+             <mi>sharpfourieraperature</mi>
+             <mo>]</mo>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Mesh</mi>
+          <mo>&rightarrow;</mo>
+          <mi>False</mi>
+         </mrow>
+         <mo>,</mo>
+         <mi>DisplayLater</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>diffuserevfourimage</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>ListDensityPlot</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>Abs</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>Chop</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>InverseFourier</mi>
+            <mo>[</mo>
+            <mrow>
+             <mi>KZeroAtCenter</mi>
+             <mo>[</mo>
+             <mi>diffusefourieraperature</mi>
+             <mo>]</mo>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Mesh</mi>
+          <mo>&rightarrow;</mo>
+          <mi>False</mi>
+         </mrow>
+         <mo>,</mo>
+         <mi>DisplayLater</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>Show</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>GraphicsArray</mi>
+         <mo>[</mo>
+         <mrow>
+          <mo>{</mo>
+          <mtext>&#62371;</mtext>
+          <mrow>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mrow>
+              <mi>ImagePlot</mi>
+              <mo>[</mo>
+              <mi>sharpdata</mi>
+              <mo>]</mo>
+             </mrow>
+             <mo>,</mo>
+             <mrow>
+              <mi>ImagePlot</mi>
+              <mo>[</mo>
+              <mi>diffusedata</mi>
+              <mo>]</mo>
+             </mrow>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+           <mo>,</mo>
+           <mtext>&#62371;</mtext>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mi>sharpapimage</mi>
+             <mo>,</mo>
+             <mi>diffuseapimage</mi>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+           <mo>,</mo>
+           <mtext>&#62371;</mtext>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mi>sharprevfourimage</mi>
+             <mo>,</mo>
+             <mtext> </mtext>
+             <mi>diffuserevfourimage</mi>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+           <mo>,</mo>
+           <mtext>&#62371;</mtext>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mi>sharpfourmagimage</mi>
+             <mo>,</mo>
+             <mi>diffusefourmagimage</mi>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+          </mrow>
+          <mtext>&#62371;</mtext>
+          <mo>}</mo>
+         </mrow>
+         <mtext>&#62371;</mtext>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>ImageSize</mi>
+         <mo>&rightarrow;</mo>
+         <mn>1000</mn>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>GraphicsSpacing</mi>
+         <mo>&rightarrow;</mo>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mtext>.001</mtext>
+           <mo>,</mo>
+           <mtext>.0</mtext>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mi>DisplayNow</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>;</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mtext>&#62371;</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ An example, use MakeLattice to produce a &quot;clean&quot; and a &quot;noised-up&quot; lattice
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-18_28.gif" alt="latdata = MakeLattice[400, 400, {0, 20, 40}, {16, 4, 25}, 4, {0, 0}] ; "  width="553" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-18_29.gif" alt="fourlat = Fourier[latdata] ;"  width="235" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>thermallatdata</mi>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>MakeLattice</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>400</mn>
+     <mo>,</mo>
+     <mn>400</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>20</mn>
+       <mo>,</mo>
+       <mn>40</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>16</mn>
+       <mo>,</mo>
+       <mn>4</mn>
+       <mo>,</mo>
+       <mn>25</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mn>4</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>thermalfourlat</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Fourier</mi>
+    <mo>[</mo>
+    <mi>thermallatdata</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Compare</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>latdata</mi>
+   <mo>,</mo>
+   <mi>fourlat</mi>
+   <mo>,</mo>
+   <mi>thermallatdata</mi>
+   <mo>,</mo>
+   <mi>thermalfourlat</mi>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>50</mn>
+   <mo>,</mo>
+   <mn>50</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_30.gif" alt="[Graphics:HTMLFiles/Lecture-18_30.gif]"  width="1000" height="1999"  style="vertical-align:middle" />
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>data is </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>400</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext> wide, and </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>400</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext> high&NewLine;</mtext>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>data is </ms>
+    <cn type='integer'>400</cn>
+    <ms> wide, and </ms>
+    <cn type='integer'>400</cn>
+    <ms> high&NewLine;</ms>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Compare</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>latdata</mi>
+   <mo>,</mo>
+   <mi>fourlat</mi>
+   <mo>,</mo>
+   <mi>thermallatdata</mi>
+   <mo>,</mo>
+   <mi>thermalfourlat</mi>
+   <mo>,</mo>
+   <mn>100</mn>
+   <mo>,</mo>
+   <mn>100</mn>
+   <mo>,</mo>
+   <mn>25</mn>
+   <mo>,</mo>
+   <mn>25</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_31.gif" alt="[Graphics:HTMLFiles/Lecture-18_31.gif]"  width="1000" height="1999"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Compare</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>latdata</mi>
+   <mo>,</mo>
+   <mi>fourlat</mi>
+   <mo>,</mo>
+   <mi>thermallatdata</mi>
+   <mo>,</mo>
+   <mi>thermalfourlat</mi>
+   <mo>,</mo>
+   <mn>20</mn>
+   <mo>,</mo>
+   <mn>30</mn>
+   <mo>,</mo>
+   <mn>15</mn>
+   <mo>,</mo>
+   <mn>15</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_32.gif" alt="[Graphics:HTMLFiles/Lecture-18_32.gif]"  width="1000" height="1999"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Compare</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>latdata</mi>
+   <mo>,</mo>
+   <mi>fourlat</mi>
+   <mo>,</mo>
+   <mi>thermallatdata</mi>
+   <mo>,</mo>
+   <mi>thermalfourlat</mi>
+   <mo>,</mo>
+   <mn>30</mn>
+   <mo>,</mo>
+   <mn>30</mn>
+   <mo>,</mo>
+   <mn>15</mn>
+   <mo>,</mo>
+   <mn>15</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_33.gif" alt="[Graphics:HTMLFiles/Lecture-18_33.gif]"  width="1000" height="1999"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Compare</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>latdata</mi>
+   <mo>,</mo>
+   <mi>fourlat</mi>
+   <mo>,</mo>
+   <mi>thermallatdata</mi>
+   <mo>,</mo>
+   <mi>thermalfourlat</mi>
+   <mo>,</mo>
+   <mn>35</mn>
+   <mo>,</mo>
+   <mn>25</mn>
+   <mo>,</mo>
+   <mn>15</mn>
+   <mo>,</mo>
+   <mn>15</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_34.gif" alt="[Graphics:HTMLFiles/Lecture-18_34.gif]"  width="1000" height="1999"  style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ This suggests the (potentially) interesting exercise of modifying compare to take two aperature specifications to &quot;pick out&quot; other periodicities in the lattice--i.e., something like the following:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compare[cleandata_ , fouriercleandata_ , noisydata_, fouriernoisydata_,&nbsp;&nbsp;{FirstApLowX_, FirstApHiX_ , FirstApLowY_, FirstApHiY_}, {SecondApLowX_,SecondApHiX_ , SecondApLowY_, SecondApHiY_}] :=
+</p>
+
+
+
+<p class="Text">
+ <a id="mmtag_18_two_dimensional_lattices___example_creating_with_anisotropic_thermal_fluctuations"></a>
+ Consider what happens to the image when the noise is anisotropic... Modify the function MakeLattice to take two &quot;noise arguments&quot;
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mtext>&#62371;</mtext>
+  <mrow>
+   <mrow>
+    <mi>MakeLattice</mi>
+    <mo>[</mo>
+    <mrow>
+     <mtext>W_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>H_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>latvecA_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>latvecB_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>size_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>Xrandrange_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>Yrandrange_</mtext>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>:=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Module</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mi>result</mi>
+        <mo>=</mo>
+        <mrow>
+         <mi>Table</mi>
+         <mo>[</mo>
+         <mrow>
+          <mn>0</mn>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>i</mi>
+            <mo>,</mo>
+            <mi>H</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>j</mi>
+            <mo>,</mo>
+            <mi>W</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>lata</mi>
+        <mo>=</mo>
+        <mrow>
+         <mo>-</mo>
+         <mn>1</mn>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>latb</mi>
+        <mo>=</mo>
+        <mrow>
+         <mo>-</mo>
+         <mn>1</mn>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mi>xpos</mi>
+       <mo>,</mo>
+       <mi>ypos</mi>
+       <mo>,</mo>
+       <mtext>  </mtext>
+       <mrow>
+        <mi>untouched</mi>
+        <mtext> </mtext>
+        <mo>=</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>Table</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>True</mi>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>i</mi>
+            <mo>,</mo>
+            <mi>H</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>j</mi>
+            <mo>,</mo>
+            <mi>W</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mrow>
+       <mi>For</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>lata</mi>
+         <mtext> </mtext>
+         <mo>=</mo>
+         <mtext> </mtext>
+         <mn>0</mn>
+        </mrow>
+        <mo>,</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>lata</mi>
+         <mtext> </mtext>
+         <mo>&leq;</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mi>latvecA</mi>
+          <mo>[</mo>
+          <mrow>
+           <mo>[</mo>
+           <mn>3</mn>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mtext>&#62371;</mtext>
+        <mrow>
+         <mrow>
+          <mi>For</mi>
+          <mo>[</mo>
+          <mrow>
+           <mrow>
+            <mi>latb</mi>
+            <mo>=</mo>
+            <mn>0</mn>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mi>latb</mi>
+            <mo>&leq;</mo>
+            <mtext> </mtext>
+            <mrow>
+             <mi>latvecB</mi>
+             <mo>[</mo>
+             <mrow>
+              <mo>[</mo>
+              <mn>3</mn>
+              <mo>]</mo>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mrow>
+             <mi>xpos</mi>
+             <mo>=</mo>
+             <mrow>
+              <mi>Mod</mi>
+              <mo>[</mo>
+              <mrow>
+               <mrow>
+                <mrow>
+                 <mi>lata</mi>
+                 <mo>*</mo>
+                 <mrow>
+                  <mi>latvecA</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mo>[</mo>
+                   <mn>1</mn>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                </mrow>
+                <mtext> </mtext>
+                <mo>+</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>latb</mi>
+                 <mo>*</mo>
+                 <mrow>
+                  <mi>latvecB</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mo>[</mo>
+                   <mn>1</mn>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                </mrow>
+               </mrow>
+               <mo>,</mo>
+               <mi>H</mi>
+               <mo>,</mo>
+               <mn>1</mn>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+            </mrow>
+            <mtext> </mtext>
+            <mo>;</mo>
+            <mrow>
+             <mi>ypos</mi>
+             <mtext> </mtext>
+             <mo>=</mo>
+             <mtext> </mtext>
+             <mrow>
+              <mi>Mod</mi>
+              <mo>[</mo>
+              <mrow>
+               <mrow>
+                <mrow>
+                 <mi>lata</mi>
+                 <mo>*</mo>
+                 <mrow>
+                  <mi>latvecA</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mo>[</mo>
+                   <mn>2</mn>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                </mrow>
+                <mtext> </mtext>
+                <mo>+</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>latb</mi>
+                 <mo>*</mo>
+                 <mrow>
+                  <mi>latvecB</mi>
+                  <mo>[</mo>
+                  <mrow>
+                   <mo>[</mo>
+                   <mn>2</mn>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                </mrow>
+               </mrow>
+               <mo>,</mo>
+               <mi>W</mi>
+               <mo>,</mo>
+               <mn>1</mn>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+            </mrow>
+            <mtext> </mtext>
+            <mo>;</mo>
+            <mrow>
+             <mi>If</mi>
+             <mo>[</mo>
+             <mrow>
+              <mrow>
+               <mi>untouched</mi>
+               <mo>[</mo>
+               <mrow>
+                <mo>[</mo>
+                <mrow>
+                 <mi>ypos</mi>
+                 <mo>,</mo>
+                 <mi>xpos</mi>
+                </mrow>
+                <mo>]</mo>
+               </mrow>
+               <mo>]</mo>
+              </mrow>
+              <mo>,</mo>
+              <mrow>
+               <mrow>
+                <mrow>
+                 <mi>untouched</mi>
+                 <mo>[</mo>
+                 <mrow>
+                  <mo>[</mo>
+                  <mrow>
+                   <mi>ypos</mi>
+                   <mo>,</mo>
+                   <mi>xpos</mi>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                 <mo>]</mo>
+                </mrow>
+                <mo>=</mo>
+                <mi>False</mi>
+               </mrow>
+               <mo>;</mo>
+               <mrow>
+                <mi>xpos</mi>
+                <mtext> </mtext>
+                <mo>+=</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>Random</mi>
+                 <mo>[</mo>
+                 <mrow>
+                  <mi>Integer</mi>
+                  <mo>,</mo>
+                  <mi>Xrandrange</mi>
+                 </mrow>
+                 <mo>]</mo>
+                </mrow>
+               </mrow>
+               <mo>;</mo>
+               <mtext> </mtext>
+               <mrow>
+                <mi>ypos</mi>
+                <mtext> </mtext>
+                <mo>+=</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>Random</mi>
+                 <mo>[</mo>
+                 <mrow>
+                  <mi>Integer</mi>
+                  <mo>,</mo>
+                  <mi>Yrandrange</mi>
+                 </mrow>
+                 <mo>]</mo>
+                </mrow>
+               </mrow>
+               <mo>;</mo>
+               <mtext>&#62371;</mtext>
+               <mrow>
+                <mi>For</mi>
+                <mo>[</mo>
+                <mrow>
+                 <mrow>
+                  <mi>j</mi>
+                  <mtext> </mtext>
+                  <mo>=</mo>
+                  <mtext> </mtext>
+                  <mn>1</mn>
+                 </mrow>
+                 <mtext> </mtext>
+                 <mo>,</mo>
+                 <mrow>
+                  <mi>j</mi>
+                  <mo>&leq;</mo>
+                  <mtext> </mtext>
+                  <mi>size</mi>
+                 </mrow>
+                 <mo>,</mo>
+                 <mrow>
+                  <mrow>
+                   <mi>For</mi>
+                   <mo>[</mo>
+                   <mrow>
+                    <mrow>
+                     <mi>i</mi>
+                     <mtext> </mtext>
+                     <mo>=</mo>
+                     <mtext> </mtext>
+                     <mn>1</mn>
+                    </mrow>
+                    <mo>,</mo>
+                    <mtext> </mtext>
+                    <mrow>
+                     <mi>i</mi>
+                     <mtext> </mtext>
+                     <mo>&leq;</mo>
+                     <mtext> </mtext>
+                     <mi>size</mi>
+                    </mrow>
+                    <mo>,</mo>
+                    <mrow>
+                     <mrow>
+                      <mrow>
+                       <mi>result</mi>
+                       <mo>[</mo>
+                       <mrow>
+                        <mo>[</mo>
+                        <mrow>
+                         <mrow>
+                          <mi>Mod</mi>
+                          <mo>[</mo>
+                          <mrow>
+                           <mrow>
+                            <mi>ypos</mi>
+                            <mo>+</mo>
+                            <mi>j</mi>
+                           </mrow>
+                           <mo>,</mo>
+                           <mi>H</mi>
+                           <mo>,</mo>
+                           <mn>1</mn>
+                          </mrow>
+                          <mo>]</mo>
+                         </mrow>
+                         <mo>,</mo>
+                         <mrow>
+                          <mi>Mod</mi>
+                          <mo>[</mo>
+                          <mrow>
+                           <mrow>
+                            <mi>xpos</mi>
+                            <mo>+</mo>
+                            <mi>i</mi>
+                           </mrow>
+                           <mo>,</mo>
+                           <mi>W</mi>
+                           <mo>,</mo>
+                           <mn>1</mn>
+                          </mrow>
+                          <mo>]</mo>
+                         </mrow>
+                        </mrow>
+                        <mo>]</mo>
+                       </mrow>
+                       <mo>]</mo>
+                      </mrow>
+                      <mo>=</mo>
+                      <mn>1</mn>
+                     </mrow>
+                     <mo>;</mo>
+                     <mrow>
+                      <mi>i</mi>
+                      <mo>++</mo>
+                     </mrow>
+                    </mrow>
+                   </mrow>
+                   <mo>]</mo>
+                  </mrow>
+                  <mo>;</mo>
+                  <mrow>
+                   <mi>j</mi>
+                   <mo>++</mo>
+                  </mrow>
+                 </mrow>
+                </mrow>
+                <mo>]</mo>
+               </mrow>
+              </mrow>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>;</mo>
+            <mtext>&#62371;</mtext>
+            <mrow>
+             <mi>latb</mi>
+             <mo>++</mo>
+            </mrow>
+           </mrow>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>;</mo>
+         <mtext>&#62371;</mtext>
+         <mrow>
+          <mi>lata</mi>
+          <mo>++</mo>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>;</mo>
+      <mi>result</mi>
+     </mrow>
+    </mrow>
+    <mtext>&#62371;</mtext>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The following data only has fluctuations in the up and down direction:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>thermallatdata</mi>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>MakeLattice</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>400</mn>
+     <mo>,</mo>
+     <mn>400</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>20</mn>
+       <mo>,</mo>
+       <mn>40</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>16</mn>
+       <mo>,</mo>
+       <mn>4</mn>
+       <mo>,</mo>
+       <mn>25</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mn>4</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>0</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>4</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>thermalfourlat</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Fourier</mi>
+    <mo>[</mo>
+    <mi>thermallatdata</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The resulting Fourier transform gets &quot;streaked&quot; in the left and right direction
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Compare</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>latdata</mi>
+   <mo>,</mo>
+   <mi>fourlat</mi>
+   <mo>,</mo>
+   <mi>thermallatdata</mi>
+   <mo>,</mo>
+   <mi>thermalfourlat</mi>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>200</mn>
+   <mo>,</mo>
+   <mn>200</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_35.gif" alt="[Graphics:HTMLFiles/Lecture-18_35.gif]"  width="1000" height="1999"  style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ With the following aperature, we tend to pick out one lattice vector, but not the other
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Compare</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>latdata</mi>
+   <mo>,</mo>
+   <mi>fourlat</mi>
+   <mo>,</mo>
+   <mi>thermallatdata</mi>
+   <mo>,</mo>
+   <mi>thermalfourlat</mi>
+   <mo>,</mo>
+   <mn>60</mn>
+   <mo>,</mo>
+   <mn>10</mn>
+   <mo>,</mo>
+   <mn>25</mn>
+   <mo>,</mo>
+   <mn>15</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_36.gif" alt="[Graphics:HTMLFiles/Lecture-18_36.gif]"  width="1000" height="1999"  style="vertical-align:middle" />
+</p>
+
+<p class="Subtitle">
+ Fourier Transforms on Images
+</p>
+
+
+
+<p class="Text">
+ Importing an image into Mathematica, .gif is some of many graphics data types that Mathematica can process.
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_Importxx__graphics_to_be_fourier_transformed"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>AnImage</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Import</mi>
+    <mo>[</mo>
+    <ms>/Users/ccarter/classes/3016/Images/fourier_xtal_data.gif</ms>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>AnImage</mi>
+   <mo>,</mo>
+   <mi>DisplayNow</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_37.gif" alt="[Graphics:HTMLFiles/Lecture-18_37.gif]"  width="250" height="249"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The gray values of this image are stored in the (1,1) position of the image with gray values in the range (0,255)
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ImageData</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mrow>
+     <mi>AnImage</mi>
+     <mo>[</mo>
+     <mrow>
+      <mo>[</mo>
+      <mrow>
+       <mn>1</mn>
+       <mo>,</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>/</mo>
+    <mn>255</mn>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Dimensions</mi>
+  <mo>[</mo>
+  <mi>ImageData</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>249</mn>
+   <mo>,</mo>
+   <mn>250</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_Fourier_transform__on_imported_images"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>FourierImageData</mi>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Fourier</mi>
+    <mo>[</mo>
+    <mi>ImageData</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>GraphicsArray</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>ImagePlot</mi>
+       <mo>[</mo>
+       <mi>ImageData</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>FourierImagePlot</mi>
+       <mo>[</mo>
+       <mi>FourierImageData</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>ImagePlot</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Chop</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>InverseFourier</mi>
+         <mo>[</mo>
+         <mi>FourierImageData</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ImageSize</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1000</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mi>DisplayNow</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_38.gif" alt="[Graphics:HTMLFiles/Lecture-18_38.gif]"  width="1000" height="312"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Write a function that takes a file as input, as well as an aperature specification, then displays the image, its transform and its reverse transform of the aperature fraction of the image
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_18_ImageFourierAperaturexx__example_function_to_perform_fourier_analysis_on_image_data"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ImageFourierAperature</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>imagefile_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>Apxmin_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext>Apxmax_</mtext>
+    <mo>,</mo>
+    <mtext>  </mtext>
+    <mtext>Apymin_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>Apymax_</mtext>
+   </mrow>
+   <mtext> </mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Module</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>theimage</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>Import</mi>
+        <mo>[</mo>
+        <mi>imagefile</mi>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mi>dims</mi>
+      <mtext> </mtext>
+      <mo>,</mo>
+      <mi>nrows</mi>
+      <mo>,</mo>
+      <mi>ncols</mi>
+      <mo>,</mo>
+      <mi>fourierdata</mi>
+      <mo>,</mo>
+      <mi>fourimage</mi>
+      <mo>,</mo>
+      <mi>fourieraperature</mi>
+      <mo>,</mo>
+      <mi>apimage</mi>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mi>fourmagimage</mi>
+      <mo>,</mo>
+      <mi>revfourierimage</mi>
+      <mo>,</mo>
+      <mi>aperature</mi>
+      <mo>,</mo>
+      <mi>xll</mi>
+      <mo>,</mo>
+      <mi>yll</mi>
+      <mo>,</mo>
+      <mi>xur</mi>
+      <mo>,</mo>
+      <mi>yur</mi>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext>&#62371;</mtext>
+    <mtext>	</mtext>
+    <mtext>&#62371;</mtext>
+    <mrow>
+     <mrow>
+      <mi>fourierdata</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>KZeroAtCenter</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Fourier</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mrow>
+           <mi>theimage</mi>
+           <mo>[</mo>
+           <mrow>
+            <mo>[</mo>
+            <mrow>
+             <mn>1</mn>
+             <mo>,</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>/</mo>
+          <mn>255</mn>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>fourimage</mi>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>ListDensityPlot</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>Abs</mi>
+         <mo>[</mo>
+         <mi>fourierdata</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Mesh</mi>
+         <mo>-&gt;</mo>
+         <mi>False</mi>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>ImageSize</mi>
+         <mo>&rightarrow;</mo>
+         <mn>144</mn>
+        </mrow>
+        <mo>,</mo>
+        <mi>FourierColorFunctionBlackBack</mi>
+        <mo>,</mo>
+        <mi>DisplayLater</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>dims</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>Dimensions</mi>
+       <mo>[</mo>
+       <mi>fourierdata</mi>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>nrows</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>dims</mi>
+       <mo>[</mo>
+       <mrow>
+        <mo>[</mo>
+        <mn>1</mn>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>ncols</mi>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>dims</mi>
+       <mo>[</mo>
+       <mrow>
+        <mo>[</mo>
+        <mn>2</mn>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>xll</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>Round</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>ncols</mi>
+         <mo>/</mo>
+         <mn>2</mn>
+        </mrow>
+        <mtext> </mtext>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>Apxmin</mi>
+         <mo>*</mo>
+         <mrow>
+          <mi>ncols</mi>
+          <mo>/</mo>
+          <mn>2</mn>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>yll</mi>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>Round</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>nrows</mi>
+         <mo>/</mo>
+         <mn>2</mn>
+        </mrow>
+        <mtext> </mtext>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>Apymin</mi>
+         <mo>*</mo>
+         <mrow>
+          <mi>nrows</mi>
+          <mo>/</mo>
+          <mn>2</mn>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mtext> </mtext>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>xur</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>Round</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>ncols</mi>
+         <mo>/</mo>
+         <mn>2</mn>
+        </mrow>
+        <mtext> </mtext>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>Apxmax</mi>
+         <mo>*</mo>
+         <mrow>
+          <mi>ncols</mi>
+          <mo>/</mo>
+          <mn>2</mn>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mtext> </mtext>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>yur</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>Round</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>nrows</mi>
+         <mo>/</mo>
+         <mn>2</mn>
+        </mrow>
+        <mtext> </mtext>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>Apymax</mi>
+         <mo>*</mo>
+         <mrow>
+          <mi>nrows</mi>
+          <mo>/</mo>
+          <mn>2</mn>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>xll</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>xll</mi>
+         <mo>&lt;</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mi>xll</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>xur</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>xur</mi>
+         <mo>&gt;</mo>
+         <mi>ncols</mi>
+        </mrow>
+        <mo>,</mo>
+        <mi>ncols</mi>
+        <mo>,</mo>
+        <mi>xur</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>yll</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>yll</mi>
+         <mo>&lt;</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mi>yll</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>yur</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>yur</mi>
+         <mo>&gt;</mo>
+         <mi>nrows</mi>
+        </mrow>
+        <mo>,</mo>
+        <mi>nrows</mi>
+        <mo>,</mo>
+        <mi>yur</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>aperature</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>Table</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>If</mi>
+         <mo>[</mo>
+         <mrow>
+          <mrow>
+           <mi>And</mi>
+           <mo>[</mo>
+           <mrow>
+            <mrow>
+             <mi>i</mi>
+             <mtext> </mtext>
+             <mo>&GreaterEqual;</mo>
+             <mtext> </mtext>
+             <mi>yll</mi>
+            </mrow>
+            <mo>,</mo>
+            <mtext> </mtext>
+            <mrow>
+             <mi>i</mi>
+             <mtext> </mtext>
+             <mo>&leq;</mo>
+             <mtext> </mtext>
+             <mi>yur</mi>
+            </mrow>
+            <mo>,</mo>
+            <mtext> </mtext>
+            <mrow>
+             <mi>j</mi>
+             <mtext> </mtext>
+             <mo>&GreaterEqual;</mo>
+             <mtext> </mtext>
+             <mi>xll</mi>
+            </mrow>
+            <mo>,</mo>
+            <mtext> </mtext>
+            <mrow>
+             <mi>j</mi>
+             <mtext> </mtext>
+             <mo>&leq;</mo>
+             <mtext> </mtext>
+             <mi>xur</mi>
+            </mrow>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mtext> </mtext>
+          <mo>,</mo>
+          <mn>1</mn>
+          <mo>,</mo>
+          <mn>0</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mi>i</mi>
+          <mo>,</mo>
+          <mi>nrows</mi>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mi>j</mi>
+          <mo>,</mo>
+          <mi>ncols</mi>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>fourieraperature</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>aperature</mi>
+       <mo>*</mo>
+       <mi>fourierdata</mi>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>apimage</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>Show</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>fourimage</mi>
+        <mo>,</mo>
+        <mrow>
+         <mi>Graphics</mi>
+         <mo>[</mo>
+         <mrow>
+          <mo>{</mo>
+          <mtext>&#62371;</mtext>
+          <mtext> </mtext>
+          <mrow>
+           <mrow>
+            <mi>Hue</mi>
+            <mo>[</mo>
+            <mrow>
+             <mtext>.1667</mtext>
+             <mo>,</mo>
+             <mn>1</mn>
+             <mo>,</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mi>Thickness</mi>
+            <mo>[</mo>
+            <mrow>
+             <mn>2</mn>
+             <mo>/</mo>
+             <mi>nrows</mi>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+           <mo>,</mo>
+           <mtext>&#62371;</mtext>
+           <mrow>
+            <mi>Line</mi>
+            <mo>[</mo>
+            <mrow>
+             <mo>{</mo>
+             <mrow>
+              <mrow>
+               <mo>{</mo>
+               <mtext> </mtext>
+               <mrow>
+                <mrow>
+                 <mi>xll</mi>
+                 <mo>-</mo>
+                 <mn>1</mn>
+                </mrow>
+                <mo>,</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>yll</mi>
+                 <mo>-</mo>
+                 <mn>1</mn>
+                </mrow>
+               </mrow>
+               <mo>}</mo>
+              </mrow>
+              <mo>,</mo>
+              <mrow>
+               <mo>{</mo>
+               <mtext> </mtext>
+               <mrow>
+                <mrow>
+                 <mi>xur</mi>
+                 <mo>+</mo>
+                 <mn>1</mn>
+                </mrow>
+                <mo>,</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>yll</mi>
+                 <mo>-</mo>
+                 <mn>1</mn>
+                </mrow>
+               </mrow>
+               <mo>}</mo>
+              </mrow>
+              <mo>,</mo>
+              <mrow>
+               <mo>{</mo>
+               <mtext> </mtext>
+               <mrow>
+                <mrow>
+                 <mi>xur</mi>
+                 <mo>+</mo>
+                 <mn>1</mn>
+                </mrow>
+                <mo>,</mo>
+                <mtext>  </mtext>
+                <mrow>
+                 <mi>yur</mi>
+                 <mo>+</mo>
+                 <mn>1</mn>
+                </mrow>
+               </mrow>
+               <mo>}</mo>
+              </mrow>
+              <mo>,</mo>
+              <mrow>
+               <mo>{</mo>
+               <mtext> </mtext>
+               <mrow>
+                <mrow>
+                 <mi>xll</mi>
+                 <mo>-</mo>
+                 <mn>1</mn>
+                </mrow>
+                <mo>,</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>yur</mi>
+                 <mo>+</mo>
+                 <mn>1</mn>
+                </mrow>
+               </mrow>
+               <mo>}</mo>
+              </mrow>
+              <mo>,</mo>
+              <mrow>
+               <mo>{</mo>
+               <mtext> </mtext>
+               <mrow>
+                <mrow>
+                 <mi>xll</mi>
+                 <mo>-</mo>
+                 <mn>1</mn>
+                </mrow>
+                <mo>,</mo>
+                <mtext> </mtext>
+                <mrow>
+                 <mi>yll</mi>
+                 <mo>-</mo>
+                 <mn>1</mn>
+                </mrow>
+               </mrow>
+               <mo>}</mo>
+              </mrow>
+             </mrow>
+             <mo>}</mo>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>xll</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>xll</mi>
+         <mo>&lt;</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mi>xll</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>xur</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>xur</mi>
+         <mo>&gt;</mo>
+         <mi>nrows</mi>
+        </mrow>
+        <mo>,</mo>
+        <mi>nrows</mi>
+        <mo>,</mo>
+        <mi>xur</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>yll</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>yll</mi>
+         <mo>&lt;</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mi>yll</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>yur</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>yur</mi>
+         <mo>&gt;</mo>
+         <mi>ncols</mi>
+        </mrow>
+        <mo>,</mo>
+        <mi>ncols</mi>
+        <mo>,</mo>
+        <mi>yur</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>fourmagimage</mi>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>ListDensityPlot</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>Abs</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>fourierdata</mi>
+          <mo>[</mo>
+          <mrow>
+           <mo>[</mo>
+           <mrow>
+            <mrow>
+             <mi>Range</mi>
+             <mo>[</mo>
+             <mrow>
+              <mi>yll</mi>
+              <mo>,</mo>
+              <mi>yur</mi>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>Range</mi>
+             <mo>[</mo>
+             <mrow>
+              <mi>xll</mi>
+              <mo>,</mo>
+              <mi>xur</mi>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Mesh</mi>
+         <mo>-&gt;</mo>
+         <mi>False</mi>
+        </mrow>
+        <mo>,</mo>
+        <mi>FourierColorFunctionBlackBack</mi>
+        <mo>,</mo>
+        <mtext> </mtext>
+        <mi>DisplayLater</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>revfourimage</mi>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>ListDensityPlot</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>Abs</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>Chop</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>InverseFourier</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>KZeroAtCenter</mi>
+            <mo>[</mo>
+            <mi>fourieraperature</mi>
+            <mo>]</mo>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Mesh</mi>
+         <mo>&rightarrow;</mo>
+         <mi>False</mi>
+        </mrow>
+        <mo>,</mo>
+        <mi>DisplayLater</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>Show</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mi>GraphicsArray</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>{</mo>
+         <mtext>&#62371;</mtext>
+         <mrow>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>theimage</mi>
+            <mo>,</mo>
+            <mi>apimage</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+          <mo>,</mo>
+          <mtext>&#62371;</mtext>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>revfourimage</mi>
+            <mo>,</mo>
+            <mi>fourmagimage</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+         </mrow>
+         <mtext>&#62371;</mtext>
+         <mo>}</mo>
+        </mrow>
+        <mtext>&#62371;</mtext>
+        <mo>]</mo>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>ImageSize</mi>
+        <mo>&rightarrow;</mo>
+        <mn>1000</mn>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>GraphicsSpacing</mi>
+        <mo>&rightarrow;</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mtext>.001</mtext>
+          <mo>,</mo>
+          <mtext>.0</mtext>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mi>DisplayNow</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>;</mo>
+    </mrow>
+   </mrow>
+   <mtext>&#62371;</mtext>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/pentagon1.gif</ms>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_39.gif" alt="[Graphics:HTMLFiles/Lecture-18_39.gif]"  width="1000" height="997"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/pentagon2.gif</ms>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_40.gif" alt="[Graphics:HTMLFiles/Lecture-18_40.gif]"  width="1000" height="997"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/pentagon3.gif</ms>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_41.gif" alt="[Graphics:HTMLFiles/Lecture-18_41.gif]"  width="1000" height="997"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_Fourier_analysis__example_of_edge_contrast_in_images"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/pentagon1.gif</ms>
+   <mo>,</mo>
+   <mtext>.04</mtext>
+   <mo>,</mo>
+   <mtext>.14</mtext>
+   <mo>,</mo>
+   <mtext>.05</mtext>
+   <mo>,</mo>
+   <mtext>.15</mtext>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_42.gif" alt="[Graphics:HTMLFiles/Lecture-18_42.gif]"  width="1000" height="997"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/pentagon1.gif</ms>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mtext>.3</mtext>
+   </mrow>
+   <mo>,</mo>
+   <mtext>.325</mtext>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mtext>.1</mtext>
+   </mrow>
+   <mo>,</mo>
+   <mtext>.125</mtext>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_43.gif" alt="[Graphics:HTMLFiles/Lecture-18_43.gif]"  width="1000" height="997"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_imaging_grains_in_polycrystal"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/polycrystal.gif</ms>
+   <mo>,</mo>
+   <mtext>.1</mtext>
+   <mo>,</mo>
+   <mtext>.3</mtext>
+   <mo>,</mo>
+   <mtext>.2</mtext>
+   <mo>,</mo>
+   <mtext>.4</mtext>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_44.gif" alt="[Graphics:HTMLFiles/Lecture-18_44.gif]"  width="1000" height="862"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_18_Emily"></a>
+ <a id="mmtag_18_Fourier_transforms__of_a_face"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/PrincessStickyBug.gif</ms>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_45.gif" alt="[Graphics:HTMLFiles/Lecture-18_45.gif]"  width="1000" height="1078"  style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ The gray values of this image are stored in the (1,1) position of the image with gray values in the range (0,255)
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/BradyPSB.gif</ms>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_46.gif" alt="[Graphics:HTMLFiles/Lecture-18_46.gif]"  width="1000" height="1075"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/BradyPSB.gif</ms>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.025</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext>.025</mtext>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mtext>.025</mtext>
+   </mrow>
+   <mo>,</mo>
+   <mtext>.025</mtext>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_47.gif" alt="[Graphics:HTMLFiles/Lecture-18_47.gif]"  width="1000" height="1075"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/BradyPSB.gif</ms>
+   <mo>,</mo>
+   <mn>0.025</mn>
+   <mo>,</mo>
+   <mtext>.275</mtext>
+   <mo>,</mo>
+   <mn>0.025</mn>
+   <mo>,</mo>
+   <mtext>.275</mtext>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_48.gif" alt="[Graphics:HTMLFiles/Lecture-18_48.gif]"  width="1000" height="1075"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/BradyPSB.gif</ms>
+   <mo>,</mo>
+   <mtext>.25</mtext>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mtext>.25</mtext>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_49.gif" alt="[Graphics:HTMLFiles/Lecture-18_49.gif]"  width="1000" height="1075"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/BradyPSB.gif</ms>
+   <mo>,</mo>
+   <mtext>.25</mtext>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.25</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_50.gif" alt="[Graphics:HTMLFiles/Lecture-18_50.gif]"  width="1000" height="1075"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/PrincessStickyBug.gif</ms>
+   <mo>,</mo>
+   <mtext>.025</mtext>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mtext>.025</mtext>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_51.gif" alt="[Graphics:HTMLFiles/Lecture-18_51.gif]"  width="1000" height="1078"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/PrincessStickyBug.gif</ms>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.025</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>0.025</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_52.gif" alt="[Graphics:HTMLFiles/Lecture-18_52.gif]"  width="1000" height="1078"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ImageFourierAperature</mi>
+  <mo>[</mo>
+  <mrow>
+   <ms>/Users/ccarter/classes/3016/Images/PrincessStickyBug.gif</ms>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.025</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>0.025</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-18_53.gif" alt="[Graphics:HTMLFiles/Lecture-18_53.gif]"  width="1000" height="1078"  style="vertical-align:middle" />
+</p>
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(November 3, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

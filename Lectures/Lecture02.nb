@@ -1,0 +1,1035 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     21494,        651]*)
+(*NotebookOutlinePosition[     30471,        868]*)
+(*  CellTagsIndexPosition[     28761,        827]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["Mathematical Tools for Materials Scientists and Engineers", "Title"],
+
+Cell[CellGroupData[{
+
+Cell["Learning to use Mathematica as a tool.", "Section"],
+
+Cell[TextData[{
+  "Mathematica is a tool for exploring mathematics and solving problems that \
+can be posed as a mathematical problem.  Mathematica's coverage of \
+mathematics and its applications is both very wide and very deep.   The depth \
+of Mathematica is such that years must be invested before it can wielded \
+masterfully.  However, students must begin to use Mathematica immediately.  \
+This means that you must use this tool before you can master it.   Don't \
+worry\[LongDash]you can't master  this tool unless you use it!\n\nThere are \
+several software programs like Mathematica (Maple, Matlab, Macsyma, to \
+mention a few).  These programs allow you to solve equations, perform \
+mathematical operations, and visualize mathematics and data.  Each one has it \
+benefits.  Mathematica, perhaps, has a steep learning curve because it \
+integrates so many aspects of mathematics.  Nevertheless, I believe that your \
+intellectual and time investment in learning Mathematica will be have very \
+profitable returns on both your future intellect and your future time.\n\n\
+Finally, just as there are many good ways to solve a mathematics problem, \
+there are many different ways to solve a particular problem using ",
+  StyleBox["Mathematica.   ",
+    FontSlant->"Italic"],
+  "Some methods are perhaps more elegant than others; some methods are \
+perhaps more clever than others\[LongDash]these judgements are subjective.  \
+What is important, in the end, is 1) that the solution method works, 2) the \
+method and solution can be communicated to others, and 3) the solution or the \
+knowledged obtained is a valuable as the time spent acquiring it."
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Starting up Mathematica", "Subtitle"],
+
+Cell[TextData[{
+  "First you must locate or obtain Mathematica and permission to use it.\n    \
+\n    As an MIT student, you have an Athena account from which you can run \
+Mathematica.  There are a number of\nways to open and run a Mathematica \
+session.  Of course,you must first login, and then one method would be to:\n\t\
+1. open a shell\n\t2. Add the ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " locker by typing: ",
+  StyleBox["add math",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  "\n\t 2. At the shell prompt, type ",
+  StyleBox["mathematica",
+    FontFamily->"Courier",
+    FontWeight->"Bold"],
+  ".  (An interface to mathematica's software (properly known as \
+Mathematica's  kernel) called the Front End will open as well as menus and \
+palettes).\n\t 3. Solve problems by defining symbols, performing mathematical \
+operations, employing Mathematica's functions,defining your own functions, \
+and graphically displaying results.\n    \n    Also, as an MIT student, you \
+are entitled to download a  copy and license for $30 so that you can run \
+Mathematica on your own computer.  Instructions can be found at this URL: \
+http://itinfo.mit.edu/article.php?id=6842\n    The colors on your sceen may \
+not appear to be the same as what is presented in the lectures. I use my own \
+style sheet, you may download my style sheet from ",
+  ButtonBox["here.",
+    ButtonData:>{
+      URL[ "http://pruffle.mit.edu/~ccarter/3.016/"], None},
+    ButtonStyle->"Hyperlink"],
+  "  Information on where to put the style sheet can be found below.  Let's \
+get started with some simple ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " commands.\n    If you are reading this in the ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " FrontEnd, then you can go ahead and familiarize yourself with some basics \
+by executing the following lines which are ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " Input.  Typically, ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  "'s FrontEnd asks ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  "'s Kernal to do its job of evaluating by hitting \[ShiftKey]\[LongDash]\
+\[EnterKey] while the mouse in an \"Input Cell.\" Input Cells can be \
+identified with the ",
+  StyleBox[" ",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 0]],
+  StyleBox["\[LeftDownTeeVector]-",
+    FontWeight->"Bold",
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["thingy at the right.",
+    FontVariations->{"CompatibilityType"->0}],
+  StyleBox["  ",
+    FontColor->RGBColor[0, 0, 1],
+    FontVariations->{"CompatibilityType"->0}],
+  StyleBox["One can evaluate one or more cells by selecting their ",
+    FontVariations->{"CompatibilityType"->0}],
+  StyleBox[" ",
+    FontColor->RGBColor[0, 0, 1],
+    FontVariations->{"CompatibilityType"->0}],
+  StyleBox["\[LeftDownTeeVector]-",
+    FontWeight->"Bold",
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["thingies and hitting ",
+    FontVariations->{"CompatibilityType"->0}],
+  "\[ShiftKey]\[LongDash]\[EnterKey].\n\n    Try executing the cells below.  \
+Try to guess what the output might be or represent\[LongDash]and observe \
+carefully whether ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " is doing what you would anticipate.  Notice that answers can depend on \
+the history of commands that precede it."
+}], "Text",
+  CellTags->{
+  "mmtag:02:Mathematica_on_Athena", "mmtag:02:command_execution", 
+    "mmtag:02:executing_commands", "mmtag:02:Athena__using_Mathematica_on"}]
+}, Open  ]],
+
+Cell["\<\
+
+Assigning  values to symbols\
+\>", "Section",
+  TextAlignment->Center,
+  TextJustification->0,
+  CellTags->"mmtag:02:assignment_to_symbols"],
+
+Cell[BoxData[
+    \(a\  = \(\(\ \)\(4\ \[Pi]\)\)\/3\)], "Input"],
+
+Cell[BoxData[
+    \(UnitSphereVolume\  = \ a\)], "Input"],
+
+Cell[BoxData[
+    \(2\ a\)], "Input"],
+
+Cell[BoxData[
+    \(ANewVariable\  = \((2\ a\  + \ b)\)^2\)], "Input"],
+
+Cell[BoxData[
+    \(ANewVariable^2\)], "Input"],
+
+Cell[BoxData[
+    \(b\  = \ \(4\ \((3.14159265358979)\)\)\/3\)], "Input"],
+
+Cell[BoxData[
+    \(UnitSphereNumericalVolume\  = \ b\)], "Input"],
+
+Cell[BoxData[
+    \(ANewVariable\)], "Input"],
+
+Cell["\<\
+
+Differences between exact expressions and numerical expressions\
+\>", \
+"Section",
+  TextAlignment->Center,
+  TextJustification->0,
+  CellTags->"mmtag:02:exact_and_numerical_representations"],
+
+Cell[BoxData[
+    \(UnitSphereVolume\  - \ UnitSphereNumericalVolume\)], "Input"],
+
+Cell[BoxData[
+    \(a - \(4  ArcCos[\(-1\)]\)\/3\)], "Input"],
+
+Cell[BoxData[
+    \(a - \(4  ArcCos[\(-1.0\)]\)\/3\)], "Input"],
+
+Cell[BoxData[
+    \(2\ Pi\  - \ 2\ \((3.141519)\)\)], "Input"],
+
+Cell[BoxData[
+    \(N[5/6]\)], "Input"],
+
+Cell["Distinction between Equality (= = ) and Assignment (=)", "Section",
+  TextAlignment->Center,
+  TextJustification->0,
+  CellTags->{
+  "mmtag_02_equalities(==)_and_assignment(=)", 
+    "mmtag:02:equalities(==)_and_assignment(=)"}],
+
+Cell[BoxData[
+    \(a\  \[Equal] \ \(4  ArcCos[\(-1\)]\)\/3\)], "Input"],
+
+Cell[BoxData[
+    \(a\  \[Equal] \ \(4\ \((3.14159)\)\)\/3\)], "Input"],
+
+Cell["Clearing Variables", "Section",
+  TextAlignment->Center,
+  TextJustification->0,
+  CellTags->{
+  "mmtag:02:clearing_assignments_or_variables", "mmtag:02:Clear[]"}],
+
+Cell[BoxData[
+    \(\(?a\)\)], "Input"],
+
+Cell[BoxData[
+    \(Clear[a]\)], "Input"],
+
+Cell[BoxData[
+    \(\(?a\)\)], "Input"],
+
+Cell[BoxData[
+    \(a - \(4  ArcCos[\(-1\)]\)\/3\)], "Input"],
+
+Cell["clearing all defined variables", "Text"],
+
+Cell[BoxData[
+    \(Clear["\<Global`*\>"]\)], "Input"],
+
+Cell["Mathematica Functions", "Section",
+  TextAlignment->Center,
+  TextJustification->0],
+
+Cell[BoxData[
+    \(a\  = \ 1/Exp[x]\)], "Input"],
+
+Cell[BoxData[
+    \(b\  = Cos[x]\)], "Input"],
+
+Cell[BoxData[
+    \(c\  = \ \((a + b)\)^2\)], "Input"],
+
+Cell["Alternative Syntax for Functions //", "Section",
+  TextAlignment->Center,
+  TextJustification->0,
+  CellTags->{
+  "mmtag:02:alternative_syntax_for_functions(//)", 
+    "mmtag:02:functions__alternative_syntax_for_application(//)"}],
+
+Cell[BoxData[
+    \(AnotherVersionofb\  = \ x // Cos\)], "Input"],
+
+Cell[BoxData[
+    \(ANewVariable[x]\)], "Input"],
+
+Cell["Mathematica Operations on expressions", "Section",
+  TextAlignment->Center,
+  TextJustification->0],
+
+Cell[BoxData[{
+    \(c\), "\[IndentingNewLine]", 
+    \(AnotherVersionofC\  = Expand[c]\)}], "Input"],
+
+Cell[BoxData[{
+    \(c\), "\[IndentingNewLine]", 
+    \(Simplify[AnotherVersionofC]\)}], "Input"],
+
+Cell[BoxData[
+    \(Simplfy[c]\)], "Input"],
+
+Cell["Calculus", "Section",
+  TextAlignment->Center,
+  TextJustification->0],
+
+Cell[BoxData[
+    \(IntegralofC\  = Integrate[c, x]\)], "Input",
+  CellTags->"mmtag:02:Integrate[]"],
+
+Cell[BoxData[
+    \(Integrate[c/x, x]\)], "Input"],
+
+Cell["Getting information (part 1)", "Section",
+  TextAlignment->Center,
+  TextJustification->0],
+
+Cell[BoxData[
+    \(\(?ExpIntegralEi\)\)], "Input"],
+
+Cell["Calculus, continued", "Section",
+  TextAlignment->Center,
+  TextJustification->0,
+  CellTags->{"mmtag:02:D[] derivatives", "mmtag:02:derivatives_D[]"}],
+
+Cell[BoxData[
+    \(D[ANewVariable[x], x]\)], "Input"],
+
+Cell[BoxData[
+    \(Integrate[ANewVariable[x], x]\)], "Input"],
+
+Cell[BoxData[
+    \(D[ANewVariable[x], z]\)], "Input"],
+
+Cell[BoxData[
+    \(tempvar\  = \ Integrate[ANewVariable[x], {x, 0, y}]\)], "Input"],
+
+Cell[BoxData[
+    \(D[tempvar, x]\)], "Input"],
+
+Cell[BoxData[
+    \(D[tempvar, y]\)], "Input"],
+
+Cell[BoxData[
+    \(\(Clear[tempvar];\)\)], "Input"],
+
+Cell[BoxData[
+    \(Factor[IntegralofC]\)], "Input"],
+
+Cell[BoxData[{
+    \(IntegralofC\), "\[IndentingNewLine]", 
+    \(AnotherVersionofIntegralofC\  = 
+      Integrate[AnotherVersionofC, x]\)}], "Input"],
+
+Cell[BoxData[{
+    \(c\), "\[IndentingNewLine]", 
+    \(D[IntegralofC, x]\)}], "Input"],
+
+Cell[BoxData[{
+    \(Factor[c]\), "\[IndentingNewLine]", 
+    \(Simplify[D[IntegralofC, x]]\)}], "Input"],
+
+Cell["Plotting Functions", "Section",
+  TextAlignment->Center,
+  TextJustification->0],
+
+Cell[BoxData[
+    \(Plot[IntegralofC, {x, 0, 10}]\)], "Input",
+  CellTags->"mmtag:02:Plot[]"],
+
+Cell[BoxData[
+    \(Plot[{IntegralofC, c}, {x, 0, 10}]\)], "Input"],
+
+Cell[BoxData[
+    \(Plot[c, {x, 0, 10}, PlotRange \[Rule] {0, 0.0001}]\)], "Input"],
+
+Cell[BoxData[
+    \(Options[Plot]\)], "Input",
+  CellTags->"mmtag:02:Options[]"],
+
+Cell[BoxData[
+    \(Plot[{IntegralofC, c}, {x, 0, 
+        10}, \[IndentingNewLine]PlotStyle \[Rule] {{RGBColor[1, 0, 0], 
+            Thickness[0.005]}, {RGBColor[1, 0, 1], 
+            Thickness[
+              0.0075]}}, \[IndentingNewLine]TextStyle \[Rule] \ {FontFamily -> \
+"\<Helvetica\>", \ 
+          FontSize \[Rule] 
+            24}, \[IndentingNewLine]PlotLabel -> "\< A Function (Purple)\nand \
+Its Integral (Red)\n\>", \[IndentingNewLine]AxesLabel \[Rule] {"\<Value\>", "\
+\<Argument\>"}, \[IndentingNewLine]ImageSize \[Rule] 
+        800\[IndentingNewLine]]\)], "Input",
+  CellTags->{
+  "mmtag:02:PlotLabel", "mmtag:02:PlotStyle", "mmtag:02:TextStyle", 
+    "mmtag:02:AxesLabel", "mmtag:02:plots!modifying_and_annotating"}],
+
+Cell["Lists {} and Matrices {{}} (Lists of Lists)", "Section",
+  TextAlignment->Center,
+  TextJustification->0,
+  CellTags->{
+  "mmtag:02:List[]", "mmtag:02:matrices", "mmtage:02:lists__manipulating"}],
+
+Cell["\<\
+Note  that we have already used lists in Plot and in \
+Integrate\
+\>", "Text"],
+
+Cell[BoxData[
+    \(Clear["\<Global`*\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(AList\  = \ {a, \ b, 2, 7, 9, \ 1.3, \ \[Pi]\/2, \ 0}\)], "Input"],
+
+Cell[BoxData[
+    \(Length[AList]\)], "Input"],
+
+Cell[BoxData[
+    \(Cos[AList]\)], "Input"],
+
+Cell[BoxData[{
+    \(AList\), "\[IndentingNewLine]", 
+    \(AList[\([2]\)]\)}], "Input"],
+
+Cell[BoxData[{
+    \(AList\), "\[IndentingNewLine]", 
+    \(AList[\([{3, 6}]\)]\)}], "Input"],
+
+Cell[BoxData[{
+    \(AList\), "\[IndentingNewLine]", 
+    \(AList[\([\(-2\)]\)]\)}], "Input"],
+
+Cell[BoxData[
+    \(Sort[AList]\)], "Input",
+  CellTags->"mmtag:02:Sort[]"],
+
+Cell[BoxData[
+    \(Select[AList, NumberQ]\)], "Input",
+  CellTags->"mmtag:02:Select[]"],
+
+Cell[BoxData[
+    \(Reverse[Sort[Select[AList, NumberQ]]]\)], "Input"],
+
+Cell[BoxData[
+    \(Select[AList, EvenQ]\)], "Input"],
+
+Cell[BoxData[
+    \(Select[AList, PrimeQ]\)], "Input"],
+
+Cell[BoxData[
+    \(Perms\  = \ Permutations[Select[AList, ExactNumberQ]]\)], "Input",
+  CellTags->"mmtag:02:Permutations[]"],
+
+Cell[BoxData[
+    \(Dimensions[Perms]\)], "Input",
+  CellTags->"mmtag:02:Dimensions[]"],
+
+Cell[BoxData[
+    \(Transpose[Perms] // MatrixForm\)], "Input",
+  CellTags->"mmtag:02:Transpose[]"],
+
+Cell[BoxData[
+    \(\(TranPerms = \ Transpose[Perms];\)\)], "Input"],
+
+Cell[BoxData[
+    \(TranPerms[\([3]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(TranPerms[\([4, 1]\)]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(TranPerms[\([1, 4]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(TranPerms[\([5, 1]\)]\)], "Input"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(TranPerms[\([{1, 2}]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(IntList\  = \ Table[i, {i, 1, Length[TranPerms[\([1]\)]]}]\)], "Input"],
+
+Cell["Selecting  the odd numbered columns from a matrix", "Text"],
+
+Cell[BoxData[{
+    \(TranPerms // MatrixForm\), "\[IndentingNewLine]", 
+    \(TranPerms[\([All, Select[IntList, OddQ]]\)] // MatrixForm\)}], "Input",
+  CellTags->"mmtag:02:MatrixForm[]"],
+
+Cell["\<\
+Rules  \[Rule]   and    Replacement /.\
+\>", "Section",
+  TextAlignment->Center,
+  TextJustification->0,
+  CellTags->"mmtag:02:rules_(->)_and_replacement (/.)"],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(ARule\  = \ 
+      a \[Rule] \[Pi]\/3\)\)\)], "Input",
+  CellTags->"mmtag:02:Rule_(->)"],
+
+Cell[BoxData[
+    \(a\)], "Input"],
+
+Cell[BoxData[{
+    \(AList\), "\[IndentingNewLine]", 
+    \(AList /. ARule\)}], "Input",
+  CellTags->"mmtag:02:Replacement_(->)"],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(SomeRules\  = \ {ARule, 
+        b -> \[Pi]\/12}\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(AList /. SomeRules\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(a\  = \ SomeOtherSymbol;\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(AList\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(StrangeRule\  = \ {Rational[x_, 
+            y_]\  \[RuleDelayed] \ y/x}\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\((AList /. SomeRules)\) /. StrangeRule\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["Getting Help", "Title"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Several  methods of getting help can be found in the above examples.\n    \
+1.  ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " indicated that a possible type might have occured and returned a \
+\"warning message\" with a link to ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  "'s Help Browser.  Some people find typo and spelling warnings to be \
+annoying.  Spelling warnings can be disabled by typing ",
+  StyleBox["Off[General::spell1]", "MR"],
+  ".  However, prudence and experience show that undiscovered typos can be \
+even more annoying.\n    \n    2.  Typing ",
+  StyleBox["?ExpIntegralEi",
+    FontFamily->"Courier"],
+  "  returned information about the symbol  ",
+  StyleBox["ExpIntegralEi.  ",
+    FontFamily->"Courier"],
+  "Typing",
+  StyleBox[" ??FunctionName ",
+    FontFamily->"Courier"],
+  "gives even more information\[LongDash]try",
+  StyleBox[" ??Plot.  ",
+    FontFamily->"Courier"],
+  "Wildcards can also by used as demonstrated below."
+}], "Text",
+  CellTags->{"mmtag:02:help", "mmtag:02:Help_Browser"}],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(?*Exp*\)\)\)], "Input"],
+
+Cell[TextData[{
+  "Each of the above is linked to Mathematica's Help Browser.\n\n3.  Typing \
+Options[Plot] returned a list of options that can be adjusted by the user \
+until the result (in this case the appearance) of the plot is satisfactory.\n\
+\n",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  "'s Help Browser is a very useful tool and will probably become a primary \
+resource for students.  It contains good tutorials and demonstrations that \
+can be copied and pasted.  It has very good and concise descriptions of \
+mathematics; in fact, exploring the Help Browser is a good way to explore \
+mathematics as well as ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  ".  For instance , the discussion of \"Combinatorial Functions\"  under ",
+  StyleBox["Mathematical Functions \[RightPointer] Combinitorial",
+    FontVariations->{"Underline"->True}],
+  " has summarizes some useful information about counting and parttioning of \
+sets. "
+}], "Text",
+  CellTags->"mmtag:02:Options[]"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+    RowBox[{\(XML`MathML`BoxesToMathML::"notboxes"\), \(\(:\)\(\ \)\), \
+"\<\"\\!\\({\\\"c\\\", \\(\\(RowBox[\\(\\({\\\"AnotherVersionofC\\\", \\\" \\\
+\", \\\"=\\\", \\(\\(RowBox[\\(\\({\\\"Expand\\\", \\\"[\\\", \\\"c\\\", \
+\\\"]\\\"}\\)\\)]\\)\\)}\\)\\)]\\)\\)}\\) is not a valid box structure. The \
+first argument in \\!\\(XML`MathML`BoxesToMathML[\\(\\(\\(\\({\\\"c\\\", \
+\\(\\(RowBox[\\(\\({\\\"AnotherVersionofC\\\", \\\" \\\", \\\"=\\\", \
+\\(\\(RowBox[\\(\\({\\\"Expand\\\", \\\"[\\\", \\\"c\\\", \
+\\\"]\\\"}\\)\\)]\\)\\)}\\)\\)]\\)\\)}\\)\\), \\(\\(\[LeftSkeleton] 1 \
+\[RightSkeleton]\\)\\), \\(\\(\[LeftSkeleton] 1 \[RightSkeleton]\\)\\), \
+\\(\\(\\\"Entities\\\" \[Rule] \\\"MathML\\\"\\)\\)\\)\\)]\\) must be a valid \
+box structure. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"XML`MathML`BoxesToMathML::notboxes\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    RowBox[{\(XML`MathML`BoxesToMathML::"notboxes"\), \(\(:\)\(\ \)\), \
+"\<\"\\!\\({\\\"c\\\", \\(\\(RowBox[\\(\\({\\\"Simplify\\\", \\\"[\\\", \
+\\\"AnotherVersionofC\\\", \\\"]\\\"}\\)\\)]\\)\\)}\\) is not a valid box \
+structure. The first argument in \\!\\(XML`MathML`BoxesToMathML[\\(\\(\\(\\({\
+\\\"c\\\", \\(\\(RowBox[\\(\\({\\\"Simplify\\\", \\\"[\\\", \
+\\\"AnotherVersionofC\\\", \\\"]\\\"}\\)\\)]\\)\\)}\\)\\), \
+\\(\\(\\(\\(\\\"UseUni\\\"\[Ellipsis]\\\"acters\\\"\\)\\) \[Rule] \\(\\(\
+\[LeftSkeleton] 5 \[RightSkeleton]\\)\\)\\)\\), \\(\\(\[LeftSkeleton] 1 \
+\[RightSkeleton]\\)\\), \\(\\(\\\"Entities\\\" \[Rule] \
+\\\"MathML\\\"\\)\\)\\)\\)]\\) must be a valid box structure. \
+\\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\
+\\\", ButtonFrame->None, ButtonData:>\\\"XML`MathML`BoxesToMathML::notboxes\\\
+\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    RowBox[{\(XML`MathML`BoxesToMathML::"notboxes"\), \(\(:\)\(\ \)\), \
+"\<\"\\!\\({\\\"IntegralofC\\\", \
+\\(\\(RowBox[\\(\\({\\\"AnotherVersionofIntegralofC\\\", \\\" \\\", \
+\\\"=\\\", \\(\\(RowBox[\\(\\({\\\"Integrate\\\", \\\"[\\\", \\(\\(RowBox[\\(\
+\\({\\\"AnotherVersionofC\\\", \\\",\\\", \\\"x\\\"}\\)\\)]\\)\\), \\\"]\\\"}\
+\\)\\)]\\)\\)}\\)\\)]\\)\\)}\\) is not a valid box structure. The first \
+argument in \\!\\(XML`MathML`BoxesToMathML[\\(\\(\\(\\({\\\"IntegralofC\\\", \
+\\(\\(RowBox[\\(\\({\\\"AnotherVersionofIntegralofC\\\", \
+\\(\\(\[LeftSkeleton] 3 \[RightSkeleton]\\)\\)}\\)\\)]\\)\\)}\\)\\), \
+\\(\\(\\(\\(\\\"Use\\\"\[Ellipsis]\\\"ters\\\"\\)\\) \[Rule] \\(\\(\
+\[LeftSkeleton] 5 \[RightSkeleton]\\)\\)\\)\\), \\(\\(\[LeftSkeleton] 1 \
+\[RightSkeleton]\\)\\), \\(\\(\\\"Entities\\\" \[Rule] \
+\\\"MathML\\\"\\)\\)\\)\\)]\\) must be a valid box structure. \
+\\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\
+\\\", ButtonFrame->None, ButtonData:>\\\"XML`MathML`BoxesToMathML::notboxes\\\
+\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    RowBox[{\(General::"stop"\), \(\(:\)\(\ \)\), "\<\"Further output of \
+\\!\\(XML`MathML`BoxesToMathML :: \\\"notboxes\\\"\\) will be suppressed \
+during this calculation. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::stop\\\"]\\)\"\>"}]], "Message"]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{45, 1920}, {0, 1178}},
+ScreenStyleEnvironment->"Presentation",
+WindowToolbars->{},
+Evaluator->"Local",
+CellGrouping->Manual,
+WindowSize->{1529, 1081},
+WindowMargins->{{122, Automatic}, {Automatic, 16}},
+WindowTitle->"Lecture 02 MIT 3.016 (Fall 2005)   \[Copyright] W. Craig Carter \
+2003-2005",
+ShowSelection->True,
+CellLabelAutoDelete->True,
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "mmtag:02:Mathematica_on_Athena"->{
+    Cell[3665, 88, 3525, 81, 755, "Text",
+      CellTags->{
+      "mmtag:02:Mathematica_on_Athena", "mmtag:02:command_execution", 
+        "mmtag:02:executing_commands", 
+        "mmtag:02:Athena__using_Mathematica_on"}]},
+  "mmtag:02:command_execution"->{
+    Cell[3665, 88, 3525, 81, 755, "Text",
+      CellTags->{
+      "mmtag:02:Mathematica_on_Athena", "mmtag:02:command_execution", 
+        "mmtag:02:executing_commands", 
+        "mmtag:02:Athena__using_Mathematica_on"}]},
+  "mmtag:02:executing_commands"->{
+    Cell[3665, 88, 3525, 81, 755, "Text",
+      CellTags->{
+      "mmtag:02:Mathematica_on_Athena", "mmtag:02:command_execution", 
+        "mmtag:02:executing_commands", 
+        "mmtag:02:Athena__using_Mathematica_on"}]},
+  "mmtag:02:Athena__using_Mathematica_on"->{
+    Cell[3665, 88, 3525, 81, 755, "Text",
+      CellTags->{
+      "mmtag:02:Mathematica_on_Athena", "mmtag:02:command_execution", 
+        "mmtag:02:executing_commands", 
+        "mmtag:02:Athena__using_Mathematica_on"}]},
+  "mmtag:02:assignment_to_symbols"->{
+    Cell[7205, 172, 151, 6, 115, "Section",
+      CellTags->"mmtag:02:assignment_to_symbols"]},
+  "mmtag:02:exact_and_numerical_representations"->{
+    Cell[7842, 204, 202, 7, 115, "Section",
+      CellTags->"mmtag:02:exact_and_numerical_representations"]},
+  "mmtag_02_equalities(==)_and_assignment(=)"->{
+    Cell[8368, 228, 234, 5, 84, "Section",
+      CellTags->{
+      "mmtag_02_equalities(==)_and_assignment(=)", 
+        "mmtag:02:equalities(==)_and_assignment(=)"}]},
+  "mmtag:02:equalities(==)_and_assignment(=)"->{
+    Cell[8368, 228, 234, 5, 84, "Section",
+      CellTags->{
+      "mmtag_02_equalities(==)_and_assignment(=)", 
+        "mmtag:02:equalities(==)_and_assignment(=)"}]},
+  "mmtag:02:clearing_assignments_or_variables"->{
+    Cell[8754, 241, 169, 4, 84, "Section",
+      CellTags->{
+      "mmtag:02:clearing_assignments_or_variables", "mmtag:02:Clear[]"}]},
+  "mmtag:02:Clear[]"->{
+    Cell[8754, 241, 169, 4, 84, "Section",
+      CellTags->{
+      "mmtag:02:clearing_assignments_or_variables", "mmtag:02:Clear[]"}]},
+  "mmtag:02:alternative_syntax_for_functions(//)"->{
+    Cell[9473, 277, 236, 5, 84, "Section",
+      CellTags->{
+      "mmtag:02:alternative_syntax_for_functions(//)", 
+        "mmtag:02:functions__alternative_syntax_for_application(//)"}]},
+  "mmtag:02:functions__alternative_syntax_for_application(//)"->{
+    Cell[9473, 277, 236, 5, 84, "Section",
+      CellTags->{
+      "mmtag:02:alternative_syntax_for_functions(//)", 
+        "mmtag:02:functions__alternative_syntax_for_application(//)"}]},
+  "mmtag:02:Integrate[]"->{
+    Cell[10268, 309, 100, 2, 59, "Input",
+      CellTags->"mmtag:02:Integrate[]"]},
+  "mmtag:02:D[] derivatives"->{
+    Cell[10577, 323, 157, 3, 84, "Section",
+      CellTags->{"mmtag:02:D[] derivatives", "mmtag:02:derivatives_D[]"}]},
+  "mmtag:02:derivatives_D[]"->{
+    Cell[10577, 323, 157, 3, 84, "Section",
+      CellTags->{"mmtag:02:D[] derivatives", "mmtag:02:derivatives_D[]"}]},
+  "mmtag:02:Plot[]"->{
+    Cell[11651, 369, 93, 2, 59, "Input",
+      CellTags->"mmtag:02:Plot[]"]},
+  "mmtag:02:Options[]"->{
+    Cell[11903, 379, 80, 2, 59, "Input",
+      CellTags->"mmtag:02:Options[]"],
+    Cell[17172, 572, 1007, 20, 296, "Text",
+      CellTags->"mmtag:02:Options[]"]},
+  "mmtag:02:PlotLabel"->{
+    Cell[11986, 383, 737, 14, 185, "Input",
+      CellTags->{
+      "mmtag:02:PlotLabel", "mmtag:02:PlotStyle", "mmtag:02:TextStyle", 
+        "mmtag:02:AxesLabel", "mmtag:02:plots!modifying_and_annotating"}]},
+  "mmtag:02:PlotStyle"->{
+    Cell[11986, 383, 737, 14, 185, "Input",
+      CellTags->{
+      "mmtag:02:PlotLabel", "mmtag:02:PlotStyle", "mmtag:02:TextStyle", 
+        "mmtag:02:AxesLabel", "mmtag:02:plots!modifying_and_annotating"}]},
+  "mmtag:02:TextStyle"->{
+    Cell[11986, 383, 737, 14, 185, "Input",
+      CellTags->{
+      "mmtag:02:PlotLabel", "mmtag:02:PlotStyle", "mmtag:02:TextStyle", 
+        "mmtag:02:AxesLabel", "mmtag:02:plots!modifying_and_annotating"}]},
+  "mmtag:02:AxesLabel"->{
+    Cell[11986, 383, 737, 14, 185, "Input",
+      CellTags->{
+      "mmtag:02:PlotLabel", "mmtag:02:PlotStyle", "mmtag:02:TextStyle", 
+        "mmtag:02:AxesLabel", "mmtag:02:plots!modifying_and_annotating"}]},
+  "mmtag:02:plots!modifying_and_annotating"->{
+    Cell[11986, 383, 737, 14, 185, "Input",
+      CellTags->{
+      "mmtag:02:PlotLabel", "mmtag:02:PlotStyle", "mmtag:02:TextStyle", 
+        "mmtag:02:AxesLabel", "mmtag:02:plots!modifying_and_annotating"}]},
+  "mmtag:02:List[]"->{
+    Cell[12726, 399, 201, 4, 84, "Section",
+      CellTags->{
+      "mmtag:02:List[]", "mmtag:02:matrices", 
+        "mmtage:02:lists__manipulating"}]},
+  "mmtag:02:matrices"->{
+    Cell[12726, 399, 201, 4, 84, "Section",
+      CellTags->{
+      "mmtag:02:List[]", "mmtag:02:matrices", 
+        "mmtage:02:lists__manipulating"}]},
+  "mmtage:02:lists__manipulating"->{
+    Cell[12726, 399, 201, 4, 84, "Section",
+      CellTags->{
+      "mmtag:02:List[]", "mmtag:02:matrices", 
+        "mmtage:02:lists__manipulating"}]},
+  "mmtag:02:Sort[]"->{
+    Cell[13545, 434, 75, 2, 59, "Input",
+      CellTags->"mmtag:02:Sort[]"]},
+  "mmtag:02:Select[]"->{
+    Cell[13623, 438, 88, 2, 59, "Input",
+      CellTags->"mmtag:02:Select[]"]},
+  "mmtag:02:Permutations[]"->{
+    Cell[13900, 451, 125, 2, 59, "Input",
+      CellTags->"mmtag:02:Permutations[]"]},
+  "mmtag:02:Dimensions[]"->{
+    Cell[14028, 455, 87, 2, 59, "Input",
+      CellTags->"mmtag:02:Dimensions[]"]},
+  "mmtag:02:Transpose[]"->{
+    Cell[14118, 459, 99, 2, 59, "Input",
+      CellTags->"mmtag:02:Transpose[]"]},
+  "mmtag:02:MatrixForm[]"->{
+    Cell[14771, 489, 186, 3, 80, "Input",
+      CellTags->"mmtag:02:MatrixForm[]"]},
+  "mmtag:02:rules_(->)_and_replacement (/.)"->{
+    Cell[14960, 494, 170, 5, 84, "Section",
+      CellTags->"mmtag:02:rules_(->)_and_replacement (/.)"]},
+  "mmtag:02:Rule_(->)"->{
+    Cell[15133, 501, 135, 3, 101, "Input",
+      CellTags->"mmtag:02:Rule_(->)"]},
+  "mmtag:02:Replacement_(->)"->{
+    Cell[15308, 509, 129, 3, 80, "Input",
+      CellTags->"mmtag:02:Replacement_(->)"]},
+  "mmtag:02:help"->{
+    Cell[16031, 540, 1065, 27, 257, "Text",
+      CellTags->{"mmtag:02:help", "mmtag:02:Help_Browser"}]},
+  "mmtag:02:Help_Browser"->{
+    Cell[16031, 540, 1065, 27, 257, "Text",
+      CellTags->{"mmtag:02:help", "mmtag:02:Help_Browser"}]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"mmtag:02:Mathematica_on_Athena", 22387, 675},
+  {"mmtag:02:command_execution", 22644, 681},
+  {"mmtag:02:executing_commands", 22902, 687},
+  {"mmtag:02:Athena__using_Mathematica_on", 23170, 693},
+  {"mmtag:02:assignment_to_symbols", 23431, 699},
+  {"mmtag:02:exact_and_numerical_representations", 23579, 702},
+  {"mmtag_02_equalities(==)_and_assignment(=)", 23738, 705},
+  {"mmtag:02:equalities(==)_and_assignment(=)", 23956, 710},
+  {"mmtag:02:clearing_assignments_or_variables", 24175, 715},
+  {"mmtag:02:Clear[]", 24335, 719},
+  {"mmtag:02:alternative_syntax_for_functions(//)", 24524, 723},
+  {"mmtag:02:functions__alternative_syntax_for_application(//)", 24780, 728},
+  {"mmtag:02:Integrate[]", 24998, 733},
+  {"mmtag:02:D[] derivatives", 25114, 736},
+  {"mmtag:02:derivatives_D[]", 25266, 739},
+  {"mmtag:02:Plot[]", 25409, 742},
+  {"mmtag:02:Options[]", 25513, 745},
+  {"mmtag:02:PlotLabel", 25703, 750},
+  {"mmtag:02:PlotStyle", 25940, 755},
+  {"mmtag:02:TextStyle", 26177, 760},
+  {"mmtag:02:AxesLabel", 26414, 765},
+  {"mmtag:02:plots!modifying_and_annotating", 26672, 770},
+  {"mmtag:02:List[]", 26906, 775},
+  {"mmtag:02:matrices", 27084, 780},
+  {"mmtage:02:lists__manipulating", 27274, 785},
+  {"mmtag:02:Sort[]", 27450, 790},
+  {"mmtag:02:Select[]", 27553, 793},
+  {"mmtag:02:Permutations[]", 27664, 796},
+  {"mmtag:02:Dimensions[]", 27780, 799},
+  {"mmtag:02:Transpose[]", 27892, 802},
+  {"mmtag:02:MatrixForm[]", 28004, 805},
+  {"mmtag:02:rules_(->)_and_replacement (/.)", 28137, 808},
+  {"mmtag:02:Rule_(->)", 28269, 811},
+  {"mmtag:02:Replacement_(->)", 28385, 814},
+  {"mmtag:02:help", 28495, 817},
+  {"mmtag:02:Help_Browser", 28630, 820}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 74, 0, 60, "Title"],
+
+Cell[CellGroupData[{
+Cell[1853, 55, 57, 0, 84, "Section"],
+Cell[1913, 57, 1669, 24, 70, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[3619, 86, 43, 0, 56, "Subtitle"],
+Cell[3665, 88, 3525, 81, 755, "Text",
+  CellTags->{
+  "mmtag:02:Mathematica_on_Athena", "mmtag:02:command_execution", 
+    "mmtag:02:executing_commands", "mmtag:02:Athena__using_Mathematica_on"}]
+}, Open  ]],
+Cell[7205, 172, 151, 6, 115, "Section",
+  CellTags->"mmtag:02:assignment_to_symbols"],
+Cell[7359, 180, 64, 1, 85, "Input"],
+Cell[7426, 183, 57, 1, 59, "Input"],
+Cell[7486, 186, 37, 1, 59, "Input"],
+Cell[7526, 189, 70, 1, 59, "Input"],
+Cell[7599, 192, 47, 1, 59, "Input"],
+Cell[7649, 195, 73, 1, 85, "Input"],
+Cell[7725, 198, 66, 1, 59, "Input"],
+Cell[7794, 201, 45, 1, 59, "Input"],
+Cell[7842, 204, 202, 7, 115, "Section",
+  CellTags->"mmtag:02:exact_and_numerical_representations"],
+Cell[8047, 213, 81, 1, 59, "Input"],
+Cell[8131, 216, 61, 1, 85, "Input"],
+Cell[8195, 219, 63, 1, 85, "Input"],
+Cell[8261, 222, 62, 1, 59, "Input"],
+Cell[8326, 225, 39, 1, 59, "Input"],
+Cell[8368, 228, 234, 5, 84, "Section",
+  CellTags->{
+  "mmtag_02_equalities(==)_and_assignment(=)", 
+    "mmtag:02:equalities(==)_and_assignment(=)"}],
+Cell[8605, 235, 72, 1, 85, "Input"],
+Cell[8680, 238, 71, 1, 85, "Input"],
+Cell[8754, 241, 169, 4, 84, "Section",
+  CellTags->{
+  "mmtag:02:clearing_assignments_or_variables", "mmtag:02:Clear[]"}],
+Cell[8926, 247, 39, 1, 59, "Input"],
+Cell[8968, 250, 41, 1, 59, "Input"],
+Cell[9012, 253, 39, 1, 59, "Input"],
+Cell[9054, 256, 61, 1, 85, "Input"],
+Cell[9118, 259, 46, 0, 59, "Text"],
+Cell[9167, 261, 54, 1, 59, "Input"],
+Cell[9224, 264, 89, 2, 84, "Section"],
+Cell[9316, 268, 49, 1, 59, "Input"],
+Cell[9368, 271, 45, 1, 59, "Input"],
+Cell[9416, 274, 54, 1, 59, "Input"],
+Cell[9473, 277, 236, 5, 84, "Section",
+  CellTags->{
+  "mmtag:02:alternative_syntax_for_functions(//)", 
+    "mmtag:02:functions__alternative_syntax_for_application(//)"}],
+Cell[9712, 284, 65, 1, 59, "Input"],
+Cell[9780, 287, 48, 1, 59, "Input"],
+Cell[9831, 290, 105, 2, 84, "Section"],
+Cell[9939, 294, 101, 2, 80, "Input"],
+Cell[10043, 298, 97, 2, 80, "Input"],
+Cell[10143, 302, 43, 1, 59, "Input"],
+Cell[10189, 305, 76, 2, 84, "Section"],
+Cell[10268, 309, 100, 2, 59, "Input",
+  CellTags->"mmtag:02:Integrate[]"],
+Cell[10371, 313, 50, 1, 59, "Input"],
+Cell[10424, 316, 96, 2, 84, "Section"],
+Cell[10523, 320, 51, 1, 59, "Input"],
+Cell[10577, 323, 157, 3, 84, "Section",
+  CellTags->{"mmtag:02:D[] derivatives", "mmtag:02:derivatives_D[]"}],
+Cell[10737, 328, 54, 1, 59, "Input"],
+Cell[10794, 331, 62, 1, 59, "Input"],
+Cell[10859, 334, 54, 1, 59, "Input"],
+Cell[10916, 337, 84, 1, 59, "Input"],
+Cell[11003, 340, 46, 1, 59, "Input"],
+Cell[11052, 343, 46, 1, 59, "Input"],
+Cell[11101, 346, 52, 1, 59, "Input"],
+Cell[11156, 349, 52, 1, 59, "Input"],
+Cell[11211, 352, 150, 3, 80, "Input"],
+Cell[11364, 357, 87, 2, 80, "Input"],
+Cell[11454, 361, 105, 2, 80, "Input"],
+Cell[11562, 365, 86, 2, 84, "Section"],
+Cell[11651, 369, 93, 2, 59, "Input",
+  CellTags->"mmtag:02:Plot[]"],
+Cell[11747, 373, 67, 1, 59, "Input"],
+Cell[11817, 376, 83, 1, 59, "Input"],
+Cell[11903, 379, 80, 2, 59, "Input",
+  CellTags->"mmtag:02:Options[]"],
+Cell[11986, 383, 737, 14, 185, "Input",
+  CellTags->{
+  "mmtag:02:PlotLabel", "mmtag:02:PlotStyle", "mmtag:02:TextStyle", 
+    "mmtag:02:AxesLabel", "mmtag:02:plots!modifying_and_annotating"}],
+Cell[12726, 399, 201, 4, 84, "Section",
+  CellTags->{
+  "mmtag:02:List[]", "mmtag:02:matrices", "mmtage:02:lists__manipulating"}],
+Cell[12930, 405, 88, 3, 59, "Text"],
+Cell[13021, 410, 54, 1, 59, "Input"],
+Cell[13078, 413, 86, 1, 80, "Input"],
+Cell[13167, 416, 46, 1, 59, "Input"],
+Cell[13216, 419, 43, 1, 59, "Input"],
+Cell[13262, 422, 88, 2, 80, "Input"],
+Cell[13353, 426, 93, 2, 80, "Input"],
+Cell[13449, 430, 93, 2, 80, "Input"],
+Cell[13545, 434, 75, 2, 59, "Input",
+  CellTags->"mmtag:02:Sort[]"],
+Cell[13623, 438, 88, 2, 59, "Input",
+  CellTags->"mmtag:02:Select[]"],
+Cell[13714, 442, 70, 1, 59, "Input"],
+Cell[13787, 445, 53, 1, 59, "Input"],
+Cell[13843, 448, 54, 1, 59, "Input"],
+Cell[13900, 451, 125, 2, 59, "Input",
+  CellTags->"mmtag:02:Permutations[]"],
+Cell[14028, 455, 87, 2, 59, "Input",
+  CellTags->"mmtag:02:Dimensions[]"],
+Cell[14118, 459, 99, 2, 59, "Input",
+  CellTags->"mmtag:02:Transpose[]"],
+Cell[14220, 463, 68, 1, 59, "Input"],
+Cell[14291, 466, 51, 1, 59, "Input"],
+Cell[14345, 469, 54, 1, 59, "Input"],
+
+Cell[CellGroupData[{
+Cell[14424, 474, 54, 1, 59, "Input"],
+Cell[14481, 477, 54, 1, 59, "Input"]
+}, Open  ]],
+Cell[14550, 481, 56, 1, 59, "Input"],
+Cell[14609, 484, 91, 1, 59, "Input"],
+Cell[14703, 487, 65, 0, 59, "Text"],
+Cell[14771, 489, 186, 3, 80, "Input",
+  CellTags->"mmtag:02:MatrixForm[]"],
+Cell[14960, 494, 170, 5, 84, "Section",
+  CellTags->"mmtag:02:rules_(->)_and_replacement (/.)"],
+Cell[15133, 501, 135, 3, 101, "Input",
+  CellTags->"mmtag:02:Rule_(->)"],
+Cell[15271, 506, 34, 1, 59, "Input"],
+Cell[15308, 509, 129, 3, 80, "Input",
+  CellTags->"mmtag:02:Replacement_(->)"],
+Cell[15440, 514, 112, 2, 101, "Input"],
+Cell[15555, 518, 51, 1, 59, "Input"],
+Cell[15609, 521, 88, 1, 80, "Input"],
+Cell[15700, 524, 38, 1, 59, "Input"],
+Cell[15741, 527, 136, 2, 80, "Input"],
+Cell[15880, 531, 72, 1, 59, "Input"],
+
+Cell[CellGroupData[{
+Cell[15977, 536, 29, 0, 60, "Title"],
+
+Cell[CellGroupData[{
+Cell[16031, 540, 1065, 27, 257, "Text",
+  CellTags->{"mmtag:02:help", "mmtag:02:Help_Browser"}],
+Cell[17099, 569, 70, 1, 80, "Input"],
+Cell[17172, 572, 1007, 20, 296, "Text",
+  CellTags->"mmtag:02:Options[]"]
+}, Open  ]]
+}, Open  ]],
+Cell[18206, 596, 950, 13, 42, "Message"],
+Cell[19159, 611, 892, 13, 42, "Message"],
+Cell[20054, 626, 1081, 16, 58, "Message"],
+Cell[21138, 644, 352, 5, 26, "Message"]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

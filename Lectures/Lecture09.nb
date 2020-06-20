@@ -1,0 +1,424 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      6911,        241]*)
+(*NotebookOutlinePosition[     11419,        357]*)
+(*  CellTagsIndexPosition[     10546,        334]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["Matrix Eigenvalues Eigenvectors", "Title"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Initialization Steps: Define a 2\[Times]2 matrix and compute its \
+eigensystem\
+\>", "Text",
+  CellDingbat->"\[FilledDownTriangle]"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(mtemp = DiagonalMatrix[{2\ Pi, 4}];\)\), "\[IndentingNewLine]", 
+    \(mtemp // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    \(<< "\<Geometry`Rotations`\>"\)], "Input"],
+
+Cell[BoxData[
+    \(MatrixForm[
+      msim = Transpose[RotationMatrix2D[Pi/4]] . mtemp . 
+          RotationMatrix2D[Pi/4]]\)], "Input"]
+}, Open  ]]
+}, Closed]],
+
+Cell[BoxData[{
+    \(\(mymatrix\  = \ {{2 + Pi, \(-2\) + Pi}, {\(-2\) + Pi, 
+            2 + Pi}};\)\), "\[IndentingNewLine]", 
+    \(mymatrix // MatrixForm\)}], "Input"],
+
+Cell["Solve the characteristic equation for the two eigenvalues:", \
+"Subsubsection",
+  CellTags->"mtag:09:characteristic_equation"],
+
+Cell[BoxData[
+    \(Solve[
+      Det[mymatrix\  - \ \[Lambda]\ IdentityMatrix[2]] \[Equal] \ 
+        0, \[Lambda]]\)], "Input",
+  CellTags->{"mtag:09:IdentifyMatrix[]", "mtag:09:Det[]", "mtag:09:Solve[]"}],\
+
+
+Cell["Compute the eigenvectors:", "Text",
+  CellTags->{
+  "mtag:09:Eigenvectors[]", "mtag:09:eigenvectors__example_of_computation"}],
+
+Cell[BoxData[
+    \(Eigenvectors[mymatrix]\)], "Input"],
+
+Cell[BoxData[
+    \({evec1, \ evec2}\  = \ Eigenvectors[mymatrix]\)], "Input",
+  CellTags->"mtag:09:eigenvector_column_matrix__example"],
+
+Cell[TextData[{
+  StyleBox["Eigensystem",
+    FontWeight->"Bold"],
+  " will solve for eigenvalues and corresponding eigenvectors in one step:"
+}], "Text"],
+
+Cell[BoxData[
+    \(Eigensystem[mymatrix]\)], "Input",
+  CellTags->"mtag:09:Eigensystem[]"],
+
+Cell["\<\
+Note the output format above: the first item in the list is a list \
+of the two eigenvalues; the second item in the list is a list of the two \
+corresponding eigenvectors.  Thus,  the eigenvector corresponding  2 \[Pi] is \
+(1,1).\
+\>", "Subsubsection"],
+
+Cell[BoxData[{
+    \(\(simtrans = \ {evec2, evec1} // 
+          Transpose;\)\), "\[IndentingNewLine]", 
+    \(simtrans // MatrixForm\)}], "Input",
+  CellTags->{
+  "mtag:09:Transpose[]", "mtag:09:Inverse[]", "mtag:09:Simplify[]", 
+    "mtag:09:MatrixForm[]"}],
+
+Cell[BoxData[
+    \(\(Inverse[simtrans] . mymatrix . simtrans // Simplify\) // 
+      MatrixForm\)], "Input",
+  CellTags->"mtag:09:simularity_transformation__example"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Shows that the transformation to the diagonal basis is a rotation \
+of \[Pi]/4 \
+\>", "Text",
+  CellDingbat->"\[FilledDownTriangle]"],
+
+Cell["\<\
+Which makes sense considering in initialization steps that mymatrix \
+was created with a rotation on \[Pi]/4 of a diagonal matrix\
+\>", \
+"Subsubsection",
+  CellDingbat->"\[FilledDownTriangle]"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(<< LinearAlgebra`Orthogonalization`\)], "Input",
+  CellTags->"mtag:09:Package__LinearAlgebra__Orthogonalization"],
+
+Cell["\<\
+The next command produces an orthonormal basis of the eigenspace \
+(i.e., the eigenvectors are of unit magnitude):\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+    \(GramSchmidt[Eigenvectors[mymatrix]] // MatrixForm\)], "Input",
+  CellTags->"mtag:09:GramSchmidt[]"],
+
+Cell["\<\
+The command RotationMatrix2D computes a matrix that will rotate \
+vectors ccw about the origin in two dimensions, by a specified angle:\
+\>", \
+"Text"],
+
+Cell[BoxData[
+    \(<< Geometry`Rotations`\)], "Input",
+  CellTags->"mtag:09:Package__Geometry__Rotations"],
+
+Cell[BoxData[
+    \(MatrixForm[RotationMatrix2D[\[Pi]/4]]\)], "Input",
+  CellTags->"mtag:09:RotationMatrix2D[]"],
+
+Cell["\<\
+This last result shows that the transformation to the eigenvector \
+space involves rotation by \[Pi]/4.\
+\>", "Subsubsection"],
+
+Cell[TextData[{
+  StyleBox["Here is a demonstration of the general result",
+    FontWeight->"Plain"],
+  " ",
+  StyleBox["A",
+    FontSlant->"Italic"],
+  " ",
+  Cell[BoxData[
+      FormBox[
+        StyleBox[
+          SubscriptBox[
+            FormBox[\(x\&\[RightVector]\),
+              "TraditionalForm"], "i"],
+          FontWeight->"Plain"], TraditionalForm]]],
+  StyleBox[" = ",
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(TraditionalForm\`\[Lambda]\_i\)]],
+  StyleBox[" ",
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      FormBox[
+        SubscriptBox[
+          FormBox[\(x\&\[RightVector]\),
+            "TraditionalForm"], "i"], TraditionalForm]],
+    FontWeight->"Plain"],
+  ", ",
+  StyleBox["where ",
+    FontWeight->"Plain"],
+  Cell[BoxData[
+      \(TraditionalForm\`x\&\[RightVector]\)],
+    FontWeight->"Plain"],
+  StyleBox[" is an eigenvector and \[Lambda]",
+    FontWeight->"Plain"],
+  " ",
+  StyleBox["its corresponding eigenvalue: ",
+    FontWeight->"Plain"]
+}], "Text"],
+
+Cell[BoxData[{
+    \(evec1\), "\[IndentingNewLine]", 
+    \(evec2\)}], "Input"],
+
+Cell[BoxData[
+    \(mymatrix . evec1\)], "Input"],
+
+Cell[BoxData[
+    \(mymatrix . evec2\)], "Input"],
+
+Cell[TextData[{
+  "MatrixPower ",
+  StyleBox["multiplies a matrix by itself n times\[Ellipsis]",
+    FontWeight->"Plain"]
+}], "Text",
+  CellTags->"mtag:09:MatrixPower[]"],
+
+Cell[BoxData[
+    \(MatrixPower[mymatrix, 12] . evec2 // Simplify\)], "Input"]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{45, 1920}, {0, 1178}},
+ScreenStyleEnvironment->"Presentation",
+CellGrouping->Manual,
+WindowSize->{922, 699},
+WindowMargins->{{156, Automatic}, {Automatic, 96}},
+WindowTitle->"Lecture 09 MIT 3.016 (Fall 2005)   \[Copyright] W. Craig Carter \
+2003-2005",
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "mtag:09:characteristic_equation"->{
+    Cell[2524, 82, 132, 2, 55, "Subsubsection",
+      CellTags->"mtag:09:characteristic_equation"]},
+  "mtag:09:IdentifyMatrix[]"->{
+    Cell[2659, 86, 206, 4, 59, "Input",
+      CellTags->{
+      "mtag:09:IdentifyMatrix[]", "mtag:09:Det[]", "mtag:09:Solve[]"}]},
+  "mtag:09:Det[]"->{
+    Cell[2659, 86, 206, 4, 59, "Input",
+      CellTags->{
+      "mtag:09:IdentifyMatrix[]", "mtag:09:Det[]", "mtag:09:Solve[]"}]},
+  "mtag:09:Solve[]"->{
+    Cell[2659, 86, 206, 4, 59, "Input",
+      CellTags->{
+      "mtag:09:IdentifyMatrix[]", "mtag:09:Det[]", "mtag:09:Solve[]"}]},
+  "mtag:09:Eigenvectors[]"->{
+    Cell[2870, 93, 132, 2, 59, "Text",
+      CellTags->{
+      "mtag:09:Eigenvectors[]", 
+        "mtag:09:eigenvectors__example_of_computation"}]},
+  "mtag:09:eigenvectors__example_of_computation"->{
+    Cell[2870, 93, 132, 2, 59, "Text",
+      CellTags->{
+      "mtag:09:Eigenvectors[]", 
+        "mtag:09:eigenvectors__example_of_computation"}]},
+  "mtag:09:eigenvector_column_matrix__example"->{
+    Cell[3063, 100, 136, 2, 59, "Input",
+      CellTags->"mtag:09:eigenvector_column_matrix__example"]},
+  "mtag:09:Eigensystem[]"->{
+    Cell[3359, 110, 91, 2, 59, "Input",
+      CellTags->"mtag:09:Eigensystem[]"]},
+  "mtag:09:Transpose[]"->{
+    Cell[3719, 121, 259, 6, 80, "Input",
+      CellTags->{
+      "mtag:09:Transpose[]", "mtag:09:Inverse[]", "mtag:09:Simplify[]", 
+        "mtag:09:MatrixForm[]"}]},
+  "mtag:09:Inverse[]"->{
+    Cell[3719, 121, 259, 6, 80, "Input",
+      CellTags->{
+      "mtag:09:Transpose[]", "mtag:09:Inverse[]", "mtag:09:Simplify[]", 
+        "mtag:09:MatrixForm[]"}]},
+  "mtag:09:Simplify[]"->{
+    Cell[3719, 121, 259, 6, 80, "Input",
+      CellTags->{
+      "mtag:09:Transpose[]", "mtag:09:Inverse[]", "mtag:09:Simplify[]", 
+        "mtag:09:MatrixForm[]"}]},
+  "mtag:09:MatrixForm[]"->{
+    Cell[3719, 121, 259, 6, 80, "Input",
+      CellTags->{
+      "mtag:09:Transpose[]", "mtag:09:Inverse[]", "mtag:09:Simplify[]", 
+        "mtag:09:MatrixForm[]"}]},
+  "mtag:09:simularity_transformation__example"->{
+    Cell[3981, 129, 167, 3, 77, "Input",
+      CellTags->"mtag:09:simularity_transformation__example"]},
+  "mtag:09:Package__LinearAlgebra__Orthogonalization"->{
+    Cell[4538, 150, 133, 2, 77, "Input",
+      CellTags->"mtag:09:Package__LinearAlgebra__Orthogonalization"]},
+  "mtag:09:GramSchmidt[]"->{
+    Cell[4824, 159, 119, 2, 77, "Input",
+      CellTags->"mtag:09:GramSchmidt[]"]},
+  "mtag:09:Package__Geometry__Rotations"->{
+    Cell[5110, 169, 107, 2, 77, "Input",
+      CellTags->"mtag:09:Package__Geometry__Rotations"]},
+  "mtag:09:RotationMatrix2D[]"->{
+    Cell[5220, 173, 112, 2, 77, "Input",
+      CellTags->"mtag:09:RotationMatrix2D[]"]},
+  "mtag:09:MatrixPower[]"->{
+    Cell[6656, 231, 170, 5, 77, "Text",
+      CellTags->"mtag:09:MatrixPower[]"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"mtag:09:characteristic_equation", 7715, 261},
+  {"mtag:09:IdentifyMatrix[]", 7848, 264},
+  {"mtag:09:Det[]", 8000, 268},
+  {"mtag:09:Solve[]", 8154, 272},
+  {"mtag:09:Eigenvectors[]", 8315, 276},
+  {"mtag:09:eigenvectors__example_of_computation", 8516, 281},
+  {"mtag:09:eigenvector_column_matrix__example", 8715, 286},
+  {"mtag:09:Eigensystem[]", 8849, 289},
+  {"mtag:09:Transpose[]", 8959, 292},
+  {"mtag:09:Inverse[]", 9151, 297},
+  {"mtag:09:Simplify[]", 9344, 302},
+  {"mtag:09:MatrixForm[]", 9539, 307},
+  {"mtag:09:simularity_transformation__example", 9756, 312},
+  {"mtag:09:Package__LinearAlgebra__Orthogonalization", 9918, 315},
+  {"mtag:09:GramSchmidt[]", 10059, 318},
+  {"mtag:09:Package__Geometry__Rotations", 10187, 321},
+  {"mtag:09:RotationMatrix2D[]", 10320, 324},
+  {"mtag:09:MatrixPower[]", 10438, 327}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 48, 0, 60, "Title"],
+
+Cell[CellGroupData[{
+Cell[1827, 55, 142, 4, 59, "Text"],
+
+Cell[CellGroupData[{
+Cell[1994, 63, 127, 2, 80, "Input"],
+Cell[2124, 67, 61, 1, 59, "Input"],
+Cell[2188, 70, 136, 3, 80, "Input"]
+}, Open  ]]
+}, Closed]],
+Cell[2351, 77, 170, 3, 74, "Input"],
+Cell[2524, 82, 132, 2, 55, "Subsubsection",
+  CellTags->"mtag:09:characteristic_equation"],
+Cell[2659, 86, 206, 4, 59, "Input",
+  CellTags->{
+  "mtag:09:IdentifyMatrix[]", "mtag:09:Det[]", "mtag:09:Solve[]"}],
+Cell[2870, 93, 132, 2, 59, "Text",
+  CellTags->{
+  "mtag:09:Eigenvectors[]", "mtag:09:eigenvectors__example_of_computation"}],
+Cell[3005, 97, 55, 1, 59, "Input"],
+Cell[3063, 100, 136, 2, 59, "Input",
+  CellTags->"mtag:09:eigenvector_column_matrix__example"],
+Cell[3202, 104, 154, 4, 59, "Text"],
+Cell[3359, 110, 91, 2, 59, "Input",
+  CellTags->"mtag:09:Eigensystem[]"],
+Cell[3453, 114, 263, 5, 76, "Subsubsection"],
+Cell[3719, 121, 259, 6, 80, "Input",
+  CellTags->{
+  "mtag:09:Transpose[]", "mtag:09:Inverse[]", "mtag:09:Simplify[]", 
+    "mtag:09:MatrixForm[]"}],
+Cell[3981, 129, 167, 3, 77, "Input",
+  CellTags->"mtag:09:simularity_transformation__example"],
+
+Cell[CellGroupData[{
+Cell[4173, 136, 143, 4, 59, "Text"],
+Cell[4319, 142, 204, 5, 76, "Subsubsection"]
+}, Open  ]],
+Cell[4538, 150, 133, 2, 77, "Input",
+  CellTags->"mtag:09:Package__LinearAlgebra__Orthogonalization"],
+Cell[4674, 154, 147, 3, 76, "Subsubsection"],
+Cell[4824, 159, 119, 2, 77, "Input",
+  CellTags->"mtag:09:GramSchmidt[]"],
+Cell[4946, 163, 161, 4, 86, "Text"],
+Cell[5110, 169, 107, 2, 77, "Input",
+  CellTags->"mtag:09:Package__Geometry__Rotations"],
+Cell[5220, 173, 112, 2, 77, "Input",
+  CellTags->"mtag:09:RotationMatrix2D[]"],
+Cell[5335, 177, 136, 3, 55, "Subsubsection"],
+Cell[5474, 182, 993, 37, 86, "Text"],
+Cell[6470, 221, 79, 2, 80, "Input"],
+Cell[6552, 225, 49, 1, 59, "Input"],
+Cell[6604, 228, 49, 1, 59, "Input"],
+Cell[6656, 231, 170, 5, 77, "Text",
+  CellTags->"mtag:09:MatrixPower[]"],
+Cell[6829, 238, 78, 1, 59, "Input"]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

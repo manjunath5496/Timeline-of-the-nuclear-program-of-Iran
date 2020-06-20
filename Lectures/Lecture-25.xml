@@ -1,0 +1,4329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 25 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2005
+ </title>
+ <link href="HTMLFiles/Lecture-25.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ <a id="mmtag_25_phase_plane_analysis"></a>
+ Phase Plane Analysis of Linear Differential Equations
+</p>
+
+
+
+<p class="Subtitle">
+ <a id="mmtag_25_fixed_point__linearization_about"></a>
+ Description of behavior from coefficients of linear expansion about fixed point
+</p>
+
+
+
+<p class="Text">
+ Write a set of function that predict the behavior of the system&nbsp;&nbsp;<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mrow>
+   <mi>d</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mover>
+    <mi>y</mi>
+    <mo>&rightarrow;</mo>
+   </mover>
+  </mrow>
+  <mrow>
+   <mi>d</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>t</mi>
+  </mrow>
+ </mfrac>
+</math></span></span>= <span>(<table class='TextInline'>
+ <tr>
+  <td style='text-align: center;'><span class="TextInline">a</span></td>
+  <td style='text-align: center;'><span class="TextInline">b</span></td>
+ </tr>
+ <tr>
+  <td style='text-align: center;'><span class="TextInline">c</span></td>
+  <td style='text-align: center;'><span class="TextInline">d</span></td>
+ </tr>
+</table>
+
+)</span> <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mover>
+  <mi>y</mi>
+  <mo>&rightarrow;</mo>
+ </mover>
+</math></span></span> for real matrices.
+</p>
+
+
+
+<p class="Subsubsection">
+ Note: This is a first-order ODE with constant coefficients. Its solution will be a sum of two exponential functions with the form <span><span class="SubsubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <mi>&ExponentialE;</mi>
+  <mi>&lambda;t</mi>
+ </msup>
+</math></span></span>. The characteristics of the system of two equations are determined by the eigenvalues and eigenvectors of the matrix of coefficients, as detailed by the analysis and examples presented below.
+</p>
+
+
+
+<p class="Text">
+ Note that the eigenvalues are either real or they are complex conjugates (i.e., the eigenvalues are the solutions to&nbsp;&nbsp;the quadratic equation)
+</p>
+
+
+
+<p class="Text">
+ Here is a function to print out a warning if the eigenvalues are inconsistent with a real coefficient matrix:
+</p>
+
+
+
+<p class="CellLabel">
+ In[54]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_warning_function__example"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>EigenConsistency</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>eval1_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>eval2_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>If</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>And</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>And</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mrow>
+          <mi>Im</mi>
+          <mo>[</mo>
+          <mi>eval1</mi>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&NotEqual;</mo>
+         <mn>0</mn>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mrow>
+          <mi>Im</mi>
+          <mo>[</mo>
+          <mi>eval2</mi>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&NotEqual;</mo>
+         <mtext> </mtext>
+         <mn>0</mn>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mrow>
+        <mi>Conjugate</mi>
+        <mo>[</mo>
+        <mi>eval1</mi>
+        <mo>]</mo>
+       </mrow>
+       <mtext> </mtext>
+       <mo>&NotEqual;</mo>
+       <mtext> </mtext>
+       <mi>eval2</mi>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Print</mi>
+     <mo>[</mo>
+     <ms>Coefficients are not real</ms>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Here is a function that prints out information about stability based on the eigenvalues:
+</p>
+
+
+
+<p class="CellLabel">
+ In[55]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_fixed_point__function_to_determine_stability"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>EigenStability</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>eval1_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>eval2_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>If</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>And</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mi>Re</mi>
+        <mo>[</mo>
+        <mi>eval1</mi>
+        <mo>]</mo>
+       </mrow>
+       <mo>&lt;</mo>
+       <mn>0</mn>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mrow>
+        <mi>Re</mi>
+        <mo>[</mo>
+        <mi>eval2</mi>
+        <mo>]</mo>
+       </mrow>
+       <mtext> </mtext>
+       <mo>&lt;</mo>
+       <mn>0</mn>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Print</mi>
+     <mo>[</mo>
+     <ms>Stable and Attractive</ms>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>If</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>Or</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mrow>
+          <mi>Re</mi>
+          <mo>[</mo>
+          <mi>eval1</mi>
+          <mo>]</mo>
+         </mrow>
+         <mo>&gt;</mo>
+         <mn>0</mn>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mrow>
+          <mi>Re</mi>
+          <mo>[</mo>
+          <mi>eval2</mi>
+          <mo>]</mo>
+         </mrow>
+         <mo>&gt;</mo>
+         <mn>0</mn>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Print</mi>
+       <mo>[</mo>
+       <ms>Unstable</ms>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Print</mi>
+       <mo>[</mo>
+       <ms>Stable Orbits about Fixed Point</ms>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Here is a function that prints out information about the type of fixed point:
+</p>
+
+
+
+<p class="CellLabel">
+ In[56]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_fixed_point__function_to_determine_type"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>EigenTrajectory</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>eval1_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>eval2_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>If</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Or</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mi>Im</mi>
+        <mo>[</mo>
+        <mi>eval1</mi>
+        <mo>]</mo>
+       </mrow>
+       <mtext> </mtext>
+       <mo>&NotEqual;</mo>
+       <mtext> </mtext>
+       <mn>0</mn>
+      </mrow>
+      <mtext> </mtext>
+      <mo>,</mo>
+      <mrow>
+       <mrow>
+        <mi>Im</mi>
+        <mo>[</mo>
+        <mi>eval2</mi>
+        <mo>]</mo>
+       </mrow>
+       <mtext> </mtext>
+       <mo>&NotEqual;</mo>
+       <mtext> </mtext>
+       <mn>0</mn>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Print</mi>
+     <mo>[</mo>
+     <ms>Circulation</ms>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext>&#62371;</mtext>
+    <mrow>
+     <mi>If</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <mi>s1</mi>
+         <mo>=</mo>
+         <mrow>
+          <mi>Sign</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>Re</mi>
+           <mo>[</mo>
+           <mi>eval1</mi>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+       <mtext> </mtext>
+       <mo>&NotEqual;</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <mi>s2</mi>
+         <mo>=</mo>
+         <mrow>
+          <mi>Sign</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>Re</mi>
+           <mo>[</mo>
+           <mi>eval2</mi>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Print</mi>
+       <mo>[</mo>
+       <ms>Saddle</ms>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Print</mi>
+       <mo>[</mo>
+       <ms>Node</ms>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Here is a function that collects our other functions
+</p>
+
+
+
+<p class="CellLabel">
+ In[57]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_EigenDescriptionxx__example_of_function_for_analysis_of_system_of_ODEs"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>EigenDescription</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>eval1_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>eval2_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Module</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mrow>
+      <mi>EigenConsistency</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>eval1</mi>
+       <mo>,</mo>
+       <mi>eval2</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>;</mo>
+     <mrow>
+      <mi>EigenStability</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>eval1</mi>
+       <mo>,</mo>
+       <mi>eval2</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>;</mo>
+     <mrow>
+      <mi>EigenTrajectory</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>eval1</mi>
+       <mo>,</mo>
+       <mi>eval2</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[58]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>EigenDescription</mi>
+  <mo>[</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mn>1</mn>
+    </mrow>
+    <mtext> </mtext>
+    <mo>+</mo>
+    <mi>&ImaginaryI;</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mn>1</mn>
+    </mrow>
+    <mtext> </mtext>
+    <mo>-</mo>
+    <mi>&ImaginaryI;</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mtext>Stable and Attractive</mtext>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Circulation</mi>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[59]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>EigenConsistency</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mn>1</mn>
+    <mo>+</mo>
+    <mtext> </mtext>
+    <mi>&ImaginaryI;</mi>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Here is a function that prints out information about the direction of the eigenvectors
+</p>
+
+
+
+<p class="CellLabel">
+ In[60]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>EigenDirector</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>eval_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mtext>ex_</mtext>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mtext>ey_</mtext>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Module</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>theta</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>N</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>180</mn>
+        <mo>*</mo>
+        <mrow>
+         <mrow>
+          <mi>ArcTan</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>ex</mi>
+           <mo>,</mo>
+           <mi>ey</mi>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>/</mo>
+         <mi>&pi;</mi>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mrow>
+      <mi>If</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mi>eval</mi>
+        <mo>&gt;</mo>
+        <mn>0</mn>
+       </mrow>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>Print</mi>
+        <mo>[</mo>
+        <mrow>
+         <ms>Unstable (&lambda;=</ms>
+         <mo>,</mo>
+         <mi>eval</mi>
+         <mo>,</mo>
+         <ms>) direction is &theta; = </ms>
+         <mo>,</mo>
+         <mtext> </mtext>
+         <mi>theta</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>If</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mi>eval</mi>
+        <mo>&lt;</mo>
+        <mn>0</mn>
+       </mrow>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>Print</mi>
+        <mo>[</mo>
+        <mrow>
+         <ms>Stable (&lambda;=</ms>
+         <mo>,</mo>
+         <mi>eval</mi>
+         <mo>,</mo>
+         <ms>) direction is &theta; = </ms>
+         <mo>,</mo>
+         <mtext> </mtext>
+         <mi>theta</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Here is a function that uses the coefficients to collect and print the physical information about the fixed point
+</p>
+
+
+
+<p class="CellLabel">
+ In[61]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_LinearDescriptionxx__example_of_function_for_analysis_of_system_of_ODEs"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>LinearDescription</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>a_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>b_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>c_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>d_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Module</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>esys</mi>
+      <mo>,</mo>
+      <mi>eval1</mi>
+      <mo>,</mo>
+      <mi>eval2</mi>
+      <mo>,</mo>
+      <mi>evec1</mi>
+      <mo>,</mo>
+      <mi>evec2</mi>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext>&#62371;</mtext>
+    <mrow>
+     <mrow>
+      <mi>esys</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>Eigensystem</mi>
+       <mo>[</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mi>a</mi>
+           <mo>,</mo>
+           <mi>b</mi>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mi>c</mi>
+           <mo>,</mo>
+           <mi>d</mi>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mrow>
+      <mi>eval1</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>Chop</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>esys</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mrow>
+          <mn>1</mn>
+          <mo>,</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mrow>
+      <mi>eval2</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>Chop</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>esys</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mrow>
+          <mn>1</mn>
+          <mo>,</mo>
+          <mn>2</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mrow>
+      <mi>evec1</mi>
+      <mtext> </mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>Chop</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>esys</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mrow>
+          <mn>2</mn>
+          <mo>,</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mrow>
+      <mi>evec2</mi>
+      <mo>=</mo>
+      <mrow>
+       <mi>Chop</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>esys</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mrow>
+          <mn>2</mn>
+          <mo>,</mo>
+          <mn>2</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>EigenDescription</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>eval1</mi>
+       <mo>,</mo>
+       <mi>eval2</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>Print</mi>
+      <mo>[</mo>
+      <mrow>
+       <ms>Eigenvalues = </ms>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mi>eval1</mi>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <ms> and </ms>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mi>eval2</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mi>If</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mi>And</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mrow>
+           <mi>Im</mi>
+           <mo>[</mo>
+           <mi>eval1</mi>
+           <mo>]</mo>
+          </mrow>
+          <mtext> </mtext>
+          <mo>&Equal;</mo>
+          <mtext> </mtext>
+          <mn>0</mn>
+         </mrow>
+         <mo>,</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mrow>
+           <mi>Im</mi>
+           <mo>[</mo>
+           <mi>eval1</mi>
+           <mo>]</mo>
+          </mrow>
+          <mtext> </mtext>
+          <mo>&Equal;</mo>
+          <mtext> </mtext>
+          <mn>0</mn>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mrow>
+         <mi>EigenDirector</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>eval1</mi>
+          <mo>,</mo>
+          <mi>evec1</mi>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>;</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>EigenDirector</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>eval2</mi>
+          <mo>,</mo>
+          <mi>evec2</mi>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>;</mo>
+     <mi>esys</mi>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[62]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>LinearDescription</mi>
+  <mo>[</mo>
+  <mrow>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mtext>.1</mtext>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>3</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Unstable</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Saddle</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Eigenvalues = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mo>-</mo>
+    <mn>3.024845673131659</mn>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext> and </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>1.0248456731316589</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Eigenvalues = </ms>
+    <cn type='real'>-3.024845673131659</cn>
+    <ms> and </ms>
+    <cn type='real'>1.0248456731316589</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Stable (&lambda;=</mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mo>-</mo>
+    <mn>3.024845673131659</mn>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext>) direction is &theta; = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>91.42325939491276</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Stable (&lambda;=</ms>
+    <cn type='real'>-3.024845673131659</cn>
+    <ms>) direction is &theta; = </ms>
+    <cn type='real'>91.42325939491276</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Unstable (&lambda;=</mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>1.0248456731316589</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext>) direction is &theta; = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>13.952991853913426</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Unstable (&lambda;=</ms>
+    <cn type='real'>1.0248456731316589</cn>
+    <ms>) direction is &theta; = </ms>
+    <cn type='real'>13.952991853913426</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[62]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>3.024845673131659</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>1.0248456731316589</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>0.024838007970444692</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>0.9996914890905396</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0.9704938837598415</mn>
+       <mo>,</mo>
+       <mn>0.2411257381217099</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subtitle">
+ <a id="mmtag_25_fixed_point_stability__visualization"></a>
+ Visualization of Trajectories near Fixed Points in the Plane
+</p>
+
+
+
+<p class="Text">
+ Functions to find the solutions for input coefficients (first one for specified initial point; the second one for initial points picked randomly
+</p>
+
+
+
+<p class="CellLabel">
+ In[63]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>LinSol</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>a_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>b_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>c_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>d_</mtext>
+    <mtext>  </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>xo_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>yo_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mtext>&#62371;</mtext>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>x</mi>
+      <mo>[</mo>
+      <mi>t</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>p</mi>
+      <mo>[</mo>
+      <mi>t</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>/.</mo>
+   <mrow>
+    <mi>Flatten</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>DSolve</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mrow>
+          <mrow>
+           <mi>x</mi>
+           <mo>'</mo>
+          </mrow>
+          <mo>[</mo>
+          <mi>t</mi>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&Equal;</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mrow>
+           <mi>a</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>x</mi>
+            <mo>[</mo>
+            <mi>t</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+          <mtext> </mtext>
+          <mo>+</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>b</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>p</mi>
+            <mo>[</mo>
+            <mi>t</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mrow>
+          <mrow>
+           <mi>p</mi>
+           <mo>'</mo>
+          </mrow>
+          <mo>[</mo>
+          <mi>t</mi>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&Equal;</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mrow>
+           <mi>c</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>x</mi>
+            <mo>[</mo>
+            <mi>t</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+          <mtext> </mtext>
+          <mo>+</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>d</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>p</mi>
+            <mo>[</mo>
+            <mi>t</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mrow>
+          <mi>x</mi>
+          <mo>[</mo>
+          <mn>0</mn>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&Equal;</mo>
+         <mtext> </mtext>
+         <mi>xo</mi>
+        </mrow>
+        <mo>,</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mrow>
+          <mi>p</mi>
+          <mo>[</mo>
+          <mn>0</mn>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&Equal;</mo>
+         <mtext>  </mtext>
+         <mi>yo</mi>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>x</mi>
+         <mo>[</mo>
+         <mi>t</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>p</mi>
+         <mo>[</mo>
+         <mi>t</mi>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mi>t</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[64]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>LinSol</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>a_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>b_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>c_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>d_</mtext>
+   </mrow>
+   <mtext> </mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mtext>&#62371;</mtext>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>x</mi>
+      <mo>[</mo>
+      <mi>t</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>p</mi>
+      <mo>[</mo>
+      <mi>t</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>/.</mo>
+   <mrow>
+    <mi>Flatten</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>DSolve</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mrow>
+          <mrow>
+           <mi>x</mi>
+           <mo>'</mo>
+          </mrow>
+          <mo>[</mo>
+          <mi>t</mi>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&Equal;</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mrow>
+           <mi>a</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>x</mi>
+            <mo>[</mo>
+            <mi>t</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+          <mtext> </mtext>
+          <mo>+</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>b</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>p</mi>
+            <mo>[</mo>
+            <mi>t</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mrow>
+          <mrow>
+           <mi>p</mi>
+           <mo>'</mo>
+          </mrow>
+          <mo>[</mo>
+          <mi>t</mi>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&Equal;</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mrow>
+           <mi>c</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>x</mi>
+            <mo>[</mo>
+            <mi>t</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+          <mtext> </mtext>
+          <mo>+</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>d</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>p</mi>
+            <mo>[</mo>
+            <mi>t</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mrow>
+          <mi>x</mi>
+          <mo>[</mo>
+          <mn>0</mn>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&Equal;</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mi>Random</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>Real</mi>
+           <mo>,</mo>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mrow>
+              <mo>-</mo>
+              <mn>10</mn>
+             </mrow>
+             <mo>,</mo>
+             <mn>10</mn>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mrow>
+          <mi>p</mi>
+          <mo>[</mo>
+          <mn>0</mn>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>&Equal;</mo>
+         <mtext>  </mtext>
+         <mrow>
+          <mi>Random</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>Real</mi>
+           <mo>,</mo>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mrow>
+              <mo>-</mo>
+              <mn>10</mn>
+             </mrow>
+             <mo>,</mo>
+             <mn>10</mn>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>x</mi>
+         <mo>[</mo>
+         <mi>t</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>p</mi>
+         <mo>[</mo>
+         <mi>t</mi>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mi>t</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[65]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>LinSol</mi>
+  <mo>[</mo>
+  <mrow>
+   <mn>3</mn>
+   <mo>,</mo>
+   <mn>2</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>3</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>2</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[65]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mn>4.284814892121187</mn>
+     <mtext> </mtext>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mrow>
+        <mn>5</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mo>/</mo>
+       <mn>2</mn>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Cos</mi>
+      <mo>[</mo>
+      <mfrac>
+       <mrow>
+        <msqrt>
+         <mn>23</mn>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mn>2</mn>
+      </mfrac>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>6.117391826839953</mn>
+     <mtext> </mtext>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mrow>
+        <mn>5</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mo>/</mo>
+       <mn>2</mn>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mfrac>
+       <mrow>
+        <msqrt>
+         <mn>23</mn>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mn>2</mn>
+      </mfrac>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>8.405698863933955</mn>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mrow>
+        <mn>5</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mo>/</mo>
+       <mn>2</mn>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Cos</mi>
+      <mo>[</mo>
+      <mfrac>
+       <mrow>
+        <msqrt>
+         <mn>23</mn>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mn>2</mn>
+      </mfrac>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>3.6079646260886564</mn>
+     <mtext> </mtext>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mrow>
+        <mn>5</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mo>/</mo>
+       <mn>2</mn>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mfrac>
+       <mrow>
+        <msqrt>
+         <mn>23</mn>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mn>2</mn>
+      </mfrac>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Example of a plot for a single directory
+</p>
+
+
+
+<p class="CellLabel">
+ In[66]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>CritPointPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>a_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>b_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>c_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>d_</mtext>
+   </mrow>
+   <mtext> </mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mrow>
+   <mi>ParametricPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Evaluate</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>LinSol</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>a</mi>
+       <mo>,</mo>
+       <mi>b</mi>
+       <mo>,</mo>
+       <mi>c</mi>
+       <mo>,</mo>
+       <mi>d</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>t</mi>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>20</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>PlotRange</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <mn>15</mn>
+         </mrow>
+         <mo>,</mo>
+         <mn>15</mn>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <mn>15</mn>
+         </mrow>
+         <mo>,</mo>
+         <mn>15</mn>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[67]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>CritPointPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mtext>.2</mtext>
+   </mrow>
+   <mo>,</mo>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>2</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-25_1.gif" alt="[Graphics:HTMLFiles/Lecture-25_1.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[67]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ This is not terribly informative.&nbsp;&nbsp;Construct a function that takes input and plots many paths with arrows that describe the trajectory.&nbsp;&nbsp;Print out physical interpretations as well.&nbsp;&nbsp;Supply an argument with&nbsp;&nbsp;a default definition that indicates the number of trajectories to plot.
+</p>
+
+
+
+<p class="CellLabel">
+ In[68]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Graphics`Arrow`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[69]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_fixed_point__visualization_of_trajectories_near"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>CritPointPlotPointsMany</mi>
+    <mo>[</mo>
+    <mrow>
+     <mtext>a_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>b_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>c_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>d_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext>  </mtext>
+     <mrow>
+      <mtext>howmany_:</mtext>
+      <mn>100</mn>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>:=</mo>
+   <mrow>
+    <mi>Module</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>esys</mi>
+       <mo>,</mo>
+       <mi>eval1</mi>
+       <mo>,</mo>
+       <mi>eval2</mi>
+       <mo>,</mo>
+       <mi>funcs</mi>
+       <mtext> </mtext>
+       <mo>,</mo>
+       <mi>data</mi>
+       <mo>,</mo>
+       <mi>lendata</mi>
+       <mo>,</mo>
+       <mi>gstack</mi>
+       <mo>,</mo>
+       <mi>lp</mi>
+       <mo>,</mo>
+       <mi>rstack</mi>
+       <mo>,</mo>
+       <mi>lstack</mi>
+       <mo>,</mo>
+       <mi>magrange</mi>
+       <mo>,</mo>
+       <mi>rstackmag</mi>
+       <mo>,</mo>
+       <mi>lstackmag</mi>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mtext>&#62371;</mtext>
+     <mrow>
+      <mrow>
+       <mi>esys</mi>
+       <mo>=</mo>
+       <mrow>
+        <mi>LinearDescription</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>a</mi>
+         <mo>,</mo>
+         <mi>b</mi>
+         <mo>,</mo>
+         <mi>c</mi>
+         <mo>,</mo>
+         <mi>d</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mrow>
+       <mi>Print</mi>
+       <mo>[</mo>
+       <mi>esys</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>;</mo>
+      <mrow>
+       <mi>eval1</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>esys</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mrow>
+          <mn>1</mn>
+          <mo>,</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>eval2</mi>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>esys</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>[</mo>
+         <mrow>
+          <mn>1</mn>
+          <mo>,</mo>
+          <mn>2</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>funcs</mi>
+       <mo>=</mo>
+       <mrow>
+        <mi>Table</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>Chop</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>LinSol</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>a</mi>
+            <mo>,</mo>
+            <mi>b</mi>
+            <mo>,</mo>
+            <mi>c</mi>
+            <mo>,</mo>
+            <mi>d</mi>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mi>i</mi>
+           <mo>,</mo>
+           <mi>howmany</mi>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>lstack</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mrow>
+        <mo>{</mo>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mrow>
+       <mi>rstack</mi>
+       <mo>=</mo>
+       <mrow>
+        <mo>{</mo>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mrow>
+       <mi>For</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>imany</mi>
+         <mo>=</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>imany</mi>
+         <mtext> </mtext>
+         <mo>&leq;</mo>
+         <mtext> </mtext>
+         <mi>howmany</mi>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>imany</mi>
+         <mo>++</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mrow>
+          <mi>data</mi>
+          <mo>=</mo>
+          <mrow>
+           <mi>Chop</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>Table</mi>
+            <mo>[</mo>
+            <mrow>
+             <mrow>
+              <mi>Evaluate</mi>
+              <mo>[</mo>
+              <mrow>
+               <mrow>
+                <mi>funcs</mi>
+                <mo>[</mo>
+                <mrow>
+                 <mo>[</mo>
+                 <mi>imany</mi>
+                 <mo>]</mo>
+                </mrow>
+                <mo>]</mo>
+               </mrow>
+               <mo>/.</mo>
+               <mrow>
+                <mi>t</mi>
+                <mo>&rightarrow;</mo>
+                <mi>itime</mi>
+               </mrow>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+             <mo>,</mo>
+             <mrow>
+              <mo>{</mo>
+              <mrow>
+               <mi>itime</mi>
+               <mo>,</mo>
+               <mn>0</mn>
+               <mo>,</mo>
+               <mn>20</mn>
+               <mo>,</mo>
+               <mtext>.1</mtext>
+              </mrow>
+              <mo>}</mo>
+             </mrow>
+            </mrow>
+            <mo>]</mo>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>;</mo>
+         <mrow>
+          <mi>lendata</mi>
+          <mtext> </mtext>
+          <mo>=</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>Length</mi>
+           <mo>[</mo>
+           <mi>data</mi>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>;</mo>
+         <mrow>
+          <mi>gstack</mi>
+          <mo>=</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mrow>
+             <mi>Hue</mi>
+             <mo>[</mo>
+             <mn>0</mn>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>Arrow</mi>
+             <mo>[</mo>
+             <mrow>
+              <mrow>
+               <mi>data</mi>
+               <mo>[</mo>
+               <mrow>
+                <mo>[</mo>
+                <mn>1</mn>
+                <mo>]</mo>
+               </mrow>
+               <mo>]</mo>
+              </mrow>
+              <mo>,</mo>
+              <mrow>
+               <mi>data</mi>
+               <mo>[</mo>
+               <mrow>
+                <mo>[</mo>
+                <mn>2</mn>
+                <mo>]</mo>
+               </mrow>
+               <mo>]</mo>
+              </mrow>
+              <mo>,</mo>
+              <mrow>
+               <mi>HeadScaling</mi>
+               <mo>&rightarrow;</mo>
+               <mi>Absolute</mi>
+              </mrow>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+         </mrow>
+         <mo>;</mo>
+         <mtext>&#62371;</mtext>
+         <mrow>
+          <mi>For</mi>
+          <mo>[</mo>
+          <mrow>
+           <mrow>
+            <mi>iend</mi>
+            <mtext> </mtext>
+            <mo>=</mo>
+            <mtext> </mtext>
+            <mn>4</mn>
+           </mrow>
+           <mo>,</mo>
+           <mtext> </mtext>
+           <mrow>
+            <mi>iend</mi>
+            <mtext> </mtext>
+            <mo>&leq;</mo>
+            <mtext>  </mtext>
+            <mrow>
+             <mi>lendata</mi>
+             <mo>/</mo>
+             <mn>2</mn>
+            </mrow>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mi>iend</mi>
+            <mtext> </mtext>
+            <mo>+=</mo>
+            <mtext> </mtext>
+            <mn>8</mn>
+           </mrow>
+           <mo>,</mo>
+           <mtext> </mtext>
+           <mrow>
+            <mrow>
+             <mi>AppendTo</mi>
+             <mo>[</mo>
+             <mrow>
+              <mi>gstack</mi>
+              <mo>,</mo>
+              <mrow>
+               <mi>Hue</mi>
+               <mo>[</mo>
+               <mrow>
+                <mi>iend</mi>
+                <mo>*</mo>
+                <mn>0.66</mn>
+                <mo>*</mo>
+                <mrow>
+                 <mn>2</mn>
+                 <mo>/</mo>
+                 <mi>lendata</mi>
+                </mrow>
+               </mrow>
+               <mo>]</mo>
+              </mrow>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+            <mo>;</mo>
+            <mrow>
+             <mi>AppendTo</mi>
+             <mo>[</mo>
+             <mrow>
+              <mi>gstack</mi>
+              <mo>,</mo>
+              <mrow>
+               <mi>Arrow</mi>
+               <mo>[</mo>
+               <mrow>
+                <mrow>
+                 <mi>data</mi>
+                 <mo>[</mo>
+                 <mrow>
+                  <mo>[</mo>
+                  <mrow>
+                   <mi>iend</mi>
+                   <mo>-</mo>
+                   <mn>1</mn>
+                  </mrow>
+                  <mo>]</mo>
+                 </mrow>
+                 <mo>]</mo>
+                </mrow>
+                <mo>,</mo>
+                <mrow>
+                 <mi>data</mi>
+                 <mo>[</mo>
+                 <mrow>
+                  <mo>[</mo>
+                  <mi>iend</mi>
+                  <mo>]</mo>
+                 </mrow>
+                 <mo>]</mo>
+                </mrow>
+                <mo>,</mo>
+                <mrow>
+                 <mi>HeadScaling</mi>
+                 <mo>&rightarrow;</mo>
+                 <mi>Absolute</mi>
+                </mrow>
+               </mrow>
+               <mo>]</mo>
+              </mrow>
+             </mrow>
+             <mo>]</mo>
+            </mrow>
+           </mrow>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>;</mo>
+         <mrow>
+          <mi>lp</mi>
+          <mo>=</mo>
+          <mrow>
+           <mi>ListPlot</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>data</mi>
+            <mo>,</mo>
+            <mrow>
+             <mi>PlotJoined</mi>
+             <mo>&rightarrow;</mo>
+             <mi>True</mi>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>AspectRatio</mi>
+             <mo>&rightarrow;</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>PlotRange</mi>
+             <mo>&rightarrow;</mo>
+             <mrow>
+              <mo>{</mo>
+              <mrow>
+               <mrow>
+                <mo>{</mo>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>15</mn>
+                 </mrow>
+                 <mo>,</mo>
+                 <mn>15</mn>
+                </mrow>
+                <mo>}</mo>
+               </mrow>
+               <mo>,</mo>
+               <mrow>
+                <mo>{</mo>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>15</mn>
+                 </mrow>
+                 <mo>,</mo>
+                 <mn>15</mn>
+                </mrow>
+                <mo>}</mo>
+               </mrow>
+              </mrow>
+              <mo>}</mo>
+             </mrow>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>PlotStyle</mi>
+             <mo>&rightarrow;</mo>
+             <mrow>
+              <mi>Hue</mi>
+              <mo>[</mo>
+              <mrow>
+               <mi>Random</mi>
+               <mo>[</mo>
+               <mo>]</mo>
+              </mrow>
+              <mo>]</mo>
+             </mrow>
+            </mrow>
+            <mo>,</mo>
+            <mrow>
+             <mi>DisplayFunction</mi>
+             <mo>&rightarrow;</mo>
+             <mi>Identity</mi>
+            </mrow>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>;</mo>
+         <mrow>
+          <mi>lstack</mi>
+          <mo>=</mo>
+          <mrow>
+           <mi>Show</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>lp</mi>
+            <mo>,</mo>
+            <mrow>
+             <mi>Graphics</mi>
+             <mo>[</mo>
+             <mi>gstack</mi>
+             <mo>]</mo>
+            </mrow>
+            <mo>,</mo>
+            <mi>lstack</mi>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>;</mo>
+         <mrow>
+          <mi>rstack</mi>
+          <mtext> </mtext>
+          <mo>=</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>Show</mi>
+           <mo>[</mo>
+           <mrow>
+            <mi>lp</mi>
+            <mo>,</mo>
+            <mi>rstack</mi>
+           </mrow>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>If</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>Or</mi>
+         <mo>[</mo>
+         <mrow>
+          <mrow>
+           <mrow>
+            <mi>Re</mi>
+            <mo>[</mo>
+            <mi>eval1</mi>
+            <mo>]</mo>
+           </mrow>
+           <mo>&gt;</mo>
+           <mn>0</mn>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mrow>
+            <mi>Re</mi>
+            <mo>[</mo>
+            <mi>eval2</mi>
+            <mo>]</mo>
+           </mrow>
+           <mo>&gt;</mo>
+           <mtext> </mtext>
+           <mn>0</mn>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>magrange</mi>
+         <mo>=</mo>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mrow>
+              <mo>-</mo>
+              <mn>60</mn>
+             </mrow>
+             <mo>,</mo>
+             <mn>60</mn>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mrow>
+              <mo>-</mo>
+              <mn>60</mn>
+             </mrow>
+             <mo>,</mo>
+             <mn>60</mn>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>magrange</mi>
+         <mo>=</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mrow>
+              <mo>-</mo>
+              <mn>1</mn>
+             </mrow>
+             <mo>,</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mrow>
+              <mo>-</mo>
+              <mn>1</mn>
+             </mrow>
+             <mo>,</mo>
+             <mn>1</mn>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>rstackmag</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>Show</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>rstack</mi>
+         <mo>,</mo>
+         <mrow>
+          <mi>PlotRange</mi>
+          <mo>&rightarrow;</mo>
+          <mtext> </mtext>
+          <mi>magrange</mi>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>lstackmag</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext>  </mtext>
+       <mrow>
+        <mi>Show</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>lstack</mi>
+         <mo>,</mo>
+         <mrow>
+          <mi>PlotRange</mi>
+          <mo>&rightarrow;</mo>
+          <mtext> </mtext>
+          <mi>magrange</mi>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>;</mo>
+      <mtext>&#62371;</mtext>
+      <mrow>
+       <mi>Show</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>GraphicsArray</mi>
+         <mo>[</mo>
+         <mrow>
+          <mo>{</mo>
+          <mrow>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mi>lstack</mi>
+             <mo>,</mo>
+             <mi>rstack</mi>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+           <mo>,</mo>
+           <mrow>
+            <mo>{</mo>
+            <mrow>
+             <mi>lstackmag</mi>
+             <mo>,</mo>
+             <mi>rstackmag</mi>
+            </mrow>
+            <mo>}</mo>
+           </mrow>
+          </mrow>
+          <mo>}</mo>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>ImageSize</mi>
+         <mo>&rightarrow;</mo>
+         <mn>1000</mn>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>DisplayFunction</mi>
+         <mo>&rightarrow;</mo>
+         <mi>$DisplayFunction</mi>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mtext>&#62371;</mtext>
+  <mtext>&#62371;</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>rstack</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>gstack</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(rstack\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(gstack\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>lstack</mi>
+    <mtext>\&quot; is similar to existing symbols </mtext>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>gstack</mi>
+      <mo>,</mo>
+      <mi>rstack</mi>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(lstack\\)\\\&quot; is similar to existing symbols \\!\\({gstack, rstack}\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>lstackmag</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>rstackmag</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(lstackmag\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(rstackmag\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ In this first example, the eigenvalues are real and negative, and the system of equations has a stable, attractive node. The eigenvectors are real and correspond to directions along which the system will evolve along a straight trajectory.
+</p>
+
+
+
+<p class="CellLabel">
+ In[70]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_fixed_point__stable_attractive_node_visualization"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>CritPointPlotPointsMany</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>0.25</mn>
+   <mo>,</mo>
+   <mn>0.75</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mtext>Stable and Attractive</mtext>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Node</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Eigenvalues = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mo>-</mo>
+    <mn>1.4330127018922194</mn>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext> and </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.5669872981077807</mn>
+   </mrow>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Eigenvalues = </ms>
+    <cn type='real'>-1.4330127018922194</cn>
+    <ms> and </ms>
+    <cn type='real'>-0.5669872981077807</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Stable (&lambda;=</mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mo>-</mo>
+    <mn>1.4330127018922194</mn>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext>) direction is &theta; = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>120.00000000000001</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Stable (&lambda;=</ms>
+    <cn type='real'>-1.4330127018922194</cn>
+    <ms>) direction is &theta; = </ms>
+    <cn type='real'>120.00000000000001</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Stable (&lambda;=</mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.5669872981077807</mn>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext>) direction is &theta; = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>60.00000000000001</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Stable (&lambda;=</ms>
+    <cn type='real'>-0.5669872981077807</cn>
+    <ms>) direction is &theta; = </ms>
+    <cn type='real'>60.00000000000001</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>1.4330127018922194</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.5669872981077807</mn>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>0.5</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>0.8660254037844385</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0.5</mn>
+       <mo>,</mo>
+       <mn>0.8660254037844387</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-25_2.gif" alt="[Graphics:HTMLFiles/Lecture-25_2.gif]"  width="1000" height="1000"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[70]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ In this next example, the eigenvalues are real and positive, and the system of equations has an unstable node. The eigenvectors are real and correspond to directions along which the system will evolve along a straight trajectory.
+</p>
+
+
+
+<p class="CellLabel">
+ In[71]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_fixed_point__unstable_node_visualization"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>CritPointPlotPointsMany</mi>
+  <mo>[</mo>
+  <mrow>
+   <mn>1.25</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.25</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.75</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>0.75</mn>
+   <mo>,</mo>
+   <mn>200</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Unstable</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Node</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Eigenvalues = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>1.5</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext> and </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>0.5</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Eigenvalues = </ms>
+    <cn type='real'>1.5</cn>
+    <ms> and </ms>
+    <cn type='real'>0.5</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Unstable (&lambda;=</mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>1.5</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext>) direction is &theta; = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mo>-</mo>
+    <mn>45.</mn>
+   </mrow>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Unstable (&lambda;=</ms>
+    <cn type='real'>1.5</cn>
+    <ms>) direction is &theta; = </ms>
+    <cn type='real'>-45.</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Unstable (&lambda;=</mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>0.5</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext>) direction is &theta; = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>71.565051177078</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Unstable (&lambda;=</ms>
+    <cn type='real'>0.5</cn>
+    <ms>) direction is &theta; = </ms>
+    <cn type='real'>71.565051177078</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1.5</mn>
+     <mo>,</mo>
+     <mn>0.5</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0.7071067811865475</mn>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>0.7071067811865475</mn>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0.3162277660168379</mn>
+       <mo>,</mo>
+       <mn>0.9486832980505138</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-25_3.gif" alt="[Graphics:HTMLFiles/Lecture-25_3.gif]"  width="1000" height="1000"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[71]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ In this next example, the eigenvalues are real and of opposite sign, and the system of equations has an unstable saddle point. The eigenvectors are real and correspond to directions along which the system will evolve along a straight trajectory.
+</p>
+
+
+
+<p class="CellLabel">
+ In[72]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_fixed_point__saddle_node_visualization"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>CritPointPlotPointsMany</mi>
+  <mo>[</mo>
+  <mrow>
+   <mn>1.25</mn>
+   <mo>,</mo>
+   <mn>0.25</mn>
+   <mo>,</mo>
+   <mn>0.75</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1.75</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mn>200</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Unstable</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Saddle</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Eigenvalues = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mo>-</mo>
+    <mn>1.8112494995995996</mn>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext> and </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>1.3112494995995991</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Eigenvalues = </ms>
+    <cn type='real'>-1.8112494995995996</cn>
+    <ms> and </ms>
+    <cn type='real'>1.3112494995995991</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Stable (&lambda;=</mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mo>-</mo>
+    <mn>1.8112494995995996</mn>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext>) direction is &theta; = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>94.6687563267693</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Stable (&lambda;=</ms>
+    <cn type='real'>-1.8112494995995996</cn>
+    <ms>) direction is &theta; = </ms>
+    <cn type='real'>94.6687563267693</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Unstable (&lambda;=</mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>1.3112494995995991</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext>) direction is &theta; = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mn>13.766192496152701</mn>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Unstable (&lambda;=</ms>
+    <cn type='real'>1.3112494995995991</cn>
+    <ms>) direction is &theta; = </ms>
+    <cn type='real'>13.766192496152701</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>1.8112494995995996</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>1.3112494995995991</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>0.0813950251558419</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>0.9966819201128714</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0.9712748580499135</mn>
+       <mo>,</mo>
+       <mn>0.23796039611691722</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-25_4.gif" alt="[Graphics:HTMLFiles/Lecture-25_4.gif]"  width="1000" height="1000"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[72]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ In this next example, the eigenvalues are complex, with a positive real part, and the system of equations has an unstable circulation pattern. The eigenvectors are complex and and there are no directions along which the system will evolve along a straight trajectory.
+</p>
+
+
+
+<p class="CellLabel">
+ In[73]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_fixed_point__unstable_focus_node_visualization"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>CritPointPlotPointsMany</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.25</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>2.</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>3</mn>
+   <mo>,</mo>
+   <mn>1.5</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Unstable</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Circulation</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Eigenvalues = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mrow>
+     <mn>0.6250000000000001</mn>
+     <mtext>&ZeroWidthSpace;</mtext>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>2.287875652215391</mn>
+     <mtext> </mtext>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext> and </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mrow>
+     <mn>0.6250000000000001</mn>
+     <mtext>&ZeroWidthSpace;</mtext>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>2.287875652215391</mn>
+     <mtext> </mtext>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+   </mrow>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Eigenvalues = </ms>
+    <cn type='complex-cartesian'>0.6250000000000001<sep/>2.287875652215391</cn>
+    <ms> and </ms>
+    <cn type='complex-cartesian'>0.6250000000000001<sep/>-2.287875652215391</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mn>0.6250000000000001</mn>
+       <mtext>&ZeroWidthSpace;</mtext>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>2.287875652215391</mn>
+       <mtext> </mtext>
+       <mi>&ImaginaryI;</mi>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mn>0.6250000000000001</mn>
+       <mtext>&ZeroWidthSpace;</mtext>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mn>2.287875652215391</mn>
+       <mtext> </mtext>
+       <mi>&ImaginaryI;</mi>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>0.22592402852876603</mn>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>0.590726953281576</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mrow>
+         <mn>0.7745966692414834</mn>
+         <mtext>&ZeroWidthSpace;</mtext>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>0.</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>0.22592402852876603</mn>
+        </mrow>
+        <mo>-</mo>
+        <mrow>
+         <mn>0.590726953281576</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mrow>
+         <mn>0.7745966692414834</mn>
+         <mtext>&ZeroWidthSpace;</mtext>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>0.</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-25_5.gif" alt="[Graphics:HTMLFiles/Lecture-25_5.gif]"  width="1000" height="1000"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[73]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ In this next example, the eigenvalues are complex, with a negative real part, and the system of equations has an stable, attractive circulation pattern. The eigenvectors are complex and and there are no directions along which the system will evolve along a straight trajectory.
+</p>
+
+
+
+<p class="CellLabel">
+ In[74]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_fixed_point__stable_focus_node_visualization"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>CritPointPlotPointsMany</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.25</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>2.</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>2</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1.5</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mtext>Stable and Attractive</mtext>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Circulation</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Eigenvalues = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mn>0.875</mn>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>1.8998355191963328</mn>
+     <mtext> </mtext>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext> and </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mn>0.875</mn>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>1.8998355191963328</mn>
+     <mtext> </mtext>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+   </mrow>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Eigenvalues = </ms>
+    <cn type='complex-cartesian'>-0.875<sep/>1.8998355191963328</cn>
+    <ms> and </ms>
+    <cn type='complex-cartesian'>-0.875<sep/>-1.8998355191963328</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>0.875</mn>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>1.8998355191963328</mn>
+       <mtext> </mtext>
+       <mi>&ImaginaryI;</mi>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>0.875</mn>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mn>1.8998355191963328</mn>
+       <mtext> </mtext>
+       <mi>&ImaginaryI;</mi>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mn>0.22097086912079625</mn>
+         <mtext>&ZeroWidthSpace;</mtext>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>0.6716932893813963</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mrow>
+         <mn>0.7071067811865478</mn>
+         <mtext>&ZeroWidthSpace;</mtext>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>0.</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mn>0.22097086912079625</mn>
+         <mtext>&ZeroWidthSpace;</mtext>
+        </mrow>
+        <mo>-</mo>
+        <mrow>
+         <mn>0.6716932893813963</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mrow>
+         <mn>0.7071067811865478</mn>
+         <mtext>&ZeroWidthSpace;</mtext>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>0.</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-25_6.gif" alt="[Graphics:HTMLFiles/Lecture-25_6.gif]"  width="1000" height="1000"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[74]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ In this final example, the eigenvalues are pure imaginary, and the system of equations exhibit stable orbits around a fixed point. The eigenvectors are complex and and there are no directions along which the system will evolve along a straight trajectory.
+</p>
+
+
+
+<p class="CellLabel">
+ In[75]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_25_fixed_point__circulation_node_visualization"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>CritPointPlotPointsMany</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.25</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>2.</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>2</mn>
+   <mo>,</mo>
+   <mn>0.25</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mtext>Stable Orbits about Fixed Point</mtext>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>Circulation</mi>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <semantics>
+  <mrow>
+   <mtext>Eigenvalues = </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mn>1.984313483298443</mn>
+    <mtext> </mtext>
+    <mi>&ImaginaryI;</mi>
+   </mrow>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mtext> and </mtext>
+   <mtext>&ZeroWidthSpace;</mtext>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mn>1.984313483298443</mn>
+    </mrow>
+    <mo>&InvisibleTimes;</mo>
+    <mi>&ImaginaryI;</mi>
+   </mrow>
+  </mrow>
+  <annotation-xml encoding='MathML-Content'>
+   <apply>
+    <ci>SequenceForm</ci>
+    <ms>Eigenvalues = </ms>
+    <cn type='complex-cartesian'>0<sep/>1.984313483298443</cn>
+    <ms> and </ms>
+    <cn type='complex-cartesian'>0<sep/>-1.984313483298443</cn>
+   </apply>
+  </annotation-xml>
+ </semantics>
+</math>
+</p>
+
+<p class="Print">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mrow>
+        <mn>4.316143927509186</mn>
+        <mo>&times;</mo>
+        <msup>
+         <mn>10</mn>
+         <mrow>
+          <mo>-</mo>
+          <mn>17</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>1.984313483298443</mn>
+       <mtext> </mtext>
+       <mi>&ImaginaryI;</mi>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mrow>
+        <mn>4.316143927509186</mn>
+        <mo>&times;</mo>
+        <msup>
+         <mn>10</mn>
+         <mrow>
+          <mo>-</mo>
+          <mn>17</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mn>1.984313483298443</mn>
+       <mtext> </mtext>
+       <mi>&ImaginaryI;</mi>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mn>0.7071067811865475</mn>
+         <mtext>&ZeroWidthSpace;</mtext>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>0.</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>0.08838834764831842</mn>
+        </mrow>
+        <mo>-</mo>
+        <mrow>
+         <mn>0.701560760020114</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mn>0.7071067811865475</mn>
+         <mtext>&ZeroWidthSpace;</mtext>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>0.</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>0.08838834764831842</mn>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>0.701560760020114</mn>
+         <mtext> </mtext>
+         <mi>&ImaginaryI;</mi>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-25_7.gif" alt="[Graphics:HTMLFiles/Lecture-25_7.gif]"  width="1000" height="1000"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[75]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>GraphicsArray</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(November 21, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

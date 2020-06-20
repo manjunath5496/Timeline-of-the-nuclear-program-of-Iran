@@ -1,0 +1,1793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 24 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2005
+ </title>
+ <link href="HTMLFiles/Lecture-24.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ Systems of Differential Equations
+</p>
+
+
+
+<p class="Subtitle">
+ A Predator-Prey Model
+</p>
+
+
+
+<p class="Section">
+ The traditional &quot;predator-prey&quot; model involves modelling the populations of predators and their prey.&nbsp;&nbsp;The changes in populations are related: more prey feed more predators, but an overpopulation of predators can lead to depletion of prey, causing a depopulation of predators...&nbsp;&nbsp;The problem simulated below is a take-off on the traditional one.
+</p>
+
+
+
+<p class="Text">
+ <a id="mmtag_24_the_MIT_joke_model"></a>
+ This is a model for what fraction of the MIT population would know a particular joke, the joke is told a fraction of the time when a person who has heard it meets someone who hasn't. The rate of joke spreading is proportional to how funny it is.
+</p>
+
+
+
+<p class="Text">
+ <a id="mmtag_24_predator_prey_models"></a>
+ It is a closely held secret that Susan Hockfield, MIT's president, has an odd sense of humor--she will not let anyone graduate who cannot tell him the joke on graduation day.&nbsp;&nbsp;This often is a source of embarassment and confusion to the happy families.
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_24_JokeFunniness"></a>
+ <img src="HTMLFiles/Lecture-24_1.gif" alt="JokeFunniness = 0.66 ;"  width="186" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_24_JokeFunniness"></a>
+ <img src="HTMLFiles/Lecture-24_2.gif" alt="JokeSpreadRate[Naive_ , Jaded_] := JokeFunniness * Naive * Jaded"  width="538" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ Some people who have heard the joke forget it, depending on how forgetful they are:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_24_PolulationForgetFullness"></a>
+ <img src="HTMLFiles/Lecture-24_3.gif" alt="PopulationForgetfullness = 0.2 ;"  width="255" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_24_PolulationForgetFullness"></a>
+ <img src="HTMLFiles/Lecture-24_4.gif" alt="ForgotJoke[Naive_ , Jaded_] := PopulationForgetfullness * Jaded"  width="516" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ A certain fraction of new students added to the population each day who presumably don't know the joke, the graduation rate is proportional to the entrance rate and the fraction of those who know the joke.
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-24_5.gif" alt="FreshmanEntranceRate = 0.24 ;"  width="250" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-24_6.gif" alt="GraduationRate[Naive_ , Jaded_] &nbsp;&nbsp; = FreshmanEntranceRate * Jaded ;"  width="547" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Text">
+ The fraction of students who remain naive tomorrow is
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>TomorrowsNaive</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>TodaysNaive_</mtext>
+    <mo>,</mo>
+    <mtext>TodaysJaded_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>TodaysNaive</mi>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mfrac>
+    <mi>FreshmanEntranceRate</mi>
+    <mn>365</mn>
+   </mfrac>
+   <mtext> </mtext>
+   <mo>-</mo>
+   <mtext> </mtext>
+   <mfrac>
+    <mrow>
+     <mi>JokeSpreadRate</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>TodaysNaive</mi>
+      <mtext> </mtext>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mi>TodaysJaded</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mn>365</mn>
+   </mfrac>
+   <mtext> </mtext>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The fraction of students who will know the joke tomorrow is
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>TomorrowsJaded</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>TodaysNaive_</mtext>
+    <mo>,</mo>
+    <mtext>TodaysJaded_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>TodaysJaded</mi>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mfrac>
+    <mrow>
+     <mi>JokeSpreadRate</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>TodaysNaive</mi>
+      <mtext> </mtext>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mi>TodaysJaded</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mn>365</mn>
+   </mfrac>
+   <mtext> </mtext>
+   <mo>-</mo>
+   <mtext> </mtext>
+   <mfrac>
+    <mrow>
+     <mi>ForgotJoke</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>TodaysNaive</mi>
+      <mtext> </mtext>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mi>TodaysJaded</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mn>365</mn>
+   </mfrac>
+   <mtext>  </mtext>
+   <mo>-</mo>
+   <mtext> </mtext>
+   <mfrac>
+    <mrow>
+     <mi>GraduationRate</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>TodaysNaive</mi>
+      <mtext> </mtext>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mi>TodaysJaded</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mn>365</mn>
+   </mfrac>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The population evolves each day as
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>TomorrowsPopulation</mi>
+   <mo>[</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mtext>TodaysNaive_</mtext>
+     <mo>,</mo>
+     <mtext>TodaysJaded_</mtext>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>:=</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>TomorrowsNaive</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>TodaysNaive</mi>
+      <mtext> </mtext>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mi>TodaysJaded</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>TomorrowsJaded</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>TodaysNaive</mi>
+      <mtext> </mtext>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mi>TodaysJaded</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Calculate the population after 5000 days from now if currently 1/5 of the students are naive and 4/5 of the students are in the know.
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_24_NestListxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>NestList</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>TomorrowsPopulation</mi>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mtext>.2</mtext>
+      <mo>,</mo>
+      <mtext>.8</mtext>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mn>5000</mn>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>//</mo>
+  <mi>Short</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>0.2</mn>
+     <mo>,</mo>
+     <mn>0.8</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&#63329;</mo>
+    <mn>4999</mn>
+    <mo>&#63330;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>0.6675982286750961</mn>
+     <mo>,</mo>
+     <mn>0.580752958296795</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ Now do a longer calculation with the initial naive fraction 0.24 and the jaded fraction 0.76, and use ListPlot to display the trajectory on the naive&ndash;jaded plane. Note how the trajectory spirals in to a specific point in the plane. This is an example of a <span style='font-weight: bold;'>critical point</span> at which the rates of change of each population become zero. 
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_24_the_MIT_joke_model__fixed_point_visualized"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>NestList</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>TomorrowsPopulation</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mtext>.24</mtext>
+       <mo>,</mo>
+       <mtext>.76</mtext>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mn>20000</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mi>All</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotJoined</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>Hue</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Random</mi>
+        <mo>[</mo>
+        <mo>]</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Thickness</mi>
+       <mo>[</mo>
+       <mn>0.005</mn>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <ms>Naive</ms>
+      <mo>,</mo>
+      <ms>Jaded</ms>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-24_7.gif" alt="[Graphics:HTMLFiles/Lecture-24_7.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Now calculate trajectories for a variety of initial conditions for the jaded and naive populations, selected randomly, then plot them on the naive&ndash;jaded plane:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_24_graphics_list__example"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>graphicslist</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Table</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>ListPlot</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>NestList</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>TomorrowsPopulation</mi>
+        <mo>,</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mrow>
+           <mi>Random</mi>
+           <mo>[</mo>
+           <mo>]</mo>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mi>Random</mi>
+           <mo>[</mo>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>,</mo>
+        <mn>20000</mn>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>PlotRange</mi>
+       <mo>&rightarrow;</mo>
+       <mi>All</mi>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>PlotJoined</mi>
+       <mo>&rightarrow;</mo>
+       <mi>True</mi>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>PlotStyle</mi>
+       <mo>&rightarrow;</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mi>Hue</mi>
+          <mo>[</mo>
+          <mrow>
+           <mi>Random</mi>
+           <mo>[</mo>
+           <mo>]</mo>
+          </mrow>
+          <mo>]</mo>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>Thickness</mi>
+          <mo>[</mo>
+          <mn>0.005</mn>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>DisplayFunction</mi>
+       <mo>&rightarrow;</mo>
+       <mi>Identity</mi>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mn>1</mn>
+      <mo>,</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&hybull;</mo>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Graphics</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mo>&hybull;</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_24_the_MIT_joke_model__visualized"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>graphicslist</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>DisplayFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mi>$DisplayFunction</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <ms>Naive</ms>
+      <mo>,</mo>
+      <ms>Jaded</ms>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-24_8.gif" alt="[Graphics:HTMLFiles/Lecture-24_8.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Note that all starting points produce trajectories that converge on the same critical point. This is an example of a system of equations that exhibits a <span style='font-weight: bold;'>stable</span> critical point.<br />Note also that some of the trajectories take the system into unphysical states where one of the populations exceeds a fraction of 1!
+</p>
+
+
+
+<p class="Subtitle">
+ <a id="mmtag_24_predator_prey_models__stability_of"></a>
+ Analysis of Stability of the Predator-Prey Model
+</p>
+
+
+
+<p class="Text">
+ The model above can be written as the system of ODEs:<br /><span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>dN</mi>
+  <mi>dt</mi>
+ </mfrac>
+</math></span></span> = &alpha; - &rho; N J<br /><span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>dJ</mi>
+  <mi>dt</mi>
+ </mfrac>
+</math></span></span> = -&alpha;J&nbsp;&nbsp;+&nbsp;&nbsp;&rho; N J&nbsp;&nbsp;- &phi;J
+</p>
+
+
+
+<p class="Text">
+ Find the fixed points:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-24_9.gif" alt="Ndot = &alpha; - &rho; N J"  width="127" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-24_10.gif" alt="Jdot = -&alpha; J + &rho; N J - &phi; J"  width="184" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>Ndot</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>Not</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(Ndot\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(Not\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>&alpha;</mi>
+  <mo>-</mo>
+  <mrow>
+   <mi>J</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>N</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>&rho;</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>Jdot</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>Ndot</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(Jdot\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(Ndot\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mi>J</mi>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mi>&alpha;</mi>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mi>J</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>N</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>&rho;</mi>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mi>J</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>&straightphi;</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>fixedpoint</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>Solve</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mi>Ndot</mi>
+        <mo>&Equal;</mo>
+        <mn>0</mn>
+       </mrow>
+       <mo>,</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mi>Jdot</mi>
+        <mo>&Equal;</mo>
+        <mn>0</mn>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>N</mi>
+       <mo>,</mo>
+       <mi>J</mi>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>//</mo>
+   <mi>Flatten</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mi>J</mi>
+    <mo>&rightarrow;</mo>
+    <mfrac>
+     <mi>&alpha;</mi>
+     <mrow>
+      <mi>&alpha;</mi>
+      <mo>+</mo>
+      <mi>&straightphi;</mi>
+     </mrow>
+    </mfrac>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>N</mi>
+    <mo>&rightarrow;</mo>
+    <mfrac>
+     <mrow>
+      <mi>&alpha;</mi>
+      <mo>+</mo>
+      <mi>&straightphi;</mi>
+     </mrow>
+     <mi>&rho;</mi>
+    </mfrac>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The next final part of this notebook examines the <span style='font-weight: bold;'>stability</span> of the critical point for this problem. This is discussed in Kreyszig <span style='font-style: italic;'>AEM</span>, pp. 170&ndash;174.&nbsp;&nbsp;Kreyszig describes the stability analysis in terms of an eigenvalue problem. The matrix for which eigenvalues are calculated is the &quot;Jacobian&quot; defined below. It is the same as the matrix <span style='font-weight: bold;'>A</span> in Kreyszig's Eq. (1) on p. 170.
+</p>
+
+
+
+<p class="Text">
+ <a id="mmtag_24_jacobian__relation_to_fixed_points"></a>
+ Define the general Jacobian
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-24_11.gif" alt="Jacob = { {D[Ndot, N], D[Ndot, J]},  {D[Jdot, N], D[Jdot, J]} } ;"  width="222" height="69"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-24_12.gif" alt="Jacob//MatrixForm"  width="160" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mi>J</mi>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&rho;</mi>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mi>N</mi>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&rho;</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mi>J</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&rho;</mi>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mi>&alpha;</mi>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mi>N</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>&rho;</mi>
+      </mrow>
+      <mo>-</mo>
+      <mi>&straightphi;</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Find the Jacobian at the fixed point:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-24_13.gif" alt="JacobFixedPoint = Simplify[Jacob/.fixedpoint] ;"  width="382" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-24_14.gif" alt="JacobFixedPoint//MatrixForm"  width="243" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mi>&alpha;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&rho;</mi>
+       </mrow>
+       <mrow>
+        <mi>&alpha;</mi>
+        <mo>+</mo>
+        <mi>&straightphi;</mi>
+       </mrow>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mi>&alpha;</mi>
+      </mrow>
+      <mo>-</mo>
+      <mi>&straightphi;</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mfrac>
+      <mrow>
+       <mi>&alpha;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>&rho;</mi>
+      </mrow>
+      <mrow>
+       <mi>&alpha;</mi>
+       <mo>+</mo>
+       <mi>&straightphi;</mi>
+      </mrow>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ Approach 1: Compute parameters <span style='font-style: italic;'>p</span>, <span style='font-style: italic;'>q</span>, and <span style='font-style: italic;'>&Delta;</span> defined in Kreyszig's Eq. (7) on p. 171:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Kreyszigp</mi>
+  <mo>=</mo>
+  <mrow>
+   <mrow>
+    <mi>JacobFixedPoint</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>[</mo>
+     <mrow>
+      <mn>1</mn>
+      <mo>,</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>+</mo>
+   <mrow>
+    <mi>JacobFixedPoint</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>[</mo>
+     <mrow>
+      <mn>2</mn>
+      <mo>,</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>-</mo>
+  <mfrac>
+   <mrow>
+    <mi>&alpha;</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mi>&rho;</mi>
+   </mrow>
+   <mrow>
+    <mi>&alpha;</mi>
+    <mo>+</mo>
+    <mi>&straightphi;</mi>
+   </mrow>
+  </mfrac>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>pValue</mi>
+  <mo>=</mo>
+  <mrow>
+   <mi>Kreyszigp</mi>
+   <mo>/.</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>&alpha;</mi>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>FreshmanEntranceRate</mi>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>&rho;</mi>
+      <mtext> </mtext>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>JokeFunniness</mi>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>&straightphi;</mi>
+      <mtext> </mtext>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>PopulationForgetfullness</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>pValue</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>Value</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(pValue\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(Value\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>-</mo>
+  <mn>0.36000000000000004</mn>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Kreyszigq</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Simplify</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>Det</mi>
+    <mo>[</mo>
+    <mi>JacobFixedPoint</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>Kreyszigq</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>Kreyszigp</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(Kreyszigq\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(Kreyszigp\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>&alpha;</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>&rho;</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>qValue</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Kreyszigq</mi>
+   <mo>/.</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>&alpha;</mi>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>FreshmanEntranceRate</mi>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>&rho;</mi>
+      <mtext> </mtext>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>JokeFunniness</mi>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>&straightphi;</mi>
+      <mtext> </mtext>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>PopulationForgetfullness</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>qValue</mi>
+    <mtext>\&quot; is similar to existing symbols </mtext>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>pValue</mi>
+      <mo>,</mo>
+      <mi>Value</mi>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(qValue\\)\\\&quot; is similar to existing symbols \\!\\({pValue, Value}\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>0.1584</mn>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>DeltaValue</mi>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <msup>
+    <mi>pValue</mi>
+    <mn>2</mn>
+   </msup>
+   <mo>-</mo>
+   <mrow>
+    <mn>4</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>qValue</mi>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>-</mo>
+  <mn>0.504</mn>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ According to Kreyszig's Eq. (9) on p. 172, when <span style='font-style: italic;'>p </span>&ne; 0 and <span style='font-style: italic;'>&Delta; </span>&lt; 0, the critical point will be a <span style='font-style: italic;'>spiral point</span>. In addition, according to Kreyszig's Eq. (10) on p. 173, when <span style='font-style: italic;'>p </span>&le; 0 and <span style='font-style: italic;'>q </span>&gt; 0, the critical point will be <span style='font-style: italic;'>stable</span>. These findings correspond to what we observed on the trajectories plotted above.
+</p>
+
+
+
+<p class="Subsubsection">
+ Approach 2: Compute eigenvalues of the Jacobian at the fixed point and use them in a way not described in Kreyszig...
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_24_predator_prey_models__eigenvalues_and_fixed_point_stability"></a>
+ <a id="mmtag_24_eigenvalues__and_fixed_point_stability"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>evals</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Eigenvalues</mi>
+   <mo>[</mo>
+   <mi>JacobFixedPoint</mi>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mi>&alpha;</mi>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&rho;</mi>
+     </mrow>
+     <mo>-</mo>
+     <msqrt>
+      <mrow>
+       <mrow>
+        <msup>
+         <mi>&alpha;</mi>
+         <mn>2</mn>
+        </msup>
+        <mo>&InvisibleTimes;</mo>
+        <msup>
+         <mi>&rho;</mi>
+         <mn>2</mn>
+        </msup>
+       </mrow>
+       <mo>-</mo>
+       <mrow>
+        <mn>4</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mi>&alpha;</mi>
+          <mo>+</mo>
+          <mi>&straightphi;</mi>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mrow>
+           <msup>
+            <mi>&alpha;</mi>
+            <mn>2</mn>
+           </msup>
+           <mo>&InvisibleTimes;</mo>
+           <mi>&rho;</mi>
+          </mrow>
+          <mo>+</mo>
+          <mrow>
+           <mi>&alpha;</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mi>&rho;</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mi>&straightphi;</mi>
+          </mrow>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </msqrt>
+    </mrow>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mi>&alpha;</mi>
+       <mo>+</mo>
+       <mi>&straightphi;</mi>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mi>&alpha;</mi>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&rho;</mi>
+     </mrow>
+     <mo>+</mo>
+     <msqrt>
+      <mrow>
+       <mrow>
+        <msup>
+         <mi>&alpha;</mi>
+         <mn>2</mn>
+        </msup>
+        <mo>&InvisibleTimes;</mo>
+        <msup>
+         <mi>&rho;</mi>
+         <mn>2</mn>
+        </msup>
+       </mrow>
+       <mo>-</mo>
+       <mrow>
+        <mn>4</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mi>&alpha;</mi>
+          <mo>+</mo>
+          <mi>&straightphi;</mi>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mrow>
+           <msup>
+            <mi>&alpha;</mi>
+            <mn>2</mn>
+           </msup>
+           <mo>&InvisibleTimes;</mo>
+           <mi>&rho;</mi>
+          </mrow>
+          <mo>+</mo>
+          <mrow>
+           <mi>&alpha;</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mi>&rho;</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mi>&straightphi;</mi>
+          </mrow>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </msqrt>
+    </mrow>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mi>&alpha;</mi>
+       <mo>+</mo>
+       <mi>&straightphi;</mi>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The Eigenvalues will always have a negative real part because the input parameters are positive real coefficients
+</p>
+
+
+
+<p class="Text">
+ Considering the parameters used above, the solution is attracted to the fixed point but oscillates
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>MitEvals</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>evals</mi>
+   <mo>/.</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>&alpha;</mi>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>FreshmanEntranceRate</mi>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>&rho;</mi>
+      <mtext> </mtext>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>JokeFunniness</mi>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>&straightphi;</mi>
+      <mtext> </mtext>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>PopulationForgetfullness</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mn>0.18000000000000002</mn>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.354964786985977</mn>
+     <mtext> </mtext>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mn>0.18000000000000002</mn>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.354964786985977</mn>
+     <mtext> </mtext>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The Oscillation perioid is about 18 years
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_24_the_MIT_joke_model__goes_around_comes_around_frequency"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>2</mn>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mi>&pi;</mi>
+   <mtext> </mtext>
+   <mo>/</mo>
+   <mrow>
+    <mi>Im</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>MitEvals</mi>
+     <mo>[</mo>
+     <mrow>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>-</mo>
+  <mn>17.700869318701763</mn>
+ </mrow>
+</math>
+</p>
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(November 21, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

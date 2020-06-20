@@ -1,0 +1,3029 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 19 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2004
+ </title>
+ <link href="HTMLFiles/Lecture-19.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ First-Order Ordinary Differential Equations
+</p>
+
+
+
+<p class="Subtitle">
+ <a id="mmtag_19_simple_forward_time_interation"></a>
+ Background--simple iteration
+</p>
+
+
+
+<p class="Text">
+ Suppose a function,&nbsp;&nbsp;F[i], changes proportional to its current size, i.e.,&nbsp;&nbsp;F[i+1] = F[i] + &alpha;F[i],
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ExampleFunction</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>i_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>alpha_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>ExampleFunction</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>i</mi>
+      <mo>-</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>,</mo>
+     <mi>alpha</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>alpha</mi>
+    <mo>*</mo>
+    <mrow>
+     <mi>ExampleFunction</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>i</mi>
+       <mo>-</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>,</mo>
+      <mi>alpha</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ What would happen if the following functions were evaluated? (Note: if you execute the next step you may have to abort the calculation.)
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>ExampleFunction</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>25</mn>
+     <mo>,</mo>
+     <mn>0.25</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mtext> </mtext>
+   <mtext>&#62371;</mtext>
+   <mrow>
+    <mi>ExampleFunction</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>25</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.125</mn>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mtext> </mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ It is clear that the function needs some value at some time (an initial condition) from which it obtains all its other values:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ExampleFunction</mi>
+   <mo>[</mo>
+   <mrow>
+    <mn>0</mn>
+    <mo>,</mo>
+    <mn>0.25</mn>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>&pi;</mi>
+   <mo>/</mo>
+   <mn>4</mn>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>&pi;</mi>
+  <mn>4</mn>
+ </mfrac>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ExampleFunction</mi>
+  <mo>[</mo>
+  <mrow>
+   <mn>18</mn>
+   <mo>,</mo>
+   <mn>0.25</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>43.598356225107906</mn>
+</math>
+</p>
+
+<p class="Text">
+ This function is fairly inefficient, it calculates the first value about 18 times before it returns the answer, the following function sets the initial value and remembers what &quot;trajectory&quot; it is on--i,e., the trajectory is determined from the start
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>GrowsPropToSize</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>i_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>alpha_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>F0_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>If</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>i</mi>
+     <mo>&Equal;</mo>
+     <mn>0</mn>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mrow>
+      <mi>GrowsPropToSize</mi>
+      <mo>[</mo>
+      <mrow>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mi>alpha</mi>
+       <mo>,</mo>
+       <mi>F0</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>=</mo>
+     <mi>F0</mi>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mrow>
+      <mi>GrowsPropToSize</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mi>alpha</mi>
+       <mo>,</mo>
+       <mi>F0</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mtext> </mtext>
+     <mo>=</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mrow>
+       <mi>GrowsPropToSize</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mi>i</mi>
+         <mo>-</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>,</mo>
+        <mi>alpha</mi>
+        <mo>,</mo>
+        <mi>F0</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mtext> </mtext>
+      <mo>+</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>alpha</mi>
+       <mo>*</mo>
+       <mrow>
+        <mi>GrowsPropToSize</mi>
+        <mo>[</mo>
+        <mrow>
+         <mrow>
+          <mi>i</mi>
+          <mo>-</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>,</mo>
+         <mi>alpha</mi>
+         <mo>,</mo>
+         <mi>F0</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mtext>  </mtext>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ For example:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Table</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>GrowsPropToSize</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>i</mi>
+     <mo>,</mo>
+     <mtext>.01</mtext>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>i</mi>
+     <mo>,</mo>
+     <mn>18</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>1.01</mn>
+   <mo>,</mo>
+   <mn>1.0201</mn>
+   <mo>,</mo>
+   <mn>1.030301</mn>
+   <mo>,</mo>
+   <mn>1.0406040099999998</mn>
+   <mo>,</mo>
+   <mn>1.0510100500999997</mn>
+   <mo>,</mo>
+   <mn>1.0615201506009997</mn>
+   <mo>,</mo>
+   <mn>1.0721353521070096</mn>
+   <mo>,</mo>
+   <mn>1.0828567056280798</mn>
+   <mo>,</mo>
+   <mn>1.0936852726843607</mn>
+   <mo>,</mo>
+   <mn>1.1046221254112043</mn>
+   <mo>,</mo>
+   <mn>1.1156683466653163</mn>
+   <mo>,</mo>
+   <mn>1.1268250301319696</mn>
+   <mo>,</mo>
+   <mn>1.1380932804332893</mn>
+   <mo>,</mo>
+   <mn>1.1494742132376221</mn>
+   <mo>,</mo>
+   <mn>1.1609689553699982</mn>
+   <mo>,</mo>
+   <mn>1.1725786449236981</mn>
+   <mo>,</mo>
+   <mn>1.1843044313729352</mn>
+   <mo>,</mo>
+   <mn>1.1961474756866646</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Might as well write a function to calculate a vector representing trajectory, here is an implementation to compute a trajectory vector of length 300
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Trajectory</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>alpha_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>F0_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Table</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>GrowsPropToSize</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mi>alpha</mi>
+      <mo>,</mo>
+      <mi>F0</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mn>300</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Trajectory</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotJoined</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_1.gif" alt="[Graphics:HTMLFiles/Lecture-19_1.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_19_Graphics_Package__MultipleListPlotxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Graphics`MultipleListPlot`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Trajectory</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>alpha_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>F0_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Table</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>GrowsPropToSize</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mi>alpha</mi>
+      <mo>,</mo>
+      <mi>F0</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mn>300</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Plotting a bunch of curves for the same &alpha; value, but each corresponding to a different initial value, demonstrates that a point in space &quot;belongs&quot; to a curve.
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_19_MultipleListPlotxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>MultipleListPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Trajectory</mi>
+    <mo>[</mo>
+    <mrow>
+     <mtext>.01</mtext>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mtext>.5</mtext>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Trajectory</mi>
+    <mo>[</mo>
+    <mrow>
+     <mtext>.01</mtext>
+     <mo>,</mo>
+     <mtext>.5</mtext>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Trajectory</mi>
+    <mo>[</mo>
+    <mrow>
+     <mtext>.01</mtext>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Trajectory</mi>
+    <mo>[</mo>
+    <mrow>
+     <mtext>.01</mtext>
+     <mo>,</mo>
+     <mn>1.5</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotJoined</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_2.gif" alt="[Graphics:HTMLFiles/Lecture-19_2.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Making a similar plot for a family of curves corresponding to a negative &alpha; value gives
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>MultipleListPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Trajectory</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mtext>.01</mtext>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mtext>.5</mtext>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Trajectory</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mtext>.01</mtext>
+     </mrow>
+     <mo>,</mo>
+     <mtext>.5</mtext>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Trajectory</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mtext>.01</mtext>
+     </mrow>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Trajectory</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mtext>.01</mtext>
+     </mrow>
+     <mo>,</mo>
+     <mn>1.5</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotJoined</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_3.gif" alt="[Graphics:HTMLFiles/Lecture-19_3.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subtitle">
+ Background- Forward Differencing
+</p>
+
+
+
+<p class="Text">
+ <a id="mmtag_19_Roman_Maeder__Computer_Science_with_Mathematica"></a>
+ Create a function to return a list of values by forward differencing with a function (these examples were modified from those found in ``Computer Science with <span style='font-style: italic;'>Mathematica</span>'' by Roman E. Maeder, Cambridge University Press, (2000).)
+</p>
+
+
+
+<p class="Subsubsection">
+ The <span style='font-weight: bold;'>Module</span> function makes the variables inside local variables. 
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_19_Modulexx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ForwardDifferenceListV1</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>AFunction_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>InitialValue_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>delta_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>ListLength_Integer</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext>&#62371;</mtext>
+  <mrow>
+   <mi>Module</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>TheResultList</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mo>{</mo>
+        <mi>InitialValue</mi>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>TheValue</mi>
+       <mo>=</mo>
+       <mi>InitialValue</mi>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext>&#62371;</mtext>
+    <mrow>
+     <mrow>
+      <mi>Do</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mi>TheValue</mi>
+         <mtext> </mtext>
+         <mo>=</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mi>TheValue</mi>
+          <mtext> </mtext>
+          <mo>+</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>delta</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>AFunction</mi>
+            <mo>[</mo>
+            <mi>TheValue</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+         </mrow>
+        </mrow>
+        <mo>;</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>AppendTo</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>TheResultList</mi>
+          <mo>,</mo>
+          <mi>TheValue</mi>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mo>{</mo>
+        <mi>ListLength</mi>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>;</mo>
+     <mi>TheResultList</mi>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>exampleFunction</mi>
+   <mo>[</mo>
+   <mtext>x_</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mn>0.1</mn>
+   <mtext> </mtext>
+   <mi>x</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>exampleFunction</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>ExampleFunction</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(exampleFunction\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(ExampleFunction\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>result</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>ForwardDifferenceListV1</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>exampleFunction</mi>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mn>1</mn>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mn>500</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>result</mi>
+  <mo>//</mo>
+  <mi>Short</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>1</mn>
+   <mo>,</mo>
+   <mn>1.001</mn>
+   <mo>,</mo>
+   <mn>1.002001</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>&#63329;</mo>
+    <mn>496</mn>
+    <mo>&#63330;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mn>1.6466627536593788</mn>
+   <mo>,</mo>
+   <mn>1.648309416413038</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>result</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotJoined</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_4.gif" alt="[Graphics:HTMLFiles/Lecture-19_4.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Write another version of this forward difference function that returns a list of values<br />and the &quot;x&quot; value for subsequent use in ListPlot, this one will take <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>x</mi>
+  <mi>o</mi>
+ </msub>
+</math></span></span> and y(<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>x</mi>
+  <mi>o</mi>
+ </msub>
+</math></span></span>) as an argument in a list
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Clear</mi>
+  <mo>[</mo>
+  <mi>ForwardDifferenceListV2</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ForwardDifferenceListV2</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>AFunction_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext>x0_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>fx0_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>delta_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>Xlast_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext>&#62371;</mtext>
+  <mrow>
+   <mi>Module</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>TheResultList</mi>
+       <mtext> </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mi>x0</mi>
+          <mo>,</mo>
+          <mi>fx0</mi>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>TheValue</mi>
+       <mo>=</mo>
+       <mi>fx0</mi>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>CurrentX</mi>
+       <mtext>  </mtext>
+       <mo>=</mo>
+       <mtext> </mtext>
+       <mi>x0</mi>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext>&#62371;</mtext>
+    <mrow>
+     <mrow>
+      <mi>While</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mi>CurrentX</mi>
+        <mtext> </mtext>
+        <mo>&lt;</mo>
+        <mtext> </mtext>
+        <mi>Xlast</mi>
+       </mrow>
+       <mo>,</mo>
+       <mtext>&#62371;</mtext>
+       <mrow>
+        <mrow>
+         <mi>CurrentX</mi>
+         <mtext> </mtext>
+         <mo>=</mo>
+         <mrow>
+          <mi>CurrentX</mi>
+          <mtext> </mtext>
+          <mo>+</mo>
+          <mtext> </mtext>
+          <mi>delta</mi>
+         </mrow>
+        </mrow>
+        <mo>;</mo>
+        <mtext>&#62371;</mtext>
+        <mtext> </mtext>
+        <mrow>
+         <mi>TheValue</mi>
+         <mo>=</mo>
+         <mtext> </mtext>
+         <mrow>
+          <mi>TheValue</mi>
+          <mtext> </mtext>
+          <mo>+</mo>
+          <mtext> </mtext>
+          <mrow>
+           <mi>delta</mi>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mi>AFunction</mi>
+            <mo>[</mo>
+            <mi>TheValue</mi>
+            <mo>]</mo>
+           </mrow>
+          </mrow>
+         </mrow>
+        </mrow>
+        <mo>;</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>AppendTo</mi>
+         <mo>[</mo>
+         <mrow>
+          <mi>TheResultList</mi>
+          <mo>,</mo>
+          <mrow>
+           <mo>{</mo>
+           <mrow>
+            <mi>CurrentX</mi>
+            <mo>,</mo>
+            <mi>TheValue</mi>
+           </mrow>
+           <mo>}</mo>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>;</mo>
+     <mtext>&#62371;</mtext>
+     <mi>TheResultList</mi>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>result</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>ForwardDifferenceListV2</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>exampleFunction</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>1</mn>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mn>4</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>result</mi>
+  <mo>//</mo>
+  <mi>Short</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&#63329;</mo>
+    <mn>399</mn>
+    <mo>&#63330;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>3.9999999999999587</mn>
+     <mo>,</mo>
+     <mn>1.4915265612574076</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mi>result</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_5.gif" alt="[Graphics:HTMLFiles/Lecture-19_5.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subtitle">
+ Background-Repeated Operations on a Function
+</p>
+
+
+
+<p class="Text">
+ <a id="mmtag_19_increment_operator"></a>
+ Because each iteration is the same, the iteration can be considered a functional operation, for the case considered above,<br />{<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>x</mi>
+  <mrow>
+   <mi>i</mi>
+   <mo>+</mo>
+   <mn>1</mn>
+  </mrow>
+ </msub>
+</math></span></span>, <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>y</mi>
+  <mrow>
+   <mi>i</mi>
+   <mo>+</mo>
+   <mn>1</mn>
+  </mrow>
+ </msub>
+</math></span></span>} = {<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>x</mi>
+  <mi>i</mi>
+ </msub>
+</math></span></span>+ &delta;, <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>y</mi>
+  <mi>i</mi>
+ </msub>
+</math></span></span>+ &delta; f(<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>y</mi>
+  <mi>i</mi>
+ </msub>
+</math></span></span>)}.&nbsp;&nbsp;Therefore a &quot;Incrementing Operator&quot; can be obtained that updates the values:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>StepOnce</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mtext>x_</mtext>
+      <mo>,</mo>
+      <mtext>y_</mtext>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>AFunction_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>delta_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>x</mi>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mi>delta</mi>
+    </mrow>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mi>y</mi>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>delta</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>AFunction</mi>
+       <mo>[</mo>
+       <mi>y</mi>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Then, the trajectory should be obtained from:<br />&nbsp;&nbsp;&nbsp;&nbsp;{{xo,yo},StepOnce[{xo,yo}], StepOnce[StepOnce[{xo,yo}]], &hellip;&hellip;&hellip;}<br />&nbsp;&nbsp;&nbsp;&nbsp;This is what the built-in <span style='font-style: italic;'>Mathematica</span> function <span style='font-weight: bold;'>NestList</span>[function, initialvalue,depth] does:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>OurStepOnce</mi>
+   <mo>[</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mtext>x_</mtext>
+     <mtext> </mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>y_</mtext>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>StepOnce</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mi>y</mi>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>exampleFunction</mi>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mn>0.01</mn>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_19_NestListxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>result</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>NestList</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>OurStepOnce</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mn>400</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mi>result</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_6.gif" alt="[Graphics:HTMLFiles/Lecture-19_6.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Using a <span style='font-style: italic;'>Mathematica</span> trick of a ``pure function'' one can eliminate the intervening function (OurStepOnce) definition:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_19_pure_function"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ListPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>NestList</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mi>StepOnce</mi>
+      <mo>[</mo>
+      <mrow>
+       <mtext>#</mtext>
+       <mo>,</mo>
+       <mi>exampleFunction</mi>
+       <mo>,</mo>
+       <mn>0.01</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>&amp;</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mn>400</mn>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_7.gif" alt="[Graphics:HTMLFiles/Lecture-19_7.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_19_DisplayNow_DisplayLater__example"></a>
+ <img src="HTMLFiles/Lecture-19_8.gif" alt="DisplayLater = DisplayFunction&rarr;Identity ;"  width="390" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_19_DisplayNow_DisplayLater__example"></a>
+ <img src="HTMLFiles/Lecture-19_9.gif" alt="DisplayNow = DisplayFunction&rarr;$DisplayFunction ;"  width="468" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>lp</mi>
+    <mo>[</mo>
+    <mtext>i_</mtext>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>:=</mo>
+   <mrow>
+    <mi>ListPlot</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>NestList</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mi>StepOnce</mi>
+         <mo>[</mo>
+         <mrow>
+          <mtext>#</mtext>
+          <mo>,</mo>
+          <mi>exampleFunction</mi>
+          <mo>,</mo>
+          <mn>0.01</mn>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>&amp;</mo>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mn>0</mn>
+         <mo>,</mo>
+         <mi>i</mi>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>,</mo>
+       <mn>400</mn>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mi>DisplayLater</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ This will plot a family of related curves, each for a different starting value of the iterated function:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>lp</mi>
+      <mo>[</mo>
+      <mi>i</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>4</mn>
+       <mo>,</mo>
+       <mtext>.5</mtext>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mi>DisplayNow</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_10.gif" alt="[Graphics:HTMLFiles/Lecture-19_10.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ To summarize what was done up to now, we've seen how a given function can be changed incrementally by stepping forward the independent variables and calculating a corresponding change in the function's value. By doing so, we trace out trajectories in space, the paths of which depend on the starting values of the independent variables.
+</p>
+
+
+
+<p class="Subtitle">
+ <a id="mmtag_19_first-order_ODES__visualizing"></a>
+ <a id="mmtag_19_first-order_ODES"></a>
+ Visualizing Geometry of First-Order ODEs
+</p>
+
+
+
+<p class="Text">
+ Newton's law of cooling <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>dT</mi>
+  <mi>dt</mi>
+ </mfrac>
+</math></span></span>= -k(T - <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>T</mi>
+  <mi>o</mi>
+ </msub>
+</math></span></span>) can be written in the non-dimensional form&nbsp;&nbsp;<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>d&Theta;</mi>
+  <mi>d&tau;</mi>
+ </mfrac>
+</math></span></span>= 1-&Theta; 
+</p>
+
+
+
+<p class="Text">
+ In the general case, <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>d&Theta;</mi>
+  <mi>d&tau;</mi>
+ </mfrac>
+</math></span></span> will depend on both &Theta; and t, i.e., <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>d&Theta;</mi>
+  <mi>d&tau;</mi>
+ </mfrac>
+</math></span></span> = <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>d&Theta;</mi>
+  <mi>d&tau;</mi>
+ </mfrac>
+</math></span></span>(&Theta;,t). This the equation of a surface in three dimensions, as shown in the following plot (in this specific case there is no t dependence):
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot3D</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mn>1</mn>
+    <mo>-</mo>
+    <mi>&Theta;</mi>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>tau</mi>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mo>-</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>&Theta;</mi>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>3</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <ms>&tau;</ms>
+      <mo>,</mo>
+      <ms>&Theta;</ms>
+      <mo>,</mo>
+      <semantics>
+       <mrow>
+        <mfrac>
+         <ms>d&Theta;</ms>
+         <ms>d&tau;</ms>
+        </mfrac>
+       </mrow>
+       <annotation encoding='Mathematica'>&quot;\&quot;\!\(d\[CapitalTheta]\/d\[Tau]\)\&quot;&quot;</annotation>
+      </semantics>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_11.gif" alt="[Graphics:HTMLFiles/Lecture-19_11.gif]"  width="576" height="467"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>SurfaceGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Plot the vector (d&tau;,d&Theta;) = d&tau;(1, <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>d&Theta;</mi>
+  <mi>d&tau;</mi>
+ </mfrac>
+</math></span></span>) at each point:<br />We want to make a plot of<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>d&Theta;</mi>
+  <mi>d&tau;</mi>
+ </mfrac>
+</math></span></span>in the &Theta;-&tau; plane. We can do so by plotting vectors of the form {d&tau;, d&Theta;} = d&tau;{1, <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>d&Theta;</mi>
+  <mi>d&tau;</mi>
+ </mfrac>
+</math></span></span>} which will be proportional to the vector {1, 1-&Theta;}. This is done as follows:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_19_Graphics_Package__PlotVectorFieldxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Graphics`PlotField`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>PlotVectorField</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1</mn>
+     <mo>,</mo>
+     <mrow>
+      <mn>1</mn>
+      <mo>-</mo>
+      <mi>&Theta;</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>tau</mi>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>4</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>&Theta;</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>4</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Axes</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <ms>&tau;</ms>
+      <mo>,</mo>
+      <ms>&Theta;</ms>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_12.gif" alt="[Graphics:HTMLFiles/Lecture-19_12.gif]"  width="393" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Note in the equations and the plot that<span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>d&Theta;</mi>
+  <mi>d&tau;</mi>
+ </mfrac>
+</math></span></span>is independent of &tau;.
+</p>
+
+
+
+<p class="Subsection">
+ Slightly more complicated example: <span><span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>dy</mi>
+  <mi>dt</mi>
+ </mfrac>
+</math></span></span>= y sin(<span><span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>yt</mi>
+  <mrow>
+   <mn>1</mn>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mi>t</mi>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mi>y</mi>
+  </mrow>
+ </mfrac>
+</math></span></span>),<br />(dt,dy) = dt(1,ysin<span><span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mi>yt</mi>
+  <mrow>
+   <mn>1</mn>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mi>t</mi>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mi>y</mi>
+  </mrow>
+ </mfrac>
+</math></span></span>))
+</p>
+
+
+
+<p class="Text">
+ As in the simpler example above we first plot the derivative's value as a surface using Plot3D, then we represent the behavior as a vector field
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot3D</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>y</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mtext>  </mtext>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mtext> </mtext>
+     <mfrac>
+      <mrow>
+       <mi>y</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>t</mi>
+      </mrow>
+      <mrow>
+       <mi>t</mi>
+       <mo>+</mo>
+       <mi>y</mi>
+       <mo>+</mo>
+       <mn>1</mn>
+      </mrow>
+     </mfrac>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <ms>t</ms>
+      <mo>,</mo>
+      <ms>y</ms>
+      <mo>,</mo>
+      <semantics>
+       <mrow>
+        <mfrac>
+         <ms>dy</ms>
+         <ms>dt</ms>
+        </mfrac>
+       </mrow>
+       <annotation encoding='Mathematica'>&quot;\&quot;\!\(dy\/dt\)\&quot;&quot;</annotation>
+      </semantics>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotPoints</mi>
+    <mo>&rightarrow;</mo>
+    <mn>40</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_13.gif" alt="[Graphics:HTMLFiles/Lecture-19_13.gif]"  width="576" height="467"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>SurfaceGraphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>PlotVectorField</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>1</mn>
+     <mo>,</mo>
+     <mrow>
+      <mi>y</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mtext>  </mtext>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mtext> </mtext>
+       <mfrac>
+        <mrow>
+         <mi>y</mi>
+         <mo>&InvisibleTimes;</mo>
+         <mi>t</mi>
+        </mrow>
+        <mrow>
+         <mi>t</mi>
+         <mo>+</mo>
+         <mi>y</mi>
+         <mo>+</mo>
+         <mn>1</mn>
+        </mrow>
+       </mfrac>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Axes</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <ms>t</ms>
+      <mo>,</mo>
+      <ms>y</ms>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_14.gif" alt="[Graphics:HTMLFiles/Lecture-19_14.gif]"  width="542" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ To summarize this part, we have seen how first-order differential equations have associated trajectories in the plane of the dependent variables, analogous to what we simulated above by incrementing a certain functional relationship. Numerical differential equation solvers use similar techniques.
+</p>
+
+
+
+<p class="Subtitle">
+ Using <span style='font-style: italic;'>Mathematica</span>'s DSolve function
+</p>
+
+
+
+<p class="Text">
+ <span style='font-style: italic;'>Mathematica</span>'s <span style='font-weight: bold;'>DSolve</span> function finds closed-form expressions for solutions to differential equations, when possible. There is a related function called <span style='font-weight: bold;'>NDSolve</span> that finds numerical solutions that can be used when <span style='font-weight: bold;'>DSolve</span> gives up. Here are some examples of using <span style='font-weight: bold;'>DSolve</span>:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_19_DSolvexx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>dsol</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>DSolve</mi>
+   <mo>[</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mi>y</mi>
+        <mo>'</mo>
+       </mrow>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mtext>  </mtext>
+      <mo>+</mo>
+      <mrow>
+       <mi>x</mi>
+       <mtext> </mtext>
+       <mo>*</mo>
+       <mrow>
+        <mi>y</mi>
+        <mo>[</mo>
+        <mi>x</mi>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+     <mtext> </mtext>
+     <mo>&Equal;</mo>
+     <mn>0</mn>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>x</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <msup>
+         <mi>x</mi>
+         <mn>2</mn>
+        </msup>
+        <mn>2</mn>
+       </mfrac>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>C</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <a id="mmtag_19_ordinary_differential_equations__constants_of_integration"></a>
+ Note that the solution is given as a rule, just like for the function <span style='font-weight: bold;'>Solve</span>. Because no initial condition was specified, the solution involves an unknown constant, C[1].
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>dsol</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>DSolve</mi>
+   <mo>[</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mrow>
+          <mi>y</mi>
+          <mo>'</mo>
+         </mrow>
+         <mo>[</mo>
+         <mi>x</mi>
+         <mo>]</mo>
+        </mrow>
+        <mtext>  </mtext>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mrow>
+          <mi>Sin</mi>
+          <mo>[</mo>
+          <mi>x</mi>
+          <mo>]</mo>
+         </mrow>
+         <mtext> </mtext>
+         <mo>*</mo>
+         <mrow>
+          <mi>y</mi>
+          <mo>[</mo>
+          <mi>x</mi>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+       </mrow>
+       <mtext> </mtext>
+       <mo>&Equal;</mo>
+       <mn>0</mn>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mrow>
+        <mi>y</mi>
+        <mo>[</mo>
+        <mn>0</mn>
+        <mo>]</mo>
+       </mrow>
+       <mo>&Equal;</mo>
+       <mn>1</mn>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>x</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&rightarrow;</mo>
+    <msup>
+     <mi>&ExponentialE;</mi>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </msup>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ In this case an initial condition was specified for the differential equation, so there is no undetermined constant in the solution. The next statement extracts y(x) for plotting...
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>exactplot</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Plot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mi>y</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>/.</mo>
+     <mrow>
+      <mi>Flatten</mi>
+      <mo>[</mo>
+      <mi>dsol</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_15.gif" alt="[Graphics:HTMLFiles/Lecture-19_15.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Compare this to the forward differencing scheme:<br />Recall how<br /><span class="InputInline">exampleFunction[x_] := 0.1 x</span><br /><span class="InputInline">StepOnce[{x_,y_}, AFunction_, delta_] := {x+ delta, y + delta AFunction[y]}</span><br /><span class="InputInline"><span class="InputInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>OurStepOnce</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mtext>x_</mtext>
+      <mtext> </mtext>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mtext>y_</mtext>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>:=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>StepOnce</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mi>y</mi>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mi>exampleFunction</mi>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mn>0.01</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mtext>&NewLine;</mtext>
+  <mrow>
+   <mrow>
+    <mi>result</mi>
+    <mtext> </mtext>
+    <mo>=</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mi>NestList</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>OurStepOnce</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mn>0</mn>
+        <mo>,</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mn>400</mn>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>;</mo>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mtext>&NewLine;</mtext>
+  <mrow>
+   <mi>ListPlot</mi>
+   <mo>[</mo>
+   <mi>result</mi>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math></span></span><br />were used to create a plot for a function that grew at a rate that was 0.1 times its current size, try this for the ODE that was solved for above, let the new function be y':
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>NewExampleFunction</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>x_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>y_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mi>y</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>NewStepOnce</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mtext>x_</mtext>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mtext>y_</mtext>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>AFunctionXY_</mtext>
+    <mtext> </mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>delta_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>x</mi>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mi>delta</mi>
+    </mrow>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mi>y</mi>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>delta</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>AFunctionXY</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>x</mi>
+        <mo>,</mo>
+        <mi>y</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>NewOurStepOnce</mi>
+   <mo>[</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mtext>x_</mtext>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mtext>y_</mtext>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>NewStepOnce</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mi>y</mi>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>NewExampleFunction</mi>
+    <mo>,</mo>
+    <mn>0.01</mn>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>result</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>NestList</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>NewOurStepOnce</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mn>1000</mn>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>result</mi>
+  <mo>//</mo>
+  <mi>Short</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&#63329;</mo>
+    <mn>998</mn>
+    <mo>&#63330;</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>9.999999999999831</mn>
+     <mo>,</mo>
+     <mn>0.15479210677489474</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>forwarddifferenceplot</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>ListPlot</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>result</mi>
+    <mo>,</mo>
+    <mrow>
+     <mi>PlotStyle</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>Hue</mi>
+       <mo>[</mo>
+       <mn>1</mn>
+       <mo>]</mo>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_16.gif" alt="[Graphics:HTMLFiles/Lecture-19_16.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Now we superpose the exact solution with that obtained by the forward-differencing approximation.
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>forwarddifferenceplot</mi>
+   <mo>,</mo>
+   <mi>exactplot</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-19_17.gif" alt="[Graphics:HTMLFiles/Lecture-19_17.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(November 6, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

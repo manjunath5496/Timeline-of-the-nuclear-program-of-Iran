@@ -1,0 +1,3354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 11 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2004
+ </title>
+ <link href="HTMLFiles/Lecture-11.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Subtitle">
+ Time Dependent Solution to the Diffusion Equation in thePlane with a source at the origin.
+</p>
+
+
+
+<p class="Subsubsection">
+ Note: This notebook will produce some neat animations but they each take some time to compute. And, if you save the notebook with the graphics, it will require 50MB or so of hard disk space.
+</p>
+
+
+
+<p class="Subsubsection">
+ You should definitely take the time to learn how to make your own animations because the results can be really instructive. You can even save animations in various formats and then import them in separate applications.
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mstyle fontweight='bold'>
+  <mrow>
+   <mo>&lt;&lt;</mo>
+   <mtext>Graphics`</mtext>
+  </mrow>
+ </mstyle>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mtag_11_diffusion_equation_solution__example__2D_point_source_at_origin"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>concentration</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mfrac>
+   <mrow>
+    <mi>Exp</mi>
+    <mo>[</mo>
+    <mfrac>
+     <mrow>
+      <mo>-</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mi>x</mi>
+         <mo>^</mo>
+         <mn>2</mn>
+        </mrow>
+        <mtext> </mtext>
+        <mo>+</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mi>y</mi>
+         <mo>^</mo>
+         <mn>2</mn>
+        </mrow>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+     <mrow>
+      <mn>4</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Diffusivity</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>t</mi>
+     </mrow>
+    </mfrac>
+    <mo>]</mo>
+   </mrow>
+   <mrow>
+    <mn>4</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Pi</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mi>Diffusivity</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mi>t</mi>
+   </mrow>
+  </mfrac>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <msup>
+   <mi>&ExponentialE;</mi>
+   <mrow>
+    <mo>-</mo>
+    <mfrac>
+     <mrow>
+      <msup>
+       <mi>x</mi>
+       <mn>2</mn>
+      </msup>
+      <mo>+</mo>
+      <msup>
+       <mi>y</mi>
+       <mn>2</mn>
+      </msup>
+     </mrow>
+     <mrow>
+      <mn>4</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Diffusivity</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>t</mi>
+     </mrow>
+    </mfrac>
+   </mrow>
+  </msup>
+  <mrow>
+   <mn>4</mn>
+   <mo>&InvisibleTimes;</mo>
+   <mi>Diffusivity</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>&pi;</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>t</mi>
+  </mrow>
+ </mfrac>
+</math>
+</p>
+
+<p class="Subsubsection">
+ Let the diffusivity be 1 for visualization purposes
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Diffusivity</mi>
+  <mo>=</mo>
+  <mn>1</mn>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>1</mn>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mstyle fontweight='bold'>
+  <mrow>
+   <mo>&lt;&lt;</mo>
+   <mtext>Graphics`Animation`</mtext>
+  </mrow>
+ </mstyle>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mtag_11_MoviePlot3Dxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>MoviePlot3D</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>concentration</mi>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>4</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>4</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>4</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>4</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mn>2.51</mn>
+     <mo>,</mo>
+     <mtext>.05</mtext>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotPoints</mi>
+    <mo>&rightarrow;</mo>
+    <mn>40</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>DisplayFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Identity</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+	<a href="../../MathHTML/Lecture-11/HTMLLinks/Lecture-11_1.html"><img src="HTMLFiles/Lecture-11_52.gif" alt="[Graphics:HTMLFiles/Lecture-11_52.gif]"  width="576" height="467"  style="vertical-align:middle" /></a>
+</p>
+
+<p class="Input">
+ <a id="mtag_11_MovieContourPlotxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>MovieContourPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>concentration</mi>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mn>6.51</mn>
+     <mo>,</mo>
+     <mtext>.05</mtext>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotPoints</mi>
+    <mo>&rightarrow;</mo>
+    <mn>40</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0.5</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>DisplayFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Identity</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ColorFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mi>Hue</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>1</mn>
+        <mo>-</mo>
+        <mtext> </mtext>
+        <mrow>
+         <mn>0.75</mn>
+         <mtext>#</mtext>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&amp;</mo>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+	<a href="../../MathHTML/Lecture-11/HTMLLinks/Lecture-11_2.html"><img src="HTMLFiles/Lecture-11_184.gif" alt="[Graphics:HTMLFiles/Lecture-11_184.gif]"  width="576" height="576"  style="vertical-align:middle" /></a>
+</p>
+
+<p class="Text">
+ Flux is a vector that points in the direction of the flow&nbsp;&nbsp;and is a measure of how much is flowing per unit time
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Graphics`PlotField`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>flux</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mrow>
+      <mi>D</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>concentration</mi>
+       <mo>,</mo>
+       <mi>x</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>-</mo>
+     <mrow>
+      <mi>D</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>concentration</mi>
+       <mo>,</mo>
+       <mi>y</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <msup>
+          <mi>x</mi>
+          <mn>2</mn>
+         </msup>
+         <mo>+</mo>
+         <msup>
+          <mi>y</mi>
+          <mn>2</mn>
+         </msup>
+        </mrow>
+        <mrow>
+         <mn>4</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>t</mi>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mi>x</mi>
+    </mrow>
+    <mrow>
+     <mn>8</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <msup>
+      <mi>t</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <msup>
+          <mi>x</mi>
+          <mn>2</mn>
+         </msup>
+         <mo>+</mo>
+         <msup>
+          <mi>y</mi>
+          <mn>2</mn>
+         </msup>
+        </mrow>
+        <mrow>
+         <mn>4</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>t</mi>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mi>y</mi>
+    </mrow>
+    <mrow>
+     <mn>8</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <msup>
+      <mi>t</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>This</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>is</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>an</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>example</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>of</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>a</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>time</mi>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mi>dependent</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>vector</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>field</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mover>
+    <mi>j</mi>
+    <mo>&longrightarrow;</mo>
+   </mover>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mi>t</mi>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mtag_11_PlotVectorFieldxx"></a>
+ <a id="mtag_11_ScaleFunction__in_PlotVectorFieldxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>PlotVectorField</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>flux</mi>
+    <mo>/.</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>&rightarrow;</mo>
+     <mn>0.8</mn>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotPoints</mi>
+    <mo>&rightarrow;</mo>
+    <mn>20</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ColorFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mi>Hue</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>1</mn>
+        <mo>-</mo>
+        <mrow>
+         <mn>0.75</mn>
+         <mtext>#</mtext>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&amp;</mo>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-11_185.gif" alt="[Graphics:HTMLFiles/Lecture-11_185.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>PlotVectorField</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>flux</mi>
+    <mo>/.</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>t</mi>
+      <mo>&rightarrow;</mo>
+      <mn>0.2</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotPoints</mi>
+    <mo>&rightarrow;</mo>
+    <mn>21</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Frame</mi>
+    <mo>-&gt;</mo>
+    <mi>True</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ScaleFunction</mi>
+    <mo>-&gt;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mn>10.</mn>
+       <mtext> </mtext>
+       <mtext>#</mtext>
+      </mrow>
+      <mo>&amp;</mo>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>MaxArrowLength</mi>
+    <mo>-&gt;</mo>
+    <mn>50</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>ScaleFactor</mi>
+    <mo>-&gt;</mo>
+    <mi>None</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ColorFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mi>Hue</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>1</mn>
+        <mo>-</mo>
+        <mrow>
+         <mn>0.75</mn>
+         <mtext>#</mtext>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&amp;</mo>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-11_186.gif" alt="[Graphics:HTMLFiles/Lecture-11_186.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ To see animations,use the menu command to group all the graphics cells together, and then animate
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_11_Animate_and_PlotVectorFieldxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Table</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>PlotVectorField</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>flux</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>2</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>2</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>y</mi>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>2</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>2</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>PlotRange</mi>
+      <mo>-&gt;</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mrow>
+           <mo>-</mo>
+           <mn>3</mn>
+          </mrow>
+          <mo>,</mo>
+          <mn>3</mn>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mrow>
+           <mo>-</mo>
+           <mn>3</mn>
+          </mrow>
+          <mo>,</mo>
+          <mn>3</mn>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>Frame</mi>
+      <mo>-&gt;</mo>
+      <mi>True</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>PlotPoints</mi>
+      <mo>&rightarrow;</mo>
+      <mn>19</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>ScaleFunction</mi>
+      <mo>-&gt;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mn>100.</mn>
+         <mtext> </mtext>
+         <mtext>#</mtext>
+        </mrow>
+        <mo>&amp;</mo>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>MaxArrowLength</mi>
+      <mo>-&gt;</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>ScaleFactor</mi>
+      <mo>-&gt;</mo>
+      <mi>None</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>ColorFunction</mi>
+      <mo>&rightarrow;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mrow>
+          <mn>1</mn>
+          <mo>-</mo>
+          <mrow>
+           <mn>0.75</mn>
+           <mtext>#</mtext>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>&amp;</mo>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mn>6</mn>
+     <mo>,</mo>
+     <mtext>.05</mtext>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+	<a href="../../MathHTML/Lecture-11/HTMLLinks/Lecture-11_3.html"><img src="HTMLFiles/Lecture-11_307.gif" alt="[Graphics:HTMLFiles/Lecture-11_307.gif]"  width="576" height="576"  style="vertical-align:middle" /></a>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <list>
+    <mrow>
+     <mo>&hybull;</mo>
+     <mo>&InvisibleTimes;</mo>
+     <mi>Graphics</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mo>&hybull;</mo>
+    </mrow>
+   </list>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mtag_11_components_of_flux__example"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>flux</mi>
+  <mo>.</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mn>1</mn>
+    <mo>,</mo>
+    <mn>0</mn>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mrow>
+   <msup>
+    <mi>&ExponentialE;</mi>
+    <mrow>
+     <mo>-</mo>
+     <mfrac>
+      <mrow>
+       <msup>
+        <mi>x</mi>
+        <mn>2</mn>
+       </msup>
+       <mo>+</mo>
+       <msup>
+        <mi>y</mi>
+        <mn>2</mn>
+       </msup>
+      </mrow>
+      <mrow>
+       <mn>4</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>t</mi>
+      </mrow>
+     </mfrac>
+    </mrow>
+   </msup>
+   <mo>&InvisibleTimes;</mo>
+   <mi>x</mi>
+  </mrow>
+  <mrow>
+   <mn>8</mn>
+   <mo>&InvisibleTimes;</mo>
+   <mi>&pi;</mi>
+   <mo>&InvisibleTimes;</mo>
+   <msup>
+    <mi>t</mi>
+    <mn>2</mn>
+   </msup>
+  </mrow>
+ </mfrac>
+</math>
+</p>
+
+<p class="Text">
+ To see animations,use the menu command to group all the graphics cells together, and then animate
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>MovieContourPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>flux</mi>
+    <mo>.</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>1</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mn>6.51</mn>
+     <mo>,</mo>
+     <mtext>.05</mtext>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotPoints</mi>
+    <mo>&rightarrow;</mo>
+    <mn>40</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0.5</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>DisplayFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Identity</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ColorFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mi>Hue</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>1</mn>
+        <mo>-</mo>
+        <mrow>
+         <mn>0.75</mn>
+         <mtext>#</mtext>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&amp;</mo>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+	<a href="../../MathHTML/Lecture-11/HTMLLinks/Lecture-11_4.html"><img src="HTMLFiles/Lecture-11_439.gif" alt="[Graphics:HTMLFiles/Lecture-11_439.gif]"  width="576" height="576"  style="vertical-align:middle" /></a>
+</p>
+
+<p class="Text">
+ To see animations,use the menu command to group all the graphics cells together, and then animate
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>MovieContourPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>flux</mi>
+    <mo>.</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>1</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mn>6.51</mn>
+     <mo>,</mo>
+     <mtext>.05</mtext>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotPoints</mi>
+    <mo>&rightarrow;</mo>
+    <mn>40</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>0.5</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>0.5</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>DisplayFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mi>Identity</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ColorFunction</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mi>Hue</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>1</mn>
+        <mo>-</mo>
+        <mrow>
+         <mn>0.75</mn>
+         <mtext>#</mtext>
+        </mrow>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&amp;</mo>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+	<a href="../../MathHTML/Lecture-11/HTMLLinks/Lecture-11_5.html"><img src="HTMLFiles/Lecture-11_571.gif" alt="[Graphics:HTMLFiles/Lecture-11_571.gif]"  width="576" height="576"  style="vertical-align:middle" /></a>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>flux</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mn>1</mn>
+    <mo>,</mo>
+    <mn>0</mn>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <msup>
+          <mi>x</mi>
+          <mn>2</mn>
+         </msup>
+         <mo>+</mo>
+         <msup>
+          <mi>y</mi>
+          <mn>2</mn>
+         </msup>
+        </mrow>
+        <mrow>
+         <mn>4</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>t</mi>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mi>x</mi>
+    </mrow>
+    <mrow>
+     <mn>8</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <msup>
+      <mi>t</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ To see animations,use the menu command to group all the graphics cells together, and then animate
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Table</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>PlotVectorField</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>flux</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>0</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>2</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>2</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>y</mi>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>2</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>2</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>PlotRange</mi>
+      <mo>-&gt;</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mrow>
+           <mo>-</mo>
+           <mn>3</mn>
+          </mrow>
+          <mo>,</mo>
+          <mn>3</mn>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mrow>
+           <mo>-</mo>
+           <mn>3</mn>
+          </mrow>
+          <mo>,</mo>
+          <mn>3</mn>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>Frame</mi>
+      <mo>-&gt;</mo>
+      <mi>True</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>PlotPoints</mi>
+      <mo>&rightarrow;</mo>
+      <mn>19</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>ScaleFunction</mi>
+      <mo>-&gt;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mn>100.</mn>
+         <mtext> </mtext>
+         <mtext>#</mtext>
+        </mrow>
+        <mo>&amp;</mo>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>MaxArrowLength</mi>
+      <mo>-&gt;</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>,</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>ScaleFactor</mi>
+      <mo>-&gt;</mo>
+      <mi>None</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>ColorFunction</mi>
+      <mo>&rightarrow;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mrow>
+          <mn>1</mn>
+          <mo>-</mo>
+          <mrow>
+           <mn>0.75</mn>
+           <mtext>#</mtext>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>&amp;</mo>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0.01</mn>
+     <mo>,</mo>
+     <mn>6</mn>
+     <mo>,</mo>
+     <mtext>.05</mtext>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+	<a href="../../MathHTML/Lecture-11/HTMLLinks/Lecture-11_6.html"><img src="HTMLFiles/Lecture-11_692.gif" alt="[Graphics:HTMLFiles/Lecture-11_692.gif]"  width="576" height="576"  style="vertical-align:middle" /></a>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <list>
+    <mrow>
+     <mo>&hybull;</mo>
+     <mo>&InvisibleTimes;</mo>
+     <mi>Graphics</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mo>&hybull;</mo>
+    </mrow>
+   </list>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subtitle">
+ Cross products:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>crossab</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Cross</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <msub>
+       <mi>a</mi>
+       <mn>1</mn>
+      </msub>
+      <mo>,</mo>
+      <msub>
+       <mi>a</mi>
+       <mn>2</mn>
+      </msub>
+      <mo>,</mo>
+      <msub>
+       <mi>a</mi>
+       <mn>3</mn>
+      </msub>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mtext>  </mtext>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <msub>
+       <mi>b</mi>
+       <mn>1</mn>
+      </msub>
+      <mo>,</mo>
+      <msub>
+       <mi>b</mi>
+       <mn>2</mn>
+      </msub>
+      <mo>,</mo>
+      <msub>
+       <mi>b</mi>
+       <mn>3</mn>
+      </msub>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <msub>
+       <mi>a</mi>
+       <mn>3</mn>
+      </msub>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>2</mn>
+     </msub>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <msub>
+      <mi>a</mi>
+      <mn>2</mn>
+     </msub>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>3</mn>
+     </msub>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <msub>
+      <mi>a</mi>
+      <mn>3</mn>
+     </msub>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>1</mn>
+     </msub>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <msub>
+      <mi>a</mi>
+      <mn>1</mn>
+     </msub>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>3</mn>
+     </msub>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <msub>
+       <mi>a</mi>
+       <mn>2</mn>
+      </msub>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>1</mn>
+     </msub>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <msub>
+      <mi>a</mi>
+      <mn>1</mn>
+     </msub>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>2</mn>
+     </msub>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mtag_11_cross_products_example"></a>
+ <a id="mtag_11_vector_products_example"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>detab</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Det</mi>
+   <mo>[</mo>
+   <mrow>
+    <mo>(</mo>
+    <mtable frame='solid'
+        rowlines='solid'
+        columnlines='solid'>
+     <mtr>
+      <mtd>
+       <mi>i</mi>
+      </mtd>
+      <mtd>
+       <mi>j</mi>
+      </mtd>
+      <mtd>
+       <mi>k</mi>
+      </mtd>
+     </mtr>
+     <mtr>
+      <mtd>
+       <msub>
+        <mi>a</mi>
+        <mn>1</mn>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>a</mi>
+        <mn>2</mn>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>a</mi>
+        <mn>3</mn>
+       </msub>
+      </mtd>
+     </mtr>
+     <mtr>
+      <mtd>
+       <msub>
+        <mi>b</mi>
+        <mn>1</mn>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>b</mi>
+        <mn>2</mn>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>b</mi>
+        <mn>3</mn>
+       </msub>
+      </mtd>
+     </mtr>
+    </mtable>
+    <mo>)</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mi>k</mi>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>a</mi>
+    <mn>2</mn>
+   </msub>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>b</mi>
+    <mn>1</mn>
+   </msub>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mi>j</mi>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>a</mi>
+    <mn>3</mn>
+   </msub>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>b</mi>
+    <mn>1</mn>
+   </msub>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mi>k</mi>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>a</mi>
+    <mn>1</mn>
+   </msub>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>b</mi>
+    <mn>2</mn>
+   </msub>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mi>i</mi>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>a</mi>
+    <mn>3</mn>
+   </msub>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>b</mi>
+    <mn>2</mn>
+   </msub>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mi>j</mi>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>a</mi>
+    <mn>1</mn>
+   </msub>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>b</mi>
+    <mn>3</mn>
+   </msub>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mi>i</mi>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>a</mi>
+    <mn>2</mn>
+   </msub>
+   <mo>&InvisibleTimes;</mo>
+   <msub>
+    <mi>b</mi>
+    <mn>3</mn>
+   </msub>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>testcrossab</mi>
+  <mo>=</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>Coefficient</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>detab</mi>
+      <mo>,</mo>
+      <mi>i</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mi>Coefficient</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>detab</mi>
+      <mo>,</mo>
+      <mi>j</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Coefficient</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>detab</mi>
+      <mo>,</mo>
+      <mi>k</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <msub>
+       <mi>a</mi>
+       <mn>3</mn>
+      </msub>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>2</mn>
+     </msub>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <msub>
+      <mi>a</mi>
+      <mn>2</mn>
+     </msub>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>3</mn>
+     </msub>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <msub>
+      <mi>a</mi>
+      <mn>3</mn>
+     </msub>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>1</mn>
+     </msub>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <msub>
+      <mi>a</mi>
+      <mn>1</mn>
+     </msub>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>3</mn>
+     </msub>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <msub>
+       <mi>a</mi>
+       <mn>2</mn>
+      </msub>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>1</mn>
+     </msub>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <msub>
+      <mi>a</mi>
+      <mn>1</mn>
+     </msub>
+     <mo>&InvisibleTimes;</mo>
+     <msub>
+      <mi>b</mi>
+      <mn>2</mn>
+     </msub>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>testcrossab</mi>
+  <mtext> </mtext>
+  <mo>&Equal;</mo>
+  <mtext> </mtext>
+  <mi>crossab</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>True</mi>
+</math>
+</p>
+
+<p class="Subtitle">
+ Derivatives of Vectors 
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_11_derivatives_of_vector_quantities__examples_and_visualization"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Clear</mi>
+  <mo>[</mo>
+  <mi>TimeVector</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>TimeVector</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>Cos</mi>
+     <mo>[</mo>
+     <mrow>
+      <mn>4</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&pi;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>t</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mrow>
+      <mn>8</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&pi;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>t</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&pi;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>t</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mi>Cos</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>4</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mi>t</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Sin</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>8</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mi>t</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Sin</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mi>t</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mtag_11_ParametricPlot3Dxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ParametricPlot3D</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>TimeVector</mi>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-11_693.gif" alt="[Graphics:HTMLFiles/Lecture-11_693.gif]"  width="530" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>DeltoidSpiral</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>&pi;</mi>
+         <mo>&InvisibleTimes;</mo>
+         <mi>t</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mtext> </mtext>
+      <mo>+</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&pi;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mrow>
+         <mi>&pi;</mi>
+         <mo>&InvisibleTimes;</mo>
+         <mi>t</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&pi;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mi>t</mi>
+     <mo>/</mo>
+     <mn>3</mn>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Cos</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>&pi;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>t</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mi>Cos</mi>
+     <mo>[</mo>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&pi;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>t</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>&pi;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>t</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&pi;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>t</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mfrac>
+    <mi>t</mi>
+    <mn>3</mn>
+   </mfrac>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>pp</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>ParametricPlot3D</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>DeltoidSpiral</mi>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>t</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>3</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>3</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>AxesLabel</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <ms>x</ms>
+       <mo>,</mo>
+       <ms>y</ms>
+       <mo>,</mo>
+       <ms>z</ms>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-11_694.gif" alt="[Graphics:HTMLFiles/Lecture-11_694.gif]"  width="576" height="488"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>Graphics3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>Thickness</mi>
+      <mo>[</mo>
+      <mn>0.01</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Graphics3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>Hue</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>pp</mi>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-11_695.gif" alt="[Graphics:HTMLFiles/Lecture-11_695.gif]"  width="576" height="488"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>dDSt</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>D</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>DeltoidSpiral</mi>
+    <mo>,</mo>
+    <mi>t</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>&pi;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>t</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>&pi;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>t</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Cos</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>&pi;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>t</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Cos</mi>
+      <mo>[</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>&pi;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>t</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mfrac>
+    <mn>1</mn>
+    <mn>3</mn>
+   </mfrac>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ppdt</mi>
+  <mo>=</mo>
+  <mrow>
+   <mi>ParametricPlot3D</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>dDSt</mi>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>t</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>3</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>3</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>AxesLabel</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <ms>x</ms>
+       <mo>,</mo>
+       <ms>y</ms>
+       <mo>,</mo>
+       <ms>z</ms>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-11_696.gif" alt="[Graphics:HTMLFiles/Lecture-11_696.gif]"  width="576" height="345"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>Graphics3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>Thickness</mi>
+      <mo>[</mo>
+      <mn>0.01</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Graphics3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>Hue</mi>
+      <mo>[</mo>
+      <mn>0.3</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>ppdt</mi>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-11_697.gif" alt="[Graphics:HTMLFiles/Lecture-11_697.gif]"  width="576" height="345"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ppdtlim</mi>
+   <mo>[</mo>
+   <mtext>tl_</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mo>:=</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>Graphics3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>Thickness</mi>
+      <mo>[</mo>
+      <mn>0.01</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Graphics3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>Hue</mi>
+      <mo>[</mo>
+      <mn>0.3</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>ParametricPlot3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mn>0.33</mn>
+       <mo>*</mo>
+       <mi>dDSt</mi>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>t</mi>
+        <mo>,</mo>
+        <mn>0</mn>
+        <mo>,</mo>
+        <mi>tl</mi>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>AxesLabel</mi>
+       <mo>&rightarrow;</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <ms>x</ms>
+         <mo>,</mo>
+         <ms>y</ms>
+         <mo>,</mo>
+         <ms>z</ms>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Compiled</mi>
+       <mo>&rightarrow;</mo>
+       <mi>False</mi>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>DisplayFunction</mi>
+       <mo>&rightarrow;</mo>
+       <mi>Identity</mi>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>dtlim</mi>
+   <mo>[</mo>
+   <mtext>tl_</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mo>:=</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>Graphics3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>Thickness</mi>
+      <mo>[</mo>
+      <mn>0.01</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Graphics3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>Hue</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>ParametricPlot3D</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>DeltoidSpiral</mi>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>t</mi>
+        <mo>,</mo>
+        <mn>0</mn>
+        <mo>,</mo>
+        <mi>tl</mi>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>AxesLabel</mi>
+       <mo>&rightarrow;</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <ms>x</ms>
+         <mo>,</mo>
+         <ms>y</ms>
+         <mo>,</mo>
+         <ms>z</ms>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Compiled</mi>
+       <mo>&rightarrow;</mo>
+       <mi>False</mi>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>DisplayFunction</mi>
+       <mo>&rightarrow;</mo>
+       <mi>Identity</mi>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ To see animations,use the menu command to group all the graphics cells together, and then animate
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_11_animations__example_of_curves_in_3D"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ShowAnimation</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mi>ppdtlim</mi>
+        <mo>[</mo>
+        <mi>t</mi>
+        <mo>]</mo>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>dtlim</mi>
+        <mo>[</mo>
+        <mi>t</mi>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>t</mi>
+       <mo>,</mo>
+       <mtext>.05</mtext>
+       <mo>,</mo>
+       <mn>3</mn>
+       <mo>,</mo>
+       <mtext>.05</mtext>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRange</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>4.25</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>4.25</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>4.25</mn>
+        </mrow>
+        <mo>,</mo>
+        <mn>4.25</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mn>0</mn>
+        <mo>,</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotRegion</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mn>0</mn>
+        <mo>,</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mn>0</mn>
+        <mo>,</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>SphericalRegion</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Boxed</mi>
+    <mo>&rightarrow;</mo>
+    <mi>True</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>BoxRatios</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>1</mn>
+      <mo>,</mo>
+      <mn>1</mn>
+      <mo>,</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ViewCenter</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ViewPoint</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>1.2</mn>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>3</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+	<a href="../../MathHTML/Lecture-11/HTMLLinks/Lecture-11_7.html"><img src="HTMLFiles/Lecture-11_758.gif" alt="[Graphics:HTMLFiles/Lecture-11_758.gif]"  width="576" height="576"  style="vertical-align:middle" /></a>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Export</mi>
+   <mtext>::</mtext>
+   <mi>noopen</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Cannot open </mtext>
+    <ms>/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html</ms>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Cannot open \\!\\(\\\&quot;/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html\\\&quot;\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::noopen\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Export</mi>
+   <mtext>::</mtext>
+   <mi>noopen</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Cannot open </mtext>
+    <ms>/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html</ms>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Cannot open \\!\\(\\\&quot;/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html\\\&quot;\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::noopen\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Export</mi>
+   <mtext>::</mtext>
+   <mi>noopen</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Cannot open </mtext>
+    <ms>/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html</ms>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Cannot open \\!\\(\\\&quot;/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html\\\&quot;\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::noopen\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Export</mi>
+   <mtext>::</mtext>
+   <mi>noopen</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Cannot open </mtext>
+    <ms>/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html</ms>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Cannot open \\!\\(\\\&quot;/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html\\\&quot;\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::noopen\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Export</mi>
+   <mtext>::</mtext>
+   <mi>noopen</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Cannot open </mtext>
+    <ms>/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html</ms>
+    <mtext>. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Cannot open \\!\\(\\\&quot;/Users/ccarter/classes/3016/Web/MathHTML/Lecture-11/Lecture-11.html\\\&quot;\\). \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::noopen\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(October 12, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

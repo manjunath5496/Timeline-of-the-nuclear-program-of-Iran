@@ -1,0 +1,1080 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     20524,        721]*)
+(*NotebookOutlinePosition[     25983,        853]*)
+(*  CellTagsIndexPosition[     24812,        825]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["Solving  Linear Systems, Existence and Uniqueness", "Title",
+  CellTags->"mtag:07:systems_of_linear_equations__existence_and_uniqueness"],
+
+Cell["Solving and Uniqueness", "Subtitle"],
+
+Cell["\<\
+Consider the set of equations
+\t x + 2y +  z  +  t  = a
+\t-x + 4y - 2z         = b
+\t x + 3y + 4z + 5t = c
+\t x          +  z  +   t = d
+We illustrate how to use a matrix representation to write these out and solve \
+them\[Ellipsis]\t \
+\>", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Start with the matrix of coefficients of the variables, ",
+  StyleBox["mymatrix",
+    FontWeight->"Bold"],
+  ":"
+}], "Subsection"],
+
+Cell[BoxData[{
+    \(\(mymatrix\  = \ {\[IndentingNewLine]{1, 2, 1, 
+            1}, \[IndentingNewLine]{\(-1\), 4, \(-2\), 
+            0}, \[IndentingNewLine]{1, 3, 4, 5}, \[IndentingNewLine]{1, 0, 1, 
+            1}};\)\), "\[IndentingNewLine]", 
+    \(mymatrix // MatrixForm\)}], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "The system of equations will only have a unique solution if the \
+determinant of ",
+  StyleBox["mymatrix",
+    FontWeight->"Bold"],
+  " is nonzero."
+}], "Subsection"],
+
+Cell[BoxData[
+    \(Det[mymatrix]\)], "Input",
+  CellTags->{
+  "mtag:07:systems_of_linear_equations__existence_and_determinants", 
+    "mtag:07:Det[]__and_uniqueness"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{
+    "Now", " ", "define", " ", "vectors", " ", "for", 
+      " ", \(x\&\[RightVector]\), "  ", "and", " ", \(b\&\[RightVector]\), 
+      " ", "in", " ", 
+      FormBox[\(A\+_\ x\&\[RightVector]\  = \ b\&\[RightVector]\),
+        "TraditionalForm"]}]], "Subsection"],
+
+Cell[BoxData[
+    \(\(myx\  = {x, y, z, t};\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(myb\  = \ {a, b, c, d};\)\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The left-hand side of the first equation will be", "Subsection"],
+
+Cell[BoxData[
+    \(\((mymatrix . myx)\)[\([1]\)]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["and the left-hand side of all four equations will be", "Subsection"],
+
+Cell[BoxData[{
+    \(\(lhs\  = \ mymatrix . myx;\)\), "\[IndentingNewLine]", 
+    \(lhs // MatrixForm\)}], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Now define an indexed variable ",
+  StyleBox["linsys",
+    FontWeight->"Bold"],
+  " with four entries, each being one of the equations in the system of \
+interest:"
+}], "Subsection"],
+
+Cell[BoxData[
+    \(linsys[i_Integer]\  := \ lhs[\([i]\)]\  == \ myb[\([i]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(linsys[2]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Solving the set of equations for the unknowns ",
+  Cell[BoxData[
+      \(\(x\& \[Rule] \)\)],
+    FontFamily->"Helvetica"]
+}], "Subsection",
+  CellTags->
+  "mtag:07:systems_of_linear_equations__creating_from_matrices_and_vectors"],
+
+Cell[BoxData[
+    \(linsol\  = 
+      Solve[{linsys[1], linsys[2], \ linsys[3], \ linsys[4]}, myx]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Doing the same thing a different way, using ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  "'s ",
+  StyleBox["LinearSolve",
+    FontWeight->"Bold"],
+  " function:"
+}], "Subsection"],
+
+Cell[BoxData[
+    \(\(?LinearSolve\)\)], "Input"],
+
+Cell[BoxData[
+    \(LinearSolve[mymatrix, myb]\)], "Input",
+  CellTags->
+  "mtag:07:LinearSolve[]_solutions_without_direct_computation_of_matrix_\
+inverse"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "And yet another way, based on ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\&\[RightVector] = \(\(A\+_\^\(-1\)\) 
+            A\+_\ x\&\[RightVector]\  = \ \(A\+_\^\(-1\)\) 
+            b\&\[RightVector]\)\)]],
+  " "
+}], "Subsection"],
+
+Cell[BoxData[
+    \(Inverse[mymatrix] . myb // MatrixForm\)], "Input",
+  CellTags->"mtag:07:Inverse[]"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["When determinants are zero", "Section"],
+
+Cell["\<\
+Create a matrix with one row as a linear combination of the \
+others\
+\>", "Text"],
+
+Cell[BoxData[{
+    \(\(myzeromatrix = \[IndentingNewLine]{mymatrix[\([1]\)], \
+\[IndentingNewLine]mymatrix[\([2]\)], \[IndentingNewLine]p*
+              mymatrix[\([1]\)]\  + \ q*mymatrix[\([2]\)]\  + \ 
+            r*mymatrix[\([4]\)], \[IndentingNewLine]mymatrix[\([4]\)]};\)\), \
+"\[IndentingNewLine]", 
+    \(myzeromatrix // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    \(Det[myzeromatrix]\)], "Input"],
+
+Cell[BoxData[
+    \(LinearSolve[myzeromatrix, myb]\)], "Input"],
+
+Cell[TextData[{
+  "This was not expected to have a solution because one of four equations in \
+the system was a linear combination of others in the system. Effectively, we \
+were asking ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " to solve a system of ",
+  StyleBox["three",
+    FontSlant->"Italic"],
+  " equations in four unknowns. The ",
+  StyleBox["rank",
+    FontSlant->"Italic"],
+  " of a square matrix of coefficients is equal to the number of linearly \
+independent equations in the system. The ",
+  StyleBox["null space",
+    FontSlant->"Italic"],
+  " of the matrix will be empty when the equations are all linearly \
+independent."
+}], "Text"],
+
+Cell[BoxData[{
+    \(MatrixRank[mymatrix]\), "\[IndentingNewLine]", 
+    \(MatrixRank[myzeromatrix]\)}], "Input",
+  CellTags->"mtag:07:MatrixRank[]"],
+
+Cell[BoxData[{
+    \(NullSpace[mymatrix]\), "\[IndentingNewLine]", 
+    \(NullSpace[myzeromatrix]\)}], "Input",
+  CellTags->"mtag:07:NullSpace[]"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Try solving this inhomogeneous system of equations using ",
+  StyleBox["Solve",
+    FontWeight->"Bold"],
+  ":"
+}], "Subsection"],
+
+Cell[BoxData[
+    \(zerolhs = \ myzeromatrix . myx\)], "Input"],
+
+Cell[BoxData[
+    \(zerolinsys[i_Integer]\  := \ 
+      zerolhs[\([i]\)]\  == \ myb[\([i]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(Table[zerolinsys[i], {i, 4}] // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    \(zerolinsol\  = Solve[Table[zerolinsys[i], {i, 4}], myx]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "No solution, as expected,  Let's see what happens if we ask ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " to solve the homogeneous problem:"
+}], "Subsection"],
+
+Cell[BoxData[
+    \(zerolinsol\  = 
+      Solve[Table[
+          zerolinsys[i] /. {a \[Rule] 0, b \[Rule] 0, c \[Rule] 0, 
+              d \[Rule] 0}, {i, 4}], myx]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "In this case, ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " gives a relationship between the variables, but because there are fewer \
+equations than variables, there is still no unique solution."
+}], "Subsection"],
+
+Cell["Determinants", "Subtitle"],
+
+Cell[BoxData[
+    \(Clear[rv]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Start by building a routine to make vectors containing six random \
+numbers on the interval {-1,1}:\
+\>", "Subsection"],
+
+Cell[BoxData[
+    \(rv[i_]\  := \ \(rv[i]\  = 
+        Table[Random[Real, {\(-1\), 1}], {j, 6}]\)\)], "Input"],
+
+Cell[BoxData[
+    \(rv[1]\)], "Input"],
+
+Cell[BoxData[
+    \(rv[2]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Now use ",
+  StyleBox["rv",
+    FontWeight->"Bold"],
+  " to make a 6 x 6 matrix, then find its determinant:"
+}], "Subsection"],
+
+Cell[BoxData[
+    \(randmat\  = \ Table[rv[i], {i, 6}]\)], "Input"],
+
+Cell[BoxData[
+    \(Det[randmat]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Switching two rows changes the sign but not the magnitude of the \
+determinant:\
+\>", "Subsection"],
+
+Cell[BoxData[
+    \(Det[{rv[2], rv[1], rv[3], rv[4], rv[5], rv[6]}]\)], "Input",
+  CellTags->"mtag:07:Det[]__and_properties_of_determinants"],
+
+Cell[BoxData[
+    \(Det[{rv[3], rv[1], rv[2], rv[4], rv[5], rv[6]}]\)], "Input"],
+
+Cell["Multiply one row by a constant and calculate determinant:", "Text"],
+
+Cell[BoxData[{
+    \(Clear[a]\), "\[IndentingNewLine]", 
+    \(Det[{a*rv[2], rv[1], rv[3], rv[4], rv[5], rv[6]}]\)}], "Input"],
+
+Cell["Multiply two rows by a constant and calculate determinant:", "Text"],
+
+Cell[BoxData[
+    \(Det[{a*rv[2], a*rv[1], rv[3], rv[4], rv[5], rv[6]}]\)], "Input"],
+
+Cell["Multiply all rows by a constant and calculate determinant:", "Text"],
+
+Cell[BoxData[
+    \(Det[a {rv[2], rv[1], rv[3], rv[4], rv[5], rv[6]}]\)], "Input"],
+
+Cell[BoxData[
+    \(Clear[a, b, c, d, e]\)], "Input"],
+
+Cell[BoxData[
+    \(lindepvec\  = \ 
+      a*rv[1]\  + \ b*rv[2]\  + \ c*rv[3]\  + \ d*rv[4]\  + \ 
+        e*rv[5]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Example of numerical precision: if one row of a 6 x 6 matrix is a \
+linear combination of the other five rows, its determinant should evaluate to \
+zero\[Ellipsis]\
+\>", "Subsection"],
+
+Cell[BoxData[
+    \(Det[{rv[1], rv[2], rv[3], rv[4], rv[5], lindepvec}]\)], "Input",
+  CellTags->"mtag:07:Det[]__and_numerical_precision"],
+
+Cell[BoxData[
+    \(Chop[Det[{rv[1], rv[2], rv[3], rv[4], rv[5], lindepvec}]]\)], "Input",
+  CellTags->{
+  "mtag:07:Det[]__and_numerical_precision", 
+    "mtag:07:Chop[]__and_numerical_precision"}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Showing that the determinant of a product of matrices is the \
+product of determinants\
+\>", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Creating a symbolic matrix", "Subsection"],
+
+Cell[BoxData[
+    \(\(symvec\  = \ {a, a, a, c, c, c};\)\)], "Input"],
+
+Cell[BoxData[{
+    \(permuts\  = \ Permutations[symvec]\), "\[IndentingNewLine]", 
+    \(permuts // Dimensions\)}], "Input",
+  CellTags->"mtag:07Permutations[]"],
+
+Cell[BoxData[{
+    \(\(symbmat\  = \ {\[IndentingNewLine]\t
+          permuts[\([1]\)], \[IndentingNewLine]\t
+          permuts[\([12]\)], \[IndentingNewLine]\t
+          permuts[\([6]\)], \[IndentingNewLine]\t
+          permuts[\([18]\)], \[IndentingNewLine]\t
+          permuts[\([17]\)], \[IndentingNewLine]\t
+          permuts[\([9]\)]\[IndentingNewLine]};\)\), "\[IndentingNewLine]", 
+    \(symbmat // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    \(detsymbmat\  = \ Simplify[Det[symbmat]]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Creating a matrix of rational numbers", "Subsection"],
+
+Cell[BoxData[{
+    \(\(randommat\  = \ 
+        Table[Table[
+            Random[Integer, {\(-100\), 100}]\/Random[Integer, {\(-100\), \
+100}], {i, 6}], {j, 6}];\)\), "\[IndentingNewLine]", 
+    \(randommat // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    \(detrandomat\  = \ Det[randommat]\)], "Input"],
+
+Cell[BoxData[
+    \(checka\  = Det[symbmat . randommat] // Simplify\)], "Input"],
+
+Cell[BoxData[
+    \(detrandomat*detsymbmat\ \  == \ checka\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Does the determinant of a product depend on the order of \
+multiplication?\
+\>", "Subsection"],
+
+Cell[BoxData[
+    \(checkb\  = Det[randommat . symbmat] // Simplify\)], "Input"],
+
+Cell[BoxData[
+    \(checka \[Equal] checkb\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+However, the product of two matrices depends on which matrix is on \
+the left and which is on the right\
+\>", "Subsection"],
+
+Cell[BoxData[
+    \(\(\((randommat . symbmat\  - \ symbmat . randommat)\) // Simplify\) // 
+      MatrixForm\)], "Input"],
+
+Cell["Linear Transformations", "Subtitle"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "We now demonstrate the use of matrix multiplication for manipulating an \
+object, specifically an octohedron. The Octahedron is made up of eight \
+polygons and the initial coordinates of the vertices were set to make a \
+regular octahedron with its main diagonals parallel to axes ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  ",",
+  StyleBox["y",
+    FontSlant->"Italic"],
+  ",",
+  StyleBox["z",
+    FontSlant->"Italic"],
+  ". The faces of the octahedron are colored so that rotations and other \
+transformations can be easily tracked."
+}], "Subsection",
+  CellTags->{
+  "mtag:07:polyhedra__graphica_example_of_linear_transformations", 
+    "mtag:07:linear_transformations__on_polyhedra"}],
+
+Cell[BoxData[
+    \(<< Graphics`Polyhedra`\)], "Input",
+  CellTags->"mtag:07:Polyhedra_package"],
+
+Cell[BoxData[
+    \(Show[Polyhedron[Octahedron]]\)], "Input"],
+
+Cell[BoxData[
+    \(Show[Polyhedron[Octahedron], 
+      ViewPoint -> {\(-0.007\), \ \(-1.995\), \ \(-0.135\)}]\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(Polyhedron[Octahedron] // InputForm\)\(\[IndentingNewLine]\)
+    \)\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "The object ",
+  StyleBox["coloct",
+    FontWeight->"Bold"],
+  " is defined below to draw an octahedron and it invokes the ",
+  StyleBox["Polygon",
+    FontWeight->"Bold"],
+  " function to draw the triangular faces by connecting three points at \
+specific numerical coordinates. Note that each triangles' three vertices are \
+each specified by a vector."
+}], "Subsection",
+  CellTags->"mtag:07:Polyhedra__example_of_coloring_faces_manually"],
+
+Cell[BoxData[{
+    \(\(Clear[coloct];\)\), "\[IndentingNewLine]", 
+    \(coloct = 
+      Graphics3D[{\[IndentingNewLine]{Hue[0/8], 
+            Polygon[{{0. , 0. , 1.4142135623730951}, {1.4142135623730951, 
+                  0. , 0. }, {0. , 1.4142135623730951, 0. }}]}, {Hue[1/8], 
+            Polygon[{{0. , 0. , 1.4142135623730951}, {0. , 
+                  1.4142135623730951, 0. }, {\(-1.4142135623730951\), 0. , 
+                  0. }}]}, {Hue[2/8], 
+            Polygon[{{0. , 0. , 
+                  1.4142135623730951}, {\(-1.4142135623730951\), 0. , 
+                  0. }, {0. , \(-1.4142135623730951\), 0. }}]}, {Hue[3/8], 
+            Polygon[{{0. , 0. , 
+                  1.4142135623730951}, {0. , \(-1.4142135623730951\), 
+                  0. }, {1.4142135623730951, 0. , 0. }}]}, {Hue[4/8], 
+            Polygon[{{1.4142135623730951, 0. , 
+                  0. }, {0. , \(-1.4142135623730951\), 0. }, {0. , 
+                  0. , \(-1.4142135623730951\)}}]}, {Hue[5/8], 
+            Polygon[{{1.4142135623730951, 0. , 0. }, {0. , 
+                  0. , \(-1.4142135623730951\)}, {0. , 1.4142135623730951, 
+                  0. }}]}, {Hue[6/8], 
+            Polygon[{{0. , 
+                  0. , \(-1.4142135623730951\)}, {0. , \
+\(-1.4142135623730951\), 0. }, {\(-1.4142135623730951\), 0. , 0. }}]}, {Hue[
+              7/8], Polygon[{{0. , 1.4142135623730951, 0. }, {0. , 
+                  0. , \(-1.4142135623730951\)}, {\(-1.4142135623730951\), 
+                  0. , 0. }}]}}, {AmbientLight \[Rule] GrayLevel[0], 
+          AspectRatio \[Rule] 1, Axes \[Rule] False, 
+          AxesEdge \[Rule] Automatic, AxesLabel \[Rule] None, 
+          AxesStyle \[Rule] Automatic, Background \[Rule] Automatic, 
+          Boxed \[Rule] True, BoxRatios \[Rule] Automatic, 
+          BoxStyle \[Rule] Automatic, ColorOutput \[Rule] Automatic, 
+          DefaultColor \[Rule] Automatic, Epilog \[Rule] {}, 
+          FaceGrids \[Rule] None, ImageSize \[Rule] Automatic, 
+          Lighting \[Rule] True, 
+          LightSources \[Rule] {{{1. , 0. , 1. }, 
+                RGBColor[1, 0, 0]}, {{1. , 1. , 1. }, 
+                RGBColor[0, 1, 0]}, {{0. , 1. , 1. }, RGBColor[0, 0, 1]}}, 
+          Plot3Matrix \[Rule] Automatic, PlotLabel \[Rule] None, 
+          PlotRange \[Rule] All, PlotRegion \[Rule] Automatic, 
+          PolygonIntersections \[Rule] True, Prolog \[Rule] {}, 
+          RenderAll \[Rule] True, Shading \[Rule] True, 
+          SphericalRegion \[Rule] True, Ticks \[Rule] Automatic, 
+          ViewCenter \[Rule] Automatic, 
+          ViewPoint \[Rule] {1.3, \(-2.4\), 2. }, 
+          ViewVertical \[Rule] {0. , 0. , 1. }, 
+          DefaultFont \[RuleDelayed] $DefaultFont, 
+          DisplayFunction \[RuleDelayed] $DisplayFunction, 
+          FormatType \[RuleDelayed] $FormatType, 
+          TextStyle \[RuleDelayed] $TextStyle}]\)}], "Input"],
+
+Cell[BoxData[
+    \(Show[coloct, Lighting \[Rule] False]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Now a matrix ",
+  StyleBox["tmat",
+    FontWeight->"Bold"],
+  " is defined that will operate on the coordinate vectors fed to the ",
+  StyleBox["Polygon",
+    FontWeight->"Bold"],
+  " function in ",
+  StyleBox["coloct",
+    FontWeight->"Bold"],
+  ". In this first example, each ",
+  StyleBox["z",
+    FontSlant->"Italic"],
+  " coordinate will be changed to ",
+  StyleBox["-z",
+    FontSlant->"Italic"],
+  ":"
+}], "Subsection"],
+
+Cell[BoxData[{
+    \(\(Clear[tmat];\)\), "\[IndentingNewLine]", 
+    \(\(tmat = \ {{1, 0, 0}, {0, 1, 0}, \ {0, 
+            0, \(-1\)}};\)\), "\[IndentingNewLine]", 
+    \(tmat // MatrixForm\)}], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "The ",
+  StyleBox["Replace",
+    FontWeight->"Bold"],
+  " is used to modify the coordinates fed to the ",
+  StyleBox["Polygon",
+    FontWeight->"Bold"],
+  " function in ",
+  StyleBox["coloct",
+    FontWeight->"Bold"],
+  " by matrix multiplication of the vertex vectors:"
+}], "Subsection"],
+
+Cell[BoxData[
+    \(Show[
+      coloct /. {Polygon[{a_List\ , \ b_List\ , \ c_List}] \[Rule] 
+            Polygon[{tmat . a, tmat . b, tmat . c}]}, 
+      Lighting \[Rule] False]\)], "Input",
+  CellTags->{
+  "mtag:07:Polyhedra__example_of_matrix_transformation", 
+    "mtag:07:Permutations[]"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "The program ",
+  StyleBox["seetrans",
+    FontWeight->"Bold"],
+  " does the same thing by feeding a matrix ",
+  StyleBox["tranmat",
+    FontWeight->"Bold"],
+  " to operate on the vertex vectors before ",
+  StyleBox["Polygon",
+    FontWeight->"Bold"],
+  " is executed:"
+}], "Subsection"],
+
+Cell[BoxData[
+    \(seetrans[tranmat_] := \ 
+      Show[coloct /. {Polygon[{a_List\ , \ b_List\ , \ c_List}] \[Rule] 
+              Polygon[{tranmat . a, tranmat . b, tranmat . c}]}, 
+        Lighting \[Rule] False]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "When",
+  " ",
+  StyleBox["tranmat",
+    FontWeight->"Bold"],
+  " is the identity matrix, the octagon is rendered in its initial \
+orientation."
+}], "Subsection"],
+
+Cell[BoxData[
+    \(seetrans[{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "The next command rotates the octagon by 45\[Degree] about the vertical (",
+  StyleBox["z",
+    FontSlant->"Italic"],
+  ") axis\[Ellipsis]"
+}], "Subsection"],
+
+Cell[BoxData[
+    \(seetrans[{{Cos[Pi/4], Sin[Pi/4], 0}, {Sin[\(-Pi\)/4], Cos[Pi/4], 
+          0}, {0, 0, 1}}]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "And the next command both rotates it 180\[Degree] about ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  " and ",
+  StyleBox["y",
+    FontSlant->"Italic"],
+  " ",
+  "and stretches it by a factor of 5 along ",
+  StyleBox["z",
+    FontSlant->"Italic"],
+  "."
+}], "Subsection"],
+
+Cell[BoxData[
+    \(seetrans[{{\(-1\), 0, 0}, {0, \(-1\), 0}, {0, 0, 5}}]\)], "Input"]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{45, 1920}, {0, 1178}},
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{1400, 919},
+WindowMargins->{{136, Automatic}, {Automatic, 53}},
+WindowTitle->"Lecture 07 MIT 3.016 (Fall 2005)  \[Copyright] W. Craig Carter \
+2003-2005",
+ShowSelection->True,
+CellLabelAutoDelete->True,
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "mtag:07:systems_of_linear_equations__existence_and_uniqueness"->{
+    Cell[1754, 51, 143, 1, 60, "Title",
+      CellTags->
+      "mtag:07:systems_of_linear_equations__existence_and_uniqueness"]},
+  "mtag:07:systems_of_linear_equations__existence_and_determinants"->{
+    Cell[2904, 93, 168, 4, 59, "Input",
+      CellTags->{
+      "mtag:07:systems_of_linear_equations__existence_and_determinants", 
+        "mtag:07:Det[]__and_uniqueness"}]},
+  "mtag:07:Det[]__and_uniqueness"->{
+    Cell[2904, 93, 168, 4, 59, "Input",
+      CellTags->{
+      "mtag:07:systems_of_linear_equations__existence_and_determinants", 
+        "mtag:07:Det[]__and_uniqueness"}]},
+  "mtag:07:systems_of_linear_equations__creating_from_matrices_and_vectors"->{\
+
+    Cell[4339, 153, 249, 7, 88, "Subsection",
+      CellTags->
+      "mtag:07:systems_of_linear_equations__creating_from_matrices_and_\
+vectors"]},
+  "mtag:07:LinearSolve[]_solutions_without_direct_computation_of_matrix_\
+inverse"->{
+    Cell[5004, 182, 156, 4, 59, "Input",
+      CellTags->
+      "mtag:07:LinearSolve[]_solutions_without_direct_computation_of_matrix_\
+inverse"]},
+  "mtag:07:Inverse[]"->{
+    Cell[5453, 200, 103, 2, 59, "Input",
+      CellTags->"mtag:07:Inverse[]"]},
+  "mtag:07:MatrixRank[]"->{
+    Cell[6879, 248, 149, 3, 98, "Input",
+      CellTags->"mtag:07:MatrixRank[]"]},
+  "mtag:07:NullSpace[]"->{
+    Cell[7031, 253, 146, 3, 98, "Input",
+      CellTags->"mtag:07:NullSpace[]"]},
+  "mtag:07:Det[]__and_properties_of_determinants"->{
+    Cell[9271, 354, 141, 2, 77, "Input",
+      CellTags->"mtag:07:Det[]__and_properties_of_determinants"]},
+  "mtag:07:Det[]__and_numerical_precision"->{
+    Cell[10446, 394, 138, 2, 77, "Input",
+      CellTags->"mtag:07:Det[]__and_numerical_precision"],
+    Cell[10587, 398, 197, 4, 77, "Input",
+      CellTags->{
+      "mtag:07:Det[]__and_numerical_precision", 
+        "mtag:07:Chop[]__and_numerical_precision"}]},
+  "mtag:07:Chop[]__and_numerical_precision"->{
+    Cell[10587, 398, 197, 4, 77, "Input",
+      CellTags->{
+      "mtag:07:Det[]__and_numerical_precision", 
+        "mtag:07:Chop[]__and_numerical_precision"}]},
+  "mtag:07Permutations[]"->{
+    Cell[11094, 420, 161, 3, 98, "Input",
+      CellTags->"mtag:07Permutations[]"]},
+  "mtag:07:polyhedra__graphica_example_of_linear_transformations"->{
+    Cell[12979, 490, 710, 18, 144, "Subsection",
+      CellTags->{
+      "mtag:07:polyhedra__graphica_example_of_linear_transformations", 
+        "mtag:07:linear_transformations__on_polyhedra"}]},
+  "mtag:07:linear_transformations__on_polyhedra"->{
+    Cell[12979, 490, 710, 18, 144, "Subsection",
+      CellTags->{
+      "mtag:07:polyhedra__graphica_example_of_linear_transformations", 
+        "mtag:07:linear_transformations__on_polyhedra"}]},
+  "mtag:07:Polyhedra_package"->{
+    Cell[13692, 510, 96, 2, 77, "Input",
+      CellTags->"mtag:07:Polyhedra_package"]},
+  "mtag:07:Polyhedra__example_of_coloring_faces_manually"->{
+    Cell[14122, 528, 459, 11, 122, "Subsection",
+      CellTags->"mtag:07:Polyhedra__example_of_coloring_faces_manually"]},
+  "mtag:07:Polyhedra__example_of_matrix_transformation"->{
+    Cell[18577, 639, 294, 7, 77, "Input",
+      CellTags->{
+      "mtag:07:Polyhedra__example_of_matrix_transformation", 
+        "mtag:07:Permutations[]"}]},
+  "mtag:07:Permutations[]"->{
+    Cell[18577, 639, 294, 7, 77, "Input",
+      CellTags->{
+      "mtag:07:Polyhedra__example_of_matrix_transformation", 
+        "mtag:07:Permutations[]"}]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"mtag:07:systems_of_linear_equations__existence_and_uniqueness", 21384, \
+742},
+  {"mtag:07:systems_of_linear_equations__existence_and_determinants", 21585, \
+746},
+  {"mtag:07:Det[]__and_uniqueness", 21798, 751},
+  {"mtag:07:systems_of_linear_equations__creating_from_matrices_and_vectors", \
+22053, 756},
+  {"mtag:07:LinearSolve[]_solutions_without_direct_computation_of_matrix_\
+inverse", 22289, 763},
+  {"mtag:07:Inverse[]", 22462, 768},
+  {"mtag:07:MatrixRank[]", 22570, 771},
+  {"mtag:07:NullSpace[]", 22680, 774},
+  {"mtag:07:Det[]__and_properties_of_determinants", 22815, 777},
+  {"mtag:07:Det[]__and_numerical_precision", 22969, 780},
+  {"mtag:07:Chop[]__and_numerical_precision", 23280, 787},
+  {"mtag:07Permutations[]", 23472, 792},
+  {"mtag:07:polyhedra__graphica_example_of_linear_transformations", 23626, \
+795},
+  {"mtag:07:linear_transformations__on_polyhedra", 23876, 800},
+  {"mtag:07:Polyhedra_package", 24107, 805},
+  {"mtag:07:Polyhedra__example_of_coloring_faces_manually", 24256, 808},
+  {"mtag:07:Polyhedra__example_of_matrix_transformation", 24439, 811},
+  {"mtag:07:Permutations[]", 24628, 816}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 143, 1, 60, "Title",
+  CellTags->"mtag:07:systems_of_linear_equations__existence_and_uniqueness"],
+Cell[1900, 54, 42, 0, 52, "Subtitle"],
+Cell[1945, 56, 265, 8, 188, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[2235, 68, 149, 5, 78, "Subsection"],
+Cell[2387, 75, 292, 5, 164, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2716, 85, 185, 6, 78, "Subsection"],
+Cell[2904, 93, 168, 4, 59, "Input",
+  CellTags->{
+  "mtag:07:systems_of_linear_equations__existence_and_determinants", 
+    "mtag:07:Det[]__and_uniqueness"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3109, 102, 292, 6, 89, "Subsection"],
+Cell[3404, 110, 58, 1, 59, "Input"],
+Cell[3465, 113, 60, 1, 59, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3562, 119, 70, 0, 78, "Subsection"],
+Cell[3635, 121, 62, 1, 59, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3734, 127, 74, 0, 78, "Subsection"],
+Cell[3811, 129, 115, 2, 80, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3963, 136, 201, 6, 78, "Subsection"],
+Cell[4167, 144, 90, 1, 59, "Input"],
+Cell[4260, 147, 42, 1, 59, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4339, 153, 249, 7, 88, "Subsection",
+  CellTags->
+  "mtag:07:systems_of_linear_equations__creating_from_matrices_and_vectors"],
+Cell[4591, 162, 111, 2, 59, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4739, 169, 210, 8, 78, "Subsection"],
+Cell[4952, 179, 49, 1, 59, "Input"],
+Cell[5004, 182, 156, 4, 59, "Input",
+  CellTags->
+  "mtag:07:LinearSolve[]_solutions_without_direct_computation_of_matrix_\
+inverse"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5197, 191, 253, 7, 87, "Subsection"],
+Cell[5453, 200, 103, 2, 59, "Input",
+  CellTags->"mtag:07:Inverse[]"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5593, 207, 45, 0, 84, "Section"],
+Cell[5641, 209, 92, 3, 59, "Text"],
+Cell[5736, 214, 353, 6, 164, "Input"],
+Cell[6092, 222, 50, 1, 77, "Input"],
+Cell[6145, 225, 63, 1, 77, "Input"],
+Cell[6211, 228, 665, 18, 140, "Text"],
+Cell[6879, 248, 149, 3, 98, "Input",
+  CellTags->"mtag:07:MatrixRank[]"],
+Cell[7031, 253, 146, 3, 98, "Input",
+  CellTags->"mtag:07:NullSpace[]"],
+
+Cell[CellGroupData[{
+Cell[7202, 260, 147, 5, 78, "Subsection"],
+Cell[7352, 267, 63, 1, 77, "Input"],
+Cell[7418, 270, 105, 2, 77, "Input"],
+Cell[7526, 274, 75, 1, 77, "Input"],
+Cell[7604, 277, 88, 1, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7729, 283, 190, 5, 78, "Subsection"],
+Cell[7922, 290, 177, 4, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8136, 299, 245, 6, 100, "Subsection"],
+Cell[8384, 307, 32, 0, 52, "Subtitle"],
+Cell[8419, 309, 42, 1, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8498, 315, 129, 3, 78, "Subsection"],
+Cell[8630, 320, 110, 2, 77, "Input"],
+Cell[8743, 324, 38, 1, 77, "Input"],
+Cell[8784, 327, 38, 1, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8859, 333, 145, 5, 78, "Subsection"],
+Cell[9007, 340, 67, 1, 77, "Input"],
+Cell[9077, 343, 45, 1, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[9159, 349, 109, 3, 78, "Subsection"],
+Cell[9271, 354, 141, 2, 77, "Input",
+  CellTags->"mtag:07:Det[]__and_properties_of_determinants"],
+Cell[9415, 358, 80, 1, 77, "Input"],
+Cell[9498, 361, 73, 0, 59, "Text"],
+Cell[9574, 363, 126, 2, 80, "Input"],
+Cell[9703, 367, 74, 0, 59, "Text"],
+Cell[9780, 369, 84, 1, 77, "Input"],
+Cell[9867, 372, 74, 0, 59, "Text"],
+Cell[9944, 374, 82, 1, 77, "Input"],
+Cell[10029, 377, 53, 1, 77, "Input"],
+Cell[10085, 380, 128, 3, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10250, 388, 193, 4, 100, "Subsection"],
+Cell[10446, 394, 138, 2, 77, "Input",
+  CellTags->"mtag:07:Det[]__and_numerical_precision"],
+Cell[10587, 398, 197, 4, 77, "Input",
+  CellTags->{
+  "mtag:07:Det[]__and_numerical_precision", 
+    "mtag:07:Chop[]__and_numerical_precision"}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10833, 408, 113, 3, 84, "Section"],
+
+Cell[CellGroupData[{
+Cell[10971, 415, 48, 0, 78, "Subsection"],
+Cell[11022, 417, 69, 1, 77, "Input"],
+Cell[11094, 420, 161, 3, 98, "Input",
+  CellTags->"mtag:07Permutations[]"],
+Cell[11258, 425, 431, 8, 245, "Input"],
+Cell[11692, 435, 72, 1, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[11801, 441, 59, 0, 78, "Subsection"],
+Cell[11863, 443, 233, 5, 128, "Input"],
+Cell[12099, 450, 65, 1, 77, "Input"],
+Cell[12167, 453, 80, 1, 77, "Input"],
+Cell[12250, 456, 71, 1, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[12358, 462, 104, 3, 78, "Subsection"],
+Cell[12465, 467, 80, 1, 77, "Input"],
+Cell[12548, 470, 55, 1, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[12640, 476, 133, 3, 78, "Subsection"],
+Cell[12776, 481, 121, 2, 77, "Input"],
+Cell[12900, 485, 42, 0, 52, "Subtitle"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[12979, 490, 710, 18, 144, "Subsection",
+  CellTags->{
+  "mtag:07:polyhedra__graphica_example_of_linear_transformations", 
+    "mtag:07:linear_transformations__on_polyhedra"}],
+Cell[13692, 510, 96, 2, 77, "Input",
+  CellTags->"mtag:07:Polyhedra_package"],
+Cell[13791, 514, 61, 1, 77, "Input"],
+Cell[13855, 517, 123, 2, 77, "Input"],
+Cell[13981, 521, 104, 2, 98, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[14122, 528, 459, 11, 122, "Subsection",
+  CellTags->"mtag:07:Polyhedra__example_of_coloring_faces_manually"],
+Cell[14584, 541, 2885, 49, 434, "Input"],
+Cell[17472, 592, 69, 1, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[17578, 598, 445, 17, 100, "Subsection"],
+Cell[18026, 617, 204, 4, 119, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[18267, 626, 307, 11, 100, "Subsection"],
+Cell[18577, 639, 294, 7, 77, "Input",
+  CellTags->{
+  "mtag:07:Polyhedra__example_of_matrix_transformation", 
+    "mtag:07:Permutations[]"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[18908, 651, 305, 11, 100, "Subsection"],
+Cell[19216, 664, 228, 4, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[19481, 673, 180, 7, 78, "Subsection"],
+Cell[19664, 682, 76, 1, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[19777, 688, 175, 5, 78, "Subsection"],
+Cell[19955, 695, 124, 2, 77, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[20116, 702, 291, 12, 78, "Subsection"],
+Cell[20410, 716, 86, 1, 77, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

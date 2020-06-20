@@ -1,0 +1,848 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     20203,        573]*)
+(*NotebookOutlinePosition[     26402,        724]*)
+(*  CellTagsIndexPosition[     25014,        692]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["Complex Numbers/Complex Plane", "Title"],
+
+Cell["Background", "Subtitle"],
+
+Cell["The positive square root of -1", "Text",
+  FontWeight->"Plain",
+  CellTags->"mmtag:08:imaginary_numbers__representations_of"],
+
+Cell[BoxData[
+    \(imaginary\  = Sqrt[\(-1\)]\)], "Input"],
+
+Cell[BoxData[
+    \(\((\(-imaginary\))\)^2\)], "Input"],
+
+Cell["\<\
+Complex numbers are composed of a real part + an imaginary \
+part\
+\>", "Text",
+  FontWeight->"Plain",
+  CellTags->"mmtag:08:complex_numbers__representations_of"],
+
+Cell[BoxData[{
+    \(\(z1\  = \ a\  + \ \[ImaginaryI]\ b;\)\), "\[IndentingNewLine]", 
+    \(\(z2 = \ c\  + \ \[ImaginaryI]\ d;\)\)}], "Input"],
+
+Cell["Simple operations on complex numbers", "Text",
+  FontWeight->"Plain"],
+
+Cell[BoxData[
+    \(\(compadd\  = \ z1\  + \ z2;\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(compmult\  = \ z1*z2;\)\)], "Input"],
+
+Cell[BoxData[
+    \(Simplify[compmult, 
+      a \[Element] \ Reals\  && \ b \[Element] \ Reals\  && 
+        c\  \[Element] \ Reals\  && \ d\  \[Element] \ Reals\ ]\)], "Input",
+  CellTags->{
+  "mmtag:08:complex_numbers__simplfying", 
+    "mmtag:08:Simplify[]__complex_numbers"}],
+
+Cell["\<\
+Mathematica does not assume that symbols are necessarily \
+real...\
+\>", "Text",
+  FontWeight->"Plain"],
+
+Cell[BoxData[{
+    \(Re[compadd]\), "\[IndentingNewLine]", 
+    \(Im[compadd]\)}], "Input",
+  CellTags->{"mmtag:08:Im[]", "mmtag:08:Re[]"}],
+
+Cell[TextData[{
+  "However, the ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " function ",
+  StyleBox["ComplexExpand",
+    FontWeight->"Bold"],
+  " does assume that the variables are real...."
+}], "Text",
+  FontWeight->"Plain"],
+
+Cell[BoxData[
+    \(ComplexExpand[Re[compadd]]\)], "Input",
+  CellTags->"mmtag:08:ComplexExpand[]"],
+
+Cell[BoxData[
+    \(ComplexExpand[Im[compadd]]\)], "Input"],
+
+Cell[BoxData[
+    \(ComplexExpand[Re[z1/z2]]\)], "Input",
+  CellTags->"mmtag:08:complex_numbers__division"],
+
+Cell[BoxData[
+    \(ComplexExpand[compmult]\)], "Input",
+  CellTags->"mmtag:08:complex_numbers__multiplication"],
+
+Cell[BoxData[{
+    \(ComplexExpand[Re[z1^3]]\), "\[IndentingNewLine]", 
+    \(ComplexExpand[Im[z1^3]]\)}], "Input"],
+
+Cell["Function to convert to Polar Form", "Subtitle"],
+
+Cell[BoxData[
+    \(Pform[z_]\  := \ Abs[z]\ Exp[\[ImaginaryI]\ Arg[z]]\)], "Input",
+  CellTags->{
+  "mmtag:08:complex_numbers__polar_form", 
+    "mmtag:08:functions__example_of_conversion_of_complex_number_to_polar_\
+form"}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Note: the function ",
+  StyleBox["Arg[z]",
+    FontWeight->"Bold"],
+  " returns an angle in the range -\[Pi] to \[Pi] which measures the \
+inclination of ",
+  StyleBox["z",
+    FontSlant->"Italic"],
+  " with respect to the +Re axis in the complex plane."
+}], "Subsubsection"],
+
+Cell[BoxData[
+    \(Pform[z1]\)], "Input"],
+
+Cell[BoxData[
+    \(Pform[z1 /. {a \[Rule] 2, b \[Rule] \(-\[Pi]\)}]\)], "Input"],
+
+Cell[BoxData[
+    \(ComplexExpand[Pform[z1]]\)], "Input"],
+
+Cell["Numerical Precision and Complex Rounding", "Subtitle"],
+
+Cell[BoxData[
+    \(ExactlyOne\  = \ Exp[2\ \[Pi]\ \[ImaginaryI]]\)], "Input",
+  CellTags->"mmtag:08:complex_numbers__numerical_precision"],
+
+Cell[BoxData[
+    \(NumericallyOne\  = Exp[N[2\ \[Pi]\ \[ImaginaryI]]]\)], "Input"],
+
+Cell[BoxData[
+    \(Chop[NumericallyOne]\)], "Input",
+  CellTags->"mmtag:08:Chop[]"],
+
+Cell[BoxData[
+    \(Round[NumericallyOne]\)], "Input",
+  CellTags->"mmtag:08:Round[]"],
+
+Cell[BoxData[
+    \(ExactlyI\  = \ Exp[\[Pi]\ \[ImaginaryI]/2]\)], "Input"],
+
+Cell[BoxData[
+    \(NumericallyI\  = \ Exp[N[\[Pi]\ \[ImaginaryI]/2]]\)], "Input"],
+
+Cell[BoxData[
+    \(Round[NumericallyI]\)], "Input"],
+
+Cell[BoxData[
+    \(Chop[NumericallyI]\)], "Input"],
+
+Cell[BoxData[
+    \(ExactlyOnePlusI\  = \ 
+      ComplexExpand[\(\@2\) Exp[\[Pi]\ \ \[ImaginaryI]/4]]\)], "Input"],
+
+Cell[BoxData[
+    \(NumericallyOnePlusI\  = \ 
+      ComplexExpand[\(\@2\) Exp[N[\[Pi]\ \ \[ImaginaryI]/4]]]\)], "Input"],
+
+Cell[BoxData[
+    \(Chop[NumericallyOnePlusI]\)], "Input"],
+
+Cell[BoxData[
+    \(Round[NumericallyOnePlusI]\)], "Input"],
+
+Cell[BoxData[
+    \(Re[NumericallyOnePlusI]\)], "Input"],
+
+Cell[BoxData[
+    \(Im[NumericallyOnePlusI]\)], "Input"],
+
+Cell["Roots to Polynomial Equations", "Subtitle"],
+
+Cell["\<\
+Complex numbers frequently appear in the solution of roots to \
+polynomial equations:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(sols\  = \ 
+      Solve[\((x^4\  - x^3\  + x\  + 1)\)\  \[Equal] \ 0, x]\)], "Input",
+  CellTags->{
+  "mmtag:08:Solve[]", 
+    "mmtag:08:roots_of_polynomial_equations__example_with_complex_roots"}],
+
+Cell["\<\
+The next statement produces a list of the complex solutions of the \
+polynomial:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(x /. sols\)], "Input"],
+
+Cell[BoxData[
+    \(Im[x /. sols]\)], "Input"],
+
+Cell[BoxData[
+    \(ComplexExpand[Im[x /. sols]]\)], "Input"],
+
+Cell[BoxData[
+    \(ComplexExpand[Im[x /. sols]] // N\)], "Input"],
+
+Cell[BoxData[
+    \(ComplexExpand[Re[x /. sols]] // N\)], "Input"],
+
+Cell[TextData[{
+  "Generalize the above to a family of solutions: find ",
+  StyleBox["b",
+    FontSlant->"Italic"],
+  " such that imaginary part of the solution vanishes"
+}], "Text"],
+
+Cell[BoxData[
+    \(bsols\  = \ 
+      Solve[\((x^4\  - x^3\  + b*x\  + 1)\)\  \[Equal] \ 0, x]\)], "Input",
+  CellTags->
+  "mmtag:08:roots_of_polynomial_equations__example_of_plotting_roots"],
+
+Cell["\<\
+This will give a list of rules that can be used to find \
+solutions;as \"b\" is unspecified the rules depend on the symbol \"b\"\
+\>", \
+"Text"],
+
+Cell[BoxData[
+    RowBox[{\(General::"spell1"\), \(\(:\)\(\ \)\), "\<\"Possible spelling \
+error: new symbol name \\\"\\!\\(bsols\\)\\\" is similar to existing symbol \
+\\\"\\!\\(sols\\)\\\". \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::spell1\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    \({{x \[Rule] 
+          1\/4 - 1\/2\ \[Sqrt]\((1\/4 + \(\((2\/3)\)\^\(1/3\)\ \((4 + \
+b)\)\)\/\((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\) + \((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - \
+4\ b\^3 + 27\ b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\))\) - 
+            1\/2\ \[Sqrt]\((1\/2 - \(\((2\/3)\)\^\(1/3\)\ \((4 + b)\)\)\/\((9 \
++ 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\) - \((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - \
+4\ b\^3 + 27\ b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\) - \(1 - 8\ b\)\/\
+\(4\ \@\(1\/4 + \(\((2\/3)\)\^\(1/3\)\ \((4 + b)\)\)\/\((9 + 9\ b\^2 + \@3\ \
+\@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ b\^4\))\)\^\(1/3\) + \((9 + 9\
+\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\)\)\))\)}, {x \[Rule] 
+          1\/4 - 1\/2\ \[Sqrt]\((1\/4 + \(\((2\/3)\)\^\(1/3\)\ \((4 + \
+b)\)\)\/\((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\) + \((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - \
+4\ b\^3 + 27\ b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\))\) + 
+            1\/2\ \[Sqrt]\((1\/2 - \(\((2\/3)\)\^\(1/3\)\ \((4 + b)\)\)\/\((9 \
++ 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\) - \((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - \
+4\ b\^3 + 27\ b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\) - \(1 - 8\ b\)\/\
+\(4\ \@\(1\/4 + \(\((2\/3)\)\^\(1/3\)\ \((4 + b)\)\)\/\((9 + 9\ b\^2 + \@3\ \
+\@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ b\^4\))\)\^\(1/3\) + \((9 + 9\
+\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\)\)\))\)}, {x \[Rule] 
+          1\/4 + 1\/2\ \[Sqrt]\((1\/4 + \(\((2\/3)\)\^\(1/3\)\ \((4 + \
+b)\)\)\/\((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\) + \((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - \
+4\ b\^3 + 27\ b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\))\) - 
+            1\/2\ \[Sqrt]\((1\/2 - \(\((2\/3)\)\^\(1/3\)\ \((4 + b)\)\)\/\((9 \
++ 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\) - \((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - \
+4\ b\^3 + 27\ b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\) + \(1 - 8\ b\)\/\
+\(4\ \@\(1\/4 + \(\((2\/3)\)\^\(1/3\)\ \((4 + b)\)\)\/\((9 + 9\ b\^2 + \@3\ \
+\@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ b\^4\))\)\^\(1/3\) + \((9 + 9\
+\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\)\)\))\)}, {x \[Rule] 
+          1\/4 + 1\/2\ \[Sqrt]\((1\/4 + \(\((2\/3)\)\^\(1/3\)\ \((4 + \
+b)\)\)\/\((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\) + \((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - \
+4\ b\^3 + 27\ b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\))\) + 
+            1\/2\ \[Sqrt]\((1\/2 - \(\((2\/3)\)\^\(1/3\)\ \((4 + b)\)\)\/\((9 \
++ 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\) - \((9 + 9\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - \
+4\ b\^3 + 27\ b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\) + \(1 - 8\ b\)\/\
+\(4\ \@\(1\/4 + \(\((2\/3)\)\^\(1/3\)\ \((4 + b)\)\)\/\((9 + 9\ b\^2 + \@3\ \
+\@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ b\^4\))\)\^\(1/3\) + \((9 + 9\
+\ b\^2 + \@3\ \@\(\(-229\) - 192\ b + 6\ b\^2 - 4\ b\^3 + 27\ \
+b\^4\))\)\^\(1/3\)\/\(2\^\(1/3\)\ 3\^\(2/3\)\)\)\))\)}}\)], "Output"],
+
+Cell["\<\
+Because it is a long set of rules and hard to follow, let's look at \
+the form of bsols:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(Dimensions[bsols]\)], "Input",
+  CellTags->"mmtag:08:Dimensions[]"],
+
+Cell[TextData[{
+  StyleBox["Short",
+    FontWeight->"Bold"],
+  " produces a ",
+  StyleBox["very",
+    FontSlant->"Italic"],
+  " abbreviated form of the solution\[Ellipsis] in this case limited to 3 \
+lines by the optional parameter."
+}], "Text"],
+
+Cell[BoxData[
+    \(Short[bsols, 3]\)], "Input",
+  CellTags->"mmtag:08:Short[]"],
+
+Cell[TextData[{
+  "So we see that ",
+  StyleBox["bsols",
+    FontSlant->"Italic"],
+  " is a list of length 4 of list containing one rule. (Solutions to \
+equations are always this way, it is a list of the number of solutions, each \
+member being a rule for each variable that is solved for...)"
+}], "Text"],
+
+Cell[TextData[{
+  "In our case of one variable, the extra layer of lists is not terribly \
+useful, one way to get rid of the extra layers is to use ",
+  StyleBox["Flatten",
+    FontWeight->"Bold"],
+  ":"
+}], "Text"],
+
+Cell[BoxData[{
+    \(Dimensions[Flatten[bsols]]\), "\[IndentingNewLine]", 
+    \(Short[Flatten[bsols], 3]\)}], "Input",
+  CellTags->"mmtag:08:Flatten[]"],
+
+Cell[TextData[{
+  "In the next command, we produce a list of values (not of rules, because we \
+have taken ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  " and applied every rule in ",
+  StyleBox["bsols",
+    FontSlant->"Italic"],
+  " to it... These values are the imaginary parts of the solutions ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  " that make the polynomial vanish (and a function of ",
+  StyleBox["b",
+    FontSlant->"Italic"],
+  ", because it hasn't been specified yet)"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(imb\  = ComplexExpand[Im[x /. bsols]];\)\)], "Input"],
+
+Cell[BoxData[{
+    \(Dimensions[imb]\), "\[IndentingNewLine]", 
+    \(Short[imb[\([1]\)]]\)}], "Input"],
+
+Cell[TextData[{
+  "And likewise for the real parts of ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  " that solve the polynomial equation"
+}], "Text"],
+
+Cell[BoxData[
+    \(\(imr = ComplexExpand[Re[x /. bsols]];\)\)], "Input"],
+
+Cell[TextData[{
+  StyleBox["Plot[]",
+    FontWeight->"Bold"],
+  " expects a list of functions to plot, The \"",
+  StyleBox["Flatten",
+    FontWeight->"Bold"],
+  "\" function ensures that ",
+  StyleBox["Plot",
+    FontWeight->"Bold"],
+  " is getting a list, but it is redundant in this particular case.  This \
+plot works as follows, for each member in the list, plot the result of \
+replacing ",
+  StyleBox["b",
+    FontSlant->"Italic"],
+  " with ",
+  StyleBox["q",
+    FontSlant->"Italic"],
+  " for values of ",
+  StyleBox["q",
+    FontSlant->"Italic"],
+  " between -10, 10---it is a long-handed way of seeing exactly what is going \
+on and demonstrates the replacement technique.\n\nSo the following should be  \
+a plot of the imaginary values of ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  " as a function of ",
+  StyleBox["b",
+    FontSlant->"Italic"],
+  "."
+}], "Text"],
+
+Cell[BoxData[
+    \(Plot[
+      Evaluate[Flatten[imb] /. b \[Rule] q], {q, \(-10\), 10}]\)], "Input",
+  CellTags->{
+  "mmtag:08:plots__examples_of_modifying", 
+    "mmtag:08:plots__examples_of_effect_of_numerical_noise"}],
+
+Cell["\<\
+In fact, we should be able to do the  same thing without \
+replacement as the following shows, it is probably instructive to show both \
+ways.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(Plot[Evaluate[imb], {b, \(-10\), 10}]\)], "Input"],
+
+Cell[TextData[{
+  "There are a few problems that make it difficult to interpret the \
+graph---one is the numerical noise that makes the solutions\njump back and \
+forth; second, because all the colors are the same,  it is not clear which \
+values of ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  " belong to the same solution.  \n\nLet's first try to make each member of \
+the list (remember, there are 4 because it is a fourth-order polynomial and \
+because ",
+  StyleBox["Dimensions[imb]",
+    FontWeight->"Bold"],
+  " told us so..."
+}], "Text"],
+
+Cell[BoxData[
+    \(Plot[Evaluate[Flatten[imb] /. b \[Rule] q], {q, \(-10\), 10}, 
+      PlotStyle \[Rule] Table[{Hue[1 - a/6]}, {a, 1, 4}]]\)], "Input",
+  CellTags->"mmtag:08:plots__examples_of_adding_color"],
+
+Cell[TextData[{
+  "The plot above is a little better, it looks like the blue curve comes in \
+from the northeast and then then its imaginary part vanishes at a critical \
+values of ",
+  StyleBox["q",
+    FontSlant->"Italic"],
+  " (around -0.5), the cyan curve is probably the minus values of the blue \
+curve... and the same thing for yellow and green.  It is much easier to see \
+the branches of solutions for the real parts below."
+}], "Text"],
+
+Cell[BoxData[
+    \(Plot[Evaluate[Flatten[imr] /. b \[Rule] q], {q, \(-10\), 10}, 
+      PlotStyle \[Rule] Table[{Hue[1 - a/6]}, {a, 1, 4}]]\)], "Input"],
+
+Cell["\<\
+But here, because the lines are the same thickness, we don't know \
+if the cyan and blue curves just \"stop.\" Let's find out by also adjusting \
+their thickness.\
+\>", "Text"],
+
+Cell[BoxData[
+    RowBox[{\(XML`MathML`BoxesToMathML::"notboxes"\), \(\(:\)\(\ \)\), \
+"\<\"\\!\\({\\(\\(RowBox[\\(\\({\\(\\(RowBox[\\(\\({\\\"z1\\\", \\\" \\\", \\\
+\"=\\\", \\\" \\\", \\(\\(RowBox[\\(\\({\\\"a\\\", \\\" \\\", \\\"+\\\", \\\" \
+\\\", \\(\\(RowBox[\\(\\(\[LeftSkeleton] 1 \
+\[RightSkeleton]\\)\\)]\\)\\)}\\)\\)]\\)\\)}\\)\\)]\\)\\), \
+\\\";\\\"}\\)\\)]\\)\\), \\(\\(RowBox[\\(\\({\\(\\(\[LeftSkeleton] 1 \
+\[RightSkeleton]\\)\\), \\\";\\\"}\\)\\)]\\)\\)}\\) is not a valid box \
+structure. The first argument in \\!\\(XML`MathML`BoxesToMathML[\\(\\(\
+\[LeftSkeleton] 1 \[RightSkeleton]\\)\\)]\\) must be a valid box structure. \
+\\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\
+\\\", ButtonFrame->None, ButtonData:>\\\"XML`MathML`BoxesToMathML::notboxes\\\
+\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    RowBox[{\(XML`MathML`BoxesToMathML::"notboxes"\), \(\(:\)\(\ \)\), \
+"\<\"\\!\\({\\(\\(RowBox[\\(\\({\\\"Re\\\", \\\"[\\\", \\\"compadd\\\", \\\"]\
+\\\"}\\)\\)]\\)\\), \\(\\(RowBox[\\(\\({\\\"Im\\\", \\\"[\\\", \
+\\\"compadd\\\", \\\"]\\\"}\\)\\)]\\)\\)}\\) is not a valid box structure. \
+The first argument in \
+\\!\\(XML`MathML`BoxesToMathML[\\(\\(\\(\\({\\(\\(RowBox[\\(\\({\\\"Re\\\", \
+\\\"[\\\", \\\"compadd\\\", \\\"]\\\"}\\)\\)]\\)\\), \
+\\(\\(RowBox[\\(\\({\\\"Im\\\", \\\"[\\\", \\\"compadd\\\", \\\"]\\\"}\\)\\)]\
+\\)\\)}\\)\\), \\(\\(\[LeftSkeleton] 2 \[RightSkeleton]\\)\\), \\(\\(\\(\\(\\\
+\"\\\"\[Ellipsis]\\\"\\\"\\)\\) \[Rule] \
+\\(\\(\\\"\\\"\[Ellipsis]\\\"\\\"\\)\\)\\)\\)\\)\\)]\\) must be a valid box \
+structure. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"XML`MathML`BoxesToMathML::notboxes\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    RowBox[{\(XML`MathML`BoxesToMathML::"notboxes"\), \(\(:\)\(\ \)\), \
+"\<\"\\!\\({\\(\\(RowBox[\\(\\({\\\"ComplexExpand\\\", \\\"[\\\", \
+\\(\\(RowBox[\\(\\({\\\"Re\\\", \\\"[\\\", \\(\\(RowBox[\\(\\({\\\"z1\\\", \\\
+\"^\\\", \\\"3\\\"}\\)\\)]\\)\\), \\\"]\\\"}\\)\\)]\\)\\), \
+\\\"]\\\"}\\)\\)]\\)\\), \\(\\(RowBox[\\(\\({\\(\[LeftSkeleton] 1 \
+\[RightSkeleton]\\)}\\)\\)]\\)\\)}\\) is not a valid box structure. The first \
+argument in \
+\\!\\(XML`MathML`BoxesToMathML[\\(\\(\\(\\({\\(\\(RowBox[\\(\\({\\\"\
+ComplexExpand\\\", \\\"[\\\", \\(\\(RowBox[\\(\\(\[LeftSkeleton] 1 \
+\[RightSkeleton]\\)\\)]\\)\\), \\\"]\\\"}\\)\\)]\\)\\), \
+\\(\\(RowBox[\\(\\({\\(\[LeftSkeleton] 1 \
+\[RightSkeleton]\\)}\\)\\)]\\)\\)}\\)\\), \\(\\(\[LeftSkeleton] 2 \
+\[RightSkeleton]\\)\\), \\(\\(\\\"Entities\\\" \[Rule] \\(\\(\\\"M\\\"\
+\[Ellipsis]\\\"L\\\"\\)\\)\\)\\)\\)\\)]\\) must be a valid box structure. \\!\
+\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"XML`MathML`BoxesToMathML::notboxes\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    RowBox[{\(General::"stop"\), \(\(:\)\(\ \)\), "\<\"Further output of \
+\\!\\(XML`MathML`BoxesToMathML :: \\\"notboxes\\\"\\) will be suppressed \
+during this calculation. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::stop\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    \(Plot[Evaluate[Flatten[imr] /. b \[Rule] q], {q, \(-10\), 10}, 
+      PlotStyle \[Rule] 
+        Table[{Hue[1 - a/6], Thickness[0.05 -  .01*a]}, {a, 1, 
+            4}]]\)], "Input",
+  CellTags->"mmtag:08:plots__examples_of_changing_line_thicknesses"],
+
+Cell[TextData[{
+  "It is pretty clear that the parameter ",
+  StyleBox["b",
+    FontSlant->"Italic"],
+  " is behaving like a \"pitchfork\" bifurcation---there is one value of ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  " upto a critical value of ",
+  StyleBox["b",
+    FontSlant->"Italic"],
+  ", where ",
+  StyleBox["x",
+    FontSlant->"Italic"],
+  " splits into two solutions.  This is a picture of two isolated \
+pictchforks."
+}], "Text"]
+}, Open  ]]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{45, 1920}, {0, 1178}},
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{1251, 880},
+WindowMargins->{{110, Automatic}, {Automatic, 0}},
+WindowTitle->"Lecture 08 MIT 3.016 (Fall 2005)   \[Copyright] W. Craig Carter \
+2003-2004",
+ShowCellLabel->False,
+CellLabelAutoDelete->True,
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "mmtag:08:imaginary_numbers__representations_of"->{
+    Cell[1836, 55, 131, 2, 59, "Text",
+      CellTags->"mmtag:08:imaginary_numbers__representations_of"]},
+  "mmtag:08:complex_numbers__representations_of"->{
+    Cell[2090, 65, 172, 5, 59, "Text",
+      CellTags->"mmtag:08:complex_numbers__representations_of"]},
+  "mmtag:08:complex_numbers__simplfying"->{
+    Cell[2616, 85, 279, 6, 59, "Input",
+      CellTags->{
+      "mmtag:08:complex_numbers__simplfying", 
+        "mmtag:08:Simplify[]__complex_numbers"}]},
+  "mmtag:08:Simplify[]__complex_numbers"->{
+    Cell[2616, 85, 279, 6, 59, "Input",
+      CellTags->{
+      "mmtag:08:complex_numbers__simplfying", 
+        "mmtag:08:Simplify[]__complex_numbers"}]},
+  "mmtag:08:Im[]"->{
+    Cell[3014, 99, 139, 3, 80, "Input",
+      CellTags->{"mmtag:08:Im[]", "mmtag:08:Re[]"}]},
+  "mmtag:08:Re[]"->{
+    Cell[3014, 99, 139, 3, 80, "Input",
+      CellTags->{"mmtag:08:Im[]", "mmtag:08:Re[]"}]},
+  "mmtag:08:ComplexExpand[]"->{
+    Cell[3398, 115, 99, 2, 59, "Input",
+      CellTags->"mmtag:08:ComplexExpand[]"]},
+  "mmtag:08:complex_numbers__division"->{
+    Cell[3562, 122, 107, 2, 77, "Input",
+      CellTags->"mmtag:08:complex_numbers__division"]},
+  "mmtag:08:complex_numbers__multiplication"->{
+    Cell[3672, 126, 112, 2, 77, "Input",
+      CellTags->"mmtag:08:complex_numbers__multiplication"]},
+  "mmtag:08:complex_numbers__polar_form"->{
+    Cell[3961, 136, 225, 5, 77, "Input",
+      CellTags->{
+      "mmtag:08:complex_numbers__polar_form", 
+        "mmtag:08:functions__example_of_conversion_of_complex_number_to_polar_\
+form"}]},
+  "mmtag:08:functions__example_of_conversion_of_complex_number_to_polar_form"->{\
+
+    Cell[3961, 136, 225, 5, 77, "Input",
+      CellTags->{
+      "mmtag:08:complex_numbers__polar_form", 
+        "mmtag:08:functions__example_of_conversion_of_complex_number_to_polar_\
+form"}]},
+  "mmtag:08:complex_numbers__numerical_precision"->{
+    Cell[4760, 167, 139, 2, 77, "Input",
+      CellTags->"mmtag:08:complex_numbers__numerical_precision"]},
+  "mmtag:08:Chop[]"->{
+    Cell[4988, 174, 84, 2, 77, "Input",
+      CellTags->"mmtag:08:Chop[]"]},
+  "mmtag:08:Round[]"->{
+    Cell[5075, 178, 86, 2, 77, "Input",
+      CellTags->"mmtag:08:Round[]"]},
+  "mmtag:08:Solve[]"->{
+    Cell[6082, 221, 217, 5, 77, "Input",
+      CellTags->{
+      "mmtag:08:Solve[]", 
+        "mmtag:08:roots_of_polynomial_equations__example_with_complex_roots"}]\
+},
+  "mmtag:08:roots_of_polynomial_equations__example_with_complex_roots"->{
+    Cell[6082, 221, 217, 5, 77, "Input",
+      CellTags->{
+      "mmtag:08:Solve[]", 
+        "mmtag:08:roots_of_polynomial_equations__example_with_complex_roots"}]\
+},
+  "mmtag:08:roots_of_polynomial_equations__example_of_plotting_roots"->{
+    Cell[6890, 255, 192, 4, 77, "Input",
+      CellTags->
+      "mmtag:08:roots_of_polynomial_equations__example_of_plotting_roots"]},
+  "mmtag:08:Dimensions[]"->{
+    Cell[11322, 330, 87, 2, 77, "Input",
+      CellTags->"mmtag:08:Dimensions[]"]},
+  "mmtag:08:Short[]"->{
+    Cell[11660, 344, 80, 2, 77, "Input",
+      CellTags->"mmtag:08:Short[]"]},
+  "mmtag:08:Flatten[]"->{
+    Cell[12270, 365, 153, 3, 98, "Input",
+      CellTags->"mmtag:08:Flatten[]"]},
+  "mmtag:08:plots__examples_of_modifying"->{
+    Cell[14220, 435, 221, 5, 77, "Input",
+      CellTags->{
+      "mmtag:08:plots__examples_of_modifying", 
+        "mmtag:08:plots__examples_of_effect_of_numerical_noise"}]},
+  "mmtag:08:plots__examples_of_effect_of_numerical_noise"->{
+    Cell[14220, 435, 221, 5, 77, "Input",
+      CellTags->{
+      "mmtag:08:plots__examples_of_modifying", 
+        "mmtag:08:plots__examples_of_effect_of_numerical_noise"}]},
+  "mmtag:08:plots__examples_of_adding_color"->{
+    Cell[15237, 466, 209, 3, 77, "Input",
+      CellTags->"mmtag:08:plots__examples_of_adding_color"]},
+  "mmtag:08:plots__examples_of_changing_line_thicknesses"->{
+    Cell[19471, 548, 270, 5, 59, "Input",
+      CellTags->"mmtag:08:plots__examples_of_changing_line_thicknesses"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"mmtag:08:imaginary_numbers__representations_of", 21049, 594},
+  {"mmtag:08:complex_numbers__representations_of", 21208, 597},
+  {"mmtag:08:complex_numbers__simplfying", 21357, 600},
+  {"mmtag:08:Simplify[]__complex_numbers", 21557, 605},
+  {"mmtag:08:Im[]", 21734, 610},
+  {"mmtag:08:Re[]", 21849, 613},
+  {"mmtag:08:ComplexExpand[]", 21975, 616},
+  {"mmtag:08:complex_numbers__division", 22103, 619},
+  {"mmtag:08:complex_numbers__multiplication", 22248, 622},
+  {"mmtag:08:complex_numbers__polar_form", 22395, 625},
+  {"mmtag:08:functions__example_of_conversion_of_complex_number_to_polar_\
+form", 22672, 631},
+  {"mmtag:08:complex_numbers__numerical_precision", 22923, 638},
+  {"mmtag:08:Chop[]", 23054, 641},
+  {"mmtag:08:Round[]", 23155, 644},
+  {"mmtag:08:Solve[]", 23257, 647},
+  {"mmtag:08:roots_of_polynomial_equations__example_with_complex_roots", \
+23500, 653},
+  {"mmtag:08:roots_of_polynomial_equations__example_of_plotting_roots", \
+23742, 659},
+  {"mmtag:08:Dimensions[]", 23906, 663},
+  {"mmtag:08:Short[]", 24014, 666},
+  {"mmtag:08:Flatten[]", 24119, 669},
+  {"mmtag:08:plots__examples_of_modifying", 24246, 672},
+  {"mmtag:08:plots__examples_of_effect_of_numerical_noise", 24483, 677},
+  {"mmtag:08:plots__examples_of_adding_color", 24707, 682},
+  {"mmtag:08:plots__examples_of_changing_line_thicknesses", 24872, 685}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 46, 0, 60, "Title"],
+Cell[1803, 53, 30, 0, 52, "Subtitle"],
+Cell[1836, 55, 131, 2, 59, "Text",
+  CellTags->"mmtag:08:imaginary_numbers__representations_of"],
+Cell[1970, 59, 59, 1, 59, "Input"],
+Cell[2032, 62, 55, 1, 59, "Input"],
+Cell[2090, 65, 172, 5, 59, "Text",
+  CellTags->"mmtag:08:complex_numbers__representations_of"],
+Cell[2265, 72, 143, 2, 80, "Input"],
+Cell[2411, 76, 75, 1, 59, "Text"],
+Cell[2489, 79, 63, 1, 59, "Input"],
+Cell[2555, 82, 58, 1, 59, "Input"],
+Cell[2616, 85, 279, 6, 59, "Input",
+  CellTags->{
+  "mmtag:08:complex_numbers__simplfying", 
+    "mmtag:08:Simplify[]__complex_numbers"}],
+Cell[2898, 93, 113, 4, 59, "Text"],
+Cell[3014, 99, 139, 3, 80, "Input",
+  CellTags->{"mmtag:08:Im[]", "mmtag:08:Re[]"}],
+Cell[3156, 104, 239, 9, 59, "Text"],
+Cell[3398, 115, 99, 2, 59, "Input",
+  CellTags->"mmtag:08:ComplexExpand[]"],
+Cell[3500, 119, 59, 1, 59, "Input"],
+Cell[3562, 122, 107, 2, 77, "Input",
+  CellTags->"mmtag:08:complex_numbers__division"],
+Cell[3672, 126, 112, 2, 77, "Input",
+  CellTags->"mmtag:08:complex_numbers__multiplication"],
+Cell[3787, 130, 115, 2, 80, "Input"],
+Cell[3905, 134, 53, 0, 52, "Subtitle"],
+Cell[3961, 136, 225, 5, 77, "Input",
+  CellTags->{
+  "mmtag:08:complex_numbers__polar_form", 
+    "mmtag:08:functions__example_of_conversion_of_complex_number_to_polar_\
+form"}],
+
+Cell[CellGroupData[{
+Cell[4211, 145, 294, 9, 55, "Subsubsection"],
+Cell[4508, 156, 42, 1, 59, "Input"],
+Cell[4553, 159, 81, 1, 59, "Input"],
+Cell[4637, 162, 57, 1, 59, "Input"],
+Cell[4697, 165, 60, 0, 52, "Subtitle"],
+Cell[4760, 167, 139, 2, 77, "Input",
+  CellTags->"mmtag:08:complex_numbers__numerical_precision"],
+Cell[4902, 171, 83, 1, 59, "Input"],
+Cell[4988, 174, 84, 2, 77, "Input",
+  CellTags->"mmtag:08:Chop[]"],
+Cell[5075, 178, 86, 2, 77, "Input",
+  CellTags->"mmtag:08:Round[]"],
+Cell[5164, 182, 75, 1, 59, "Input"],
+Cell[5242, 185, 82, 1, 59, "Input"],
+Cell[5327, 188, 52, 1, 59, "Input"],
+Cell[5382, 191, 51, 1, 59, "Input"],
+Cell[5436, 194, 114, 2, 71, "Input"],
+Cell[5553, 198, 121, 2, 71, "Input"],
+Cell[5677, 202, 58, 1, 59, "Input"],
+Cell[5738, 205, 59, 1, 59, "Input"],
+Cell[5800, 208, 56, 1, 59, "Input"],
+Cell[5859, 211, 56, 1, 59, "Input"],
+Cell[5918, 214, 49, 0, 52, "Subtitle"],
+Cell[5970, 216, 109, 3, 59, "Text"],
+Cell[6082, 221, 217, 5, 77, "Input",
+  CellTags->{
+  "mmtag:08:Solve[]", 
+    "mmtag:08:roots_of_polynomial_equations__example_with_complex_roots"}],
+Cell[6302, 228, 104, 3, 59, "Text"],
+Cell[6409, 233, 42, 1, 59, "Input"],
+Cell[6454, 236, 46, 1, 59, "Input"],
+Cell[6503, 239, 61, 1, 59, "Input"],
+Cell[6567, 242, 66, 1, 59, "Input"],
+Cell[6636, 245, 66, 1, 59, "Input"],
+Cell[6705, 248, 182, 5, 59, "Text"],
+Cell[6890, 255, 192, 4, 77, "Input",
+  CellTags->
+  "mmtag:08:roots_of_polynomial_equations__example_of_plotting_roots"],
+Cell[7085, 261, 154, 4, 59, "Text"],
+Cell[7242, 267, 357, 5, 26, "Message"],
+Cell[7602, 274, 3602, 49, 1751, "Output"],
+Cell[11207, 325, 112, 3, 59, "Text"],
+Cell[11322, 330, 87, 2, 77, "Input",
+  CellTags->"mmtag:08:Dimensions[]"],
+Cell[11412, 334, 245, 8, 59, "Text"],
+Cell[11660, 344, 80, 2, 77, "Input",
+  CellTags->"mmtag:08:Short[]"],
+Cell[11743, 348, 306, 7, 86, "Text"],
+Cell[12052, 357, 215, 6, 59, "Text"],
+Cell[12270, 365, 153, 3, 98, "Input",
+  CellTags->"mmtag:08:Flatten[]"],
+Cell[12426, 370, 498, 15, 113, "Text"],
+Cell[12927, 387, 75, 1, 59, "Input"],
+Cell[13005, 390, 103, 2, 80, "Input"],
+Cell[13111, 394, 150, 5, 59, "Text"],
+Cell[13264, 401, 73, 1, 59, "Input"],
+Cell[13340, 404, 877, 29, 191, "Text"],
+Cell[14220, 435, 221, 5, 77, "Input",
+  CellTags->{
+  "mmtag:08:plots__examples_of_modifying", 
+    "mmtag:08:plots__examples_of_effect_of_numerical_noise"}],
+Cell[14444, 442, 166, 4, 86, "Text"],
+Cell[14613, 448, 70, 1, 59, "Input"],
+Cell[14686, 451, 548, 13, 203, "Text"],
+Cell[15237, 466, 209, 3, 77, "Input",
+  CellTags->"mmtag:08:plots__examples_of_adding_color"],
+Cell[15449, 471, 445, 9, 113, "Text"],
+Cell[15897, 482, 153, 2, 59, "Input"],
+Cell[16053, 486, 186, 4, 86, "Text"],
+Cell[16242, 492, 830, 12, 58, "Message"],
+Cell[17075, 506, 938, 14, 58, "Message"],
+Cell[18016, 522, 1097, 17, 74, "Message"],
+Cell[19116, 541, 352, 5, 26, "Message"],
+Cell[19471, 548, 270, 5, 59, "Input",
+  CellTags->"mmtag:08:plots__examples_of_changing_line_thicknesses"],
+Cell[19744, 555, 443, 15, 86, "Text"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

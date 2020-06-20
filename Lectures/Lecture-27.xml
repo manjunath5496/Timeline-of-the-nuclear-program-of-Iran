@@ -1,0 +1,2205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 27 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2005
+ </title>
+ <link href="HTMLFiles/Lecture-27.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ Basis and Orthogonal Functions
+</p>
+
+
+
+<p class="Subsection">
+ This is a generalization of the Fourier series.&nbsp;&nbsp;The orthogonality of the trignometric functions<br />(i.e., <span><span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msubsup>
+  <mo>&Integral;</mo>
+  <mn>0</mn>
+  <mn>1</mn>
+ </msubsup>
+</math></span>Sin[2 &pi; n&nbsp;&nbsp;x]&nbsp;&nbsp;Sin[2 &pi; m x]<span class="doublestruck">d</span>x</span> = <span><table class='SubsectionInline'>
+ <tr>
+  <td style='text-align: center;'><span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mn>1</mn>
+  <mn>2</mn>
+ </mfrac>
+</math></span></td>
+  <td style='text-align: center;'><span class="SubsectionInline">if&nbsp;&nbsp;&nbsp;&nbsp;n=m</span></td>
+ </tr>
+ <tr>
+  <td style='text-align: center;'><span class="SubsectionInline">0</span></td>
+  <td style='text-align: center;'><span class="SubsectionInline">if&nbsp;&nbsp;&nbsp;n&ne;m</span></td>
+ </tr>
+</table>
+
+</span>)<br />was the key to the ``trick''&nbsp;&nbsp;that permitted calculation of the Fourier coefficients.<br />This is a generalization of dot or scalar vector product, but for functions.&nbsp;&nbsp;The norm that is defined above for the trignometric functions is fairly simple, it is the l2-norm:<br />f(x) &bull; g(x) &equiv;&nbsp;&nbsp;<span style='font-size: 24px;'>&int; </span>f(x) g(x) dx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(l2-norm)<br />However, there can be many other types of norms, for instance a Gaussian weighted l2-norm<br />f(x) &bull; g(x) &equiv;&nbsp;&nbsp;<span style='font-size: 24px;'>&int; </span>f(x) g(x) <span><span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <mi>&ExponentialE;</mi>
+  <mrow>
+   <mo>-</mo>
+   <mrow>
+    <mi>x</mi>
+    <mo>^</mo>
+    <mn>2</mn>
+   </mrow>
+  </mrow>
+ </msup>
+</math></span></span> dx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Gaussian weighted l2-norm)<br />and many many others.<br /><br />Both the norm and the domain of integration must be defined.<br /><br />To represent a function in terms of a sum of basis functions with coefficients, a orthogonality relation must be obtained for the basis functions.<br />We will do a few examples of orthogonality relations, the coefficients can be found as a straightforward extension of the Fourier method.
+</p>
+
+
+
+<p class="Text">
+ Establish by example the orthogonality relations for the Lengendre Polynomials
+</p>
+
+
+
+<p class="CellLabel">
+ In[115]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_27_LegendrePxx__demonstrating_orthogonality"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Table</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Integrate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>LegendreP</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mi>x</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>LegendreP</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>5</mn>
+        <mo>,</mo>
+        <mi>x</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>i</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[115]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>11</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>11</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mn>0</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Calculate the norm as a function of the order of the Legendre polynomial
+</p>
+
+
+
+<p class="CellLabel">
+ In[116]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Table</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Integrate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>LegendreP</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mi>x</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>LegendreP</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mi>x</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>i</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>15</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[116]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>2</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>3</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>5</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>7</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>9</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>11</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>13</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>15</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>17</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>19</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>21</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>23</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>25</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>27</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>29</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>31</mn>
+   </mfrac>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Make a guess at what the norm looks like
+</p>
+
+
+
+<p class="CellLabel">
+ In[117]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Table</mi>
+  <mo>[</mo>
+  <mrow>
+   <mfrac>
+    <mn>2</mn>
+    <mrow>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>i</mi>
+     </mrow>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mn>1</mn>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>i</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>15</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[117]=
+</p>
+
+
+
+<p class="Output">
+ <a id="mmtag_27_LegendrePxx__orthogonality_relations"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>2</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>3</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>5</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>7</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>9</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>11</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>13</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>15</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>17</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>19</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>21</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>23</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>25</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>27</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>29</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mfrac>
+    <mn>2</mn>
+    <mn>31</mn>
+   </mfrac>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The orthogonality relation is plausibly: <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msubsup>
+  <mo>&Integral;</mo>
+  <mrow>
+   <mo>-</mo>
+   <mn>1</mn>
+  </mrow>
+  <mn>1</mn>
+ </msubsup>
+</math></span>LegendreP[i,x]&nbsp;&nbsp;LegendreP[j,x]<span class="doublestruck">d</span>x</span> = <span><table class='TextInline'>
+ <tr>
+  <td style='text-align: center;'><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mn>2</mn>
+  <mrow>
+   <mrow>
+    <mn>2</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>i</mi>
+   </mrow>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mn>1</mn>
+  </mrow>
+ </mfrac>
+</math></span></td>
+  <td style='text-align: center;'><span class="TextInline">if | i|=|j|</span></td>
+ </tr>
+ <tr>
+  <td style='text-align: center;'><span class="TextInline">0</span></td>
+  <td style='text-align: center;'><span class="TextInline">if |i |&ne;|j|</span></td>
+ </tr>
+</table>
+
+</span><br />In fact, this is correct
+</p>
+
+
+
+<p class="Subtitle">
+ Representation of a function in terms of the Legendre basis
+</p>
+
+
+
+<p class="Section">
+ This demonstrates how to take a specific set (basis) of orthogonal functions and represent an arbitrary function in terms of an infinite sum of terms involving the basis functions, each with its own coefficient.&nbsp;&nbsp;This is a direct analog to what we did with Fourier series.
+</p>
+
+
+
+<p class="Text">
+ A function to calculate the coefficients
+</p>
+
+
+
+<p class="CellLabel">
+ In[118]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_27_Legendre_series__determining_coefficients"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>LegendreCoefficient</mi>
+   <mo>[</mo>
+   <mrow>
+    <mtext>f_</mtext>
+    <mo>,</mo>
+    <mtext> </mtext>
+    <mtext>i_</mtext>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mtext>  </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>i</mi>
+     </mrow>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mn>1</mn>
+    </mrow>
+    <mn>2</mn>
+   </mfrac>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Integrate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>f</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>LegendreP</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mi>x</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>x</mi>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ Use Legendre functions to represent the function <span><span class="SubsubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <mi>&ExponentialE;</mi>
+  <mrow>
+   <mo>-</mo>
+   <msup>
+    <mi>x</mi>
+    <mn>2</mn>
+   </msup>
+  </mrow>
+ </msup>
+</math></span></span>
+</p>
+
+
+
+<p class="Text">
+ This is an example function:
+</p>
+
+
+
+<p class="CellLabel">
+ In[119]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>AFunc</mi>
+   <mo>[</mo>
+   <mtext>x_</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mrow>
+   <mi>Exp</mi>
+   <mo>[</mo>
+   <mrow>
+    <mo>-</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>^</mo>
+     <mn>2</mn>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Calculate the first twenty coefficients
+</p>
+
+
+
+<p class="CellLabel">
+ In[120]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Lcofs</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Table</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>LegendreCoefficient</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>AFunc</mi>
+      <mo>,</mo>
+      <mi>i</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>20</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[120]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mfrac>
+     <mn>1</mn>
+     <mn>2</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <msqrt>
+     <mi>&pi;</mi>
+    </msqrt>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mi>Erf</mi>
+     <mo>[</mo>
+     <mn>1</mn>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>5</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>6</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>8</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>9</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>230</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>57</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>64</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>13</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>7938</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>1955</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>256</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>17</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>1579218</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>388955</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>4096</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>147</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>14740550</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>3630537</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>16384</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>25</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>16734510494</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>4121641293</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>131072</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>29</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>1621927519250</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>399474095163</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>524288</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>33</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>1463595204914978</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>360477495590355</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>16777216</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>37</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>188369607025634322</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>46394661555265595</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>67108864</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mn>41</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>54487481501236728090</mn>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>13420043196802227271</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&ExponentialE;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mi>&pi;</mi>
+        </msqrt>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Erf</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>536870912</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ExponentialE;</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Construct a vector of the eigenfunctions
+</p>
+
+
+
+<p class="CellLabel">
+ In[121]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Lfuncs</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>LegendreP</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mi>x</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>20</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>Lfuncs</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>funcs</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(Lfuncs\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(funcs\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Visualize the approximation of the first twenty terms
+</p>
+
+
+
+<p class="CellLabel">
+ In[122]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_27_Legendre_series__example_of_fitting_function_with"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>Lcofs</mi>
+      <mo>.</mo>
+      <mi>Lfuncs</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>Exp</mi>
+      <mo>[</mo>
+      <mrow>
+       <mo>-</mo>
+       <mrow>
+        <mi>x</mi>
+        <mo>^</mo>
+        <mn>2</mn>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mn>0</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.01</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mn>0.66</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.005</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-27_1.gif" alt="[Graphics:HTMLFiles/Lecture-27_1.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[122]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Try another function
+</p>
+
+
+
+<p class="CellLabel">
+ In[123]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>AFunc</mi>
+   <mo>[</mo>
+   <mtext>x_</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mrow>
+   <mrow>
+    <mi>Sin</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>5</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>x</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Sin</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mn>5</mn>
+       <mtext> </mtext>
+       <mo>+</mo>
+       <mtext> </mtext>
+       <mfrac>
+        <mn>1</mn>
+        <mn>10</mn>
+       </mfrac>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>x</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Coefficients out to 10 terms
+</p>
+
+
+
+<p class="CellLabel">
+ In[124]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Lcofs</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Table</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>LegendreCoefficient</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>AFunc</mi>
+      <mo>,</mo>
+      <mi>i</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[124]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mfrac>
+     <mn>1</mn>
+     <mn>2</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mn>10</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mfrac>
+        <mn>10</mn>
+        <mn>101</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>101</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>5</mn>
+     <mn>2</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mn>300</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>300</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>10201</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mrow>
+       <mn>2990</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>99010</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>1030301</mn>
+      </mfrac>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>9</mn>
+     <mn>2</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>1049000</mn>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>9151000</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>104060401</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mrow>
+       <mn>10455010</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>592059010</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>10510100501</mn>
+      </mfrac>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>13</mn>
+     <mn>2</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mn>10382402100</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>100389242100</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>1061520150601</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mrow>
+       <mn>103477709990</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>6521460203990</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>107213535210701</mn>
+      </mfrac>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>17</mn>
+     <mn>2</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>202432299296400</mn>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>835591477136400</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>10828567056280801</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mrow>
+       <mn>2017570746870010</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>114086914568321990</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>1093685272684360901</mn>
+      </mfrac>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mn>0</mn>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>21</mn>
+     <mn>2</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mn>6538104407577605500</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>5563454313317994500</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>110462212541120451001</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mrow>
+       <mn>65162961832469984990</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mfrac>
+         <mn>1</mn>
+         <mn>10</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>1906651913045646525010</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mfrac>
+          <mn>101</mn>
+          <mn>10</mn>
+         </mfrac>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mn>11156683466653165551101</mn>
+      </mfrac>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[125]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Lfuncs</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>LegendreP</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mi>x</mi>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>i</mi>
+       <mo>,</mo>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>10</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Visualize the approximation
+</p>
+
+
+
+<p class="CellLabel">
+ In[126]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>Lcofs</mi>
+      <mo>.</mo>
+      <mi>Lfuncs</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>AFunc</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mn>0</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.01</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mn>0.66</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.005</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-27_2.gif" alt="[Graphics:HTMLFiles/Lecture-27_2.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[126]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(November 26, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

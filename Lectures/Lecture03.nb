@@ -1,0 +1,1265 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     25143,        870]*)
+(*NotebookOutlinePosition[     33848,       1084]*)
+(*  CellTagsIndexPosition[     32145,       1043]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["Introduction to Mathematica, Part II", "Title"],
+
+Cell["\<\
+Mathematica can be used in the same fashion as a traditional \
+programming language, such a fortran or C.  For  frequently used programs or \
+computationally intensive applications, Mathematica is not the best \
+programming language choice, but it can be very effective as a way to test \
+out ideas or generate a single numerical result.\
+\>", "Text"],
+
+Cell["Evaluating a sequence of instrutions (;;;)", "Section",
+  CellTags->{
+  "mmtag:03:mutliple_instructions_in_same_cell", "mmtag:03:hiding_output"}],
+
+Cell[BoxData[{
+    \(\(a\  = \ 1;\)\), "\[IndentingNewLine]", 
+    \(\ a\  = \ a + a; \ a = a^a\), "\[IndentingNewLine]", 
+    \(\ a = \ a + a; \ \ a = a^a\)}], "Input"],
+
+Cell["\<\
+Note above that line breaks without \";\" are points where the \
+instructions get executed. This three-line sequence produces two lines of \
+output and the instructions get executed sequentially.\
+\>", "Text",
+  CellFrame->True,
+  Background->GrayLevel[0.833326]],
+
+Cell[BoxData[
+    \(Clear[a]\)], "Input"],
+
+Cell["Loops", "Section",
+  CellTags->{"mmtag:03:loops__Do[]", "mmtag:03:Do[]"}],
+
+Cell[BoxData[
+    \(\(?Do\)\)], "Input"],
+
+Cell[BoxData[
+    \(a = 1; \ Do[a = 2  a; a = a^a, {i, 1, 2}]\)], "Input"],
+
+Cell[BoxData[
+    \(a\)], "Input"],
+
+Cell[TextData[{
+  "In this case, ",
+  StyleBox["Do",
+    FontWeight->"Bold"],
+  " does not produce screen output. The following will and is a simple \
+illustration of how formatted output can be programmed:"
+}], "Text"],
+
+Cell[BoxData[
+    \(a = 0.1; \ 
+    Do[a = 2  a; a = a^a; \ 
+      Print["\<iteration is \>", \ i, \ "\< and a is \>", \ a], {i, 1, 
+        4}]\)], "Input",
+  CellTags->{"mmtag:03:Print[]", "mmtag:03:printing_intermediate_output"}],
+
+Cell[BoxData[
+    \(Clear[a]\)], "Input"],
+
+Cell[BoxData[
+    \(\(?For\)\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{"For", "[", 
+      RowBox[{
+        StyleBox[\(a = 0.1; \ i = 1\),
+          FontColor->RGBColor[1, 0, 0]], ",", 
+        StyleBox[" ",
+          FontColor->RGBColor[1, 0, 1]], 
+        StyleBox[\(i\  \[LessEqual] \ 4\),
+          FontColor->RGBColor[1, 0, 1]], ",", 
+        StyleBox[" ",
+          FontColor->RGBColor[0, 0, 1]], 
+        StyleBox[\(i++\),
+          FontColor->RGBColor[0, 0, 1]], ",", 
+        StyleBox[" ",
+          FontColor->RGBColor[0, 1, 1],
+          Background->GrayLevel[0.900008]], 
+        StyleBox[\(a = 2  a; a = a^a; \ 
+          Print["\<iteration is \>", \ i, \ "\< and a is \>", \ a]\),
+          FontColor->RGBColor[0.0152895, 0.334096, 0.0062562],
+          Background->GrayLevel[0.900008]]}], 
+      StyleBox["]",
+        FontColor->RGBColor[0.0152895, 0.334096, 0.0062562],
+        Background->GrayLevel[0.900008]]}]], "Input"],
+
+Cell[BoxData[
+    \(\(?While\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(?Table\)\)], "Input"],
+
+Cell[BoxData[
+    \(Clear[a]\)], "Input"],
+
+Cell[BoxData[{
+    \(\(a = 0.25;\)\), "\[IndentingNewLine]", 
+    \(Table[{i, a = 2  a; a = a^a}, {i, 1, 4}]\)}], "Input",
+  CellTags->"mmtag:03:Table[]"],
+
+Cell[TextData[{
+  "Note above that we have asked ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " to create a list of two-element lists..."
+}], "Text",
+  CellFrame->True,
+  Background->GrayLevel[0.833326]],
+
+Cell[BoxData[{
+    \(\(a = 0.75;\)\), "\[IndentingNewLine]", 
+    \(Table[{i, a = 2  a; a = a^a}, {i, 1, 4}]\)}], "Input"],
+
+Cell[BoxData[
+    \(datatable\  = 
+      Table[{dx, 
+          For[a = dx; i = 1, \ i\  \[LessEqual] \ 4, \ \(i++\), \ a = 2  a; \ 
+            a = a^a]; Log[a]}, {dx, 0.01, 0.5, 0.01}]\)], "Input"],
+
+Cell[TextData[{
+  "In the instruction above, note that the variable \"datatable\" is a list. \
+In ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  ", variables can be numbers, expressions, lists, plots, ...  We will see \
+that this feature is very useful."
+}], "Text",
+  CellFrame->True,
+  Background->GrayLevel[0.833326]],
+
+Cell[BoxData[
+    \(\(\(ListPlot[datatable]\)\(\[IndentingNewLine]\)
+    \)\)], "Input",
+  CellTags->"mmtag:03:ListPlot[]"],
+
+Cell[BoxData[
+    \(Options[ListPlot]\)], "Input"],
+
+Cell[TextData[{
+  "Note that the options are written as ",
+  StyleBox["Rules",
+    FontWeight->"Bold"],
+  "."
+}], "Text",
+  CellFrame->True,
+  Background->GrayLevel[0.833326]],
+
+Cell[BoxData[
+    \(ListPlot[datatable, PlotRange \[Rule] {250, 500}]\)], "Input"],
+
+Cell[BoxData[
+    \(\(?*Minimum*\)\)], "Input"],
+
+Cell[BoxData[
+    \(FindMinimum[
+      For[a = dx; i = 1, \ i\  \[LessEqual] \ 4, \ \(i++\), \ a = 2  a; \ 
+        a = a^a]; Log[a], {dx, 0.15, 0.25}]\)], "Input",
+  CellTags->"mmtag:03:FindMinimum[]"],
+
+Cell[TextData[{
+  "By going into the Help Browser, you can see that the output of FindMinimum \
+is a list, the first element of which is the functions minimum value, and the \
+second is a ",
+  StyleBox["Rule",
+    FontWeight->"Bold"],
+  " specifing where the minimum occurs."
+}], "Text",
+  CellFrame->True,
+  Background->GrayLevel[0.833326]],
+
+Cell[TextData[{
+  "Lets try and do the above the hard way.  I will use ",
+  StyleBox["Nest",
+    FontWeight->"Bold"],
+  " to recursively apply the function 4 times (I am just using a shorthand \
+here, we can ignore the use of ",
+  StyleBox["Nest",
+    FontWeight->"Bold"],
+  " for this course...). You can see that it works. Don't worry about it, but \
+if you want to know about it, use the Help Browser to get information about \
+",
+  StyleBox["Nest ",
+    FontWeight->"Bold"],
+  "and",
+  StyleBox[" Pure Functions.",
+    FontWeight->"Bold"]
+}], "Text"],
+
+Cell[BoxData[
+    \(Clear[x]\)], "Input"],
+
+Cell[BoxData[
+    \(fx\  = \ Nest[\((2  #)\)^\((2  #)\) &, x, 4]\)], "Input",
+  CellTags->{"mmtag:03:Nest[]", "mmtag:03:pure functions"}],
+
+Cell["Take it derivative and set equal to zero...", "Text"],
+
+Cell[BoxData[
+    \(dfx\  = D[fx, x] // Simplify\)], "Input"],
+
+Cell[TextData[{
+  "Finding the zero of this will not be easy.... but ",
+  StyleBox["FindRoot",
+    FontWeight->"Bold"],
+  " claims it can do it..."
+}], "Text"],
+
+Cell[BoxData[
+    \(FindRoot[dfx, {x,  .1,  .3}]\)], "Input",
+  CellTags->"mmtag:03:FindRoot[]"],
+
+Cell["Local Variables", "Section"],
+
+Cell[TextData[{
+  "In the above, the values of ",
+  StyleBox["a ",
+    FontWeight->"Bold"],
+  "and  ",
+  StyleBox["dx",
+    FontWeight->"Bold"],
+  " are used repeatly\[LongDash]however, if we are only interested in the \
+resulting minimum, their final values have little meaning or importance.  \
+Suppose, we use the value of ",
+  StyleBox["a",
+    FontWeight->"Bold"],
+  " or ",
+  StyleBox["dx",
+    FontWeight->"Bold"],
+  " without clearing\[LongDash]what will the value be?"
+}], "Text"],
+
+Cell[BoxData[{
+    \(dx\), "\[IndentingNewLine]", 
+    \(a\)}], "Input"],
+
+Cell[BoxData[
+    \(\(CurrentValueofA\  = \ a;\)\)], "Input"],
+
+Cell[TextData[{
+  "As this could cause problems if ",
+  StyleBox["a",
+    FontWeight->"Bold"],
+  " is used in a function call, say ",
+  StyleBox["Sin[2 \[Pi] a]",
+    FontWeight->"Bold"],
+  ", it is a good idea to localize variables."
+}], "Text"],
+
+Cell[BoxData[
+    \(\(?Module\)\)], "Input"],
+
+Cell[BoxData[{
+    \(dx\  = \ SnickerDoodle; \ 
+    a\  = \ HappyGoLucky;\), "\[IndentingNewLine]", 
+    \(Module[\[IndentingNewLine]{dx, a, maxiteration = 4, solution, 
+        i}, \[IndentingNewLine]solution\  = \ \[IndentingNewLine]\ \ \ \ \ \ \
+FindMinimum[
+          For[a = dx; i = 1, \ i\  \[LessEqual] \ maxiteration, \ \(i++\), \ 
+            a = 2  a; \ a = a^a]; Log[a], \ {dx, 0.15, 0.25}]; 
+      Print[dx /. 
+          solution[\([2]\)]]\[IndentingNewLine]]\), "\[IndentingNewLine]", 
+    \(\)}], "Input",
+  CellTags->{
+  "mmtag:03:Module[]", "mmtag:03:local_variables__use_in_Module[]", 
+    "mmtag:03:pure_functions"}],
+
+Cell[BoxData[{
+    \(dx\), "\[IndentingNewLine]", 
+    \(a\), "\[IndentingNewLine]", 
+    \(solution\), "\[IndentingNewLine]", 
+    \(\)}], "Input"],
+
+Cell["Switches: If, Which", "Section",
+  CellTags->{
+  "mmtag:03:switches__If[]_and_Which[]", "mmtag:03:If[]", "mmtag:03:Which[]"}],
+
+Cell[BoxData[
+    \(\(?If\)\)], "Input"],
+
+Cell[BoxData[
+    \(a\  = \ Prime[23]\  + \ Prime[62]\  + \ Prime[104]\)], "Input"],
+
+Cell[BoxData[
+    \(\(?PrimeQ\)\)], "Input",
+  CellTags->"mmtag:03:PrimQ[]_query_for_prime_number"],
+
+Cell[BoxData[
+    \(If[PrimeQ[a], \[IndentingNewLine]Print[
+        a\ , \ "\< is a Prime Number\>"], \[IndentingNewLine]Print[
+        a, \ "\< is not Prime, its divisors are \>", \ 
+        Divisors[
+          a]], \[IndentingNewLine]Print["\<I have no idea what you are asking \
+me to do!\>"]\[IndentingNewLine]]\)], "Input"],
+
+Cell[TextData[{
+  "The above program is ok, but not very useful because it only works for  \
+the current value of ",
+  StyleBox["a",
+    FontWeight->"Bold"],
+  ".  It would be more useful to have something that worked for any value of \
+",
+  StyleBox["a ",
+    FontWeight->"Bold"],
+  "and could use it over again\[LongDash]that is, turn it into a tool",
+  ".  This involves patterns and function definitions."
+}], "Text"],
+
+Cell["Patterns (_)", "Section"],
+
+Cell[TextData[{
+  "Patterns and Pattern Replacement are probably one of the most powerful \
+features of ",
+  StyleBox["Mathematica.  ",
+    FontSlant->"Italic"],
+  "The underscore _ stands for a pattern,  a symbol ",
+  StyleBox["x",
+    FontWeight->"Bold"],
+  " with an underscore (",
+  StyleBox["x_",
+    FontWeight->"Bold"],
+  ") is recognized as anypattern that matches ",
+  StyleBox["x",
+    FontWeight->"Bold"],
+  ".  Here are some examples."
+}], "Text",
+  CellTags->"mmtag:03:patterns"],
+
+Cell[BoxData[
+    \(AList\  = \ {first, \ second, \ third\  = \ 2\ first, \ 
+        fourth\  = \ 2\ second}\)], "Input"],
+
+Cell[BoxData[
+    \(AList /. {2\ a_\  \[Rule] \ a}\)], "Input"],
+
+Cell[TextData[{
+  "Here's a way to put the last input command into words: Search list ",
+  StyleBox["AList",
+    FontWeight->"Bold"],
+  " for any pattern that matches \"2 \[Times] anything\" and replace \"2 \
+\[Times] anything\" with ",
+  StyleBox["a",
+    FontWeight->"Bold"],
+  ", then output the new ",
+  StyleBox["AList",
+    FontWeight->"Bold"],
+  ". Study the following examples carefully:"
+}], "Text",
+  CellFrame->True,
+  Background->GrayLevel[0.833326]],
+
+Cell[BoxData[
+    \(Clear[a]\)], "Input"],
+
+Cell[BoxData[
+    \(AList /. {2\ a_\  \[Rule] \ a}\)], "Input"],
+
+Cell[BoxData[
+    \(AList /. {p_\ , \ q_\ , \ r_\ , \ s_}\  \[Rule] \ {p\ , \ p\ q, \ 
+          p\ q\ r, \ p\ q\ r\ s}\)], "Input"],
+
+Cell["\<\
+A qualifier on a pattern can be used to restrict which expressions \
+will match the pattern:\
+\>", "Text"],
+
+Cell[BoxData[
+    \({2, 0.667, \ a/b, \ Pi} /. {p_Integer\  \[Rule] \ p\ One}\)], "Input",
+  CellTags->"mmtag:03:pattern_restrictions"],
+
+Cell[TextData[{
+  "The third member of this result may be a bit surprising; it has to do with \
+the way ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " internalizes expressions. In this case it represents the fraction as ",
+  Cell[BoxData[
+      FormBox[
+        RowBox[{
+          StyleBox["a",
+            FontWeight->"Bold"], " ", 
+          StyleBox[\(b\^\(-1\)\),
+            FontWeight->"Bold"]}], TraditionalForm]]],
+  "and it performs the replacement on the exponent (note that it must treat \
+the \"-\" sign independently of the \"1\", as it returns \"-One\" rather than \
+\"One\"\[Ellipsis])."
+}], "Text",
+  CellFrame->True,
+  Background->GrayLevel[0.833326]],
+
+Cell[TextData[{
+  "_ all by itself stands for anything.  ",
+  StyleBox["x_",
+    FontWeight->"Bold"],
+  " also  stands for anything, but gives anything a name for later use."
+}], "Text"],
+
+Cell[BoxData[
+    \(AList /. _\  \[Rule] \ AppleDumplings\)], "Input"],
+
+Cell[TextData[{
+  "This is not very useful and it really is doing what you asked for\
+\[LongDash]the first thing it found was ",
+  StyleBox["AList ",
+    FontWeight->"Bold"],
+  "itself and replaced ",
+  StyleBox["AList ",
+    FontWeight->"Bold"],
+  "with ",
+  StyleBox["AppleDumplings. \nx^n_ ",
+    FontWeight->"Bold"],
+  "stands for x to any power, and the power can be refered to as",
+  StyleBox[" n; x_^n_  ",
+    FontWeight->"Bold"],
+  "stands for any expression raised to a power.  We can use these ideas to \
+find rules that look like derivatives (",
+  StyleBox["this is not a good way to make a symbolic derivative, but it is \
+illustrative",
+    FontSlant->"Italic"],
+  "):"
+}], "Text"],
+
+Cell[BoxData[
+    \(PaulieNoMealX\  = \ Sum[b[i]\ x^i, {i, 2, 6}]\)], "Input"],
+
+Cell[BoxData[
+    \(PaulieNoMealX /. x^n_\  \[Rule] \ n\ x^\((n - 1)\)\)], "Input"],
+
+Cell["\<\
+This is ok, but it has least two problems.  The first is that it \
+would be nice to have the rule work for any polynomial...\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(DerivRule\  = \ q_^n_\  \[Rule] \ n\ q^\((n - 1)\);\)\)], "Input"],
+
+Cell[BoxData[
+    \(PaulineOMealY\  = \ Sum[c[i]\ z^i, {i, 2, 6}]\)], "Input"],
+
+Cell[BoxData[{
+    \(PaulineOMealY /. DerivRule\), "\[IndentingNewLine]", 
+    \(PaulieNoMealX /. DerivRule\)}], "Input"],
+
+Cell["\<\
+Another problem is that it will not work for first-order and \
+zeroeth-order terms...\
+\>", "Text"],
+
+Cell[BoxData[
+    \(PaulENoMiel\  = \ \ Sum[c[i]\ HoneyBee^i, {i, 0, 6}]\)], "Input"],
+
+Cell[BoxData[
+    \(PaulENoMiel /. DerivRule\)], "Input"],
+
+Cell["\<\
+This could be fixed, but it would be much easier to do so by \
+defining functions of a pattern.\
+\>", "Text",
+  FontWeight->"Plain"],
+
+Cell["\<\
+
+It is also possible to have a pattern apply conditionally using a condition. \
+Here is an example that pulls out cases where the first member of a pair of \
+numbers is less than the second.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(?Cases\)\)], "Input",
+  CellTags->{"mmtag:03:switches__Cases[]", "mmtag:03:Cases[]"}],
+
+Cell[BoxData[
+    \(Cases[{{1, 2}, \ {2, 1}, \ {a, b}, \ {2, \ 84}, \ 
+        5}, {first_, \ second_} /; first < second]\)], "Input"],
+
+Cell["Defining Functions with Patterns", "Section",
+  CellTags->"mmtag:03:functions__defining_with_patterns"],
+
+Cell[TextData[{
+  "Defining functions with patterns probably combines the most useful aspects \
+of Mathematica.  Define a function that takes patten matching x as its first \
+argument and an argument matching n as its second argument and returns x to \
+the ",
+  Cell[BoxData[
+      \(TraditionalForm\`n\^th\)]],
+  " power:"
+}], "Text",
+  CellTags->
+  "mmtag:03:functions__errors with immediate \
+assignmentusing_delayed_assignment_(=)"],
+
+Cell[BoxData[
+    RowBox[{\(f[x_\ , \ a_]\  = \ x^a\), ";", " ", 
+      StyleBox[\( (*This\ is\ not\ a\ good\ way\ to\ define\ a\ function, \ 
+          we\ will\ see\ why\ later*) \),
+        "Alert"]}]], "Input"],
+
+Cell[BoxData[
+    RowBox[{
+      StyleBox[\(What\ happens\ above\ is\ the\ right\[Dash]hand\[Dash]side\ \
+is\ evaluated\ immediately\),
+        FontFamily->"Helvetica"], 
+      StyleBox[",",
+        FontFamily->"Helvetica"], 
+      StyleBox[" ",
+        FontFamily->"Helvetica"], 
+      RowBox[{
+        StyleBox["and",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["its",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["value",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["is",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["assigned",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["to",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox[
+          RowBox[{
+            StyleBox[\(f[a, b]\),
+              FontWeight->"Bold"], ".", "  ", "It"}],
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["was",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["probably",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["intended",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["that",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox[\(f[2, 3]\),
+          FontFamily->"Helvetica",
+          FontWeight->"Bold"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["should",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["always",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["return",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["8",
+          FontFamily->"Helvetica",
+          FontWeight->"Bold"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["and",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["that",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox[\(f[y, z]\),
+          FontFamily->"Helvetica",
+          FontWeight->"Bold"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["should",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["always",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox["return",
+          FontFamily->"Helvetica"], 
+        StyleBox[" ",
+          FontFamily->"Helvetica"], 
+        StyleBox[\(y\^z\),
+          FontFamily->"Helvetica",
+          FontWeight->"Bold"]}], 
+      StyleBox[",",
+        FontFamily->"Helvetica"], 
+      StyleBox[" ",
+        FontFamily->"Helvetica"], 
+      StyleBox[\(but\ this\ is\ not\ what\ Mathematica\ was\ asked\ to\ \
+\(\(do\)\(:\)\)\),
+        FontFamily->"Helvetica"]}]], "Text"],
+
+Cell[BoxData[{
+    \(f[2, 3]\), "\[IndentingNewLine]", 
+    \(f[y, z]\)}], "Input"],
+
+Cell[TextData[{
+  "This works fine, but suppose we had defined  ",
+  StyleBox["x",
+    FontWeight->"Bold"],
+  " ahead of time "
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(x\  = \ 4\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{\(f[x_\ , \ a_]\  = \ x^a\), ";", " ", 
+      StyleBox[\( (*This\ is\ not\ a\ good\ way\ to\ define\ a\ function, \ 
+          we\ will\ see\ why\ later*) \),
+        "Alert"], "\[IndentingNewLine]"}]], "Input"]
+}, Open  ]],
+
+Cell["\<\
+RHS evaluated, it is x^(second argument) which is currently \
+4^(second argument)\
+\>", "Text"],
+
+Cell[BoxData[
+    RowBox[{\(f[2, 3]\), " ", 
+      StyleBox[\( (*should\ now\ be\ 4^3, \ 
+          which\ is\ probably\ not\ what\ the\ programmer\ had\ in\ mind*) \),
+        
+        "Alert"]}]], "Input"],
+
+Cell[BoxData[
+    \(f[y, z]\)], "Input"],
+
+Cell["Delayed Assignmet (:=)", "Subsection",
+  CellTags->{
+  "mmtag:03:functions__using_delayed_assignment_(:=)", 
+    "mmtag:03:delayed_assignment_(:=)", "mmtag:03:(:=)_delayed_assignment"}],
+
+Cell[TextData[{
+  "The problem with the above functions is that the evaluation is made \
+immediately.  For a function, the argument serves as a placeholder for a \
+future calculation.  You do not wish to have the right\[Dash]hand\[Dash]side \
+evaluated until the actual values of left\[Dash]hand\[Dash]side are \
+specified.  The remedy is to use ",
+  StyleBox["delayed assignment :=",
+    FontSlant->"Italic"]
+}], "Text"],
+
+Cell[BoxData[{
+    \(x = 4\), "\[IndentingNewLine]", 
+    \(a\  = \ ScoobyDoo\)}], "Input"],
+
+Cell[BoxData[
+    \(f[x_\ , \ a_]\  := \ x^a\)], "Input"],
+
+Cell[BoxData[
+    \(f[2, 5]\)], "Input"],
+
+Cell[BoxData[
+    \(f[y, z]\)], "Input"],
+
+Cell[BoxData[
+    \(f[x, a]\)], "Input"],
+
+Cell[BoxData[
+    \(f[a, x]\)], "Input"],
+
+Cell[BoxData[
+    \(Clear[f]\)], "Input"],
+
+Cell["Functional Programming with Rules", "Section",
+  CellTags->{
+  "mmtag:03:functional programming", "mmtag:03:programming__using_rules", 
+    "mmtag:03:programming__example", "mmtag_03_factorial[]"}],
+
+Cell["\<\
+The canonical programming example is the factorial function n! = \
+(n)\[Times](n-1) \[Times](n-2)\[Times]\[TripleDot]\[Times](1) where 0! \
+\[Congruent]  1; here is a reasonably clever way to use the fact that (n+1)! \
+= (n+1)\[Times]n!\
+\>", "Text"],
+
+Cell[BoxData[
+    \(factorial[n_]\  := \ n\ factorial[n - 1]\)], "Input"],
+
+Cell["This is part of definition, try it out...", "Text"],
+
+Cell[BoxData[
+    \(factorial[8]\)], "Input"],
+
+Cell["\<\
+Ooops, Mathematica does not know when to quit.  Add the second part \
+of the definition.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(factorial[0]\  = \ 1;\)\)], "Input"],
+
+Cell[BoxData[
+    \(factorial[120]\)], "Input"],
+
+Cell[BoxData[
+    \(factorial[257]\)], "Input"],
+
+Cell[BoxData[
+    \($RecursionLimit\)], "Input",
+  CellTags->"mmtag:03:recursion_limit"],
+
+Cell[BoxData[
+    \($RecursionLimit\  = \ 2^24\)], "Input"],
+
+Cell[BoxData[
+    \(\(Timing[factorial[2000]]\)[\([1]\)]\)], "Input"],
+
+Cell["\<\
+Using immediate assignment in a function: spending memory to buy \
+time.\
+\>", "Text"],
+
+Cell[BoxData[
+    \(factorial[n_]\  := \ \(factorial[n]\  = \ 
+        n*factorial[n - 1]\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(Timing[factorial[2000]]\)[\([1]\)]\)], "Input",
+  CellTags->"mmtag:03:Timing"],
+
+Cell[BoxData[
+    \(\(Timing[factorial[2001]]\)[\([1]\)]\)], "Input"],
+
+Cell[BoxData[
+    \(Clear[factorial]\)], "Input"],
+
+Cell["Functions and Patterns with Restricted Rules", "Section"],
+
+Cell["The factorial function is pretty good, but not foolproof:", "Text"],
+
+Cell[BoxData[
+    \(Clear[factorial]\)], "Input"],
+
+Cell[BoxData[
+    \(factorial[0]\  = \ 1; \ 
+    factorial[n_]\  := \ n*factorial[n - 1]\)], "Input"],
+
+Cell[BoxData[
+    \(factorial[Pi]\)], "Input"],
+
+Cell["The remedy is to restrict the pattern:", "Text"],
+
+Cell[BoxData[
+    \(Clear[factorial]\)], "Input"],
+
+Cell[BoxData[
+    \(factorial[0]\  = \ 1; \ 
+    factorial[n_Integer]\  := \ n*factorial[n - 1]\)], "Input"],
+
+Cell[BoxData[
+    \(factorial[Pi]\)], "Input"],
+
+Cell["Still not perfect:", "Text"],
+
+Cell[BoxData[
+    \(factorial[\(-5\)]\)], "Input"],
+
+Cell[BoxData[
+    \(Clear[factorial]\)], "Input"],
+
+Cell[BoxData[
+    \(factorial[0]\  = \ 1; \ 
+    factorial[n_Integer?Positive]\  := \ n*factorial[n - 1]\)], "Input"],
+
+Cell[BoxData[
+    \(factorial[12]\)], "Input"],
+
+Cell[BoxData[
+    \(factorial[Pi]\)], "Input"],
+
+Cell["\<\
+As a last example, let's define the Sign function. It should be -1 \
+when its argument is negative, 0 when its argument is zero, and +1 when its \
+argument is positive.  There are lots of ways to write this function, there \
+is no best way. Whatever works is good.\
+\>", "Text",
+  CellTags->{"mmtag:03:programming__example", "mmtag_03_sign_(example)"}],
+
+Cell[BoxData[
+    \(\(?Sign\)\)], "Input"],
+
+Cell[BoxData[
+    \(HeyWhatsYourSign[0]\  = \ 0; \ HeyWhatsYourSign[_?Positive]\  := \ 1; \ 
+    HeyWhatsYourSign[_?Negative]\  := \ \(-1\);\)], "Input"],
+
+Cell[BoxData[
+    \(Plot[
+      HeyWhatsYourSign[
+        argument], {argument, \(-\[Pi]\), \[ExponentialE]}]\)], "Input"],
+
+Cell[BoxData[
+    \(Plot[{1/x, HeyWhatsYourSign[x]/x}, {x, \(-1\), 1}, 
+      PlotStyle \[Rule] {{Hue[1], Thickness[0.02]}, {Hue[0.66], 
+            Thickness[0.01]}}]\)], "Input"]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{45, 1920}, {0, 1178}},
+WindowToolbars->{},
+CellGrouping->Manual,
+WindowSize->{1157, 701},
+WindowMargins->{{137, Automatic}, {Automatic, 72}},
+WindowTitle->"Lecture 03 MIT 3.016 (Fall 2005)   \[Copyright] W. Craig Carter \
+2003-2005",
+ShowSelection->True,
+CellLabelAutoDelete->True,
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "mmtag:03:mutliple_instructions_in_same_cell"->{
+    Cell[2174, 61, 151, 2, 65, "Section",
+      CellTags->{
+      "mmtag:03:mutliple_instructions_in_same_cell", 
+        "mmtag:03:hiding_output"}]},
+  "mmtag:03:hiding_output"->{
+    Cell[2174, 61, 151, 2, 65, "Section",
+      CellTags->{
+      "mmtag:03:mutliple_instructions_in_same_cell", 
+        "mmtag:03:hiding_output"}]},
+  "mmtag:03:loops__Do[]"->{
+    Cell[2820, 81, 79, 1, 65, "Section",
+      CellTags->{"mmtag:03:loops__Do[]", "mmtag:03:Do[]"}]},
+  "mmtag:03:Do[]"->{
+    Cell[2820, 81, 79, 1, 65, "Section",
+      CellTags->{"mmtag:03:loops__Do[]", "mmtag:03:Do[]"}]},
+  "mmtag:03:Print[]"->{
+    Cell[3281, 101, 232, 5, 50, "Input",
+      CellTags->{
+      "mmtag:03:Print[]", "mmtag:03:printing_intermediate_output"}]},
+  "mmtag:03:printing_intermediate_output"->{
+    Cell[3281, 101, 232, 5, 50, "Input",
+      CellTags->{
+      "mmtag:03:Print[]", "mmtag:03:printing_intermediate_output"}]},
+  "mmtag:03:Table[]"->{
+    Cell[4636, 147, 154, 3, 67, "Input",
+      CellTags->"mmtag:03:Table[]"]},
+  "mmtag:03:ListPlot[]"->{
+    Cell[5670, 182, 123, 3, 67, "Input",
+      CellTags->"mmtag:03:ListPlot[]"]},
+  "mmtag:03:FindMinimum[]"->{
+    Cell[6162, 205, 202, 4, 50, "Input",
+      CellTags->"mmtag:03:FindMinimum[]"]},
+  "mmtag:03:Nest[]"->{
+    Cell[7312, 243, 137, 2, 50, "Input",
+      CellTags->{"mmtag:03:Nest[]", "mmtag:03:pure functions"}]},
+  "mmtag:03:pure functions"->{
+    Cell[7312, 243, 137, 2, 50, "Input",
+      CellTags->{"mmtag:03:Nest[]", "mmtag:03:pure functions"}]},
+  "mmtag:03:FindRoot[]"->{
+    Cell[7740, 259, 96, 2, 50, "Input",
+      CellTags->"mmtag:03:FindRoot[]"]},
+  "mmtag:03:Module[]"->{
+    Cell[8803, 303, 634, 13, 152, "Input",
+      CellTags->{
+      "mmtag:03:Module[]", "mmtag:03:local_variables__use_in_Module[]", 
+        "mmtag:03:pure_functions"}]},
+  "mmtag:03:local_variables__use_in_Module[]"->{
+    Cell[8803, 303, 634, 13, 152, "Input",
+      CellTags->{
+      "mmtag:03:Module[]", "mmtag:03:local_variables__use_in_Module[]", 
+        "mmtag:03:pure_functions"}]},
+  "mmtag:03:pure_functions"->{
+    Cell[8803, 303, 634, 13, 152, "Input",
+      CellTags->{
+      "mmtag:03:Module[]", "mmtag:03:local_variables__use_in_Module[]", 
+        "mmtag:03:pure_functions"}]},
+  "mmtag:03:switches__If[]_and_Which[]"->{
+    Cell[9591, 324, 131, 2, 65, "Section",
+      CellTags->{
+      "mmtag:03:switches__If[]_and_Which[]", "mmtag:03:If[]", 
+        "mmtag:03:Which[]"}]},
+  "mmtag:03:If[]"->{
+    Cell[9591, 324, 131, 2, 65, "Section",
+      CellTags->{
+      "mmtag:03:switches__If[]_and_Which[]", "mmtag:03:If[]", 
+        "mmtag:03:Which[]"}]},
+  "mmtag:03:Which[]"->{
+    Cell[9591, 324, 131, 2, 65, "Section",
+      CellTags->{
+      "mmtag:03:switches__If[]_and_Which[]", "mmtag:03:If[]", 
+        "mmtag:03:Which[]"}]},
+  "mmtag:03:PrimQ[]_query_for_prime_number"->{
+    Cell[9854, 334, 99, 2, 50, "Input",
+      CellTags->"mmtag:03:PrimQ[]_query_for_prime_number"]},
+  "mmtag:03:patterns"->{
+    Cell[10745, 361, 492, 16, 66, "Text",
+      CellTags->"mmtag:03:patterns"]},
+  "mmtag:03:pattern_restrictions"->{
+    Cell[12259, 417, 135, 2, 50, "Input",
+      CellTags->"mmtag:03:pattern_restrictions"]},
+  "mmtag:03:switches__Cases[]"->{
+    Cell[15276, 518, 107, 2, 50, "Input",
+      CellTags->{"mmtag:03:switches__Cases[]", "mmtag:03:Cases[]"}]},
+  "mmtag:03:Cases[]"->{
+    Cell[15276, 518, 107, 2, 50, "Input",
+      CellTags->{"mmtag:03:switches__Cases[]", "mmtag:03:Cases[]"}]},
+  "mmtag:03:functions__defining_with_patterns"->{
+    Cell[15523, 526, 109, 1, 65, "Section",
+      CellTags->"mmtag:03:functions__defining_with_patterns"]},
+  "mmtag:03:functions__errors with immediate \
+assignmentusing_delayed_assignment_(=)"->{
+    Cell[15635, 529, 436, 11, 69, "Text",
+      CellTags->
+      "mmtag:03:functions__errors with immediate \
+assignmentusing_delayed_assignment_(=)"]},
+  "mmtag:03:functions__using_delayed_assignment_(:=)"->{
+    Cell[20717, 701, 191, 3, 65, "Subsection",
+      CellTags->{
+      "mmtag:03:functions__using_delayed_assignment_(:=)", 
+        "mmtag:03:delayed_assignment_(:=)", 
+        "mmtag:03:(:=)_delayed_assignment"}]},
+  "mmtag:03:delayed_assignment_(:=)"->{
+    Cell[20717, 701, 191, 3, 65, "Subsection",
+      CellTags->{
+      "mmtag:03:functions__using_delayed_assignment_(:=)", 
+        "mmtag:03:delayed_assignment_(:=)", 
+        "mmtag:03:(:=)_delayed_assignment"}]},
+  "mmtag:03:(:=)_delayed_assignment"->{
+    Cell[20717, 701, 191, 3, 65, "Subsection",
+      CellTags->{
+      "mmtag:03:functions__using_delayed_assignment_(:=)", 
+        "mmtag:03:delayed_assignment_(:=)", 
+        "mmtag:03:(:=)_delayed_assignment"}]},
+  "mmtag:03:functional programming"->{
+    Cell[21705, 738, 203, 3, 65, "Section",
+      CellTags->{
+      "mmtag:03:functional programming", "mmtag:03:programming__using_rules", 
+        "mmtag:03:programming__example", "mmtag_03_factorial[]"}]},
+  "mmtag:03:programming__using_rules"->{
+    Cell[21705, 738, 203, 3, 65, "Section",
+      CellTags->{
+      "mmtag:03:functional programming", "mmtag:03:programming__using_rules", 
+        "mmtag:03:programming__example", "mmtag_03_factorial[]"}]},
+  "mmtag:03:programming__example"->{
+    Cell[21705, 738, 203, 3, 65, "Section",
+      CellTags->{
+      "mmtag:03:functional programming", "mmtag:03:programming__using_rules", 
+        "mmtag:03:programming__example", "mmtag_03_factorial[]"}],
+    Cell[24268, 845, 362, 6, 66, "Text",
+      CellTags->{
+      "mmtag:03:programming__example", "mmtag_03_sign_(example)"}]},
+  "mmtag_03_factorial[]"->{
+    Cell[21705, 738, 203, 3, 65, "Section",
+      CellTags->{
+      "mmtag:03:functional programming", "mmtag:03:programming__using_rules", 
+        "mmtag:03:programming__example", "mmtag_03_factorial[]"}]},
+  "mmtag:03:recursion_limit"->{
+    Cell[22634, 772, 88, 2, 51, "Input",
+      CellTags->"mmtag:03:recursion_limit"]},
+  "mmtag:03:Timing"->{
+    Cell[23065, 791, 100, 2, 50, "Input",
+      CellTags->"mmtag:03:Timing"]},
+  "mmtag_03_sign_(example)"->{
+    Cell[24268, 845, 362, 6, 66, "Text",
+      CellTags->{
+      "mmtag:03:programming__example", "mmtag_03_sign_(example)"}]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"mmtag:03:mutliple_instructions_in_same_cell", 25988, 892},
+  {"mmtag:03:hiding_output", 26169, 897},
+  {"mmtag:03:loops__Do[]", 26348, 902},
+  {"mmtag:03:Do[]", 26471, 905},
+  {"mmtag:03:Print[]", 26597, 908},
+  {"mmtag:03:printing_intermediate_output", 26771, 912},
+  {"mmtag:03:Table[]", 26924, 916},
+  {"mmtag:03:ListPlot[]", 27030, 919},
+  {"mmtag:03:FindMinimum[]", 27142, 922},
+  {"mmtag:03:Nest[]", 27250, 925},
+  {"mmtag:03:pure functions", 27388, 928},
+  {"mmtag:03:FindRoot[]", 27522, 931},
+  {"mmtag:03:Module[]", 27628, 934},
+  {"mmtag:03:local_variables__use_in_Module[]", 27849, 939},
+  {"mmtag:03:pure_functions", 28052, 944},
+  {"mmtag:03:switches__If[]_and_Which[]", 28267, 949},
+  {"mmtag:03:If[]", 28443, 954},
+  {"mmtag:03:Which[]", 28622, 959},
+  {"mmtag:03:PrimQ[]_query_for_prime_number", 28824, 964},
+  {"mmtag:03:patterns", 28950, 967},
+  {"mmtag:03:pattern_restrictions", 29068, 970},
+  {"mmtag:03:switches__Cases[]", 29195, 973},
+  {"mmtag:03:Cases[]", 29331, 976},
+  {"mmtag:03:functions__defining_with_patterns", 29493, 979},
+  {"mmtag:03:functions__errors with immediate \
+assignmentusing_delayed_assignment_(=)", 29691, 983},
+  {"mmtag:03:functions__using_delayed_assignment_(:=)", 29901, 988},
+  {"mmtag:03:delayed_assignment_(:=)", 30158, 994},
+  {"mmtag:03:(:=)_delayed_assignment", 30415, 1000},
+  {"mmtag:03:functional programming", 30671, 1006},
+  {"mmtag:03:programming__using_rules", 30921, 1011},
+  {"mmtag:03:programming__example", 31167, 1016},
+  {"mmtag_03_factorial[]", 31531, 1024},
+  {"mmtag:03:recursion_limit", 31772, 1029},
+  {"mmtag:03:Timing", 31882, 1032},
+  {"mmtag_03_sign_(example)", 31992, 1035}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 53, 0, 64, "Title"],
+Cell[1810, 53, 361, 6, 86, "Text"],
+Cell[2174, 61, 151, 2, 65, "Section",
+  CellTags->{
+  "mmtag:03:mutliple_instructions_in_same_cell", "mmtag:03:hiding_output"}],
+Cell[2328, 65, 169, 3, 84, "Input"],
+Cell[2500, 70, 273, 6, 66, "Text"],
+Cell[2776, 78, 41, 1, 50, "Input"],
+Cell[2820, 81, 79, 1, 65, "Section",
+  CellTags->{"mmtag:03:loops__Do[]", "mmtag:03:Do[]"}],
+Cell[2902, 84, 40, 1, 50, "Input"],
+Cell[2945, 87, 74, 1, 50, "Input"],
+Cell[3022, 90, 34, 1, 50, "Input"],
+Cell[3059, 93, 219, 6, 46, "Text"],
+Cell[3281, 101, 232, 5, 50, "Input",
+  CellTags->{"mmtag:03:Print[]", "mmtag:03:printing_intermediate_output"}],
+Cell[3516, 108, 41, 1, 50, "Input"],
+Cell[3560, 111, 41, 1, 50, "Input"],
+Cell[3604, 114, 893, 22, 50, "Input"],
+Cell[4500, 138, 43, 1, 50, "Input"],
+Cell[4546, 141, 43, 1, 50, "Input"],
+Cell[4592, 144, 41, 1, 50, "Input"],
+Cell[4636, 147, 154, 3, 67, "Input",
+  CellTags->"mmtag:03:Table[]"],
+Cell[4793, 152, 215, 7, 46, "Text"],
+Cell[5011, 161, 122, 2, 67, "Input"],
+Cell[5136, 165, 198, 4, 50, "Input"],
+Cell[5337, 171, 330, 9, 66, "Text"],
+Cell[5670, 182, 123, 3, 67, "Input",
+  CellTags->"mmtag:03:ListPlot[]"],
+Cell[5796, 187, 50, 1, 50, "Input"],
+Cell[5849, 190, 175, 7, 46, "Text"],
+Cell[6027, 199, 82, 1, 50, "Input"],
+Cell[6112, 202, 47, 1, 50, "Input"],
+Cell[6162, 205, 202, 4, 50, "Input",
+  CellTags->"mmtag:03:FindMinimum[]"],
+Cell[6367, 211, 341, 9, 66, "Text"],
+Cell[6711, 222, 554, 16, 86, "Text"],
+Cell[7268, 240, 41, 1, 50, "Input"],
+Cell[7312, 243, 137, 2, 50, "Input",
+  CellTags->{"mmtag:03:Nest[]", "mmtag:03:pure functions"}],
+Cell[7452, 247, 59, 0, 46, "Text"],
+Cell[7514, 249, 61, 1, 50, "Input"],
+Cell[7578, 252, 159, 5, 46, "Text"],
+Cell[7740, 259, 96, 2, 50, "Input",
+  CellTags->"mmtag:03:FindRoot[]"],
+Cell[7839, 263, 34, 0, 65, "Section"],
+Cell[7876, 265, 489, 16, 66, "Text"],
+Cell[8368, 283, 72, 2, 67, "Input"],
+Cell[8443, 287, 61, 1, 50, "Input"],
+Cell[8507, 290, 246, 8, 46, "Text"],
+Cell[8756, 300, 44, 1, 50, "Input"],
+Cell[8803, 303, 634, 13, 152, "Input",
+  CellTags->{
+  "mmtag:03:Module[]", "mmtag:03:local_variables__use_in_Module[]", 
+    "mmtag:03:pure_functions"}],
+Cell[9440, 318, 148, 4, 101, "Input"],
+Cell[9591, 324, 131, 2, 65, "Section",
+  CellTags->{
+  "mmtag:03:switches__If[]_and_Which[]", "mmtag:03:If[]", 
+    "mmtag:03:Which[]"}],
+Cell[9725, 328, 40, 1, 50, "Input"],
+Cell[9768, 331, 83, 1, 50, "Input"],
+Cell[9854, 334, 99, 2, 50, "Input",
+  CellTags->"mmtag:03:PrimQ[]_query_for_prime_number"],
+Cell[9956, 338, 328, 6, 118, "Input"],
+Cell[10287, 346, 421, 11, 66, "Text"],
+Cell[10711, 359, 31, 0, 65, "Section"],
+Cell[10745, 361, 492, 16, 66, "Text",
+  CellTags->"mmtag:03:patterns"],
+Cell[11240, 379, 121, 2, 50, "Input"],
+Cell[11364, 383, 63, 1, 50, "Input"],
+Cell[11430, 386, 462, 14, 66, "Text"],
+Cell[11895, 402, 41, 1, 50, "Input"],
+Cell[11939, 405, 63, 1, 50, "Input"],
+Cell[12005, 408, 132, 2, 50, "Input"],
+Cell[12140, 412, 116, 3, 46, "Text"],
+Cell[12259, 417, 135, 2, 50, "Input",
+  CellTags->"mmtag:03:pattern_restrictions"],
+Cell[12397, 421, 680, 18, 89, "Text"],
+Cell[13080, 441, 186, 5, 46, "Text"],
+Cell[13269, 448, 70, 1, 50, "Input"],
+Cell[13342, 451, 695, 20, 98, "Text"],
+Cell[14040, 473, 78, 1, 50, "Input"],
+Cell[14121, 476, 83, 1, 50, "Input"],
+Cell[14207, 479, 148, 3, 46, "Text"],
+Cell[14358, 484, 88, 1, 50, "Input"],
+Cell[14449, 487, 78, 1, 50, "Input"],
+Cell[14530, 490, 121, 2, 67, "Input"],
+Cell[14654, 494, 109, 3, 46, "Text"],
+Cell[14766, 499, 85, 1, 50, "Input"],
+Cell[14854, 502, 57, 1, 50, "Input"],
+Cell[14914, 505, 142, 4, 46, "Text"],
+Cell[15059, 511, 214, 5, 98, "Text"],
+Cell[15276, 518, 107, 2, 50, "Input",
+  CellTags->{"mmtag:03:switches__Cases[]", "mmtag:03:Cases[]"}],
+Cell[15386, 522, 134, 2, 50, "Input"],
+Cell[15523, 526, 109, 1, 65, "Section",
+  CellTags->"mmtag:03:functions__defining_with_patterns"],
+Cell[15635, 529, 436, 11, 69, "Text",
+  CellTags->
+  "mmtag:03:functions__errors with immediate \
+assignmentusing_delayed_assignment_(=)"],
+Cell[16074, 542, 214, 4, 50, "Input"],
+Cell[16291, 548, 3515, 113, 84, "Text"],
+Cell[19809, 663, 83, 2, 67, "Input"],
+Cell[19895, 667, 139, 5, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[20059, 676, 42, 1, 50, "Input"],
+Cell[20104, 679, 237, 4, 67, "Input"]
+}, Open  ]],
+Cell[20356, 686, 105, 3, 46, "Text"],
+Cell[20464, 691, 207, 5, 50, "Input"],
+Cell[20674, 698, 40, 1, 50, "Input"],
+Cell[20717, 701, 191, 3, 65, "Subsection",
+  CellTags->{
+  "mmtag:03:functions__using_delayed_assignment_(:=)", 
+    "mmtag:03:delayed_assignment_(:=)", "mmtag:03:(:=)_delayed_assignment"}],
+Cell[20911, 706, 421, 8, 86, "Text"],
+Cell[21335, 716, 91, 2, 67, "Input"],
+Cell[21429, 720, 57, 1, 50, "Input"],
+Cell[21489, 723, 40, 1, 50, "Input"],
+Cell[21532, 726, 40, 1, 50, "Input"],
+Cell[21575, 729, 40, 1, 50, "Input"],
+Cell[21618, 732, 40, 1, 50, "Input"],
+Cell[21661, 735, 41, 1, 50, "Input"],
+Cell[21705, 738, 203, 3, 65, "Section",
+  CellTags->{
+  "mmtag:03:functional programming", "mmtag:03:programming__using_rules", 
+    "mmtag:03:programming__example", "mmtag_03_factorial[]"}],
+Cell[21911, 743, 260, 5, 66, "Text"],
+Cell[22174, 750, 73, 1, 50, "Input"],
+Cell[22250, 753, 57, 0, 46, "Text"],
+Cell[22310, 755, 45, 1, 50, "Input"],
+Cell[22358, 758, 112, 3, 46, "Text"],
+Cell[22473, 763, 58, 1, 50, "Input"],
+Cell[22534, 766, 47, 1, 50, "Input"],
+Cell[22584, 769, 47, 1, 50, "Input"],
+Cell[22634, 772, 88, 2, 51, "Input",
+  CellTags->"mmtag:03:recursion_limit"],
+Cell[22725, 776, 59, 1, 51, "Input"],
+Cell[22787, 779, 69, 1, 50, "Input"],
+Cell[22859, 782, 96, 3, 46, "Text"],
+Cell[22958, 787, 104, 2, 50, "Input"],
+Cell[23065, 791, 100, 2, 50, "Input",
+  CellTags->"mmtag:03:Timing"],
+Cell[23168, 795, 69, 1, 50, "Input"],
+Cell[23240, 798, 49, 1, 50, "Input"],
+Cell[23292, 801, 63, 0, 65, "Section"],
+Cell[23358, 803, 73, 0, 46, "Text"],
+Cell[23434, 805, 49, 1, 50, "Input"],
+Cell[23486, 808, 101, 2, 50, "Input"],
+Cell[23590, 812, 46, 1, 50, "Input"],
+Cell[23639, 815, 54, 0, 46, "Text"],
+Cell[23696, 817, 49, 1, 50, "Input"],
+Cell[23748, 820, 108, 2, 50, "Input"],
+Cell[23859, 824, 46, 1, 50, "Input"],
+Cell[23908, 827, 34, 0, 46, "Text"],
+Cell[23945, 829, 50, 1, 50, "Input"],
+Cell[23998, 832, 49, 1, 50, "Input"],
+Cell[24050, 835, 117, 2, 50, "Input"],
+Cell[24170, 839, 46, 1, 50, "Input"],
+Cell[24219, 842, 46, 1, 50, "Input"],
+Cell[24268, 845, 362, 6, 66, "Text",
+  CellTags->{"mmtag:03:programming__example", "mmtag_03_sign_(example)"}],
+Cell[24633, 853, 42, 1, 50, "Input"],
+Cell[24678, 856, 153, 2, 50, "Input"],
+Cell[24834, 860, 122, 3, 50, "Input"],
+Cell[24959, 865, 180, 3, 50, "Input"]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

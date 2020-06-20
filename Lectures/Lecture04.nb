@@ -1,0 +1,986 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     15128,        510]*)
+(*NotebookOutlinePosition[     28362,        807]*)
+(*  CellTagsIndexPosition[     25961,        756]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["\<\
+Symbolic and Numeric Calculations, Roots Finding,
+File Input and Output\
+\>", "Title"],
+
+Cell[TextData[{
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  "  has a powerful array of functions that solve equations symbolically and \
+ways to simplify expressions.  Many people use ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " because it removes the tedium of doing algebra with pencil and \
+paper---and perhaps more importantly it doesn't make errors!  However, one \
+frustrating aspect is getting ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " to represent an expression in exactly the form you desire.  Sometimes it \
+is possible with patience,practice and skill---and sometimes you have to give \
+up and accept that the form of the expression will not be ``neat and \
+compact.'' "
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Operations on Polynomials, Rational Expressions, and Simplification \
+of Expressions\
+\>", "Section",
+  CellTags->{
+  "mmtag:04:expressions__simplifying", "mmtag:04:simplifying_expressions", 
+    "mmtag:04:expressions__simplifying__Factor[]", 
+    "mmtag:04:expressions__simplifying__Collect[]", 
+    "mmtag:04:expressions__simplifying__Simplify[]", 
+    "mmtag:04:expressions__simplifying__Apart[]", 
+    "mmtag:04:expressions__simplifying__Together[]"}],
+
+Cell[TextData[{
+  "A good way to gain familiarity with ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  "'s operations to do symbolic algebra is to look though the categories in \
+the Built-in Functions section in the Help Browser.  Look though the names of \
+functions  under Algebraic Computation--they have names that are fairly \
+indicative of their purpose."
+}], "Text"],
+
+Cell[BoxData[
+    \(PaulENomeal\  = \ \((1\  + \ 2  a\  + \ 3  x\  + \ 4  z)\)^4\)], "Input"],
+
+Cell[BoxData[
+    \(FatPEN\  = \ Expand[PaulENomeal]\)], "Input",
+  CellTags->"mmtag:04:Expand[]"],
+
+Cell[BoxData[
+    \(Factor[FatPEN]\)], "Input",
+  CellTags->"mmtag:04:Factor[]"],
+
+Cell[BoxData[
+    \(PaulinX\  = \ Collect[FatPEN, x]\)], "Input",
+  CellTags->"mmtag:04:Collect[]"],
+
+Cell[BoxData[
+    \(Coefficient[PaulinX, x, 0]\)], "Input",
+  CellTags->"mmtag:04:Simplify[]"],
+
+Cell[BoxData[
+    \(PaulSpiffedUp\  = \ 
+      Sum[\[IndentingNewLine]Simplify[Coefficient[PaulinX, x, i]] x^i, \ {i, 
+          0, 20}]\)], "Input"],
+
+Cell[BoxData[
+    \(Simplify[PaulSpiffedUp]\)], "Input"],
+
+Cell[BoxData[
+    \(RashENell\  = \(\(\((x + y)\)\/\((x - y)\)\)\(\ \)\(+\)\(\ \ \)\(\((x - 
+                y)\)\/\((y + x)\)\)\(\ \)\)\)], "Input"],
+
+Cell[BoxData[
+    \(Apart[RashENell]\)], "Input",
+  CellTags->"mmtag:04:Apart[]"],
+
+Cell[BoxData[
+    \(Together[RashENell]\)], "Input",
+  CellTags->"mmtag:04:Together[]"],
+
+Cell[BoxData[
+    \(Apart[Together[RashENell]]\)], "Input"],
+
+Cell[BoxData[
+    \(Numerator[Together[RashENell]]\)], "Input"],
+
+Cell[BoxData[
+    \(Simplify[RashENell]\)], "Input"],
+
+Cell[BoxData[
+    \(Factor[RashENell]\)], "Input"],
+
+Cell[TextData[{
+  "One common hurdle is getting ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  "  to remove roots:"
+}], "Text",
+  CellTags->{
+  "mmtag:04:simplyfing__roots_of_squares", 
+    "mmtag:04:roots_of_squares__simplifying"}],
+
+Cell[BoxData[
+    \(RootBoy\  = \ \@\((x + y)\)\^2\)], "Input"],
+
+Cell[BoxData[
+    \(Simplify[RootBoy]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Note in the following statement that \"x \[Element] Reals\" means \
+\"x is a real number\" and \"&&\" is the \"Logical And\" operator.\
+\>", \
+"Subsubsection"],
+
+Cell[BoxData[
+    \(Simplify[RootBoy, \ 
+      x \[Element] \ Reals\  && \ y\  \[Element] \ Reals]\)], "Input"],
+
+Cell[BoxData[
+    \(Simplify[RootBoy, \ 
+      x \[GreaterEqual] \ 0\  && \ y\ \  \[GreaterEqual] \ 0]\)], "Input"],
+
+Cell["Brute force; clever ,but not a good idea follows:", "Text"],
+
+Cell[BoxData[
+    \(RootBoy /. Sqrt[\((expr_)\)^2] \[Rule] \ expr\)], "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Calculus", "Section"],
+
+Cell[BoxData[
+    \(AMessyExpression\  = \ Log[x\ Sin[x]]\/\(1\/x\)\)], "Input"],
+
+Cell[BoxData[
+    \(Limit[AMessyExpression, x \[Rule] 0]\)], "Input",
+  CellTags->{"mmtag:04:Limit[]", "mmtag:04:limits"}],
+
+Cell[BoxData[
+    \(DMess\  = \ D[AMessyExpression, x]\)], "Input",
+  CellTags->"mmtag:04:derivatives_D[]"],
+
+Cell[BoxData[
+    \(Integrate[DMess, x]\)], "Input"],
+
+Cell[BoxData[
+    \(Integrate[DMess, {x, 0, \[ExponentialE]}] // N\)], "Input"],
+
+Cell[BoxData[
+    \(\((AMessyExpression /. x \[Rule] e)\)\  - \ \((AMessyExpression /. 
+          x \[Rule] 0)\)\)], "Input",
+  CellTags->"mmtag:04:definite_integrals__brute_force"],
+
+Cell[BoxData[
+    \(\((AMessyExpression /. x \[Rule] \[ExponentialE])\)\  - \ 
+      Limit[AMessyExpression, x \[Rule] 0]\)], "Input"],
+
+Cell[BoxData[
+    \(\[ExponentialE]\ Log[\[ExponentialE]\ Sin[\[ExponentialE]]] // 
+      N\)], "Input"],
+
+Cell[BoxData[
+    \(Integrate[Sin[x]/Sqrt[\((x^2\  + \ a^2)\)], x]\)], "Input"],
+
+Cell[BoxData[
+    \(Integrate[Sin[x]/Sqrt[\((x^2\  + \ a^2)\)], x, 
+      Assumptions \[Rule] a\  \[GreaterEqual] \ 0]\)], "Input",
+  CellTags->{
+  "mmtag:04:Assumptions__in_Integrate[]", 
+    "mmtag:04:assumptions__example_during_integration"}],
+
+Cell[BoxData[
+    \(Integrate[Sin[x]\/\@\(a\^2 + x\^2\), x, 
+      Assumptions \[Rule] Re[a^2] > 0]\)], "Input"],
+
+Cell[BoxData[
+    \(UglyInfiniteIntegral\  = \ 
+      Integrate[Sin[x]/Sqrt[\((x^2\  + \ a^2)\)], {x, 0, \ \[Infinity]}, 
+        Assumptions \[Rule] Re[a^2] > 0]\)], "Input",
+  CellTags->{"mmtag:04:definite_integrals", "mmtag:04:integrals__definite"}],
+
+Cell[BoxData[
+    \(N[UglyInfiniteIntegral /. a \[Rule] 1]\)], "Input"],
+
+Cell[TextData[{
+  "Now we will introduce the Taylor expansion capabilities in ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  ":"
+}], "Text",
+  CellTags->{"mmtag:04:Series[]", "mmtag:04:Series[]_taylor_series"}],
+
+Cell[BoxData[
+    \(Series[AMessyExpression, {x, 0, 4}]\)], "Input"],
+
+Cell[BoxData[
+    \(FitAtZero\  = \ 
+      Series[AMessyExpression, {x, 0, 4}] // Normal\)], "Input",
+  CellTags->{
+  "mmtag:04:Series[]__converting_form_of", 
+    "mmtag:04:Normal[]__converting_form_of_Series[]"}],
+
+Cell[BoxData[
+    \(Plot[{AMessyExpression, FitAtZero}, {x, 0, 3}, 
+      PlotStyle \[Rule] {{Thickness[0.02], Hue[1]}, {Thickness[0.01], 
+            Hue[0.5]}}]\)], "Input",
+  CellTags->{
+  "mmtag:04:fitting_with_series__example", "mmtag:04:series__example_of_fit"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solving Equations", "Section",
+  CellTags->{
+  "mmtag:04:solving_systems_of_equations", 
+    "mmtag:04:systems_of_equations__Solve[]", "mmtag:04:Solve[]"}],
+
+Cell[BoxData[
+    \(TheEquation\  = \ a\ x^2\  + \ b\ x\  + \ c\)], "Input"],
+
+Cell[TextData[{
+  "Note the use of ",
+  StyleBox["Equal",
+    FontWeight->"Bold"],
+  " (==) rather than ",
+  StyleBox["Set",
+    FontWeight->"Bold"],
+  " (=) in the following; using \"=\" will produce an error message."
+}], "Text"],
+
+Cell[BoxData[
+    \(TheZeroes\  = \ Solve[TheEquation\  == 0, x]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "Note that the roots are given as ",
+  StyleBox["Rules",
+    FontWeight->"Bold"],
+  ". Now we ask ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " to verify that the solutions it found are indeed roots to the specified \
+equation. Here is a prototypical example of using ",
+  StyleBox["Replace",
+    FontWeight->"Bold"],
+  " (/.) to accomplish this:"
+}], "Subsubsection"],
+
+Cell[BoxData[
+    \(TheEquation /. TheZeroes\)], "Input",
+  CellTags->{
+  "mmtag:04:Solve[]__using_rules_produced_by", 
+    "mmtag:04:Solve[]__extracting_results"}],
+
+Cell[BoxData[
+    \(Simplify[TheEquation /. TheZeroes]\)], "Input"],
+
+Cell[TextData[{
+  "More examples of using ",
+  StyleBox["Solve",
+    FontWeight->"Bold"],
+  ":"
+}], "Text"],
+
+Cell[BoxData[
+    \(a[i_]\  := \ i + 1\)], "Input"],
+
+Cell[BoxData[
+    \(TheQuinticEquation\  = \ Sum[a[i]\ x^i, {i, 0, 5}]\)], "Input"],
+
+Cell[BoxData[
+    \(Solve[TheQuinticEquation \[Equal] 0, x]\)], "Input",
+  CellTags->"mmtag:04:Solve[]__form_of_undetermined_result"],
+
+Cell[BoxData[{
+    \(Quad1\  = \ a\ x^2\  + \ y\  + \ 3\), "\[IndentingNewLine]", 
+    \(Quad2\  = \ a\ y^2\  + x\  + \ 1\)}], "Input"],
+
+Cell[BoxData[
+    \(Solve[{Quad1 \[Equal] 0, Quad2 \[Equal] 0}, {x, y}]\)], "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Numerical Solutions", "Section",
+  CellTags->"mmtag:04:numerical_solutions"],
+
+Cell[BoxData[
+    \(Integrate[Sin[\ x]/Sqrt[\((x^2\  + \ a^2)\)], x]\)], "Input"],
+
+Cell[BoxData[
+    \(Integrate[Sin[\ x]/Sqrt[\((x^2\  + \ a^2)\)], {x, 0, 1}]\)], "Input"],
+
+Cell[BoxData[
+    \(NIntegrate[\((Sin[\ x]/Sqrt[\((x^2\  + \ a^2)\)])\) /. a \[Rule] 1, {x, 
+        0, 2\ Pi}]\)], "Input",
+  CellTags->"mmtag:04:numerical_integration_NIntegrate[]"],
+
+Cell[BoxData[
+    \(\(\(Plot[\[IndentingNewLine]NIntegrate[
+        Sin[\ x]/Sqrt[\((x^2\  + \ a^2)\)], \ {x, 0, 
+          2\ Pi}]\[IndentingNewLine], \[IndentingNewLine]{a, 0, 
+        10}]\)\(\[IndentingNewLine]\)
+    \)\)], "Input"],
+
+Cell[BoxData[
+    \(Plot[{AMessyExpression, FitAtZero}, {x, 0, 3}, 
+      PlotStyle \[Rule] {{Thickness[0.02], Hue[1]}, {Thickness[0.01], 
+            Hue[0.5]}}]\)], "Input",
+  CellTags->"mmtag:04:PlotStyle__example_using"],
+
+Cell[BoxData[
+    \(NSolve[AMessyExpression \[Equal] 0, x]\)], "Input"],
+
+Cell[BoxData[
+    \(FindRoot[AMessyExpression \[Equal] 0, {x,  .5, 1.5}]\)], "Input",
+  CellTags->"mmtag:04:FindRoot[]"],
+
+Cell[BoxData[
+    \(FindRoot[FitAtZero \[Equal] 0, {x,  .5, 1.5}]\)], "Input"],
+
+Cell[BoxData[
+    \(FindRoot[AMessyExpression \[Equal] 0, {x, 2.5, 3}]\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["File Input and Output", "Section",
+  CellTags->{
+  "mmtag:04:input_and_output", "mmtag:04:file_access", 
+    "mmtag:04:writing_and_reading_files", "mmtag:04:reading_and_writings"}],
+
+Cell[BoxData[
+    \(AMessyExpression\  >> \ AFile.m\)], "Input"],
+
+Cell[BoxData[
+    \(Clear[AMessyExpression]\)], "Input"],
+
+Cell[BoxData[
+    \(<< Afile.m\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+The next statement retrieves the content of Afile.m, but does not \
+associate it with any name (in particular, with AMessyExpression!):\
+\>", \
+"Subsubsection"],
+
+Cell[BoxData[
+    \(AMessyExpression\)], "Input"],
+
+Cell[BoxData[
+    \(AMessyExpression\ \  = \ << \ AFile.m\)], "Input"],
+
+Cell[BoxData[
+    \(AMessyExpression\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "The next statement introduces the \"show file\" command, ",
+  StyleBox["!!",
+    FontWeight->"Bold"]
+}], "Subsubsection"],
+
+Cell[BoxData[
+    \(\(!! \ Afile.m\)\)], "Input"],
+
+Cell[BoxData[
+    \(Close["\<ANewFileName\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(AFileHandle\  = \ 
+      OpenWrite["\<ANewFileName\>", FormatType \[Rule] OutputForm]\)], "Input"],
+
+Cell[BoxData[
+    \(RandomPairs\  = \ Table[{Random[], Random[]}, {i, 20}]\)], "Input",
+  CellTags->"mmtag:04:Random[]__example_using"],
+
+Cell[BoxData[
+    \(Write[AFileHandle, RandomPairs]\)], "Input"],
+
+Cell[BoxData[
+    \(\(!! ANewFileName\)\)], "Input"],
+
+Cell[BoxData[
+    \(Write[AFileHandle, MatrixForm[RandomPairs]]\)], "Input"],
+
+Cell[BoxData[
+    \(\(!! ANewFileName\)\)], "Input"],
+
+Cell[BoxData[
+    \(Close[AFileHandle]\)], "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Using Packages", "Section",
+  CellTags->{
+  "mmtag:04:packages_in_mathematica", "mmtag:04:Mathematica_packages"}],
+
+Cell[TextData[{
+  "Fortunately, others have gone to the trouble of writing files full of \
+useful stuff--and you can load this stuff into ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " for your very own use.  Some people produce useful stuff and you can buy \
+it, which is nice if you find it valuable--and you can write stuff and gain \
+value by selling it, which might be even more nice.\n",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " comes with a group of Standard Packages, that you can load in to do \
+special tasks.  The Packages are listed under \"Add-ons & Links\" in the Help \
+Browser.  For example, take a look at the specialized package under \
+\"Miscellaneous\" called \"World Plot\"..."
+}], "Text"],
+
+Cell[BoxData[
+    \(<< Miscellaneous`WorldPlot`\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(WorldPlot[{{"\<USA\>", "\<France\>", "\<Germany\>", "\<Italy\>", \
+"\<Belgium\>", "\<Luxembourg\>", "\<Switzerland\>"}, {RGBColor[1, 0, 0], 
+          RGBColor[0, 0.5, 0], RGBColor[0.5, 0, 0], \ RGBColor[0, 0, 0], 
+          RGBColor[0.4, 0.4, 0.1], RGBColor[0, 0, 0.5], 
+          RGBColor[0.9, 0.6, 0.6]}}]\)\(\ \)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(WorldPlot[{{"\<USA\>", "\<France\>", "\<Germany\>", "\<Italy\>", \
+"\<Belgium\>", "\<Luxembourg\>", "\<Switzerland\>"}, {RGBColor[1, 0, 0], 
+          RGBColor[0, 0.5, 0], RGBColor[0.5, 0, 0], \ RGBColor[0, 0, 0], 
+          RGBColor[0.4, 0.4, 0.1], RGBColor[0, 0, 0.5], 
+          RGBColor[0.9, 0.6, 0.6]}}, 
+      WorldProjection -> Mollweide]\)\(\ \)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(WorldPlot[{{"\<USA\>", "\<France\>", "\<Germany\>", "\<Italy\>", \
+"\<Belgium\>", "\<Luxembourg\>", "\<Switzerland\>"}, {RGBColor[1, 0, 0], 
+          RGBColor[0, 0.5, 0], RGBColor[0.5, 0, 0], \ RGBColor[0, 0, 0], 
+          RGBColor[0.4, 0.4, 0.1], RGBColor[0, 0, 0.5], 
+          RGBColor[0.9, 0.6, 0.6]}}, 
+      WorldProjection \[Rule] LambertAzimuthal]\)\(\ \)\)\)], "Input"]
+}, Open  ]]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{45, 1920}, {0, 1178}},
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{1319, 826},
+WindowMargins->{{87, Automatic}, {Automatic, 29}},
+WindowTitle->"Lecture 04 MIT 3.016 (Fall 2005)   \[Copyright] W. Craig Carter \
+2003-2005",
+CellLabelAutoDelete->True,
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "mmtag:04:expressions__simplifying"->{
+    Cell[2612, 76, 465, 10, 84, "Section",
+      CellTags->{
+      "mmtag:04:expressions__simplifying", "mmtag:04:simplifying_expressions",
+         "mmtag:04:expressions__simplifying__Factor[]", 
+        "mmtag:04:expressions__simplifying__Collect[]", 
+        "mmtag:04:expressions__simplifying__Simplify[]", 
+        "mmtag:04:expressions__simplifying__Apart[]", 
+        "mmtag:04:expressions__simplifying__Together[]"}]},
+  "mmtag:04:simplifying_expressions"->{
+    Cell[2612, 76, 465, 10, 84, "Section",
+      CellTags->{
+      "mmtag:04:expressions__simplifying", "mmtag:04:simplifying_expressions",
+         "mmtag:04:expressions__simplifying__Factor[]", 
+        "mmtag:04:expressions__simplifying__Collect[]", 
+        "mmtag:04:expressions__simplifying__Simplify[]", 
+        "mmtag:04:expressions__simplifying__Apart[]", 
+        "mmtag:04:expressions__simplifying__Together[]"}]},
+  "mmtag:04:expressions__simplifying__Factor[]"->{
+    Cell[2612, 76, 465, 10, 84, "Section",
+      CellTags->{
+      "mmtag:04:expressions__simplifying", "mmtag:04:simplifying_expressions",
+         "mmtag:04:expressions__simplifying__Factor[]", 
+        "mmtag:04:expressions__simplifying__Collect[]", 
+        "mmtag:04:expressions__simplifying__Simplify[]", 
+        "mmtag:04:expressions__simplifying__Apart[]", 
+        "mmtag:04:expressions__simplifying__Together[]"}]},
+  "mmtag:04:expressions__simplifying__Collect[]"->{
+    Cell[2612, 76, 465, 10, 84, "Section",
+      CellTags->{
+      "mmtag:04:expressions__simplifying", "mmtag:04:simplifying_expressions",
+         "mmtag:04:expressions__simplifying__Factor[]", 
+        "mmtag:04:expressions__simplifying__Collect[]", 
+        "mmtag:04:expressions__simplifying__Simplify[]", 
+        "mmtag:04:expressions__simplifying__Apart[]", 
+        "mmtag:04:expressions__simplifying__Together[]"}]},
+  "mmtag:04:expressions__simplifying__Simplify[]"->{
+    Cell[2612, 76, 465, 10, 84, "Section",
+      CellTags->{
+      "mmtag:04:expressions__simplifying", "mmtag:04:simplifying_expressions",
+         "mmtag:04:expressions__simplifying__Factor[]", 
+        "mmtag:04:expressions__simplifying__Collect[]", 
+        "mmtag:04:expressions__simplifying__Simplify[]", 
+        "mmtag:04:expressions__simplifying__Apart[]", 
+        "mmtag:04:expressions__simplifying__Together[]"}]},
+  "mmtag:04:expressions__simplifying__Apart[]"->{
+    Cell[2612, 76, 465, 10, 84, "Section",
+      CellTags->{
+      "mmtag:04:expressions__simplifying", "mmtag:04:simplifying_expressions",
+         "mmtag:04:expressions__simplifying__Factor[]", 
+        "mmtag:04:expressions__simplifying__Collect[]", 
+        "mmtag:04:expressions__simplifying__Simplify[]", 
+        "mmtag:04:expressions__simplifying__Apart[]", 
+        "mmtag:04:expressions__simplifying__Together[]"}]},
+  "mmtag:04:expressions__simplifying__Together[]"->{
+    Cell[2612, 76, 465, 10, 84, "Section",
+      CellTags->{
+      "mmtag:04:expressions__simplifying", "mmtag:04:simplifying_expressions",
+         "mmtag:04:expressions__simplifying__Factor[]", 
+        "mmtag:04:expressions__simplifying__Collect[]", 
+        "mmtag:04:expressions__simplifying__Simplify[]", 
+        "mmtag:04:expressions__simplifying__Apart[]", 
+        "mmtag:04:expressions__simplifying__Together[]"}]},
+  "mmtag:04:Expand[]"->{
+    Cell[3562, 101, 98, 2, 59, "Input",
+      CellTags->"mmtag:04:Expand[]"]},
+  "mmtag:04:Factor[]"->{
+    Cell[3663, 105, 80, 2, 59, "Input",
+      CellTags->"mmtag:04:Factor[]"]},
+  "mmtag:04:Collect[]"->{
+    Cell[3746, 109, 99, 2, 59, "Input",
+      CellTags->"mmtag:04:Collect[]"]},
+  "mmtag:04:Simplify[]"->{
+    Cell[3848, 113, 94, 2, 59, "Input",
+      CellTags->"mmtag:04:Simplify[]"]},
+  "mmtag:04:Apart[]"->{
+    Cell[4308, 129, 81, 2, 59, "Input",
+      CellTags->"mmtag:04:Apart[]"]},
+  "mmtag:04:Together[]"->{
+    Cell[4392, 133, 87, 2, 59, "Input",
+      CellTags->"mmtag:04:Together[]"]},
+  "mmtag:04:simplyfing__roots_of_squares"->{
+    Cell[4718, 149, 242, 8, 59, "Text",
+      CellTags->{
+      "mmtag:04:simplyfing__roots_of_squares", 
+        "mmtag:04:roots_of_squares__simplifying"}]},
+  "mmtag:04:roots_of_squares__simplifying"->{
+    Cell[4718, 149, 242, 8, 59, "Text",
+      CellTags->{
+      "mmtag:04:simplyfing__roots_of_squares", 
+        "mmtag:04:roots_of_squares__simplifying"}]},
+  "mmtag:04:Limit[]"->{
+    Cell[5816, 195, 122, 2, 59, "Input",
+      CellTags->{"mmtag:04:Limit[]", "mmtag:04:limits"}]},
+  "mmtag:04:limits"->{
+    Cell[5816, 195, 122, 2, 59, "Input",
+      CellTags->{"mmtag:04:Limit[]", "mmtag:04:limits"}]},
+  "mmtag:04:derivatives_D[]"->{
+    Cell[5941, 199, 107, 2, 59, "Input",
+      CellTags->"mmtag:04:derivatives_D[]"]},
+  "mmtag:04:definite_integrals__brute_force"->{
+    Cell[6188, 209, 181, 3, 59, "Input",
+      CellTags->"mmtag:04:definite_integrals__brute_force"]},
+  "mmtag:04:Assumptions__in_Integrate[]"->{
+    Cell[6698, 225, 245, 5, 59, "Input",
+      CellTags->{
+      "mmtag:04:Assumptions__in_Integrate[]", 
+        "mmtag:04:assumptions__example_during_integration"}]},
+  "mmtag:04:assumptions__example_during_integration"->{
+    Cell[6698, 225, 245, 5, 59, "Input",
+      CellTags->{
+      "mmtag:04:Assumptions__in_Integrate[]", 
+        "mmtag:04:assumptions__example_during_integration"}]},
+  "mmtag:04:definite_integrals"->{
+    Cell[7061, 236, 252, 4, 59, "Input",
+      CellTags->{
+      "mmtag:04:definite_integrals", "mmtag:04:integrals__definite"}]},
+  "mmtag:04:integrals__definite"->{
+    Cell[7061, 236, 252, 4, 59, "Input",
+      CellTags->{
+      "mmtag:04:definite_integrals", "mmtag:04:integrals__definite"}]},
+  "mmtag:04:Series[]"->{
+    Cell[7390, 245, 220, 6, 59, "Text",
+      CellTags->{"mmtag:04:Series[]", "mmtag:04:Series[]_taylor_series"}]},
+  "mmtag:04:Series[]_taylor_series"->{
+    Cell[7390, 245, 220, 6, 59, "Text",
+      CellTags->{"mmtag:04:Series[]", "mmtag:04:Series[]_taylor_series"}]},
+  "mmtag:04:Series[]__converting_form_of"->{
+    Cell[7684, 256, 214, 5, 59, "Input",
+      CellTags->{
+      "mmtag:04:Series[]__converting_form_of", 
+        "mmtag:04:Normal[]__converting_form_of_Series[]"}]},
+  "mmtag:04:Normal[]__converting_form_of_Series[]"->{
+    Cell[7684, 256, 214, 5, 59, "Input",
+      CellTags->{
+      "mmtag:04:Series[]__converting_form_of", 
+        "mmtag:04:Normal[]__converting_form_of_Series[]"}]},
+  "mmtag:04:fitting_with_series__example"->{
+    Cell[7901, 263, 268, 5, 59, "Input",
+      CellTags->{
+      "mmtag:04:fitting_with_series__example", 
+        "mmtag:04:series__example_of_fit"}]},
+  "mmtag:04:series__example_of_fit"->{
+    Cell[7901, 263, 268, 5, 59, "Input",
+      CellTags->{
+      "mmtag:04:fitting_with_series__example", 
+        "mmtag:04:series__example_of_fit"}]},
+  "mmtag:04:solving_systems_of_equations"->{
+    Cell[8206, 273, 161, 3, 84, "Section",
+      CellTags->{
+      "mmtag:04:solving_systems_of_equations", 
+        "mmtag:04:systems_of_equations__Solve[]", "mmtag:04:Solve[]"}]},
+  "mmtag:04:systems_of_equations__Solve[]"->{
+    Cell[8206, 273, 161, 3, 84, "Section",
+      CellTags->{
+      "mmtag:04:solving_systems_of_equations", 
+        "mmtag:04:systems_of_equations__Solve[]", "mmtag:04:Solve[]"}]},
+  "mmtag:04:Solve[]"->{
+    Cell[8206, 273, 161, 3, 84, "Section",
+      CellTags->{
+      "mmtag:04:solving_systems_of_equations", 
+        "mmtag:04:systems_of_equations__Solve[]", "mmtag:04:Solve[]"}]},
+  "mmtag:04:Solve[]__using_rules_produced_by"->{
+    Cell[9187, 310, 164, 4, 59, "Input",
+      CellTags->{
+      "mmtag:04:Solve[]__using_rules_produced_by", 
+        "mmtag:04:Solve[]__extracting_results"}]},
+  "mmtag:04:Solve[]__extracting_results"->{
+    Cell[9187, 310, 164, 4, 59, "Input",
+      CellTags->{
+      "mmtag:04:Solve[]__using_rules_produced_by", 
+        "mmtag:04:Solve[]__extracting_results"}]},
+  "mmtag:04:Solve[]__form_of_undetermined_result"->{
+    Cell[9674, 332, 133, 2, 59, "Input",
+      CellTags->"mmtag:04:Solve[]__form_of_undetermined_result"]},
+  "mmtag:04:numerical_solutions"->{
+    Cell[10081, 347, 82, 1, 84, "Section",
+      CellTags->"mmtag:04:numerical_solutions"]},
+  "mmtag:04:numerical_integration_NIntegrate[]"->{
+    Cell[10342, 356, 183, 3, 59, "Input",
+      CellTags->"mmtag:04:numerical_integration_NIntegrate[]"]},
+  "mmtag:04:PlotStyle__example_using"->{
+    Cell[10767, 368, 224, 4, 59, "Input",
+      CellTags->"mmtag:04:PlotStyle__example_using"]},
+  "mmtag:04:FindRoot[]"->{
+    Cell[11068, 377, 120, 2, 59, "Input",
+      CellTags->"mmtag:04:FindRoot[]"]},
+  "mmtag:04:input_and_output"->{
+    Cell[11392, 390, 186, 3, 84, "Section",
+      CellTags->{
+      "mmtag:04:input_and_output", "mmtag:04:file_access", 
+        "mmtag:04:writing_and_reading_files", 
+        "mmtag:04:reading_and_writings"}]},
+  "mmtag:04:file_access"->{
+    Cell[11392, 390, 186, 3, 84, "Section",
+      CellTags->{
+      "mmtag:04:input_and_output", "mmtag:04:file_access", 
+        "mmtag:04:writing_and_reading_files", 
+        "mmtag:04:reading_and_writings"}]},
+  "mmtag:04:writing_and_reading_files"->{
+    Cell[11392, 390, 186, 3, 84, "Section",
+      CellTags->{
+      "mmtag:04:input_and_output", "mmtag:04:file_access", 
+        "mmtag:04:writing_and_reading_files", 
+        "mmtag:04:reading_and_writings"}]},
+  "mmtag:04:reading_and_writings"->{
+    Cell[11392, 390, 186, 3, 84, "Section",
+      CellTags->{
+      "mmtag:04:input_and_output", "mmtag:04:file_access", 
+        "mmtag:04:writing_and_reading_files", 
+        "mmtag:04:reading_and_writings"}]},
+  "mmtag:04:Random[]__example_using"->{
+    Cell[12536, 440, 135, 2, 59, "Input",
+      CellTags->"mmtag:04:Random[]__example_using"]},
+  "mmtag:04:packages_in_mathematica"->{
+    Cell[13030, 463, 119, 2, 84, "Section",
+      CellTags->{
+      "mmtag:04:packages_in_mathematica", "mmtag:04:Mathematica_packages"}]},
+  "mmtag:04:Mathematica_packages"->{
+    Cell[13030, 463, 119, 2, 84, "Section",
+      CellTags->{
+      "mmtag:04:packages_in_mathematica", "mmtag:04:Mathematica_packages"}]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"mmtag:04:expressions__simplifying", 15939, 530},
+  {"mmtag:04:simplifying_expressions", 16406, 539},
+  {"mmtag:04:expressions__simplifying__Factor[]", 16884, 548},
+  {"mmtag:04:expressions__simplifying__Collect[]", 17363, 557},
+  {"mmtag:04:expressions__simplifying__Simplify[]", 17843, 566},
+  {"mmtag:04:expressions__simplifying__Apart[]", 18320, 575},
+  {"mmtag:04:expressions__simplifying__Together[]", 18800, 584},
+  {"mmtag:04:Expand[]", 19252, 593},
+  {"mmtag:04:Factor[]", 19356, 596},
+  {"mmtag:04:Collect[]", 19461, 599},
+  {"mmtag:04:Simplify[]", 19568, 602},
+  {"mmtag:04:Apart[]", 19673, 605},
+  {"mmtag:04:Together[]", 19778, 608},
+  {"mmtag:04:simplyfing__roots_of_squares", 19904, 611},
+  {"mmtag:04:roots_of_squares__simplifying", 20109, 616},
+  {"mmtag:04:Limit[]", 20292, 621},
+  {"mmtag:04:limits", 20415, 624},
+  {"mmtag:04:derivatives_D[]", 20547, 627},
+  {"mmtag:04:definite_integrals__brute_force", 20682, 630},
+  {"mmtag:04:Assumptions__in_Integrate[]", 20829, 633},
+  {"mmtag:04:assumptions__example_during_integration", 21054, 638},
+  {"mmtag:04:definite_integrals", 21258, 643},
+  {"mmtag:04:integrals__definite", 21425, 647},
+  {"mmtag:04:Series[]", 21581, 651},
+  {"mmtag:04:Series[]_taylor_series", 21736, 654},
+  {"mmtag:04:Series[]__converting_form_of", 21897, 657},
+  {"mmtag:04:Normal[]__converting_form_of_Series[]", 22119, 662},
+  {"mmtag:04:fitting_with_series__example", 22332, 667},
+  {"mmtag:04:series__example_of_fit", 22524, 672},
+  {"mmtag:04:solving_systems_of_equations", 22722, 677},
+  {"mmtag:04:systems_of_equations__Solve[]", 22950, 682},
+  {"mmtag:04:Solve[]", 23156, 687},
+  {"mmtag:04:Solve[]__using_rules_produced_by", 23387, 692},
+  {"mmtag:04:Solve[]__extracting_results", 23593, 697},
+  {"mmtag:04:Solve[]__form_of_undetermined_result", 23808, 702},
+  {"mmtag:04:numerical_solutions", 23952, 705},
+  {"mmtag:04:numerical_integration_NIntegrate[]", 24096, 708},
+  {"mmtag:04:PlotStyle__example_using", 24244, 711},
+  {"mmtag:04:FindRoot[]", 24368, 714},
+  {"mmtag:04:input_and_output", 24484, 717},
+  {"mmtag:04:file_access", 24725, 723},
+  {"mmtag:04:writing_and_reading_files", 24980, 729},
+  {"mmtag:04:reading_and_writings", 25230, 735},
+  {"mmtag:04:Random[]__example_using", 25483, 741},
+  {"mmtag:04:packages_in_mathematica", 25619, 744},
+  {"mmtag:04:Mathematica_packages", 25796, 748}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 96, 3, 104, "Title"],
+Cell[1853, 56, 734, 16, 167, "Text"],
+
+Cell[CellGroupData[{
+Cell[2612, 76, 465, 10, 84, "Section",
+  CellTags->{
+  "mmtag:04:expressions__simplifying", "mmtag:04:simplifying_expressions", 
+    "mmtag:04:expressions__simplifying__Factor[]", 
+    "mmtag:04:expressions__simplifying__Collect[]", 
+    "mmtag:04:expressions__simplifying__Simplify[]", 
+    "mmtag:04:expressions__simplifying__Apart[]", 
+    "mmtag:04:expressions__simplifying__Together[]"}],
+Cell[3080, 88, 383, 8, 113, "Text"],
+Cell[3466, 98, 93, 1, 59, "Input"],
+Cell[3562, 101, 98, 2, 59, "Input",
+  CellTags->"mmtag:04:Expand[]"],
+Cell[3663, 105, 80, 2, 59, "Input",
+  CellTags->"mmtag:04:Factor[]"],
+Cell[3746, 109, 99, 2, 59, "Input",
+  CellTags->"mmtag:04:Collect[]"],
+Cell[3848, 113, 94, 2, 59, "Input",
+  CellTags->"mmtag:04:Simplify[]"],
+Cell[3945, 117, 149, 3, 80, "Input"],
+Cell[4097, 122, 56, 1, 59, "Input"],
+Cell[4156, 125, 149, 2, 88, "Input"],
+Cell[4308, 129, 81, 2, 59, "Input",
+  CellTags->"mmtag:04:Apart[]"],
+Cell[4392, 133, 87, 2, 59, "Input",
+  CellTags->"mmtag:04:Together[]"],
+Cell[4482, 137, 59, 1, 59, "Input"],
+Cell[4544, 140, 63, 1, 59, "Input"],
+Cell[4610, 143, 52, 1, 59, "Input"],
+Cell[4665, 146, 50, 1, 59, "Input"],
+Cell[4718, 149, 242, 8, 59, "Text",
+  CellTags->{
+  "mmtag:04:simplyfing__roots_of_squares", 
+    "mmtag:04:roots_of_squares__simplifying"}],
+Cell[4963, 159, 63, 1, 71, "Input"],
+Cell[5029, 162, 50, 1, 59, "Input"],
+
+Cell[CellGroupData[{
+Cell[5104, 167, 169, 4, 55, "Subsubsection"],
+Cell[5276, 173, 111, 2, 59, "Input"],
+Cell[5390, 177, 115, 2, 59, "Input"],
+Cell[5508, 181, 65, 0, 59, "Text"],
+Cell[5576, 183, 78, 1, 59, "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5703, 190, 27, 0, 84, "Section"],
+Cell[5733, 192, 80, 1, 100, "Input"],
+Cell[5816, 195, 122, 2, 59, "Input",
+  CellTags->{"mmtag:04:Limit[]", "mmtag:04:limits"}],
+Cell[5941, 199, 107, 2, 59, "Input",
+  CellTags->"mmtag:04:derivatives_D[]"],
+Cell[6051, 203, 52, 1, 59, "Input"],
+Cell[6106, 206, 79, 1, 59, "Input"],
+Cell[6188, 209, 181, 3, 59, "Input",
+  CellTags->"mmtag:04:definite_integrals__brute_force"],
+Cell[6372, 214, 134, 2, 59, "Input"],
+Cell[6509, 218, 104, 2, 59, "Input"],
+Cell[6616, 222, 79, 1, 59, "Input"],
+Cell[6698, 225, 245, 5, 59, "Input",
+  CellTags->{
+  "mmtag:04:Assumptions__in_Integrate[]", 
+    "mmtag:04:assumptions__example_during_integration"}],
+Cell[6946, 232, 112, 2, 101, "Input"],
+Cell[7061, 236, 252, 4, 59, "Input",
+  CellTags->{"mmtag:04:definite_integrals", "mmtag:04:integrals__definite"}],
+Cell[7316, 242, 71, 1, 59, "Input"],
+Cell[7390, 245, 220, 6, 59, "Text",
+  CellTags->{"mmtag:04:Series[]", "mmtag:04:Series[]_taylor_series"}],
+Cell[7613, 253, 68, 1, 59, "Input"],
+Cell[7684, 256, 214, 5, 59, "Input",
+  CellTags->{
+  "mmtag:04:Series[]__converting_form_of", 
+    "mmtag:04:Normal[]__converting_form_of_Series[]"}],
+Cell[7901, 263, 268, 5, 59, "Input",
+  CellTags->{
+  "mmtag:04:fitting_with_series__example", 
+    "mmtag:04:series__example_of_fit"}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8206, 273, 161, 3, 84, "Section",
+  CellTags->{
+  "mmtag:04:solving_systems_of_equations", 
+    "mmtag:04:systems_of_equations__Solve[]", "mmtag:04:Solve[]"}],
+Cell[8370, 278, 76, 1, 59, "Input"],
+Cell[8449, 281, 231, 8, 59, "Text"],
+Cell[8683, 291, 77, 1, 59, "Input"],
+
+Cell[CellGroupData[{
+Cell[8785, 296, 399, 12, 76, "Subsubsection"],
+Cell[9187, 310, 164, 4, 59, "Input",
+  CellTags->{
+  "mmtag:04:Solve[]__using_rules_produced_by", 
+    "mmtag:04:Solve[]__extracting_results"}],
+Cell[9354, 316, 67, 1, 59, "Input"],
+Cell[9424, 319, 107, 5, 59, "Text"],
+Cell[9534, 326, 51, 1, 59, "Input"],
+Cell[9588, 329, 83, 1, 59, "Input"],
+Cell[9674, 332, 133, 2, 59, "Input",
+  CellTags->"mmtag:04:Solve[]__form_of_undetermined_result"],
+Cell[9810, 336, 135, 2, 80, "Input"],
+Cell[9948, 340, 84, 1, 59, "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10081, 347, 82, 1, 84, "Section",
+  CellTags->"mmtag:04:numerical_solutions"],
+Cell[10166, 350, 81, 1, 59, "Input"],
+Cell[10250, 353, 89, 1, 59, "Input"],
+Cell[10342, 356, 183, 3, 59, "Input",
+  CellTags->"mmtag:04:numerical_integration_NIntegrate[]"],
+Cell[10528, 361, 236, 5, 143, "Input"],
+Cell[10767, 368, 224, 4, 59, "Input",
+  CellTags->"mmtag:04:PlotStyle__example_using"],
+Cell[10994, 374, 71, 1, 59, "Input"],
+Cell[11068, 377, 120, 2, 59, "Input",
+  CellTags->"mmtag:04:FindRoot[]"],
+Cell[11191, 381, 78, 1, 59, "Input"],
+Cell[11272, 384, 83, 1, 59, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[11392, 390, 186, 3, 84, "Section",
+  CellTags->{
+  "mmtag:04:input_and_output", "mmtag:04:file_access", 
+    "mmtag:04:writing_and_reading_files", "mmtag:04:reading_and_writings"}],
+Cell[11581, 395, 64, 1, 59, "Input"],
+Cell[11648, 398, 56, 1, 59, "Input"],
+Cell[11707, 401, 43, 1, 59, "Input"],
+
+Cell[CellGroupData[{
+Cell[11775, 406, 170, 4, 55, "Subsubsection"],
+Cell[11948, 412, 49, 1, 59, "Input"],
+Cell[12000, 415, 70, 1, 59, "Input"],
+Cell[12073, 418, 49, 1, 59, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[12159, 424, 140, 4, 55, "Subsubsection"],
+Cell[12302, 430, 49, 1, 59, "Input"],
+Cell[12354, 433, 58, 1, 59, "Input"],
+Cell[12415, 436, 118, 2, 59, "Input"],
+Cell[12536, 440, 135, 2, 59, "Input",
+  CellTags->"mmtag:04:Random[]__example_using"],
+Cell[12674, 444, 64, 1, 59, "Input"],
+Cell[12741, 447, 52, 1, 59, "Input"],
+Cell[12796, 450, 76, 1, 59, "Input"],
+Cell[12875, 453, 52, 1, 59, "Input"],
+Cell[12930, 456, 51, 1, 59, "Input"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[13030, 463, 119, 2, 84, "Section",
+  CellTags->{
+  "mmtag:04:packages_in_mathematica", "mmtag:04:Mathematica_packages"}],
+Cell[13152, 467, 737, 14, 179, "Text"],
+Cell[13892, 483, 60, 1, 59, "Input"],
+Cell[13955, 486, 355, 5, 101, "Input"],
+Cell[14313, 493, 392, 6, 101, "Input"],
+Cell[14708, 501, 404, 6, 101, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

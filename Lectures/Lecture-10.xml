@@ -1,0 +1,2049 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 10 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2005
+ </title>
+ <link href="HTMLFiles/Lecture-10.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ Stress Strain, Principal Axes, and Mohr's Circle
+</p>
+
+
+
+<p class="Section">
+ <a id="mtag_10_principal_axes"></a>
+ General Stress State&nbsp;&nbsp;in Principal Axes&nbsp;&nbsp;System
+</p>
+
+
+
+<p class="Text">
+ This is a general state, we will rotate about the <span style='font-style: italic;'>z</span>-axis and compare the result to a general two-dimensional stress state.
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_10_stress_tensor__principal_axes"></a>
+ <a id="mtag_10_stress_tensor_2D__principal_axes"></a>
+ <img src="HTMLFiles/Lecture-10_1.gif" alt="&sigma;tensordiag = ({{&sigma;princ_xx, 0, 0}, {0, &sigma;princ_yy, 0}, {0, 0, &sigma;princ_zz}}) ;"  width="429" height="100"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mtag_10_stress_tensor__principal_axes"></a>
+ <a id="mtag_10_stress_tensor_2D__principal_axes"></a>
+ <img src="HTMLFiles/Lecture-10_2.gif" alt="&sigma;tensordiag//MatrixForm"  width="239" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>xx</mi>
+     </msub>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>yy</mi>
+     </msub>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>zz</mi>
+     </msub>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Section">
+ Rotation about <span style='font-style: italic;'>z</span>-axis by angle &theta;
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_10_rotation_about_z_axis"></a>
+ <img src="HTMLFiles/Lecture-10_3.gif" alt="rotmat[&theta;_] := ({{Cos[&theta;], -Sin[&theta;], 0}, {Sin[&theta;], Cos[&theta;], 0}, {0, 0, 1}}) ;"  width="329" height="92"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mtag_10_rotation_about_z_axis"></a>
+ <img src="HTMLFiles/Lecture-10_4.gif" alt="rotmat[&theta;]//MatrixForm"  width="212" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mi>Cos</mi>
+      <mo>[</mo>
+      <mi>&theta;</mi>
+      <mo>]</mo>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mi>&theta;</mi>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mi>&theta;</mi>
+      <mo>]</mo>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mi>Cos</mi>
+      <mo>[</mo>
+      <mi>&theta;</mi>
+      <mo>]</mo>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Section">
+ Transformation to general two-dimensional stress state coordinate system by rotating the principal system by &theta; around z-axis
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_10_similarity_transformation_example"></a>
+ <a id="mtag_10_stress__in_rotated_coordinate_system"></a>
+ <a id="mtag_10_Transposexx"></a>
+ <img src="HTMLFiles/Lecture-10_5.gif" alt="&sigma;rot = Simplify[Transpose[rotmat[&theta;]] . &sigma;tensordiag . rotmat[&theta;]] ;"  width="557" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mtag_10_similarity_transformation_example"></a>
+ <a id="mtag_10_stress__in_rotated_coordinate_system"></a>
+ <a id="mtag_10_Transposexx"></a>
+ <img src="HTMLFiles/Lecture-10_6.gif" alt="&sigma;rot//MatrixForm"  width="169" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <msup>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mi>&theta;</mi>
+         <mo>]</mo>
+        </mrow>
+        <mn>2</mn>
+       </msup>
+       <mo>&InvisibleTimes;</mo>
+       <msub>
+        <mi>&sigma;princ</mi>
+        <mi>xx</mi>
+       </msub>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <msup>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mi>&theta;</mi>
+         <mo>]</mo>
+        </mrow>
+        <mn>2</mn>
+       </msup>
+       <mo>&InvisibleTimes;</mo>
+       <msub>
+        <mi>&sigma;princ</mi>
+        <mi>yy</mi>
+       </msub>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mi>&theta;</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mi>&theta;</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+        </mrow>
+        <mo>+</mo>
+        <msub>
+         <mi>&sigma;princ</mi>
+         <mi>yy</mi>
+        </msub>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mi>&theta;</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mi>&theta;</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+        </mrow>
+        <mo>+</mo>
+        <msub>
+         <mi>&sigma;princ</mi>
+         <mi>yy</mi>
+        </msub>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <msup>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mi>&theta;</mi>
+         <mo>]</mo>
+        </mrow>
+        <mn>2</mn>
+       </msup>
+       <mo>&InvisibleTimes;</mo>
+       <msub>
+        <mi>&sigma;princ</mi>
+        <mi>xx</mi>
+       </msub>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <msup>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mi>&theta;</mi>
+         <mo>]</mo>
+        </mrow>
+        <mn>2</mn>
+       </msup>
+       <mo>&InvisibleTimes;</mo>
+       <msub>
+        <mi>&sigma;princ</mi>
+        <mi>yy</mi>
+       </msub>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>zz</mi>
+     </msub>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <msup>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mi>&theta;</mi>
+         <mo>]</mo>
+        </mrow>
+        <mn>2</mn>
+       </msup>
+       <mo>&InvisibleTimes;</mo>
+       <msub>
+        <mi>&sigma;princ</mi>
+        <mi>xx</mi>
+       </msub>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <msup>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mi>&theta;</mi>
+         <mo>]</mo>
+        </mrow>
+        <mn>2</mn>
+       </msup>
+       <mo>&InvisibleTimes;</mo>
+       <msub>
+        <mi>&sigma;princ</mi>
+        <mi>yy</mi>
+       </msub>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mi>&theta;</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mi>&theta;</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+        </mrow>
+        <mo>+</mo>
+        <msub>
+         <mi>&sigma;princ</mi>
+         <mi>yy</mi>
+        </msub>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mi>&theta;</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mi>&theta;</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+        </mrow>
+        <mo>+</mo>
+        <msub>
+         <mi>&sigma;princ</mi>
+         <mi>yy</mi>
+        </msub>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <msup>
+        <mrow>
+         <mi>Sin</mi>
+         <mo>[</mo>
+         <mi>&theta;</mi>
+         <mo>]</mo>
+        </mrow>
+        <mn>2</mn>
+       </msup>
+       <mo>&InvisibleTimes;</mo>
+       <msub>
+        <mi>&sigma;princ</mi>
+        <mi>xx</mi>
+       </msub>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <msup>
+        <mrow>
+         <mi>Cos</mi>
+         <mo>[</mo>
+         <mi>&theta;</mi>
+         <mo>]</mo>
+        </mrow>
+        <mn>2</mn>
+       </msup>
+       <mo>&InvisibleTimes;</mo>
+       <msub>
+        <mi>&sigma;princ</mi>
+        <mi>yy</mi>
+       </msub>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>zz</mi>
+     </msub>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Writing the same equation in a slightly different way...
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_10_Collectxx"></a>
+ <a id="mtag_10_TrigReducexx"></a>
+ <img src="HTMLFiles/Lecture-10_7.gif" alt="&sigma;rotalt = Collect[&sigma;rot//TrigReduce, {Cos[2&theta;], Sin[2 &theta;]}] ;"  width="505" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mtag_10_Collectxx"></a>
+ <a id="mtag_10_TrigReducexx"></a>
+ <img src="HTMLFiles/Lecture-10_8.gif" alt="&sigma;rotalt//MatrixForm"  width="192" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>&theta;</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>yy</mi>
+         </msub>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+         <mo>+</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>yy</mi>
+         </msub>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>2</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&theta;</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+        </mrow>
+        <mo>+</mo>
+        <msub>
+         <mi>&sigma;princ</mi>
+         <mi>yy</mi>
+        </msub>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>2</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&theta;</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+        </mrow>
+        <mo>+</mo>
+        <msub>
+         <mi>&sigma;princ</mi>
+         <mi>yy</mi>
+        </msub>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>&theta;</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <msub>
+           <mi>&sigma;princ</mi>
+           <mi>xx</mi>
+          </msub>
+         </mrow>
+         <mo>+</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>yy</mi>
+         </msub>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+         <mo>+</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>yy</mi>
+         </msub>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>zz</mi>
+     </msub>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>&theta;</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>yy</mi>
+         </msub>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+         <mo>+</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>yy</mi>
+         </msub>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>2</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&theta;</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+        </mrow>
+        <mo>+</mo>
+        <msub>
+         <mi>&sigma;princ</mi>
+         <mi>yy</mi>
+        </msub>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>2</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>&theta;</mi>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+        </mrow>
+        <mo>+</mo>
+        <msub>
+         <mi>&sigma;princ</mi>
+         <mi>yy</mi>
+        </msub>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>Cos</mi>
+        <mo>[</mo>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>&theta;</mi>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <msub>
+           <mi>&sigma;princ</mi>
+           <mi>xx</mi>
+          </msub>
+         </mrow>
+         <mo>+</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>yy</mi>
+         </msub>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>xx</mi>
+         </msub>
+         <mo>+</mo>
+         <msub>
+          <mi>&sigma;princ</mi>
+          <mi>yy</mi>
+         </msub>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>zz</mi>
+     </msub>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Naming the coefficients of the two-dimensional state in the rotated principal system
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_10_assignment_of_matrix_elements__example"></a>
+ <a id="mtag_10_matrices__example__assigning_element_by_element"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mo>(</mo>
+    <mtable>
+     <mtr>
+      <mtd>
+       <msub>
+        <mi>&sigma;lab</mi>
+        <mi>xx</mi>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>&sigma;lab</mi>
+        <mi>xy</mi>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>&sigma;lab</mi>
+        <mi>xz</mi>
+       </msub>
+      </mtd>
+     </mtr>
+     <mtr>
+      <mtd>
+       <msub>
+        <mi>&sigma;lab</mi>
+        <mi>xy</mi>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>&sigma;lab</mi>
+        <mi>yy</mi>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>&sigma;lab</mi>
+        <mi>yz</mi>
+       </msub>
+      </mtd>
+     </mtr>
+     <mtr>
+      <mtd>
+       <msub>
+        <mi>&sigma;lab</mi>
+        <mi>xz</mi>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>&sigma;lab</mi>
+        <mi>yz</mi>
+       </msub>
+      </mtd>
+      <mtd>
+       <msub>
+        <mi>&sigma;lab</mi>
+        <mi>zz</mi>
+       </msub>
+      </mtd>
+     </mtr>
+    </mtable>
+    <mo>)</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mi>&sigma;rotalt</mi>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>1.</mn>
+  <mtext> </mtext>
+  <msub>
+   <mi>&sigma;lab</mi>
+   <mi>xx</mi>
+  </msub>
+  <mo>&InvisibleTimes;</mo>
+  <mtext>  </mtext>
+  <mi>in</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>laboratory</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>system</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>rotated</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>by</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>&theta;</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>from</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>principal</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>axis</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>system</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>&sigma;lab</mi>
+  <mi>xx</mi>
+ </msub>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mfrac>
+    <mn>1</mn>
+    <mn>2</mn>
+   </mfrac>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Cos</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&theta;</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>xx</mi>
+     </msub>
+     <mo>-</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>yy</mi>
+     </msub>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mfrac>
+    <mn>1</mn>
+    <mn>2</mn>
+   </mfrac>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>xx</mi>
+     </msub>
+     <mo>+</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>yy</mi>
+     </msub>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mfrac>
+    <mn>1</mn>
+    <mn>2</mn>
+   </mfrac>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Cos</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&theta;</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>xx</mi>
+     </msub>
+     <mo>-</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>yy</mi>
+     </msub>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mfrac>
+    <mn>1</mn>
+    <mn>2</mn>
+   </mfrac>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>xx</mi>
+     </msub>
+     <mo>+</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>yy</mi>
+     </msub>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>2.</mn>
+  <mtext> </mtext>
+  <msub>
+   <mi>&sigma;lab</mi>
+   <mi>yy</mi>
+  </msub>
+  <mo>&InvisibleTimes;</mo>
+  <mtext>  </mtext>
+  <mi>in</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>laboratory</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>system</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>rotated</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>by</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>&theta;</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>from</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>principal</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>axis</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>system</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>&sigma;lab</mi>
+  <mi>yy</mi>
+ </msub>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mfrac>
+    <mn>1</mn>
+    <mn>2</mn>
+   </mfrac>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Cos</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&theta;</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <msub>
+       <mi>&sigma;princ</mi>
+       <mi>xx</mi>
+      </msub>
+     </mrow>
+     <mo>+</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>yy</mi>
+     </msub>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mfrac>
+    <mn>1</mn>
+    <mn>2</mn>
+   </mfrac>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>xx</mi>
+     </msub>
+     <mo>+</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>yy</mi>
+     </msub>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mfrac>
+    <mn>1</mn>
+    <mn>2</mn>
+   </mfrac>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Cos</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&theta;</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <msub>
+       <mi>&sigma;princ</mi>
+       <mi>xx</mi>
+      </msub>
+     </mrow>
+     <mo>+</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>yy</mi>
+     </msub>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mfrac>
+    <mn>1</mn>
+    <mn>2</mn>
+   </mfrac>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>xx</mi>
+     </msub>
+     <mo>+</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>yy</mi>
+     </msub>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>3.</mn>
+  <mtext> </mtext>
+  <msub>
+   <mi>&sigma;lab</mi>
+   <mi>xy</mi>
+  </msub>
+  <mo>&InvisibleTimes;</mo>
+  <mtext>  </mtext>
+  <mi>in</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>laboratory</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>system</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>rotated</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>by</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>&theta;</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>from</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>principal</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>axis</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>system</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>&sigma;lab</mi>
+  <mi>xy</mi>
+ </msub>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mfrac>
+   <mn>1</mn>
+   <mn>2</mn>
+  </mfrac>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mi>Sin</mi>
+   <mo>[</mo>
+   <mrow>
+    <mn>2</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>&theta;</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>xx</mi>
+     </msub>
+    </mrow>
+    <mo>+</mo>
+    <msub>
+     <mi>&sigma;princ</mi>
+     <mi>yy</mi>
+    </msub>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mfrac>
+   <mn>1</mn>
+   <mn>2</mn>
+  </mfrac>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mi>Sin</mi>
+   <mo>[</mo>
+   <mrow>
+    <mn>2</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>&theta;</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <msub>
+      <mi>&sigma;princ</mi>
+      <mi>xx</mi>
+     </msub>
+    </mrow>
+    <mo>+</mo>
+    <msub>
+     <mi>&sigma;princ</mi>
+     <mi>yy</mi>
+    </msub>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>All</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>z</mi>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mi>components</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>remain</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>zero</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>except</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>the</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>original</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>diagonal</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>term</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <msub>
+     <mi>&sigma;lab</mi>
+     <mi>zz</mi>
+    </msub>
+    <mo>:</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-10_9.gif" alt="&sigma;lab_yz"  width="58" height="26"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-10_10.gif" alt="&sigma;lab_xz"  width="59" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-10_11.gif" alt="&sigma;lab_zz"  width="57" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>0</mn>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>0</mn>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>0</mn>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>0</mn>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>&sigma;princ</mi>
+  <mi>zz</mi>
+ </msub>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>&sigma;princ</mi>
+  <mi>zz</mi>
+ </msub>
+</math>
+</p>
+
+<p class="Subsubsection">
+ <a id="mtag_10_stress__example__Mohrs_circle"></a>
+ Equations 1, 2, and 3 are the equations that express a circle known as Mohr's circle of stress (see accompanying class notes). The equations show the way in which the stress tensor components in a two-dimensional state of stress (a &quot;biaxial&quot; stress state) vary with orientation of the coordinate system in which the stresses are described.
+</p>
+
+
+
+<p class="Text">
+ <a id="mtag_10_rotation_invariants"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Notice</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>that</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>there</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>are</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>two</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>invariants</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>of</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>the</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>general</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mi>stress</mi>
+   <mo>:</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The trace (or twice the offset of Mohr's Circle):
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Simplify</mi>
+  <mo>[</mo>
+  <mrow>
+   <msub>
+    <mi>&sigma;lab</mi>
+    <mi>xx</mi>
+   </msub>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <msub>
+    <mi>&sigma;lab</mi>
+    <mi>yy</mi>
+   </msub>
+  </mrow>
+  <mtext> </mtext>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <msub>
+   <mi>&sigma;princ</mi>
+   <mi>xx</mi>
+  </msub>
+  <mo>+</mo>
+  <msub>
+   <mi>&sigma;princ</mi>
+   <mi>yy</mi>
+  </msub>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <msub>
+   <mi>&sigma;princ</mi>
+   <mi>xx</mi>
+  </msub>
+  <mo>+</mo>
+  <msub>
+   <mi>&sigma;princ</mi>
+   <mi>yy</mi>
+  </msub>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ And the determinant
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Simplify</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <msub>
+     <mi>&sigma;lab</mi>
+     <mi>xx</mi>
+    </msub>
+    <mo>&InvisibleTimes;</mo>
+    <mtext>  </mtext>
+    <msub>
+     <mi>&sigma;lab</mi>
+     <mi>yy</mi>
+    </msub>
+   </mrow>
+   <mtext> </mtext>
+   <mo>-</mo>
+   <mrow>
+    <mrow>
+     <mo>(</mo>
+     <msub>
+      <mi>&sigma;lab</mi>
+      <mi>xy</mi>
+     </msub>
+     <mo>)</mo>
+    </mrow>
+    <mo>^</mo>
+    <mn>2</mn>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <msub>
+   <mi>&sigma;princ</mi>
+   <mi>xx</mi>
+  </msub>
+  <mo>&InvisibleTimes;</mo>
+  <msub>
+   <mi>&sigma;princ</mi>
+   <mi>yy</mi>
+  </msub>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <msub>
+   <mi>&sigma;princ</mi>
+   <mi>xx</mi>
+  </msub>
+  <mo>&InvisibleTimes;</mo>
+  <msub>
+   <mi>&sigma;princ</mi>
+   <mi>yy</mi>
+  </msub>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ These last two results are precisely the trace and determinant of the x and y terms in the original diagonal form of the stress state, thus illustrating the invariance of these quantities under rotation of coordinate rotations.
+</p>
+
+
+
+<p class="Text">
+ Example of Mohr's circle for two-dimensional body in uniaxial tension with <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msub>
+  <mi>&sigma;princ</mi>
+  <mi>xx</mi>
+ </msub>
+</math></span></span> = 10 MPa and all other stress components equal to zero
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-10_12.gif" alt="&sigma;princ_xx = 10. ;"  width="131" height="25"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-10_13.gif" alt="&sigma;princ_yy = 0. ;"  width="119" height="28"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-10_14.gif" alt="&sigma;princ_xy = 0. ;"  width="120" height="28"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mtag_10_stress__example__Mohrs_circle_plotted"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ParametricPlot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <msub>
+      <mi>&sigma;lab</mi>
+      <mi>xx</mi>
+     </msub>
+     <mo>,</mo>
+     <msub>
+      <mi>&sigma;lab</mi>
+      <mi>xy</mi>
+     </msub>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>&theta;</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mi>&pi;</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AxesLabel</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <ms>normal stress</ms>
+      <mo>,</mo>
+      <ms>shear stress</ms>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>AspectRatio</mi>
+    <mo>&rightarrow;</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotLabel</mi>
+    <mo>&rightarrow;</mo>
+    <ms> \t \t Mohr Circle for 10 MPa Uniaxial Tension</ms>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>Thickness</mi>
+       <mo>[</mo>
+       <mn>0.01</mn>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Hue</mi>
+       <mo>[</mo>
+       <mn>1</mn>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-10_15.gif" alt="[Graphics:HTMLFiles/Lecture-10_15.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Comparing this plot with Figure 10-3 in the lecture notes, we see that the maximum and minimum tensile stresses are 10 and 0 MPa (from intercepts with x axis), as expected, and the maximum shear stress is &plusmn;5 MPa and it is experienced on a plane oriented at 2&theta; = 90&deg; or &theta; = 45&deg; to the tensile axis (remember that angles on Mohr's circle plots are twice the angle in the body).
+</p>
+
+
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(October 5, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

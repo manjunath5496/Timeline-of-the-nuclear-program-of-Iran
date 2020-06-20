@@ -1,0 +1,2225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 20 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2005
+ </title>
+ <link href="HTMLFiles/Lecture-20.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ First-Order Ordinary Differential Equations
+</p>
+
+
+
+<p class="Subsubsection">
+ <a id="mmtag_20_ordinary_differential_equations__DSolvexx_and_NDSolvexx"></a>
+ <a id="mmtag_20_numerical_solutions__ordinary_differential_equations"></a>
+ <span style='font-style: italic;'>Mathematica</span> has two routines that are designed to solve differential equations, <span style='font-weight: bold;'>DSolve</span> and <span style='font-weight: bold;'>NDSolve</span>. <span style='font-weight: bold;'>DSolve</span> is used to find closed-form solutions, and <span style='font-weight: bold;'>NDSolve</span> finds solutions numerically. Both can find solutions to ordinary as well as partial differential equations. See <span style='font-style: italic;'>Mathematica</span>'s Help Browser for syntax and other useful information.
+</p>
+
+
+
+<p class="Text">
+ <span style='font-style: italic;'>Mathematica</span> can solve the homogeneous linear ODE:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>DSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>y</mi>
+       <mo>'</mo>
+      </mrow>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mrow>
+       <mi>p</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>y</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mtext> </mtext>
+    <mo>&Equal;</mo>
+    <mn>0</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>y</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mi>x</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <msubsup>
+        <mo>&Integral;</mo>
+        <mn>1</mn>
+        <mi>x</mi>
+       </msubsup>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mrow>
+          <mi>p</mi>
+          <mo>[</mo>
+          <mi>K$26117</mi>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mo>&DifferentialD;</mo>
+         <mi>K$26117</mi>
+        </mrow>
+       </mrow>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>C</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ The dummy integration variables and any integration constants are picked by <span style='font-style: italic;'>Mathematica</span> .&nbsp;&nbsp;Note that we asked <span style='font-style: italic;'>Mathematica</span> to solve the most general form of homogeneous linear first-order ODE, and we got a solution in a very general form that is equivalent to Kreyszig Eq. (3), p. 33.&nbsp;&nbsp;Here is a more specific problem and the solution found by <span style='font-style: italic;'>Mathematica</span>:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>DSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>y</mi>
+       <mo>'</mo>
+      </mrow>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>+</mo>
+     <mrow>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>x</mi>
+        </mrow>
+        <mo>+</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>y</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mtext> </mtext>
+    <mo>&Equal;</mo>
+    <mn>0</mn>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>y</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mi>x</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mi>x</mi>
+       </mrow>
+       <mo>-</mo>
+       <msup>
+        <mi>x</mi>
+        <mn>2</mn>
+       </msup>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>C</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ Boundary conditions are introduced in the following way to generate a particular solution:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_20_DSolvexx__using_boundary_conditions"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>DSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mi>y</mi>
+         <mo>'</mo>
+        </mrow>
+        <mo>[</mo>
+        <mi>x</mi>
+        <mo>]</mo>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mrow>
+           <mn>2</mn>
+           <mo>&InvisibleTimes;</mo>
+           <mi>x</mi>
+          </mrow>
+          <mo>+</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>y</mi>
+         <mo>[</mo>
+         <mi>x</mi>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mtext> </mtext>
+      <mo>&Equal;</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mi>y</mi>
+       <mo>[</mo>
+       <mn>0</mn>
+       <mo>]</mo>
+      </mrow>
+      <mo>==</mo>
+      <mn>4</mn>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>y</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mi>x</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mn>4</mn>
+     <mo>&InvisibleTimes;</mo>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mi>x</mi>
+       </mrow>
+       <mo>-</mo>
+       <msup>
+        <mi>x</mi>
+        <mn>2</mn>
+       </msup>
+      </mrow>
+     </msup>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <span style='font-style: italic;'>Mathematica</span> can solve the heterogeneous linear ODE:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>DSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>y</mi>
+       <mo>'</mo>
+      </mrow>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mtext> </mtext>
+     <mo>+</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mrow>
+       <mi>p</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>y</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mtext> </mtext>
+    <mo>&Equal;</mo>
+    <mrow>
+     <mi>r</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>y</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mi>x</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mrow>
+      <msup>
+       <mi>&ExponentialE;</mi>
+       <mrow>
+        <msubsup>
+         <mo>&Integral;</mo>
+         <mn>1</mn>
+         <mi>x</mi>
+        </msubsup>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <mrow>
+           <mi>p</mi>
+           <mo>[</mo>
+           <mi>K$26153</mi>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>&InvisibleTimes;</mo>
+         <mrow>
+          <mo>&DifferentialD;</mo>
+          <mi>K$26153</mi>
+         </mrow>
+        </mrow>
+       </mrow>
+      </msup>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>C</mi>
+       <mo>[</mo>
+       <mn>1</mn>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>+</mo>
+     <mrow>
+      <msup>
+       <mi>&ExponentialE;</mi>
+       <mrow>
+        <msubsup>
+         <mo>&Integral;</mo>
+         <mn>1</mn>
+         <mi>x</mi>
+        </msubsup>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <mrow>
+           <mi>p</mi>
+           <mo>[</mo>
+           <mi>K$26153</mi>
+           <mo>]</mo>
+          </mrow>
+         </mrow>
+         <mo>&InvisibleTimes;</mo>
+         <mrow>
+          <mo>&DifferentialD;</mo>
+          <mi>K$26153</mi>
+         </mrow>
+        </mrow>
+       </mrow>
+      </msup>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <msubsup>
+        <mo>&Integral;</mo>
+        <mn>1</mn>
+        <mi>x</mi>
+       </msubsup>
+       <mrow>
+        <mrow>
+         <msup>
+          <mi>&ExponentialE;</mi>
+          <mrow>
+           <mo>-</mo>
+           <mrow>
+            <msubsup>
+             <mo>&Integral;</mo>
+             <mn>1</mn>
+             <mi>K$26169</mi>
+            </msubsup>
+            <mrow>
+             <mrow>
+              <mo>-</mo>
+              <mrow>
+               <mi>p</mi>
+               <mo>[</mo>
+               <mi>K$26153</mi>
+               <mo>]</mo>
+              </mrow>
+             </mrow>
+             <mo>&InvisibleTimes;</mo>
+             <mrow>
+              <mo>&DifferentialD;</mo>
+              <mi>K$26153</mi>
+             </mrow>
+            </mrow>
+           </mrow>
+          </mrow>
+         </msup>
+         <mo>&InvisibleTimes;</mo>
+         <mrow>
+          <mi>r</mi>
+          <mo>[</mo>
+          <mi>K$26169</mi>
+          <mo>]</mo>
+         </mrow>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mo>&DifferentialD;</mo>
+         <mi>K$26169</mi>
+        </mrow>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ Again, we asked <span style='font-style: italic;'>Mathematica</span> to solve the most general form of homogeneous linear first-order ODE, and we got a solution in a very general form that is equivalent to Kreyszig Eq. (4), p. 34.&nbsp;&nbsp;Here is a more specific problem and the solution found by <span style='font-style: italic;'>Mathematica </span>(see Kreyszig Example 1, p. 34):
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>DSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>y</mi>
+       <mo>'</mo>
+      </mrow>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mtext> </mtext>
+     <mo>-</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>y</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mtext> </mtext>
+    <mo>&Equal;</mo>
+    <msup>
+     <mi>&ExponentialE;</mi>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>x</mi>
+     </mrow>
+    </msup>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>y</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mi>x</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <msup>
+      <mi>&ExponentialE;</mi>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>x</mi>
+      </mrow>
+     </msup>
+     <mo>+</mo>
+     <mrow>
+      <msup>
+       <mi>&ExponentialE;</mi>
+       <mi>x</mi>
+      </msup>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mi>C</mi>
+       <mo>[</mo>
+       <mn>1</mn>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <a id="mmtag_20_Bernoulli_equation"></a>
+ The Bernoulli equation is a first-order <span style='font-style: italic;'>nonlinear</span> ODE that has a form that can be reduced to a linear ODE as described in Kreyszig, pp. 36&ndash;38.
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>BernoulliEquation</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mi>y</mi>
+      <mo>'</mo>
+     </mrow>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mtext> </mtext>
+    <mo>+</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mrow>
+      <mi>p</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>y</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mtext> </mtext>
+   <mo>==</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mrow>
+     <mi>r</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mi>y</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+     <mo>^</mo>
+     <mrow>
+      <mo>(</mo>
+      <mi>a</mi>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mi>p</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>+</mo>
+   <mrow>
+    <msup>
+     <mi>y</mi>
+     <mo>&prime;</mo>
+    </msup>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>&Equal;</mo>
+  <mrow>
+   <mrow>
+    <mi>r</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <msup>
+    <mrow>
+     <mi>y</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mi>a</mi>
+   </msup>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The substitution y(x) = <span><span class="TextInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mi>u</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mi>x</mi>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+  <mrow>
+   <mn>1</mn>
+   <mo>/</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mn>1</mn>
+     <mo>-</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </msup>
+</math></span></span>is made, resulting in a linear ODE that can be solved for <span style='font-style: italic;'>u</span>(<span style='font-style: italic;'>x</span>):
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-20_1.gif" alt="yRep = u[x]^1/(1 - a)"  width="125" height="27"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-20_2.gif" alt="DyRep = D[yRep, x]"  width="164" height="18"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <mrow>
+   <mi>u</mi>
+   <mo>[</mo>
+   <mi>x</mi>
+   <mo>]</mo>
+  </mrow>
+  <mfrac>
+   <mn>1</mn>
+   <mrow>
+    <mn>1</mn>
+    <mo>-</mo>
+    <mi>a</mi>
+   </mrow>
+  </mfrac>
+ </msup>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>DyRep</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>yRep</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(DyRep\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(yRep\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mrow>
+   <msup>
+    <mrow>
+     <mi>u</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>+</mo>
+     <mfrac>
+      <mn>1</mn>
+      <mrow>
+       <mn>1</mn>
+       <mo>-</mo>
+       <mi>a</mi>
+      </mrow>
+     </mfrac>
+    </mrow>
+   </msup>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <msup>
+     <mi>u</mi>
+     <mo>&prime;</mo>
+    </msup>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mrow>
+   <mn>1</mn>
+   <mo>-</mo>
+   <mi>a</mi>
+  </mrow>
+ </mfrac>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>step1</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>BernoulliEquation</mi>
+   <mo>/.</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mrow>
+       <mi>y</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>&rightarrow;</mo>
+      <mi>yRep</mi>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mi>y</mi>
+        <mo>'</mo>
+       </mrow>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mtext> </mtext>
+      <mo>&rightarrow;</mo>
+      <mtext> </mtext>
+      <mi>DyRep</mi>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mi>p</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&InvisibleTimes;</mo>
+    <msup>
+     <mrow>
+      <mi>u</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mfrac>
+      <mn>1</mn>
+      <mrow>
+       <mn>1</mn>
+       <mo>-</mo>
+       <mi>a</mi>
+      </mrow>
+     </mfrac>
+    </msup>
+   </mrow>
+   <mo>+</mo>
+   <mfrac>
+    <mrow>
+     <msup>
+      <mrow>
+       <mi>u</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>+</mo>
+       <mfrac>
+        <mn>1</mn>
+        <mrow>
+         <mn>1</mn>
+         <mo>-</mo>
+         <mi>a</mi>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <msup>
+       <mi>u</mi>
+       <mo>&prime;</mo>
+      </msup>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>1</mn>
+     <mo>-</mo>
+     <mi>a</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mo>&Equal;</mo>
+  <mrow>
+   <mrow>
+    <mi>r</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <msup>
+    <mrow>
+     <mo>(</mo>
+     <msup>
+      <mrow>
+       <mi>u</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mrow>
+        <mn>1</mn>
+        <mo>-</mo>
+        <mi>a</mi>
+       </mrow>
+      </mfrac>
+     </msup>
+     <mo>)</mo>
+    </mrow>
+    <mi>a</mi>
+   </msup>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>step2</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>PowerExpand</mi>
+   <mo>[</mo>
+   <mi>step1</mi>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mi>p</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&InvisibleTimes;</mo>
+    <msup>
+     <mrow>
+      <mi>u</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mfrac>
+      <mn>1</mn>
+      <mrow>
+       <mn>1</mn>
+       <mo>-</mo>
+       <mi>a</mi>
+      </mrow>
+     </mfrac>
+    </msup>
+   </mrow>
+   <mo>+</mo>
+   <mfrac>
+    <mrow>
+     <msup>
+      <mrow>
+       <mi>u</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>+</mo>
+       <mfrac>
+        <mn>1</mn>
+        <mrow>
+         <mn>1</mn>
+         <mo>-</mo>
+         <mi>a</mi>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <msup>
+       <mi>u</mi>
+       <mo>&prime;</mo>
+      </msup>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mrow>
+     <mn>1</mn>
+     <mo>-</mo>
+     <mi>a</mi>
+    </mrow>
+   </mfrac>
+  </mrow>
+  <mo>&Equal;</mo>
+  <mrow>
+   <mrow>
+    <mi>r</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <msup>
+    <mrow>
+     <mi>u</mi>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mfrac>
+     <mi>a</mi>
+     <mrow>
+      <mn>1</mn>
+      <mo>-</mo>
+      <mi>a</mi>
+     </mrow>
+    </mfrac>
+   </msup>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>step3</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Simplify</mi>
+   <mo>[</mo>
+   <mi>step2</mi>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mfrac>
+   <mrow>
+    <msup>
+     <mrow>
+      <mi>u</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mi>a</mi>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>+</mo>
+        <mi>a</mi>
+       </mrow>
+      </mfrac>
+     </mrow>
+    </msup>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>+</mo>
+         <mi>a</mi>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>r</mi>
+        <mo>[</mo>
+        <mi>x</mi>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mrow>
+        <mo>(</mo>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>+</mo>
+         <mi>a</mi>
+        </mrow>
+        <mo>)</mo>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>p</mi>
+        <mo>[</mo>
+        <mi>x</mi>
+        <mo>]</mo>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>u</mi>
+        <mo>[</mo>
+        <mi>x</mi>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <msup>
+        <mi>u</mi>
+        <mo>&prime;</mo>
+       </msup>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mn>1</mn>
+    </mrow>
+    <mo>+</mo>
+    <mi>a</mi>
+   </mrow>
+  </mfrac>
+  <mo>&Equal;</mo>
+  <mn>0</mn>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Solve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>step3</mi>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mi>u</mi>
+     <mo>'</mo>
+    </mrow>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <msup>
+      <mi>u</mi>
+      <mo>&prime;</mo>
+     </msup>
+     <mo>[</mo>
+     <mi>x</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>+</mo>
+        <mi>a</mi>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mi>r</mi>
+        <mo>[</mo>
+        <mi>x</mi>
+        <mo>]</mo>
+       </mrow>
+       <mo>-</mo>
+       <mrow>
+        <mrow>
+         <mi>p</mi>
+         <mo>[</mo>
+         <mi>x</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mrow>
+         <mi>u</mi>
+         <mo>[</mo>
+         <mi>x</mi>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ This last result is the first-order <span style='font-style: italic;'>linear</span> ODE that results from the Bernoulli equation. Its solution gives the function <span style='font-style: italic;'>u</span>(<span style='font-style: italic;'>x</span>) which can be converted back to <span style='font-style: italic;'>y</span>(<span style='font-style: italic;'>x</span>) with the relation <span style='font-style: italic;'>y</span>(<span style='font-style: italic;'>x</span>) = <span><span class="SubsubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mi>u</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mi>x</mi>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+  <mrow>
+   <mn>1</mn>
+   <mo>/</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mn>1</mn>
+     <mo>-</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </msup>
+</math></span></span>.
+</p>
+
+
+
+<p class="Subtitle">
+ Numerical Solutions to ODEs
+</p>
+
+
+
+<p class="Text">
+ The following nonlinear ODE either does not have a solution, or takes too long to find.
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>DSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>Pi</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mi>y</mi>
+         <mo>'</mo>
+        </mrow>
+        <mo>[</mo>
+        <mi>x</mi>
+        <mo>]</mo>
+       </mrow>
+       <mo>^</mo>
+       <mn>2</mn>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mtext> </mtext>
+    <mo>==</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mrow>
+      <mi>y</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>x</mi>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>y</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mi>x</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Solve</mi>
+   <mtext>::</mtext>
+   <mi>ifun</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Inverse functions are being used by </mtext>
+    <mi>Solve</mi>
+    <mtext>, so some solutions may not be found; use Reduce for complete solution information. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Inverse functions are being used by \\!\\(Solve\\), so some solutions may not be found; use Reduce for complete solution information. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;Solve::ifun\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>DSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mi>Sin</mi>
+     <mo>[</mo>
+     <mrow>
+      <mn>2</mn>
+      <mo>&InvisibleTimes;</mo>
+      <mi>&pi;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <msup>
+       <mrow>
+        <msup>
+         <mi>y</mi>
+         <mo>&prime;</mo>
+        </msup>
+        <mo>[</mo>
+        <mi>x</mi>
+        <mo>]</mo>
+       </mrow>
+       <mn>2</mn>
+      </msup>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>&Equal;</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>y</mi>
+      <mo>[</mo>
+      <mi>x</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>y</mi>
+    <mo>[</mo>
+    <mi>x</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mi>x</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ NDSolve is a numerical method for finding a solution. An initial condition and the desired range of solution are required.
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_20_NDSolvexx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>solution</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>NDSolve</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mi>Sin</mi>
+        <mo>[</mo>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>Pi</mi>
+         <mo>&InvisibleTimes;</mo>
+         <mrow>
+          <mrow>
+           <mrow>
+            <mi>y</mi>
+            <mo>'</mo>
+           </mrow>
+           <mo>[</mo>
+           <mi>x</mi>
+           <mo>]</mo>
+          </mrow>
+          <mo>^</mo>
+          <mn>2</mn>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mtext> </mtext>
+       <mo>==</mo>
+       <mtext> </mtext>
+       <mrow>
+        <mrow>
+         <mi>y</mi>
+         <mo>[</mo>
+         <mi>x</mi>
+         <mo>]</mo>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mi>x</mi>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mrow>
+        <mi>y</mi>
+        <mo>[</mo>
+        <mn>0</mn>
+        <mo>]</mo>
+       </mrow>
+       <mo>==</mo>
+       <mn>1</mn>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>y</mi>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>3.5</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Solve</mi>
+   <mtext>::</mtext>
+   <mi>ifun</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Inverse functions are being used by </mtext>
+    <mi>Solve</mi>
+    <mtext>, so some solutions may not be found; use Reduce for complete solution information. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Inverse functions are being used by \\!\\(Solve\\), so some solutions may not be found; use Reduce for complete solution information. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;Solve::ifun\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mi>InterpolatingFunction</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mn>0.</mn>
+          <mo>,</mo>
+          <mn>3.5</mn>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>,</mo>
+       <mo>&lt;&gt;</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mi>InterpolatingFunction</mi>
+      <mo>[</mo>
+      <mrow>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mn>0.</mn>
+          <mo>,</mo>
+          <mn>3.5</mn>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>,</mo>
+       <mo>&lt;&gt;</mo>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <a id="mmtag_20_numerical_solutions_to_ODEs__interpolation_results"></a>
+ The results look kind of strange, perhaps, but they are a set of rules that provide a function that interpolates between values.&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;Here is how to find the approximate solution at three different values of <span style='font-style: italic;'>x</span> on the specified interval:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>y</mi>
+   <mo>[</mo>
+   <mn>0.5</mn>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>/.</mo>
+  <mtext> </mtext>
+  <mi>solution</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>0.9074370101865736</mn>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mn>1.0973325823998172</mn>
+     <mtext>&ZeroWidthSpace;</mtext>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.</mn>
+     <mtext> </mtext>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>y</mi>
+   <mo>[</mo>
+   <mn>1</mn>
+   <mo>]</mo>
+  </mrow>
+  <mo>/.</mo>
+  <mi>solution</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>0.744970458518884</mn>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mn>1.308772544883195</mn>
+     <mtext>&ZeroWidthSpace;</mtext>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.014353625780704213</mn>
+     <mtext> </mtext>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>y</mi>
+   <mo>[</mo>
+   <mi>Pi</mi>
+   <mo>]</mo>
+  </mrow>
+  <mo>/.</mo>
+  <mi>solution</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>0.05249827705955056</mn>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mn>2.5018649128156945</mn>
+     <mtext>&ZeroWidthSpace;</mtext>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.6106702474967095</mn>
+     <mtext> </mtext>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Note that <span style='font-style: italic;'>Mathematica</span> has found two solutions, the first is real and the second is complex. Below are plots of the real and imaginary parts for both solutions:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Re</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>y</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>/.</mo>
+      <mi>solution</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>3.5</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.01</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mn>0.6</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.01</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-20_3.gif" alt="[Graphics:HTMLFiles/Lecture-20_3.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Im</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>y</mi>
+       <mo>[</mo>
+       <mi>x</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>/.</mo>
+      <mi>solution</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mn>0</mn>
+     <mo>,</mo>
+     <mn>3.5</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mn>1</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.01</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mn>0.6</mn>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mn>0.01</mn>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-20_4.gif" alt="[Graphics:HTMLFiles/Lecture-20_4.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Note that for <span style='font-style: italic;'>x</span> &lt; 0.85 (approximately), both solutions are real.
+</p>
+
+
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(November 6, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

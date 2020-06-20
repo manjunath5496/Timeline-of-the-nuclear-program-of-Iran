@@ -1,0 +1,517 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      9326,        363]*)
+(*NotebookOutlinePosition[      9999,        386]*)
+(*  CellTagsIndexPosition[      9955,        382]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell["\<\
+Homework 2I \[LongDash] Solution to Individual Exercises\
+\>", \
+"Title"],
+
+Cell["\<\
+3.016 Mathematical Methods for Materials Scientists and Engineers
+S. M. Allen
+October 4, 2005\
+\>", "Subsubtitle"],
+
+Cell[BoxData[
+    \(Clear["\<Global`*\>"]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["Individual Exercise I2-1: (Kreyszig MCG 6.2, p. 77)", "Subsection"],
+
+Cell["Using the matrices provided", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(A = {{5, \ \(-3\), 0}, {6, 1, \(-4\)}}\)], "Input"],
+
+Cell[BoxData[
+    \({{5, \(-3\), 0}, {6, 1, \(-4\)}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(% // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"5", \(-3\), "0"},
+            {"6", "1", \(-4\)}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(B = {{\(-2\), 4, \(-1\)}, {1, 1, 5}}\)], "Input"],
+
+Cell[BoxData[
+    \({{\(-2\), 4, \(-1\)}, {1, 1, 5}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(% // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(-2\), "4", \(-1\)},
+            {"1", "1", "5"}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell["From here on it is pretty much plug and chug:", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(A . Transpose[A] // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"34", "27"},
+            {"27", "53"}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Transpose[\ A] . A\  // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"61", \(-9\), \(-24\)},
+            {\(-9\), "10", \(-4\)},
+            {\(-24\), \(-4\), "16"}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\((Transpose[\ A] . A\ )\) . \((Transpose[\ A] . A\ )\) // 
+      MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"4378", \(-543\), \(-1812\)},
+            {\(-543\), "197", "112"},
+            {\(-1812\), "112", "848"}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\((A + B)\) . Transpose[A - B] // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"13", "24"},
+            {"36", "26"}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A-Individual Exercise II-2: (Kreyszig MCG 6.10, p. 77)", "Subsection"],
+
+Cell["Define the matrix with general coefficients by", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(AMatrix\  = \ {{a\_11, a\_12}, {a\_21, a\_22}}\)], "Input"],
+
+Cell[BoxData[
+    \({{a\_11, a\_12}, {a\_21, a\_22}}\)], "Output"]
+}, Open  ]],
+
+Cell["Remind ourselves what the determinant will be:", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Det[AMatrix]\)], "Input"],
+
+Cell[BoxData[
+    \(\(-a\_12\)\ a\_21 + a\_11\ a\_22\)], "Output"]
+}, Open  ]],
+
+Cell["Now examine the inverse", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Inverse[AMatrix]\)], "Input"],
+
+Cell[BoxData[
+    \({{a\_22\/\(\(-a\_12\)\ a\_21 + a\_11\ a\_22\), \(-\(a\_12\/\(\(-a\_12\)\
+\ a\_21 + a\_11\ a\_22\)\)\)}, {\(-\(a\_21\/\(\(-a\_12\)\ a\_21 + 
+                a\_11\ a\_22\)\)\), 
+        a\_11\/\(\(-a\_12\)\ a\_21 + a\_11\ a\_22\)}}\)], "Output"]
+}, Open  ]],
+
+Cell["\<\
+and use Replace to simplify the expression for Det[AMatrix] in the \
+denominators. Viewing in MatrixForm we have the relations in the desired \
+form:\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(% /. Det[AMatrix] \[Rule] DetA // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(a\_22\/DetA\), \(-\(a\_12\/DetA\)\)},
+            {\(-\(a\_21\/DetA\)\), \(a\_11\/DetA\)}
+            },
+          RowSpacings->1,
+          ColumnSpacings->1,
+          ColumnAlignments->{Left}], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A-Individual Exercise II-3: (Kreyszig MCG 6.12, p. 78)", "Subsection"],
+
+Cell[BoxData[
+    \(Clear[A, B]\)], "Input"],
+
+Cell["Define the matrices A and B by", "Text"],
+
+Cell[BoxData[{
+    \(\(A\  = \ {{0, \(-2\), \(-1\)}, {\(-2\), 3, 2}, {\(-1\), 2, 
+            1}};\)\), "\[IndentingNewLine]", 
+    \(\(B = \ {{1, 2, 3}, {2, 3, 4}, {3, 4, 6}};\)\)}], "Input"],
+
+Cell["Define the column vectors x and w by", "Text"],
+
+Cell[BoxData[{
+    \(\(x = {{x1}, {x2}, {x3}};\)\), "\[IndentingNewLine]", 
+    \(\(w = {{w1}, {w2}, {w3}};\)\)}], "Input"],
+
+Cell["\<\
+Now calculate y from w by a two-step method of successive matrix \
+multiplications involving the intermediate vector x\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(x = B . w\)], "Input"],
+
+Cell[BoxData[
+    \({{w1 + 2\ w2 + 3\ w3}, {2\ w1 + 3\ w2 + 4\ w3}, {3\ w1 + 4\ w2 + 
+          6\ w3}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(firsty = A . x\)], "Input"],
+
+Cell[BoxData[
+    \({{\(-3\)\ w1 - 4\ w2 - 6\ w3 - 
+          2\ \((2\ w1 + 3\ w2 + 4\ w3)\)}, {\(-2\)\ \((w1 + 2\ w2 + 
+                3\ w3)\) + 3\ \((2\ w1 + 3\ w2 + 4\ w3)\) + 
+          2\ \((3\ w1 + 4\ w2 + 6\ w3)\)}, {2\ w1 + 2\ w2 + 3\ w3 + 
+          2\ \((2\ w1 + 3\ w2 + 4\ w3)\)}}\)], "Output"]
+}, Open  ]],
+
+Cell["Now use the matrix product A.B to compute y directly from w", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(CMat = A . B\)], "Input"],
+
+Cell[BoxData[
+    \({{\(-7\), \(-10\), \(-14\)}, {10, 13, 18}, {6, 8, 11}}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(secondy = CMat . w\)], "Input"],
+
+Cell[BoxData[
+    \({{\(-7\)\ w1 - 10\ w2 - 14\ w3}, {10\ w1 + 13\ w2 + 18\ w3}, {6\ w1 + 
+          8\ w2 + 11\ w3}}\)], "Output"]
+}, Open  ]],
+
+Cell["\<\
+Check to ensure that the two results are the same (FullSimplify is \
+used to ensure that the expressions have exactly the same form)\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(FullSimplify[firsty] \[Equal] FullSimplify[secondy]\)], "Input"],
+
+Cell[BoxData[
+    \(True\)], "Output"]
+}, Open  ]],
+
+Cell["Here is the inverse of CMat:", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(InvCMat\  = \ Inverse[CMat]\)], "Input"],
+
+Cell[BoxData[
+    \({{1, 2, \(-2\)}, {2, \(-7\), 14}, {\(-2\), 4, \(-9\)}}\)], "Output"]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{0, 1148}, {0, 746}},
+WindowSize->{694, 599},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 83, 3, 112, "Title"],
+Cell[1840, 56, 124, 4, 110, "Subsubtitle"],
+Cell[1967, 62, 54, 1, 50, "Input"],
+
+Cell[CellGroupData[{
+Cell[2046, 67, 73, 0, 65, "Subsection"],
+Cell[2122, 69, 43, 0, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[2190, 73, 71, 1, 50, "Input"],
+Cell[2264, 76, 66, 1, 65, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2367, 82, 48, 1, 50, "Input"],
+Cell[2418, 85, 334, 10, 85, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2789, 100, 69, 1, 50, "Input"],
+Cell[2861, 103, 66, 1, 65, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2964, 109, 48, 1, 50, "Input"],
+Cell[3015, 112, 334, 10, 85, "Output"]
+}, Open  ]],
+Cell[3364, 125, 61, 0, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[3450, 129, 63, 1, 50, "Input"],
+Cell[3516, 132, 322, 10, 85, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3875, 147, 67, 1, 50, "Input"],
+Cell[3945, 150, 380, 11, 109, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4362, 166, 109, 2, 50, "Input"],
+Cell[4474, 170, 390, 11, 109, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4901, 186, 77, 1, 50, "Input"],
+Cell[4981, 189, 322, 10, 85, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5352, 205, 76, 0, 65, "Subsection"],
+Cell[5431, 207, 62, 0, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[5518, 211, 79, 1, 50, "Input"],
+Cell[5600, 214, 66, 1, 65, "Output"]
+}, Open  ]],
+Cell[5681, 218, 62, 0, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[5768, 222, 45, 1, 50, "Input"],
+Cell[5816, 225, 66, 1, 65, "Output"]
+}, Open  ]],
+Cell[5897, 229, 39, 0, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[5961, 233, 49, 1, 50, "Input"],
+Cell[6013, 236, 264, 4, 140, "Output"]
+}, Open  ]],
+Cell[6292, 243, 173, 4, 66, "Text"],
+
+Cell[CellGroupData[{
+Cell[6490, 251, 77, 1, 50, "Input"],
+Cell[6570, 254, 376, 10, 103, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6995, 270, 76, 0, 65, "Subsection"],
+Cell[7074, 272, 44, 1, 50, "Input"],
+Cell[7121, 275, 46, 0, 46, "Text"],
+Cell[7170, 277, 192, 3, 70, "Input"],
+Cell[7365, 282, 52, 0, 46, "Text"],
+Cell[7420, 284, 123, 2, 70, "Input"],
+Cell[7546, 288, 142, 3, 66, "Text"],
+
+Cell[CellGroupData[{
+Cell[7713, 295, 42, 1, 50, "Input"],
+Cell[7758, 298, 117, 2, 65, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7912, 305, 47, 1, 50, "Input"],
+Cell[7962, 308, 307, 5, 134, "Output"]
+}, Open  ]],
+Cell[8284, 316, 75, 0, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[8384, 320, 45, 1, 50, "Input"],
+Cell[8432, 323, 88, 1, 65, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8557, 329, 51, 1, 50, "Input"],
+Cell[8611, 332, 131, 2, 88, "Output"]
+}, Open  ]],
+Cell[8757, 337, 156, 3, 66, "Text"],
+
+Cell[CellGroupData[{
+Cell[8938, 344, 84, 1, 50, "Input"],
+Cell[9025, 347, 38, 1, 65, "Output"]
+}, Open  ]],
+Cell[9078, 351, 44, 0, 46, "Text"],
+
+Cell[CellGroupData[{
+Cell[9147, 355, 60, 1, 50, "Input"],
+Cell[9210, 358, 88, 1, 65, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

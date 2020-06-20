@@ -1,0 +1,6309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 08 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&nbsp;&copy; W. Craig Carter 2003-2004
+ </title>
+ <link href="HTMLFiles/Lecture-08.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ Complex Numbers/Complex Plane
+</p>
+
+
+
+<p class="Subtitle">
+ Background
+</p>
+
+
+
+<p class='Text' style='font-weight: normal;'>
+ <a id="mmtag_08_imaginary_numbers__representations_of"></a>
+ The positive square root of -1
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>imaginary</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Sqrt</mi>
+   <mo>[</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>&ImaginaryI;</mi>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mo>-</mo>
+    <mi>imaginary</mi>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+  <mo>^</mo>
+  <mn>2</mn>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>-</mo>
+  <mn>1</mn>
+ </mrow>
+</math>
+</p>
+
+<p class='Text' style='font-weight: normal;'>
+ <a id="mmtag_08_complex_numbers__representations_of"></a>
+ Complex numbers are composed of a real part + an imaginary part
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-08_1.gif" alt="z1 = a + &#63310; b ;"  width="112" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-08_2.gif" alt="z2 = c + &#63310; d ;"  width="110" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class='Text' style='font-weight: normal;'>
+ Simple operations on complex numbers
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>compadd</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>z1</mi>
+    <mtext> </mtext>
+    <mo>+</mo>
+    <mtext> </mtext>
+    <mi>z2</mi>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>compmult</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>z1</mi>
+    <mo>*</mo>
+    <mi>z2</mi>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_08_complex_numbers__simplfying"></a>
+ <a id="mmtag_08_Simplifyxx__complex_numbers"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Simplify</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>compmult</mi>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mi>a</mi>
+     <mo>&Element;</mo>
+     <mtext> </mtext>
+     <mi>Reals</mi>
+    </mrow>
+    <mtext> </mtext>
+    <mo>&amp;&amp;</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mi>b</mi>
+     <mo>&Element;</mo>
+     <mtext> </mtext>
+     <mi>Reals</mi>
+    </mrow>
+    <mtext> </mtext>
+    <mo>&amp;&amp;</mo>
+    <mrow>
+     <mi>c</mi>
+     <mtext> </mtext>
+     <mo>&Element;</mo>
+     <mtext> </mtext>
+     <mi>Reals</mi>
+    </mrow>
+    <mtext> </mtext>
+    <mo>&amp;&amp;</mo>
+    <mtext> </mtext>
+    <mrow>
+     <mi>d</mi>
+     <mtext> </mtext>
+     <mo>&Element;</mo>
+     <mtext> </mtext>
+     <mi>Reals</mi>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mtext> </mtext>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mi>a</mi>
+    <mo>+</mo>
+    <mrow>
+     <mi>&ImaginaryI;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mi>b</mi>
+    </mrow>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mi>c</mi>
+    <mo>+</mo>
+    <mrow>
+     <mi>&ImaginaryI;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mi>d</mi>
+    </mrow>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class='Text' style='font-weight: normal;'>
+ Mathematica does not assume that symbols are necessarily real...
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_Imxx"></a>
+ <a id="mmtag_08_Rexx"></a>
+ <img src="HTMLFiles/Lecture-08_3.gif" alt="Re[compadd]"  width="123" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_08_Imxx"></a>
+ <a id="mmtag_08_Rexx"></a>
+ <img src="HTMLFiles/Lecture-08_4.gif" alt="Im[compadd]"  width="121" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mo>-</mo>
+   <mrow>
+    <mi>Im</mi>
+    <mo>[</mo>
+    <mi>b</mi>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mi>Im</mi>
+   <mo>[</mo>
+   <mi>d</mi>
+   <mo>]</mo>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mi>Re</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>a</mi>
+    <mo>+</mo>
+    <mi>c</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Im</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>a</mi>
+    <mo>+</mo>
+    <mi>c</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mi>Re</mi>
+   <mo>[</mo>
+   <mi>b</mi>
+   <mo>]</mo>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mi>Re</mi>
+   <mo>[</mo>
+   <mi>d</mi>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class='Text' style='font-weight: normal;'>
+ However, the <span style='font-style: italic;'>Mathematica</span> function <span style='font-weight: bold;'>ComplexExpand</span> does assume that the variables are real....
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_ComplexExpandxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ComplexExpand</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>Re</mi>
+   <mo>[</mo>
+   <mi>compadd</mi>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>a</mi>
+  <mo>+</mo>
+  <mi>c</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ComplexExpand</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>Im</mi>
+   <mo>[</mo>
+   <mi>compadd</mi>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>b</mi>
+  <mo>+</mo>
+  <mi>d</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_08_complex_numbers__division"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ComplexExpand</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>Re</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>z1</mi>
+    <mo>/</mo>
+    <mi>z2</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mfrac>
+   <mrow>
+    <mi>a</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mi>c</mi>
+   </mrow>
+   <mrow>
+    <msup>
+     <mi>c</mi>
+     <mn>2</mn>
+    </msup>
+    <mo>+</mo>
+    <msup>
+     <mi>d</mi>
+     <mn>2</mn>
+    </msup>
+   </mrow>
+  </mfrac>
+  <mo>+</mo>
+  <mfrac>
+   <mrow>
+    <mi>b</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mi>d</mi>
+   </mrow>
+   <mrow>
+    <msup>
+     <mi>c</mi>
+     <mn>2</mn>
+    </msup>
+    <mo>+</mo>
+    <msup>
+     <mi>d</mi>
+     <mn>2</mn>
+    </msup>
+   </mrow>
+  </mfrac>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_08_complex_numbers__multiplication"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ComplexExpand</mi>
+  <mo>[</mo>
+  <mi>compmult</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>a</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>c</mi>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mi>b</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mi>d</mi>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mi>&ImaginaryI;</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mrow>
+      <mi>b</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>c</mi>
+     </mrow>
+     <mo>+</mo>
+     <mrow>
+      <mi>a</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mi>d</mi>
+     </mrow>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-08_5.gif" alt="ComplexExpand[Re[z1^3]]"  width="242" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-08_6.gif" alt="ComplexExpand[Im[z1^3]]"  width="240" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <msup>
+   <mi>a</mi>
+   <mn>3</mn>
+  </msup>
+  <mo>-</mo>
+  <mrow>
+   <mn>3</mn>
+   <mo>&InvisibleTimes;</mo>
+   <mi>a</mi>
+   <mo>&InvisibleTimes;</mo>
+   <msup>
+    <mi>b</mi>
+    <mn>2</mn>
+   </msup>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mn>3</mn>
+   <mo>&InvisibleTimes;</mo>
+   <msup>
+    <mi>a</mi>
+    <mn>2</mn>
+   </msup>
+   <mo>&InvisibleTimes;</mo>
+   <mi>b</mi>
+  </mrow>
+  <mo>-</mo>
+  <msup>
+   <mi>b</mi>
+   <mn>3</mn>
+  </msup>
+ </mrow>
+</math>
+</p>
+
+<p class="Subtitle">
+ Function to convert to Polar Form
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_complex_numbers__polar_form"></a>
+ <a id="mmtag_08_functions__example_of_conversion_of_complex_number_to_polar_form"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Pform</mi>
+   <mo>[</mo>
+   <mtext>z_</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>Abs</mi>
+    <mo>[</mo>
+    <mi>z</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Exp</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>&ImaginaryI;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Arg</mi>
+      <mo>[</mo>
+      <mi>z</mi>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsubsection">
+ Note: the function <span style='font-weight: bold;'>Arg[z]</span> returns an angle in the range -&pi; to &pi; which measures the inclination of <span style='font-style: italic;'>z</span> with respect to the +Re axis in the complex plane.
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Pform</mi>
+  <mo>[</mo>
+  <mi>z1</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <msup>
+   <mi>&ExponentialE;</mi>
+   <mrow>
+    <mi>&ImaginaryI;</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mi>Arg</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>a</mi>
+      <mo>+</mo>
+      <mrow>
+       <mi>&ImaginaryI;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>b</mi>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+  </msup>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mi>Abs</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>a</mi>
+    <mo>+</mo>
+    <mrow>
+     <mi>&ImaginaryI;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mi>b</mi>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Pform</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>z1</mi>
+   <mo>/.</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>a</mi>
+      <mo>&rightarrow;</mo>
+      <mn>2</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>b</mi>
+      <mo>&rightarrow;</mo>
+      <mrow>
+       <mo>-</mo>
+       <mi>&pi;</mi>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <msup>
+   <mi>&ExponentialE;</mi>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mi>ArcTan</mi>
+     <mo>[</mo>
+     <mfrac>
+      <mi>&pi;</mi>
+      <mn>2</mn>
+     </mfrac>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+  </msup>
+  <mo>&InvisibleTimes;</mo>
+  <msqrt>
+   <mrow>
+    <mn>4</mn>
+    <mo>+</mo>
+    <msup>
+     <mi>&pi;</mi>
+     <mn>2</mn>
+    </msup>
+   </mrow>
+  </msqrt>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ComplexExpand</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>Pform</mi>
+   <mo>[</mo>
+   <mi>z1</mi>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <msqrt>
+    <mrow>
+     <msup>
+      <mi>a</mi>
+      <mn>2</mn>
+     </msup>
+     <mo>+</mo>
+     <msup>
+      <mi>b</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+   </msqrt>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Cos</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Arg</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>a</mi>
+      <mo>+</mo>
+      <mrow>
+       <mi>&ImaginaryI;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>b</mi>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mi>&ImaginaryI;</mi>
+   <mo>&InvisibleTimes;</mo>
+   <msqrt>
+    <mrow>
+     <msup>
+      <mi>a</mi>
+      <mn>2</mn>
+     </msup>
+     <mo>+</mo>
+     <msup>
+      <mi>b</mi>
+      <mn>2</mn>
+     </msup>
+    </mrow>
+   </msqrt>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Sin</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Arg</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>a</mi>
+      <mo>+</mo>
+      <mrow>
+       <mi>&ImaginaryI;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mi>b</mi>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Subtitle">
+ Numerical Precision and Complex Rounding
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_complex_numbers__numerical_precision"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ExactlyOne</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Exp</mi>
+   <mo>[</mo>
+   <mrow>
+    <mn>2</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>&pi;</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mi>&ImaginaryI;</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>1</mn>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>NumericallyOne</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Exp</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>N</mi>
+    <mo>[</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mi>&ImaginaryI;</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mn>1.</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mrow>
+    <mn>2.449293598294706</mn>
+    <mo>&times;</mo>
+    <msup>
+     <mn>10</mn>
+     <mrow>
+      <mo>-</mo>
+      <mn>16</mn>
+     </mrow>
+    </msup>
+   </mrow>
+   <mtext> </mtext>
+   <mi>&ImaginaryI;</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_08_Chopxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Chop</mi>
+  <mo>[</mo>
+  <mi>NumericallyOne</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>1.</mn>
+</math>
+</p>
+
+<p class="Input">
+ <a id="mmtag_08_Roundxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Round</mi>
+  <mo>[</mo>
+  <mi>NumericallyOne</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>1</mn>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ExactlyI</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Exp</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>&pi;</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mi>&ImaginaryI;</mi>
+     <mo>/</mo>
+     <mn>2</mn>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>&ImaginaryI;</mi>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>NumericallyI</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Exp</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>N</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>&pi;</mi>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>&ImaginaryI;</mi>
+      <mo>/</mo>
+      <mn>2</mn>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mn>6.123233995736766</mn>
+   <mo>&times;</mo>
+   <msup>
+    <mn>10</mn>
+    <mrow>
+     <mo>-</mo>
+     <mn>17</mn>
+    </mrow>
+   </msup>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mn>1.</mn>
+   <mtext> </mtext>
+   <mi>&ImaginaryI;</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Round</mi>
+  <mo>[</mo>
+  <mi>NumericallyI</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>&ImaginaryI;</mi>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Chop</mi>
+  <mo>[</mo>
+  <mi>NumericallyI</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>1.</mn>
+  <mtext> </mtext>
+  <mi>&ImaginaryI;</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ExactlyOnePlusI</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>ComplexExpand</mi>
+   <mo>[</mo>
+   <mrow>
+    <msqrt>
+     <mn>2</mn>
+    </msqrt>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mi>Exp</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>&pi;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <mtext>  </mtext>
+      <mrow>
+       <mi>&ImaginaryI;</mi>
+       <mo>/</mo>
+       <mn>4</mn>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>1</mn>
+  <mo>+</mo>
+  <mi>&ImaginaryI;</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>NumericallyOnePlusI</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>ComplexExpand</mi>
+   <mo>[</mo>
+   <mrow>
+    <msqrt>
+     <mn>2</mn>
+    </msqrt>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mi>Exp</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>N</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>&pi;</mi>
+       <mo>&InvisibleTimes;</mo>
+       <mtext>  </mtext>
+       <mrow>
+        <mi>&ImaginaryI;</mi>
+        <mo>/</mo>
+        <mn>4</mn>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mn>1.</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mn>1.0000000000000002</mn>
+   <mtext> </mtext>
+   <mi>&ImaginaryI;</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Chop</mi>
+  <mo>[</mo>
+  <mi>NumericallyOnePlusI</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mn>1.</mn>
+   <mtext>&ZeroWidthSpace;</mtext>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mn>1.0000000000000002</mn>
+   <mtext> </mtext>
+   <mi>&ImaginaryI;</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Round</mi>
+  <mo>[</mo>
+  <mi>NumericallyOnePlusI</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>1</mn>
+  <mo>+</mo>
+  <mi>&ImaginaryI;</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Re</mi>
+  <mo>[</mo>
+  <mi>NumericallyOnePlusI</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>1.</mn>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Im</mi>
+  <mo>[</mo>
+  <mi>NumericallyOnePlusI</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>1.0000000000000002</mn>
+</math>
+</p>
+
+<p class="Subtitle">
+ Roots to Polynomial Equations
+</p>
+
+
+
+<p class="Text">
+ Complex numbers frequently appear in the solution of roots to polynomial equations:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_Solvexx"></a>
+ <a id="mmtag_08_roots_of_polynomial_equations__example_with_complex_roots"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>sols</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Solve</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mi>x</mi>
+        <mo>^</mo>
+        <mn>4</mn>
+       </mrow>
+       <mtext> </mtext>
+       <mo>-</mo>
+       <mrow>
+        <mi>x</mi>
+        <mo>^</mo>
+        <mn>3</mn>
+       </mrow>
+       <mtext> </mtext>
+       <mo>+</mo>
+       <mi>x</mi>
+       <mtext> </mtext>
+       <mo>+</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+     <mtext> </mtext>
+     <mo>&Equal;</mo>
+     <mtext> </mtext>
+     <mn>0</mn>
+    </mrow>
+    <mo>,</mo>
+    <mi>x</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>4</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mi>&ImaginaryI;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mn>7</mn>
+        </msqrt>
+       </mrow>
+       <mn>4</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <msqrt>
+        <mrow>
+         <mfrac>
+          <mn>5</mn>
+          <mn>2</mn>
+         </mfrac>
+         <mo>-</mo>
+         <mfrac>
+          <mrow>
+           <mi>&ImaginaryI;</mi>
+           <mo>&InvisibleTimes;</mo>
+           <msqrt>
+            <mn>7</mn>
+           </msqrt>
+          </mrow>
+          <mn>2</mn>
+         </mfrac>
+        </mrow>
+       </msqrt>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>4</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mi>&ImaginaryI;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mn>7</mn>
+        </msqrt>
+       </mrow>
+       <mn>4</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <msqrt>
+        <mrow>
+         <mfrac>
+          <mn>5</mn>
+          <mn>2</mn>
+         </mfrac>
+         <mo>-</mo>
+         <mfrac>
+          <mrow>
+           <mi>&ImaginaryI;</mi>
+           <mo>&InvisibleTimes;</mo>
+           <msqrt>
+            <mn>7</mn>
+           </msqrt>
+          </mrow>
+          <mn>2</mn>
+         </mfrac>
+        </mrow>
+       </msqrt>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>4</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mi>&ImaginaryI;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mn>7</mn>
+        </msqrt>
+       </mrow>
+       <mn>4</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <msqrt>
+        <mrow>
+         <mfrac>
+          <mn>5</mn>
+          <mn>2</mn>
+         </mfrac>
+         <mo>+</mo>
+         <mfrac>
+          <mrow>
+           <mi>&ImaginaryI;</mi>
+           <mo>&InvisibleTimes;</mo>
+           <msqrt>
+            <mn>7</mn>
+           </msqrt>
+          </mrow>
+          <mn>2</mn>
+         </mfrac>
+        </mrow>
+       </msqrt>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>4</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mi>&ImaginaryI;</mi>
+        <mo>&InvisibleTimes;</mo>
+        <msqrt>
+         <mn>7</mn>
+        </msqrt>
+       </mrow>
+       <mn>4</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <msqrt>
+        <mrow>
+         <mfrac>
+          <mn>5</mn>
+          <mn>2</mn>
+         </mfrac>
+         <mo>+</mo>
+         <mfrac>
+          <mrow>
+           <mi>&ImaginaryI;</mi>
+           <mo>&InvisibleTimes;</mo>
+           <msqrt>
+            <mn>7</mn>
+           </msqrt>
+          </mrow>
+          <mn>2</mn>
+         </mfrac>
+        </mrow>
+       </msqrt>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The next statement produces a list of the complex solutions of the polynomial:
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>x</mi>
+  <mo>/.</mo>
+  <mi>sols</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mfrac>
+     <mn>1</mn>
+     <mn>4</mn>
+    </mfrac>
+    <mo>-</mo>
+    <mfrac>
+     <mrow>
+      <mi>&ImaginaryI;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mn>7</mn>
+      </msqrt>
+     </mrow>
+     <mn>4</mn>
+    </mfrac>
+    <mo>-</mo>
+    <mrow>
+     <mfrac>
+      <mn>1</mn>
+      <mn>2</mn>
+     </mfrac>
+     <mo>&InvisibleTimes;</mo>
+     <msqrt>
+      <mrow>
+       <mfrac>
+        <mn>5</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mi>&ImaginaryI;</mi>
+         <mo>&InvisibleTimes;</mo>
+         <msqrt>
+          <mn>7</mn>
+         </msqrt>
+        </mrow>
+        <mn>2</mn>
+       </mfrac>
+      </mrow>
+     </msqrt>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>1</mn>
+     <mn>4</mn>
+    </mfrac>
+    <mo>-</mo>
+    <mfrac>
+     <mrow>
+      <mi>&ImaginaryI;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mn>7</mn>
+      </msqrt>
+     </mrow>
+     <mn>4</mn>
+    </mfrac>
+    <mo>+</mo>
+    <mrow>
+     <mfrac>
+      <mn>1</mn>
+      <mn>2</mn>
+     </mfrac>
+     <mo>&InvisibleTimes;</mo>
+     <msqrt>
+      <mrow>
+       <mfrac>
+        <mn>5</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mi>&ImaginaryI;</mi>
+         <mo>&InvisibleTimes;</mo>
+         <msqrt>
+          <mn>7</mn>
+         </msqrt>
+        </mrow>
+        <mn>2</mn>
+       </mfrac>
+      </mrow>
+     </msqrt>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>1</mn>
+     <mn>4</mn>
+    </mfrac>
+    <mo>+</mo>
+    <mfrac>
+     <mrow>
+      <mi>&ImaginaryI;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mn>7</mn>
+      </msqrt>
+     </mrow>
+     <mn>4</mn>
+    </mfrac>
+    <mo>-</mo>
+    <mrow>
+     <mfrac>
+      <mn>1</mn>
+      <mn>2</mn>
+     </mfrac>
+     <mo>&InvisibleTimes;</mo>
+     <msqrt>
+      <mrow>
+       <mfrac>
+        <mn>5</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>+</mo>
+       <mfrac>
+        <mrow>
+         <mi>&ImaginaryI;</mi>
+         <mo>&InvisibleTimes;</mo>
+         <msqrt>
+          <mn>7</mn>
+         </msqrt>
+        </mrow>
+        <mn>2</mn>
+       </mfrac>
+      </mrow>
+     </msqrt>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>1</mn>
+     <mn>4</mn>
+    </mfrac>
+    <mo>+</mo>
+    <mfrac>
+     <mrow>
+      <mi>&ImaginaryI;</mi>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mn>7</mn>
+      </msqrt>
+     </mrow>
+     <mn>4</mn>
+    </mfrac>
+    <mo>+</mo>
+    <mrow>
+     <mfrac>
+      <mn>1</mn>
+      <mn>2</mn>
+     </mfrac>
+     <mo>&InvisibleTimes;</mo>
+     <msqrt>
+      <mrow>
+       <mfrac>
+        <mn>5</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>+</mo>
+       <mfrac>
+        <mrow>
+         <mi>&ImaginaryI;</mi>
+         <mo>&InvisibleTimes;</mo>
+         <msqrt>
+          <mn>7</mn>
+         </msqrt>
+        </mrow>
+        <mn>2</mn>
+       </mfrac>
+      </mrow>
+     </msqrt>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Im</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>x</mi>
+   <mo>/.</mo>
+   <mi>sols</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mfrac>
+      <msqrt>
+       <mn>7</mn>
+      </msqrt>
+      <mn>4</mn>
+     </mfrac>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mi>Im</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mrow>
+        <mfrac>
+         <mn>5</mn>
+         <mn>2</mn>
+        </mfrac>
+        <mo>-</mo>
+        <mfrac>
+         <mrow>
+          <mi>&ImaginaryI;</mi>
+          <mo>&InvisibleTimes;</mo>
+          <msqrt>
+           <mn>7</mn>
+          </msqrt>
+         </mrow>
+         <mn>2</mn>
+        </mfrac>
+       </mrow>
+      </msqrt>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mfrac>
+      <msqrt>
+       <mn>7</mn>
+      </msqrt>
+      <mn>4</mn>
+     </mfrac>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mi>Im</mi>
+     <mo>[</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>2</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mrow>
+        <mfrac>
+         <mn>5</mn>
+         <mn>2</mn>
+        </mfrac>
+        <mo>-</mo>
+        <mfrac>
+         <mrow>
+          <mi>&ImaginaryI;</mi>
+          <mo>&InvisibleTimes;</mo>
+          <msqrt>
+           <mn>7</mn>
+          </msqrt>
+         </mrow>
+         <mn>2</mn>
+        </mfrac>
+       </mrow>
+      </msqrt>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <msqrt>
+      <mn>7</mn>
+     </msqrt>
+     <mn>4</mn>
+    </mfrac>
+    <mo>+</mo>
+    <mrow>
+     <mi>Im</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mrow>
+        <mfrac>
+         <mn>5</mn>
+         <mn>2</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+         <mrow>
+          <mi>&ImaginaryI;</mi>
+          <mo>&InvisibleTimes;</mo>
+          <msqrt>
+           <mn>7</mn>
+          </msqrt>
+         </mrow>
+         <mn>2</mn>
+        </mfrac>
+       </mrow>
+      </msqrt>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <msqrt>
+      <mn>7</mn>
+     </msqrt>
+     <mn>4</mn>
+    </mfrac>
+    <mo>+</mo>
+    <mrow>
+     <mi>Im</mi>
+     <mo>[</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>2</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mrow>
+        <mfrac>
+         <mn>5</mn>
+         <mn>2</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+         <mrow>
+          <mi>&ImaginaryI;</mi>
+          <mo>&InvisibleTimes;</mo>
+          <msqrt>
+           <mn>7</mn>
+          </msqrt>
+         </mrow>
+         <mn>2</mn>
+        </mfrac>
+       </mrow>
+      </msqrt>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>ComplexExpand</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>Im</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>x</mi>
+    <mo>/.</mo>
+    <mi>sols</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mfrac>
+      <msqrt>
+       <mn>7</mn>
+      </msqrt>
+      <mn>4</mn>
+     </mfrac>
+    </mrow>
+    <mo>+</mo>
+    <mfrac>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>ArcTan</mi>
+        <mo>[</mo>
+        <mfrac>
+         <msqrt>
+          <mn>7</mn>
+         </msqrt>
+         <mn>5</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <msup>
+      <mn>2</mn>
+      <mrow>
+       <mn>1</mn>
+       <mo>/</mo>
+       <mn>4</mn>
+      </mrow>
+     </msup>
+    </mfrac>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mfrac>
+      <msqrt>
+       <mn>7</mn>
+      </msqrt>
+      <mn>4</mn>
+     </mfrac>
+    </mrow>
+    <mo>-</mo>
+    <mfrac>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>ArcTan</mi>
+        <mo>[</mo>
+        <mfrac>
+         <msqrt>
+          <mn>7</mn>
+         </msqrt>
+         <mn>5</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <msup>
+      <mn>2</mn>
+      <mrow>
+       <mn>1</mn>
+       <mo>/</mo>
+       <mn>4</mn>
+      </mrow>
+     </msup>
+    </mfrac>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <msqrt>
+      <mn>7</mn>
+     </msqrt>
+     <mn>4</mn>
+    </mfrac>
+    <mo>-</mo>
+    <mfrac>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>ArcTan</mi>
+        <mo>[</mo>
+        <mfrac>
+         <msqrt>
+          <mn>7</mn>
+         </msqrt>
+         <mn>5</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <msup>
+      <mn>2</mn>
+      <mrow>
+       <mn>1</mn>
+       <mo>/</mo>
+       <mn>4</mn>
+      </mrow>
+     </msup>
+    </mfrac>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <msqrt>
+      <mn>7</mn>
+     </msqrt>
+     <mn>4</mn>
+    </mfrac>
+    <mo>+</mo>
+    <mfrac>
+     <mrow>
+      <mi>Sin</mi>
+      <mo>[</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mi>ArcTan</mi>
+        <mo>[</mo>
+        <mfrac>
+         <msqrt>
+          <mn>7</mn>
+         </msqrt>
+         <mn>5</mn>
+        </mfrac>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <msup>
+      <mn>2</mn>
+      <mrow>
+       <mn>1</mn>
+       <mo>/</mo>
+       <mn>4</mn>
+      </mrow>
+     </msup>
+    </mfrac>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ComplexExpand</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>Im</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>/.</mo>
+     <mi>sols</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>//</mo>
+  <mi>N</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.458821464672557</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.8640541908597383</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>0.458821464672557</mn>
+   <mo>,</mo>
+   <mn>0.8640541908597383</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>ComplexExpand</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>Re</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>/.</mo>
+     <mi>sols</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>//</mo>
+  <mi>N</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.5661209411559501</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1.0661209411559502</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.5661209411559501</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>1.0661209411559502</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Generalize the above to a family of solutions: find <span style='font-style: italic;'>b</span> such that imaginary part of the solution vanishes
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_roots_of_polynomial_equations__example_of_plotting_roots"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>bsols</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Solve</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mi>x</mi>
+        <mo>^</mo>
+        <mn>4</mn>
+       </mrow>
+       <mtext> </mtext>
+       <mo>-</mo>
+       <mrow>
+        <mi>x</mi>
+        <mo>^</mo>
+        <mn>3</mn>
+       </mrow>
+       <mtext> </mtext>
+       <mo>+</mo>
+       <mrow>
+        <mi>b</mi>
+        <mo>*</mo>
+        <mi>x</mi>
+       </mrow>
+       <mtext> </mtext>
+       <mo>+</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+     <mtext> </mtext>
+     <mo>&Equal;</mo>
+     <mtext> </mtext>
+     <mn>0</mn>
+    </mrow>
+    <mo>,</mo>
+    <mi>x</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ This will give a list of rules that can be used to find solutions;as &quot;b&quot; is unspecified the rules depend on the symbol &quot;b&quot;
+</p>
+
+
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>General</mi>
+   <mtext>::</mtext>
+   <mi>spell1</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Possible spelling error: new symbol name \&quot;</mtext>
+    <mi>bsols</mi>
+    <mtext>\&quot; is similar to existing symbol \&quot;</mtext>
+    <mi>sols</mi>
+    <mtext>\&quot;. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Possible spelling error: new symbol name \\\&quot;\\!\\(bsols\\)\\\&quot; is similar to existing symbol \\\&quot;\\!\\(sols\\)\\\&quot;. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;General::spell1\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>4</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>&Sqrt;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mfrac>
+           <mn>1</mn>
+           <mn>4</mn>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <mrow>
+            <msup>
+             <mrow>
+              <mo>(</mo>
+              <mfrac>
+               <mn>2</mn>
+               <mn>3</mn>
+              </mfrac>
+              <mo>)</mo>
+             </mrow>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>4</mn>
+              <mo>+</mo>
+              <mi>b</mi>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+           </mrow>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+           <mrow>
+            <msup>
+             <mn>2</mn>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <msup>
+             <mn>3</mn>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+           </mrow>
+          </mfrac>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>&Sqrt;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mfrac>
+           <mn>1</mn>
+           <mn>2</mn>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <mrow>
+            <msup>
+             <mrow>
+              <mo>(</mo>
+              <mfrac>
+               <mn>2</mn>
+               <mn>3</mn>
+              </mfrac>
+              <mo>)</mo>
+             </mrow>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>4</mn>
+              <mo>+</mo>
+              <mi>b</mi>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+           </mrow>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+           <mrow>
+            <msup>
+             <mn>2</mn>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <msup>
+             <mn>3</mn>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+           </mrow>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <mrow>
+            <mn>1</mn>
+            <mo>-</mo>
+            <mrow>
+             <mn>8</mn>
+             <mo>&InvisibleTimes;</mo>
+             <mi>b</mi>
+            </mrow>
+           </mrow>
+           <mrow>
+            <mn>4</mn>
+            <mo>&InvisibleTimes;</mo>
+            <msqrt>
+             <mrow>
+              <mfrac>
+               <mn>1</mn>
+               <mn>4</mn>
+              </mfrac>
+              <mo>+</mo>
+              <mfrac>
+               <mrow>
+                <msup>
+                 <mrow>
+                  <mo>(</mo>
+                  <mfrac>
+                   <mn>2</mn>
+                   <mn>3</mn>
+                  </mfrac>
+                  <mo>)</mo>
+                 </mrow>
+                 <mrow>
+                  <mn>1</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+                <mo>&InvisibleTimes;</mo>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>+</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+               </mrow>
+               <msup>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>9</mn>
+                  <mo>+</mo>
+                  <mrow>
+                   <mn>9</mn>
+                   <mo>&InvisibleTimes;</mo>
+                   <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                   </msup>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                   <msqrt>
+                    <mn>3</mn>
+                   </msqrt>
+                   <mo>&InvisibleTimes;</mo>
+                   <msqrt>
+                    <mrow>
+                     <mrow>
+                      <mo>-</mo>
+                      <mn>229</mn>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>192</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>b</mi>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>6</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>2</mn>
+                      </msup>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>4</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>3</mn>
+                      </msup>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>27</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>4</mn>
+                      </msup>
+                     </mrow>
+                    </mrow>
+                   </msqrt>
+                  </mrow>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+                <mrow>
+                 <mn>1</mn>
+                 <mo>/</mo>
+                 <mn>3</mn>
+                </mrow>
+               </msup>
+              </mfrac>
+              <mo>+</mo>
+              <mfrac>
+               <msup>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>9</mn>
+                  <mo>+</mo>
+                  <mrow>
+                   <mn>9</mn>
+                   <mo>&InvisibleTimes;</mo>
+                   <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                   </msup>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                   <msqrt>
+                    <mn>3</mn>
+                   </msqrt>
+                   <mo>&InvisibleTimes;</mo>
+                   <msqrt>
+                    <mrow>
+                     <mrow>
+                      <mo>-</mo>
+                      <mn>229</mn>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>192</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>b</mi>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>6</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>2</mn>
+                      </msup>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>4</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>3</mn>
+                      </msup>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>27</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>4</mn>
+                      </msup>
+                     </mrow>
+                    </mrow>
+                   </msqrt>
+                  </mrow>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+                <mrow>
+                 <mn>1</mn>
+                 <mo>/</mo>
+                 <mn>3</mn>
+                </mrow>
+               </msup>
+               <mrow>
+                <msup>
+                 <mn>2</mn>
+                 <mrow>
+                  <mn>1</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+                <mo>&InvisibleTimes;</mo>
+                <msup>
+                 <mn>3</mn>
+                 <mrow>
+                  <mn>2</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+               </mrow>
+              </mfrac>
+             </mrow>
+            </msqrt>
+           </mrow>
+          </mfrac>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>4</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>&Sqrt;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mfrac>
+           <mn>1</mn>
+           <mn>4</mn>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <mrow>
+            <msup>
+             <mrow>
+              <mo>(</mo>
+              <mfrac>
+               <mn>2</mn>
+               <mn>3</mn>
+              </mfrac>
+              <mo>)</mo>
+             </mrow>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>4</mn>
+              <mo>+</mo>
+              <mi>b</mi>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+           </mrow>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+           <mrow>
+            <msup>
+             <mn>2</mn>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <msup>
+             <mn>3</mn>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+           </mrow>
+          </mfrac>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>&Sqrt;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mfrac>
+           <mn>1</mn>
+           <mn>2</mn>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <mrow>
+            <msup>
+             <mrow>
+              <mo>(</mo>
+              <mfrac>
+               <mn>2</mn>
+               <mn>3</mn>
+              </mfrac>
+              <mo>)</mo>
+             </mrow>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>4</mn>
+              <mo>+</mo>
+              <mi>b</mi>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+           </mrow>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+           <mrow>
+            <msup>
+             <mn>2</mn>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <msup>
+             <mn>3</mn>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+           </mrow>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <mrow>
+            <mn>1</mn>
+            <mo>-</mo>
+            <mrow>
+             <mn>8</mn>
+             <mo>&InvisibleTimes;</mo>
+             <mi>b</mi>
+            </mrow>
+           </mrow>
+           <mrow>
+            <mn>4</mn>
+            <mo>&InvisibleTimes;</mo>
+            <msqrt>
+             <mrow>
+              <mfrac>
+               <mn>1</mn>
+               <mn>4</mn>
+              </mfrac>
+              <mo>+</mo>
+              <mfrac>
+               <mrow>
+                <msup>
+                 <mrow>
+                  <mo>(</mo>
+                  <mfrac>
+                   <mn>2</mn>
+                   <mn>3</mn>
+                  </mfrac>
+                  <mo>)</mo>
+                 </mrow>
+                 <mrow>
+                  <mn>1</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+                <mo>&InvisibleTimes;</mo>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>+</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+               </mrow>
+               <msup>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>9</mn>
+                  <mo>+</mo>
+                  <mrow>
+                   <mn>9</mn>
+                   <mo>&InvisibleTimes;</mo>
+                   <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                   </msup>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                   <msqrt>
+                    <mn>3</mn>
+                   </msqrt>
+                   <mo>&InvisibleTimes;</mo>
+                   <msqrt>
+                    <mrow>
+                     <mrow>
+                      <mo>-</mo>
+                      <mn>229</mn>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>192</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>b</mi>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>6</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>2</mn>
+                      </msup>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>4</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>3</mn>
+                      </msup>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>27</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>4</mn>
+                      </msup>
+                     </mrow>
+                    </mrow>
+                   </msqrt>
+                  </mrow>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+                <mrow>
+                 <mn>1</mn>
+                 <mo>/</mo>
+                 <mn>3</mn>
+                </mrow>
+               </msup>
+              </mfrac>
+              <mo>+</mo>
+              <mfrac>
+               <msup>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>9</mn>
+                  <mo>+</mo>
+                  <mrow>
+                   <mn>9</mn>
+                   <mo>&InvisibleTimes;</mo>
+                   <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                   </msup>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                   <msqrt>
+                    <mn>3</mn>
+                   </msqrt>
+                   <mo>&InvisibleTimes;</mo>
+                   <msqrt>
+                    <mrow>
+                     <mrow>
+                      <mo>-</mo>
+                      <mn>229</mn>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>192</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>b</mi>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>6</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>2</mn>
+                      </msup>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>4</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>3</mn>
+                      </msup>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>27</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>4</mn>
+                      </msup>
+                     </mrow>
+                    </mrow>
+                   </msqrt>
+                  </mrow>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+                <mrow>
+                 <mn>1</mn>
+                 <mo>/</mo>
+                 <mn>3</mn>
+                </mrow>
+               </msup>
+               <mrow>
+                <msup>
+                 <mn>2</mn>
+                 <mrow>
+                  <mn>1</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+                <mo>&InvisibleTimes;</mo>
+                <msup>
+                 <mn>3</mn>
+                 <mrow>
+                  <mn>2</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+               </mrow>
+              </mfrac>
+             </mrow>
+            </msqrt>
+           </mrow>
+          </mfrac>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>4</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>&Sqrt;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mfrac>
+           <mn>1</mn>
+           <mn>4</mn>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <mrow>
+            <msup>
+             <mrow>
+              <mo>(</mo>
+              <mfrac>
+               <mn>2</mn>
+               <mn>3</mn>
+              </mfrac>
+              <mo>)</mo>
+             </mrow>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>4</mn>
+              <mo>+</mo>
+              <mi>b</mi>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+           </mrow>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+           <mrow>
+            <msup>
+             <mn>2</mn>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <msup>
+             <mn>3</mn>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+           </mrow>
+          </mfrac>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>&Sqrt;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mfrac>
+           <mn>1</mn>
+           <mn>2</mn>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <mrow>
+            <msup>
+             <mrow>
+              <mo>(</mo>
+              <mfrac>
+               <mn>2</mn>
+               <mn>3</mn>
+              </mfrac>
+              <mo>)</mo>
+             </mrow>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>4</mn>
+              <mo>+</mo>
+              <mi>b</mi>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+           </mrow>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+           <mrow>
+            <msup>
+             <mn>2</mn>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <msup>
+             <mn>3</mn>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+           </mrow>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <mrow>
+            <mn>1</mn>
+            <mo>-</mo>
+            <mrow>
+             <mn>8</mn>
+             <mo>&InvisibleTimes;</mo>
+             <mi>b</mi>
+            </mrow>
+           </mrow>
+           <mrow>
+            <mn>4</mn>
+            <mo>&InvisibleTimes;</mo>
+            <msqrt>
+             <mrow>
+              <mfrac>
+               <mn>1</mn>
+               <mn>4</mn>
+              </mfrac>
+              <mo>+</mo>
+              <mfrac>
+               <mrow>
+                <msup>
+                 <mrow>
+                  <mo>(</mo>
+                  <mfrac>
+                   <mn>2</mn>
+                   <mn>3</mn>
+                  </mfrac>
+                  <mo>)</mo>
+                 </mrow>
+                 <mrow>
+                  <mn>1</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+                <mo>&InvisibleTimes;</mo>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>+</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+               </mrow>
+               <msup>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>9</mn>
+                  <mo>+</mo>
+                  <mrow>
+                   <mn>9</mn>
+                   <mo>&InvisibleTimes;</mo>
+                   <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                   </msup>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                   <msqrt>
+                    <mn>3</mn>
+                   </msqrt>
+                   <mo>&InvisibleTimes;</mo>
+                   <msqrt>
+                    <mrow>
+                     <mrow>
+                      <mo>-</mo>
+                      <mn>229</mn>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>192</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>b</mi>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>6</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>2</mn>
+                      </msup>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>4</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>3</mn>
+                      </msup>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>27</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>4</mn>
+                      </msup>
+                     </mrow>
+                    </mrow>
+                   </msqrt>
+                  </mrow>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+                <mrow>
+                 <mn>1</mn>
+                 <mo>/</mo>
+                 <mn>3</mn>
+                </mrow>
+               </msup>
+              </mfrac>
+              <mo>+</mo>
+              <mfrac>
+               <msup>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>9</mn>
+                  <mo>+</mo>
+                  <mrow>
+                   <mn>9</mn>
+                   <mo>&InvisibleTimes;</mo>
+                   <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                   </msup>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                   <msqrt>
+                    <mn>3</mn>
+                   </msqrt>
+                   <mo>&InvisibleTimes;</mo>
+                   <msqrt>
+                    <mrow>
+                     <mrow>
+                      <mo>-</mo>
+                      <mn>229</mn>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>192</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>b</mi>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>6</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>2</mn>
+                      </msup>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>4</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>3</mn>
+                      </msup>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>27</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>4</mn>
+                      </msup>
+                     </mrow>
+                    </mrow>
+                   </msqrt>
+                  </mrow>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+                <mrow>
+                 <mn>1</mn>
+                 <mo>/</mo>
+                 <mn>3</mn>
+                </mrow>
+               </msup>
+               <mrow>
+                <msup>
+                 <mn>2</mn>
+                 <mrow>
+                  <mn>1</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+                <mo>&InvisibleTimes;</mo>
+                <msup>
+                 <mn>3</mn>
+                 <mrow>
+                  <mn>2</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+               </mrow>
+              </mfrac>
+             </mrow>
+            </msqrt>
+           </mrow>
+          </mfrac>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>4</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>&Sqrt;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mfrac>
+           <mn>1</mn>
+           <mn>4</mn>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <mrow>
+            <msup>
+             <mrow>
+              <mo>(</mo>
+              <mfrac>
+               <mn>2</mn>
+               <mn>3</mn>
+              </mfrac>
+              <mo>)</mo>
+             </mrow>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>4</mn>
+              <mo>+</mo>
+              <mi>b</mi>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+           </mrow>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+           <mrow>
+            <msup>
+             <mn>2</mn>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <msup>
+             <mn>3</mn>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+           </mrow>
+          </mfrac>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <mrow>
+        <mo>&Sqrt;</mo>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mfrac>
+           <mn>1</mn>
+           <mn>2</mn>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <mrow>
+            <msup>
+             <mrow>
+              <mo>(</mo>
+              <mfrac>
+               <mn>2</mn>
+               <mn>3</mn>
+              </mfrac>
+              <mo>)</mo>
+             </mrow>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>4</mn>
+              <mo>+</mo>
+              <mi>b</mi>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+           </mrow>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+          </mfrac>
+          <mo>-</mo>
+          <mfrac>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mrow>
+              <mn>9</mn>
+              <mo>+</mo>
+              <mrow>
+               <mn>9</mn>
+               <mo>&InvisibleTimes;</mo>
+               <msup>
+                <mi>b</mi>
+                <mn>2</mn>
+               </msup>
+              </mrow>
+              <mo>+</mo>
+              <mrow>
+               <msqrt>
+                <mn>3</mn>
+               </msqrt>
+               <mo>&InvisibleTimes;</mo>
+               <msqrt>
+                <mrow>
+                 <mrow>
+                  <mo>-</mo>
+                  <mn>229</mn>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>192</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>6</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>2</mn>
+                  </msup>
+                 </mrow>
+                 <mo>-</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>3</mn>
+                  </msup>
+                 </mrow>
+                 <mo>+</mo>
+                 <mrow>
+                  <mn>27</mn>
+                  <mo>&InvisibleTimes;</mo>
+                  <msup>
+                   <mi>b</mi>
+                   <mn>4</mn>
+                  </msup>
+                 </mrow>
+                </mrow>
+               </msqrt>
+              </mrow>
+             </mrow>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+           <mrow>
+            <msup>
+             <mn>2</mn>
+             <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+            <mo>&InvisibleTimes;</mo>
+            <msup>
+             <mn>3</mn>
+             <mrow>
+              <mn>2</mn>
+              <mo>/</mo>
+              <mn>3</mn>
+             </mrow>
+            </msup>
+           </mrow>
+          </mfrac>
+          <mo>+</mo>
+          <mfrac>
+           <mrow>
+            <mn>1</mn>
+            <mo>-</mo>
+            <mrow>
+             <mn>8</mn>
+             <mo>&InvisibleTimes;</mo>
+             <mi>b</mi>
+            </mrow>
+           </mrow>
+           <mrow>
+            <mn>4</mn>
+            <mo>&InvisibleTimes;</mo>
+            <msqrt>
+             <mrow>
+              <mfrac>
+               <mn>1</mn>
+               <mn>4</mn>
+              </mfrac>
+              <mo>+</mo>
+              <mfrac>
+               <mrow>
+                <msup>
+                 <mrow>
+                  <mo>(</mo>
+                  <mfrac>
+                   <mn>2</mn>
+                   <mn>3</mn>
+                  </mfrac>
+                  <mo>)</mo>
+                 </mrow>
+                 <mrow>
+                  <mn>1</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+                <mo>&InvisibleTimes;</mo>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>4</mn>
+                  <mo>+</mo>
+                  <mi>b</mi>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+               </mrow>
+               <msup>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>9</mn>
+                  <mo>+</mo>
+                  <mrow>
+                   <mn>9</mn>
+                   <mo>&InvisibleTimes;</mo>
+                   <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                   </msup>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                   <msqrt>
+                    <mn>3</mn>
+                   </msqrt>
+                   <mo>&InvisibleTimes;</mo>
+                   <msqrt>
+                    <mrow>
+                     <mrow>
+                      <mo>-</mo>
+                      <mn>229</mn>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>192</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>b</mi>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>6</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>2</mn>
+                      </msup>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>4</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>3</mn>
+                      </msup>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>27</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>4</mn>
+                      </msup>
+                     </mrow>
+                    </mrow>
+                   </msqrt>
+                  </mrow>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+                <mrow>
+                 <mn>1</mn>
+                 <mo>/</mo>
+                 <mn>3</mn>
+                </mrow>
+               </msup>
+              </mfrac>
+              <mo>+</mo>
+              <mfrac>
+               <msup>
+                <mrow>
+                 <mo>(</mo>
+                 <mrow>
+                  <mn>9</mn>
+                  <mo>+</mo>
+                  <mrow>
+                   <mn>9</mn>
+                   <mo>&InvisibleTimes;</mo>
+                   <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                   </msup>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                   <msqrt>
+                    <mn>3</mn>
+                   </msqrt>
+                   <mo>&InvisibleTimes;</mo>
+                   <msqrt>
+                    <mrow>
+                     <mrow>
+                      <mo>-</mo>
+                      <mn>229</mn>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>192</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <mi>b</mi>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>6</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>2</mn>
+                      </msup>
+                     </mrow>
+                     <mo>-</mo>
+                     <mrow>
+                      <mn>4</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>3</mn>
+                      </msup>
+                     </mrow>
+                     <mo>+</mo>
+                     <mrow>
+                      <mn>27</mn>
+                      <mo>&InvisibleTimes;</mo>
+                      <msup>
+                       <mi>b</mi>
+                       <mn>4</mn>
+                      </msup>
+                     </mrow>
+                    </mrow>
+                   </msqrt>
+                  </mrow>
+                 </mrow>
+                 <mo>)</mo>
+                </mrow>
+                <mrow>
+                 <mn>1</mn>
+                 <mo>/</mo>
+                 <mn>3</mn>
+                </mrow>
+               </msup>
+               <mrow>
+                <msup>
+                 <mn>2</mn>
+                 <mrow>
+                  <mn>1</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+                <mo>&InvisibleTimes;</mo>
+                <msup>
+                 <mn>3</mn>
+                 <mrow>
+                  <mn>2</mn>
+                  <mo>/</mo>
+                  <mn>3</mn>
+                 </mrow>
+                </msup>
+               </mrow>
+              </mfrac>
+             </mrow>
+            </msqrt>
+           </mrow>
+          </mfrac>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+       </mrow>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Because it is a long set of rules and hard to follow, let's look at the form of bsols:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_Dimensionsxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Dimensions</mi>
+  <mo>[</mo>
+  <mi>bsols</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>4</mn>
+   <mo>,</mo>
+   <mn>1</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <span style='font-weight: bold;'>Short</span> produces a <span style='font-style: italic;'>very</span> abbreviated form of the solution&hellip; in this case limited to 3 lines by the optional parameter.
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_Shortxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Short</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>bsols</mi>
+   <mo>,</mo>
+   <mn>3</mn>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>4</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <msqrt>
+        <mrow>
+         <mfrac>
+          <mn>1</mn>
+          <mn>4</mn>
+         </mfrac>
+         <mo>+</mo>
+         <mfrac>
+          <mrow>
+           <mo>&#63329;</mo>
+           <mn>1</mn>
+           <mo>&#63330;</mo>
+          </mrow>
+          <mrow>
+           <mo>&#63329;</mo>
+           <mn>1</mn>
+           <mo>&#63330;</mo>
+          </mrow>
+         </mfrac>
+         <mo>+</mo>
+         <mfrac>
+          <mrow>
+           <mo>&#63329;</mo>
+           <mn>1</mn>
+           <mo>&#63330;</mo>
+          </mrow>
+          <mrow>
+           <mo>&#63329;</mo>
+           <mn>1</mn>
+           <mo>&#63330;</mo>
+          </mrow>
+         </mfrac>
+        </mrow>
+       </msqrt>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+       </mfrac>
+       <mo>&InvisibleTimes;</mo>
+       <msqrt>
+        <mrow>
+         <mfrac>
+          <mn>1</mn>
+          <mn>2</mn>
+         </mfrac>
+         <mo>-</mo>
+         <mfrac>
+          <mrow>
+           <msup>
+            <mrow>
+             <mo>(</mo>
+             <mfrac>
+              <mn>2</mn>
+              <mn>3</mn>
+             </mfrac>
+             <mo>)</mo>
+            </mrow>
+            <mrow>
+             <mn>1</mn>
+             <mo>/</mo>
+             <mn>3</mn>
+            </mrow>
+           </msup>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mo>(</mo>
+            <mrow>
+             <mn>4</mn>
+             <mo>+</mo>
+             <mi>b</mi>
+            </mrow>
+            <mo>)</mo>
+           </mrow>
+          </mrow>
+          <msup>
+           <mrow>
+            <mo>(</mo>
+            <mrow>
+             <mo>&#63329;</mo>
+             <mn>1</mn>
+             <mo>&#63330;</mo>
+            </mrow>
+            <mo>)</mo>
+           </mrow>
+           <mrow>
+            <mn>1</mn>
+            <mo>/</mo>
+            <mn>3</mn>
+           </mrow>
+          </msup>
+         </mfrac>
+         <mo>-</mo>
+         <mfrac>
+          <mrow>
+           <mo>&#63329;</mo>
+           <mn>1</mn>
+           <mo>&#63330;</mo>
+          </mrow>
+          <mrow>
+           <msup>
+            <mn>2</mn>
+            <mrow>
+             <mo>&#63329;</mo>
+             <mn>1</mn>
+             <mo>&#63330;</mo>
+            </mrow>
+           </msup>
+           <mo>&InvisibleTimes;</mo>
+           <mrow>
+            <mo>&#63329;</mo>
+            <mn>1</mn>
+            <mo>&#63330;</mo>
+           </mrow>
+          </mrow>
+         </mfrac>
+         <mo>-</mo>
+         <mfrac>
+          <mrow>
+           <mn>1</mn>
+           <mo>-</mo>
+           <mrow>
+            <mn>8</mn>
+            <mo>&InvisibleTimes;</mo>
+            <mi>b</mi>
+           </mrow>
+          </mrow>
+          <mrow>
+           <mn>4</mn>
+           <mo>&InvisibleTimes;</mo>
+           <msqrt>
+            <mrow>
+             <mfrac>
+              <mn>1</mn>
+              <mn>4</mn>
+             </mfrac>
+             <mo>+</mo>
+             <mfrac>
+              <mrow>
+               <mrow>
+                <mo>&#63329;</mo>
+                <mn>1</mn>
+                <mo>&#63330;</mo>
+               </mrow>
+               <mo>&InvisibleTimes;</mo>
+               <mrow>
+                <mo>&#63329;</mo>
+                <mn>1</mn>
+                <mo>&#63330;</mo>
+               </mrow>
+               <mo>&InvisibleTimes;</mo>
+               <mrow>
+                <mo>&#63329;</mo>
+                <mn>1</mn>
+                <mo>&#63330;</mo>
+               </mrow>
+              </mrow>
+              <msup>
+               <mrow>
+                <mo>&#63329;</mo>
+                <mn>1</mn>
+                <mo>&#63330;</mo>
+               </mrow>
+               <mrow>
+                <mo>&#63329;</mo>
+                <mn>1</mn>
+                <mo>&#63330;</mo>
+               </mrow>
+              </msup>
+             </mfrac>
+             <mo>+</mo>
+             <mfrac>
+              <msup>
+               <mrow>
+                <mo>(</mo>
+                <mrow>
+                 <mo>&#63329;</mo>
+                 <mn>1</mn>
+                 <mo>&#63330;</mo>
+                </mrow>
+                <mo>)</mo>
+               </mrow>
+               <mrow>
+                <mn>1</mn>
+                <mo>/</mo>
+                <mn>3</mn>
+               </mrow>
+              </msup>
+              <mrow>
+               <msup>
+                <mn>2</mn>
+                <mrow>
+                 <mn>1</mn>
+                 <mo>&InvisibleTimes;</mo>
+                 <mrow>
+                  <mo>&#63329;</mo>
+                  <mn>1</mn>
+                  <mo>&#63330;</mo>
+                 </mrow>
+                 <mo>&InvisibleTimes;</mo>
+                 <mrow>
+                  <mo>&#63329;</mo>
+                  <mn>1</mn>
+                  <mo>&#63330;</mo>
+                 </mrow>
+                </mrow>
+               </msup>
+               <mo>&InvisibleTimes;</mo>
+               <mrow>
+                <mo>&#63329;</mo>
+                <mn>1</mn>
+                <mo>&#63330;</mo>
+               </mrow>
+              </mrow>
+             </mfrac>
+            </mrow>
+           </msqrt>
+          </mrow>
+         </mfrac>
+        </mrow>
+       </msqrt>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&#63329;</mo>
+    <mn>3</mn>
+    <mo>&#63330;</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ So we see that <span style='font-style: italic;'>bsols</span> is a list of length 4 of list containing one rule. (Solutions to equations are always this way, it is a list of the number of solutions, each member being a rule for each variable that is solved for...)
+</p>
+
+
+
+<p class="Text">
+ In our case of one variable, the extra layer of lists is not terribly useful, one way to get rid of the extra layers is to use <span style='font-weight: bold;'>Flatten</span>:
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_Flattenxx"></a>
+ <img src="HTMLFiles/Lecture-08_7.gif" alt="Dimensions[Flatten[bsols]]"  width="249" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mmtag_08_Flattenxx"></a>
+ <img src="HTMLFiles/Lecture-08_8.gif" alt="Short[Flatten[bsols], 3]"  width="213" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mn>4</mn>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mi>x</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mfrac>
+      <mn>1</mn>
+      <mn>4</mn>
+     </mfrac>
+     <mo>-</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>2</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mrow>
+        <mfrac>
+         <mn>1</mn>
+         <mn>4</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+         <mrow>
+          <mo>&#63329;</mo>
+          <mn>1</mn>
+          <mo>&#63330;</mo>
+         </mrow>
+         <mrow>
+          <mo>&#63329;</mo>
+          <mn>1</mn>
+          <mo>&#63330;</mo>
+         </mrow>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+         <mrow>
+          <mo>&#63329;</mo>
+          <mn>1</mn>
+          <mo>&#63330;</mo>
+         </mrow>
+         <mrow>
+          <mo>&#63329;</mo>
+          <mn>1</mn>
+          <mo>&#63330;</mo>
+         </mrow>
+        </mfrac>
+       </mrow>
+      </msqrt>
+     </mrow>
+     <mo>-</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>2</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <msqrt>
+       <mrow>
+        <mfrac>
+         <mn>1</mn>
+         <mn>2</mn>
+        </mfrac>
+        <mo>-</mo>
+        <mfrac>
+         <mrow>
+          <msup>
+           <mrow>
+            <mo>(</mo>
+            <mfrac>
+             <mn>2</mn>
+             <mn>3</mn>
+            </mfrac>
+            <mo>)</mo>
+           </mrow>
+           <mrow>
+            <mn>1</mn>
+            <mo>/</mo>
+            <mn>3</mn>
+           </mrow>
+          </msup>
+          <mo>&InvisibleTimes;</mo>
+          <mrow>
+           <mo>(</mo>
+           <mrow>
+            <mn>4</mn>
+            <mo>+</mo>
+            <mi>b</mi>
+           </mrow>
+           <mo>)</mo>
+          </mrow>
+         </mrow>
+         <msup>
+          <mrow>
+           <mo>(</mo>
+           <mrow>
+            <mo>&#63329;</mo>
+            <mn>1</mn>
+            <mo>&#63330;</mo>
+           </mrow>
+           <mo>)</mo>
+          </mrow>
+          <mrow>
+           <mn>1</mn>
+           <mo>/</mo>
+           <mn>3</mn>
+          </mrow>
+         </msup>
+        </mfrac>
+        <mo>-</mo>
+        <mfrac>
+         <msup>
+          <mrow>
+           <mo>(</mo>
+           <mrow>
+            <mo>&#63329;</mo>
+            <mn>1</mn>
+            <mo>&#63330;</mo>
+           </mrow>
+           <mo>)</mo>
+          </mrow>
+          <mrow>
+           <mn>1</mn>
+           <mo>/</mo>
+           <mn>3</mn>
+          </mrow>
+         </msup>
+         <mrow>
+          <msup>
+           <mn>2</mn>
+           <mrow>
+            <mo>&#63329;</mo>
+            <mn>1</mn>
+            <mo>&#63330;</mo>
+           </mrow>
+          </msup>
+          <mo>&InvisibleTimes;</mo>
+          <msup>
+           <mn>3</mn>
+           <mrow>
+            <mo>&#63329;</mo>
+            <mn>1</mn>
+            <mo>&#63330;</mo>
+           </mrow>
+          </msup>
+         </mrow>
+        </mfrac>
+        <mo>-</mo>
+        <mfrac>
+         <mrow>
+          <mn>1</mn>
+          <mo>-</mo>
+          <mrow>
+           <mn>8</mn>
+           <mo>&InvisibleTimes;</mo>
+           <mi>b</mi>
+          </mrow>
+         </mrow>
+         <mrow>
+          <mn>4</mn>
+          <mo>&InvisibleTimes;</mo>
+          <msqrt>
+           <mrow>
+            <mfrac>
+             <mn>1</mn>
+             <mn>4</mn>
+            </mfrac>
+            <mo>+</mo>
+            <mfrac>
+             <mrow>
+              <mrow>
+               <mo>&#63329;</mo>
+               <mn>1</mn>
+               <mo>&#63330;</mo>
+              </mrow>
+              <mo>&InvisibleTimes;</mo>
+              <mrow>
+               <mo>&#63329;</mo>
+               <mn>1</mn>
+               <mo>&#63330;</mo>
+              </mrow>
+             </mrow>
+             <msup>
+              <mrow>
+               <mo>&#63329;</mo>
+               <mn>1</mn>
+               <mo>&#63330;</mo>
+              </mrow>
+              <mrow>
+               <mo>&#63329;</mo>
+               <mn>1</mn>
+               <mo>&#63330;</mo>
+              </mrow>
+             </msup>
+            </mfrac>
+            <mo>+</mo>
+            <mfrac>
+             <msup>
+              <mrow>
+               <mo>(</mo>
+               <mrow>
+                <mo>&#63329;</mo>
+                <mn>1</mn>
+                <mo>&#63330;</mo>
+               </mrow>
+               <mo>)</mo>
+              </mrow>
+              <mrow>
+               <mn>1</mn>
+               <mo>/</mo>
+               <mn>3</mn>
+              </mrow>
+             </msup>
+             <mrow>
+              <msup>
+               <mn>2</mn>
+               <mrow>
+                <mn>1</mn>
+                <mo>&InvisibleTimes;</mo>
+                <mrow>
+                 <mo>&#63329;</mo>
+                 <mn>1</mn>
+                 <mo>&#63330;</mo>
+                </mrow>
+                <mo>&InvisibleTimes;</mo>
+                <mrow>
+                 <mo>&#63329;</mo>
+                 <mn>1</mn>
+                 <mo>&#63330;</mo>
+                </mrow>
+               </mrow>
+              </msup>
+              <mo>&InvisibleTimes;</mo>
+              <mrow>
+               <mo>&#63329;</mo>
+               <mn>1</mn>
+               <mo>&#63330;</mo>
+              </mrow>
+             </mrow>
+            </mfrac>
+           </mrow>
+          </msqrt>
+         </mrow>
+        </mfrac>
+       </mrow>
+      </msqrt>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>&#63329;</mo>
+    <mn>3</mn>
+    <mo>&#63330;</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ In the next command, we produce a list of values (not of rules, because we have taken <span style='font-style: italic;'>x</span> and applied every rule in <span style='font-style: italic;'>bsols</span> to it... These values are the imaginary parts of the solutions <span style='font-style: italic;'>x</span> that make the polynomial vanish (and a function of <span style='font-style: italic;'>b</span>, because it hasn't been specified yet)
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>imb</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mrow>
+    <mi>ComplexExpand</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Im</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>/.</mo>
+      <mi>bsols</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-08_9.gif" alt="Dimensions[imb]"  width="156" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-08_10.gif" alt="Short[imb[[1]]]"  width="134" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mn>4</mn>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mfrac>
+     <mn>1</mn>
+     <mn>2</mn>
+    </mfrac>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <msup>
+    <mrow>
+     <mo>&#63329;</mo>
+     <mn>1</mn>
+     <mo>&#63330;</mo>
+    </mrow>
+    <mrow>
+     <mo>&#63329;</mo>
+     <mn>1</mn>
+     <mo>&#63330;</mo>
+    </mrow>
+   </msup>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mi>Sin</mi>
+    <mo>[</mo>
+    <mrow>
+     <mfrac>
+      <mn>1</mn>
+      <mn>2</mn>
+     </mfrac>
+     <mo>&InvisibleTimes;</mo>
+     <mrow>
+      <mi>Arg</mi>
+      <mo>[</mo>
+      <mrow>
+       <mfrac>
+        <mn>1</mn>
+        <mn>4</mn>
+       </mfrac>
+       <mo>+</mo>
+       <mfrac>
+        <mrow>
+         <mo>&#63329;</mo>
+         <mn>1</mn>
+         <mo>&#63330;</mo>
+        </mrow>
+        <mrow>
+         <mo>&#63329;</mo>
+         <mn>1</mn>
+         <mo>&#63330;</mo>
+        </mrow>
+       </mfrac>
+       <mo>+</mo>
+       <mfrac>
+        <msup>
+         <mrow>
+          <mo>&#63329;</mo>
+          <mn>1</mn>
+          <mo>&#63330;</mo>
+         </mrow>
+         <mrow>
+          <mo>&#63329;</mo>
+          <mn>1</mn>
+          <mo>&#63330;</mo>
+         </mrow>
+        </msup>
+        <mrow>
+         <msup>
+          <mn>2</mn>
+          <mrow>
+           <mo>&#63329;</mo>
+           <mn>1</mn>
+           <mo>&#63330;</mo>
+          </mrow>
+         </msup>
+         <mo>&InvisibleTimes;</mo>
+         <mrow>
+          <mo>&#63329;</mo>
+          <mn>1</mn>
+          <mo>&#63330;</mo>
+         </mrow>
+        </mrow>
+       </mfrac>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mo>&#63329;</mo>
+   <mn>1</mn>
+   <mo>&#63330;</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ And likewise for the real parts of <span style='font-style: italic;'>x</span> that solve the polynomial equation
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>imr</mi>
+   <mo>=</mo>
+   <mrow>
+    <mi>ComplexExpand</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>Re</mi>
+     <mo>[</mo>
+     <mrow>
+      <mi>x</mi>
+      <mo>/.</mo>
+      <mi>bsols</mi>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ <span style='font-weight: bold;'>Plot[]</span> expects a list of functions to plot, The &quot;<span style='font-weight: bold;'>Flatten</span>&quot; function ensures that <span style='font-weight: bold;'>Plot</span> is getting a list, but it is redundant in this particular case.&nbsp;&nbsp;This plot works as follows, for each member in the list, plot the result of replacing <span style='font-style: italic;'>b</span> with <span style='font-style: italic;'>q</span> for values of <span style='font-style: italic;'>q</span> between -10, 10---it is a long-handed way of seeing exactly what is going on and demonstrates the replacement technique.<br /><br />So the following should be&nbsp;&nbsp;a plot of the imaginary values of <span style='font-style: italic;'>x</span> as a function of <span style='font-style: italic;'>b</span>.
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_plots__examples_of_modifying"></a>
+ <a id="mmtag_08_plots__examples_of_effect_of_numerical_noise"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>Flatten</mi>
+      <mo>[</mo>
+      <mi>imb</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>/.</mo>
+     <mrow>
+      <mi>b</mi>
+      <mo>&rightarrow;</mo>
+      <mi>q</mi>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>q</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-08_11.gif" alt="[Graphics:HTMLFiles/Lecture-08_11.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ In fact, we should be able to do the&nbsp;&nbsp;same thing without replacement as the following shows, it is probably instructive to show both ways.
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mi>imb</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>b</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-08_12.gif" alt="[Graphics:HTMLFiles/Lecture-08_12.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ There are a few problems that make it difficult to interpret the graph---one is the numerical noise that makes the solutions<br />jump back and forth; second, because all the colors are the same,&nbsp;&nbsp;it is not clear which values of <span style='font-style: italic;'>x</span> belong to the same solution.&nbsp;&nbsp;<br /><br />Let's first try to make each member of the list (remember, there are 4 because it is a fourth-order polynomial and because <span style='font-weight: bold;'>Dimensions[imb]</span> told us so...
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_plots__examples_of_adding_color"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>Flatten</mi>
+      <mo>[</mo>
+      <mi>imb</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>/.</mo>
+     <mrow>
+      <mi>b</mi>
+      <mo>&rightarrow;</mo>
+      <mi>q</mi>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>q</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>Hue</mi>
+        <mo>[</mo>
+        <mrow>
+         <mn>1</mn>
+         <mo>-</mo>
+         <mrow>
+          <mi>a</mi>
+          <mo>/</mo>
+          <mn>6</mn>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>a</mi>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-08_13.gif" alt="[Graphics:HTMLFiles/Lecture-08_13.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ The plot above is a little better, it looks like the blue curve comes in from the northeast and then then its imaginary part vanishes at a critical values of <span style='font-style: italic;'>q</span> (around -0.5), the cyan curve is probably the minus values of the blue curve... and the same thing for yellow and green.&nbsp;&nbsp;It is much easier to see the branches of solutions for the real parts below.
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>Flatten</mi>
+      <mo>[</mo>
+      <mi>imr</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>/.</mo>
+     <mrow>
+      <mi>b</mi>
+      <mo>&rightarrow;</mo>
+      <mi>q</mi>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>q</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>Hue</mi>
+        <mo>[</mo>
+        <mrow>
+         <mn>1</mn>
+         <mo>-</mo>
+         <mrow>
+          <mi>a</mi>
+          <mo>/</mo>
+          <mn>6</mn>
+         </mrow>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>a</mi>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-08_14.gif" alt="[Graphics:HTMLFiles/Lecture-08_14.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ But here, because the lines are the same thickness, we don't know if the cyan and blue curves just &quot;stop.&quot; Let's find out by also adjusting their thickness.
+</p>
+
+
+
+<p class="Input">
+ <a id="mmtag_08_plots__examples_of_changing_line_thicknesses"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Plot</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Evaluate</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>Flatten</mi>
+      <mo>[</mo>
+      <mi>imr</mi>
+      <mo>]</mo>
+     </mrow>
+     <mo>/.</mo>
+     <mrow>
+      <mi>b</mi>
+      <mo>&rightarrow;</mo>
+      <mi>q</mi>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>q</mi>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>10</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>10</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>PlotStyle</mi>
+    <mo>&rightarrow;</mo>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mrow>
+         <mi>Hue</mi>
+         <mo>[</mo>
+         <mrow>
+          <mn>1</mn>
+          <mo>-</mo>
+          <mrow>
+           <mi>a</mi>
+           <mo>/</mo>
+           <mn>6</mn>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+        <mo>,</mo>
+        <mrow>
+         <mi>Thickness</mi>
+         <mo>[</mo>
+         <mrow>
+          <mn>0.05</mn>
+          <mo>-</mo>
+          <mrow>
+           <mtext>.01</mtext>
+           <mo>*</mo>
+           <mi>a</mi>
+          </mrow>
+         </mrow>
+         <mo>]</mo>
+        </mrow>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>a</mi>
+        <mo>,</mo>
+        <mn>1</mn>
+        <mo>,</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-08_15.gif" alt="[Graphics:HTMLFiles/Lecture-08_15.gif]"  width="576" height="356"  style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ It is pretty clear that the parameter <span style='font-style: italic;'>b</span> is behaving like a &quot;pitchfork&quot; bifurcation---there is one value of <span style='font-style: italic;'>x</span> upto a critical value of <span style='font-style: italic;'>b</span>, where <span style='font-style: italic;'>x</span> splits into two solutions.&nbsp;&nbsp;This is a picture of two isolated pictchforks.
+</p>
+
+
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(October 3, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

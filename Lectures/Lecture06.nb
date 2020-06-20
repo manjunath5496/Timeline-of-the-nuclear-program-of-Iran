@@ -1,0 +1,282 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      5384,        179]*)
+(*NotebookOutlinePosition[      7359,        237]*)
+(*  CellTagsIndexPosition[      7019,        225]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[TextData[StyleBox["Vectors and Matrices",
+  FontSize->36]], "Title"],
+
+Cell[BoxData[
+    \(M\_HC\ is\ our\ matrix\ that\ maps\ the\ first\ three\ hydrocarbons\ to\
+\ number\ of\ hydrogens\ and\ carbons\)], "Text",
+  FontFamily->"Helvetica",
+  CellTags->"mtag:06:matrix__example__mapping_molecules_to_elements"],
+
+Cell[BoxData[{
+    \(\(\(M\_HC\  = \ {\[IndentingNewLine]{4, 1}, \[IndentingNewLine]{8, 
+          3}, \[IndentingNewLine]{10, 
+          4}\[IndentingNewLine]}\)\(\[IndentingNewLine]\)
+    \)\), "\[IndentingNewLine]", 
+    \(M\_HC // MatrixForm\)}], "Input",
+  FontFamily->"Helvetica"],
+
+Cell[BoxData[
+    \(PTmatrix\ is\ our\ matrix\ of\ kinetic\ data\ that\ gives\ rates\ of\ \
+change\ of\ a\ particular\ atomic\ species\ \ \((C\ or\ H)\) 
+      as\ a\ function\ of\ pressure\ and\ temperature\ \(\((see\ lecture\ \
+notes\ corresponding\ to\ this\ Mathematica\ notebook)\)\(.\)\)\)], "Text",
+  FontFamily->"Helvetica"],
+
+Cell[BoxData[{
+    \(\(PTmatrix\  = \ {\[IndentingNewLine]{\[Alpha], \[Beta]}, \
+\[IndentingNewLine]{\[Gamma], \[Delta]}, \[IndentingNewLine]{\[Epsilon], \
+\[Phi]}\[IndentingNewLine]};\)\), "\[IndentingNewLine]", 
+    \(PTmatrix // MatrixForm\)}], "Input",
+  FontFamily->"Helvetica",
+  CellTags->"mtag:06:MatrixForm[]"],
+
+Cell[BoxData[
+    \(MPT\ \  = \ M\_HC . \ \ PTmatrix\)], "Input",
+  FontFamily->"Helvetica"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+The matrix multiplication does not work because the sizes are \
+inconsistent.\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+    \(Clear[MPT]\)], "Input",
+  FontFamily->"Helvetica"],
+
+Cell[BoxData[{
+    \(\(MPT\  = \ 
+        Transpose[M\_HC] . \ \ PTmatrix;\)\), "\[IndentingNewLine]", 
+    \(MPT // MatrixForm\)}], "Input",
+  FontFamily->"Helvetica",
+  CellTags->"mtag:06:Transpose[]"],
+
+Cell[BoxData[{
+    \(\(MPTinverse\  = Factor[Inverse[MPT]];\)\), "\[IndentingNewLine]", 
+    \(MPTinverse // MatrixForm\)}], "Input",
+  FontFamily->"Helvetica",
+  CellTags->"mtag:06:Inverse[]"],
+
+Cell[BoxData[
+    \(Det[MPT]\)], "Input",
+  FontFamily->"Helvetica",
+  CellTags->"mtag:06:Det[]"],
+
+Cell[BoxData[
+    \(RowReduce[M\_HC] // MatrixForm\)], "Input",
+  FontFamily->"Helvetica",
+  CellTags->"mtag:06:RowReduce[]"],
+
+Cell["\<\
+Same example for water and water complexes: use the matrix watmat \
+to store molecular formulas for each type of molecule in the system\
+\>", \
+"Text"],
+
+Cell[BoxData[{
+    \(\(watmat\  = \ {{2, 4}, {1, 2}};\)\), "\[IndentingNewLine]", 
+    \(watmat // MatrixForm\)}], "Input",
+  FontFamily->"Helvetica"],
+
+Cell["\<\
+The vector molvec is used to store the number of each kind of \
+molecule\
+\>", "Text"],
+
+Cell[BoxData[
+    \(molvec\  = \ {h20, h402}\)], "Input",
+  FontFamily->"Helvetica"],
+
+Cell["\<\
+The vector atomvec is used to store the number of each atomic \
+species that is present\
+\>", "Text"],
+
+Cell[BoxData[
+    \(atomvec\  = \ {h, o}\)], "Input",
+  FontFamily->"Helvetica"],
+
+Cell[BoxData[
+    \(atomvec // MatrixForm\)], "Input",
+  FontFamily->"Helvetica"],
+
+Cell["\<\
+The vector eq is now defined and its two elements are equations \
+that give the number of hydrogen atoms and the number of oxygen atoms:\
+\>", \
+"Text"],
+
+Cell[BoxData[
+    \(eq[1]\  = \ \((watmat . molvec)\)[\([1]\)]\  \[Equal] \ 
+        atomvec[\([1]\)]\)], "Input",
+  FontFamily->"Helvetica"],
+
+Cell[BoxData[
+    \(eq[2]\  = \ \ \((watmat . molvec)\)[\([2]\)]\  \[Equal] \ 
+        atomvec[\([2]\)]\)], "Input",
+  FontFamily->"Helvetica"],
+
+Cell[BoxData[
+    \(\(?Eliminate\)\)], "Input"],
+
+Cell[BoxData[
+    \(Eliminate[{eq[1], eq[2]}, molvec]\)], "Input",
+  FontFamily->"Helvetica",
+  CellTags->"mtag:06:Eliminate[]"]
+}, Open  ]]
+},
+FrontEndVersion->"5.2 for Macintosh",
+ScreenRectangle->{{45, 1920}, {0, 1178}},
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{1502, 998},
+WindowMargins->{{46, Automatic}, {Automatic, 0}},
+WindowTitle->"Lecture 06 MIT 3.016 (Fall 2005) F2003  \[Copyright] W. Craig \
+Carter 2003-2005",
+ShowSelection->True,
+CellLabelAutoDelete->True,
+StyleDefinitions -> "3016_Carter.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "mtag:06:matrix__example__mapping_molecules_to_elements"->{
+    Cell[1830, 54, 239, 4, 55, "Text",
+      CellTags->"mtag:06:matrix__example__mapping_molecules_to_elements"]},
+  "mtag:06:MatrixForm[]"->{
+    Cell[2696, 75, 319, 6, 164, "Input",
+      CellTags->"mtag:06:MatrixForm[]"]},
+  "mtag:06:Transpose[]"->{
+    Cell[3321, 98, 203, 5, 80, "Input",
+      CellTags->"mtag:06:Transpose[]"]},
+  "mtag:06:Inverse[]"->{
+    Cell[3527, 105, 193, 4, 80, "Input",
+      CellTags->"mtag:06:Inverse[]"]},
+  "mtag:06:Det[]"->{
+    Cell[3723, 111, 97, 3, 59, "Input",
+      CellTags->"mtag:06:Det[]"]},
+  "mtag:06:RowReduce[]"->{
+    Cell[3823, 116, 125, 3, 59, "Input",
+      CellTags->"mtag:06:RowReduce[]"]},
+  "mtag:06:Eliminate[]"->{
+    Cell[5240, 173, 128, 3, 59, "Input",
+      CellTags->"mtag:06:Eliminate[]"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"mtag:06:matrix__example__mapping_molecules_to_elements", 6241, 200},
+  {"mtag:06:MatrixForm[]", 6384, 203},
+  {"mtag:06:Transpose[]", 6494, 206},
+  {"mtag:06:Inverse[]", 6600, 209},
+  {"mtag:06:Det[]", 6701, 212},
+  {"mtag:06:RowReduce[]", 6803, 215},
+  {"mtag:06:Eliminate[]", 6912, 218}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 73, 1, 52, "Title"],
+Cell[1830, 54, 239, 4, 55, "Text",
+  CellTags->"mtag:06:matrix__example__mapping_molecules_to_elements"],
+Cell[2072, 60, 286, 6, 185, "Input"],
+Cell[2361, 68, 332, 5, 81, "Text"],
+Cell[2696, 75, 319, 6, 164, "Input",
+  CellTags->"mtag:06:MatrixForm[]"],
+Cell[3018, 83, 92, 2, 59, "Input"],
+
+Cell[CellGroupData[{
+Cell[3135, 89, 110, 3, 55, "Subsubsection"],
+Cell[3248, 94, 70, 2, 59, "Input"],
+Cell[3321, 98, 203, 5, 80, "Input",
+  CellTags->"mtag:06:Transpose[]"],
+Cell[3527, 105, 193, 4, 80, "Input",
+  CellTags->"mtag:06:Inverse[]"],
+Cell[3723, 111, 97, 3, 59, "Input",
+  CellTags->"mtag:06:Det[]"],
+Cell[3823, 116, 125, 3, 59, "Input",
+  CellTags->"mtag:06:RowReduce[]"],
+Cell[3951, 121, 161, 4, 59, "Text"],
+Cell[4115, 127, 150, 3, 80, "Input"],
+Cell[4268, 132, 96, 3, 59, "Text"],
+Cell[4367, 137, 84, 2, 59, "Input"],
+Cell[4454, 141, 111, 3, 59, "Text"],
+Cell[4568, 146, 80, 2, 59, "Input"],
+Cell[4651, 150, 81, 2, 59, "Input"],
+Cell[4735, 154, 162, 4, 59, "Text"],
+Cell[4900, 160, 141, 3, 59, "Input"],
+Cell[5044, 165, 143, 3, 59, "Input"],
+Cell[5190, 170, 47, 1, 59, "Input"],
+Cell[5240, 173, 128, 3, 59, "Input",
+  CellTags->"mtag:06:Eliminate[]"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

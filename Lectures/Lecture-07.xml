@@ -1,0 +1,6685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="HTMLFiles/pmathml.xsl"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created by Wolfram Mathematica 5.2 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  Lecture 07 MIT 3.016 (Fall 2005)&nbsp;&nbsp;&copy; W. Craig Carter 2003-2005
+ </title>
+ <link href="HTMLFiles/Lecture-07.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="font-family: Helvetica;background-color: #FFFB6A;">
+
+<p class="Title">
+ <a id="mtag_07_systems_of_linear_equations__existence_and_uniqueness"></a>
+ Solving&nbsp;&nbsp;Linear Systems, Existence and Uniqueness
+</p>
+
+
+
+<p class="Subtitle">
+ Solving and Uniqueness
+</p>
+
+
+
+<p class="Subsection">
+ Consider the set of equations<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x + 2y +&nbsp;&nbsp;z&nbsp;&nbsp;+&nbsp;&nbsp;t&nbsp;&nbsp;= a<br />&nbsp;&nbsp;&nbsp;&nbsp;-x + 4y - 2z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= b<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x + 3y + 4z + 5t = c<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;z&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;t = d<br />We illustrate how to use a matrix representation to write these out and solve them&hellip;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
+
+
+
+<p class="Subsection">
+ Start with the matrix of coefficients of the variables, <span style='font-weight: bold;'>mymatrix</span>:
+</p>
+
+
+
+<p class="CellLabel">
+ In[79]:=
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_1.gif" alt="mymatrix = { {1, 2, 1, 1},  {-1, 4, -2, 0},  {1, 3, 4, 5},  {1, 0, 1, 1}} ;"  width="158" height="107"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_2.gif" alt="mymatrix//MatrixForm"  width="215" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[80]//MatrixForm=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>2</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mn>1</mn>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>4</mn>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>3</mn>
+    </mtd>
+    <mtd>
+     <mn>4</mn>
+    </mtd>
+    <mtd>
+     <mn>5</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ The system of equations will only have a unique solution if the determinant of <span style='font-weight: bold;'>mymatrix</span> is nonzero.
+</p>
+
+
+
+<p class="CellLabel">
+ In[81]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_systems_of_linear_equations__existence_and_determinants"></a>
+ <a id="mtag_07_Detxx__and_uniqueness"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Det</mi>
+  <mo>[</mo>
+  <mi>mymatrix</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[81]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>14</mn>
+</math>
+</p>
+
+<p class="Subsection">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Now</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>define</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>vectors</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mi>for</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mover>
+   <mi>x</mi>
+   <mo>&RightVector;</mo>
+  </mover>
+  <mo>&InvisibleTimes;</mo>
+  <mtext>  </mtext>
+  <mi>and</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mover>
+   <mi>b</mi>
+   <mo>&RightVector;</mo>
+  </mover>
+  <mo>&InvisibleTimes;</mo>
+  <mi>in</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mrow>
+    <munder>
+     <mi>A</mi>
+     <mo>_</mo>
+    </munder>
+    <mo>&InvisibleTimes;</mo>
+    <mover>
+     <mi>x</mi>
+     <mo>&RightVector;</mo>
+    </mover>
+   </mrow>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mover>
+    <mi>b</mi>
+    <mo>&RightVector;</mo>
+   </mover>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[82]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>myx</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>,</mo>
+     <mi>y</mi>
+     <mo>,</mo>
+     <mi>z</mi>
+     <mo>,</mo>
+     <mi>t</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[83]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>myb</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>b</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>d</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ The left-hand side of the first equation will be
+</p>
+
+
+
+<p class="CellLabel">
+ In[84]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mi>mymatrix</mi>
+    <mo>.</mo>
+    <mi>myx</mi>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+  <mo>[</mo>
+  <mrow>
+   <mo>[</mo>
+   <mn>1</mn>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[84]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>t</mi>
+  <mo>+</mo>
+  <mi>x</mi>
+  <mo>+</mo>
+  <mrow>
+   <mn>2</mn>
+   <mo>&InvisibleTimes;</mo>
+   <mi>y</mi>
+  </mrow>
+  <mo>+</mo>
+  <mi>z</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ and the left-hand side of all four equations will be
+</p>
+
+
+
+<p class="CellLabel">
+ In[86]:=
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_3.gif" alt="lhs = mymatrix . myx ;"  width="194" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_4.gif" alt="lhs//MatrixForm"  width="156" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[87]//MatrixForm=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtext>&#8288;</mtext>
+  <mtable rowspacing='1ex'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mi>t</mi>
+      <mo>+</mo>
+      <mi>x</mi>
+      <mo>+</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>y</mi>
+      </mrow>
+      <mo>+</mo>
+      <mi>z</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mi>x</mi>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>4</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>y</mi>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>z</mi>
+      </mrow>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mn>5</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>t</mi>
+      </mrow>
+      <mo>+</mo>
+      <mi>x</mi>
+      <mo>+</mo>
+      <mrow>
+       <mn>3</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>y</mi>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>4</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>z</mi>
+      </mrow>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mi>t</mi>
+      <mo>+</mo>
+      <mi>x</mi>
+      <mo>+</mo>
+      <mi>z</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mtext>&#8288;</mtext>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ Now define an indexed variable <span style='font-weight: bold;'>linsys</span> with four entries, each being one of the equations in the system of interest:
+</p>
+
+
+
+<p class="CellLabel">
+ In[88]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>linsys</mi>
+   <mo>[</mo>
+   <mtext>i_Integer</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>lhs</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>[</mo>
+     <mi>i</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>==</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>myb</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>[</mo>
+     <mi>i</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[89]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>linsys</mi>
+  <mo>[</mo>
+  <mn>2</mn>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[89]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mi>x</mi>
+   </mrow>
+   <mo>+</mo>
+   <mrow>
+    <mn>4</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>y</mi>
+   </mrow>
+   <mo>-</mo>
+   <mrow>
+    <mn>2</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>z</mi>
+   </mrow>
+  </mrow>
+  <mo>&Equal;</mo>
+  <mi>b</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ <a id="mtag_07_systems_of_linear_equations__creating_from_matrices_and_vectors"></a>
+ Solving the set of equations for the unknowns <span style='font-family: Helvetica;'><span class='SubsectionInline' style='font-family: Helvetica;'><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mover>
+  <mi>x</mi>
+  <mo>&rightarrow;</mo>
+ </mover>
+</math></span></span>
+</p>
+
+
+
+<p class="CellLabel">
+ In[94]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>linsol</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Solve</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>linsys</mi>
+       <mo>[</mo>
+       <mn>1</mn>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>linsys</mi>
+       <mo>[</mo>
+       <mn>2</mn>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>linsys</mi>
+       <mo>[</mo>
+       <mn>3</mn>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mi>linsys</mi>
+       <mo>[</mo>
+       <mn>4</mn>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>myx</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[94]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>7</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mi>a</mi>
+        <mo>+</mo>
+        <mi>b</mi>
+        <mo>-</mo>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>c</mi>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>9</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>d</mi>
+        </mrow>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>y</mi>
+     <mo>&rightarrow;</mo>
+     <mfrac>
+      <mrow>
+       <mi>a</mi>
+       <mo>-</mo>
+       <mi>d</mi>
+      </mrow>
+      <mn>2</mn>
+     </mfrac>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>z</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>14</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mn>13</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mo>-</mo>
+        <mrow>
+         <mn>8</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>b</mi>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>c</mi>
+        </mrow>
+        <mo>-</mo>
+        <mrow>
+         <mn>23</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>d</mi>
+        </mrow>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>t</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mfrac>
+       <mn>1</mn>
+       <mn>14</mn>
+      </mfrac>
+      <mo>&InvisibleTimes;</mo>
+      <mrow>
+       <mo>(</mo>
+       <mrow>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <mn>15</mn>
+         </mrow>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>6</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>b</mi>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>c</mi>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>19</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>d</mi>
+        </mrow>
+       </mrow>
+       <mo>)</mo>
+      </mrow>
+     </mrow>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ Doing the same thing a different way, using <span style='font-style: italic;'>Mathematica</span>'s <span style='font-weight: bold;'>LinearSolve</span> function:
+</p>
+
+
+
+<p class="CellLabel">
+ In[95]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>?</mo>
+  <mi>LinearSolve</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Print">
+ <a id="Info3336471705-4345033"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mtext>LinearSolve[m, b] finds an x which solves the matrix equation m.x==b. LinearSolve[m] generates a LinearSolveFunction[ ... ] which can be applied repeatedly to different b.</mtext>
+  <mtext> </mtext>
+  <maction actiontype='highlight'>
+   <mi>More&hellip;</mi>
+  </maction>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[96]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_LinearSolvexx_solutions_without_direct_computation_of_matrix_inverse"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>LinearSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>mymatrix</mi>
+   <mo>,</mo>
+   <mi>myb</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[96]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mfrac>
+     <mn>1</mn>
+     <mn>7</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mi>a</mi>
+      <mo>+</mo>
+      <mi>b</mi>
+      <mo>-</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>c</mi>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>9</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>d</mi>
+      </mrow>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mfrac>
+    <mrow>
+     <mi>a</mi>
+     <mo>-</mo>
+     <mi>d</mi>
+    </mrow>
+    <mn>2</mn>
+   </mfrac>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>1</mn>
+     <mn>14</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mn>13</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>a</mi>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mn>8</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>b</mi>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>c</mi>
+      </mrow>
+      <mo>-</mo>
+      <mrow>
+       <mn>23</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>d</mi>
+      </mrow>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mfrac>
+     <mn>1</mn>
+     <mn>14</mn>
+    </mfrac>
+    <mo>&InvisibleTimes;</mo>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>15</mn>
+       </mrow>
+       <mo>&InvisibleTimes;</mo>
+       <mi>a</mi>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>6</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>b</mi>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>c</mi>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>19</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>d</mi>
+      </mrow>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ And yet another way, based on <span><span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mover>
+  <mi>x</mi>
+  <mo>&RightVector;</mo>
+ </mover>
+</math></span>=<span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <munder>
+   <mi>A</mi>
+   <mo>_</mo>
+  </munder>
+  <mrow>
+   <mo>-</mo>
+   <mn>1</mn>
+  </mrow>
+ </msup>
+</math></span><span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <munder>
+  <mi>A</mi>
+  <mo>_</mo>
+ </munder>
+</math></span> <span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mover>
+  <mi>x</mi>
+  <mo>&RightVector;</mo>
+ </mover>
+</math></span> = <span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <msup>
+  <munder>
+   <mi>A</mi>
+   <mo>_</mo>
+  </munder>
+  <mrow>
+   <mo>-</mo>
+   <mn>1</mn>
+  </mrow>
+ </msup>
+</math></span><span class="SubsectionInline"><math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mover>
+  <mi>b</mi>
+  <mo>&RightVector;</mo>
+ </mover>
+</math></span></span> 
+</p>
+
+
+
+<p class="CellLabel">
+ In[98]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_Inversexx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>Inverse</mi>
+    <mo>[</mo>
+    <mi>mymatrix</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>.</mo>
+   <mi>myb</mi>
+  </mrow>
+  <mo>//</mo>
+  <mi>MatrixForm</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[98]//MatrixForm=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtext>&#8288;</mtext>
+  <mtable rowspacing='1ex'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mi>a</mi>
+       <mn>7</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mi>b</mi>
+       <mn>7</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>7</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>9</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>d</mi>
+       </mrow>
+       <mn>7</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mi>a</mi>
+       <mn>2</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mi>d</mi>
+       <mn>2</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>13</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>14</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>4</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>b</mi>
+       </mrow>
+       <mn>7</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mi>c</mi>
+       <mn>7</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>23</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>d</mi>
+       </mrow>
+       <mn>14</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>15</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>14</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>3</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>b</mi>
+       </mrow>
+       <mn>7</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mi>c</mi>
+       <mn>7</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>19</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>d</mi>
+       </mrow>
+       <mn>14</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mtext>&#8288;</mtext>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Section">
+ When determinants are zero
+</p>
+
+
+
+<p class="Text">
+ Create a matrix with one row as a linear combination of the others
+</p>
+
+
+
+<p class="CellLabel">
+ In[99]:=
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_5.gif" alt="myzeromatrix =  {mymatrix[[1]], mymatrix[[2]], p * mymatrix[[1]] + q * mymatrix[[2]] + r * mymatrix[[4]], mymatrix[[4]]} ;"  width="529" height="107"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_6.gif" alt="myzeromatrix//MatrixForm"  width="254" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[100]//MatrixForm=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>2</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mn>1</mn>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>4</mn>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mn>2</mn>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mi>p</mi>
+      <mo>-</mo>
+      <mi>q</mi>
+      <mo>+</mo>
+      <mi>r</mi>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>p</mi>
+      </mrow>
+      <mo>+</mo>
+      <mrow>
+       <mn>4</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>q</mi>
+      </mrow>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mi>p</mi>
+      <mo>-</mo>
+      <mrow>
+       <mn>2</mn>
+       <mo>&InvisibleTimes;</mo>
+       <mi>q</mi>
+      </mrow>
+      <mo>+</mo>
+      <mi>r</mi>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mi>p</mi>
+      <mo>+</mo>
+      <mi>r</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[101]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Det</mi>
+  <mo>[</mo>
+  <mi>myzeromatrix</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[101]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>0</mn>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[102]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>LinearSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>myzeromatrix</mi>
+   <mo>,</mo>
+   <mi>myb</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>LinearSolve</mi>
+   <mtext>::</mtext>
+   <mi>nosol</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Linear equation encountered which has no solution. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Linear equation encountered which has no solution. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;LinearSolve::nosol\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[102]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>LinearSolve</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>1</mn>
+       <mo>,</mo>
+       <mn>2</mn>
+       <mo>,</mo>
+       <mn>1</mn>
+       <mo>,</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mn>1</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>4</mn>
+       <mo>,</mo>
+       <mrow>
+        <mo>-</mo>
+        <mn>2</mn>
+       </mrow>
+       <mo>,</mo>
+       <mn>0</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mi>p</mi>
+        <mo>-</mo>
+        <mi>q</mi>
+        <mo>+</mo>
+        <mi>r</mi>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>p</mi>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+         <mn>4</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>q</mi>
+        </mrow>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>p</mi>
+        <mo>-</mo>
+        <mrow>
+         <mn>2</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>q</mi>
+        </mrow>
+        <mo>+</mo>
+        <mi>r</mi>
+       </mrow>
+       <mo>,</mo>
+       <mrow>
+        <mi>p</mi>
+        <mo>+</mo>
+        <mi>r</mi>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mn>1</mn>
+       <mo>,</mo>
+       <mn>0</mn>
+       <mo>,</mo>
+       <mn>1</mn>
+       <mo>,</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>b</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>d</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ This was not expected to have a solution because one of four equations in the system was a linear combination of others in the system. Effectively, we were asking <span style='font-style: italic;'>Mathematica</span> to solve a system of <span style='font-style: italic;'>three</span> equations in four unknowns. The <span style='font-style: italic;'>rank</span> of a square matrix of coefficients is equal to the number of linearly independent equations in the system. The <span style='font-style: italic;'>null space</span> of the matrix will be empty when the equations are all linearly independent.
+</p>
+
+
+
+<p class="CellLabel">
+ In[103]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_MatrixRankxx"></a>
+ <img src="HTMLFiles/Lecture-07_7.gif" alt="MatrixRank[mymatrix]"  width="202" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mtag_07_MatrixRankxx"></a>
+ <img src="HTMLFiles/Lecture-07_8.gif" alt="MatrixRank[myzeromatrix]"  width="241" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[103]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>4</mn>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[104]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>3</mn>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[109]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_NullSpacexx"></a>
+ <img src="HTMLFiles/Lecture-07_9.gif" alt="NullSpace[mymatrix]"  width="191" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mtag_07_NullSpacexx"></a>
+ <img src="HTMLFiles/Lecture-07_10.gif" alt="NullSpace[myzeromatrix]"  width="230" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[109]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[110]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mn>2</mn>
+    </mrow>
+    <mo>,</mo>
+    <mn>0</mn>
+    <mo>,</mo>
+    <mn>1</mn>
+    <mo>,</mo>
+    <mn>1</mn>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ Try solving this inhomogeneous system of equations using <span style='font-weight: bold;'>Solve</span>:
+</p>
+
+
+
+<p class="CellLabel">
+ In[111]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>zerolhs</mi>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>myzeromatrix</mi>
+   <mo>.</mo>
+   <mi>myx</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[111]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mi>t</mi>
+    <mo>+</mo>
+    <mi>x</mi>
+    <mo>+</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>y</mi>
+    </mrow>
+    <mo>+</mo>
+    <mi>z</mi>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mo>-</mo>
+     <mi>x</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>4</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>y</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>2</mn>
+     <mo>&InvisibleTimes;</mo>
+     <mi>z</mi>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mi>p</mi>
+       <mo>+</mo>
+       <mi>r</mi>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>t</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mi>p</mi>
+       <mo>-</mo>
+       <mi>q</mi>
+       <mo>+</mo>
+       <mi>r</mi>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>x</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>p</mi>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>4</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>q</mi>
+       </mrow>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>y</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mrow>
+      <mo>(</mo>
+      <mrow>
+       <mi>p</mi>
+       <mo>-</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>q</mi>
+       </mrow>
+       <mo>+</mo>
+       <mi>r</mi>
+      </mrow>
+      <mo>)</mo>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>z</mi>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>t</mi>
+    <mo>+</mo>
+    <mi>x</mi>
+    <mo>+</mo>
+    <mi>z</mi>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[112]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>zerolinsys</mi>
+   <mo>[</mo>
+   <mtext>i_Integer</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>zerolhs</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>[</mo>
+     <mi>i</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>==</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>myb</mi>
+    <mo>[</mo>
+    <mrow>
+     <mo>[</mo>
+     <mi>i</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[114]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Table</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>zerolinsys</mi>
+     <mo>[</mo>
+     <mi>i</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mn>4</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>//</mo>
+  <mi>MatrixForm</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[114]//MatrixForm=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtext>&#8288;</mtext>
+  <mtable rowspacing='1ex'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mi>t</mi>
+       <mo>+</mo>
+       <mi>x</mi>
+       <mo>+</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>y</mi>
+       </mrow>
+       <mo>+</mo>
+       <mi>z</mi>
+      </mrow>
+      <mo>&Equal;</mo>
+      <mi>a</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mo>-</mo>
+        <mi>x</mi>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mn>4</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>y</mi>
+       </mrow>
+       <mo>-</mo>
+       <mrow>
+        <mn>2</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>z</mi>
+       </mrow>
+      </mrow>
+      <mo>&Equal;</mo>
+      <mi>b</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mi>p</mi>
+          <mo>+</mo>
+          <mi>r</mi>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mi>t</mi>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mi>p</mi>
+          <mo>-</mo>
+          <mi>q</mi>
+          <mo>+</mo>
+          <mi>r</mi>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mi>x</mi>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mrow>
+           <mn>2</mn>
+           <mo>&InvisibleTimes;</mo>
+           <mi>p</mi>
+          </mrow>
+          <mo>+</mo>
+          <mrow>
+           <mn>4</mn>
+           <mo>&InvisibleTimes;</mo>
+           <mi>q</mi>
+          </mrow>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mi>y</mi>
+       </mrow>
+       <mo>+</mo>
+       <mrow>
+        <mrow>
+         <mo>(</mo>
+         <mrow>
+          <mi>p</mi>
+          <mo>-</mo>
+          <mrow>
+           <mn>2</mn>
+           <mo>&InvisibleTimes;</mo>
+           <mi>q</mi>
+          </mrow>
+          <mo>+</mo>
+          <mi>r</mi>
+         </mrow>
+         <mo>)</mo>
+        </mrow>
+        <mo>&InvisibleTimes;</mo>
+        <mi>z</mi>
+       </mrow>
+      </mrow>
+      <mo>&Equal;</mo>
+      <mi>c</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mi>t</mi>
+       <mo>+</mo>
+       <mi>x</mi>
+       <mo>+</mo>
+       <mi>z</mi>
+      </mrow>
+      <mo>&Equal;</mo>
+      <mi>d</mi>
+     </mrow>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mtext>&#8288;</mtext>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[115]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>zerolinsol</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Solve</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mi>zerolinsys</mi>
+       <mo>[</mo>
+       <mi>i</mi>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>myx</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[115]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ No solution, as expected,&nbsp;&nbsp;Let's see what happens if we ask <span style='font-style: italic;'>Mathematica</span> to solve the homogeneous problem:
+</p>
+
+
+
+<p class="CellLabel">
+ In[118]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>zerolinsol</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mi>Solve</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>Table</mi>
+     <mo>[</mo>
+     <mrow>
+      <mrow>
+       <mrow>
+        <mi>zerolinsys</mi>
+        <mo>[</mo>
+        <mi>i</mi>
+        <mo>]</mo>
+       </mrow>
+       <mo>/.</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mi>a</mi>
+          <mo>&rightarrow;</mo>
+          <mn>0</mn>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>b</mi>
+          <mo>&rightarrow;</mo>
+          <mn>0</mn>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>c</mi>
+          <mo>&rightarrow;</mo>
+          <mn>0</mn>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>d</mi>
+          <mo>&rightarrow;</mo>
+          <mn>0</mn>
+         </mrow>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mo>{</mo>
+       <mrow>
+        <mi>i</mi>
+        <mo>,</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>}</mo>
+      </mrow>
+     </mrow>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>myx</mi>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Message">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>Solve</mi>
+   <mtext>::</mtext>
+   <mi>svars</mi>
+  </mrow>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>:</mo>
+   <mtext> </mtext>
+  </mrow>
+  <semantics>
+   <mrow>
+    <mtext>Equations may not give solutions for all \&quot;solve\&quot; variables. </mtext>
+    <maction actiontype='highlight'>
+     <mi>More&hellip;</mi>
+    </maction>
+   </mrow>
+   <annotation encoding='Mathematica'>&quot;Equations may not give solutions for all \\\&quot;solve\\\&quot; variables. \\!\\(\\*ButtonBox[\\\&quot;More\[Ellipsis]\\\&quot;, ButtonStyle-&gt;\\\&quot;RefGuideLinkText\\\&quot;, ButtonFrame-&gt;None, ButtonData:&gt;\\\&quot;Solve::svars\\\&quot;]\\)&quot;</annotation>
+  </semantics>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[118]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>y</mi>
+     <mo>&rightarrow;</mo>
+     <mn>0</mn>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>x</mi>
+     <mo>&rightarrow;</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>2</mn>
+      </mrow>
+      <mo>&InvisibleTimes;</mo>
+      <mi>t</mi>
+     </mrow>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>z</mi>
+     <mo>&rightarrow;</mo>
+     <mi>t</mi>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ In this case, <span style='font-style: italic;'>Mathematica</span> gives a relationship between the variables, but because there are fewer equations than variables, there is still no unique solution.
+</p>
+
+
+
+<p class="Subtitle">
+ Determinants
+</p>
+
+
+
+<p class="CellLabel">
+ In[119]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Clear</mi>
+  <mo>[</mo>
+  <mi>rv</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ Start by building a routine to make vectors containing six random numbers on the interval {-1,1}:
+</p>
+
+
+
+<p class="CellLabel">
+ In[120]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>rv</mi>
+   <mo>[</mo>
+   <mtext>i_</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mtext> </mtext>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>rv</mi>
+    <mo>[</mo>
+    <mi>i</mi>
+    <mo>]</mo>
+   </mrow>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mrow>
+    <mi>Table</mi>
+    <mo>[</mo>
+    <mrow>
+     <mrow>
+      <mi>Random</mi>
+      <mo>[</mo>
+      <mrow>
+       <mi>Real</mi>
+       <mo>,</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mo>-</mo>
+          <mn>1</mn>
+         </mrow>
+         <mo>,</mo>
+         <mn>1</mn>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+      </mrow>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mi>j</mi>
+       <mo>,</mo>
+       <mn>6</mn>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[121]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>rv</mi>
+  <mo>[</mo>
+  <mn>1</mn>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[121]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.9938040851644031</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.8133427994181586</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>0.11622561205586446</mn>
+   <mo>,</mo>
+   <mn>0.41266758086355004</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.6833753149939834</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>0.11068552486666561</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[122]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>rv</mi>
+  <mo>[</mo>
+  <mn>2</mn>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[122]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.2846169224254458</mn>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.9539538982723608</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>0.11907194814649213</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.195040702170307</mn>
+   </mrow>
+   <mo>,</mo>
+   <mn>0.9983018639811516</mn>
+   <mo>,</mo>
+   <mrow>
+    <mo>-</mo>
+    <mn>0.9796379773985667</mn>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ Now use <span style='font-weight: bold;'>rv</span> to make a 6 x 6 matrix, then find its determinant:
+</p>
+
+
+
+<p class="CellLabel">
+ In[123]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>randmat</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Table</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mi>i</mi>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mn>6</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[123]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.9938040851644031</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.8133427994181586</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>0.11622561205586446</mn>
+     <mo>,</mo>
+     <mn>0.41266758086355004</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.6833753149939834</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>0.11068552486666561</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.2846169224254458</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.9539538982723608</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>0.11907194814649213</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.195040702170307</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>0.9983018639811516</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.9796379773985667</mn>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>0.804619993357784</mn>
+     <mo>,</mo>
+     <mn>0.12328338055979393</mn>
+     <mo>,</mo>
+     <mn>0.5597976331631047</mn>
+     <mo>,</mo>
+     <mn>0.10082311726214988</mn>
+     <mo>,</mo>
+     <mn>0.23687755319034087</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.4444852340488643</mn>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.8559303815338402</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>0.10236574476922677</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.5869278995683929</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.3368010045707486</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>0.6963141430303932</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.21268133938503675</mn>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.5931238144039899</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.5234582051525899</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.4199114690254714</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>0.3746510797514133</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.9097484994100065</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>0.3658562699807444</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mn>0.8647054533999743</mn>
+     <mo>,</mo>
+     <mn>0.3286049780237741</mn>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.028820447556498596</mn>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.4391030278489485</mn>
+     </mrow>
+     <mo>,</mo>
+     <mn>0.8664035894188227</mn>
+     <mo>,</mo>
+     <mn>0.3082429554223407</mn>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[124]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Det</mi>
+  <mo>[</mo>
+  <mi>randmat</mi>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[124]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>-</mo>
+  <mn>0.11257469973661695</mn>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ Switching two rows changes the sign but not the magnitude of the determinant:
+</p>
+
+
+
+<p class="CellLabel">
+ In[125]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_Detxx__and_properties_of_determinants"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Det</mi>
+  <mo>[</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>2</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>1</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>3</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>4</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>5</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>6</mn>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[125]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>0.11257469973661705</mn>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[127]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Det</mi>
+  <mo>[</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>3</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>1</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>2</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>4</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>5</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>6</mn>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[127]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>-</mo>
+  <mn>0.11257469973661702</mn>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Multiply one row by a constant and calculate determinant:
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_11.gif" alt="Clear[a]"  width="72" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_12.gif" alt="Det[{a * rv[2], rv[1], rv[3], rv[4], rv[5], rv[6]}]"  width="376" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[128]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>0.11257469973661698</mn>
+  <mtext> </mtext>
+  <mi>a</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Multiply two rows by a constant and calculate determinant:
+</p>
+
+
+
+<p class="CellLabel">
+ In[129]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Det</mi>
+  <mo>[</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>a</mi>
+     <mo>*</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>2</mn>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>*</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>3</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>4</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>5</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>6</mn>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[129]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>0.11257469973661698</mn>
+  <mtext> </mtext>
+  <msup>
+   <mi>a</mi>
+   <mn>2</mn>
+  </msup>
+ </mrow>
+</math>
+</p>
+
+<p class="Text">
+ Multiply all rows by a constant and calculate determinant:
+</p>
+
+
+
+<p class="CellLabel">
+ In[130]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Det</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>a</mi>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>2</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>3</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>4</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>5</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>6</mn>
+      <mo>]</mo>
+     </mrow>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[130]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>0.11257469973661698</mn>
+  <mtext> </mtext>
+  <msup>
+   <mi>a</mi>
+   <mn>6</mn>
+  </msup>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[131]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Clear</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>a</mi>
+   <mo>,</mo>
+   <mi>b</mi>
+   <mo>,</mo>
+   <mi>c</mi>
+   <mo>,</mo>
+   <mi>d</mi>
+   <mo>,</mo>
+   <mi>e</mi>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[132]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>lindepvec</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mrow>
+    <mi>a</mi>
+    <mo>*</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>1</mn>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>b</mi>
+    <mo>*</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>2</mn>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>c</mi>
+    <mo>*</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>3</mn>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>d</mi>
+    <mo>*</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>4</mn>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+   <mtext> </mtext>
+   <mo>+</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mi>e</mi>
+    <mo>*</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>5</mn>
+     <mo>]</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[132]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.9938040851644031</mn>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.2846169224254458</mn>
+     <mtext> </mtext>
+     <mi>b</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.804619993357784</mn>
+     <mtext> </mtext>
+     <mi>c</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.8559303815338402</mn>
+     <mtext> </mtext>
+     <mi>d</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.5931238144039899</mn>
+     <mtext> </mtext>
+     <mi>e</mi>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.8133427994181586</mn>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.9539538982723608</mn>
+     <mtext> </mtext>
+     <mi>b</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.12328338055979393</mn>
+     <mtext> </mtext>
+     <mi>c</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.10236574476922677</mn>
+     <mtext> </mtext>
+     <mi>d</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.5234582051525899</mn>
+     <mtext> </mtext>
+     <mi>e</mi>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mn>0.11622561205586446</mn>
+     <mtext> </mtext>
+     <mi>a</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.11907194814649213</mn>
+     <mtext> </mtext>
+     <mi>b</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.5597976331631047</mn>
+     <mtext> </mtext>
+     <mi>c</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.5869278995683929</mn>
+     <mtext> </mtext>
+     <mi>d</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.4199114690254714</mn>
+     <mtext> </mtext>
+     <mi>e</mi>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mn>0.41266758086355004</mn>
+     <mtext> </mtext>
+     <mi>a</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.195040702170307</mn>
+     <mtext> </mtext>
+     <mi>b</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.10082311726214988</mn>
+     <mtext> </mtext>
+     <mi>c</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.3368010045707486</mn>
+     <mtext> </mtext>
+     <mi>d</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.3746510797514133</mn>
+     <mtext> </mtext>
+     <mi>e</mi>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mrow>
+      <mo>-</mo>
+      <mn>0.6833753149939834</mn>
+     </mrow>
+     <mo>&InvisibleTimes;</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.9983018639811516</mn>
+     <mtext> </mtext>
+     <mi>b</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.23687755319034087</mn>
+     <mtext> </mtext>
+     <mi>c</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.6963141430303932</mn>
+     <mtext> </mtext>
+     <mi>d</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.9097484994100065</mn>
+     <mtext> </mtext>
+     <mi>e</mi>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mrow>
+     <mn>0.11068552486666561</mn>
+     <mtext> </mtext>
+     <mi>a</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.9796379773985667</mn>
+     <mtext> </mtext>
+     <mi>b</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.4444852340488643</mn>
+     <mtext> </mtext>
+     <mi>c</mi>
+    </mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>0.21268133938503675</mn>
+     <mtext> </mtext>
+     <mi>d</mi>
+    </mrow>
+    <mo>+</mo>
+    <mrow>
+     <mn>0.3658562699807444</mn>
+     <mtext> </mtext>
+     <mi>e</mi>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ Example of numerical precision: if one row of a 6 x 6 matrix is a linear combination of the other five rows, its determinant should evaluate to zero&hellip;
+</p>
+
+
+
+<p class="CellLabel">
+ In[133]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_Detxx__and_numerical_precision"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Det</mi>
+  <mo>[</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>1</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>2</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>3</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>4</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>rv</mi>
+     <mo>[</mo>
+     <mn>5</mn>
+     <mo>]</mo>
+    </mrow>
+    <mo>,</mo>
+    <mi>lindepvec</mi>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[133]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mo>-</mo>
+    <mrow>
+     <mn>5.551115123125783</mn>
+     <mo>&times;</mo>
+     <msup>
+      <mn>10</mn>
+      <mrow>
+       <mo>-</mo>
+       <mn>17</mn>
+      </mrow>
+     </msup>
+    </mrow>
+   </mrow>
+   <mo>&InvisibleTimes;</mo>
+   <mi>a</mi>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mn>0.</mn>
+   <mtext> </mtext>
+   <mi>b</mi>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mrow>
+    <mn>1.387778780781446</mn>
+    <mo>&times;</mo>
+    <msup>
+     <mn>10</mn>
+     <mrow>
+      <mo>-</mo>
+      <mn>17</mn>
+     </mrow>
+    </msup>
+   </mrow>
+   <mtext> </mtext>
+   <mi>c</mi>
+  </mrow>
+  <mo>+</mo>
+  <mrow>
+   <mrow>
+    <mn>5.551115123125783</mn>
+    <mo>&times;</mo>
+    <msup>
+     <mn>10</mn>
+     <mrow>
+      <mo>-</mo>
+      <mn>17</mn>
+     </mrow>
+    </msup>
+   </mrow>
+   <mtext> </mtext>
+   <mi>d</mi>
+  </mrow>
+  <mo>-</mo>
+  <mrow>
+   <mrow>
+    <mn>2.775557561562891</mn>
+    <mo>&times;</mo>
+    <msup>
+     <mn>10</mn>
+     <mrow>
+      <mo>-</mo>
+      <mn>17</mn>
+     </mrow>
+    </msup>
+   </mrow>
+   <mtext> </mtext>
+   <mi>e</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[134]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_Chopxx__and_numerical_precision"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Chop</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>Det</mi>
+   <mo>[</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>1</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>2</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>3</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>4</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mrow>
+      <mi>rv</mi>
+      <mo>[</mo>
+      <mn>5</mn>
+      <mo>]</mo>
+     </mrow>
+     <mo>,</mo>
+     <mi>lindepvec</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[134]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mn>0</mn>
+</math>
+</p>
+
+<p class="Section">
+ Showing that the determinant of a product of matrices is the product of determinants
+</p>
+
+
+
+<p class="Subsection">
+ Creating a symbolic matrix
+</p>
+
+
+
+<p class="CellLabel">
+ In[135]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>symvec</mi>
+   <mtext> </mtext>
+   <mo>=</mo>
+   <mtext> </mtext>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[138]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07Permutationsxx"></a>
+ <img src="HTMLFiles/Lecture-07_13.gif" alt="permuts = Permutations[symvec]"  width="313" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <a id="mtag_07Permutationsxx"></a>
+ <img src="HTMLFiles/Lecture-07_14.gif" alt="permuts//Dimensions"  width="209" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[138]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mo>{</mo>
+    <mrow>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>c</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+     <mo>,</mo>
+     <mi>a</mi>
+    </mrow>
+    <mo>}</mo>
+   </mrow>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[139]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>{</mo>
+  <mrow>
+   <mn>20</mn>
+   <mo>,</mo>
+   <mn>6</mn>
+  </mrow>
+  <mo>}</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[140]:=
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_15.gif" width="236" height="170"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_16.gif" alt="symbmat//MatrixForm"  width="214" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[141]//MatrixForm=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+    <mtd>
+     <mi>c</mi>
+    </mtd>
+    <mtd>
+     <mi>a</mi>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[150]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>detsymbmat</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Simplify</mi>
+   <mo>[</mo>
+   <mrow>
+    <mi>Det</mi>
+    <mo>[</mo>
+    <mi>symbmat</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[150]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mn>3</mn>
+  <mo>&InvisibleTimes;</mo>
+  <msup>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>-</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+   <mn>5</mn>
+  </msup>
+  <mo>&InvisibleTimes;</mo>
+  <mrow>
+   <mo>(</mo>
+   <mrow>
+    <mi>a</mi>
+    <mo>+</mo>
+    <mi>c</mi>
+   </mrow>
+   <mo>)</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ Creating a matrix of rational numbers
+</p>
+
+
+
+<p class="CellLabel">
+ In[143]:=
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_17.gif" alt="randommat = Table[Table[Random[Integer, {-100, 100}]/Random[Integer, {-100, 100}], {i, 6}], {j, 6}] ;"  width="629" height="53"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_18.gif" alt="randommat//MatrixForm"  width="232" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[144]//MatrixForm=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mfrac>
+      <mn>4</mn>
+      <mn>19</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>41</mn>
+       <mn>9</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>89</mn>
+      <mn>85</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>32</mn>
+      <mn>55</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>3</mn>
+      <mn>2</mn>
+     </mfrac>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>84</mn>
+       <mn>73</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>58</mn>
+       <mn>99</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>34</mn>
+      <mn>87</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>50</mn>
+      <mn>17</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>71</mn>
+       <mn>64</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>23</mn>
+      <mn>68</mn>
+     </mfrac>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>10</mn>
+       <mn>27</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>89</mn>
+      <mn>26</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>3</mn>
+       <mn>13</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>3</mn>
+       <mn>20</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>98</mn>
+      <mn>23</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>82</mn>
+       <mn>67</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mfrac>
+      <mn>76</mn>
+      <mn>87</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>19</mn>
+       <mn>6</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>7</mn>
+      <mn>30</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>69</mn>
+       <mn>25</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>29</mn>
+       <mn>2</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>41</mn>
+      <mn>9</mn>
+     </mfrac>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>33</mn>
+       <mn>61</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>43</mn>
+      <mn>89</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>55</mn>
+       <mn>79</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>25</mn>
+      <mn>64</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>1</mn>
+       <mn>83</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>1</mn>
+      <mn>34</mn>
+     </mfrac>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mfrac>
+      <mn>29</mn>
+      <mn>97</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mfrac>
+      <mn>9</mn>
+      <mn>10</mn>
+     </mfrac>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>4</mn>
+       <mn>11</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>53</mn>
+       <mn>57</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>57</mn>
+       <mn>43</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mn>75</mn>
+       <mn>86</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[151]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>detrandomat</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Det</mi>
+   <mo>[</mo>
+   <mi>randommat</mi>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[151]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mn>479143363691667875348163770188617794024261</mn>
+  <mn>1613994538465867953181901005266186240000</mn>
+ </mfrac>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[146]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>checka</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mrow>
+    <mi>Det</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>symbmat</mi>
+     <mo>.</mo>
+     <mi>randommat</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>//</mo>
+   <mi>Simplify</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[146]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mrow>
+   <mn>479143363691667875348163770188617794024261</mn>
+   <mo>&InvisibleTimes;</mo>
+   <msup>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mi>a</mi>
+      <mo>-</mo>
+      <mi>c</mi>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+    <mn>5</mn>
+   </msup>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>+</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+  <mn>537998179488622651060633668422062080000</mn>
+ </mfrac>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[153]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>detrandomat</mi>
+   <mo>*</mo>
+   <mi>detsymbmat</mi>
+  </mrow>
+  <mtext>  </mtext>
+  <mo>==</mo>
+  <mtext> </mtext>
+  <mi>checka</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[153]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>True</mi>
+</math>
+</p>
+
+<p class="Subsection">
+ Does the determinant of a product depend on the order of multiplication?
+</p>
+
+
+
+<p class="CellLabel">
+ In[154]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>checkb</mi>
+  <mtext> </mtext>
+  <mo>=</mo>
+  <mrow>
+   <mrow>
+    <mi>Det</mi>
+    <mo>[</mo>
+    <mrow>
+     <mi>randommat</mi>
+     <mo>.</mo>
+     <mi>symbmat</mi>
+    </mrow>
+    <mo>]</mo>
+   </mrow>
+   <mo>//</mo>
+   <mi>Simplify</mi>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[154]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mfrac>
+  <mrow>
+   <mn>479143363691667875348163770188617794024261</mn>
+   <mo>&InvisibleTimes;</mo>
+   <msup>
+    <mrow>
+     <mo>(</mo>
+     <mrow>
+      <mi>a</mi>
+      <mo>-</mo>
+      <mi>c</mi>
+     </mrow>
+     <mo>)</mo>
+    </mrow>
+    <mn>5</mn>
+   </msup>
+   <mo>&InvisibleTimes;</mo>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mi>a</mi>
+     <mo>+</mo>
+     <mi>c</mi>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+  <mn>537998179488622651060633668422062080000</mn>
+ </mfrac>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[155]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>checka</mi>
+  <mo>&Equal;</mo>
+  <mi>checkb</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[155]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mi>True</mi>
+</math>
+</p>
+
+<p class="Subsection">
+ However, the product of two matrices depends on which matrix is on the left and which is on the right
+</p>
+
+
+
+<p class="CellLabel">
+ In[156]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mo>(</mo>
+    <mrow>
+     <mrow>
+      <mi>randommat</mi>
+      <mo>.</mo>
+      <mi>symbmat</mi>
+     </mrow>
+     <mtext> </mtext>
+     <mo>-</mo>
+     <mtext> </mtext>
+     <mrow>
+      <mi>symbmat</mi>
+      <mo>.</mo>
+      <mi>randommat</mi>
+     </mrow>
+    </mrow>
+    <mo>)</mo>
+   </mrow>
+   <mo>//</mo>
+   <mi>Simplify</mi>
+  </mrow>
+  <mo>//</mo>
+  <mi>MatrixForm</mi>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[156]//MatrixForm=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>6049</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>3942</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>480032437</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>481318365</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>128461</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>48906</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>534503</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>1497870</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>33742222</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>20092215</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>30326</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>13035</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>2653</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>3740</mn>
+       </mfrac>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>286139</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>273600</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>102103</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>13248</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>107181609</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>5763935</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>44027</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>22780</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>51398498</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>6875055</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>5327809</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>3247884</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>789359203</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>5756883264</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>854223</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>168922</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>2284763</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>473280</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>8254787449</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>8075276352</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>169111</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>33660</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>86</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>85</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>2195065781</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>1692382725</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>24355721</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>5480739</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>203950601</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>11739860</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>9421</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>2278</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>4405720195</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>576772416</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>1134860</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>1009489</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>27674280671</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>3683961060</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>2051</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>2403</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>218506243</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>39665340</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>158361809</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>12755340</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>317257</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>213730</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>13407039</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>8383040</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>20240399</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>5668650</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>311269</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>118690</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>378124609</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>24891840</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>571</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>340</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>72258863</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>23605452</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>127291</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>26190</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>120219299</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>6345525</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>19507</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>5655</mn>
+       </mfrac>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>2724449</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>220275</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>1965543</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>103675</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>194159</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>20619</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>30317</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>3420</mn>
+       </mfrac>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>609455</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>94656</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>87061</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>14835</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>1223386267</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>381268800</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>95653</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>144050</mn>
+       </mfrac>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>545083</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>29580</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>2460637</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>2103138</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>95593847425</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>63605733952</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>1897</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>2379</mn>
+       </mfrac>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>2127120373</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>3531337920</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>1789282021</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>5623575360</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>444905</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>97614</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>413051</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>141100</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>7922184683</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>2077976895</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>3242693</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>323426</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>4248208</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>2452505</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>113501</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>38592</mn>
+       </mfrac>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>180305130001</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>104088414572</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>3627589</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>1563738</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>694116553</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>982287270</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>2017</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>582</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>57948296</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>8507421</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>2329292</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>713241</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>2581259</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>7684014</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>17717</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>36550</mn>
+       </mfrac>
+      </mrow>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>13620031</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>5804480</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mfrac>
+       <mrow>
+        <mn>159</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>a</mi>
+       </mrow>
+       <mn>11</mn>
+      </mfrac>
+      <mo>-</mo>
+      <mfrac>
+       <mrow>
+        <mn>134847539639</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>29046977472</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mfrac>
+        <mrow>
+         <mn>2389</mn>
+         <mo>&InvisibleTimes;</mo>
+         <mi>a</mi>
+        </mrow>
+        <mn>342</mn>
+       </mfrac>
+      </mrow>
+      <mo>+</mo>
+      <mfrac>
+       <mrow>
+        <mn>382516087</mn>
+        <mo>&InvisibleTimes;</mo>
+        <mi>c</mi>
+       </mrow>
+       <mn>1045169180</mn>
+      </mfrac>
+     </mrow>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subtitle">
+ Linear Transformations
+</p>
+
+
+
+<p class="Subsection">
+ <a id="mtag_07_polyhedra__graphica_example_of_linear_transformations"></a>
+ <a id="mtag_07_linear_transformations__on_polyhedra"></a>
+ We now demonstrate the use of matrix multiplication for manipulating an object, specifically an octohedron. The Octahedron is made up of eight polygons and the initial coordinates of the vertices were set to make a regular octahedron with its main diagonals parallel to axes <span style='font-style: italic;'>x</span>,<span style='font-style: italic;'>y</span>,<span style='font-style: italic;'>z</span>. The faces of the octahedron are colored so that rotations and other transformations can be easily tracked.
+</p>
+
+
+
+<p class="CellLabel">
+ In[157]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_Polyhedra_package"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&lt;&lt;</mo>
+  <mtext>Graphics`Polyhedra`</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[158]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>Polyhedron</mi>
+   <mo>[</mo>
+   <mi>Octahedron</mi>
+   <mo>]</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-07_19.gif" alt="[Graphics:HTMLFiles/Lecture-07_19.gif]"  width="531" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[158]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[159]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>Polyhedron</mi>
+    <mo>[</mo>
+    <mi>Octahedron</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>ViewPoint</mi>
+    <mo>-&gt;</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>0.007</mn>
+      </mrow>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mo>-</mo>
+       <mn>1.995</mn>
+      </mrow>
+      <mo>,</mo>
+      <mtext> </mtext>
+      <mrow>
+       <mo>-</mo>
+       <mn>0.135</mn>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-07_20.gif" alt="[Graphics:HTMLFiles/Lecture-07_20.gif]"  width="576" height="562"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[159]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[160]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mrow>
+    <mi>Polyhedron</mi>
+    <mo>[</mo>
+    <mi>Octahedron</mi>
+    <mo>]</mo>
+   </mrow>
+   <mo>//</mo>
+   <mi>InputForm</mi>
+  </mrow>
+  <mtext>&#62371;</mtext>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ Out[160]//InputForm=
+</p>
+
+
+
+<p class="Output">
+ Graphics3D[{Polygon[{{0., 0., 1.4142135623730951}, <br />&nbsp;&nbsp;&nbsp;&nbsp;{1.4142135623730951, 0., 0.}, {0., 1.4142135623730951, 0.}}], <br />&nbsp;&nbsp;Polygon[{{0., 0., 1.4142135623730951}, {0., 1.4142135623730951, 0.}, <br />&nbsp;&nbsp;&nbsp;&nbsp;{-1.4142135623730951, 0., 0.}}], <br />&nbsp;&nbsp;Polygon[{{0., 0., 1.4142135623730951}, {-1.4142135623730951, 0., 0.}, <br />&nbsp;&nbsp;&nbsp;&nbsp;{0., -1.4142135623730951, 0.}}], <br />&nbsp;&nbsp;Polygon[{{0., 0., 1.4142135623730951}, {0., -1.4142135623730951, 0.}, <br />&nbsp;&nbsp;&nbsp;&nbsp;{1.4142135623730951, 0., 0.}}], <br />&nbsp;&nbsp;Polygon[{{1.4142135623730951, 0., 0.}, {0., -1.4142135623730951, 0.}, <br />&nbsp;&nbsp;&nbsp;&nbsp;{0., 0., -1.4142135623730951}}], <br />&nbsp;&nbsp;Polygon[{{1.4142135623730951, 0., 0.}, {0., 0., -1.4142135623730951}, <br />&nbsp;&nbsp;&nbsp;&nbsp;{0., 1.4142135623730951, 0.}}], <br />&nbsp;&nbsp;Polygon[{{0., 0., -1.4142135623730951}, {0., -1.4142135623730951, 0.}, <br />&nbsp;&nbsp;&nbsp;&nbsp;{-1.4142135623730951, 0., 0.}}], <br />&nbsp;&nbsp;Polygon[{{0., 1.4142135623730951, 0.}, {0., 0., -1.4142135623730951}, <br />&nbsp;&nbsp;&nbsp;&nbsp;{-1.4142135623730951, 0., 0.}}]}, {AmbientLight -&gt; GrayLevel[0], <br />&nbsp;&nbsp;AspectRatio -&gt; Automatic, Axes -&gt; False, AxesEdge -&gt; Automatic, <br />&nbsp;&nbsp;AxesLabel -&gt; None, AxesStyle -&gt; Automatic, Background -&gt; Automatic, <br />&nbsp;&nbsp;Boxed -&gt; True, BoxRatios -&gt; Automatic, BoxStyle -&gt; Automatic, <br />&nbsp;&nbsp;ColorOutput -&gt; Automatic, DefaultColor -&gt; Automatic, <br />&nbsp;&nbsp;DefaultFont :&gt; $DefaultFont, DisplayFunction :&gt; $DisplayFunction, <br />&nbsp;&nbsp;Epilog -&gt; {}, FaceGrids -&gt; None, FormatType :&gt; $FormatType, <br />&nbsp;&nbsp;ImageSize -&gt; Automatic, Lighting -&gt; True, <br />&nbsp;&nbsp;LightSources -&gt; {{{1., 0., 1.}, RGBColor[1, 0, 0]}, <br />&nbsp;&nbsp;&nbsp;&nbsp;{{1., 1., 1.}, RGBColor[0, 1, 0]}, {{0., 1., 1.}, <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RGBColor[0, 0, 1]}}, Plot3Matrix -&gt; Automatic, PlotLabel -&gt; None, <br />&nbsp;&nbsp;PlotRange -&gt; All, PlotRegion -&gt; Automatic, <br />&nbsp;&nbsp;PolygonIntersections -&gt; True, Prolog -&gt; {}, RenderAll -&gt; True, <br />&nbsp;&nbsp;Shading -&gt; True, SphericalRegion -&gt; False, TextStyle :&gt; $TextStyle, <br />&nbsp;&nbsp;Ticks -&gt; Automatic, ViewCenter -&gt; Automatic, <br />&nbsp;&nbsp;ViewPoint -&gt; {1.3, -2.4, 2.}, ViewVertical -&gt; {0., 0., 1.}}]
+</p>
+
+
+
+<p class="Subsection">
+ <a id="mtag_07_Polyhedra__example_of_coloring_faces_manually"></a>
+ The object <span style='font-weight: bold;'>coloct</span> is defined below to draw an octahedron and it invokes the <span style='font-weight: bold;'>Polygon</span> function to draw the triangular faces by connecting three points at specific numerical coordinates. Note that each triangles' three vertices are each specified by a vector.
+</p>
+
+
+
+<p class="CellLabel">
+ In[161]:=
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_21.gif" alt="Clear[coloct] ;"  width="127" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_22.gif" width="1213" height="359"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[162]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="CellLabel">
+ In[163]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mi>coloct</mi>
+   <mo>,</mo>
+   <mrow>
+    <mi>Lighting</mi>
+    <mo>&rightarrow;</mo>
+    <mi>False</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-07_23.gif" alt="[Graphics:HTMLFiles/Lecture-07_23.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[163]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ Now a matrix <span style='font-weight: bold;'>tmat</span> is defined that will operate on the coordinate vectors fed to the <span style='font-weight: bold;'>Polygon</span> function in <span style='font-weight: bold;'>coloct</span>. In this first example, each <span style='font-style: italic;'>z</span> coordinate will be changed to <span style='font-style: italic;'>-z</span>:
+</p>
+
+
+
+<p class="CellLabel">
+ In[164]:=
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_24.gif" alt="Clear[tmat] ;"  width="111" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_25.gif" alt="tmat = {{1, 0, 0}, {0, 1, 0}, {0, 0, -1}} ;"  width="319" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/Lecture-07_26.gif" alt="tmat//MatrixForm"  width="172" height="23"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[166]//MatrixForm=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>(</mo>
+  <mtable rowspacing='1ex'
+      columnspacing='1em'
+      columnalign='left'>
+   <mtr>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>1</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mn>0</mn>
+    </mtd>
+    <mtd>
+     <mrow>
+      <mo>-</mo>
+      <mn>1</mn>
+     </mrow>
+    </mtd>
+   </mtr>
+  </mtable>
+  <mo>)</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ The <span style='font-weight: bold;'>Replace</span> is used to modify the coordinates fed to the <span style='font-weight: bold;'>Polygon</span> function in <span style='font-weight: bold;'>coloct</span> by matrix multiplication of the vertex vectors:
+</p>
+
+
+
+<p class="CellLabel">
+ In[167]:=
+</p>
+
+
+
+<p class="Input">
+ <a id="mtag_07_Polyhedra__example_of_matrix_transformation"></a>
+ <a id="mtag_07_Permutationsxx"></a>
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>Show</mi>
+  <mo>[</mo>
+  <mrow>
+   <mrow>
+    <mi>coloct</mi>
+    <mo>/.</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>Polygon</mi>
+       <mo>[</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mtext>a_List</mtext>
+         <mtext> </mtext>
+         <mo>,</mo>
+         <mtext> </mtext>
+         <mtext>b_List</mtext>
+         <mtext> </mtext>
+         <mo>,</mo>
+         <mtext> </mtext>
+         <mtext>c_List</mtext>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>&rightarrow;</mo>
+      <mrow>
+       <mi>Polygon</mi>
+       <mo>[</mo>
+       <mrow>
+        <mo>{</mo>
+        <mrow>
+         <mrow>
+          <mi>tmat</mi>
+          <mo>.</mo>
+          <mi>a</mi>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>tmat</mi>
+          <mo>.</mo>
+          <mi>b</mi>
+         </mrow>
+         <mo>,</mo>
+         <mrow>
+          <mi>tmat</mi>
+          <mo>.</mo>
+          <mi>c</mi>
+         </mrow>
+        </mrow>
+        <mo>}</mo>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>,</mo>
+   <mrow>
+    <mi>Lighting</mi>
+    <mo>&rightarrow;</mo>
+    <mi>False</mi>
+   </mrow>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-07_27.gif" alt="[Graphics:HTMLFiles/Lecture-07_27.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[167]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ The program <span style='font-weight: bold;'>seetrans</span> does the same thing by feeding a matrix <span style='font-weight: bold;'>tranmat</span> to operate on the vertex vectors before <span style='font-weight: bold;'>Polygon</span> is executed:
+</p>
+
+
+
+<p class="CellLabel">
+ In[168]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mrow>
+   <mi>seetrans</mi>
+   <mo>[</mo>
+   <mtext>tranmat_</mtext>
+   <mo>]</mo>
+  </mrow>
+  <mo>:=</mo>
+  <mtext> </mtext>
+  <mrow>
+   <mi>Show</mi>
+   <mo>[</mo>
+   <mrow>
+    <mrow>
+     <mi>coloct</mi>
+     <mo>/.</mo>
+     <mrow>
+      <mo>{</mo>
+      <mrow>
+       <mrow>
+        <mi>Polygon</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mtext>a_List</mtext>
+          <mtext> </mtext>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <mtext>b_List</mtext>
+          <mtext> </mtext>
+          <mo>,</mo>
+          <mtext> </mtext>
+          <mtext>c_List</mtext>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+       <mo>&rightarrow;</mo>
+       <mrow>
+        <mi>Polygon</mi>
+        <mo>[</mo>
+        <mrow>
+         <mo>{</mo>
+         <mrow>
+          <mrow>
+           <mi>tranmat</mi>
+           <mo>.</mo>
+           <mi>a</mi>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mi>tranmat</mi>
+           <mo>.</mo>
+           <mi>b</mi>
+          </mrow>
+          <mo>,</mo>
+          <mrow>
+           <mi>tranmat</mi>
+           <mo>.</mo>
+           <mi>c</mi>
+          </mrow>
+         </mrow>
+         <mo>}</mo>
+        </mrow>
+        <mo>]</mo>
+       </mrow>
+      </mrow>
+      <mo>}</mo>
+     </mrow>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mi>Lighting</mi>
+     <mo>&rightarrow;</mo>
+     <mi>False</mi>
+    </mrow>
+   </mrow>
+   <mo>]</mo>
+  </mrow>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ When <span style='font-weight: bold;'>tranmat</span> is the identity matrix, the octagon is rendered in its initial orientation.
+</p>
+
+
+
+<p class="CellLabel">
+ In[169]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>seetrans</mi>
+  <mo>[</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>1</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>1</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-07_28.gif" alt="[Graphics:HTMLFiles/Lecture-07_28.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[169]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ The next command rotates the octagon by 45&deg; about the vertical (<span style='font-style: italic;'>z</span>) axis&hellip;
+</p>
+
+
+
+<p class="CellLabel">
+ In[170]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>seetrans</mi>
+  <mo>[</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Pi</mi>
+        <mo>/</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Pi</mi>
+        <mo>/</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mi>Sin</mi>
+       <mo>[</mo>
+       <mrow>
+        <mrow>
+         <mo>-</mo>
+         <mi>Pi</mi>
+        </mrow>
+        <mo>/</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mrow>
+       <mi>Cos</mi>
+       <mo>[</mo>
+       <mrow>
+        <mi>Pi</mi>
+        <mo>/</mo>
+        <mn>4</mn>
+       </mrow>
+       <mo>]</mo>
+      </mrow>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>1</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-07_29.gif" alt="[Graphics:HTMLFiles/Lecture-07_29.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[170]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Subsection">
+ And the next command both rotates it 180&deg; about <span style='font-style: italic;'>x</span> and <span style='font-style: italic;'>y</span> and stretches it by a factor of 5 along <span style='font-style: italic;'>z</span>.
+</p>
+
+
+
+<p class="CellLabel">
+ In[171]:=
+</p>
+
+
+
+<p class="Input">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mi>seetrans</mi>
+  <mo>[</mo>
+  <mrow>
+   <mo>{</mo>
+   <mrow>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mrow>
+       <mo>-</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mrow>
+       <mo>-</mo>
+       <mn>1</mn>
+      </mrow>
+      <mo>,</mo>
+      <mn>0</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+    <mo>,</mo>
+    <mrow>
+     <mo>{</mo>
+     <mrow>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>0</mn>
+      <mo>,</mo>
+      <mn>5</mn>
+     </mrow>
+     <mo>}</mo>
+    </mrow>
+   </mrow>
+   <mo>}</mo>
+  </mrow>
+  <mo>]</mo>
+ </mrow>
+</math>
+</p>
+
+<p class="Graphics">
+ <img src="HTMLFiles/Lecture-07_30.gif" alt="[Graphics:HTMLFiles/Lecture-07_30.gif]"  width="576" height="576"  style="vertical-align:middle" />
+</p>
+
+<p class="CellLabel">
+ Out[171]=
+</p>
+
+
+
+<p class="Output">
+ <math xmlns='http://www.w3.org/1998/Math/MathML'>
+ <mrow>
+  <mo>&hybull;</mo>
+  <mo>&InvisibleTimes;</mo>
+  <mi>Graphics3D</mi>
+  <mo>&InvisibleTimes;</mo>
+  <mo>&hybull;</mo>
+ </mrow>
+</math>
+</p>
+
+<hr />
+
+<table><tr>
+<td style='font-family: Helvetica; font-size: 10px; width: 100%'>Created by
+ <a href="http://www.wolfram.com"><span style='font-style: italic'>Mathematica</span></a>
+ &nbsp;(September 23, 2005)</td>
+<td><img src='http://www.w3.org/Icons/valid-xhtml11.gif'
+ alt='Valid XHTML 1.1!' height='31' width='88' /></td>
+</tr></table>
+</body>
+
+</html>

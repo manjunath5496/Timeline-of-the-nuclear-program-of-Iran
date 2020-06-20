@@ -22,7 +22,7 @@
 <li><a href="#course21">Electrochemical Processing of Materials</a></li>
 <li><a href="#course22">Photonic Materials and Devices</a></li>
 <li><a href="#course23">Welding and Joining Processes</a></li>
-<li><a href="#course24">Transportation Systems</a></li>
+<li><a href="#course24">Magnetic Materials</a></li>
 <li><a href="#course25">An Introduction to Intelligent Transportation Systems</a></li>
 <li><a href="#course26">Logistical and Transportation Planning Methods</a></li>
 <li><a href="#course27">Masters of Engineering Concepts of Engineering Practice</a></li>
@@ -3208,4 +3208,62 @@
 </tbody>
 </table>
 </br>
+<h2 id="course24">Magnetic Materials</h2>
 
+<table class="tablewidth50" summary="Course Table Listing">
+<thead>
+<tr class="tableheader">
+<th id="col2" scope="col">ASSIGNMENTS</th>
+<th id="col3" scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td headers="col2">Problem Set 1 (<a href="6/probs_1.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_1.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col2">Problem Set&nbsp;2 (<a href="6/probs_2.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_2.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="col2">Problem Set&nbsp;3 (<a href="6/probs_3.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_3.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col2">Problem Set&nbsp;4 (<a href="6/probs_4.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_4.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="col2">Problem Set&nbsp;5 (<a href="6/probs_5.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_5.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col2">Problem Set&nbsp;6 (<a href="6/probs_6.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_6.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="col2">Problem Set&nbsp;7 (<a href="6/probs_7.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_7.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col2">Problem Set&nbsp;8 (<a href="6/probs_8.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_8.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="col2">Problem Set&nbsp;9 (<a href="6/probs_9.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_9.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col2">Problem Set 10 (<a href="6/probs_10.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="6/sols_10.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<p>2004 midterm exam with solutions (<a href="6/2004_withsoln.pdf">PDF</a>)</p>
+<h2 class="subhead">Sample Exams</h2>
+<p>2000 with solution (<a href="6/sample_exam_2000.pdf">PDF</a>)</p>
+<p>2002 with solution (<a href="6/sample_exam_2002.pdf">PDF</a>)</p>
+
+</br>

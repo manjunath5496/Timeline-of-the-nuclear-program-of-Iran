@@ -30,7 +30,7 @@
 <li><a href="#course29">Kinetic Processes in Materials</a></li>
 <li><a href="#course30">Thermodynamics and Kinetics of Materials</a></li>
 <li><a href="#course31">Materials at Equilibrium</a></li>
-<li><a href="#course32">Strategic Management in the Design and Construction Value Chain</a></li>
+<li><a href="#course32">Transport Phenomena in Materials Engineering</a></li>
 <li><a href="#course33">E-Commerce and the Internet in Real Estate and Construction</a></li>
 <li><a href="#course34">Waste Containment and Remediation Technology</a></li>
 <li><a href="#course35">Soil Behavior</a></li>
@@ -4258,5 +4258,98 @@ Illustrates the behavior of the concentration around a line source that is diffu
 </table>
 </br>
 
+<h2 id="course32">Transport Phenomena in Materials Engineering</h2>
 
 
+<h2 class="subhead">1. Introduction (<a href="11/chap1.pdf">PDF</a>)</h2>
+<h2 class="subhead">2. Diffusion (<a href="11/chap2.pdf">PDF</a>)</h2>
+<p>2.1 1-D Cartesian and Cylindrical Steady-State<br />2.2 Steady-State with Homogeneous Chemical Reaction<br />2.3 Unsteady-State Diffusion<br />2.4 9/11 remembered, ABET<br />2.5 Wrapup unsteady, boundary conditions<br />2.6 Boundary conditions, layer growth<br />2.7 Layer Growth, Dimensional Analysis</p>
+<h2 class="subhead">3. Heat Conduction (<a href="11/chap3.pdf">PDF</a>)</h2>
+<p>3.1 Wrap up dimensional analysis, start heat conduction<br />3.2 Heat conduction: boundary layers, multilayer wall<br />3.3 Finally, the graphs!<br />3.4 Math Quiz, Graphs Wrapup, Newtonian Cooling<br />3.5 Moving on...<br />3.6 Finite Differences<br />3.7 More Finite Differences<br />3.8 Moving Body<br />3.9 Phase Change<br />3.10 Radiation<br />3.11 More Radiation</p>
+<h2 class="subhead">4. Fluid Dynamics (<a href="11/chap4.pdf">PDF</a>)</h2>
+<p>4.1 Intro, Newtonian Fluids<br />4.2 Simple Newtonian Flows<br />4.3 1-D Laminar Newtonian Wrapup, Summary<br />4.4 Mechanics Analogy Revisited, Reynolds Number, Rheology<br />4.5 Navier-Stokes Equations!<br />4.6 Using the Navier-Stokes Equations<br />4.7 Drag Force<br />4.8 Drag Force on a Sphere<br />4.9 Boundary Layers Part I<br />4.10 Boundary Layers Part II<br />4.11 Turbulence<br />4.12 Turbulence (cont.)</p>
+<h2 class="subhead">5. Coupled Fluids with Heat and Mass Transfer (<a href="11/chap5.pdf">PDF</a>)</h2>
+<p>5.1 Coupled Fluids, Heat and Mass Transfer!<br />5.2 Nusselt Number, Heat and Mass Transfer Coefficients<br />5.3 Natural Convection<br />5.4 Wrapup Natural Convection<br />5.5 Wrapup Natural Convection, Streamfunction and Vorticity<br />5.6 Bernoulli, Semester Wrapup</p>
+
+</br>
+
+<table class="tablewidth50" summary="Course Table Listing">
+<thead>
+<tr class="tableheader">
+<th id="col1" scope="col" abbr="Week Number">ASSIGNMENTS</th>
+<th id="col2" scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td headers="col1">Problem Set 1 (<a href="11/ps1.pdf">PDF</a>)</td>
+<td headers="col2">(<a href="11/ps1sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col1">Problem Set&nbsp;2 (<a href="11/ps2.pdf">PDF</a>)</td>
+<td headers="col2">(<a href="11/ps2sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="col1">Problem Set&nbsp;3 (<a href="11/ps3.pdf">PDF</a>)</td>
+<td headers="col2">(<a href="11/ps3sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col1">Problem Set&nbsp;4 (<a href="11/ps4.pdf">PDF</a>)</td>
+<td headers="col2">(<a href="11/ps4sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="col1">Problem Set&nbsp;5 (<a href="11/ps5.pdf">PDF</a>); ps5.xls (<a href="11/ps5.xls">XLS</a>)</td>
+<td headers="col2">(<a href="11/ps5sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col1">Problem Set&nbsp;6 (<a href="11/ps6.pdf">PDF</a>)</td>
+<td headers="col2">(<a href="11/ps6sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="col1">Problem Set&nbsp;7 (<a href="11/ps7b.pdf">PDF</a>)</td>
+<td headers="col2">(<a href="11/ps7sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col1">Problem Set&nbsp;8 (<a href="11/ps8.pdf">PDF</a>)</td>
+<td headers="col2">(<a href="11/ps8sol.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<table class="tablewidth50" summary="Course Table Listing">
+<thead>
+<tr class="tableheader">
+<th id="col1" scope="col" abbr="Week Number">TITLES</th>
+<th id="col2" scope="col">OVERVIEWS</th>
+<th id="col3" scope="col">EXAMS</th>
+<th id="col4" scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td headers="col1">Math&nbsp;Quiz</td>
+<td headers="col2">&nbsp;</td>
+<td headers="col3">(<a href="11/mathquiz.pdf">PDF</a>)</td>
+<td headers="col4">(<a href="11/mathsol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col1">Test 1</td>
+<td headers="col2">(<a href="11/test1pre.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="11/test1b.pdf">PDF</a>)</td>
+<td headers="col4">(<a href="11/test1sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="col1">Test 2</td>
+<td headers="col2">(<a href="11/test2pre.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="11/test2b.pdf">PDF</a>)</td>
+<td headers="col4">(<a href="11/test2sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="col1">Final&nbsp;Exam</td>
+<td headers="col2">(<a href="11/finalpre.pdf">PDF</a>)</td>
+<td headers="col3">(<a href="11/final.pdf">PDF</a>)</td>
+<td headers="col4">(<a href="11/finalsol.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>

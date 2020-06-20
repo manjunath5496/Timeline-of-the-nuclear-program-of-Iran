@@ -14,7 +14,7 @@
 <li><a href="#course13">Materials Processing</a></li>
 <li><a href="#course14">Organic & Biomaterials Chemistry</a></li>
 <li><a href="#course15">Mechanical Behavior of Materials</a></li>
-<li><a href="#course16">Mechanics of Material Systems: An Energy Approach</a></li>
+<li><a href="#course16">Introduction to Solid State Chemistry</a></li>
 <li><a href="#course17">Transportation Flow Systems</a></li>
 <li><a href="#course18">Carrier Systems</a></li>
 <li><a href="#course19">Airline Schedule Planning</a></li>
@@ -2454,4 +2454,24 @@
 </table>
 
 </br>
+<h2 id="course16">Introduction to Solid State Chemistry</h2>
+
+<p><a title="Open in a new window." href="3/MIT3_091SCF09_lec1.pdf" target="_blank">Lecture Slides (PDF - 3.2MB)</a></p>
+<p><a href="https://ocw.mit.edu/courses/materials-science-and-engineering/3-091sc-introduction-to-solid-state-chemistry-fall-2010/syllabus/suggested-textbooks#ref">Periodic Table and Table of Constants</a></p>
+<h3 class="subsubhead">&nbsp;</h3>
+<p><a title="Open in a new window." href="3/MIT3_091SCF09_hw1.pdf" target="_blank">Problems (PDF)</a></p>
+<p><a title="Open in a new window." href="3/MIT3_091SCF09_hw1_sol.pdf" target="_blank">Solutions (PDF)</a></p>
+
+</br>
+
+<ul>
+<li><a title="Open in a new window." href="3/MIT3_091SCF09_sa1_quiz.pdf" target="_blank">Quiz problems (PDF)</a></li>
+<li><a title="Open in a new window." href="3/MIT3_091SCF09_sa1_quiz_sol.pdf" target="_blank">Quiz solutions key (PDF)</a></li>
+<li><a title="Open in a new window." href="3/MIT3_091SCF09_sa1_exam.pdf" target="_blank">Exam problems (PDF)</a></li>
+<li><a title="Open in a new window." href="3/MIT3_091SCF09_sa1_exam_sol.pdf" target="_blank">Exam solutions key (PDF - 1.9MB)</a></li>
+<li><a title="Open in a new window." href="3/MIT3_091SCF09_sa1_supp.pdf" target="_blank">Supplemental exam problems (PDF)</a></li>
+<li><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a title="Open in a new window." href="3/MIT3_091SCF09_sa1_supp_sol.pdf" target="_blank">Supplemental exam solutions key (PDF)</a></li>
+</ul>
+</br>
+
 

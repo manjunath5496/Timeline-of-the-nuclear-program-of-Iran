@@ -33,7 +33,7 @@
 <li><a href="#course32">Transport Phenomena in Materials Engineering</a></li>
 <li><a href="#course33">Electrical, Optical & Magnetic Materials and Devices</a></li>
 <li><a href="#course34">Attraction and Repulsion: The Magic of Magnets</a></li>
-<li><a href="#course35">Soil Behavior</a></li>
+<li><a href="#course35">Human Origins and Evolution</a></li>
  
 </ul>
 <p>&nbsp;</p>
@@ -4479,3 +4479,134 @@ Illustrates the behavior of the concentration around a line source that is diffu
 <p>Magnetism and Relativity (<a href="11/mag_relativity.pdf">PDF</a>) (Courtesy of Robert Moffatt. Used with permission.)</p>
 <p>The "Gauss Rifle" (<a href="11/gauss_rifle.pdf">PDF</a>) (Courtesy of Meghan Reedy. Used with permission.)</p>
 </br>
+<h2 id="course35">Human Origins and Evolution</h2>
+
+<p>FYI sheets (<a href="12/compiled_fyi.pdf">PDF</a>) (This document has a compiled list of emailed handouts and communications that were circulated to the students before or after lectures as background and/or follow-up information on questions and points raised in specific lectures.)</p>
+</br>
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+<th scope="col">VOCABULARY SHEETS</th>
+<th scope="col">HANDOUTS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Introduction: The Search for Human Ancestors, Approaches to the Study of Human Evolution and an Introduction to Human Osteology</td>
+<td>
+<p>Sheet 1 (<a href="12/lecture01_02.pdf">PDF</a>)</p>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Evolutionary Processes and Time Scales</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Modern Primates and their Relevance to Understanding Human Origins</td>
+<td>Sheet 2 (<a href="12/lecture05.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Tertiary Higher Primates: Our Pre-Hominid Predecessors</td>
+<td>Sheet 3 (<a href="12/lecture06.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Earliest Hominids: The Australopithecines and Affines</td>
+<td>Sheet 4 (<a href="12/lecture07_09.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Early Hominids - Variations and Taxonomy - Presentations</td>
+<td>
+<p>Sheet 4 (cont.)</p>
+<p>Sheet 5 (<a href="12/lecture09.pdf">PDF</a>)</p>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Hominid/Human Origins: Hypotheses and Speculation</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Early&nbsp;<em>Homo</em>: How Should&nbsp;<em>Homo</em>&nbsp;Be Defined?</td>
+<td>Sheet 6 (<a href="12/lecture11.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>The Archaeology of the Early Hominids I: Olduvai Gorge and Koobi Fora</td>
+<td>Sheet 7 (<a href="12/lecture12_14.pdf">PDF</a>)</td>
+<td>
+<p>Handout 1 (<a href="12/handout12.pdf">PDF</a>)</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>The Archaeology of the Early Hominids II: Interpreting Early Hominid Behavior and Current Research Directions</td>
+<td>Sheet 7 (cont.)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Midterm Exam</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td><em>Homo ergaster</em>&nbsp;and&nbsp;<em>erectus</em>: Emerging Modern Morphology</td>
+<td>Sheet 8 (<a href="12/lecture16_17.pdf">PDF</a>)</td>
+<td>Handout 2 (<a href="12/handout16_17.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Slowly Emerging Modern Behaviors: Early Stone Age / Lower Palaeolithic Age</td>
+<td>Sheet 8 (cont.)</td>
+<td>
+<p>Handout 2 (cont.)</p>
+<p>Handout 3 (<a href="12/handout17.pdf">PDF</a>)</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td><em>Homo heidelbergensis</em>&nbsp;and&nbsp;<em>neanderthalensis</em>&nbsp;or Early "Archaic"&nbsp;<em>H. sapiens</em>?</td>
+<td>Sheet 9 (<a href="12/lecture18_19.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>"Archaics": Not Quite Us Physically, Not Quite Us Mentally</td>
+<td>
+<p>Sheet 9 (cont.)</p>
+<p>Sheet 10 (<a href="12/lecture19_20.pdf">PDF</a>)</p>
+</td>
+<td>Handout 4 (<a href="12/handout19_20.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Origin of Modern&nbsp;<em>Homo sapiens</em>&nbsp;: Morphology and Genetic Evidence</td>
+<td>Sheet 11 (<a href="12/lecture21_22.pdf">PDF</a>)</td>
+<td>
+<p>Handout 5 (<a href="12/handout21a.pdf">PDF</a>)</p>
+<p>Handout 6 (<a href="12/handout21b.pdf">PDF</a>)</p>
+</td>
+</tr>
+<tr class="row">
+<td>Modern&nbsp;<em>Homo sapiens</em>&nbsp;I: Cultural Diversity Becomes the Norm</td>
+<td>
+<p>Sheet 11 (cont.)</p>
+<p>Sheet 12 (<a href="12/lecture22.pdf">PDF</a>)</p>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Modern&nbsp;<em>Homo sapiens</em>&nbsp;II: To the Threshold of Civilization</td>
+<td>Sheet 13 (<a href="12/lecture24_25.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>Modern Human Diversity: Distribution, Morphological Variation and "Races"</td>
+<td>Sheet 13 (cont.)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+

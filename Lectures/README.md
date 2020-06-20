@@ -12,7 +12,7 @@
 <li><a href="#course11">Amorphous Materials</a></li>
 <li><a href="#course12">Nanomechanics of Materials and Biomaterials</a></li>
 <li><a href="#course13">Materials Processing</a></li>
-<li><a href="#course14">Advanced Soil Mechanics</a></li>
+<li><a href="#course14">Organic & Biomaterials Chemistry</a></li>
 <li><a href="#course15">Introduction to Network Models</a></li>
 <li><a href="#course16">Mechanics of Material Systems: An Energy Approach</a></li>
 <li><a href="#course17">Transportation Flow Systems</a></li>
@@ -2131,4 +2131,80 @@
 </tbody>
 </table>
 </br>
+<h2 id="course14">Organic & Biomaterials Chemistry</h2>
+
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Problem Set 1 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/pset1.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/pset1_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 2 (<a href="3/pset2.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/pset2_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 3 (<a href="3/pset3.pdf">PDF</a>)</td>
+<td>(<a href="3/pset3_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Practice Set A (<a href="3/practicea.pdf">PDF</a>)</td>
+<td>(<a href="3/practicea_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Practice Set B (<a href="3/practiceb.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/practiceb_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Practice Set C (<a href="3/practicec.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/practicec_sol.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+
+</br>
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">EXAMS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Practice Quiz 1 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/2004_quiz1.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/2004_quiz1_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Quiz 1 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/2005_quiz1.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/2005_quiz1_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Practice Quiz 2 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/2004_quiz2.pdf">PDF</a>)</td>
+<td>(<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/2004_quiz2_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Quiz 2 (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/2005_quiz2.pdf">PDF</a>)</td>
+<td>(<a href="3/2005_quiz2_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Final Exam (<img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="3/2005_final.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+
+
+
+
 

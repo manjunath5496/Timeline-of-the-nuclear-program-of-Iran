@@ -6,7 +6,7 @@
 <li><a href="#course5">Materials Laboratory</a></li>
 <li><a href="#course6">Fundamentals of Materials Science</a></li>
 <li><a href="#course7">Electronic, Optical and Magnetic Properties of Materials</a></li>
-<li><a href="#course8">Engineering Mechanics II</a></li>
+<li><a href="#course8">Polymer Engineering</a></li>
 <li><a href="#course9">Mechanics and Design of Concrete Structures</a></li>
 <li><a href="#course10">Structural Engineering Design</a></li>
 <li><a href="#course11">Solid Mechanics</a></li>
@@ -1278,6 +1278,120 @@
 <tr class="alt-row">
 <td>Course summary and review for final exam</td>
 <td><a href="1/MIT3_024S13_2012lec27.pdf">Lecture 27 (PDF)</a></td>
+</tr>
+</tbody>
+</table>
+</br>
+<h2 id="course8">Polymer Engineering</h2>
+
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Introduction, Overview of Polymeric Materials (<a href="1/lec_1.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Polymerization and Crosslinking (<a href="1/lec_2.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Tacticity, Molecular Weight (<a href="1/lec_3.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Crystallinity, Glass Transition Temperature (<a href="1/lec_4.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Molecular Orientation (<a href="1/lec_5.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Chain Conformation, Kinetic Theory of Rubber Elasticity (<a href="1/lec_6.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Mechanics of Elastomers (<a href="1/lec_7.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Viscoelasticity - Creep, Stress Relaxation (<a href="1/lec_8.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Dynamic Response (<a href="1/lec_10.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Maxwell Models (<a href="1/lec_11.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Zener Model (<a href="1/lec_12.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Distribution of Relaxation Times (<a href="1/lec_13.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Effect of Temperature (<a href="1/lec_14.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Stiffness</td>
+</tr>
+<tr class="row">
+<td>Stress Analysis (<a href="1/lec_16.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Yielding and Crazing (<a href="1/lec_19.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Linear Fracture Mechanics (<a href="1/lec_20.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Elastic-plastic Fracture</td>
+</tr>
+<tr class="row">
+<td>Brittle Fracture, Toughening (<a href="1/lec_22.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Composites (<a href="1/lec_23.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Matrices and Reinforcements (<a href="1/lec_24.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Composites Fabrication</td>
+</tr>
+<tr class="row">
+<td>Mechanics of Continuous Fibers (<a href="1/lec_26.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Discontinuous Fibers, Reinforced Rubber (<a href="1/lec_27.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Melt Processing</td>
+</tr>
+<tr class="alt-row">
+<td>Transport Theory, Viscous Flow (<a href="1/lec_31.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Viscous Flow Continued (<a href="1/lec_32.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Cooling and Solidification (<a href="1/lec_33.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Extrusion (<a href="1/lec_34.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Injection Molding (<a href="1/lec_35.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Thermosets and Thermoforming (<a href="1/lec_36.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Elements of Design (<a href="1/lec_37.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Materials Selection (<a href="1/lec_39.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Design for Manufacturing, Stiffness, and Strength</td>
 </tr>
 </tbody>
 </table>

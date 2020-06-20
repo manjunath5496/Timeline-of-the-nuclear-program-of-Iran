@@ -28,7 +28,7 @@
 <li><a href="#course27">Electrical, Optical, and Magnetic Properties of Materials</a></li>
 <li><a href="#course28">Electronic and Mechanical Properties of Materials</a></li>
 <li><a href="#course29">Kinetic Processes in Materials</a></li>
-<li><a href="#course30">Urban Transportation Planning</a></li>
+<li><a href="#course30">Thermodynamics and Kinetics of Materials</a></li>
 <li><a href="#course31">The Impact of Globalization on the Built Environment</a></li>
 <li><a href="#course32">Strategic Management in the Design and Construction Value Chain</a></li>
 <li><a href="#course33">E-Commerce and the Internet in Real Estate and Construction</a></li>
@@ -3928,5 +3928,207 @@ Illustrates the behavior of the concentration around a line source that is diffu
 </tbody>
 </table>
 </br>
+<h2 id="course30">Thermodynamics and Kinetics of Materials</h2>
 
-
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th>TOPICS</th>
+<th>LECTURE&nbsp;SLIDES</th>
+<th>LECTURE&nbsp;SUMMARIES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td colspan="3"><strong>Irreversible Thermodynamics</strong></td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Fields and Gradients</p>
+<p>Fluxes</p>
+<p>Continuity Equation</p>
+<p>Entropy Production</p>
+<p>Conjugate Driving Forces and Fluxes</p>
+</td>
+<td>(<a href="9/lecture01_slides.pdf">PDF</a>)</td>
+<td headers="tbl967id0_3">(<a href="9/lecture01_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td colspan="3"><strong>Diffusional Transport</strong></td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Mass Diffusion in a Continuum</p>
+<p>Diffusion Coefficients</p>
+<p>Mass Diffusion: Fick's Laws</p>
+<p>Self-Diffusion</p>
+<p>Interdiffusion</p>
+<p>The Kirkendall Effect</p>
+<p>Capillarity-Driven Diffusion</p>
+<p>Stress-Driven Diffusion</p>
+</td>
+<td>(<a href="9/lecture02_slides.pdf">PDF</a>)</td>
+<td headers="tbl967id0_3">(<a href="9/lecture02_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>
+<p>Solutions to the Diffusion/Heat Equation</p>
+<p>Mass Diffusion: Methods of Solving the Diffusion Equation (Fick's Second Law)</p>
+</td>
+<td>(<a href="9/lecture03_slides.pdf">PDF</a>)</td>
+<td>(<a href="9/lecture03_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Atomistic Mechanisms of Diffusion</p>
+<p>Interphase Layer Growth in Interdiffusion</p>
+<p>Atomistic Mechanisms of Diffusion: Vacancy, Interstitial, etc.</p>
+<p>Theory for Diffusion Coefficients and Their Temperature Dependence</p>
+</td>
+<td>(<a href="9/lecture04_slides.pdf">PDF</a>)</td>
+<td>(<a href="9/lecture04_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>
+<p>Diffusion in Ionic Crystals: Kroger-Vink Notation for Point Imperfections</p>
+<p>Schottky and Frenkel Intrinsic Disorder</p>
+<p>Extrinsic Defects</p>
+<p>Self-Diffusion in Pure and Impure KCl</p>
+<p>Also includes optional information about Diffusion in Non-Stoichiometric Oxides</p>
+</td>
+<td>(<a href="9/lecture05_slides.pdf">PDF</a>)</td>
+<td>(<a href="9/lecture05_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Role of Micro Structure in Diffusion: Short-Circuits</p>
+<p>Short-Circuit Diffusion in Crystals: Diffusion Spectrum in Defective Crystals, Dislocation Structure and Short Circuits, Grain-Boundary Structure and Diffusion</p>
+</td>
+<td>(<a href="9/lecture06_slides.pdf">PDF - 1.2 MB</a>)</td>
+<td>(<a href="9/lecture06_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td colspan="3"><strong>Phase Transformations</strong></td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Homogeneous and Heterogeneous Nucleation</p>
+<p>Introduction to Phase Transformations Lectures</p>
+<p>Continuous vs. Discontinuous Transformations</p>
+<p>Nucleation Theory, including Interplay between Surface and Volumetric Energy Terms, Coherency Strain Energy</p>
+</td>
+<td>(<a href="9/lecture07_slides.pdf">PDF - 1.2 MB</a>)</td>
+<td>
+<p>(<a href="9/lecture7a_review.pdf">PDF 1</a>)</p>
+<p>(<a href="9/lecture7b_review.pdf">PDF 2</a>)</p>
+</td>
+</tr>
+<tr class="row">
+<td>
+<p>Diffusional Growth</p>
+<p>The "Moving Boundary" Problem</p>
+<p>Growth Phenomena: Interface Control vs. Diffusion Control</p>
+<p>Diffusion-Controlled Growth, including Melting of a Pure Material, Interdiffusion with a Moving Boundary, and Alloy Solidification</p>
+</td>
+<td>(<a href="9/lecture08_slides.pdf">PDF</a>)</td>
+<td>(<a href="9/lecture08_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Solidification: Thermal and Solute Gradients and Interfacial Shape Stability</p>
+<p>Cells and Dendrites</p>
+<p>Casting Microstructures</p>
+<p>Microsegregation</p>
+</td>
+<td>(<a href="9/lecture09_slides.pdf">PDF</a>)</td>
+<td>(<a href="9/lecture09_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>
+<p>Spinodal Decomposition: Phase Diagrams with a Spinodal Region</p>
+<p>Free Energy of a Compositionally Inhomogeneous Solution</p>
+<p>Interdiffusion within the Spinodal Region</p>
+<p>Kinetics of Spinodal Decomposition</p>
+<p>Spinodal Microstructures</p>
+</td>
+<td>(<a href="9/lecture10_slides.pdf">PDF</a>)</td>
+<td headers="tbl967id0_3">(<a href="9/lecture10_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td colspan="3"><strong>Microstructural Changes</strong></td>
+</tr>
+<tr class="row">
+<td>
+<p>Particle Coarsening: Capillarity as a Driving Force</p>
+<p>Coarsening in Pb&ndash;Sn Solid/Liquid Alloys</p>
+<p>Gibbs-Thomson Effect</p>
+<p>Kinetics in the Diffusion-Controlled Regime</p>
+</td>
+<td>(<a href="9/lecture11_slides.pdf">PDF</a>)</td>
+<td>(<a href="9/lecture11_review.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Sintering</p>
+<p>Grain Growth</p>
+<p>Grain-Growth Kinetics in Two and Three Dimensions</p>
+<p>Kinetics of Nucleation and Growth Transformations: Time-Temperature-Transformation Diagrams</p>
+</td>
+<td>(<a href="9/lecture12_slides.pdf">PDF</a>)</td>
+<td>(<a href="9/lecture12_review.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<table class="tablewidth25" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>#7 (<a href="9/hw_7.pdf">PDF</a>)</td>
+<td>(<a href="9/ps7_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>#8 (<a href="9/hw_8.pdf">PDF</a>)</td>
+<td>(<a href="9/ps8_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>#9 (<a href="9/hw_9.pdf">PDF</a>)</td>
+<td>(<a href="9/ps9_sol.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>#10 (<a href="9/hw_10.pdf">PDF</a>)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</br>
+<table class="tablewidth25" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">EXAMS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td><em><strong>2003</strong></em></td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Exam (<a href="9/exam2003.pdf">PDF</a>)</p>
+<p>Solutions (<a href="9/exam2003_sol.pdf">PDF</a>)</p>
+</td>
+</tr>
+<tr class="row">
+<td><strong><em>2005</em></strong></td>
+</tr>
+<tr class="alt-row">
+<td>Exam (<a href="9/exam2005.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>

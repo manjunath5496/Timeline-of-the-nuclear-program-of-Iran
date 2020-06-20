@@ -17,7 +17,7 @@
 <li><a href="#course16">Introduction to Solid State Chemistry</a></li>
 <li><a href="#course17">Economic & Environmental Issues in Materials Selection</a></li>
 <li><a href="#course18">Polymer Physics</a></li>
-<li><a href="#course19">Airline Schedule Planning</a></li>
+<li><a href="#course19">Cellular Solids: Structure, Properties and Applications</a></li>
 <li><a href="#course20">Computer Algorithms in Systems Engineering</a></li>
 <li><a href="#course21">Transportation Systems Analysis: Demand and Economics</a></li>
 <li><a href="#course22">Introduction to Transportation Systems</a></li>
@@ -2700,6 +2700,191 @@
 <p>"OLEDs: Modifiability and Applications," by Jill A. Rowehl (<a href="4/modifiability.pdf">PDF</a>)</p>
 <p>"Polymer Foams," by Katrine Sivertsen (<a href="4/polymer_foams.pdf">PDF</a>)</p>
 </br>
+<h2 id="course19">Cellular Solids: Structure, Properties and Applications</h2>
 
 
-
+<table class="tablewidth100" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">LEC&nbsp;#</th>
+<th scope="col">TOPICS</th>
+<th scope="col">SLIDES&nbsp;WITH&nbsp;HANDWRITTEN&nbsp;NOTES</th>
+<th scope="col">SLIDES&nbsp;WITH&nbsp;TRANSCRIBED&nbsp;NOTES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>1</td>
+<td>Introduction and overview</td>
+<td><a href="4/MIT3_054S15_L1_intro.pdf">Lecture 1: Introduction (PDF - 3.2MB)</a></td>
+<td>No transcription version</td>
+</tr>
+<tr class="alt-row">
+<td>2</td>
+<td>Processing of cellular solids</td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L2_Proc.pdf">Lecture 2: Processing (PDF - 2.3MB)</a></td>
+<td><a href="4/MIT3_054S15_L2_Proc_trans.pdf">Lecture 2: Processing (PDF - 2.2MB)</a></td>
+</tr>
+<tr class="row">
+<td>3</td>
+<td>Structure of sellular solids</td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L3_Struct.pdf">Lecture 3: Structure (PDF - 3.9MB)</a></td>
+<td><a href="4/MIT3_054S15_L3_Struct_trans.pdf">Lecture 3: Structure (PDF - 1.8MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td>4</td>
+<td>Honeycombs: In-plane behaviour</td>
+<td><span class="nobr"><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L4_honey.pdf">Lecture 4: Honeycombs: In-plane (PDF - 6.2MB)</a></span></td>
+<td><span class="nobr"><a href="4/MIT3_054S15_L4_honey_trans.pdf">Lecture 4: Honeycombs: In-plane (PDF - 3.4MB)</a></span></td>
+</tr>
+<tr class="row">
+<td>5</td>
+<td>Honeycombs: Out-of-plane behaviour</td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L5_outpl.pdf">Lecture 5: Honeycombs: Out-of-plane (PDF - 2.0MB)</a></td>
+<td><a href="4/MIT3_054S15_L5_outpl_trans.pdf">Lecture 5: Honeycombs: Out-of-plane (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>6</td>
+<td>Natural honeycombs: Wood, cork</td>
+<td>
+<p><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L6_wood.pdf">Lecture 6: Wood (PDF - 4.1MB)</a></p>
+<p><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L6_cork.pdf">Lecture 6: Cork (PDF - 4.1MB)</a></p>
+</td>
+<td>
+<p><a href="4/MIT3_054S15_L6_wood_trans.pdf">Lecture 6: Wood (PDF - 1.8MB)</a></p>
+<p><a href="4/MIT3_054S15_L6_cork_trans.pdf">Lecture 6: Cork (PDF - 3.3MB)</a></p>
+</td>
+</tr>
+<tr class="row">
+<td>7</td>
+<td>Foams: Linear elasticity, strength, densification, fracture</td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L7_foams.pdf">Lecture 7: Foams (PDF - 7.1MB)</a></td>
+<td><a href="4/MIT3_054S15_L7_foams_trans.pdf">Lecture 7: Foams (PDF - 6.3MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td>8</td>
+<td>Foams: Mictrostructural design, lattice materials, property charts</td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L8_foam.pdf">Lecture 8: Foam design (PDF - 4.2MB)</a></td>
+<td><a href="4/MIT3_054S15_L8_foam_trans.pdf">Lecture 8: Foam design (PDF - 3.9MB)</a></td>
+</tr>
+<tr class="row">
+<td>9</td>
+<td>Foams: Thermal properties</td>
+<td><span class="nobr"><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L9_thrml.pdf">Lecture 9: Thermal properties (PDF - 3.0MB)</a></span></td>
+<td><a href="4/MIT3_054S15_L9_thrml_trans.pdf">Lecture 9: Thermal properties (PDF - 2.1MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td>10</td>
+<td>Exam review</td>
+<td>No notes</td>
+<td>No notes</td>
+</tr>
+<tr class="row">
+<td>11</td>
+<td>Trabelcular bone</td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L11_T_bone.pdf">Lecture 11: Trabecular bone (PDF - 3.9MB)</a></td>
+<td><a href="4/MIT3_054S14_L11_T_trans.pdf">Lecture 11: Trabecular bone (PDF - 3.7MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td>12</td>
+<td>Osteoporosis</td>
+<td><a href="4/MIT3_054S15_L12_T_bone.pdf"><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." />Lecture 12: Osteoporosis (PDF - 5.0MB)</a></td>
+<td><a href="4/MIT3_054S14_L12_T_trans.pdf">Lecture 12: Oseoporosis (PDF - 4.1MB)</a></td>
+</tr>
+<tr class="row">
+<td>13</td>
+<td>Tissue engineering scaffolds: Processing and properties</td>
+<td><span class="nobr"><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L13_tiss.pdf">Lecture 13: Tissue engineering scaffolds (PDF - 2.5MB)</a></span></td>
+<td><a href="4/MIT3_054S15_L13_tiss_trans.pdf"><span class="nobr">Lecture 13: Tissue engineering scaffolds (PDF - 1.5MB)</span></a></td>
+</tr>
+<tr class="alt-row">
+<td>14</td>
+<td>Tissue engineering scaffolds case study: Osteochondral scaffold</td>
+<td><a href="4/MIT3_054S15_L14_osteocho.pdf">Lecture 14: Osteochondral scaffold (PDF - 2.7MB)</a></td>
+<td>No transcription version</td>
+</tr>
+<tr class="row">
+<td>15</td>
+<td>Cell-scaffold interactions: attachment, morphology, contraction, migration, differentiation</td>
+<td><a href="4/MIT3_054S15_L15_Cell_scaff.pdf"><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." />Lecture 15: Cell-scaffold interactions (PDF - 4.1MB)</a></td>
+<td><a href="4/MIT3_054S15_L15_Cell_trans.pdf">Lecture 15: Cell-scaffold interactions (PDF - 3.5MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td>16</td>
+<td>Applications: Energy absorption</td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L16_enab.pdf">Lecture 16: Energy absorption (PDF - 6.4MB)</a></td>
+<td><a href="4/MIT3_054S15_L16_enab_trans.pdf">Lecture 16: Energy absorption (PDF - 5.1MB)</a></td>
+</tr>
+<tr class="row">
+<td>17</td>
+<td>Applications: Sandwich panels</td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054S15_L17_panel.pdf">Lecture 17: Sandwich panels (PDF - 4.5MB)</a></td>
+<td><a href="4/MIT3_054S15_L17_trans.pdf">Lectures 17: Sandwich panels (PDF - 3.2MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td>18</td>
+<td>
+<p>Natural sandwich structures</p>
+<p>Density gradients</p>
+</td>
+<td>
+<p><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="4/MIT3_054_S15_L18_Nat.pdf">Lecture 18: Natural sandwich structures (PDF - 1.6MB)</a></p>
+<p><a href="4/MIT3_054S15_L18_density.pdf">Lecture 18: Density gradients (PDF - 7.8MB)</a></p>
+</td>
+<td>
+<p><a href="4/MIT3_054S15_L18_Nat_trans.pdf">Lecture 18: Natural sandwich structures (PDF - 1.5MB)</a></p>
+<p><a href="4/MIT3_054S15_L18_dens_trans.pdf">Lecture 18: Density gradients (PDF - 5.5MB)</a></p>
+</td>
+</tr>
+<tr class="row">
+<td>19</td>
+<td>
+<p>Hierarchical structure and mechanics of plant materials</p>
+<p>Biomimicking</p>
+</td>
+<td><a href="4/MIT3_054S15_L19_Biomimicking.pdf">Lecture 19: Biomimicking (PDF - 1.8MB)</a></td>
+<td>No transcription version</td>
+</tr>
+<tr class="alt-row">
+<td>20</td>
+<td>How I became a professor</td>
+<td>No notes</td>
+<td>No notes</td>
+</tr>
+</tbody>
+</table>
+</br>
+<h2 class="subhead">Spring 2014 Guest Lectures</h2>
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+<th scope="col">LECTURE&nbsp;SLIDES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>
+<p>Nanofoams</p>
+<p>Guest lecture: Prof. Mike Demkowicz</p>
+</td>
+<td>
+<p><a href="4/MIT3_054S15_L12_nano_notes.pdf">Nanofoams notes (PDF)</a><br />(Courtesy of M. J. Demkowicz. Used with permission.)</p>
+<p><a href="4/MIT3_054S15_L12_nano_slides.pdf">Nanofoams slides (PDF - 2.6MB)</a><br />(Courtesy of M. J. Demkowicz. Used with permission.)</p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Metal foams</p>
+<p>Guest lecture: Dr. Nihan Tuncer</p>
+</td>
+<td><a href="4/MIT3_054S15_L13_Cellular.pdf">Cellular materials (PDF - 2.0MB)</a><br />(Courtesy of Nihan Tuncer. Used with permission.)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<p><a href="4/MIT3_054S15_Whale_Bone.pdf">Image Study of the Failure Mechanisms in Dry Trabecular Whale Bone During Fracture Toughness Tests (PDF)</a>&nbsp;(Courtesy of Bruno Gon&ccedil;alves da Silva)</p>
+<p><a href="4/MIT3_054S15_Mimicking_Hard.pdf">Mimicking Hardwoods Using Honeycombs Manufactured from Acrylonitrile Butadiene Styrene (ABS): A Comparison of Mechanical Properties (PDF - 1.1MB)</a>&nbsp;(Courtesy of Keri Mroszczyk and Patrick Dixon)</p>
+<p><a href="4/MIT3_054S15_Variation_Micro.pdf">Variation in Microstructure and Mechanical Properties of Tre Gai Bamboo (Bambusa stenostachya) with Position in the Culm (PDF)</a>&nbsp;(Courtesy of MIT Students)</p>
+<p><a href="4/MIT3_054S15_The_Wild.pdf">The "Wild" World of Honeycombs: A Comparative Analysis of Mammalian Hearing and Cranial Bone Structure (PDF)</a>&nbsp;(Courtesy of Deeni Fatiha and Nina Sinatra)</p>
+</br>

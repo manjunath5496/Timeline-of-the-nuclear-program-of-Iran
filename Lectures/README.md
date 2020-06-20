@@ -21,7 +21,7 @@
 <li><a href="#course20">Materials for Biomedical Applications</a></li>
 <li><a href="#course21">Electrochemical Processing of Materials</a></li>
 <li><a href="#course22">Photonic Materials and Devices</a></li>
-<li><a href="#course23">Probability and Statistics in Engineering</a></li>
+<li><a href="#course23">Welding and Joining Processes</a></li>
 <li><a href="#course24">Transportation Systems</a></li>
 <li><a href="#course25">An Introduction to Intelligent Transportation Systems</a></li>
 <li><a href="#course26">Logistical and Transportation Planning Methods</a></li>
@@ -3121,3 +3121,91 @@
 </tbody>
 </table>
 </br>
+<h2 id="course23">Welding and Joining Processes</h2>
+
+<table class="tablewidth50">
+<thead>
+<tr>
+<th>TOPICS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Course Introduction and the Study of Welding</td>
+</tr>
+<tr class="alt-row">
+<td>Welding Videos</td>
+</tr>
+<tr class="row">
+<td>Joining</td>
+</tr>
+<tr class="alt-row">
+<td>Bond Strength (<a href="6/33703.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Thermal Diffusivity (<a href="6/33704.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Forge Welding (<a href="6/33705.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Cold Welding (<a href="6/33706.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Adhesive Bonding (<a href="6/33707.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Surface Preparation (<a href="6/33708.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Examples of Adhesive Types (<a href="6/33709.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Diffusion Bonding (<a href="6/33710.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Diffusion Bonding (<a href="6/33711.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Soldering (<a href="6/33712.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Flux (<a href="6/33713.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Brazing (<a href="6/33714.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>More Power (<a href="6/33715.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Heat Intensity (<a href="6/33716.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Flames (<a href="6/33717.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Flame Cutting (<a href="6/33718.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Plasmas and Properties of Plasmas (<a href="6/33719.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Shielding Gases and Arc Ignition (<a href="6/33720.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Arc Redux and Heat Flow in Welding 101</td>
+</tr>
+<tr class="row">
+<td>Plasma Arcs and Heatflow</td>
+</tr>
+<tr class="alt-row">
+<td>Lasers and Electron Beams</td>
+</tr>
+<tr class="row">
+<td>Lasers and Electron Beams II</td>
+</tr>
+</tbody>
+</table>
+</br>
+

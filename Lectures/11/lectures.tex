@@ -1,0 +1,3987 @@
+\documentclass{report}
+\usepackage{fullpage}
+\begin{document}
+\title{3.185 Lectures}
+\author{Adam Powell}
+\date{Fall Semester, 2003}
+\maketitle
+
+\begin{abstract}
+  This represents the sum total of lecture material presented in 3.185, {\em
+    Transport Phenomena in Materials Engineering}, in the Fall of 2003.  It is
+  not meant to be a ``reader'' for the course, but more of an ``electronic
+  notebook'' of my own, a set of bullet points if you will, to guide the
+  content of each lecture.  As such, it reads very poorly, but does contain all
+  of the equations and derivations presented in the course.
+
+  This document is copyright 2003 by Adam Powell, and as part of MIT Open
+  CourseWare (OCW), is licensed in the same manner as other OCW documents (see
+  {\tt http://ocw.mit.edu/global/terms-of-use.html} for licensing terms).
+\end{abstract}
+
+\tableofcontents
+
+\chapter{Introduction}
+
+\section{September 3, 2003}
+
+Handouts: syllabus, ABET, Diffusion, PS1 due Monday 9/8.
+
+Circulate signup sheet: name, username, year, course
+
+\begin{itemize}
+\item Introductions: me, Albert.
+
+\item What is covered: review stuff on general overview.  Lots of complexity:
+  from single ODE to five fully-coupled nonlinear second-order PDEs in five
+  field variables.
+
+\item Intro to the general transport methodology: conservation and
+  constitutive equations
+  \begin{equation}
+    \label{eq:conservation}
+    \rm accumulation = in - out + generation
+  \end{equation}
+  Discuss the ``terms'', with a flying eraser.
+
+  Microscopic and macroscopic.
+
+\item Necessary for all classes of materials, ask how many are interested in
+  each:
+  \begin{itemize}
+  \item Polymers: synthesis, injection molding, membranes (Bo)
+  \item Bio: drug delivery, anisotropic diffusion, blood flow (cool)
+  \item Ceramics: powder synthesis, separation, drying, sintering
+  \item Electronic: crystal growth, CVD, diffusion
+  \item Metals: smelting, refining, casting, heat treatment
+  \end{itemize}
+
+\item Why 3.185 is important: processing-(structure)-properties-performance.
+  We do low-cost, high-quality processing, low environment overhead, which is
+  one of the two important aspects of this triad/tetrahedron.
+
+  Sponsors of our work care about two things: low-cost high-quality processes
+  and high performance.  They don't care about structure.  Andy Groves,
+  chairman of Intel, could care less about the electronic structure of titanium
+  silicide-titanium aluminide diffusion barriers in aluminum interconnects, he
+  wants cheap high-quality processes that result in high performance.  Closer
+  to home, parents' eyes glaze over at talk of ``Kinetics of eta phase
+  precipitation in nickel superalloys,'' but not at ``Avoiding catastrophic
+  failure of jet engine turbine blades in service.''  Structure provides an
+  important way to model the relationship between processing and properties,
+  without which a black box, not a science.
+\end{itemize}
+
+\paragraph{Mechanics}
+
+\begin{itemize}
+\item Discuss grading: HW points and collab, double-session tests, mixed final.
+\item Get test conflict dates, aim for Weds. 10/15--17, 11/19--21.
+\item Make sure everyone has a recitation.
+\item Schedule office hours.
+\item Discuss travel: three trips, none of which should impact 3.185.  If one
+  more, tradition of having previous TA give a lecture.
+\end{itemize}
+
+\paragraph{Required math}
+\begin{itemize}
+\item Vector arithmetic (dot product, cross product, outer product)
+\item Vector calculus (gradient, divergence, curl)
+\item Solving homogeneous linear ordinary differential equations, e.g.
+  \begin{equation}
+    \label{eq:ODEs}
+    y'' = k,\ \ {\rm or}\ \ y'' - ky = 0
+  \end{equation}
+\item What partial differential equations look like, e.g.
+  \begin{equation}
+    \label{eq:pdes}
+    \nabla^2 C = 0
+  \end{equation}
+\item The error function and derivatives:
+  \begin{eqnarray}
+    \label{eq:erfdef}
+    {\rm erf}(x) & = & \frac{2}{\sqrt{\pi}}\int_0^x e^{-\xi^2}d\xi \\
+    \frac{d}{dx}{\rm erf}(x) & = &
+    \frac{d}{dx}\frac{2}{\sqrt{\pi}}\int_0^x e^{-\xi^2}d\xi =
+    \frac{2}{\sqrt{\pi}}e^{-x^2}
+  \end{eqnarray}
+\item The substantial derivative: the time derivative in a moving frame.
+  \begin{equation}
+    \label{eq:substantialdef}
+    \frac{D}{Dt} = \frac{\partial}{\partial t} + \vec{u}\cdot\nabla
+  \end{equation}
+  Kind of like moving vector $x(t),y(t),z(t)$:
+  \begin{equation}
+    \label{eq:substantialexplan}
+    \left.\frac{dC}{dx}\right|_{(x,y,z)} = \frac{\partial C}{\partial t} +
+    \frac{\partial C}{\partial x}\frac{\partial x}{\partial t} +
+    \frac{\partial C}{\partial y}\frac{\partial y}{\partial t} +
+    \frac{\partial C}{\partial z}\frac{\partial z}{\partial t}.
+  \end{equation}
+\end{itemize}
+
+\paragraph{Previous feedback}
+
+\begin{itemize}
+\item Prof. Powell is cool, lectures are great, double tests are neat!
+\item This course spent way too much time on diffusion.  Okay, will cut a bit
+  shorter this time.  But non-3.01s will be lost, need to see TA or me.
+\item Too much busy algebra on problem sets.  Okay, will cut quite a bit, some
+  computer.
+\item Problem sets should be due on Friday instead of Monday, for last-minute
+  recitation help.  Poll class, incl. PS1 Mon or Weds?
+\item Textbook is awful.  It covers things in the wrong order, and is hard to
+  read.  Changing to new textbook, better readings, but still wrong order.
+  Also see Incropera and DeWitt, in Reading Room; old text there too.
+\item TLL: ``muddiest part'', index cards for each lecture from Friday, started
+  last year, need more.
+\item Too much online.  But taking it off would only hurt those without
+  Bibles.  Sorry, won't do.
+\item Prof. Powell lets ``dumb'' questions slow things down.  No dumb
+  questions.  Very often correct mistakes or omissions, ten others have the
+  same question.  If anything, MIT juniors and seniors need to be much more
+  vocal!  (Last mid-term evaluation, dreadful lecture...)
+\end{itemize}
+\newpage
+
+
+\chapter{Diffusion}
+
+\section{September 5, 2003: 1-D Cartesian and Cylindrical Steady-State}
+\label{diff1dss}
+
+TODO:
+\begin{itemize}
+\item Check reading room to make sure texts are there.
+\item Bring: cards, class list.
+\item Check text to make sure chap 25 units are consistent with mine.
+\end{itemize}
+
+\noindent Opener: Colleen's facility with names... my advisee!
+
+Mechanics:
+\begin{itemize}
+\item Diffusion handout typo: should be erfc($y$) = 1--erf($y$).
+\item Choose new recitation times!
+\item Finalize test dates.
+\item Invite example processes.
+\item Index cards for muddiest part.
+\item Try names.
+\end{itemize}
+
+\paragraph{Diffusion}
+Stuff they've learned before, new twist.  Steady state 1-D cartesian,
+cylindrical coordinates.
+
+Steady-state: accumulation=0.  In today's case, species isn't generated or
+consumed inside the glass, so in--out=0.  (Monday: generation by homogeneous
+chemical reaction.)
+
+1-D: concentration varies only in one direction.
+
+My style: start with a motivating example, introduce the physics along the
+way.  When we're done, we have the physics, and an example of how to use it.
+
+Yesterday: 3.185 is about low-cost high-quality processes.  Here a process, not
+for material but for helium, maximize productivity a.k.a. throughput subject to
+process constraints.
+
+Example: helium diffusion through pyrex glass, enormously higher $D$ than any
+other gas (25x hydrogen!).  Some helium in natural gas, can flow through pyrex
+tubes to separate, 2mm OD 1mm ID.  Generally diffusion-limited.  Want to
+calculate the production rate, more important understand how works, because
+from understanding flows design recommendations.  ASSUME diffusion-limited, so
+this is the slow-step, not adsorption/desorption etc.
+
+Simple solution: unroll to a plate, with $C_{in}$ on one side (equilibrium with
+partial pressure in natural gas) and $C_{out}$ on the other (pumped away into
+tanks), be sure to use thickness $\delta$.  We know how to do this:
+\begin{quotation}
+  \noindent Constitutive law: Fick's first, gradient points up, diffusion goes
+  down, proportionality constant $D$:
+  \begin{equation}
+    \label{eq:ficksfirst}
+    \vec{J} = -D\nabla C, J_x = -D \frac{\partial C}{\partial x}
+  \end{equation}
+  Units of each term.
+
+  \noindent 1-D: no difference in $y$- or $z$-direction, so those partials are
+  zero.  When varies in only one direction and not time, not partial but total
+  $dC/dx$.
+
+  \noindent Conservation with no accumulation or generation: $dJ_x/dx = 0$,
+  substitute to get
+  \begin{equation}
+    \label{eq:ficks1.5}
+    \frac{d}{dx}\left(D\frac{dC}{dx}\right) = 0,
+  \end{equation}
+  ASSUME constant $D$ this is
+  \begin{equation}
+    \label{eq:ficksecond}
+    \frac{d^2 C}{dx^2} = 0.
+  \end{equation}
+  General solution in 1-D:
+  \begin{equation}
+    \label{eq:linear}
+    C = Ax + B.
+  \end{equation}
+  Boundary conditions (limited by diffusion):
+  \begin{equation}
+    \label{eq:linbcs}
+    x=0 \Rightarrow C=C_{in}, x=\delta \Rightarrow C=C_{out}.
+  \end{equation}
+  Result: flux
+  \begin{equation}
+    \label{eq:linflux}
+    J=-D dC/dx=-D \frac{\Delta C}{\delta}.
+  \end{equation}
+
+  At 500$^\circ$C, $D_{\rm He-pyrex}=2\times 10^{-8}\ \frac{\rm cm^2}{\rm s}$,
+  for some steady gas/helium mixture $C_{in}=10^{-5}\frac{\rm g}{\rm cm^3}$,
+  say $C_{out}\simeq 0$.  For $\delta={\rm 0.5mm=0.05cm}$, this gives
+  \begin{equation}
+    \label{eq:realflux}
+    J = {\rm 2\times 10^{-8}\ \frac{cm^2}{s} \cdot
+    \frac{10^{-5}\frac{g}{cm^3}}{0.05cm} =
+    4\times10^{-12}\frac{g}{cm^2\cdot s}}.
+  \end{equation}
+  Tube array with total length 10m=1000cm (e.g. 100 tubes each 10 cm long),
+  $R_2={\rm OD}/2=0.1$cm, so throughput is
+  \begin{equation}
+    \label{eq:realfluxarea}
+    JA = 2\pi R_2 L J = 8\times10^{-10}\pi =
+  2.5\times10^{-9}\frac{\rm g}{\rm s}
+  \end{equation}
+  Or do we use $R_1$?  That would give $1.2\times10^9$.  How far off is the
+  flux?  A dilemma.
+
+  \noindent Timescale: $\delta^2 \simeq Dt \Rightarrow$ steady state.  Here
+  $t\simeq\delta^2/D=125000$ seconds, about a day and a half.
+\end{quotation}
+
+\noindent Design: what to do to improve throughput?
+\begin{itemize}
+\item Smaller $\delta$: possible breakage
+\item Higher $D$: change glass, raise temperature
+\item Higher $\Delta C$: raise/lower temperature, change glass
+\end{itemize}
+Okay, that was the braindead 1-D solution.  What about the real cylinder?
+
+\paragraph{Cylindrical coordinates}
+
+So, $C_{out}$ at outside, $C_{in}$ at inside, what to do between?  Use $R_1$
+and $R_2$ for inner, outer radii.  Fick's first, assume 1-D, so $C$ is function
+of $r$ only.
+\begin{equation}
+  \label{eq:cylfick1}
+  J_r = -D\frac{dC}{dr}
+\end{equation}
+Conservation: in at $r+\Delta r$, out at $r$, no gen or accum, area $2\pi r L$:
+\begin{equation}
+  \label{eq:cylconserv}
+  0 = [2\pi r L J_r]_r - [2\pi r L J_r]_{r+\Delta r},
+\end{equation}
+divide by $2\pi L$, $\Delta r\rightarrow 0$:
+\begin{equation}
+  \label{eq:cyleq}
+  0 = -\frac{d}{dr}[r J_r]
+\end{equation}
+Plug in flux:
+\begin{equation}
+  \label{eq:cyloverall}
+  0 = \frac{d}{dr}\left(rD\frac{dC}{dr}\right).
+\end{equation}
+Now solve:
+\begin{eqnarray}
+  \label{eq:cyleqint}
+  A' & = & r D\frac{dC}{dr} \\
+  \frac{A'}{Dr} & = & \frac{dC}{dr} \\
+  C & = & A \ln r + B
+\end{eqnarray}
+where $A=A'/D$.  From BCs:
+\begin{equation}
+  \label{eq:cylintsol}
+  \frac{C-C_{in}}{C_{out}-C_{in}} = \frac{\ln (r/R_1)}{\ln (R_2/R_1)}
+\end{equation}
+Check at $R_1$ and $R_2$, units.
+
+\noindent Flux$=-D dC/dr$:
+\begin{equation}
+  \label{eq:cylflux}
+  J_r = -D\frac{dC}{dr} = -D \frac{d}{dr}
+  \left[C_in + (C_{out}-C_{in})\frac{\ln (r/R_1)}{\ln (R_2/R_1)}\right] =
+  D\frac{C_{in}-C_{out}}{\ln (R_2/R_1)}\frac{1}{r}.
+\end{equation}
+Important result: not flux, but flux times area.
+\begin{equation}
+  \label{eq:cylfluxarea}
+  AJ_r = -2\pi r L D\frac{dC}{dr} =
+  2\pi r L D \frac{C_{in}-C_{out}}{\ln (R_2/R_1)}\frac{1}{r}.
+\end{equation}
+Note $r$s cancel, so $AJ_r$ is constant for all $r$.  Make sure units work.
+Cool.
+
+\noindent Numbers, result: 1.8$\times10^{-9}$.  Between the 1-D estimates.
+Overestimated flux, at $R_2$ is really $1.44\times10^{-12}$, twice that at
+$R_1$, so $R_1$ value is closer.
+
+\noindent More important: cartesian gave {\em wrong design criterion}!  Not
+minimize $\delta$, but minimize $R_2/R_1$!  Double production by going from 2
+to $\sqrt{2}$ because $\ln(\sqrt{2}) = \frac{1}{2}\ln(2)$, e.g. 3 mm OD with no
+change in thickness!
+
+\noindent Other design issues: helium on inside or outside?  Inside means glass
+is in tension, outside compression.  But if gas is dirty, inside is easier to
+clean.
+
+\noindent Note: on problem set 2, will derive this for a sphere for a drug
+delivery device.  Pretty cool.
+\newpage
+
+
+\section{September 8, 2003: Steady-State with Homogeneous Chemical Reaction}
+
+\noindent Mechanics:
+\begin{itemize}
+\item New recitations: R12, F2, both in 8-306.
+\item Fri: very different lecture, ABET stuff.
+\end{itemize}
+Names.
+
+\noindent Muddy stuff:
+\begin{itemize}
+\item Recitations. :-)
+\item Dislike cgs units.
+\item Clearer writing and neater presentation.  (Big chalk...)
+\item Why both ways?  One is simple but wrong, other is complex and right.
+\item Flux in cylindrical coordinates.  Give full gradient. (Next time.)
+\item Integrating to get solution: $d/dr(rdC/dr)=0\Rightarrow C=A'\ln r+B$.
+
+\item General$\longrightarrow$particular solution in cylindrical coords.  Start
+  with general, plug in BCs:
+  \begin{equation}
+    \label{eq:cylstdgen}
+    C = A\ln r + B
+  \end{equation}
+  \begin{eqnarray}
+    \label{eq:cylstdconcderive}
+    C_{in} &=& A'\ln R_1 + B \\
+    C_{out} &=& A'\ln R_2 + B \\
+    C_{out} - C_{in} &=& A'(\ln R_2 - \ln R_1) \\
+    A' &=& \frac{C_{out} - C_{in}}{\ln (R_2/R_1)} \\
+    C_{in} &=& \frac{C_{out} - C_{in}}{\ln (R_2/R_1)}\ln R_1 + B \\
+    B &=& C_{in} - \frac{C_{out} - C_{in}}{\ln (R_2/R_1)}\ln R_1 \\
+    C &=& \frac{C_{out} - C_{in}}{\ln (R_2/R_1)}\ln r + 
+    C_{in} - \frac{C_{out} - C_{in}}{\ln (R_2/R_1)}\ln R_1 \\
+    C-C_{in} &=& \frac{C_{out} - C_{in}}{\ln (R_2/R_1)} \ln (r/R_1) \\
+    \frac{C-C_{in}}{C_{out}-C_{in}} &=& \frac{\ln (r/R_1)}{\ln (R_1/R_2)}
+  \end{eqnarray}
+
+\item Didn't finish: timescale to steady-state $\tau\sim L^2/D$, in this case
+  125,000 seconds, about a day and a half.  Will explore this more rigorously
+  on Friday.
+\end{itemize}
+Summarize: illustrates 3.185 methodology
+\begin{itemize}
+\item Problem statement: maximize throughput = flux$\times$area
+\item Conservation equation
+\item Constitutive equation
+\item Combine to give (partial) differential equation
+\item General solution with integration constants
+\item Boundary conditions give values of integration constants
+\item Use solution to get problem objective: flux$\times$area
+\item Design recommendation follows from solution
+\end{itemize}
+Like p. 465 of W$^3$R.
+
+\paragraph{Generation} Homogeneous chemical reactions.  RCC carbon
+fiber-reinforced graphite composite!  Very high-temperature, high-strength.
+Carbon fiber preform, model as a porous material, diffusion of acetylene to the
+surfaces of the fibers, at high temp it decomposes and deposits graphite.
+
+\noindent Problem: as it deposits, it seals off the entrances, non-constant
+diffusivity.  Generation of acetylene $G = -kC$.  UNITS!
+
+\noindent Set up problem in center, symmetry, sheet of material.  1-D equation:
+\begin{equation}
+  \label{eq:genbalance}
+  0 = D\frac{d^2C}{dx2} + G = D\frac{d^2C}{dx^2} - kC
+\end{equation}
+General solution, using polynomials $e^{Rx}$, $R=\pm\sqrt{k/D}$, so
+\begin{equation}
+  \label{eq:gensolution}
+  C = A\exp\left(x\sqrt{\frac{k}{D}}\right) +
+  B\exp\left(-x\sqrt{\frac{k}{D}}\right)
+\end{equation}
+BCs: at $x=\pm\frac{L}{2}$, $C=C_0$, so $A=B$,
+\begin{equation}
+  \label{eq:genbcfit}
+  C_0 = A \left[\exp\left(\frac{L}{2}\sqrt{\frac{k}{D}}\right) +
+    \exp\left(-\frac{L}{2}\sqrt{\frac{k}{D}}\right)\right] =
+  A \cosh\left(\frac{L}{2}\sqrt{\frac{k}{D}}\right)
+\end{equation}
+Result:
+\begin{equation}
+  \label{eq:gendone}
+  \frac{C}{C_0} = \frac{\cosh\left(x\sqrt{\frac{k}{D}}\right)}
+  {\cosh\left(\frac{L}{2}\sqrt{\frac{k}{D}}\right)}
+\end{equation}
+
+What does this look like?  Pay attention to $\frac{L}{2}\sqrt{\frac{k}{D}}$, or
+more generally, $\frac{L^2 k}{D}$.  Can either be sorta uniform, or VERY
+non-uniform, uniform if that number is small (thin sheet, slow reaction, fast
+diffusion), nonuniform if it's large (thick sheet, fast reaction, slow
+diffusion).  Makes sense.
+
+So, have process, want to double thickness with same uniformity, can't change
+$D$ much, how much change $k$?  Drop by factor of 4.  Problem: takes four times
+as long!!
+
+The real solution: blow acetylene through it!
+\newpage
+
+
+\section{September 10, 2003: Unsteady-State Diffusion}
+
+TODO:
+\begin{itemize}
+\item Check reading room to make sure texts are there.
+\item Bring: cards, class list.
+\item Check W$^3$R pages for this lecture.
+\end{itemize}
+NAMES!
+
+\noindent Mechanics:
+\begin{itemize}
+\item Get office hours together.
+\item Pump the zephyr instance.
+\item Fri: very different lecture, ABET stuff.
+\end{itemize}
+
+\noindent Muddy stuff:
+\begin{itemize}
+\item Cylindrical gradient (W$^3$R appendices A-B, p. 695--700):
+  \begin{equation}
+    \label{eq:cylgrad}
+    \nabla C = \frac{\partial C}{\partial r}\hat{r}
+    + \frac{1}{r}\frac{\partial C}{\partial\theta}\hat{\theta}
+    + \frac{dC}{dz}\hat{z},
+  \end{equation}
+  \begin{eqnarray}
+    \label{eq:cyllap}
+    \nabla^2 C &=& \frac{\partial^2C}{\partial r^2}
+    + \frac{1}{r}\frac{\partial C}{\partial r}
+    + \frac{1}{r^2}\frac{\partial^2C}{\partial\theta^2}
+    + \frac{\partial^2C}{\partial z^2},\ {\rm or} \\
+    &=& \frac{1}{r}\frac{\partial}{\partial r}\left(
+      r\frac{\partial C}{\partial r}\right)
+    + \frac{1}{r^2}\frac{\partial^2C}{\partial\theta^2}
+    + \frac{\partial^2C}{\partial z^2},\ {\rm or} \\
+  \end{eqnarray}
+\item During derivations, important points are obscured.  ``What we've
+  learned'' summaries help.  Basically following outline mentioned before, on
+  p. 465 of W$^3$R.  Also feel free to snooop around Athena directory...
+\item How to draw exponentials in concentration profile?
+\item Plotting hyperbolic trig functions---necessary?  No.  If needed, use
+  calc/table.
+\item Too quick jump from integ consts to carbon fiber material, missed lots.
+\item Keep C$_2$H$_2$ conc constant for constant rate?  Not quite, keep it
+  uniform.
+\item How to calculate C$_2$H$_2$ consumption rate?  Use concentration (or
+  partial pressure) and reaction constant.  But often don't know reaction
+  constant, need to try at various temperatures, or just do what we did---find
+  something which works, and use this methodology to understand why and how to
+  make work for new designs.
+\item How do we get:
+  \begin{equation}
+    \label{eq:secondderivative}
+    \lim_{\Delta x\rightarrow 0}-D\frac{\left.\frac{dC}{dx}\right|_x -
+      \left.\frac{dC}{dx}\right|_{x+\Delta x}}{\Delta x} + G =
+    D\frac{d^2C}{dx^2} + G?
+  \end{equation}
+  Derivative of the derivative is the second derivative?
+\item Arrhenius plot: which part is diffusion-limited, which part
+  reaction-limited?  Can't really compare because of different units.  But can
+  sort of make a plot of $\log(kL^2/D)$ vs. $1/T$, look at different parts.
+  Want: low-temperature reaction-limited case, with fast diffusion to wipe out
+  conc gradients.  Diffusion-limited means it doesn't diffuse in very far.
+
+  Next Monday: reaction and diffusion in series, which dominates is more
+  straightforward, can easily compare the different coefficient.
+\item How did $\sqrt{k/D}L/2$ become $kL^2/D$?  What's important for design: if
+  two designs have the same $kL^2/D$, then have the same $\sqrt{k/D}L/2$, same
+  uniformity.  So use the simpler one to guide design decisions.  Get into
+  further with dimensional analysis next week.
+\item Why no flux at $x=0$?  Because of symmetry: on left, flux goes right; on
+  right, flux goes left; in middle, flux goes... nowhere!  Symmetry, or
+  zero-flux boundary condition, like PS2 \#3.
+\end{itemize}
+
+\paragraph{Unsteady Diffusion}
+
+Last two times: stories to take home: increasing production rate of helium from
+natural gas, high-quality manufacturing of reinforced carbon-carbon for space
+shuttle wing, nose leading-edge tiles.  This time: math first, examples later,
+because three different solutions to the diffusion equation, examples can use
+one or more.
+
+Now accumulation != 0, rate also in mol/sec = $V \partial C/\partial t$.
+Chapter 27 material.  Resulting equation in 1-D:
+\begin{equation}
+  \label{eq:unsdiffusion}
+  \frac{\partial C}{\partial t} = D\frac{\partial^2C}{\partial x^2} + G.
+\end{equation}
+Physical intuition: concentration curvature is either due to generation, or
+leads to time evolution, or both.  Upward curvature means neighbors diffuse in,
+either $G$ negative or $C$ increases; downward means diffuse out, either $G$
+positive or $C$ decreases.
+
+Today focus on zero-generation solutions which you've seen before, to be used
+in this class (book derives them using Laplace transforms...):
+\begin{itemize}
+\item Error function:
+  \begin{eqnarray}
+    \label{eq:erfsol}
+    C &=& A{\rm erf(c)} \left(\frac{x}{2\sqrt{Dt}}\right) + B, \\
+    \frac{\partial C}{\partial t} &=& -\frac{x}{2\sqrt{\pi Dt^3}}
+    \exp\left(-\frac{x^2}{4DT}\right), \\
+    \frac{\partial C}{\partial x} &=& \frac{2}{\sqrt{\pi}}\frac{1}{2\sqrt{Dt}}
+    \exp\left(-\frac{x^2}{4DT}\right), \\
+    \frac{\partial^2C}{\partial x^2} &=& -\frac{1}{\sqrt{\pi Dt}}\frac{2x}{4Dt}
+    \exp\left(-\frac{x^2}{4DT}\right) \\
+    &=& -\frac{x}{2\sqrt{\pi D^3t^3}} \exp\left(-\frac{x^2}{4DT}\right).
+  \end{eqnarray}
+  So this satisfies equation \ref{eq:unsdiffusion}.
+
+  What it looks like: graph erf, erfc; discuss constant C BC $x=0\Rightarrow
+  C=C_0$, uniform C IC $t=0\Rightarrow C=C_i$.  Results:
+  \begin{equation}
+    \label{eq:erfit}
+    C_i>C_s \Rightarrow
+    C = C_s + (C_i-C_s) {\rm erf}\left(\frac{x}{2\sqrt{Dt}}\right)
+  \end{equation}
+  \begin{equation}
+    \label{eq:erfcfit}
+    C_s>C_i \Rightarrow
+    C = C_i + (C_s-C_i) {\rm erfc}\left(\frac{x}{2\sqrt{Dt}}\right)
+  \end{equation}
+
+  Semi-infinite.  But what if your part is not semi-infinite, but thickness
+  $L$?  (Not many parts are semi-infinite...)  Since erf(2)=0.995 and
+  erfc(2)=0.005, we can approximate $\infty\simeq 2$, if
+  $\frac{L}{2\sqrt{Dt}}>2$, then erf is about 1 and erfc about 0, can consider
+  semi-infinite.  Solve for $t$:
+  \begin{equation}
+    \label{eq:seminf}
+    t < \frac{L^2}{16D} \Rightarrow {\rm semi-infinite}.
+  \end{equation}
+  (Recall $t>L^2/D\Rightarrow$ steady-state...)
+
+\item ``Shrinking Gaussian'':
+  \begin{eqnarray}
+    \label{eq:shrgaus}
+    C &=& \frac{A\delta}{\sqrt{\pi Dt}}\exp\left(-\frac{x^2}{4Dt}\right) + B \\
+    \frac{\partial C}{\partial t} &=& ...
+  \end{eqnarray}
+  Graph: initial layer of height $A+B$ in background of $B$, spreads out.
+  Note: not valid for short times, only for
+  \begin{equation}
+    \label{eq:gaussvalid}
+    2\sqrt{Dt}>\delta \Rightarrow t > \frac{\delta^2}{4D}.
+  \end{equation}
+  Note also (semi-)infinite, like erf valid for $t<L^2/16D$.  Note one-sided,
+  two-sided; either way, BC at $x=0\Rightarrow \partial C/\partial x=0$.
+
+  Not necessarily square initial condition!  Can even start with erf, drive in
+  to shr Gaussian.
+\end{itemize}
+\newpage
+
+
+\section{September 12, 2003: 9/11 remembered, ABET}
+
+TODO: Bring ABET handout!
+
+\noindent Schedule office hours.
+\vspace{\baselineskip}
+
+September 11.  The day meant a lot of things to a lot of people.  Yesterday the
+occasion was commemorated in a number of ways, here in Boston, in my hometown
+of New York City, and around the country and the world.  I can't hope to be as
+profound as some of the speakers at those services, but can talk about a few
+things it meant to me personally, in particular as I have reflected on my
+decision to become an engineer, and my purpose in the profession.  Perhaps some
+of it will resonate with one or two of you; I invite your comments or
+questions, and we'll take as long for this as we have to.
+
+I'd like to start nine days before the tragedy, when I was in New York for my
+sister-in-law's wedding.  My wife's parents live in Brooklyn, which is where
+the ceremony was held, but we were staying with her aunt and uncle in Long
+Island.  At least twice a day in the few days beforehand, we drove the Belt
+Parkway and Brooklyn-Queens Expressway, wrapping around Brooklyn, passing under
+the Verazzano bridge and entering New York Harbor, with the view of the Statue
+of Liberty and the majestic buildings rising ahead, the skyline dominated, of
+course, by the World Trade Center.
+
+During those drives, I recalled the experience of my High School French teacher
+Mr. Schwartzbart, an Austrian Jew who survived World War II in a rural Belgian
+boys' camp which, unknown to him at the time, was made up entirely of Jewish
+boys, and in fact, was set up to keep them safe throughout the Nazi occupation.
+He described the terror he felt under the occupation, and then the arrival of
+the American soldiers, ``All of them giants,'' he said, then pointed to me,
+``like Adam,'' they had come to set the continent free.
+
+And he described the journey to America as a young teenager, a transforming
+experience.  Most amazing was the entry of his ship carrying scores of poor
+immigrants like himself into New York Harbor, this impossibly enormous bridge
+which just got bigger and bigger as they approached (the Verazzano was the
+longest span in the world for about 50 years), the tranquility of the harbor
+within, with the great buildings visible ahead including the Empire State, and
+the Statue of Liberty to his left as they steamed toward Ellis Island (the
+World Trade Center's construction was still 20 years away).  There was an
+awe-inspiring sense of the magnitude of this great nation of impossible size
+which had overwhelmed some of the greatest evil the world had ever known, and
+his heart swelled with joy at the thought that there was such power on the side
+of liberty.
+
+These days in is fashionable to reflexively cringe at the identification of
+this country with freedom, and this teacher in particular very frequently
+commented cynically on the deficiencies in American culture and education.
+Having come to know this side of him, when we asked why he came to this
+country, Mr. Schwartzbart's reply surprised us: ``The land of the free and the
+home of the brave.''  Then after a pause, ``It really is true.''  His personal
+experience of this gave great weight to these words.
+
+During these drives along the Belt Parkway, my thoughts also turned toward the
+fragility of the grand edifices, and in particular to the 1993 bombing of the
+underground parking lot of one of the Twin Towers.  Fortunately the towers
+withstood that attempt to destroy them, but there would surely be more
+attempts, and no amount of devastation was too horrible for the perpetrators to
+dream up.  Should anything happen, I was grateful for the opportunity to see
+this beauty, and even to feel a small piece of what Paul Schwartzbart had felt
+some fifty years earlier.  I thought of how fortunate is his generation which
+came through the Depression, fought that terrible war, and lived to see the
+nation preside over such a long and prosperous peacetime as the world had
+perhaps never before known.
+
+So you can imagine my shock when just nine days later, as I sat in my office,
+my wife called from home to say that while watching CNN, they announced that a
+plane had crashed into the World Trade Center.  Well, I thought, about 60 years
+ago a small plane hit the Empire State building, I'm sure there was a lot of
+damage and many people killed, but the rest of the building should be fine.
+Just a few minutes later she called again to tell me about the second plane,
+and suddenly I was afraid.  Then the Pentagon, and the missing plane in
+Pennsylvania.  My thoughts turned to the Mid-East, and this administration's
+policy of deliberate neglect in the Israeli-Palestinian peace process.  Then
+the last call, one tower had collapsed.  With her voice choking from the tears,
+she described its fall as ``like a house of cards,'' and could say little more.
+Immediately, I logged out, got on my bike, and pedaled home as fast as I could.
+
+I'm sure each of us can tell a story about where we were when it happened.
+Being from New York, I was immediately concerned for friends and family.  My
+wife's grandmother went to the roof of her building in Queens, from where she
+saw the second plane hit the south tower, and that tower's collapse.  I had
+shared this view every day growing up as I rode the Roosevelt Island tramway to
+school and saw these buildings which seemed as permanent as mountains.  My
+wife's best friend in College, who lives in the Prospect Heights section of
+Brooklyn and works in the southern tip of Manhattan, noticed people in his
+neighborhood looking up and saw some smoke, but rushed into the subway as he
+was late for work; the packed subway stopped after it left Brooklyn and waited
+in the tunnel for about 20 minutes before it turned back and he got out and
+learned what had happened.  My Elementary School best friend worked in the 17th
+floor of Tower 1, and had a bad back which would have made it painful and
+difficult to get out---if he hadn't been home sick that day.
+
+Then there was my father's friend whom I know well and whose business had just
+finished moving into the 89th floor of Tower 1.  His staff had been told not to
+come in that morning until 10 AM, because their carpets, freshly washed during
+the 1-7 AM shift, would need to finish drying.  As he drove north on the New
+Jersey Turnpike, he saw the first plane crash right through the windows of his
+new office, then took the next exit and went right back to his daughter's
+kindergarten class.
+
+The previous Spring and Summer I had a course 6 UROP student in my group.  His
+brother worked above the 90th floor of Tower 2, and on the first and second day
+afterward without a word to anyone in his family, my student grew panicked,
+then desparate, then increasingly hopeless.  His brother finally called to say
+that a friend had literally dragged him from the office after the first plane
+hit, and they ran out of the building together just as the second plane smashed
+into it.  He described bits of the hell that was the area around him, but at
+the time had no other thought than to get away, go home and lie down in shock,
+not even thinking about his relatives who were trying to reach him.  My student
+described the moment when they connected as one of the happiest of his life.
+
+Another friend was not so fortunate.  Her father worked in an upper floor of
+Tower 2, and was one of just two in his company who didn't make it out.  To
+make matters worse, she was trapped in L.A. because of grounded planes, unable
+to get back and try to locate him, so day upon day she was not only uncertain
+and hurting but frustrated at being far from anyone who could help her.  She is
+still grieving, as it's hard to accept that she lost the closest person to her
+in the world because a handful of maniacs decided to crash a plane into his
+building.
+
+There are of course tens of thousands more stories like these, so many people
+were affected directly or knew someone who was.  But even if you were not so
+directly involved, if you're like me, the tragedy didn't end on that day, but
+played out over and over again in your mind.  I can't count how many mornings
+in the ensuing months I woke up at 3 AM thinking about the towers' collapse,
+feeling hurt, afraid, angry, and much as I hate to admit it, somewhat
+vindictive as we learned of the total destruction of the Al Queda camps and
+cave complexes in Afghanistan.
+
+Then thoughts turned to my own life.  What can I do, what's my role in the
+world, how can I help?
+
+I turned to the motivations I had for entering science and engineering, and
+materials science in particular, which I came up with in High School.
+Motivations for studying these things vary greatly, from interest in the
+subject matter, elegance of the equations, beauty of nature etc., to being able
+to earn a stable income and support a household, or perhaps a large income, to
+serving society in some way.  My own motivations fell somewhat in the first
+category, but if I had followed that alone I would have been 6-3 (computer
+science); it was the last of these categories, serving society, which steered
+me into Materials Science.
+
+As a high school student, I verbalized this service as follows.  As a scientist
+or engineer, I would be helping to solve the world's little problems, which I
+listed as:
+\begin{itemize}
+\item Agriculture, to feed a growing planet.
+\item Medicine, allowing people to lead longer, healthier lives.
+\item Transportation and communications, to bring people together and lessen
+  the chances of conflict.  For example, much of the reason war between France
+  and Germany today is unthinkable is because there are so many more personal
+  cross-border relationships now than in 1940 or 1914, it's very difficult for
+  a propagandist to castigate an entire people as ``the enemy'' and it's
+  becoming more difficult every year.
+\item Human interactions with the environment, for sustainable living.
+\item A recent addition, information access, with implications for democracy,
+  as the biggest enemy of an authoritarian state is the truth.
+\end{itemize}
+
+All of these are important in themselves, but even more important, if we do our
+jobs well and make a difference in these areas, we help the artists,
+politicians, economists, philosophers and theologians to solve the big
+problems, which I would list as:
+\begin{itemize}
+\item World peace.
+\item Averting famines, and their relief.  Almost all famines can be avoided
+  without resort to international aid, and are the result of poor resource
+  management or hoarding.
+\item Real public health, made available to those who need it around the world.
+\item Justice, including somewhat equitable economic distribution.
+\item Truth in journalism and history.
+\item Human happiness and fulfillment.
+\item Purpose and meaning for our lives.
+\item Artistic expression of emotions, of values, of that purpose and meaning.
+\item Last year Ross Benson added: Tolerance of differences.
+\end{itemize}
+
+An important consequence of this understanding of ``little problems'' and ``big
+problems'' is that being a scientist or engineer requires a lot of {\em faith},
+faith that our knowledge and our inventions will be used wisely, for good and
+not for evil.  The more ``sciencey'' our contributions, the more faith is
+necessary, with the ultimate example perhaps being nuclear science, which can
+be used to produce lots of cheap power or cure diseases, or destroy entire
+cities in an instant.  If we work on weapons, they can of course be used for
+defense or for aggression.
+
+But even if we're not working on nuclear science or weaponry, one of the
+lessons of September 11 for me is that no matter how careful we are to focus on
+purely non-military technologies, this tragedy showed that even a civilian
+jetliner---built to bring people together---can be abused by people with
+sufficient hatred as a weapon of mass destruction.  This is truly frightening
+for us, and requires us to have that much more faith in the people,
+institutions and systems surrounding the technology in whose development we
+participate.
+
+So what should we do?  Shall we abandon technology altogether and go back to
+rubbing sticks together?  Perhaps we should join the peace corps?  For some of
+us that will be the answer, but I think there's a lot more that can be done
+with the little problems that can help to make a real impact on the big ones.
+So how can we put ourselves in positions to do as much good as possible?
+
+I can think of a few ways, but at your age and even at mine, perhaps the most
+important is to take a step back and examine what we're doing and why.  I have
+an advisee taking this class now who took off all of last Spring for that very
+purpose, and ended up returning to MIT (and in fact to Materials Science) that
+much more focused than the previous December for the experience.  Of course,
+you don't have to take off a semester to do this, there are very good ways to
+do some of this right here.
+
+First, the HASS and HASS-D subjects present outstanding opportunities for this
+kind of exploration.  MIT is no longer just about training technology leaders,
+but also about training world leaders who know about technology, and this
+school has put enormous resources into building world class departments in the
+Humanities, Arts and Social Sciences.  For example, I've heard tremendous
+things about our Anthropology department from a variety of external sources,
+and even within our department we offer a HASS subject called Materials in the
+Human Experience (3.094) every Spring.
+
+Second, I've made a point of suggesting to all of my advisees that they get to
+know the MISTI programs (I think that stands for MIT Internships in Science,
+Technology and Industry), which do an outstanding job not just of sending
+students to companies, universities and government labs in foreign countries,
+but also preparing them for the trip, even culturally and psychologically.
+
+Third, develop a habit of using your wealth to support organizations and causes
+which effectively promote what you view as positive values.  You may not have
+much now, but you will later, and getting into this habit is not hard;
+furthermore, membership in many of these organizations requires a contribution
+of as little as \$30.  If you like I can discuss offline some of the
+organizations I've given to since my undergraduate years, one even since high
+school.
+
+Fourth, look for opportunities to participate in the process of improving lives
+yourselves.  Whether tutoring or mentoring, or working in a social justice
+organization, or writing to Congress, participating in society in a meaningful
+way is important to making it all work, and I believe important to improving
+ourselves too.  Believe it or not, time is actually one resource which you will
+{\em not} have more of later in life than you have now, particularly if
+children become part of your life.
+
+Fifth and perhaps most importantly, get to know your fellow students.  This
+buzzword is repeated over and over again, but it's worth repeating yet again:
+because MIT attracts the best and brightest from all over the world, the {\em
+  diversity} of the students on this campus is truly extraordinary, it's almost
+certainly broader and deeper than anything you've experienced before college,
+and almost certainly broader and deeper than anything you will ever experience
+later in life.  That goes for Cambridge as well, and many other universities,
+though much less so on the graduate level and beyond.  And by getting to know
+your colleagues, I don't just mean hanging out and eating pizza, nor even
+getting to know what spices they use to cook lamb, though food is of course an
+important part of social interaction.  I'd encourage you to learn something
+about your friends' lives, their families, their values---and be willing to
+discuss these aspects of yourselves too.
+
+And given its importance, I'd encourage you to learn something about your
+friends' faith.  Human institutions, organizations, systems and even nations
+are terrific, but never perfect, as we learned in a powerful way on September
+11.  Participating in and strengthening them is an important and honorable
+activity, but I believe that placing all of our hope on them is not viable in
+the long term.  At some point they're going to let us down, as this country has
+in some ways let down my French teacher Mr. Schwartzbart.  Furthermore,
+evidence abounds for forces at work in the universe beyond those of physics,
+and even grows with the increase of human knowledge about this universe;
+perhaps the most significant example is the Anthropic Principle in Cosmology,
+which some of you may have heard of and I'd be happy to discuss offline.
+
+That concludes what I said last year: the tragedy reminds us that our work here
+is very important, but must be viewed in context, and done with faith that it
+will be used for the broad purposes for which we intend it.  Since last year,
+time has passed and some of the emotions have subsided just a bit, also several
+important things have happened, or have not happened, causing my own feelings
+about this to be somewhat more complicated.
+
+For one thing, the message from Washington continues to urge us to live out
+lives as if nothing had happened, because if we changed anything, we'd be
+giving the terrorists what they want.  But this is foolishness, important
+things have changed, and as citizens there are things we can do on a daily
+basis to improve our country's security, and the silence from Washington has
+been deafening.
+
+A few months ago I saw a book provocatively titled, ``When you ride alone, you
+ride with bin Laden.''  The cover art was derived from a World War II poster,
+``When you ride alone, you ride with Hitler,'' whose point was that the
+practices of avoiding driving, carpooling, and using public transportation save
+gasoline needed for the war effort.  In that vein, an important thing which has
+{\em not} happened is that there has been no effort whatsoever on a national
+level to reduce our dependence on imported oil, which has been a huge factor in
+our problems in the Middle East.  In fact, we've seen the opposite in this
+administration's rollback in fuel economy standards, and heard talk about the
+costs to the auto manufacturers and consumers of requiring increases in
+efficiency, with no mention whatsoever of the multitude of costs of continuing
+to burn fossil fuels as extravegantly as we like.
+
+Another thing which has changed my view of the world was the war in Iraq.  For
+months, the administration hyped any evidence at all for Iraqi connections to
+Al Qaeda and possession or development of weapons of mass destruction.  Then
+inspections were allowed (to be fair, largely due to U.S. pressure, and no
+thanks to the posturing of certain countries like France), and one-by-one the
+inspections eliminated every piece of purported WMD evidence save the rumor
+about uranium purchase from Niger.  And so with that one rumor as
+justification, we sent an invasion force to Kuwait, and used technological
+superiority to destroy the Iraqi army in about four weeks.
+
+I believe that the war was wrong for a number of reasons.  First, as mentioned,
+it was completely unjustified.  There was no correlation to terrorism, none to
+weapons of mass destruction, and there are a dozen dictators around the world
+whose human rights violations could similarly motivate action.  If violation of
+U.N. resolutions was the motive, then it's up to the U.N. to act.
+
+Second, this war was an extremely imprudent waste of resources.  It is unwise
+to spend a couple of hundred billion dollars on a flimsily-justified war in a
+time of record deficits, and even more imprudent to tie down fifteen of the
+U.S. Army's thirty-three combat brigades in that occupation during a time of
+multiple threats from WMD in North Korea and Iran, to shaky stability in
+Afghanistan, to low-level al Qaeda activity from Indonesia to Somalia.  And
+most significant is the loss of hundreds of American and thousands of Iraqi
+lives, very nearly including that of my own brother, a Captain in the U.S.
+Army third infantry division's second brigade, whose unit was hit by an Iraqi
+missile just after their capture of downtown Baghdad.  Like my Course 6 UROP
+student two years ago, the days between learning of the attack and confirming
+my brother's safety were some of the longest of my life.  I cannot imagine the
+terror and grief of hundreds of thousands of loved ones of Iraqi soldiers who
+did not know for weeks or months whether their sons, brothers, husbands or
+fathers were dead or alive, nor the pain of those whose worst fears were in the
+end confirmed.
+
+Finally, the war has cost us diplomatically, and will continue to cost us
+potentially for many generations.  The arrogance with which the administration
+shrugged off overwhelming international opposition was shocking, prticularly as
+it involved three of the five Security Council permanent members, some of our
+most important allies, and both of our neighbors.  Even more shocking was the
+pathetically childish pettiness with which the administration spoke of
+``punishing'' the opponents to the war---particularly the French---and then
+turned around to ask them to contribute money and troops to the occupation and
+reconstruction to reduce the resource burden on us.  But in the long term, the
+most diplomatically destructive aspect of the war is the precedent it sets for
+accusing a nation of violations of one sort or another, putting aside
+international outcry for restraint, and using military superiority to crush the
+weaker victim.  This precedent can easily be abused by, say, Turkey, Syria,
+Egypt, Jordan and Saudi Arabia against Israel, North Korea against the South,
+Russia against the former Soviet Republics, China against Taiwan---any nation
+with a fight to pick can say, ``But of course it's been done before, by the
+Land of the Free and Home of the Brave!''
+
+And so we are reminded of our duty as citizens to speak out about matters of
+importance to our country.  And in particular, as scientists and engineers we
+have the duty to speak out with authority on certain issues such as the small
+cost of reducing energy consumption, and the enormous costs of not doing so.
+Most of all, in the changed world our need for faith is greater than ever, in
+our work as well as our outlook for the future.  I welcome any comments,
+contributions, or questions.
+
+\paragraph{ABET Sheet Review}
+
+See the ABET sheet.
+
+\paragraph{Unsteady Diffusion Continued}
+
+Muddy stuff:
+\begin{itemize}
+\item Symbol conventions: $C_i$ is initial, $C_0$ I use as surface and
+  sometimes other things; $C_s$ always surface concentration.
+\item Physical meaning of graphs, interpretation of these things: coming soon.
+\item Exact criteria for each solution: will be summarized.
+\item Semi-infinite and erf validity.  First, semi-infinite applies to
+  one-sided erf and one-sided shrinking Gaussian.  Fully infinite applies to
+  two-sided both.  Second, the criterion is derived from the error function:
+  $t<L^2/16D \Rightarrow {\rm erf}(x/2\sqrt{Dt}) > 0.995$ and erfc is below
+  0.005.  Same criterion for erf, erfc, shrinking Gaussian.
+\item How do the M and top-hat initial conditions give the same equation?  Over
+  a long time, the details of the initial condition smooth out and become
+  Gaussian.
+\end{itemize}
+
+\noindent Continuing where we left off last time (did the erf and shrinking
+  Gaussian):
+\begin{itemize}
+\item Fourier Series:
+  \begin{eqnarray}
+    \label{eq:fourier}
+    C &=& a \exp(-b^2Dt) \sin(bx) ({\rm or }\ \cos), \\
+    \frac{\partial C}{\partial t} &=& -ab^2D \exp(-b^2Dt) \sin(bx), \\
+    \frac{\partial C}{\partial x} &=& ab \exp(-b^2Dt) \cos(bx), \\
+    \frac{\partial^2 C}{\partial x^2} &=& -ab^2 \exp(-b^2Dt) \sin(bx). \\
+  \end{eqnarray}
+  Elegant and simple.  Separation of variables: all of the $t$ in one term, all
+  of the $x$ in the other $f(t)g(x)$.  [Eigenfunctions...]
+
+  Graph: sine wave decays with time.
+\end{itemize}
+\newpage
+
+
+\section{September 15, 2003: Wrapup unsteady, boundary conditions}
+\label{unstdiff}
+
+Muddy from last time:
+\begin{itemize}
+\item Appreciate 9/11 reflections, not political opinions.  Apologies to those
+  affected, particularly language.  Forms a strong part of 9/11 feelings,
+  particularly as administration has done its best to tie them together.
+  Uncomfortable with talking about one side and not the other.  War must always
+  be a last resort when other means e.g. negotiation have been tried.  Defining
+  objectives as narrowly as ``regime change'' with neither aggression nor clear
+  and present danger (Bush {\em and} Clinton) is as misguided and wrong as
+  extremists in the region who call for destrurction of a certain state ``by
+  any means necessary''.  Open for last words...
+\end{itemize}
+
+\noindent Continuing where we left off last time (did the erf and shrinking
+  Gaussian):
+\begin{itemize}
+\item Fourier Series:
+  \begin{eqnarray}
+    \label{eq:fourier2}
+    C &=& a \exp(-b^2Dt) \sin(bx) ({\rm or }\ \cos), \\
+    \frac{\partial C}{\partial t} &=& -ab^2D \exp(-b^2Dt) \sin(bx), \\
+    \frac{\partial C}{\partial x} &=& ab \exp(-b^2Dt) \cos(bx), \\
+    \frac{\partial^2 C}{\partial x^2} &=& -ab^2 \exp(-b^2Dt) \sin(bx). \\
+  \end{eqnarray}
+  Elegant and simple.  Separation of variables: all of the $t$ in one term, all
+  of the $x$ in the other $f(t)g(x)$.  [Eigenfunctions...]
+
+  Graph: sine wave decays with time.  Like a sinusoidal layered material being
+  annealed in time.  If period=2$L$, then $b=\pi/L$, get:
+  \begin{equation}
+    \label{eq:sinefit}
+    C = a\exp\left(-\frac{\pi^2Dt}{L^2}\right)\sin\left(\frac{\pi x}{L}\right).
+  \end{equation}
+
+  But what use is a sine wave?  Note linearity of diffusion equation: any sum
+  of solutions is also a solution.  So we can add sine waves to get something
+  more useful, use that.
+
+  Fourier transform: express {\em any} initial condition as sum of sine waves.
+  We'll do one: square wave of period $2L$ for multilayer material annealing,
+  each term has period $2L/n$ so $b_n=n\pi/L$:
+  \begin{equation}
+    \label{eq:squarefourier}
+    C = \sum_{n=0}^\infty a_n \exp\left(-\frac{n^2\pi^2Dt}{L^2}\right)
+    \sin\left(\frac{n\pi x}{L}\right).
+  \end{equation}
+  The Fourier transform:
+  \begin{equation}
+    \label{eq:fft}
+    a_n = \frac{4}{n\pi},\ n\ {\rm odd},\ 0,\ n\ {\rm even}.
+  \end{equation}
+  Illustrate different sine functions, how they add to a square wave.  Result:
+  \begin{equation}
+    \label{eq:squarefourierfit}
+    C = C_0 + (C_{max}-C_0) \sum_{n=1, n\ {\rm odd}}^\infty \frac{4}{n\pi}
+    \exp\left(-\frac{n^2\pi^2Dt}{L^2}\right) \sin\left(\frac{n\pi x}{L}\right).
+  \end{equation}
+
+  So we start with all these sine waves, then what happens?  Higher-order terms
+  shrink real fast.  Graph amplitude vs. time, show $n=3$ drops out nine times
+  faster, $n=5$ twenty-five times faster.  Do it as $t/\tau$, where
+  $\tau=L^2/\pi^2D$, so first term is $\exp(-t/\tau)$, second $\exp(-9t/\tau)$.
+  One term remains real fast.
+
+  Consider: $t=L^2/D$...  What is single-term max concentration at that time?
+  $4/\pi \times \exp(-\pi^2) = 6.5\times10^{-5}$, quite close to zero!
+
+  Other application: finite system with thickness $L$, uniform IC, constant $C$
+  boundary conditions. Graph, show the ``virtual'' wave outside.  Note that at
+  short times, erf is easier; long times, one-term sine wave is easy.
+
+  TA wanted to do 2-D and 3-D separation $C=f(t)g(x)h(y)$...
+
+  Suppose something more like first lecture, section \ref{diff1dss} (p.
+  \pageref{diff1dss}): initial flat, one side raised?  Then linear plus Fourier
+  series, with odd and even $n$; even so, at $t=L^2/D$, first term, max conc is
+  a tiny fraction of original.  So, very close to steady-state!
+\end{itemize}
+
+\paragraph{Which to use?} Summary of criteria:
+
+\begin{itemize}
+\item Error functions erf, erfc:
+  \begin{itemize}
+  \item (Semi-)infinite
+  \item Uniform initial condition at $t=0$ equal to boundary condition at
+    $x=\infty$
+  \item Constant concentration boundary condition at $x=0$, infinite
+    source/sink backing it up.
+  \end{itemize}
+
+\item Shrinking Gaussian $\frac{A\delta}{\sqrt{\pi Dt}}e^{-x^2/4Dt} + B$:
+  \begin{itemize}
+  \item (Semi-)infinite
+  \item Fixed amount of material already in solid and diffusing into infinity
+  \item Gaussian ``width'' $2\sqrt{Dt}$ much larger than $\delta$
+  \end{itemize}
+
+\item Fourier series:
+  \begin{itemize}
+  \item Infinite 1-D sine or square wave initial condition, {\em or}
+  \item Finite layer thickness $L$
+  \item Uniform initial condition at $t=0$
+  \item Constant concentration boundary conditions at $x=0$, $x=L$
+  \end{itemize}
+\end{itemize}
+
+\noindent Examples:
+\begin{itemize}
+\item Decarburizing steel sheet: initial concentration $t=0\Rightarrow C=C_i$,
+  boundaries $x=0,L\Rightarrow C=C_s=0$ due to oxidation.  Start erf, go to
+  Fourier.
+\item Semiconductor devices: initial treatment with phosphorous-containing gas,
+  initially no phosphorous so $t=0\Rightarrow C_P=0$; fixed concentration at
+  surface $C=C_eq$ or $C_s$ or $C_0$.  Erf.  Then seal the top, no more gas,
+  drive-in diffusion gives shrinking Gaussian.
+\item Galvanizing steel: thin layer of zinc on iron.  Initial:
+  $x<\delta\Rightarrow C=C_0$, $x>\delta\Rightarrow C=0$.  Start erf (diffusion
+  couple) but centered at $x=\delta$
+  \begin{equation}
+    \label{eq:galvcouple}
+    C=\frac{C_0}{2}{\rm erfc}\left(\frac{x-\delta}{2\sqrt{Dt}}\right).
+  \end{equation}
+  This holds for as long as the zinc is semi-infinite, i.e. $t<\delta^2/16D$.
+  For long times $t>\delta^2/D$, finite amount of zinc means shrinking
+  Gaussian:
+  \begin{equation}
+    \label{eq:galvgauss}
+    C=\frac{C_0\delta}{\sqrt{\pi Dt}} \exp\left(-\frac{x}{4Dt}\right).
+  \end{equation}
+\end{itemize}
+\newpage
+
+
+\section{September 17, 2003: Boundary conditions, layer growth}
+
+\noindent Fun opener: Michael Dixon on calculus in physics in Dorchester.
+
+Muddy from last time:
+\begin{itemize}
+\item Square wave: why is $a_n$ zero for even $n$?  That's the Fourier
+  transform; would throw off symmetry.
+\item How erfs in infinite square wave IC?  Like diffusion couple...
+\item What is plotted on the graph of amplitude vs. time?
+\item Steady Fourier: $\frac{4}{\pi}\exp(-\pi^2)$ constant?  No, wave with that
+  amplitude at $t=L^2/D$; for longer time asymptotically approaches $C=C_{av}$.
+\item In galvanizing situation, why erf for small times?  Isn't it a finite
+  amount of zinc?  At very small times, can consider even the zinc as
+  semi-infinite.  Also, at small times $t<\delta^2/D$, shrinking Gaussian
+  doesn't work, goes to infinitely tall and thin.
+\item What to use in example 3 between $\delta^2/16D<t<\delta^2/D$?  Nothing
+  covered here; perhaps another Fourier transform...
+\item Write down initial conditions for examples...  Added to lecture notes, in
+  my home directory.
+\end{itemize}
+
+\paragraph{Diffusion boundary conditions}
+
+Types:
+\begin{itemize}
+\item Constant $C$: what's that C?
+\item Constant flux: sealed means zero, sometimes ion beams, etc. (not often)
+\item Flux vs. C, for chemical reaction or mass transfer coefficient.  $J=k
+  (C-C_{eq})$ (note ChemEs' $k''$...)  Units: $k$ in cm/s.  Also mass transfer
+  coefficient through fluid film: $J=h_D (C-C_{eq})$, where $h_D = \delta/D$.
+\end{itemize}
+
+Example: gas diffusion in metal.  Oxygen, nitrogen, hydrogen in metals:
+diffuses monoatomically, $\rm 2 O(m) \Leftrightarrow O_2(g)$, equation:
+\begin{equation}
+  \label{eq:diatomic}
+  K_{eq} = \frac{p_{\rm O_2}}{[O]^2}.
+\end{equation}
+So oxygen concentration at equilibrium is proportional to the square root of
+pressure.  (Not the same for helium, argon, etc.)  Then if flux is proportional
+to difference in concentrations, it's proportional to square root of difference
+in partial pressures!
+
+\noindent Misconception 1: Equilibrium is {\bf NOT} steady-state.  Global
+equilibrium here would be a brick of SiO$_2$.  Local equilibrium gives
+concentrations at interface sometimes.  Can be out of local equilibrium and at
+steady state too.
+
+\noindent Misconception 2: kinetic reaction rate order is {\bf NOT}
+thermodynamic order.
+
+\paragraph{Layer growth}
+
+Motivating example: silicon oxidation (example W$^3$R pp. 487-489).  Electronic
+components, this is the ``gate oxide'' in MOSFETs, draw p-n-p structure.
+Thickness must be tightly controlled for the FET to work---to switch at the
+right voltage.  How to make the oxide?  Expose it to air, and it just grows.
+Cool.  Wet oxidation too: expose it to steam and it grows differently
+(slower?).  How much does it grow, how long to leave it there?
+
+Go to the phase diagram, this one is pretty simple.  Start with equilibrium.
+Many times, can use the phase diagram.  Others, with impure phases (like air),
+or partial pressure or total pressure dependency, need activity to get
+equilibrium concentration at interface.
+
+Out of equilibrium, but interfaces at local equilibrium: diffusion-limited,
+explain the concept of pseudo-steady-state.  Growth is really slow because,
+although $D$ might be high leading to steady-state, $C_3-C_1$ is really small,
+leading to slow flux, really slow growth of the layer.  Growth rate:
+\begin{equation}
+  \label{eq:fluxgrow}
+  J_O = \frac{\rm 2\ moles\ O}{\rm 1\ mole\ SiO_2}
+\frac{\rho_{\rm SiO_2}}{MW_{\rm SiO_2}} \frac{dY}{dt}.
+\end{equation}
+Why?  Proportional to $J_O$, then it's just a matter of working out units.
+
+No.  $J\Delta t$ is the amount over a certain amount of time, $(C_1-C_0) \Delta
+Y$ is the area on the graph needed to transform that much Si to SiO$_2$.
+
+\noindent For equilibrium, set $J=\Delta C/Y$, solve for $Y$:
+\begin{eqnarray}
+  \label{eq:parabolicgrowth}
+  \frac{C_3-C_1}{Y} &=& \frac{\rm 2\ moles\ O}{\rm 1\ mole\ SiO_2}
+  \frac{\rho_{\rm SiO_2}}{M_{\rm SiO_2}} \frac{dY}{dt} \\
+  Y dY &=& \frac{\rm 1\ mole\ SiO_2}{\rm 2\ moles\ O}
+  \frac{M_{\rm SiO_2} (C_3-C_1)}{\rho_{\rm SiO_2}} dt \\
+  \frac{Y^2-Y_0^2}{2} &=& \frac{\rm 1\ mole\ SiO_2}{\rm 2\ moles\ O}
+  \frac{M_{\rm SiO_2} (C_3-C_1)}{\rho_{\rm SiO_2}} (t-t_0).
+\end{eqnarray}
+Parabolic growth.  Plotted in text, p. 489.  But the plot doesn't quite work!
+\newpage
+
+
+\section{September 19, 2003: Layer Growth, Dimensional Analysis}
+
+Mechanics etc.
+\begin{itemize}
+\item Forgot last time: test 1 October 13?
+\item Monday: no class, but I will be here for office hours 2:30-3:30 as usual;
+  Albert?
+\item Next Thurs 9/25: GE CEO Jeffrey Immelt at Bartos theater (downstairs
+  Media Lab)...
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Pseudo-steady-state of what?  Diffusion: growth is slow, so conc profile
+  reaches steady-state.
+\item Why $J_0 = \frac{\Delta Y}{\Delta t}(C_1-C_0)$?  Explain: $J_O\Delta t$
+  is the amount of oxygen which the flux has fed through.  $(C_1-C_0)\Delta Y$
+  is the amount of oxygen needed to transform $\Delta Y$ worth of silicon into
+  silicon dioxide.
+\item Why $Y(t)$?  Is all diffusion-limited growth proportional to $\sqrt{t}$?
+\end{itemize}
+
+\paragraph{Layer growth}
+
+Motivating example: silicon oxidation (example W$^3$R pp. 487-489).  How much
+does it grow, how long to leave it there?
+
+Back to phase diagram: $C_0$, $C_1$ and $C_3$ as three equilibrium
+concentrations at operating temperature.  Out of equilibrium, but interfaces at
+local equilibrium: pseudo-steady-state.
+
+For equilibrium, set $J=\Delta C/Y$, solve for $Y$:
+\begin{eqnarray}
+  \label{eq:parabolicgrowth2}
+  \frac{Y^2-Y_0^2}{2} &=& \frac{\rm 1\ mole\ SiO_2}{\rm 2\ moles\ O}
+  \frac{M_{\rm SiO_2} (C_3-C_1)}{\rho_{\rm SiO_2}} (t-t_0).
+\end{eqnarray}
+Parabolic growth.  Plotted in text, p. 489.  But the plot doesn't quite work!
+
+Next out of local equilibrium: say 1st order chemical reaction as the slow
+step.  (Note: kinetic order vs. thermodynamic equilibrium exponents!)  Then
+introduce $C_2$ between $C_1$ and $C_3$, say the rate is proportional to
+$C_2-C_1$, proportionality constant is the reaction rate coefficient which we
+call $k$.  Very short times:
+$$J = k(C_2-C_1) \simeq k(C_3-C_1),$$
+constant growth rate, {\em linear} film growth.
+
+\label{thecalc}
+Suppose $C_3$ at oxide outer surface, $C_2$ at back interface, $C_1$ in
+equilibrium with silicon, reaction limit with constant $k$, $J=k(C_2-C_1)$.
+Want $J(C_3,C_1)$.  Solve all together:
+$$J = k(C_2-C_1) = \frac{D}{Y}(C_3-C_2) \left[\Rightarrow
+  \frac{C_3-C_2}{C_2-C_1} = \frac{kY}{D}\right]$$
+$$\left(k+\frac{D}{Y}\right) C_2 = k C_1 + \frac{D}{Y} C_3$$
+$$C_2 = \frac{kC_1 + \frac{D}{Y} C_3}{k+\frac{D}{Y}} =
+\frac{\frac{kY}{D} C_1 + C_3}{\frac{kY}{D} + 1}$$
+Now get $J$:
+$$J = k\left(\frac{kC_1 + \frac{D}{Y} C_3}{k+\frac{D}{Y}} - C_1\right)$$
+$$J = k\left(\frac{\frac{D}{Y} C_3 - \frac{D}{Y} C_1}{k+\frac{D}{Y}}\right)$$
+$$J = \frac{C_3 - C_1}{\frac{Y}{D} + \frac{1}{k}} =
+\frac{k(C_3-C_1)}{\frac{kY}{D} + 1}$$
+Resistances in series.  What dominates?  Biot number!  $\frac{kY}{D}$  Ratio of
+resistances.  Small times and small $Y$ mean small Biot, reaction-limited.
+Long times and large $Y$ mean large Biot, diffusion-limited.
+
+\paragraph{Dimensional analysis}
+
+W$^3$R pp. 140--142.  Definitions:
+\begin{itemize}
+\item Base units: m, s, mol
+\item Derived units: cm/s, N, mol/cm$^3$
+\item Dimensions: $L$, $t$, $C_O$
+\end{itemize}
+
+\paragraph{Step 1} Postulate desired behavior as a function of the other
+variables, {\em e.g.} $J_O = f(C_1-C_3, k, D, Y)$, or $f (J_O, C_1-C_3, k, D,
+Y) = 0$.  The number of parameters is the number of dimensions $n$, in this
+case $n=5$.
+
+This is done by intuition, and is very often the hardest step in the process.
+
+\paragraph{Step 2} Find the number of base units in the system $r$.  Here: cm,
+s, mol, so $r=3$.
+
+\paragraph{Step 3} Buckingham Pi theorem: number of dimensionless groups =
+$n-r$.
+
+\paragraph{Step 4} Choose $r$ dimensionally-independent variables to eliminate,
+which will make the others dimensionless.  Here we'll choose $C_1-C_3$, $D$,
+and $Y$.
+
+Counterexample: can't use $k$, $D$ and $Y$ because they're not independent!
+Very often there are multiple ``right answers'' (fluid dynamics), choose the
+one which is most convenient.
+
+\paragraph{Step 5}  Form the $\pi$ groups from what's left, which are unitless
+versions of the parameters.  Dimensionless $J$, called $\pi_J$, is $J \cdot
+[C_3-C_1]^a \cdot [D]^b \cdot [Y]^c$.  Easy way: make a table with base units
+across the top, start with dimensions of $J$.  Which of the eliminated units
+have moles?  $C_3-C_1$, so we can say $a=-1$ and moles are cancelled.  Then
+which have seconds?  $D$, so we can say $b=-1$ and seconds are cancelled.  Now
+there's just cm$^{-1}$, so $c=1$ and we're done:
+$$\pi_J = \frac{J_O Y}{(C_3-C_1) D}.$$
+
+Likewise, $\pi_k$ starts with $k$ in m/s, so $a=0$, $b=-1$, $c=1$.  Look, it's
+the mass transfer Biot number!
+
+\paragraph{Step 6} Rewrite Step 1 in dimensionless terms, and we're done:
+$$\pi_J = f(\pi_k).$$
+What's this?  So simple?  Can't be.
+
+Let's test:
+$$J_O=\frac{C_3-C_1}{\frac{1}{k} + \frac{Y}{D}}$$
+Mult by $\frac{Y}{(C_3-C_1)D}$ to give
+$$\frac{J_O Y}{(C_3-C_1)D} = \frac{1}{\frac{D}{kY} + 1} =
+\frac{1 + \frac{D}{kY} - \frac{D}{kY}}{\frac{D}{kY} + 1} =
+1 - \frac{1}{1+\frac{kY}{D}}$$
+So,
+$$\pi_J = 1 - \frac{1}{1+\pi_k}$$
+Limiting cases: large $\pi_k$ means $\pi_J = 1-0 = 1$, so $J_O =
+\frac{D}{Y}(C_3-C_1)$.
+
+For small $\pi_k$, use $\frac{1}{1+x}\simeq1-x$ near $x=0$, so $\pi_J = \pi_k$,
+$J_O = \frac{D}{Y}(C_3-C_1)\frac{kY}{D} = k(C_3-C_1)$.  Excellent!
+
+Purpose: simplify down to an easier expression, single graph.  If couldn't
+solve equation, single graph could be obtained from one experiment, generalized
+to any other reaction-diffusion problem of the same nature.  Physical modeling,
+e.g. wind tunnel: get the dimensionless numbers right, every detail of flow is
+the same, dimensionless drag force is identical!
+
+\noindent This ends diffusion, next week heat conduction!
+
+
+
+\chapter{Heat Conduction}
+
+\section{September 24, 2003: Wrap up dimensional analysis, start heat
+  conduction}
+
+Mechanics:
+\begin{itemize}
+\item Handout: heat conduction equation solutions.
+\item GE CEO tomorrow noon Bartos
+\item Tests 1, 2 (10/10, 11/19) first part in 2-143.
+\item Final Mon 12/15 1:30-4:30 ``2-105''...
+\end{itemize}
+
+\noindent Muddy stuff from last time:
+\begin{itemize}
+\item How steady-state diffusion in oxide?
+\item How is $C_1-C_0=2\frac{\rho}{M}$?  $C_1-C_0\gg C_3-C_1$ and $C_1-C_0\gg
+  C_0$, so for this purpose, $C_1=C_3=$moles oxygen/unit volume in SiO$_2$ and
+  $C_0\simeq 0$.  Molar density of SiO$_2$ is $\rho/M$, molar density of oxygen
+  is twice that.
+\item Dimensional analysis was fast.  Yes, learning the steps is easy, but
+  ``How to choose which variables to `postulate desired behavior'?''  Not
+  easy, learn by example---we'll do this many more times this term...
+\item How to form dimensionless quantities?  If counted $i=n-r$ correctly, and
+  chose dimensionally-independent parameters to eliminate, then like
+  simultaneous equations: units of $J$ * (units of $\Delta C)^a$... etc.  Table
+  as an easier way of doing that.  Will do an example today with $\pi_k$.
+\item (Multiple people) How is $\pi_J$ a function of $\pi_k$?  Stay tuned for
+  the dramatic conclusion of dimensional analysis...
+\end{itemize}
+
+\paragraph{Dimensional Analysis}
+
+Recap last time:
+\begin{enumerate}
+\item Postulate desired behavior as a function of the other variables, {\em
+    e.g.} $J_O = f(C_1-C_3, k, D, Y)$, or $f (J_O, C_1-C_3, k, D, Y) = 0$.  The
+  number of parameters is $n$, in this case $n=5$.
+
+\item Find the number of base units in the system $r$.  Here: cm, s, mol, so
+  $r=3$.  (Rank of the dimensional matrix...)
+
+\item Buckingham Pi theorem: number of dimensionless groups = $n-r$.
+
+\item Choose $r$ dimensionally-independent variables to eliminate, which will
+  make the others dimensionless.  Here we'll choose $C_1-C_3$, $D$, and $Y$
+  (NOT $k$, $D$ and $Y$ because they're not independent!)
+
+\item Form the $\pi$ groups from what's left, which are unitless versions of
+  the parameters kept:
+  $$\pi_J = \frac{J_O Y}{(C_3-C_1) D}, \pi_k = \frac{kY}{D}.$$
+\item Rewrite Step 1 in dimensionless terms, and we're done: $\pi_J =
+  f(\pi_k).$
+\end{enumerate}
+What's this?  So simple?  Can't be.  Let's test:
+$$J_O=\frac{C_3-C_1}{\frac{1}{k} + \frac{Y}{D}}$$
+Mult by $\frac{Y}{(C_3-C_1)D}$ to give
+$$\frac{J_O Y}{(C_3-C_1)D} = \frac{1}{\frac{D}{kY} + 1} =
+\frac{1 + \frac{D}{kY} - \frac{D}{kY}}{\frac{D}{kY} + 1} =
+1 - \frac{1}{1+\frac{kY}{D}}$$
+So,
+$$\pi_J = 1 - \frac{1}{1+\pi_k}$$
+Limiting cases: large $\pi_k$ means $\pi_J = 1-0 = 1$, so $J_O =
+\frac{D}{Y}(C_3-C_1)$.
+
+For small $\pi_k$, use $\frac{1}{1+x}\simeq1-x$ near $x=0$, so $\pi_J = \pi_k$,
+$J_O = \frac{D}{Y}(C_3-C_1)\frac{kY}{D} = k(C_3-C_1)$.  Excellent!
+
+Purpose: simplify down to an easier expression, single graph.  If couldn't
+solve equation, single graph could be obtained from one experiment, generalized
+to any other reaction-diffusion problem of the same nature.  Physical modeling,
+e.g. wind tunnel: get the dimensionless numbers right, every detail of flow is
+the same, dimensionless drag force is identical!
+
+\paragraph{Heat Conduction}
+
+Conservation of math (in one ear, out the other).  But
+seriously, conservation of thermal energy, for us enthalpy.  Usual equation:
+$$\rm accumulation = in - out + generation$$
+$$V\frac{dH}{dt} = Aq_{\rm in} - A q_{\rm out} + V\dot{q}$$
+Note on the accumulation term: when temperature changes, enthalpy changes
+according to the heat capacity, build up units from dT/dt (Kelvin/sec) adding
+$c_p$ and $\rho$ to get to Joules/sec.
+
+What's heat flux $\vec{q}$?  Like diffusion goes down the conc gradient
+(actually, chem potential gradient), heat goes down the temperature gradient,
+proportionality constant $k$:
+\begin{equation}
+  \label{eq:fouriersfirst}
+  \vec{q} = -k \nabla T.
+\end{equation}
+Using that in-out and that accumulation term, derive the 1-D heat equation,
+same as diffusion in section \ref{unstdiff} (p. \pageref{unstdiff}).  Simplify
+constant $k$, 1-D, so:
+\begin{equation}
+  \label{eq:fouriersecond}
+  \rho c_p\frac{\partial T}{\partial t} = k \frac{\partial^2T}{\partial x^2} +
+  \dot{q}.
+\end{equation}
+Define thermal diffusivity $\alpha = k/\rho c_p$, with no gen reduces to
+diffusion equation, and give 1-D solutions:
+\begin{itemize}
+\item 1-D steady-state: linear temperature.
+\item Cylindrical steady-state: $T=A\ln r +B$; with uniform generation: $T=A\ln
+  r+B-Gr^2/2$
+\item 1-D semi-infinite uniform initial, constant $T$ boundary:
+  \begin{equation}
+    \label{eq:erftemp}
+    \frac{T-T_s}{T_\infty-T_s} =
+    {\rm erf} \left(\frac{x}{2\sqrt{\alpha t}}\right).
+  \end{equation}
+\item 1-D finite, uniform initial $T$, boundary constant $T$: Fourier series
+  \begin{equation}
+    \label{eq:fouriertemp}
+    \frac{T-T_s}{T_i-T_s} = \sum_{n=1}^\infty a_n
+    \exp\left(-\frac{n^2\pi^2\alpha t}{L^2}\right)
+    \sin\left(\frac{n\pi x}{L}\right)
+  \end{equation}
+\end{itemize}
+Even more on the handout, not responsible for any further than handout (and not
+asterisks either).
+
+\noindent Timescale to steady-state... any guesses?
+
+Optional: Why does heat go down the temp gradient, and diffusion down the chem
+potential gradient?  Thermo: increasing $S$ or decreasing $G$.  Spinodal
+decomposition: negative $\partial^2G/\partial C^2$, uphill diffusion!  Fourier
+series in reverse...
+\newpage
+
+
+\section{September 26, 2003: Heat conduction: boundary layers, multilayer wall}
+
+Opener: Christine Ortiz talk on how inquisitive this class is...
+
+\noindent Mechanics:
+\begin{itemize}
+\item PS3 due today, PS4 due Monday 10/6.
+\item Last test 1 material next Wednesday, following math quiz in 2-143!
+\item Tests 1, 2 (10/10, 11/19) first part in 2-143.
+\item Final Mon 12/15 1:30-4:30 ``2-105''...
+\item Zeiss materials microscopy truck at Chapel Turnaround 10/2 9-4.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Why is $\pi_J=\pi_k$ at small $\pi_k$?  Okay.  For $x\simeq 1$,
+  $\frac{1}{x}\simeq 2-x$.  So, for $\pi_k\simeq 0$, $1+\pi_k\simeq 1$, and
+  $$\frac{1}{1+\pi_k}\simeq2-(1+\pi_k)=1-\pi_k$$
+  $$\pi_J = 1-\frac{1}{1+\pi_k} \simeq 1-(1-\pi_k) = \pi_k$$
+\end{itemize}
+
+\paragraph{Boundary conditions}
+\begin{itemize}
+\item Constant temperature.
+\item Constant flux $\vec{q} \cdot \hat{n}$ const, in 1-D $q_x =
+  -k\frac{\partial T}{\partial x}$.
+\item Heat transfer coefficient: $q_x = h (T-T_{env})$.  UNITS!
+\end{itemize}
+
+On the last, think about a boundary layer of thickness $\delta$ in a fluid,
+model $h$ as $k_f/\delta$.  Then we can look at steady-state heat conduction
+through a plate, in particular the heat flux ($T_1$ BC on bottom,
+$h(T_2-T_{env})$ BC on top):
+$$q = \frac{k}{L}(T_1-T_2) = h (T_2-T_{env})$$
+$$q = \frac{T_1-T_{env}}{\frac{1}{h} + \frac{L}{k}}$$
+Awesome!  Now you know W$^3$R chapters 17 and 18---well, mostly.
+
+\paragraph{Multilayer wall}
+
+With lots of layers, just add up the resistances...
+$$q = \frac{T_0-T_n}{\frac{1}{h} + \frac{L_1}{k_1} + \frac{L_2}{k_2} + ... +
+  \frac{L_n}{k_n} + \frac{1}{h_2}}$$
+Same $q_x$ everywhere implies that layers with higher $k$ have lower $\partial
+  T/\partial x$.
+
+Cylindrical is slightly different, uses flux-area product, based on log
+solution:
+$$Q=qA = \frac{2\pi L(T_1-T_4)}{\frac{1}{k_1}\ln\frac{R_2}{R_1}+
+  \frac{1}{k_2}\ln\frac{R_3}{R_2}+\frac{1}{hR_3}}$$
+Temperature trick: use Biot number equivalent:
+$$\frac{T_0-T_2}{T_2-T_n} = \frac{{\rm resistances\ bet\ 2\ and\ }n}
+{\rm resistances\ bet\ 0\ and\ 2}$$
+\newpage
+
+
+\section{September 29, 2003: Finally, the graphs!}
+
+Fun opener: typeset homework and course evaluation handwriting...
+
+\noindent Mechanics:
+\begin{itemize}
+\item PS4 due Monday 10/6.
+\item Last test 1 material Wednesday, following math quiz in 2-143!
+\item Tests 1, 2 (10/10, 11/19) first part in 2-143.
+\item Final Mon 12/15 1:30-4:30 ``2-105''...
+\item Zeiss materials microscopy truck at Chapel Turnaround 10/2 9-4.
+\end{itemize}
+
+\noindent Moddy from last time:
+\begin{itemize}
+\item How did we get:
+  $$q_x = \frac{T_1-T_{fl}}{\frac{1}{h} + \frac{L}{k_s}}?$$
+  Yes, skipped some steps because the math here is the same as the math for
+  diffusion.  See notes of 9/19 (section \ref{thecalc}, page \pageref{thecalc})
+  for the derivation.
+\item Temperature for large Biot, small Biot...
+\item Albert: parallel composite wall...
+\item Blackboard technique...
+\end{itemize}
+
+Today's motivating example: powder metallurgy by spray/gas atomization.  Small
+droplets, very rapid cooling, rapid solidification microstructures, solute
+trapping.
+
+So, suppose initial condition $T=T_i$, outside fluid at $T_{fl}$.  Boundary
+conditions: $r=R \Rightarrow q_r = h (T-T_{fl})$.  Want to know temperature
+distribution through time, or temperature history.  This requires a Bessel
+function series!!  How to do understand?
+\begin{itemize}
+\item Dimensional analysis!
+\item Qualitative description of behavior.
+\item Graphs in text.
+\item Simpified low Biot number behavior: Newtonian cooling.
+\end{itemize}
+
+Dimensional analysis:
+\begin{enumerate}
+\item Formulation: $T-T_{fl} = f(t, r, R, T_i-T_{fl}, h, k, \rho c_p)$.  $n=8$
+  parameters!
+\item Base units: K, s, m, kg so $m=4$.
+\item Buckingham pi: four dimensionless parameters.
+\item What to eliminate?  Want to keep $T-T_{fl}$, $t$, $r$; choose $h$ also.
+  Eliminate $R$, $T_i-T_{fl}$, $k$, $\rho c_p$.
+\item $\pi_T$ is easy, as is $\pi_r$.  $\pi_h$: eliminated by $k$ and $R$.
+  $\pi_t$ is funny, use $k$ for seconds, $\rho c_p$ for Joules, $R$ for
+  remaining meters.  Result is the Fourier number, the ratio of $t/t_{SS}$.
+
+  Note: could have used $h$ to eliminate seconds, but result wouldn't have been
+  as cool: $\pi_t = ht/\rho c_p R$.
+\item Dimensionless equation:
+  $$\frac{T-T_{fl}}{T_i-T_{fl}} = f\left(\frac{r}{R}, \frac{\alpha t}{R^2},
+    \frac{hL}{k}\right)$$
+\end{enumerate}
+The solution to this requires a Bessel function series!!  No simple solution we
+can fit to, so qualitative.
+
+Now can graph $\pi_T$ vs. $\pi_r$ for various $\pi_t$, different graphs for
+different $\pi_h$.  Large ($>100$) reverts to the constant temperature boundary
+condition $T=T_{fl}$.
+
+Had to end there, continuing after the Math Quiz on Wednesday...
+\newpage
+
+
+\section{October 1, 2003: Math Quiz, Graphs Wrapup, Newtonian Cooling}
+
+Mechanics:
+\begin{itemize}
+\item Zeiss Materials Microscopy Truck scheduled tomorrow: cancelled!
+\end{itemize}
+
+\noindent Muddy stuff:
+\begin{itemize}
+\item Mass transfer: diffusion/reaction-limited.  Heat transfer:
+  conduction/convection-limited.  Mass transfer can also be convection-limited
+  if we replace reaction constant $k$ with mass transfer coefficient $h_D$.
+\end{itemize}
+
+\paragraph{Wrapup of The Graphs}
+
+Now can graph $\pi_T$ vs. $\pi_r$ for various $\pi_t$, different graphs for
+different $\pi_h$.  Large ($>100$) reverts to the constant temperature boundary
+condition $T=T_{fl}$, small ($<0.1$) we'll get to in a moment, intermediate
+Biot number graphs.
+
+\paragraph{Newtonial cooling}
+Small Biot number ($<0.1$): temperture is roughly uniform.  Let's say it {\em
+  is} uniform.  Then we just have $T(t)$, $\pi_T(\pi_t,\pi_h)$.  Cool.
+
+Balance over the entire object: accumulation = -out.
+$$V \rho c_p \frac{dT}{dt} = -A q_r = A h (T-T_{fl})$$
+Rearrange:
+$$\frac{dT}{T-T_{fl}} = -\frac{A h}{V\rho c_p} dt$$
+Integrate, with initial condition $T_i$ at $t=0$:
+$$\ln(T-T_{fl}) - \ln(T_i-T_{fl}) = -\frac{A h t}{V\rho c_p}$$
+$$\frac{T-T_{fl}}{T_i-T_{fl}} = \exp\left(-\frac{A h t}{V\rho c_p}\right)$$
+Plug in $V/A$:
+\begin{itemize}
+\item Sphere: $R/3$
+\item Cylinder: $R/2$
+\item Plate: $``R'' = L/2$
+\end{itemize}
+Had to end there...
+\newpage
+
+
+\section{October 3, 2003: Moving on...}
+
+Mechanics:
+\begin{itemize}
+\item Test 1 next Friday 2-143; handout, answer any questions.
+\item Regular office hours; zephyrable (instance) most of next Tuesday.
+\item PS4 due next Monday 10/6, correction: \#2a in BTU/hr not kW.  Corrected
+  version on Stellar.
+\item PS2\#3c solution error: ``at $t=1$ second, $x=9.6\times10^{-5}$cm, or
+  just under one micron.  At $t=4$ seconds, $x=1.92\times10^{-4}$cm, just under
+  two microns.'' (was $\times10^{-5}$...)  Corrected version on Stellar.
+\item 3B Symposium Wednesday November 5.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item What's this equation $V\rho c_p\partial T/\partial t = -Aq_r$?  We've had
+  that before, it looked like $V\partial H/\partial t = Aq_x|_x -
+  Aq_x|_{x+\Delta x} + V\dot{q}$.  I just skipped a step and went straight to
+  accum=$V\rho c_p\partial T/\partial t$.  Sorry about that.
+\item What's this bit about applying to different shapes?  We left everything
+  general, with volume and area, so whether a sphere, rod, plate, or crumpled
+  up piece of paper, it just works.
+\end{itemize}
+
+The book takes a different approach to the graphs in Appendix F: $\pi_T$ vs.
+$\pi_t$ for various $\pi_h$, graphs at different $\pi_r$.  Useful for
+temperature histories like PS4\#3 (but skip past the early graphs...), and also
+for TTT diagrams, like our metal spray.
+$$Y=\frac{T_\infty-T}{T_\infty-T_0} = f\left(X=\frac{\alpha t}{x_1^2},
+  n=\frac{x}{x_1}, m=\frac{k}{hx_1}\right)$$
+
+\paragraph{Wrapup Newtonian cooling}
+
+Last time we did $\rm accum = --out$ for the whole shape, got to:
+$$\frac{T-T_{fl}}{T_i-T_{fl}} = \exp\left(-\frac{A h t}{V\rho c_p}\right)$$
+First, examine terms, timescale, larger/smaller $h$, rho $c_p$, $V/A$.  Plug in
+$V/A$:
+\begin{itemize}
+\item Sphere: $R/3$
+\item Cylinder: $R/2$
+\item Plate: $``R'' = L/2$
+\item Other shapes: varies...
+\end{itemize}
+Can instead define alternate Biot and Fourier numbers: Bi$'=\frac{hV}{kA}$,
+Fo$'=\frac{\alpha A^2}{V^2}t$, then:
+$$\frac{T-T_{fl}}{T_i-T_{fl}} = \exp\left(-\frac{hV}{kA}\frac{kA^2}{\rho
+    c_pV^2}t\right) = \exp\left(\rm -Bi'Fo'\right)$$
+
+So, all set for PS4, test1?
+
+\paragraph{Thermal conductivity}
+
+Diffusion is straightforward: atoms move, right?  Well, not quite: gases in
+straight lines, liquid atoms move in chains, vacanices, interstitials,
+dislocations, etc.  For heat, various mechanisms:
+\begin{itemize}
+\item Collisions
+\item Phonons
+\item Photons---radiation, which is spontaneous emission from hot body
+\item Electrons
+\end{itemize}
+On electrons, Wiedmann-Franz law:
+$$k_{el} = L \sigma_{el} T,
+L=\frac{\pi}{3} \left(k_B/e\right)^2 =
+2.45\times10^{-8}\frac{\rm W ohm}{K^2}$$
+where $e$=electron charge.
+
+Metals: $\sigma_{el}$ goes down with temperature.  What about electrons is
+semiconductors?
+
+Liquids: water .615 20-100$^\circ$C, O$_2$ $3.4\times10^{-4}$, H$_2$
+$1.77\times10^{-3}$ (both 300K)
+
+Influence of porosity and humidity/water absorption.  Gases are very bad
+conductors, water not quite as bad but has very high specific heat!  (PS4 \#1d,
+water has four times $c_p$ of aluminum which is highest there.)
+
+Typical conductivity values: 0.1 to 300 $\rm\frac{W}{m\cdot K}$.
+Porous$\rightarrow$less, metals high, gases {\em really} small!
+
+Note: at conference, diamond-aluminum composite for microelectronics, 45 vol\%
+diamond but isotropic conductivity of 550 W/mK!  Nearly twice copper,
+squeeze-castable into heat sink parts.  Q: why no diamond-iron composite?
+\newpage
+
+
+\section{October 6, 2003: Finite Differences}
+
+Mechanics:
+\begin{itemize}
+\item Test 1 next Friday 2-143; handout, answer any questions.
+\item Regular office hours; zephyrable (instance) tomorrow 9-12, 1-5.
+\item Albert review session Thursday 7 PM in 8-302 (next door to recitation).
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Why $\pi_T=\exp(-\pi_h'\pi_t')$ with no $\pi_r$?  Because at low Biot
+  number, $T$ is uniform, not a function of $r$ or $\pi_r$.
+\end{itemize}
+
+\paragraph{Finite differences}
+Very often no analytical solution to a system.  (Or if there is one, it's
+impossibly complex.)  So, use a computer, make some approximations.
+\begin{itemize}
+\item Discretize space: calculate temperature at a finite number of points on a
+  grid (here 1-D).  Choose $x_i$, calculate $T_i$.  For simplicity, we'll
+  choose evenly-spaced points, so $x_{i+1}-x_i=\Delta x$.
+\item Discretize time: calcluate temperature at a finite number of
+  ``timesteps'' at times $t_n$, so with both, we have $T_{i,n}$.  For
+  simplicity, $\Delta t$ uniform.
+\item Make some approximations about derivatives:
+  $$\left.\frac{\partial T}{\partial t}\right|_{x_i, t_{n+1/2}} \simeq
+  \frac{T_{i,n+1} - T_{i,n}}{\Delta t}$$
+  $$\left.\frac{\partial T}{\partial x}\right|_{x_{i+1/2}, t_n} \simeq
+  \frac{T_{i+1}-T_i}{\Delta x}$$
+  $$\left.\frac{\partial^2 T}{\partial x^2}\right|_{x_i, t_n} \simeq
+  \frac{\left.\frac{\partial T}{\partial x}\right|_{x_{i+1/2}, t_n} -
+    \left.\frac{\partial T}{\partial x}\right|_{x_{i-1/2}, t_n}}
+  {\Delta x} \simeq
+  \frac{T_{i-1,n} - 2T_{i,n} + T_{i+1,n}}{(\Delta x)^2}$$
+\end{itemize}
+
+So, let's look at the energy equation, and substitute approximations:
+$$\frac{\partial T}{\partial x} = \alpha\frac{\partial^2 T}{\partial x^2} +
+\frac{\dot{q}}{\rho c_p}$$
+$$\frac{T_{i,n+1} - T_{i,n}}{\Delta t} =
+\alpha \frac{T_{i-1,n} - 2T_{i,n} + T_{i+1,n}}{(\Delta x)^2} +
+\frac{\dot{q}}{\rho c_p}$$
+$$T_{i,n+1} = T_{i,n} + \Delta t \left[
+  \frac{T_{i-1,n} - 2T_{i,n} + T_{i+1,n}}{(\Delta x)^2} +
+  \frac{\dot{q}}{\rho c_p}\right] =
+T_{i,n} + {\rm Fo}_M (T_{i-1,n} - 2T_{i,n} + T_{i+1,n} +
+\frac{\Delta t}{\rho c_p}\dot{q}$$
+This is the ``forward Euler'' algorithm, a.k.a. ``explicit'' time stepping.
+Nice, efficient, easy to put in a spreadsheet.  Problems: inaccurate because
+time and space derivatives not co-located, also unstable.  Inaccuracy later.
+
+Demonstrate instability for ${\rm Fo}_M > \frac{1}{2}$:
+$$T_{i,n+1} = T_{i,n} (1-2{\rm Fo}_M) +
+2 {\rm Fo}_M \frac{T_{i-1,n} + T_{i+1,n}}{2} +
+\frac{\Delta t}{\rho c_p}\dot{q}$$
+So, it's like a weighted average between $T_{i,n}$ and the average of the two
+(show graphically).  When ${\rm Fo}_M>\frac{1}{2}$, the $T_{i,n}$ part is
+negative, so we shoot past it!  So, the criterion is that it must be
+$\leq\frac{1}{2}$, larger timestep means less work, so use $\frac{1}{2}$.
+
+Exercise: cut length step in half, for same total time, how many more
+timesteps?  How much more computational work?  Spreadsheet area...
+
+To get rid of this instability, we have the ``backward Euler'' algorithm,
+a.k.a. ``fully implicit'' time stepping.
+$$\frac{T_{i,n+1} - T_{i,n}}{\Delta t} =
+\alpha \frac{T_{i-1,n+1} - 2T_{i,n+1} + T_{i+1,n+1}}{(\Delta x)^2} +
+\frac{\dot{q}}{\rho c_p}$$
+Cool!  But, requires simultaneous equation solution for the next timestep.  But
+it is unconditionally stable: infinite timestep means we solve the steady-state
+problem.
+
+Solving the simultaneous equations:
+$$-{\rm Fo}_M T_{i-1,n+1} + (1+2{\rm Fo}_M) T_{i,n+1} - {\rm Fo}_M T_{i+1,n+1}
+= T_{i,n} + \frac{\dot{q}\Delta t}{\rho c_p}$$
+$$\begin{array}{cccccccc}T_{0,n+1} & & & & & & & =\\
+  -{\rm Fo}_MT_{0,n+1}&+&(1+2{\rm Fo}_M)T_{1,n+1}&+&-{\rm Fo}_MT_{2,n+1} &&&=\\
+  && -{\rm Fo}_MT_{1,n+1}&+&(1+2{\rm Fo}_M)T_{2,n+1}&+&-{\rm Fo}_MT_{3,n+1}&=\\
+  & & & & & & T_{4,n+1} &= \end{array}
+\begin{array}{c} T_{0,BC} \\ T_{1,n}+\frac{\dot{q}_1\Delta t}{\rho c_p} \\
+  T_{2,n}+\frac{\dot{q}_1\Delta t}{\rho c_p} \\ T_{3,BC}\end{array}$$
+$$\left(\begin{array}{cccc}
+    1 & & & \\ -{\rm Fo}_M& (1+2{\rm Fo}_M)& -{\rm Fo}_M& \\
+    & -{\rm Fo}_M& (1+2{\rm Fo}_M)& -{\rm Fo}_M \\ & & & 1 \end{array}\right)
+\left(\begin{array}{c} T_0 \\ T_1 \\ T_2 \\ T_3 \end{array}\right) =
+\left(\begin{array}{c} T_{0,BC} \\ T_{1,n}+\frac{\dot{q}_1\Delta t}{\rho c_p}\\
+  T_{2,n}+\frac{\dot{q}_1\Delta t}{\rho c_p} \\ T_{3,BC}\end{array}\right)$$
+Now just use 18.06 matrix techniques: Gaussian elimination, LU decomposition,
+eigenvalues, etc.
+\newpage
+
+
+\section{October 8, 2003: More Finite Differences}
+
+Mechanics:
+\begin{itemize}
+\item Graded math quizzes back.  Avg 96$\frac{1}{4}$, std dev 4.85, 11 100s!
+  Warm-up, next is the race.
+\item Test 1 next Friday 2-143; handout, answer any questions.
+\item Review session tomorrow 7 PM 8-302.
+\item I can have office hours Monday, but would much rather be available
+  Wednesday 2:30-3:30.
+\item PS4 solution error: Newtonian cooling eq has just one t!  Also in 10/1
+  and 10/3 lecture notes; corrections in Stellar and on Athena respectively.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Top and bottom rows in RHS last time were wrong, should have been
+  $T_{0,BC}$ and $T_{3,BC}$.  Sorry...
+\item ``How... theoretically interesting.
+
+  ``You said you were going to start each lecture with a `motivating
+  factor'---a real example to tie things to so the lecture isn't just so many
+  symbols and numbers---where was today's motivating factor?
+
+  ``I'm hoping to at least be able to see a problem being solved where all this
+  is useful.  Otherwise, this makes no sense, sorry.''
+
+  Okay, two examples today on the laptop.
+\end{itemize}
+
+Encourage to think of test as checkpoint, first evaluation (except Math quiz,
+but that doesn't count).  And remember, you can make it up in the second
+sitting.  Will not be straightforward, won't see PS problems, but will apply
+same techniques to new situations.  You will have to think, but you can all do
+that, that's why you're here.
+
+\paragraph{Finite differences}
+
+Last time: Forward Euler/explicit, and Backward Euler/implicit timestepping.
+But both of these are integrating in time using the value at previous or next
+timestep.  Like rectangles in numerical integration.  Graphically show error as
+proportional to $\Delta t$.  To increase accuracy, use trapezoids, right?  Then
+error is proportional to $(\Delta t)^2$.  That works like:
+$$\frac{T_{i,n+1} - T_{i,n}}{\Delta t} =
+\alpha \frac{T_{i-1,n} - 2T_{i,n} + T_{i+1,n} +
+T_{i-1,n+1} - 2T_{i,n+1} + T_{i+1,n+1}}{2(\Delta x)^2} +
+\frac{\dot{q}_{i,n} + \dot{q}_{i,n+1}}{2\rho c_p}$$
+This is ``semi-implicit'', or ``Crank-Nicholson'' time integration, also need
+to solve simultaneous equations.
+
+Error goes as $\Delta t^2$ for Crank-Nicholson, $\Delta t$ for
+explicit/implicit (forward/backward Euler), like trapezoid rule vs. simple
+rectangle Riemann integration.
+
+2-D: two second derivatives in $x$ and $y$, $T_{i,j,n}$ at $x_i,y_j,t_n$;
+explicit form:
+$$\frac{T_{i,n+1} - T_{i,n}}{\Delta t} =
+\alpha \left(\frac{T_{i-1,j,n} - 2T_{i,j,n} + T_{i+1,j,n}}{(\Delta x)^2} +
+\frac{T_{i,j-1,n} - 2T_{i,j,n} + T_{i,j+1,n}}{(\Delta y)^2}\right)$$
+With $\Delta x=\Delta y$, Fo$_M=\alpha\Delta t/(\Delta x)^2$, we have:
+$$T_{i,n+1} = (1-4{\rm Fo}_M)T_{i,j} +
+4{\rm Fo}_M \frac{T_{i-1,j,n} + T_{i+1,j,n} + T_{i,j-1,n} + T_{i,j+1,n}}{4}$$
+So the stability criterion is:
+$${\rm Fo}_m\leq\frac{1}{4}\Rightarrow\Delta t\leq\frac{\Delta x^2}{4\alpha}.$$
+In 3-D:
+$${\rm Fo}_m\leq\frac{1}{6}\Rightarrow\Delta t\leq\frac{\Delta x^2}{6\alpha}.$$
+
+Laptop spreadsheet demos: iron conduction ps5.gnumeric, freezing water
+lecture1008.gnumeric.
+\newpage
+
+
+\section{October 15, 2003: Moving Body}
+
+Mechanics:
+\begin{itemize}
+\item Test 1 a bit too long, which is average for me, but not good.  Will aim
+  for shorter next time.
+\item Test typo: m, n switch in equation sheet graph descr.
+\item Ambiguous wording in 4b: clarified on board, but take any self-consistent
+  answer.
+\item Misleading wording in one test question!  2d: strike ``---that is, what's
+  a more realistic shape for this region''.
+\item The graph: perhaps not big enough.  Good news: after initial behavior,
+  $\pi_t\propto\exp(-t)$ (works for Newt cooling always, $n=1$ term of
+  Fourier).  So on log-linear graph, straight lines, can extrapolate.
+\item New version on Stellar (minus the graph), will be used in retake.  Sorry!
+\item Office hours: Today 2:30-3:30.
+\item SOFCs and energy today 12:15 Marlar Lounge (37-252), Ashley Predith, MIT.
+\item Magnetic nanodots Monday 3-4 Chipman, Igor Roshchin, UCSD.
+\end{itemize}
+
+\paragraph{Moving body}
+Example: VAR of titanium alloys, nickel superalloys.  Start, during operation.
+Nickel: 6-8 kA, 17$\rightarrow$20''; Ti around 30 kA, 30$\rightarrow$36''.
+
+Competition: thermal diffusion up vs. drive down.  Suggest steady-state, sketch
+$T$ vs. $z$.
+
+Temperatures in ingot real complicated, flow, etc.  But can analyze electrode
+now.  Question: how much of the electrode is heated?  What's the temperature
+profile?
+
+Choose frame of reference of melt interface on the bottom of the electrode.
+Solid is moving with respect to frame of reference.  Now conductive and
+convective heat fluxes: $\vec{q} + \rho c_p T \vec{u}$ (not really, but this is
+valid for the difference).
+
+In and out have motion component!  Important thing: in-out.
+${\rm in}=u_x \rho c_p T$, out too.  Result when goes to zero:
+$${\rm in - out} = -\frac{\partial}{\partial x}(q_x + \rho c_p T u_x)$$
+This example: $u_x$, $\rho$, $c_p$ are all constant, so we end up with:
+$$\rho c_p \frac{\partial T}{\partial t} = k \frac{\partial^2 T}{\partial x^2}
+- \rho c_p u_x \frac{\partial T}{\partial x} + \dot{q}$$
+Rearrange slightly for constant $\rho c_p u_x$, substitute
+$q_x = -k \partial T/\partial x$:
+$$\rho c_p \left(\frac{\partial T}{\partial t} +
+  u_x \frac{\partial T}{\partial x}\right) =
+k \frac{\partial^2 T}{\partial x^2} + \dot{q}$$
+Divide by $\rho c_p$:
+$$\frac{\partial T}{\partial t} + u_x \frac{\partial T}{\partial x} =
+\alpha\frac{\partial^2 T}{\partial x^2} + \frac{\dot{q}}{\rho c_p}$$
+Discuss terms: why proportional to $\partial T/\partial x$, competing effects
+of positive $\partial^2T/\partial x^2$ and negative $-\partial T/\partial x$.
+Graphical explanation.
+
+What introductory math concept does this remind us of?  The substantial
+derivative!  Rewrite:
+$$\frac{DT}{Dt} = \alpha\frac{\partial^2 T}{\partial x^2} +
+\frac{\dot{q}}{\rho c_p}$$
+Note that's the time derivative in the frame of reference of the moving solid.
+Cool!
+
+Steady-state, no generation:
+$$\alpha\frac{\partial^2 T}{\partial x^2} - u_x \frac{\partial T}{\partial x} =
+0$$
+Simple solution using the characteristic
+polynomial, $R=0, u_x/\alpha$.  Result:
+$$T = A + B \exp\left(\frac{u_x x}{\alpha}\right)$$
+Fit to boundary conditions: $x=0\Rightarrow T=T_M$, $x=\infty\Rightarrow T=T_i$
+so use erf-style:
+$$\frac{T-T_i}{T_M-T_i} = \exp\left(\frac{u_x x}{\alpha}\right)$$
+Lengthscale=$\alpha/u_x$.  Graph, noting that $u_x$ is negative.  Titanium
+$\rm\alpha=0.1\frac{cm^2}{s}$, $u_x\sim5\frac{\rm cm}{\rm min} =
+\frac{1}{12}\frac{\rm cm}{s}$, so $\alpha/u_x = 1.2 cm$, about 1/2 inch.  So
+only the bottom few centimeters are heated at all, even at this low velocity!
+
+Heat flux into the bottom:
+$$q_x=-k\frac{\partial T}{\partial x} =
+-k(T_m-T_i)\frac{u_x}{\alpha}\exp\left(\frac{u_x x}{\alpha}\right) =
+-\rho c_p u_x (T_m-T_i)$$
+Note $\rho c_p(T_m-T_i)$ is the enthalpy per unit volume to heat metal to its
+melting point.  Mult by $u_x$ for enthalpy per unit area to heat metal coming
+at a rate of $u_x$, which is a cool result.
+
+Next time: heat flux required to melt...
+\newpage
+
+
+\section{October 17, 2003: Phase Change}
+
+Ask Andy re retake...
+
+\noindent Mechanics:
+\begin{itemize}
+\item New version on Stellar (minus the graph), will be used in retake.  Sorry!
+\item Test stats first time around: 62-86 within a std dev.  But significant clustering, low 80s and low 60s.
+  \begin{center}
+    \begin{tabular}{l|ccc|}
+      Problem & Mean & Std. Dev. & Max \\ \hline
+      1. & 5 & 0 & 5 \\
+      2. & 29.41 & 4.02 & 35 \\
+      3. & 22.34 & 7.21 & 34 \\
+      4. & 17.21 & 3.92 & 25 \\ \hline
+      Total & 73.97 & 12.34 & 94 \\ \hline
+    \end{tabular}
+  \end{center}
+\item Yet another error: diffusion equation missing $D$!
+\item Magnetic nanodots Monday 3-4 Chipman, Igor Roshchin, UCSD.  (Also mention
+  interesting talk on Wednesday.)
+\item GLOAT ABOUT YANKEES!
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Why $H=\rho c_pT$ in quotes?  Well, $\Delta H=\rho c_p\Delta T$, for
+  temperature change only.  But $H=\rho c_pT$ is not true, show by graph.
+\item What is $H\cdot u_x$?  That's the convective flux, the transfer of heat
+  due to motion of a substance.
+\item Frames of reference: $DT/Dt$ is the time rate of change for a particle
+  moving with the solid (or later, fluid); $\partial T/\partial t$ is the time
+  rate of change at a fixed point (in a certain frame).
+\item What's the significance of $q_x = -\rho c_pu_x (T_m-T_i)$?  Well, $\rho
+  c_p\Delta T$ is the heat per unit volume.  How much heat to raise Ti from the
+  initial temp to the melting point.  Times $u_x$ gives the heat/area/time, the
+  flux required to raise titanium coming in at that speed.  Think of $u_x$ as
+  meters/second, or as $\rm m^3/m^2\cdot s$.
+\end{itemize}
+
+\paragraph{Phase change}
+
+Another important concept: heat generated/lost at interface due to phase
+change.  If extend the graph beyond $x=0$ into liquid, more flux from liquid
+into interface than from interface into solid.  How much more?
+$$q_{x,l} - q_{x,s} = -\rho \Delta H_M u_x$$
+Example: candle, MIT undergrad; ``Build a man a fire...''
+
+Model of casting limited by conduction through metal, per Albert's recitation;
+graphical representation on board.  Analogy to diffusion phase change (silicon
+oxidation): $H$ is like $C$, $T$ is like chemical potential $\mu$.  Fast growth
+means proportional to undercooling (ask Albert), like reaction-limitation in
+oxidation.
+
+\paragraph{Evaporation/condensation}
+
+Also for evaporation, heat flux from gas, plasma, radiation incl. laser
+(below), electron beam, etc.  Condensation releases heat at a similar rate.
+
+Evaporation into gas: boundary layer, $J=h_D(C_s-C_{bulk})$.
+
+Evaporation rate into a vacuum: Langmuir equation
+$$J = \frac{p_v}{\sqrt{2\pi MRT}}$$
+Here the units should work, go through.
+
+Equilibrium pure vapor pressure: Clausius-Clapeyron equation, one form:
+$$\log_{10}p_v = -\frac{A}{T} + B + C\log_{10}T (+ DT)$$
+Units: torr, conversion factor.  If not pure, then mult by activity.  Either
+way, multiply material flux $J$ by $\Delta H_{vap}$ for heat flux influence.
+\newpage
+
+
+\section{October 20, 2003: Radiation}
+
+Mechanics:
+\begin{itemize}
+\item Test stats first time around: 62-86 within a std dev.  But significant
+  clustering, low 80s and low 60s.
+  \begin{center}
+    \begin{tabular}{l|ccc|}
+      Problem & Mean before & Std. Dev. & Max \\
+      \hline
+      1. & 5 & 0 & 5 \\
+      2. & 29.41 & 4.02 & 35 \\
+      3. & 22.34 & 7.21 & 34 \\
+      4. & 17.21 & 3.92 & 25 \\ \hline
+      Total & 73.97 & 12.34 & 94 \\ \hline
+    \end{tabular}
+  \end{center}
+\item Magnetic nanodots today 3-4 Chipman, Igor Roshchin, UCSD.
+\end{itemize}
+
+Evaporation cont'd: When to use dense gas, line-of-sight vacuum approxes?  Mean
+free path $\lambda$:
+$$\lambda=\frac{1}{\sqrt{2}\pi\sigma^2n}$$
+$\sigma$ is collision diameter, $n$ is number of molecules per unit volume,
+$P/k_BT$ (sketch molecules).  Important thing is the Knudsen number,
+$\lambda/L$, given by:
+$${\rm Kn} = \frac{\lambda}{L} = \frac{kT}{\sqrt{2}\pi\sigma^2PL}$$
+so in $P-T$ space, lines deliniate ``line-of-sight'' r\'{e}gime (Kn$>$1),
+``continuum'' r\'{e}gime (Kn$<$0.01).
+
+\paragraph{Radiation!}
+
+Def: spontaneous emission of photons from a hot body.  Emission, absorption,
+reflection, transmission.  Cosine distribution: hand-waving skin depth
+explanation.
+
+Happens throughout a body, but surface emission follows a cosine distribution:
+handwaving explanation of skin depth as a function of angle.
+
+Concept: black body, absorbs all incident radiation, theoretical construct with
+some practical application.  Also emits maximum possible radiation.  Handwaving
+explanation: zero reflection at the interface.
+
+Defs: $e$ is power emitted per unit area, $e_b$ is power emitted by black body
+per unit area, $e_\lambda$ is power per unit wavelength per unit area,
+$e_{b,\lambda}$ is power by black body per unit wavelength per unit area.
+
+Emission spectrum of black body:
+$$e_{b,\lambda} =
+\frac{2\pi h c^2 \lambda^{-5}}{e^{\frac{ch}{k_B\lambda T}} - 1}$$
+$h$ is Planck's constant, $c$ is light speed, $k_B$ Boltzmann's constant.
+Graph for different $T$.
+
+%NEXT TIME: put $\lambda_{max} T=2.9\times10^{-3}{\rm m\cdot K}$ here; at 1000K,
+%2.9$\mu$m=2900 nm; sun at ~5800K is at 500 nm (yellow)---need to be pretty hot
+%to peak in the visible spectrum.   (Also next time remove from next lecture.)
+
+How to get $e_b$?  Integrate over all wavelengths.  Fortunately, it's quite
+simple:
+$$e_b = \int_0^\infty e_{b,\lambda} d\lambda = \sigma T^4$$
+The physicists must have jumped for joy when they saw that one.  For our
+purposes, it puts radiation within reach of engineers.  Okay, all done, never
+have to see that first equation again.
+
+Even better:
+$$\rm\sigma = \frac{2\pi^5k_B^4}{15c^2h^3} = 5.67\times10^{-8}\frac{W}{m^2\cdot
+  K^4}$$
+Note: fourth-power dependence on temperature means this is {\bf MUCH} more
+important at high temperature than low temperature.
+
+New defs: emissivity $\epsilon_\lambda = e_\lambda/e_{b,\lambda}$, the fraction
+of black body radiation which is emitted; absorptivity $\alpha_\lambda =
+a_\lambda/a_{b,\lambda}$.  Cool result: $\epsilon_\lambda = \alpha_\lambda$,
+always!  Material property.  Graph resulting emission spectrum.
+
+Grey body approximation: $\epsilon=\alpha=\epsilon_\lambda=\alpha_\lambda=$
+constant.  Makes life a lot simpler for us engineers.  Superpose grey spectra
+on previous graph.
+
+Resulting emission: $e = \epsilon\sigma T^4$.  Pretty cool.  Likewise average
+absorptivity $\alpha$.
+
+Real materials: $\epsilon=f(T)$, $\alpha=f({\rm incident\ spectrum})$.
+Example: global warming, CO$_2$ absorbs in the infrared, admits sun in visible.
+\newpage
+
+
+\section{October 22, 2003: More Radiation}
+
+Mechanics:
+\begin{itemize}
+\item CONGRATS TO ALBERT!
+\item Test stats first time around: 62-86 within a std dev.  But significant
+  clustering, low 80s and low 60s.
+  \begin{center}
+    \begin{tabular}{l|ccc|ccc|}
+      Problem & Mean before & Std. Dev. & Max & Mean after & Std. dev & Max \\
+      \hline
+      1. & 5 & 0 & 5 & 5 & 0 & 5\\
+      2. & 29.41 & 4.02 & 35 & 34.66 & 0.86 & 35 \\
+      3. & 22.34 & 7.21 & 34 & 33.83 & 1.49 & 35 \\
+      4. & 17.21 & 3.92 & 25 & 24.59 & 1.02 & 25 \\ \hline
+      Total & 73.97 & 12.34 & 94 & 98.07 & 2.36 & 100 \\ \hline
+    \end{tabular}
+  \end{center}
+  ``A'' I consider around 80/89, because of statistics.  Did well, 20\%; not so
+  well, only 20\%.
+\item Subra on bionano cell mechanics next Monday 4PM 10-250.  Recruiting...
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Why is $\epsilon$ a function of $T$?  Semiconductor example: silicon has
+  band gap, absorbs some near infrared and in visible and higher energy (lower
+  wavelength), very little in far infrared.  So at low $T$, low $\epsilon$; at
+  higher $T$ (up to melting point), higher $\epsilon$.  Note: can't be heated by
+  IR heat lamp.  Also note: liquid silicon has zero band gap!
+\end{itemize}
+
+Peak wavelength:
+$$\lambda_{max} T = 2.9\times10^{-3}{\rm m\cdot K}$$
+1000K, 2.9$\mu$m=2900 nm; sun at ~5800K is at 500 nm (yellow)---need to be
+pretty hot to peak in the visible spectrum.
+
+Little table:
+\begin{center}
+  \begin{tabular}{l|c|c|}
+                    & Wavelength & Total/average    \\ \hline
+    BB Emission     & $e_{b,\lambda}$ & $e_b=\int_0^\infty e_{b,\lambda}d\lambda$ \\
+    Actual emission & $e_\lambda$     & $e(=q)=\int_0^\infty e_\lambda d\lambda$ \\
+    Emissivity      & $\epsilon_\lambda=e_\lambda/e_{b,\lambda}$ & $\epsilon(T)=e/e_b$ \\
+    Absorptivity    & $\alpha_\lambda\equiv \epsilon_\lambda$ & $\alpha(incident)$ \\ \hline
+  \end{tabular}
+\end{center}
+
+Fortunately $e_b$ is quite simple:
+$$e_b = \int_0^\infty e_{b,\lambda} d\lambda = \sigma T^4,
+\sigma = 5.67\times10^{-8}\frac{W}{m^2\cdot K^4}$$
+Grey approximation means we stick an average $\epsilon$ in there.  Note:
+fourth-power dependence on temperature means this is {\bf MUCH} more important
+at high temperature than low temperature.
+
+Averaged properties: $\epsilon=e/e_b$, $\alpha=a/incident$.  Note $\epsilon$
+will vary with temperature, $\alpha$ depends on wavelength of incident light.
+
+\paragraph{Radiation viewfactors}
+
+So, the pointof radiative exchange: how much radiation emitted by surface 1
+reaches surface 2?  Double integral:
+$$Q_{12} = \int_{S1} \int_{S2} \frac{e_1 \cos\theta_1 \cos\theta_2}
+{r^2} dA_2 dA_1$$
+A really ugly thing!
+
+Okay, but suppose $A$ is at a uniform temperature, $B$ also?  Then can pull out
+$e_A$, $\alpha_B$; define $F_{12}$:
+$$Q_{12} = e_1 \int_{S1} \int_{S2} \frac{\cos\theta_1 \cos\theta_2}
+{r^2} dA_A dA_B$$
+$$Q_{12} = e_1 A_1 F_{12}$$
+$F_{12}$ is only a function of the shape, not the size; is dimensionless.
+
+Viewfactor Algebra: two principles
+$$A_1 F_{12} = A_2 F_{21}$$
+Prove from equal temperature.
+$$\sum_{i=1}{n} F_{ji} = 1$$
+if they form an enclosure.  Simple thing.  With these two, can do complex
+stuff.  Simple geom graphs on pp. 396--398.  Note: $F_{11}\neq 0$ if concave.
+
+For coaxial disks of same radius, graph $F_{12}$ vs. $d/r$, values below.
+
+Example: disk and cylinder section height d/4 to d/2 above, viewfactor for
+disks d/4 is 0.6, for d/2 is 0.375.  Derive $F_{21}=0.225$ by enclosure
+arguments; $F_{12}=\frac{A_2}{A_1}F_{21}=F_{21}$ by this argument.
+
+\paragraph{Total exchange viewfactor: NOT COVERED THIS YEAR}
+
+Reflection can be specular, diffuse.  Here discuss diffuse.  Suppose two grey
+bodies forming an enclosure, diffuse reflection at same cosine distribution.
+$$Q_{12, net} = e_{b1} \epsilon_1 A_1 F_{12} (1-\epsilon_2) A_2 F_{21}
+(1-\epsilon_1) A_1 F_{12} {\rm etc.} - e_{b2} \epsilon_2 A_2 {\rm etc.}$$
+Simplifies to:
+$$Q_{12, net} = \frac{e_{b1} - e_{b2}}{\frac{1-\epsilon_1}{A_1\epsilon_1} +
+  \frac{1}{A_1F_{12}} + \frac{1-\epsilon_2}{A_2\epsilon_2}}$$
+
+Funny thing: like a sum of resistances.  Funnier stil: multiple surfaces
+forming an enclosure $\Rightarrow$ resistance diagram!
+
+New concept: zero-flux surface, well-insulated,
+reflected+emitted$\simeq$incident.  In that case, no ``current'' through that
+resistor, can get the total from surface 1 to 2 bypassing surface R.  Pretty
+cool!
+
+Total Exchange Viewfactor: $\bar{F}_{12}$, in this case
+$$A_1 \bar{F}_{12} = A_1 F_{12} +
+\frac{1}{\frac{1}{A_1 F_{1R}} + \frac{1}{A_2 F_{2R}}}$$
+Substitute that in instead of $A_1F_{12}$ in $Q_{12,net}$ equation above.
+
+Done with radiation, with heat transfer, on to fluids!
+
+
+\chapter{Fluid Dynamics}
+
+\section{October 24, 2003: Intro, Newtonian Fluids}
+
+TODO: look up Wiedmann-Franz, falling film in new textbook.
+
+Mechanics:
+\begin{itemize}
+\item PS5: Get the spreadsheet from the Stellar site (URL on PS was for PMMA
+  properties).
+\item $L$ expression may be off: calc'd to $7.9\times10^{-9}$, not
+  $2.45\times10^{-8}$.  Maybe a missing $\pi$.
+\item Subra on bionano cell mechanics next Monday 4PM 10-250.  Recruiting...
+\item Next Tues: MPC Materials Day, on Biomed Mat'ls Apps.  Register:
+  http://mpc-web.mit.edu/
+\end{itemize}
+
+\noindent Muddy from last time
+\begin{itemize}
+\item First ``rule'' in viewfactor algebra: $A_1F_{12}=A_2F_{21}$, doesn't it
+  depend on $T$?  No, because $F_{ij}$ is based only on geometry.
+\item $F_{12}$ for facing coaxial disks with radii $r_1$ and $r_2$ sample
+  graph: $F_{12}$ is decreasing with $d/r_1$.
+\end{itemize}
+
+\paragraph{Fluid Dynamics!}
+
+Brief introduction to rich topic, of which people spend lifetimes studying one
+small part.  You will likely be confused at the end of this lecture, come to
+``get it'' over the next two or three.
+
+Categories: laminar, turbulent; tubes and channels; jets, wakes.  Compressible,
+incompressible.
+
+Outcomes: flow rates (define), drag force (integral of normal stress), mixing.
+Later couple with diffusion and heat conduction for convective heat and mass
+transfer.
+
+Start: the 3.185 way.  Momentum field, ``momentum diffusion'' tensor as shear
+stress.  Show this using units: momentum per unit area per unit time:
+$$\rm\frac{kg\frac{m}{s}}{m^2\cdot s} = \frac{kg}{m\cdot s^2} = \frac{N}{m^2}$$
+
+Two parallel plates, fluid between, zero and constant velocity.
+$x$-momentum diffusing in $z$-direction, call it $\tau_{zx}$, one component of
+2nd-rank tensor.  Some conservation of math:
+$$\rm accumulation = in - out + generation$$
+Talking about momentum per unit time, $\rm\frac{kg}{m\cdot s^2}$, locally
+momentum per unit volume $\rho\vec{u}$.  Here suppose $u_x$ varies only in the
+$z$-direction, no $\tau_{xx}$ or $\tau_{yx}$, no $u_y$ or $u_z$.  Three
+conservation equations for three components of momentum vector, here look at
+$x$-momentum:
+$$V\cdot \frac{\partial(\rho u_x)}{\partial t} =
+\left.A\cdot\tau_{zx}\right|_z - \left.A\cdot\tau_{zx}\right|_{z+\Delta z} +
+V\cdot F_x$$
+Do this balance on a thin layer between the plates:
+$$W_xW_z\Delta z\frac{\partial(\rho u_x)}{\partial t} =
+\left.W_xW_z\tau_{zx}\right|_z - \left.W_xW_z\tau_{zx}\right|_{z+\Delta z} +
+W_xW_z\Delta z F_x$$
+Cancel $W_xW_z$ and divide by $\Delta z$, let go to zero:
+$$\frac{\partial(\rho u_x)}{\partial t} =
+-\frac{\partial\tau_{zx}}{\partial z} + F_x$$
+
+What's generation?  Body force per unit volume, like gravity.  Units: N/m$^3$
+(like $\tau$ has $N/m^2$), e.g. $\rho g$.
+
+What's the constitutive equation for $\tau_{zx}$?  Newtonian fluid,
+proportional to velocity gradient:
+$$\tau_{zx} = -\mu \left(\frac{\partial u_x}{\partial z} +
+  \frac{\partial u_z}{\partial x}\right)$$
+This defines viscosity $\mu$, which is the momentum diffusivity.  Units: $\rm
+N\cdot s/m^2$ or $\rm kg/m\cdot s$, Poiseuille.  CGS units: $\rm g/cm\cdot s$,
+Poise = 0.1 Poiseuille.  Water: .01 Poise = .001 Poiseuille.
+
+So, sub constitutive equation in the conservation equation, with $u_y=0$:
+$$\frac{\partial(\rho u_x)}{\partial t} =
+-\frac{\partial}{\partial z}\left(-\mu\frac{\partial u_x}{\partial z}\right)
+ + F_x$$
+With constant $\rho$ and $\mu$:
+$$\rho\frac{\partial u_x}{\partial t} = \mu\frac{\partial^2 u_x}{\partial z^2}
++ F_x$$
+It's a diffusion equation!
+
+So at steady state, with a bottom plate at rest and a top plate in motion in
+the $x$-direction at velocity $U$, we have: a linear profile, $u_x=Az+B$.  
+
+Aaliyah tribute: innovative complex beats, rhythmic singing, great performing.
+Started at an early age, passing at age 21? 22? a couple of years ago in plane
+crash was a major music tragedy.
+\newpage
+
+
+\section{October 27: Simple Newtonian Flows}
+
+Mechanics:
+\begin{itemize}
+\item Aaliyah: okay, you might have heard of her, but didn't expect from a
+  Prof.  MTV...
+\item Wiedmann-Franz: new text doesn't offer any help (p. 204, no constant).
+\item Subra on bionano cell mechanics next Monday 4PM 10-250.  Recruiting...
+\item Tomorrow: MPC Materials Day, on Biomed Mat'ls Apps.  Too late to register
+  though :-(
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Is the velocity in the $x$-direction, or the $z$-direction?
+  $x$-direction, but it is quite confusing, $\tau_{zx}$ is flux of $x$-momentum
+  in $z$-direction.  Momentum is a vector, so we have {\em three} conservation
+  equations: conservation of $x$-momentum, $y$-momentum, $z$-momentum.  This
+  vector field thing is a bit tricky, especially the vector gradient.
+\item I left out: a Newtonian fluid exhibits linear stress-strain rate
+  behavior, proportional.  Lots of nonlinear fluids, non-Newtonian; we'll get
+  to later.
+\end{itemize}
+
+Intro: may be confused after last time.  This time do a couple more examples
+with confined flow, including one cylindrical, hopefully clear some things up.
+
+From last time: parallel plates, governing equation
+$$\rho\frac{\partial u_x}{\partial t} = \mu\frac{\partial^2 u_x}{\partial z^2}
++ F_x$$
+$$\frac{\partial u_x}{\partial t} = \nu\frac{\partial^2 u_x}{\partial z^2} +
+\frac{F_x}{\rho}$$
+We have the diffusion equation!  $\nu$ is the momentum diffusivity, like the
+thermal diffusivity $k/\rho c_p$ before it.  Note: units of momentum
+diffusivity $\nu=\mu/\rho$: $\rm\frac{kg/m\cdot s}{kg/m^3} = m^2/s$!
+Kinematic ($\nu$), dynamic ($\mu$) viscosities.
+
+Note on graphics: velocities with arrows, flipping the graphs sideways to match
+orientation of the problem.
+
+Cases:
+\begin{itemize}
+\item Steady-state, no generation, bottom velocity zero, top $U$:
+  $$u_x = \frac{U}{L}z,\ \tau_{zx} = -\mu\frac{U}{L}$$
+  Shear stress:
+  $$\tau_{zx} = -\mu\left(\frac{\partial u_x}{\partial z} + \frac{\partial
+      u_z}{\partial x}\right) = -\mu\frac{U}{z}$$
+  Thus the drag force is this times the area of the plate.
+\item Unsteady, no generation, different velocities from $t=0$.
+  $$u_x = U{\rm erfc}\left(\frac{L-z}{2\sqrt{\nu t}}\right),
+  \tau_{zx} = -\frac{1}{2\sqrt{\nu t}}\frac{2}{\sqrt{\pi}}
+  \exp\left(-\frac{(L-z)^2}{4\nu t}\right)$$
+\item New: steady-state, generation, like book's falling film in problem 4.15
+  of W$^3$R, with $\theta$ the inclination angle off-normal so $g_x =
+  g\sin\theta$, $z$ is the distance from the plane.  The steady-state equation
+  reduces to:
+  %NEXT TIME: z = distance from free surface (like last year).
+  $$0 = \mu\frac{\partial^2 u_x}{\partial z^2} + F_x$$
+  $$u_x = -\frac{F_x z^2}{2\mu} + Az + B$$
+  BCs: zero velocity at bottom plate at $z=0$, free surface with zero shear
+  stress at $z=L$, $F_x=\rho g_x = \rho g\sin\theta$, result: B=0, get
+  $$u_x = \frac{g\sin\theta}{2\nu}(2Lz-z^2)$$
+  Shear stress:
+  $$\tau_{zx} = -\mu\left(\frac{\partial u_x}{\partial z} + \frac{\partial
+      u_z}{\partial x}\right) = \rho g\sin\theta (L-z)$$
+  This is the weight of the fluid per unit area on top of this layer!
+\end{itemize}
+Shear stress as the mechanism of momentum flux, each layer pushes on the layer
+next to it.  Think of it as momentum diffusion, not stress, and you'll get the
+sign right.
+
+Flow rate: $Q$, volume per unit time through a surface.  If width of the
+falling film is $W$, then flow rate is:
+$$Q=\int_S \vec{u}\cdot\hat{n}dA = \int_{z=0}^L u_x W dz =
+\frac{Wg\sin\theta}{\nu}\left[\frac{Lz^2}{2}-\frac{z^3}{6}\right] =
+\frac{Wg\sin\theta}{\nu}\frac{L^3}{3}$$
+Average velocity is $Q/A$, in this case $Q/LW$:
+$$u_{av} = \frac{Q}{LW} = \frac{g\sin\theta L^2}{3\nu};$$
+$$u_{max} = \left.u_x\right|_{z=L} = \frac{g\sin\theta L^2}{2\nu}.$$
+So average velocity is 2/3 of maximum for falling film, channel flow, etc.
+\newpage
+
+
+\section{October 29: 1-D Laminar Newtonian Wrapup, Summary}
+
+Mechanics:
+\begin{itemize}
+\item Next Weds 11/5: 3B Symposium!
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Erf solution: why
+  $$u_x=U{\rm erfc}\left(\frac{L-z}{2\sqrt{\nu t}}\right)?$$
+  As long as it's semi-infinite, it's an erf/erfc solution (uniform initial
+  condition, constant velocity boundary condition), so this works for $t\leq
+  L^2/16\nu$.  For erfs, they can start at 0, or somewhere else (zinc diffusion
+  couple), and go ``forward'' or ``backward''.  Graph the normal way.  Also:
+  $$u_x = U\left[1+{\rm erf}\left(\frac{z-L}{2\sqrt{\nu t}}\right)\right]$$
+\item Weight of fluid: consider layer of fluid from $z$ to $L$, it has force in
+  $x$- and $z$-directions $F_g=V\rho g\sin\theta$ and $-\cos\theta$
+  respectively.  In $x$-direction, shear goes the other way: $F_\tau =
+  -\tau_{zx}A$.  So force balance for steady-state (no acceleration):
+  $$V\rho g\sin\theta - A\tau_{zx} = 0 \Rightarrow \tau_{zx}= \frac{V}{A} \rho
+  g\sin\theta = (L-z) \rho g\sin\theta.$$
+  In $z$-direction, this is balanced by pressure:
+  $$P = P_{atm} + \rho g\cos\theta(L-z).$$
+\end{itemize}
+
+Nice segue into pressure-driven flows.  Suppose fluid in a cylinder, a pipe for
+example of length $L$ and radius $R$, $P_1$ on one end, $P_2$ on other.  Net
+force: $(P_1-P_2)A_{xs}$, force per unit volume is $(P_1-P_2)V/A_{xs} =
+(P_1-P_2)/L$.  Can shrink to shorter length, at a given point, force per unit
+volume is $\Delta P/\Delta z\rightarrow\partial P/\partial z$.  This is the
+pressure generation term.
+
+So, flow in tube: uniform generation throughout $(P_1-P_2)/L$ (prove next
+week), diffusion out to $r=R$ where velocity is zero.  Could do momentum
+balance, but is same as diffusion or heat conduction, laminar Newtonian result:
+$$\rho\frac{\partial u_z}{\partial t} = \frac{1}{r}\frac{\partial}{\partial r}
+\left(r\mu\frac{\partial u_z}{\partial r}\right) + \rho g_z - \frac{\partial
+  P}{\partial z}.$$
+Here looking at steady-state, horizontal pipe, uniform generation means:
+$$u_z = -\frac{F_z r^2}{4\mu} + A\ln r + B = -\frac{P_1-P_2}{4\mu L}r^2 + A\ln
+r + B.$$
+Like reaction-diffusion in problem set 2 (PVC rod): non-infinite velocity at
+$r=0$ means $A=0$ (also symmetric), zero velocity at $r=R$ means:
+$$u_z = \frac{P_1-P_2}{4\mu L}(R^2-r^2).$$
+What's the flow rate?
+$$Q = \int_0^R u_z 2\pi r dr = \int_0^R \frac{P_1-P_2}{4\mu L}(R^2-r^2) 2\pi r
+dr$$
+$$Q = \frac{\pi(P_1-P_2)}{2\mu L} \left[\frac{R^2r^2}{2} -
+  \frac{r^4}{4}\right]_0^R = \frac{\pi(P_1-P_2)R^4}{8\mu L}.$$
+H\"{a}gen-Poisseuille equation, note 4th-power relation is extremely strong!
+3/4'' vs. 1/2'' pipe...
+
+\paragraph{Summary} Summary of the three phenomena thus far:
+
+\begin{center}
+  \begin{tabular}[h]{l|c|c|c|}
+                      & Diffusion & Heat conduction & Fluid flow \\ \hline
+    What's conserved? & Moles of each species & Joules of energy & momentum \\
+    Local density  & $C$ & $\rho c_p T$ & $\rho\vec{u}$ \\
+    Units of flux & $\rm\frac{mol}{m^2\cdot s}$ & $\rm\frac{W}{m^2}$ &
+      $\rm\frac{kg\frac{m}{s}}{m^2\cdot s} = \frac{N}{m^2}$ \\
+    Conservation equation$^*$ &
+      $\frac{\partial C}{\partial t} = -\nabla\cdot\vec{J} + G$ &
+      $\rho c_p\frac{\partial T}{\partial t} = -\nabla\cdot\vec{q} + \dot{q}$ &
+      $\frac{\partial(\rho\vec{u})}{\partial t} = -\nabla P - \nabla\cdot\tau +
+      \vec{F}$ \\
+    Constitutive equation & $\vec{J} = -D\nabla C$ & $\vec{q} = -k\nabla T$ &
+      $\tau = -\eta\left[\nabla\vec{u} + (\nabla\vec{u})^T\right]$ \\
+    Diffusivity & $D$ & $\alpha = \frac{k}{\rho c_p}$ &
+      $\nu = \frac{\eta}{\rho}$ \\
+    %Convective flux & $C\vec{u}$ & $\rho c_pT\vec{u}$ & $\rho\vec{u}\vec{u}$\\
+    \hline
+  \end{tabular}
+\end{center}
+$^*$Only considering diffusive fluxes.  $^T$ in fluid constit. denotes the
+transpose of the matrix.
+
+New stuff: vector field instead of scalar; very different units; pressure as
+well as flux/shear stress and force.
+
+For those taking or having taken 3.11, shear stress $\tau$ relates to stress
+$\sigma$ as follows:
+$$\sigma = -\tau -PI$$
+where $p$ is $(\sigma_{xx}+\sigma_{yy}+\sigma_{zz})/3$, so $\tau_{xx} +
+\tau_{yy} + \tau_{zz} = 0$, $\tau_{xy} = \tau_{yx} = -\sigma_{xy} =
+-\sigma_{yx}$.  Note that $\tau_{yx} = \tau_{xy}$ almost always, otherwise
+infinite rotation...
+
+Also: mechanics uses displacement for $\vec{u}$, acceleration is its {\em
+  second} derivative with time.  Simple shear:
+$$\rho\frac{\partial^2\vec{u}}{\partial t^2} = \nabla\cdot\sigma + \vec{F}
+\Rightarrow \rho\frac{\partial^2u_x}{\partial t^2} =
+\frac{\partial\sigma_{xx}}{\partial x^2} + \frac{\partial\sigma_{yx}}{\partial
+  y^2} + \frac{\partial\sigma_{zx}}{\partial z^2} + F_x =
+G\frac{\partial^2 u_x}{\partial z^2} + F_x.$$
+Analogue to momentum diffusivity: $G/\rho$, units m$^2$/s$^2$, $\sqrt{G/\rho}$:
+speed of sound!  Remember with a little jig:
+
+\begin{center}
+  \em Fluids are diffusive,\\
+  With their velocity and viscosity.\\
+  But on replacement with displacement,\\
+  it will behave, like a wave!
+\end{center}
+\newpage
+
+
+\section{October 31: Mechanics Analogy Revisited, Reynolds Number, Rheology}
+
+Mechanics:
+\begin{itemize}
+\item Next Weds 11/5: 3B Symposium!
+\item 3.21 notes on Stellar (with $\eta$ changed to $\mu$).
+\item In all of the viewfactor problems of PS6, ignore the graphs dealing with
+  "nonconducting but reradiating" surfaces in the text, as we didn't cover
+  those this year (or last year).
+\item In disc graph, not $r_1/r_2$ but $D/r_1$ and $r_2/D$.
+\item In problem 2, "collar" refers to the heat shield, a cylinder above the
+  ZrO2 source.
+\item In problem 3, the fluid layer is thin enough that we can neglect the
+  curvature of the ram and cylinder.  The ram motion is also vastly powerful in
+  terms of driving flow than the weight of the fluid, so we can neglect rho*g
+  in the fluid.  With these two simplifications, velocity profile between the
+  cylinder and ram is linear, making the problem a lot simpler.
+\item In problem 4a, Arrhenius means proportional to $\exp(-\Delta G_a/RT)$.
+  For part b, think about what happens to glasses as they cool...
+\item In problem 5, think about conduction through a multi-layer wall, in terms
+  of the interface condition.  Also, just as the multi-layer wall has two
+  layers with different values of A and B in the temperature graph T=Ax+B, here
+  we have two fluid layers with different values of A and B in the falling film
+  solution given in class (that solution is the answer to part a).  The
+  Reynolds number will be discussed in tomorrow's lecture.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Crossbar on $z$.
+\item Why is $A=0$, $B=\frac{P_1-P_2}{4\mu L}R^2$ in tube?  General solution:
+  $$u_z = -\frac{P_1-P_2}{4\mu L}r^2 + A\ln r + B,$$
+  boundary conditions: $r=0\rightarrow u_z$ not infinite, $r=R\rightarrow
+  u_z=0$.  So, nonzero $A$ in $A\ln r$ gives infinite $u_z$ at $r=0$, use $B$
+  to exactly cancel first term at $r=R$.
+
+  Note: at axis of symmetry, $\partial u_z/\partial r=0$, like temperature and
+  conc; this too would give $A=0$.
+\item Mechanics analogy: very rushed, deserves better treatment, even though
+  not a part of this class.
+\end{itemize}
+
+\paragraph{Reynolds number}
+
+%NEXT TIME: save Re, turb for later; omit from PS6.
+Like other dimensionless numbers, a ratio, this time of convective/diffusive
+momentum transfer, a.k.a. inertial/viscous forces.  Formula:
+$${\rm Re}=\frac{\rho UL}{\eta}$$
+Describes dimensionless velocity for dimensionless drag force $f$; also onset
+of turbulence.
+\begin{itemize}
+\item Tubes: $<2100\rightarrow$ laminar (very constrained).
+\item Channel, Couette: $<1000\rightarrow$ laminar.
+\item Falling film (inclined plane): $<20\rightarrow$ laminar, due to free
+  surface.
+\end{itemize}
+Note didn't give number for turbulent, that's because it depends on entrance
+conditions.
+
+\paragraph{Rheology}
+
+Typical Newtonian viscosities:
+\begin{itemize}
+\item Water: $\rm10^{-3}N\cdot s/m^2$, density $\rm10^3kg/m^3$, kinematic
+  viscosity (momentum diffusivity) $\rm10^{-6}m^2/s$.
+\item Molten iron: $\rm5\times10^{-3}N\cdot s/m^2$, density
+  $\rm7\times10^3kg/m^3$, kinematic viscosity (momentum diffusivity) just under
+  $\rm10^{-6}m^2/s$, close to water.  Water modeling...
+\item Air: $\rm10^{-5}N\cdot s/m^2$, density $\rm1.9kg/m^3$, kinematic
+  viscosity (momentum diffusivity) $\rm5\times10^{-6}m^2/s$, close to water!
+\end{itemize}
+But, very different effect on surroundings, drag force.  So even though might
+flow similarly over a hill, geologists can tell the difference between water
+and wind erosion damage.
+
+Liquids: generally inverse Arrhenius; gases (forgot).
+
+Non-Newtonian: graphs of $\tau_{yx}$ vs. $\partial u_x/\partial y$.
+Categories:
+\begin{itemize}
+\item Dilatant (shear-thickening), example: fluid with high-aspect ratio solid
+  bits; blood.  More mixing, momentum mixing, acts like viscosity.  Platelet
+  diffusivity, concentration near walls...
+
+  Model: power-law, $n>1$.
+
+\item Pseudoplastic (shear-thinning), examples: heavily-loaded semi-solid, many
+  polymers get oriented then shear more easily.
+
+  Model: power law, $n<1$.
+
+  Next time: Wierd shear-thinning behavior at low strain rates due to
+  fibrinogen content, extremely sensitive to fibrinogen and measures risk of
+  cardiovascular disease better than smoking!  (Gordon Lowe)
+
+\item Bingham plastic: finite yield stress, beyond that moves okay, but up to
+  it nothing.  Some heavily-loaded liquids, polymer composites, toothpaste;
+  semi-solid metals bond together then break free.
+
+  Model: yield stress $\tau_0$, slope $\mu_P$.
+\end{itemize}
+Power law relation:
+$$\tau_{yx}=\mu_0\left(\frac{\partial u_x}{\partial y}\right)^n$$
+More than 1-D leads to wierd Tresca, von Mises criteria, etc.
+\newpage
+
+
+\section{November 3, 2003: Navier-Stokes Equations!}
+
+Mechanics:
+\begin{itemize}
+\item Weds 11/5: 3B Symposium!
+\item PS7 material last on Test 2...  Due next Weds.
+\item Today: mid-term course evaluations!
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item In fluids, is $\tau$ a shear or normal stress?  Equating it to $\sigma$
+  is confusing...  It's a shear stress.  It might have ``normal'' components,
+  but if you rotate it right, it's all shear.
+\item What's the difference between a liquid and a Newtonian fluid?  Liquids
+  are fluids, as are gases, and plasmas.  Definition: finite (nonzero) shear
+  strain rate for small stresses.  Bingham plastic not technically a fluid, nor
+  in a sense is a strict power-law pseudoplastic (though tends to break down
+  near 0).
+\end{itemize}
+
+The Navier-Stokes equations!  Pinnacle of complexity and abstraction in this
+course.  From here, we explain, we see more examples, we fill in more details.
+Probably last time without a motivating process...  So don't be surprised if
+you don't understand all of this just now, it's a bunch of math but should be
+clearer as we go on.
+
+3.21 ``Are you ready for momentum convection?''
+
+\paragraph{Conservation of mass}
+
+2-D Navier-Stokes: two equations for three unknowns!  Need one more equation,
+conservation of mass, only in-out by convective mass flux $\rho\vec{u}$, no
+mass diffusion or generation:
+$$\frac{\partial\rho}{\partial t} = -\nabla\cdot(\rho\vec{u})$$
+$$\frac{\partial\rho}{\partial t} + \vec{u}\cdot\nabla\rho +
+\rho\nabla\cdot\vec{u} = 0$$
+$$\frac{D\rho}{Dt} + \rho\nabla\cdot\vec{u} = 0$$
+
+Incompressible definition: $D\rho/Dt=0$.  Example: oil and water, discuss
+$D\rho/Dt$ and $\partial\rho/\partial t$.  Incompressible, not constant/uniform
+density.  Result: $\nabla\cdot\vec{u}=0$.
+
+\paragraph{Eulerian derivation of Navier-Stokes}
+
+Like before; this time add convective momentum transfer.  What's that?  In
+convective mass transfer it was $\rho c_p \vec{u}T$.  Now it's
+$\rho\vec{u}\vec{u}$.  Wierd outer product second-rank tensor!
+
+But what is momentum convection?  Those $u_y\frac{\partial u_x}{\partial y}$
+terms.  We'll come back to those later.  Recall heat transfer with convection:
+$$\rho c_p\frac{\partial T}{\partial t} + \nabla\cdot(\rho c_p\vec{u}T) =
+-\nabla\cdot\vec{q} + \dot{q}$$
+With fluids, it's the same:
+$$\frac{\partial(\rho\vec{u})}{\partial t} + \nabla\cdot(\rho\vec{u}\vec{u}) =
+-\nabla p - \nabla\cdot\tau + \vec{F}$$
+Left side expansion, simplification:
+$$\rho\frac{\partial\vec{u}}{\partial t} +
+\vec{u}\frac{\partial\rho}{\partial t} +
+\rho\vec{u}\nabla\cdot\vec{u} + \rho\vec{u}\cdot\nabla\vec{u} +
+\vec{u}\vec{u}\cdot\nabla\rho =
+\vec{u}\left[\frac{\partial\rho}{\partial t} + \vec{u}\cdot\nabla\rho +
+  \rho\nabla\cdot\vec{u}\right] + \rho\left[\frac{\partial\vec{u}}{\partial t}
+  + \vec{u}\cdot\nabla\vec{u}\right]$$
+Recall the continuity equation:
+$$\frac{\partial\rho}{\partial t} + \vec{u}\cdot\nabla\rho +
+\rho\nabla\cdot\vec{u} = 0.$$
+Entire first part cancels!  Result:
+$$\rho\frac{D\vec{u}}{Dt} = -\nabla p - \nabla\cdot\tau + \vec{F}.$$
+
+Now with Newtonian viscosity, incompressible:
+$$\tau = -\mu\left(\nabla\vec{u} + \nabla\vec{u}^T -
+  \frac{2}{3}\nabla\cdot\vec{u}I\right).$$
+For $x$-component in 2-D:
+$$\tau_x = -\mu\left[2\frac{\partial u_x}{\partial x}\hat{\imath} +
+  \left(\frac{\partial u_x}{\partial y} +
+    \frac{\partial u_y}{\partial x}\right)\hat{\jmath}\right]$$
+$$-\nabla\cdot\tau_x = \mu\left[2\frac{\partial^2u_x}{\partial x^2} +
+  \frac{\partial^2 u_x}{\partial y^2} +
+  \frac{\partial^2 u_y}{\partial x\partial y}\right] =
+\mu\left[\nabla^2 u_x + \frac{\partial}{\partial x}
+  \left(\frac{\partial u_x}{\partial x} +
+    \frac{\partial u_y}{\partial y}\right)\right]$$
+So, that simplifies things quite a bit.
+
+Incompressible Newtonian result:
+$$\rho\frac{Du_x}{Dt} = -\frac{\partial p}{\partial x} + \mu\nabla^2u_x +F_x$$
+Written out in 3-D:
+$$\rho\left(\frac{\partial u_x}{\partial t} +
+  u_x\frac{\partial u_x}{\partial x} + u_y\frac{\partial u_x}{\partial y} +
+  u_z\frac{\partial u_x}{\partial z}\right) =
+-\partial p/\partial x + \mu\left(\frac{\partial^2 u_x}{\partial x^2} +
+  \frac{\partial^2 u_x}{\partial y^2} + \frac{\partial^2 u_x}{\partial z^2}
+\right) + F_x$$
+Identify (nonlinear) convective, viscous shear ``friction'' terms, sources.
+
+The full thing in vector notation:
+$$\rho\frac{D\vec{u}}{Dt} = -\nabla p + \mu\nabla^2\vec{u} + \vec{F}$$
+Pretty cool.  Again, sorta like the diffusion equation.
+
+[For more on this, including substantial derivative, see 2000 David Dussault
+material, and ``omitted'' paragraphs from 2001.]
+\newpage
+
+
+\section{November 5, 2003: Using the Navier-Stokes Equations}
+
+Mechanics:
+\begin{itemize}
+\item Tonight: 3B Symposium!  Dinner 5:30 in Chipman room.
+\item New PS7 on Stellar: no TODO, \#4c graph on W$^3$R p. 188.
+\item Midterm Course Evals:
+  \begin{itemize}
+  \item Lectures mostly positive, cards great (one: takes too long); negatives:
+    1/3 too fast, 1/2 math-intense; need concept summaries.
+  \item TA: split, most comfortable, 1/3 unhelpful, many: recs need more PS
+    help.  ``Makes the class not hurt so badly.''
+  \item PSes: most like, old PSes a prob, need more probs for test studying.
+  \item Test: like policy, but too long.
+  \item Text: few helpful different approach, most useless!  But better...
+  \item Time: from 2-5 or 3+ to 12-18; ``4 PS + 2-4 banging head against
+    wall.''
+  \end{itemize}
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item When we started momentum conservation, we had a $P$, but at the end, only
+  $\rho$.  Where did the $P$ go?  Still there.  General equations:
+  $$\frac{D\rho}{Dt} + \rho\nabla\cdot\vec{u} = 0$$
+  $$\rho\frac{D\vec{u}}{Dt} = -\nabla P - \nabla\cdot\tau + \vec{F}$$
+  Incompressible, Newtonian, uniform $\mu$:
+  $$\nabla\cdot\vec{u} = 0$$
+  $$\rho\frac{D\vec{u}}{Dt} = -\nabla P + \mu\nabla^2\vec{u} + \vec{F}$$
+\item Fifth equation in compressible flows: $\rho(P)$, e.g. ideal gas $\rho =
+  MP/RT$.
+\end{itemize}
+
+\paragraph{Convective momentum transfer} That nonlinear $D\vec{u}/Dt$ part that
+makes these equations such a pain!
+
+Example: $t=0\rightarrow u_x=1$, $u_y=2x$, sketch, show at $t=0$ and $t=1$.
+Convecting eddies in background velocity.
+
+\paragraph{Using the Navier-Stokes Equations}
+
+Handout, start with full equations and cancel terms.  Flow through tube
+revisited.  Longitudinal pressure trick with $z$-derivative of $z$-momentum
+equation:
+$$\frac{\partial^2P}{\partial z^2} = \frac{\partial}{\partial z}
+\left[\frac{\mu}{r}\frac{\partial}{\partial r}
+  \left(\frac{\partial u_z}{\partial r}\right)\right] =
+\frac{\mu}{r}\frac{\partial}{\partial r}
+\left(\frac{\partial^2 u_z}{\partial r\partial z}\right) = 0!\ P=
+A(r,\theta)z + B(r,\theta)$$
+$$0 = -\frac{\partial P}{\partial z} + \frac{\mu}{r}\frac{\partial}{\partial r}
+\left(\frac{\partial u_z}{\partial r}\right) \Rightarrow
+u_z = \frac{\partial P/\partial z}{4\mu}r^2 + A\ln r + B =
+-\frac{P_1-P_2}{4\mu L}z^2 + A\ln r + B.$$
+Lateral pressure: if $\theta=0$ points up:
+$$\rho g_r=-\rho g\cos\theta=\partial P/\partial r,$$
+$$\rho g_\theta=\rho g\sin\theta = (1/r)\partial P/\partial\theta.$$
+Resulting pressure:
+$$P = - \rho gr\cos\theta + f(z) = f(z) - \rho gh,$$
+for $h$ increasing in the upward direction from $z$-axis.  Final result:
+$$P = Az - \rho gh + C.$$
+\newpage
+
+
+\section{November 7, 2003: Drag Force}
+
+Mechanics:
+\begin{itemize}
+\item New PS7 on Stellar: no TODO, \#4c graph on W$^3$R p. 188.
+\item Midterm Course Evals:
+  \begin{itemize}
+  \item Lectures mostly positive, cards great (one: takes too long); negatives:
+    1/3 too fast, 1/2 math-intense; need concept summaries.
+  \item TA: split, most comfortable, 1/3 unhelpful, many: recs need more PS
+    help.  ``Makes the class not hurt so badly.''
+  \item PSes: most like, old PSes a prob, need more probs for test studying.
+    Bad: last material in last lecture before due!  This time: option Weds/Fri,
+    okay?
+  \item Test: like policy, but too long, too long delay to retake.
+  \item Text: few helpful different approach, most useless!  But better...
+  \item Time: from 2-5 or 3+ to 12-18; ``4 PS + 2-4 banging head against
+    wall.''
+  \end{itemize}
+\item Test 2 in less than two weeks...  Shorter wait for retake this time.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Redo pressure derivation.
+  $$\frac{\partial^2P}{\partial z^2} = \frac{\partial}{\partial z}
+  \left[\frac{\mu}{r}\frac{\partial}{\partial r}
+    \left(\frac{\partial u_z}{\partial r}\right)\right] =
+  \frac{\mu}{r}\frac{\partial}{\partial r}
+  \left(\frac{\partial^2 u_z}{\partial r\partial z}\right) = 0!\ P=
+  A(r,\theta)z + B(r,\theta)$$
+  Lateral pressure: if $\theta=0$ points up:
+  $$\rho g_r=-\rho g\cos\theta=\partial P/\partial r,$$
+  $$\rho g_\theta=\rho g\sin\theta = (1/r)\partial P/\partial\theta.$$
+  Resulting pressure:
+  $$P = - \rho gr\cos\theta + f(z) = f(z) - \rho gh,$$
+  for $h$ increasing in the upward direction from $z$-axis.  Final result:
+  $$P = Az - \rho gh + C.$$
+
+\item What's fully-developed, edge effects in cylindrical coordinates?  Flow
+  direction derivatives deal with fully-developed.  If axisymmetric and flow is
+  mostly $\theta$, then can use this as ``fully-developed''.
+
+  Edge effects: flow direction, large variation direction, third direction is
+  ``edge'' direction.  For tube flow, was $\theta$, so axisymm is equiv to ``no
+  edge effects''.  For rod-cup, will be something else.
+\end{itemize}
+
+\paragraph{Drag force}
+
+Integrated traction (force per unit area) in one direction.  For tubes, it's in
+the $z$-direction, use the shear traction (stress) times area: $F_d = \tau\cdot
+A$.  Here, looking at $\tau_{rz}$:
+$$u_z = \frac{P_1-P_2}{4\mu L}(R^2-r^2) \Rightarrow
+\tau_{rz} = -\mu\frac{\partial u_z}{\partial r} = \frac{P_1-P_2}{2 L} r.$$
+$$F_d = 2\pi RL\cdot\left.\tau_{rz}\right|_{r=R} =
+2\pi RL \frac{P_1-P_2}{2 L} R = \pi R^2(P_1-P_2).$$
+Neat result: this is just the net pressure force.  Okay, what if we know
+desired velocity, want to estimate required pressure?  In terms of $u_{av}$:
+$$u_{av} = \frac{u_{max}}{2} = \frac{(P_1-P_2)R^2}{8\mu L},$$
+$$F_d = \frac{(P_1-P_2)R^2}{8\mu L}\cdot 8\pi\mu L = 8\pi\mu L u_{av}.$$
+For any laminar flow, this is the drag force.  Drag is shear traction times
+area:
+$$F_d = \tau_{rz}\cdot 2\pi RL \Rightarrow \tau_{rz} = \frac{F_d}{2\pi RL} =
+\frac{8\pi\mu L u_{av}}{2\pi RL} = \frac{4\mu}{R}u_{av} =
+\frac{8\mu}{d}u_{av}.$$
+
+Okay, using $u_{av}$ to correlate with flow rate whether laminar or turbulent.
+So what about turbulent?  Density plays a role because of convective terms.
+Dimensional analysis:
+$$\tau = f(U, \mu, d, \rho)$$
+Five parameters, three base units, so two dimensionless parameters.  Four
+different nondimensionalizations!
+\begin{center}
+  \begin{tabular}[h]{c|cc|}
+    Keep           & $\pi_\tau$ & $\pi_{other}$ \\ \hline
+    $\tau$, $\mu$ & $\frac{\tau}{\rho U^2}$ & $\pi_\mu=\frac{\mu}{\rho Ud}$ \\
+    $\tau$, $\rho$ & $\frac{\tau d}{\mu U}$ & $\pi_\rho=\frac{\rho Ud}{\mu}$ \\
+    $\tau$, $U$ & $\frac{\tau d^2\rho}{\mu^2}$ & $\pi_U=\frac{\rho Ud}{\mu}$ \\
+    $\tau$, $d$ & $\frac{\tau}{\rho U^2}$ & $\pi_d=\frac{\rho Ud}{\mu}$ \\
+    \hline
+  \end{tabular}
+\end{center}
+First and last are essentially the same, though last is more familiar (Reynolds
+number), so ignore the first.  Third is just a mess, so throw it out.  Second
+is a great fit to what's above.  So use last, or second?
+
+With turbulence, there are different curves with different surface roughnesses,
+roughly proportional to $U^2$.  If use second, get one flat $\pi_\tau$ laminar,
+multiple lines for turbulent $\pi_\tau$.  If use first/last, one line for
+laminar, multiple flats for turbulance (p. 188).  So this is generally more
+convenient.
+
+Dimensionless $\pi_\tau$ is called (fanning) friction factor $f$ ($f_f$).  The
+denominator $\frac{1}{2}\rho U^2$ is the approximate kinetic energy density,
+we'll call it $K$, a.k.a. dynamic pressure.  So:
+$$\tau=fK,\ F_d = fKA, f=\frac{\tau}{\frac{1}{2}\rho U^2} = f({\rm Re}).$$
+Laminar flow friction factor:
+$$f=\frac{\tau}{\frac{1}{2}\rho U^2} =
+\frac{\frac{8\mu}{d}u_{av}}{\frac{1}{2}\rho U^2} = \frac{16\mu}{\rho Ud} =
+\frac{16}{\rm Re}.$$
+To calculate drag force:  Reynolds number (and surface roughness) $\rightarrow$
+friction factor $f$ $\rightarrow$ $\tau=fK,$ $F_d=fKA$.
+\newpage
+
+
+\section{November 12, 2003: Drag Force on a Sphere}
+
+Mechanics:
+\begin{itemize}
+\item Test 2 11/19 in 2-143, preview handout today.
+\item PS7 extended to Friday.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item How is $f=16\mu/\rho Ud$?
+  $$\tau_{rz} = \frac{8\mu}{d}u_{av}\Rightarrow
+  f=\frac{\tau_{rz}}{\frac{1}{2}\rho u_{av}^2} =
+  \frac{8\mu u_{av}/d}{\frac{1}{2}\rho u_{av}^2} = \frac{16\mu}{\rho u_{av}d} =
+  \frac{16}{\rm Re}.$$
+\item What's the point of defining $f$?  We just need $\tau$, right?  Well, $f$
+  is easy for laminar flow, for turbulence it's more complicated.  This gives
+  us a parameter to relate to the Reynolds number for calculating drag force in
+  more general situations.  More examples on the way.
+\item Or was it $\vec{t}$, not $f$?  In that case, traction
+  $\vec{t}=\sigma\cdot\hat{n}$, force per unit area.  In this case, with
+  $n=\hat{r}$, $\vec{t}=(\tau_{rr}+p, \tau_{r\theta}, \tau_{rz})$.  The
+  relevant one for the $z$-direction is $\tau_{rz}$, but traction is more
+  general, see an example later today.
+\item Why was option \#4 the ``better'' graph?  Expanded version: with
+  roughness at high Re, $f$ is constant.  So if Re=10$^8$, friction factor is
+  {\em only} a function of $e/d$ down to $e/d=10^{-5}$!
+\item Please review this process $Q\rightarrow u_{av}\rightarrow{\rm
+    Re}\rightarrow f\rightarrow\tau\rightarrow F_d\rightarrow\Delta P$.
+  $$\frac{Q}{\pi R^2}=u_{av},\ {\rm Re}=\frac{\rho u_{av}d}{\mu},\ f=f({\rm
+    Re}, e/d),\ \tau_{rz}=fK,\ F_{d,z}=\tau_{rz} A=fKA (A=2\pi RL),\ \Delta P=\frac{F_d}{\pi
+    R^2}.$$
+\end{itemize}
+
+\paragraph{Reynolds Number revisited}
+
+Low velocity: shear stress; high velocity: braking kinetic energy.  Ratio of
+forces:
+$${\rm Re} = \frac{\rm convective\ momentum\ transfer}{\rm shear\ momentum
+  \ transfer} = \frac{\rm inertial\ forces}{\rm viscous\ forces}\simeq
+\frac{\rho u_y\frac{\partial u_x}{\partial y}}
+{\mu\frac{\partial^2u_x}{\partial y^2}} \simeq
+\frac{\rho U U/L}{\mu U/L^2} = \frac{\rho UL}{\mu}.$$
+
+\paragraph{Flow past a sphere}
+
+Motivating process: Electron beam melting and refining of titanium alloys.
+Water-cooled copper hearth, titanium melted by electron beams, forms solid
+``skull'' against the copper.  Clean heat source, liquid titanium contained in
+solid titanium, results in very clean metal.  Mystery of the universe: how does
+liquid Ti sit in contact with solid Cu?  Main purpose: removal of hard TiN
+inclusions often several milimeters across which nucleate cracks and bring down
+airplanes!  (1983 Sioux City, Iowa.)
+
+Set up problem: sphere going one way $u_{sphere}$, fluid other way $u_\infty$,
+local disturbance but relative velocity $U=u_\infty-u_{sphere}$, relative veloc
+of fluid in sphere frame.  Drag force is in this direction.
+
+For a sphere, drag force is slightly different: it has not only shear, but
+pressure component as well.  Traction $\vec{t}=\sigma\cdot\hat{n}$.
+Stokes flow: ingore the convective terms, result (pp. 68-71):
+$$F_d = 3\pi\mu du_{rel}.$$
+At high velocity, similar friction factor concept to tube:
+$$F_d=fKA = f\cdot\frac{1}{2}\rho U^2\cdot\frac{1}{4}\pi d^2.$$
+Again, $f({\rm Re})$, but not really $\pi_\tau$ because $\tau$ is all over the
+place, more of an average.  This time, low Re ($<$0.1) means Stokes flow, can
+ignore all convective terms; analytical result in 3.21 notes, drag force:
+$$F_d = 3\pi\mu Ud = f\cdot\frac{1}{2}\rho U^2\cdot\frac{1}{4}\pi d^2
+\Rightarrow f=\frac{24\mu}{\rho Ud} = \frac{24}{\rm Re}.$$
+If faster, though not turbulent, $f$ becomes a constant.  Graph on W$^3$R
+p. 153 of $f$ (they call $c_D$) vs. Re.  Constant: about 0.44, that's what I've
+known as the drag coefficient.  Cars as low as 0.17, flat disk just about 1,
+making dynamic pressure a good estimate of pressure difference.
+
+For rising/sinking particles, set drag force to buoyancy force, solve for
+velocity.  If not Stokes flow, you're in trouble, way to do it but it's
+complicated.
+
+Can {\em NOT} use this for bubbles.  For those, $F_d=2\pi\mu Ud$ all the way
+out to Re=10$^5$!
+
+So, what about precipitation?  Buoyancy force and weight vs. drag force, all
+sum to zero:
+$$F_w = \frac{1}{6}\pi d^3\rho_{sphere}, F_b = \frac{1}{6}\pi d^3\rho_{fluid},
+F_d = {\rm what\ we\ just\ calculated}.$$
+After all, if you're not part of the solution, you're part of the precipitate.
+(Ha ha)
+\newpage
+
+
+\section{November 14, 2003: Boundary Layers Part I}
+
+Mechanics:
+\begin{itemize}
+\item Wulff Lecture Tues 4:15 6-120: {\em Information Transport and Computation
+    in Nanometer-Scale Structures}, Don Eigler, IBM Fellow.
+\item Test 2 11/19 in 2-143.  Solving Fluids Problems provided if needed.
+\item PS7 solution error: \#1 replace $L$ with $\delta$, ``length'' with $L$.
+  Correction on Stellar.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Which are the convective and viscous terms?  In vector Navier-Stokes
+  momentum:
+  $$\rho\frac{D\vec{u}}{Dt} = \rho\left(\frac{\partial\vec{u}}{\partial t} +
+    \vec{u}\cdot\nabla\vec{u}\right) = -\nabla P + \mu\nabla^2\vec{u} +
+  \vec{F}.$$
+  Convective terms are the $\vec{u}\cdot\nabla\vec{u}$ terms, like $u_x\partial
+  u_y/\partial x$, the nonlinear terms which make the equations such a pain to
+  solve and create turbulence...  Viscous ones are $\mu\nabla^2\vec{u}$.
+\item Why do thin ellipsoids have less drag than spheres, but flat plates have
+  more?  Depends on orientation.  P\&G has a few more examples on p. 87.  Neat
+  thing: the Stokes flow $f=24/$Re holds for all of them!
+\item Are log($f$) vs. log(Re) plots for only turbulent, or both laminar and
+  turbulent?  Both, that's the neat thing.  For tube, sphere, and BL, it
+  captures everything.
+\end{itemize}
+
+\paragraph{Sphere flow wrapup}
+
+Another neat way to think about Re: ratio of inertial to shear forces
+$$\frac{\rho U^2\cdot\pi d^2}{\mu dU}\propto \frac{\rho Ud}{\mu}= {\rm Re}.$$
+Can {\em NOT} use this flow-past-sphere stuff for bubbles.  For those,
+$F_d=2\pi\mu Ud$ all the way out to Re=10$^5$!  Boundary conditions...
+
+\paragraph{``Boundary layers'' in a solid}
+
+Thought experiment with moving solid: extruded polymer sheet (like PS4
+extruded rod problem).  Start at high temp, if well-cooled so large Biot then
+constant temperature on surface; no generation.  Full equation:
+$$\frac{DT}{Dt} = \alpha\nabla^2T$$
+Define boundary layer thickness $\delta{x}$ where temperature deviates at least
+1\% from far-field.  If $\delta\ll x$, then
+$$\frac{\partial^2T}{\partial y^2}>>\frac{\partial^2 T}{\partial x^2}$$
+$$u_x\frac{\partial T}{\partial x} = \alpha\frac{\partial^2T}{\partial y^2}$$
+Transform: $\tau = x/u_x$, becomes diffusion equation, erf solution:
+$$\frac{T-T_s}{T_i-T_s} = {\rm erf}\frac{y}{2\sqrt{\alpha x/u_x}}$$
+If we define $\delta$ as where we get to 0.99, then erf$^{-1}(.99)=1.8$, and
+$$y=\delta\ {\rm where}\ \frac{\delta}{2\sqrt{\alpha x/u_x}}=1.8$$
+$$\delta = 3.6\sqrt\frac{\alpha x}{u_x}$$
+Obviously breaks down at start $x=0$, but otherwise sound.
+
+\paragraph{Boundary layers in a fluid}
+
+Now we want to calculate drag force for flow parallel to the plate.
+
+Similar constant IC to solid, infinite BC, call it $U_\infty$.  Difference: BC
+at $y=0$: $u_x=u_y=0$.  Have to solve 2-D incompressible steady-state
+Navier-Stokes:
+$$\frac{\partial u_x}{\partial x}+\frac{\partial u_y}{\partial y} = 0$$
+$$u_x\frac{\partial u_x}{\partial x} + u_y\frac{\partial u_x}{\partial y} =
+-\frac{\partial p}{\rho\partial x} +
+\nu\left(\frac{\partial^2 u_x}{\partial x^2} +
+  \frac{\partial^2 u_x}{\partial x^2}\right)$$
+$$u_x\frac{\partial u_y}{\partial x} + u_y\frac{\partial u_y}{\partial y} =
+-\frac{\partial p}{\rho\partial y} +
+\nu\left(\frac{\partial^2 u_y}{\partial x^2} +
+  \frac{\partial^2 u_y}{\partial x^2}\right)$$
+Then a miracle occurs, the Blassius solution for $\delta\ll x$ is a graph of
+$u_x/U_\infty$ vs. $\beta=y\sqrt{U_\infty/\nu x}$; hits 0.99 at ordinate of 5:
+$$\delta = 5.0\sqrt{\frac{\nu x}{U_\infty}}.$$
+Why 5.0, not 3.6?  Because there must be vertical velocity due to mass
+conservation (show using differential mass equation and integral box), carries
+low-$x$-velocity fluid upward.  Slope: 0.332, will use next time to discuss
+shear stress and drag force.
+\newpage
+
+
+\section{November 17, 2003: Boundary Layers Part II}
+
+Mechanics:
+\begin{itemize}
+\item Wulff Lecture Tues 4:15 6-120: {\em Information Transport and Computation
+    in Nanometer-Scale Structures}, Don Eigler, IBM Fellow.
+\item PS7 solution error: \#1 replace $L$ with $\delta$, ``length'' with $L$.
+  Correction on Stellar.
+\item Zephyr hours tomorrow 9-12, 1-3; also Weds 4-7 PM.
+\item Test 2 11/19 in 2-143.  Solving Fluids Problems provided if needed.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Nothing!
+\end{itemize}
+
+Recall our ``miraculous'' Blassius solution to the 2-D Navier-Stokes equations
+(draw the graph)...  At $y=0$, slope: 0.332, so viscous drag:
+$$\tau_{yx} = -\mu\frac{\partial u_x}{\partial y} =
+-\mu \frac{\partial u_x}{\partial\beta}\frac{\partial\beta}{\partial y}$$
+$$\tau_{yx} = -\mu\cdot0.332U_\infty\sqrt{\frac{U_\infty}{\nu x}}$$
+Note: a function of $x$ (larger near leading edge), diverges at $x=0$!  But
+$\delta\ll x$ does not hold there.
+
+Now set to a friction factor:
+$$\tau_{yx} = -0.332\sqrt{\frac{\rho\mu U_\infty^3}{x}} =
+f_x \cdot \frac{1}{2}\rho U_\infty^2$$
+This time $\tau$ is not constant, so we have different $f_x=\tau/K$ and
+$f_L=F_d/KA$.  Let's evaluate both:
+$$f_x = 0.664\sqrt{\frac{\mu}{\rho U_\infty x}} =
+\frac{0.664}{\sqrt{{\rm Re}_x}}$$
+
+Also, note dimensionless BL thickness:
+$$\delta = 5.0\sqrt{\frac{\nu x}{U_\infty}}$$
+$$\frac{\delta}{x} = 5.0\sqrt{\frac{\nu}{U_\infty x}} =
+\frac{5.0}{\sqrt{{\rm Re}_x}}$$
+
+Lengthwise, global drag force, average friction factor.  Neglect edge effects
+again...
+$$F_d = \int \tau_{yx} dA = W \int_{x=0}^L tau_{yx} dx$$
+$$F_d = W \int_{x=0}^L0.332\sqrt{\frac{\rho\mu U_\infty^3}{x}}dx$$
+$$F_d = 0.332 W \sqrt{\rho\mu U_\infty^3}\cdot 2\sqrt{L}$$
+$$F_d = 0.664 W \sqrt{\rho\mu U_\infty^3 L}$$
+Now for the average friction factor/drag coefficient:
+$$f_L = \frac{F_d}{KA} = \frac{0.664 W \sqrt{\rho\mu U_\infty^3 L}}
+{\frac{1}{2}\rho U_\infty^2 \cdot WL} =
+1.328\sqrt{\frac{\mu}{\rho U_\infty L}} = \frac{1.328}{\sqrt{{\rm Re}_L}}$$
+This is what is meant by average and local friction factors on the Test 2
+overview sheet.  Don't need to know for test 2, since for a tube they're the
+same.  For a sphere, only defined average/global, but for a BL, they're
+different.
+
+\paragraph{Entrance Length}
+
+For channel flow between two parallel plates spaced apart a distance $H$, we
+can define the entrance length $L_e$ as the point where the boundary layers
+from each side meet in the middle.  The twin Blassius functions are close
+enough to the parabolic profile that we can say it's fully-developed at that
+point.  So we can plug in the boundary layer equation if flow is laminar:
+%NEXT TIME: use $u_{av}$ instead of $U_\infty$.
+$$x=L_e \Rightarrow \frac{H}{2} = \delta = 5.0\sqrt{\frac{\nu x}{U_\infty}},$$
+$$L_e = \frac{H^2U_\infty}{100\nu}.$$
+If $L_e\ll L$, then flow is fully-developed for most of the tube, so the
+fully-developed part will dominate the drag force and $F_d=\tau\cdot2\pi RL$.
+
+Movie Friday...
+\newpage
+
+
+\section{November 21, 2003: Turbulence}
+
+Mechanics:
+\begin{itemize}
+\item Turbulence movie: QC151.T8; guide QC145.2.F5 Barker Media.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item What's the physical significance of ``Blassius''?  Some guy who came up
+  with this function to solve a slightly-reduced 2-D Navier-Stokes.  There are
+  actually three, for $u_x$, $u_y$ and $p$ in the boundary layer, all
+  $\delta\ll x$.  For drag force, only $u_x$ is needed.
+\item Is $dBL/d\beta$ only the slope at the initial part of the curve?  If by
+  ``initial'', you mean $y=0$ (the bottom), then yes.
+\item What's the difference between $f_x$ and $f_L$?  Here, $\tau$ is not
+  constant, graph $\tau$ and $\tau_{av}\rightarrow F_d$, show how average is
+  twice local at the end.  Hence $f_L$ is twice $f_x$.
+\item How about ``Re$_x$'' and ``Re$_L$''?  No significance, just different
+  lengthscales, one for local and one for global/average.
+\item Difference between $u_{av}$ and $U_\infty$?  Should be no $u_{av}$ for BL
+  problems, sorry if I made a writo.  D'oh!  This is wrong, see next lecture's
+  notes.
+\item What's up with $\delta/x$?  Just a ratio, dimensionless for convenience,
+  allows to evaluate $\delta\ll x$.
+\item What is velocity profile for entrance length if not laminar?  Get to that
+  later (next Monday or so).
+\item What happens near leading edge?  Something like the sphere: kinda
+  complicated.  Maybe solvable for Stokes flow...
+\end{itemize}
+
+\paragraph{Turbulence}
+
+Starting instability, energy cascade.  Vortices grow in a velocity gradient
+because of momentum convection, damped due to viscosity; therefore, tendency
+increases with increasing Re.
+
+Resulting behavior:
+\begin{itemize}
+\item Disorder.
+\item ``Vorticity'' in flow, 3-D.
+\item Lots of mixing, of mass and heat as well as momentum.
+\item Increased drag due to momentum mixing, as small vortices steal energy
+  from the flow.
+\end{itemize}
+
+The movie!
+
+Parviz Moin and John Kim, ``Tackling Turbulence with Supercomputers,'' {\em
+Scientific American} January 1997 pp. 62-68. % file sciam.pdf, can put on
+% Stellar or link from Scientific American
+\begin{quote}
+  Turbulence may have gotten its bad reputation because dealing with it
+  mathematically is one of the most notoriously thorny problems of classical
+  physics.  For a phenomenon that is literally ubiquitous, remarkably little of
+  a quantitative nature is known about it.  Richard Feynman, the great Nobel
+  Prize-winning physicist, called turbulence ``the most important problem of
+  classical physics.''  Its difficulty was wittily expressed in 1932 by the
+  British physicist Horace Lamb, who, in an address to the British Association
+  for the Advancement of Science, reportedly said, ``I am an old man now, and
+  when I die and go to heaven there are two matters on which I hope for
+  enlightenment.  One is quantum electrodynamics, and the other is the
+  turbulent motion of fluids.  And about the former I am rather optimistic.''
+\end{quote}
+
+That article goes on to talk about direct numerical simulation of all of the
+details of turbulent flows, of which I am not a great fan.  Why?  as pointed
+out in my {\em JOM} article ``3-D or not 3-D'', even if computers continue to
+double in computational power every eighteen months, the fifth-power scaling of
+complexity with lengthscale in three dimensions (cubic in space times quadratic
+in time) means that the resolution of these simulations will double only every
+seven-and-a-half years!
+
+To take a simple illustrative example, direct numerical simulation of
+turbulence in continuous casting involves Reynolds numbers on the order of one
+million, and the smallest eddies are a fraction of a millimeter across and form
+and decay in a few milliseconds.  One must account for interaction with the
+free surface, including mold powder melting and entrainment, as well as mold
+oscillation, and surface roughness of the solidifying metal, since with
+turbulent flow, the details of these boundary conditions can make a large
+difference in macroscopic behavior.  The formulation alone is daunting, and
+computational work required to solve all of the equations on each of the tens
+of trillions of grid points over the millions of timesteps required to approach
+steady-state will be prohibitively costly for many years, perhaps until long
+after Moore's law has been laid to rest (indeed, the roughly four petabytes of
+memory required to just store a single timestep would cost about two billion
+dollars at the time this is being written).  Furthermore, postprocessing that
+many degrees of freedom would not only be computationally difficult, but it is
+not clear that our minds would be able to comprehend the resulting complexity
+in any useful way, and further, the exercise would be largely pointless, as one
+really cares only about coarse-grained averages of flow behavior, and detailed
+behavior perhaps at certain interfaces.
+
+%Note: all text with % at the start of the line is a comment and SHOULD NOT BE
+%IN THE PRINTED VERSION!
+
+Analysis: for 1 $\rm\frac{m}{s}$ flow through the nozzle 0.1 m in diameter,
+with kinematic viscosity of .005/7000$\simeq10^{-6}$ $\rm\frac{m^2}{s}$, this
+gives us Re$_d\simeq10^5$.  Using the larger lengthscale $H$ of the caster,
+around 1 m, this gives Re$_H\simeq10^6$, this is given in the paragraph above.
+Using standard enengy cascade/Kolmogorov microscale analysis, the energy
+dissipation rate for the largest turbulent eddies in a tube is given by
+$$\epsilon\sim\mu_t\left(\frac{U}{d}\right)^2,$$
+where $\mu_t$ is the turbulent viscosity, $U$ the eddy velocity estimated by
+the average velocity, and $d$ the eddy size estimated by the tube diameter.
+Combining this with the well-known Kolmogorov result for the smallest eddy
+lengthscale $\ell$:
+$$\ell\sim\sqrt[4]{\frac{\mu^3}{\rho^2\epsilon}}$$
+($\rho$ is density) gives the smallest eddy lengthscale as
+$$\ell\sim d\frac{1}{\sqrt{{\rm Re}_d}}\sqrt[4]{\frac{\mu}{\mu_t}}.$$
+Even using the conservative estimate of $\mu_t=30\mu$ gives $\ell\sim0.1$
+mm, in 1 meter cubed this gives a trillion grid points, but you want a few
+grid points across each smallest eddy which means about a few$^3\simeq100$
+times more grid points, hence ``tens of trillions''.
+
+Put slightly differently, the total rate of energy dissipated in a jet at
+steady-state is the rate of kinetic energy input, which is the product of
+volumetric kinetic energy given by dynamic pressure and the flow rate:
+$$\epsilon V=\frac{1}{2}\rho U^2\cdot\frac{\pi}{4}d^2U= \frac{\pi}{8}\rho
+U^3d^2$$
+Taking the volume as 1 m$^3$, average velocity of 1 $\rm\frac{m}{s}$, nozzle
+diameter of $0.1$ m and density of 7000 $\rm\frac{kg}{m^3}$ gives
+$\rm\epsilon\simeq30\frac{W}{m^3}$.  Putting this into the Kolmogorov
+lengthscale expression again gives $\ell\sim0.1$ mm.
+\newpage
+
+
+\section{November 24, 2003: Turbulence, cont'd}
+
+Mechanics:
+\begin{itemize}
+\item Turbulence movie: QC151.T8; guide QC145.2.F5 Barker Media.
+\end{itemize}
+
+\noindent Muddy from last time:
+\begin{itemize}
+\item Difference between $u_{av}$ and $U_\infty$?  I messed up last time, for
+  the entrance length situaiton, we we take average velocity as $U_\infty$, the
+  initial ``free stream'' velocity.  Sorry to confuse you last time.
+\item On that note, just as we have the dimensionless boundary layer thickness,
+  we also have the dimensionless entrance length:
+  $$L_e=\frac{H^2u_{av}}{100\nu} \Rightarrow
+  \frac{L_e}{H}=\frac{{\rm Re}_H}{100}.$$
+  So a large Reynolds number means a long entrance length (1000 means ten times
+  the channel width), and vice versa.
+\end{itemize}
+
+Energy cascade and the Kolmogorov microscale.  Largest eddy Re=$UL/\nu$,
+smallest eddy Reynolds number $u\ell/\nu\sim1$.  Energy dissipation, W/m$^3$;
+in smallest eddies:
+$$\epsilon = \eta\left(\frac{du}{dx}\right)^2 \sim \eta\frac{u^2}{\ell^2}$$
+Assuming most energy dissipation happens there, we can solve these two
+equations, get smallest eddy size and velocity from viscosity, density and
+dissipation:
+$$u\sim\ell\sqrt{\frac{\epsilon}{\eta}} \Rightarrow
+\frac{\rho\ell^2}{\eta}\sqrt{\frac{\epsilon}{\eta}}\sim 1$$
+$$\ell\sim\left(\frac{\eta^3}{\rho^2\epsilon}\right)^\frac{1}{4}$$
+This defines the turbulent microscale.  For thermal or diffusive mixing,
+turbulence can mix things down to this scale, then molecular diffusion or heat
+conduction has to do the rest.  Time to diffusive mixing in turbulence is
+approximately this $\ell^2/D$.
+
+So suppose we turn off the power, then what happens?  Smallest eddies go away
+fast, then larger ones, until the whole flow stops.  Timescale of smallest is
+$\ell^2/\nu$, largest is $L^2/\nu_t$, turbulent effective viscosity.  Get into
+modeling and structure later if time is available.
+
+\paragraph{Turbulent boundary layer}
+
+Laminar is good until Re$_x=10^5$, associated boundary layer thickness and
+local friction factor:
+$$\frac{\delta}{x} = \frac{5.0}{\sqrt{{\rm Re}_x}},
+\ f_x=\frac{0.664}{\sqrt{{\rm Re}_x}},
+\ f_L=\frac{1.328}{\sqrt{{\rm Re}_L}},$$
+In range 10$^5$ to 10$^7$, transition, oscillatory; beyond 10$^7$ fully
+turbulent.  Always retains a laminar sublayer against the wall, though it
+oscillates as vortices spiral down into it.  New behavior:
+$$\frac{\delta}{x} = \frac{0.37}{{\rm Re}_x^{0.2}}$$
+So $\delta\sim x^{0.8}$.  Grows much faster.  Why?  Mixing of momentum, higher
+effective velocity.  But still a laminar sublayer near the side.
+
+$f_x$ is oscillating all over the place, but what about the new $f_L$?
+Disagreement, even for smooth plate:
+$${\rm P\&G\ p.\ 38:}\ f_L=\frac{0.455}{(\log{\rm Re}_L)^{2.58}};
+\ {\rm BSL\ p.\ 203:}\ f_L=\frac{0.146}{{\rm Re}_L^{0.2}}$$
+Either way get some kind of curve in $f$-Re space which jumps in turbulence.
+W$^3$R doesn't give an $f_L$, just an $f_x$ on p. 179, which is:
+$$f_x=\frac{0.0576}{({\rm Re}_x)^{0.2}}.$$
+
+\paragraph{Time-smoothing}
+
+Time smoothing, or experiment-smoothing and Reynolds stresses: velocity varies
+wildly, decompose into $u_x=\bar{u}_x + u'_x$, where $\bar{u}$ is
+time-smoothed:
+$$\bar{u}_x=\frac{\int_{t_a}^{t_b} u_x dt}{t_b-t_a}.$$
+For time-dependent, experiment-average it.
+
+\paragraph{Contest}
+
+Prizes Wednesday for those who catch the two errors in the Navier-Stokes
+equations t-shirt!
+
+\paragraph{Not covered this year} The following topics were not covered in
+lecture, but are here for your edification if you're interested.
+
+\paragraph{Reynolds stresses}
+
+Then take time-smoothed transport equations:
+$$\bar{\frac{\partial(\bar{u_x}+u'_x)}{\partial t}} =
+\bar{\frac{\partial\bar{u_x}}{\partial t}} +
+\bar{\frac{\partial u'_x}{\partial t}} = \frac{\partial\bar{u_x}}{\partial t} +
+0.$$
+Same with spatial derivatives, pressure terms.  But one thing which doesn't
+time-smooth out:
+$$u'_x\frac{\partial u'_x}{\partial x}\neq 0.$$
+This forms the Reynolds stresses, which we shift to the right side of the
+equation:
+$$\tau_{xy}=-\mu\left(\frac{\partial u_x}{\partial y} + \frac{\partial u_y}
+  {\partial x}\right) - \bar{\rho u'_xu'_y}$$
+Show how it's zero in the center of channel flow, large near the sides, zero
+{\em at} the sides.  The resulting mass equation is the same; $x$-momentum
+equation:
+$$\rho\left(\frac{\partial\bar{u}}{\partial t} +
+  \bar{\vec{u}}\cdot\nabla\bar{u}_x\right) =
+-\frac{\partial\bar{P}}{\partial x} + \mu\nabla^2\bar{u}_x -
+\rho\left(\frac{\partial}{\partial x}(\rho u'_xu'_x) +
+  \frac{\partial}{\partial y}(\rho u'_xu'_y) +
+  \frac{\partial}{\partial z}(\rho u'_xu'_z)\right) + F_x.$$
+
+\paragraph{Turbulent transport and modeling}
+
+Recall on test: pseudoplastic, Bingham.  Define effective viscosity: shear
+stress/strain rate.
+
+On a micro scale, lots of vortices/eddies.  On a macro scale, mixing leads to
+higher effective $D_t$, $k_t$, and $\eta_t$ at length scales down to that
+smallest eddy size, less so close to walls.  All three turbulent diffusivities
+have the same magnitude.
+
+New dimensionless number: Prandtl number is ratio of $\nu$ to
+diffusivity, e.g. $\nu/D$ and $\nu/\alpha$.  Pr$_t\simeq1$ for heat and mass
+transfer.
+
+Next time: thermal and solutal boundary layers, heat and mass transfer
+coefficients, turbulent boundary layer, then natural convection.  Last,
+Bernoulli equation, continuous reactors.
+
+Modeling: $K-\ell$ and $K-\epsilon$ modeling ($C_\mu$, $C_1$, $C_2$, $\sigma_K$
+and $\sigma_\epsilon$ are empirical constants):
+$$K=\frac{1}{2}\rho(u'^2_x+u'^2_y+u'^2_z), \nu_t=C_\mu\frac{K^2}{\epsilon}.$$
+$$\frac{DK}{Dt} = \nabla\cdot\left(\frac{\nu_t}{\sigma_K}\nabla K\right) +
+\nu_t\nabla\vec{u}\cdot\left(\nabla\vec{u}+(\nabla\vec{u})^T\right) -
+\epsilon.$$
+$$\frac{D\epsilon}{Dt} = 
+\nabla\cdot\left(\frac{\nu_t}{\sigma_\epsilon}\nabla\epsilon\right)
++ C_1\frac{\nu_t\epsilon}{K}\nabla\vec{u}\cdot(\nabla\vec{u}+(\nabla\vec{u})^T)
+- C_2\frac{\epsilon^2}{K}.$$
+
+
+\chapter{Coupled Fluids with Heat and Mass Transfer}
+
+\section{November 26, 2003: Coupled Fluids, Heat and Mass Transfer!}
+
+Mechanics:
+\begin{itemize}
+\item Congrats to Jenny and David for winning the contest, prize: \$5 Tosci's.
+\item PS8 on Stellar, due Fri 12/5.
+\item Evaluations next Wednesday 12/3.
+\end{itemize}
+Muddy from last time:
+\begin{itemize}
+\item Time smoothing: what are $u_x$, $\bar{u}_x$, $u'_x$?  They are: the real
+  velocity, the time-smoothed component of velocity, and the fluctuating
+  component of velocity.
+\item What timescale can you find from the lengthscale of the smallest eddies?
+  How would one go about this?  Two timescales are relevant here: one is
+  diffusion timescale $\ell^2/D$, which gives mixing time, and the timescale of
+  formation and elimination of these little eddies $\ell^2/\nu$.  When
+  attempting direct numerical simulation of turbulence, this tells how small a
+  timestep one will need (actually, a fraction of this for accuracy); this also
+  describes how long the eddies will last after the mixing power is turned off.
+\end{itemize}
+
+\paragraph{Thermal and solutal boundary layers}
+
+Types: forced, natural convection; forced today, natural later.
+
+Recall first BL thought experiment on thick polymer sheet extrusion, hot
+polymer sheet $T_\infty$ and cold water $T_s$.  Now it's happening in a liquid,
+competing thermal and fluid boundary layers with thicknesses $\delta_u$ and
+$\delta_T$.
+
+Fluid:
+$$\delta_u = 5.0\sqrt{\frac{\nu x}{U_\infty}}$$
+Thermal if flow uniform, same criterion:
+$$\delta_T = 3.6\sqrt{\frac{\alpha x}{U_\infty}}$$
+Dimensionless:
+$$\frac{\delta_T}{x} = \frac{3.6}{\sqrt{\frac{U_\infty x}{\alpha}}} =
+\frac{3.6}{\sqrt{{\rm Re}_x{\rm Pr}}}$$
+When is flow uniform?  In a solid, or for much larger thermal boundary layer
+than fluid, so $\alpha>>\nu$, Pr$<<1$.
+
+Another way to look at it:
+$$\frac{\delta_T}{\delta_u} = 0.72{\rm Pr}^{-1/2}$$
+
+Large Prandtl number ($>$.5) means
+$$\frac{\delta_T}{\delta_u} = 0.975{\rm Pr}^{-1/3}$$
+
+Liquid metals (and about nothing else) have small Pr; mass transfer Pr is
+almost always large.  {\em E.g.} water $\rm\nu = 10^{-6}\frac{m^2}{s} =
+10^{-2}\frac{cm^2}{s}$, but $D$ is typically around $\rm10^{-5}\frac{cm^2}{s}$.
+
+Note: blood platelets diffuse at around $D=10^{-9}$, but tumbling blood cells
+not only stir and increase diffusivity, but somehow platelets end up on the
+sides of blood vessels, where they're needed.  I don't fully understand...
+
+\paragraph{Heat and Mass Transfer Coefficients}
+
+What about $h$?  Start with $h_x$, then $h_L$, as before with $f_x$ and $f_L$.
+Let $\beta_T=y\sqrt{U_\infty/\alpha x}$, $\theta=T-T_s/T_\infty-T_s$, graph $\theta$
+vs. $\beta_T$ gives $\theta = {\rm erf}(\beta_T/2)$.
+
+Heat conduction into the liquid:
+$$q_y = -k\frac{\partial T}{\partial y} =
+-k\frac{dT}{d\theta}\frac{d\theta}{d\beta_T}
+\frac{\partial\beta_T}{\partial y}$$
+$$q_y = k(T_s-T_\infty)\frac{1}{\sqrt{\pi}}\sqrt{\frac{U_\infty}{\alpha x}} =
+h_x(T_s-T_\infty)$$
+$$h_x = \frac{k}{\sqrt{\pi}}\sqrt{\frac{U_\infty}{\alpha x}} =
+\sqrt{\frac{k\rho c_p U_\infty}{\pi x}}$$
+Likewise for mass transfer, $\rho c_p$ is effectively one, so:
+$$h_{Dx} = \sqrt{\frac{DU_\infty}{\pi x}}$$
+Next time: average, dimensional analysis, $\delta_T<\delta_u$ case.
+\newpage
+
+
+\section{December 1, 2003: Nusselt Number, Heat and Mass Transfer Coefficients}
+
+Mechanics:
+\begin{itemize}
+\item Evals Wednesday.
+\end{itemize}
+Muddy from last time:
+\begin{itemize}
+\item In the thermal boundary layer with constant velocity, why is $\partial^2
+  T/\partial x^2<<\partial^2 T/\partial y^2$?  That's because $\delta\ll x$, so
+  graph $T$ vs. x and vs. y, show $y$-deriv is larger.
+\item Is there a physical meaning behind $\delta_T/\delta_u\propto
+  {\rm Pr}^{-1/2}$ and $\delta_C/\delta_u\propto{\rm Pr}^{-1/3}$?  Yes, see
+  below.
+\end{itemize}
+
+\paragraph{Heat and mass transfer coefficients}
+
+Recap last time:
+\begin{itemize}
+\item Flow and heat/mass transfer: weakly coupled.  So far, all laminar.
+\item Case 1: much larger thermal(/concentration) boundary layer (Pr$<$0.1):
+  consider T/C BL to have uniform velocity, use same BL formulation as moving
+  solid motivating example: erf solution, $\delta_T=3.6\sqrt{\alpha
+    x/U_\infty}$.  Here:
+  $$\delta_C/\delta_u\ {\rm or}\ \delta_T/\delta_u=0.72{\rm Pr}^{-1/2}.$$
+  Physical meaning: grows as sqrt of diffusivity, so ratio is ratio of square
+  roots of diffusivity, which is inverse sqrt(Pr).
+\item Case 2: smaller thermal(/concentration) boundary layer (Pr$>$5 or so):
+  consider T/C BL to have linear velocity, smaller velocity means thicker T/C
+  BL.  Here:
+  $$\delta_C/\delta_u\ {\rm or}\ \delta_T/\delta_u=0.975{\rm Pr}^{-1/3}.$$
+\item Moving on, back to case 1, calculated $q|_{y=0}$ from erf solution:
+  $$q_y = k(T_s-T_\infty)\frac{1}{\sqrt{\pi}}\sqrt{\frac{U_\infty}{\alpha x}} =
+  h_x(T_s-T_\infty) \Rightarrow
+  h_x = \sqrt{\frac{k\rho c_p U_\infty}{\pi x}}.$$
+  Likewise for mass transfer:
+  $$h_{Dx} = \sqrt{\frac{DU_\infty}{\pi x}}.$$
+\end{itemize}
+Since that's the local, let's integrate for average, neglecting edge effects:
+$$q_{av} = \frac{1}{WL}\int_{x=0}^L h_x (T_s-T_\infty) Wdx =
+h_L (T_s-T_\infty)$$
+$$\frac{2(T_s-T_\infty)}{L}\left[\sqrt{k\rho c_p U_\infty x/\pi}\right]_{x=0}^L =
+h_L (T_s-T_\infty)$$
+$$h_L = 2\sqrt{\frac{k\rho c_p U_\infty}{\pi L}} =
+\left.2h_x\right|_{x=L}$$
+
+Now for case 2 (high-Prandtl), need different formulation.  Dimensional
+analysis of mass transfer:
+$$h_D = f(D_{fl}, U, x, \nu)$$
+Five parameters, two base units (cm, s), so three dimensionless.  Eliminate $x$
+and $D$.  Then one dimensionless is Reynolds ($\pi_U$), one is Prandtl
+($\pi_\nu$), what's the third?
+$$\pi_{h_D} = \frac{h_D x}{D_{fl}}$$
+Looks like the Biot number, right?  But it's not, it's actually quite
+different.
+$${\rm Bi} = \frac{h_D L}{D_{solid}} = \frac{L/D_{solid}}{1/h} =
+\frac{\rm Resistance\ to\ conduction\ in\ solid}{\rm Resistance\ due\ to\ BL
+  \ in\ liquid}$$
+Uses $L$=solid thickness, $D_{solid}$.  Heat transfer note: you get one extra
+dimensionless number, due to heating by viscous friction.
+
+Here, Nusselt \#, $L$=length of plate (in flow direction), the conduction and
+BL are in the same medium, use $D_{liquid}$.
+$${\rm Nu} = \frac{h_D L}{D_{liquid}} = \frac{L}{D_{liquid}/h_D} \simeq
+\frac{L}{\delta_C}\ {\rm or}\ \frac{L}{\delta_T}.$$
+
+Low-Prandtl fit:
+$$\frac{h_L L}{k} = 2\sqrt{\frac{U_\infty L}{\pi\alpha}} =
+\frac{2}{\sqrt{\pi}} {\rm Re}_L^{1/2}{\rm Pr}^{1/2}$$
+
+Actually, for small to ``medium'' Pr, slight correction:
+$${\rm Nu}_x =
+\frac{0.564{\rm Re}_x^{1/2}{\rm Pr}^{1/2}}{1+0.90\sqrt{\rm Pr}}$$
+$${\rm Nu}_L =
+\frac{1.128{\rm Re}_x^{1/2}{\rm Pr}^{1/2}}{1+0.90\sqrt{\rm Pr}}$$
+
+High: ($>$0.6): nice derivation in W$^3$R chapter 19:
+$${\rm Nu}_x = 0.332{\rm Re}_x^{1/2} {\rm Pr}^{0.343}$$
+$${\rm Nu}_L = 0.664{\rm Re}_L^{1/2} {\rm Pr}^{0.343}$$
+Just as there are more correlations for $f$ (friction factor), lots more
+correlations for various geometries etc. in handout by 2001 TA Adam Nolte.
+Summarize: flow gives Re, props give Pr, gives Nu, gives $h$ (maybe Bi).
+\newpage
+
+
+\section{December 3: Natural Convection}
+
+Mechanics:
+\begin{itemize}
+\item Course evals today!
+\end{itemize}
+Muddy from last time:
+\begin{itemize}
+\item What's the relationship between $h_x$ or $h_L$ and the friction factor?
+  Hmm...  Meaning: heat transfer coefficient, kinetic energy transfer
+  coefficient.  Types: local, global/average.  Laminar flow variation:
+  both$\sim1/\sqrt{x}$, integral$\sim\sqrt{x}$, average$\sim1/\sqrt{x}$.
+  Laminar $f_L=2f_x|_{x=L}$, $h_L=2h_x|_{x=L}$.  Dimensionless: $f=f$(Re),
+  Nu=$f$(Re,Pr). Different correlations for different geometries.
+\item Other Nusselt numbers from sheet by Adam Nolte.  (Note for Re=0 with a
+  sphere...)
+\end{itemize}
+
+\paragraph{Natural convection}
+
+Hot stuff rises, cold stuff sinks.  Obvious examples: radiators, etc.
+Strongly-coupled equations:
+$$\frac{D\rho}{Dt} + \nabla\cdot\vec{u} = 0$$
+$$\rho\frac{D\vec{u}}{Dt} = -\nabla p + \eta\nabla^2\vec{u} + \rho\vec{g}$$
+$$\frac{DT}{Dt} = \alpha\nabla^2 T + \frac{\dot{q}}{\rho c_p}$$
+Full coupling comes in the $\rho$ in the fluid flow equations.
+
+Volumetric thermal expansion coefficient:
+$$\beta = -\frac{1}{\rho}\frac{d\rho}{dT},\ \rho - \rho_0 = \beta(T-T_0)$$
+Note relation to 3.11 thermal expansion coeff:
+$$\alpha = \frac{1}{L}\frac{dL}{dT}$$
+$$\beta = -\frac{1}{\rho}\frac{d\rho}{dT} = -\frac{V}{M}\frac{d(M/V)}{dT}$$
+$$d(1/V) = -dV/V^2,\ dV=d(L^3)=3L^2dL$$
+$$\beta = V\frac{dV}{V^2dT} = \frac{3L^2 dL}{VdT} = \frac{3}{L}\frac{dL}{dT} =
+3\alpha.$$
+Word explanation: heat a solid cube, length increases 1\% in each direction,
+volume increases 3\%.  Both have units $1/K$.  Ideal gases:
+$$\rho=\frac{P}{RT},\ \beta=-\frac{1}{\rho}\frac{d\rho}{dT} =
+-\frac{RT}{P}\left(-\frac{P}{RT^2}\right) = 1/T.$$
+Also $\beta_C = -\frac{1}{\rho}\frac{d\rho}{dC}$.
+
+Simplest case: vertical wall, $T_s$ at wall, $T_\infty$ with density
+$\rho_\infty$ away from it, $x$ vertical and $y$ horizontal for consistency
+with forced convection BL.  Assume:
+\begin{enumerate}
+\item \label{univisc} Uniform kinematic viscosity $\nu=\nu_\infty$.
+\item \label{smalldense} Small density differences: $\rho$ only matters in
+  $\rho g$ term, otherwise $\rho_\infty$ for convective terms.
+\item \label{stdst} Steady-state.
+\item \label{boussinesq} Boussinesq approx: $p\simeq-\rho_\infty gx+const$,
+  obvious away from BL, no pressure difference across BL to drive flow.
+\item \label{betadt} Also with small density diff: $\Delta\rho/\rho =
+  \beta\Delta T$ ($\rho$ is roughly linear with $T$).
+\item \label{noedge} No edge effects ($z$-direction).
+\end{enumerate}
+With assumptions \ref{univisc} and \ref{smalldense}, get momentum equation:
+$$\frac{\partial\vec{u}}{\partial t}+\vec{u}\cdot\nabla\vec{u} =
+\nu_\infty\nabla^2\vec{u} +
+\frac{1}{\rho_\infty}\left(\rho \vec{g}-\nabla p\right).$$
+Now for $x$-momentum, steady-state (assumption \ref{stdst}), assumption
+\ref{boussinesq} gives:
+$$\vec{u}\cdot\nabla u_x = \nu_\infty\nabla^2 u_x +
+\frac{-\rho g+\rho_\infty g}{\rho_\infty}$$
+Now assumptions \ref{betadt} and \ref{noedge}, $x$-momentum becomes:
+$$u_x\frac{\partial u_x}{\partial x} + u_y\frac{\partial u_x}{\partial y} =
+\nu_\infty\nabla^2 u_x + g\beta(T-T_\infty)$$
+With $T_s>T_\infty$ and $g_x=-g$, this gives driving force in the positive-$x$
+direction, which is up, like it's supposed to.  Okay, that's all for today,
+more next time.
+\newpage
+
+\section{December 5: Wrapup Natural Convection}
+
+Mechanics:
+\begin{itemize}
+  \item Test 2: before max=90, mean 75.38, std. dev 12.23; after max=100, mean
+    95.76, std. dev 6.37.
+\end{itemize}
+Muddy from last time:
+\begin{itemize}
+\item D'oh!  Left too early...
+\end{itemize}
+
+Last time: assumptions led to equation:
+$$u_x\frac{\partial u_x}{\partial x} + u_y\frac{\partial u_x}{\partial y} =
+\nu_\infty\nabla^2 u_x + g\beta(T-T_\infty)$$
+One more assumption, $\delta_u\ll x$, gives:
+$$u_x\frac{\partial u_x}{\partial x} + u_y\frac{\partial u_x}{\partial y} =
+\nu_\infty\frac{\partial^2u_x}{\partial y^2} + g\beta(T-T_\infty)$$
+
+New dimensional analysis:
+$$h = f(x, \nu, k, \rho c_p, g\beta, T_s-T_\infty)$$
+Seven params 4 base units (kg, m, s, K); 3 dimless params.  Again Pr (dim'less
+$\rho c_p$), Nu (dim'less $h$), this time Grashof number (dim'less $\beta$).
+$${\rm Gr} = \frac{g\beta(T_s-T_\infty)L^3}{\nu^2}$$
+
+Forced convection: ${\rm Nu} = f({\rm Re, Pr})$.
+
+Natural convection: ${\rm Nu} = f({\rm Gr, Pr})$.
+
+Detour: recall falling film
+$$u_x = \frac{g\sin\theta(2Lz-z^2)}{2\nu}$$
+$$u_av = \frac{g\sin\theta L^2}{3\nu}$$
+$${\rm Re} = \frac{u_av \delta}{\nu} = \frac{g\cos\beta\delta^3}{3\nu^2}$$
+So Gr is a natural convection Reynolds number, determines the rate of growth of
+the BL.
+
+Graphs of dimensionless $T=(T-T_\infty)/(T_s-T_\infty)$, dimensionless
+$u_x={\rm Re}_x/2\sqrt{{\rm Gr}_x}$ vs. $y/\sqrt[4]{Gr_x}$ on P\&G p. 232
+corresponding to dimensional graphs in W$^3$R p. 313.  Explain velocity BL is
+always at least as thick as thermal BL, but thermal can be thinner for large
+Pr.
+
+Forced convection: $\delta\propto\sqrt{x}$
+
+Natural convection: $\delta\propto\sqrt[4]{x}$
+
+Note: in P\&G p. 232 plots, Pr=0.72 corresponds to air.
+
+Another Gr interpretation: dimensionless temperature
+gradient; for $\theta=\frac{T-T_\infty}{T_s-T_\infty}$:
+$$\frac{\partial T}{\partial y} = \frac{\partial T}{\partial\theta}
+\frac{\partial\theta}{\partial\frac{y}{x}\sqrt[4]{\frac{Gr_x}{4}}}
+\frac{1}{x}\sqrt[4]{\frac{Gr_x}{4}} =
+(T_s-T_\infty)f({\rm Pr})\frac{1}{x}\sqrt[4]{\frac{Gr_x}{4}}$$
+Note velocity squared proportional to driving force in pipe flow, kinda same
+here; heat trans proportional to square root of velocity.  Hence
+${\rm Re}_x\propto\sqrt{{\rm Gr}_x}$ for velocity,
+$\rm Nu_x\propto\sqrt{{\rm Re}_x}\propto\sqrt[4]{{\rm Gr}_x}$.
+
+Transition to turbulence determined by Ra=GrPr, boundary at 10$^9$.  Laminar,
+Ra between 10$^4$ and 10$^9$:
+$$\frac{{\rm Nu}_L}{\sqrt[4]{{\rm Gr}_L/4}} =
+\frac{\rm 0.902 Pr^{1/2}}{\rm(0.861 + Pr)^{1/4}}$$
+Special for $\rm0.6<Pr<10$, laminar:
+$${\rm Nu}_L = 0.56({\rm Gr}_L{\rm Pr})^{1/4}$$
+Turbulence, Ra between 10$^9$ and 10$^{12}$ (p. 259):
+$${\rm Nu}_L = \frac{0.0246 {\rm Gr}_L^{2/5}Pr^{7/15}}
+{\rm(1+0.494 Pr^{2/3})^{2/5}}$$
+Again, velocity$^{0.8}$ in a way, sorta like turbulent forced convection
+boundary layers.
+\newpage
+
+
+\section{December 8: Wrapup Natural Convection, Streamfunction and Vorticity}
+
+Mechanics:
+\begin{itemize}
+\item Final exam Monday 12/15 in 4-149.  Discuss operation, incl. closed/open
+  sections, new diff eq, essay.
+\end{itemize}
+Muddy from last time:
+\begin{itemize}
+\item What were we supposed to get out of the last lecture?  Pretty much the
+  list given: how natural conv BLs work, calculate $h_{(D)L}$ using Nu$_L$,
+  $\delta_u\geq\delta_T$ or $\delta_C$, natural BLs grow more slowly, velocity
+  and temperature profiles.
+\item What direction is velocity?  Dominant velocity is in $x$-direction, which
+  is vertical; upward for hot wall, downward for cold.  What's the difference
+  between velocity in the BL, far from it?  Far from it, velocity is zero.
+\item Why $\delta_u\geq\delta_T$?  Hot region lifts (or cold region sinks)
+  fluid, so all of the hot/cold region (thermal BL) will be moving (in the
+  velocity BL).  For large Pr, $\nu>\alpha$, so the momentum diffusion happens
+  faster, thin thermal and thick velocity.
+\item Dimensionless curves: crazy non-intuitive axis value
+  $\frac{y}{x}\sqrt[4]{{\rm Gr}_x/4}$!  Well, not much worse than Blassius:
+  $u_x/U_\infty$ vs. $\beta=y\sqrt{U_\infty/\nu x}=\frac{y}{x}\sqrt{{\rm
+      Re}_x}$.  But I'll give you that the dimensionless velocity is a bit odd.
+\item Where do these things come from?  Okay.  Concretize:
+  $$\frac{\frac{u_x x}{\nu}}{2\sqrt{{\rm Gr}_x}} =
+  \frac{1}{2}\frac{u_x x}{\nu}\sqrt{\frac{\nu^2}{g\beta\Delta T x^3}} =
+  \frac{u_x}{\sqrt{g\beta\Delta Tx}}\Rightarrow
+  u_{x,max}=f({\rm Pr})\sqrt{g\beta\Delta T x}.$$
+  $$\frac{\delta_u}{x}\sqrt[4]{\frac{{\rm Gr}_x}{4}}=f({\rm Pr}) \Rightarrow
+  \delta_u = f({\rm Pr})\frac{x}{\sqrt[4]{{\rm Gr}_x/4}} =
+  \sqrt{2}f({\rm Pr})\sqrt[4]{\frac{x^4\nu^2}{g\beta\Delta Tx^3}} =
+  \sqrt{2}f({\rm Pr})\sqrt[4]{\frac{x\nu^2}{g\beta\Delta T}}.$$
+  These two results are consistent with: $u_{x,max}\propto {\rm thickness}^2$,
+  forced convection $\Delta u_x/\Delta y$ goes as $1/\sqrt{{\rm Re}_x}$.
+\end{itemize}
+Other geometries: Raylegh-Bernard cells in inversion for GrPr greater than
+1000.  Solutal buoyancy too, dissolving salt cube.
+$$\beta_C = -\frac{1}{\rho}\frac{d\rho}{dC}.$$
+
+Special: nucleate boiling, film boiling, $h$ vs. $T$ with liquid coolant.
+
+If time: BL on rotating disk: $u\propto r$, so uniform BL.  Pretty cool.
+
+Now can calculate (estimate) heat/mass transfer coefficients for forced and
+natural convection, laminar or turbulent.  (D'oh!  Forgot this closing part
+after the muddy stuff.)
+
+\paragraph{Stream Function and Vorticity}
+
+Vorticity introduced in turbulence video, measure of local rotation,
+definition:
+$$\omega = \nabla\times\vec{u}$$
+2-D scalar, 3-D vector.  Some formulations give 2-D NS in terms of $u_x$,
+$u_y$, $\omega$.  Also, vorticity particle methods: bundles of vorticity
+moving, combining, annihilating.
+
+Other application: crystal rotation in semisolid rheology.
+
+Stream function, for incompressible flow where $\nabla\cdot\vec{u}=0$:
+$$u_x = \frac{\partial\Psi}{\partial y},
+\ u_y = -\frac{\partial\Psi}{\partial x}$$
+Collapses velocity components into one parameter.  Look at $\Psi=Ax$,
+$\Psi=By$, $\Psi=Ax+By$, $\Psi^2=x^2+y^2$.  Cool.
+
+Gradient is normal to flow direction.  Streamlines: curves of constant $\Psi$,
+parallel to flow direction.  If spaced apart same difference in $\Psi$, then
+$$\left|\vec{u}\right| \propto {\rm distance\ between\ streamlines}$$
+
+Aero-astros look out at wing and see streamline, Mech Es see structure, Mat
+Scis see a giant fatigue specimen...
+
+Visualizing 2-D flows, giving approximate regions of large and small velocity.
+DON'T CROSS THE STREAMS!
+
+Concept: flow separation, difference between jet and inlet.  Breathing through
+nose.  (D'oh!  Forgot to mention breathing through the nose.)
+
+\paragraph{Decisions...} Finish the term with the Bernoulli equation, or
+continuous flow reactors?  Bernoulli wins the vote.
+\newpage
+
+
+\section{December 10, 2003: Bernoulli, Semester Wrapup}
+
+TODO: get rooms for review sessions!
+
+Mechanics:
+\begin{itemize}
+\item Review sessions: me Friday 2 PM, Albert Sunday evening.
+\end{itemize}
+No muddy cards from last time.
+
+\paragraph{Bernoulli Equation}
+
+W$^3$R chap 6: control volume integral derivation based on first law of
+thermodynamics.  Interesting, I do somewhat different, based on Navier-Stokes;
+I like to think mine is more straightforward, but you can read W$^3$R if
+needed.
+
+Also called ``inviscid flow''.  Motivation: tub with hole, pretty close to zero
+friction factor, velocity is infinity?  No.  Something other than viscosity
+limits it.
+
+Navier-Stokes, throw out viscous terms:
+$$\rho\frac{D\vec{u}}{Dt} = -\nabla p + \rho\vec{g}$$
+Change coordinates to local streamline frame: $\hat{s}$ in direction of flow,
+$\hat{n}$ in direction of curvature (perpendicular in 2-D, complicated in 3-D).
+
+Flow only in $s$-direction, $s$-momentum equation for $\vec{g} = -g\hat{z}$:
+$$\rho\left(\frac{\partial u_s}{\partial t}
+  + u_s\frac{\partial u_s}{\partial s}\right)
+= -\frac{\partial p}{\partial s} + \rho g_z\frac{\partial z}{\partial s}$$
+Steady-state, constant $\rho$:
+$$\frac{\partial \left(\frac{1}{2}\rho u_s^2\right)}{\partial s}
++ \frac{\partial p}{\partial s}- \rho g_z\frac{dz}{ds} = 0$$
+Integrate along a streamline:
+$$\frac{1}{2}\rho V^2 + p + \rho gz = constant$$
+In other words:
+$$KE + P + PE = constant$$
+This is the Bernoulli equation.
+
+Example 1: draining tub with a hole in the bottom.  Set $z=0$ at the bottom:
+PE=$\rho gh$ at top, $P$ at bottom corner is that plus atmospheric pressure,
+$\frac{1}{2}\rho V^2$ beyond outlet (further accelerating).  Potential energy
+becomes pressure $\Delta P=\rho gh$, then becomes kinetic $V=\sqrt{2 gh}$.
+
+Illustrate how changes with long tube $h_2$ down from bottom: $\rho gh$ at top,
+$P_0$ at base in corner, $\frac{1}{2}\rho V^2 + P_1$ at base over spout,
+$\frac{1}{2}\rho V^2 -\rho gh_2$ at tube end.  Three equations in three
+unknowns.  Solves to $P_1=\rho gh$, $V^2=2g(h+h_2)$, $P_1 = -\rho gh_2$.  Can
+also fill in the table...
+
+Conditions:
+\begin{itemize}
+\item No shear or other losses (not nearly fully-developed)
+\item No interaction with internal solids, etc.
+\item No heat in or out, mechanical work on fluid (pumps, etc.)
+\item No sudden expansion (jet$\longrightarrow$turbulent dissipation,
+  separation complicates stuff)
+\item No turbulence
+\item No combustion (mixing$\longrightarrow$effective viscosity)
+\item {\em Yes} sudden contraction.
+\end{itemize}
+
+Note time-to-drain problem on final of three years ago (that was the ``derive
+and solve a new equation'' problem of 2000), tendency for diff eqs and thought
+problems...
+
+\paragraph{Semester summary}
+
+You've come a very long way!  Mentioned linear to multiple nonlinear
+PDEs, understanding of solution.  More generally, learned to start with a
+simple conservation relation: accum = in - out + gen, turn into really powerful
+results, on macro or micro scale, for diffusion, thermal energy, mass,
+momentum, even kinetic energy.
+
+Covered all topics in fluid dynamics and heat and mass transfer, in MechE,
+ChemE, aero-astro.  If want to go on, take graduate advanced fluid dynamics or
+heat/mass transfer, will be bored in undergrad class.
+
+Also done some computation; for more depth with or without programming
+experience, try 22.00J/3.021J!  (Shameless plug...)
+
+Thank Albert for a terrific job as a TA!
+
+\paragraph{Last muddy questions}
+
+\begin{itemize}
+\item What is the relevance of the boundary layer thickness to the Bernoulli
+  equation?  The boundary layer is a region where there is quite a bit of
+  shear, and sometimes turbulence.  If it is thin relative to the size of the
+  problem (e.g. relative to the diameter of the tube), then most of the fluid
+  will have negligible shear.
+\item Why such a wierd coordinate system in Bernoulli example 2?  Why not just
+  make $z=0$ at the bottom of the tube?  You could do that too, and it would
+  work equally well, it just differs by a constant in the potential energy; the
+  way we did it is just more consistent with the first example:
+  \begin{center}
+    \begin{tabular}{c|ccc|}
+      Point & KE                & P                   & PE \\ \hline
+      1     & $\sim$0           & $p_{atm}$           & $\rho g(h_1+h_2)$ \\
+      2     & $\sim$0           & $p_{atm}+\rho gh_1$ & $\rho gh_2$ \\
+      3     & $\rho g(h_1+h_2)$ & $p_{atm}-\rho gh_2$ & $\rho gh_2$ \\
+      4     & $\rho g(h_1+h_2)$ & $p_{atm}$           & 0 \\ \hline
+    \end{tabular}
+  \end{center}
+\end{itemize}
+
+\paragraph{Batch and Continuous Flow Reactors}
+
+For those interested.
+
+Basic definitions, motivating examples.  Economics: batch better for
+flexibility, continuous for quality and no setup time (always on).
+
+Two types: volumetric and surface reactors.  Volume V, generation due to
+chemical reaction; we'll discuss first-order $A\longrightarrow B$, so
+$$G=-kC_A$$
+
+For a volume batch reactor, start with $C_{A,in}$, dump into reactor, it goes:
+$$\rm accum = generation$$
+$$V\frac{dC_A}{dt} = -VkC_A$$
+$$\ln(C_A) = -kt + A$$
+$$\frac{C_{A,out}}{C_{A,in}} = \exp\left(-kt\right)$$
+
+For mass transfer-limited surface batch reactor, say
+$$\rm accum = out$$
+$$V\frac{dC_{A,out}}{dt} = -Ah_dC_A$$
+$$\frac{C_{A,out}}{C_{A,in}} = \exp\left(-\frac{h_DA}{V}t\right)$$
+
+Two extremes in continuous reactor behavior with flow rate $Q$: plug flow and
+perfect mixing.
+
+Plug flow is like a mini-batch with $t_R=V/Q$, draw plug in a pipe, derive:
+$$\frac{C_{A,out}}{C_{A,in}} = \exp\left(-\frac{kV}{Q}\right)$$
+With a surface, the $V$s cancel, left with
+$$\frac{C_{A,out}}{C_{A,in}} = \exp\left(-\frac{h_DA}{Q}\right)$$
+
+Perfect mixing: in, out, gen, no accum, out at $C_{A,out}$ reactor conc:
+$$0 = QC_{A,in} - QC_{A,out} - kVC_{A,out}$$
+$$\frac{C_{A,out}}{C_{A,in}} = \frac{Q}{Q+kV} = \frac{1}{1+\frac{kV}{Q}}$$
+With area:
+$$\frac{C_{A,out}}{C_{A,in}} = \frac{1}{1+\frac{h_DA}{Q}}$$
+
+Say target conversion is 0.01, given volume $V$, homogeneous with constant $k$.
+\begin{itemize}
+\item Batch:
+  $$t_R = \frac{1}{k}\ln(C_{A,in}/C_{A,out}) = \frac{4.6}{k}$$
+  prodection rate is
+  $$\frac{V}{\frac{4.6}{k} + t_{change}} = \frac{kV}{4.6 + kt_{change}}$$
+\item Plug:
+  $$Q=\frac{kV}{\ln(C_{A,in}/C_{A,out})} = \frac{kV}{4.6}$$
+  Better than batch, likely better quality too, less flexible.
+\item Perfect mixing:
+  $$Q = \frac{kV}{C_{A,in}/C_{A,out}-1} = \frac{kV}{99}$$
+  Much smaller than either of the others!
+\end{itemize}
+
+Dead zones and effective volumes!
+
+How to tell: tracers, Peclet number.
+
+Other examples: catalytic combustion (that dimensional analysis problem in
+PS3), alveoli/breathing (continuous/batch mixed).  Batch: generally better
+conversion in same volume (see why); continuous: consistent quality, no setup
+time.
+
+Steelmaking: batch, but folk want to make continuous.
+\end{document}

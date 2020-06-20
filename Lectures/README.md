@@ -20,7 +20,7 @@
 <li><a href="#course19">Cellular Solids: Structure, Properties and Applications</a></li>
 <li><a href="#course20">Materials for Biomedical Applications</a></li>
 <li><a href="#course21">Electrochemical Processing of Materials</a></li>
-<li><a href="#course22">Introduction to Transportation Systems</a></li>
+<li><a href="#course22">Photonic Materials and Devices</a></li>
 <li><a href="#course23">Probability and Statistics in Engineering</a></li>
 <li><a href="#course24">Transportation Systems</a></li>
 <li><a href="#course25">An Introduction to Intelligent Transportation Systems</a></li>
@@ -3046,4 +3046,78 @@
 </tbody>
 </table>
 </br>
+<h2 id="course22">Photonic Materials and Devices</h2>
 
+<table class="tablewidth75" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Optical Materials Design 1 (<a href="6/3_46lec1_optmat1.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Optical Materials Design 2 (<a href="6/3_46lec2_optmat2.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>System Design: TDM, WDM (<a href="6/3_46l3_sysdesign.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Ray Optics, EM Optics and Guided Wave Optics (<a href="6/3_46l4_rayoptics.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Waveguide Design (<a href="6/3_46l5_waveguide.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>WDM Filters: The Microcavity and the Ring Resonator</td>
+</tr>
+<tr class="row">
+<td>Photonic Crystals</td>
+</tr>
+<tr class="alt-row">
+<td>Electrons in Semiconductors</td>
+</tr>
+<tr class="row">
+<td>Photons in Semiconductors and Dielectrics</td>
+</tr>
+<tr class="alt-row">
+<td>LEDs (<a href="6/3_46lec10_leds.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Optical Amplifiers and Lasers (<a href="6/3_46lec11_lasers.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Crystal Growth (<a href="6/3_46l12_crysgrow.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Nonlinear Optics and Modulators</td>
+</tr>
+<tr class="alt-row">
+<td>Defects and Strain (<a href="6/3_46l14_defects.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>III-V Processing (<a href="6/3_46l15_iii_v_p.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Detectors 1 (<a href="6/3_46l16_detect1.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Detectors 2 (<a href="6/3_46l17_detect2.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Microphotonics 1</td>
+</tr>
+<tr class="row">
+<td>Microphotonics 2</td>
+</tr>
+<tr class="alt-row">
+<td>Nanophotonics</td>
+</tr>
+<tr class="row">
+<td>Photonics Toolkit</td>
+</tr>
+</tbody>
+</table>
+</br>

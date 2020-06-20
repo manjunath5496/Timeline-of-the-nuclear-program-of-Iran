@@ -25,7 +25,7 @@
 <li><a href="#course24">Magnetic Materials</a></li>
 <li><a href="#course25">Fracture and Fatigue</a></li>
 <li><a href="#course26">Atomistic Computer Modeling of Materials</a></li>
-<li><a href="#course27">Masters of Engineering Concepts of Engineering Practice</a></li>
+<li><a href="#course27">Electrical, Optical, and Magnetic Properties of Materials</a></li>
 <li><a href="#course28">Foundations of Software Engineering</a></li>
 <li><a href="#course29">Transportation Policy and Environmental Limits</a></li>
 <li><a href="#course30">Urban Transportation Planning</a></li>
@@ -3509,3 +3509,213 @@
 </tbody>
 </table>
 </br>
+<h2 id="course27">Electrical, Optical, and Magnetic Properties of Materials</h2>
+
+
+
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+<th scope="col">LECTURES</th>
+<th scope="col">UN-ANNOTATED</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td colspan="3"><strong>Electronic - Nicola Marzari</strong></td>
+</tr>
+<tr class="alt-row">
+<td>From particles to waves: the Schr&ouml;dinger equation</td>
+<td>(<a href="8/lec1.pdf">PDF - 1.7 MB</a>)</td>
+<td>(<a href="8/clean1.pdf">PDF - 1.3 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>The mechanics of quantum mechanics: operators, expectation values</td>
+<td>(<a href="8/lec2.pdf">PDF - 1.8 MB</a>)</td>
+<td>(<a href="8/clean2.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Measurements and probabilities</p>
+<p>The harmonic oscillator</p>
+</td>
+<td>(<a href="8/lec3.pdf">PDF - 1.3 MB</a>)</td>
+<td>(<a href="8/clean3.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>The hydrogen atom and the periodic table</td>
+<td>(<a href="8/lec4.pdf">PDF - 1.4 MB</a>)</td>
+<td>(<a href="8/clean4.pdf">PDF - 1.0 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Periodicity and phonons</td>
+<td>(<a href="8/lec5.pdf">PDF</a>)</td>
+<td>(<a href="8/clean5.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Electrons in a lattice: Bloch's theorem</td>
+<td>(<a href="8/lec6.pdf">PDF - 1.5 MB</a>)</td>
+<td>(<a href="8/clean6.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>The nearly-free electron model</td>
+<td>(<a href="8/lec7.pdf">PDF - 2.0 MB</a>)</td>
+<td>(<a href="8/clean7.pdf">PDF - 1.1 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>
+<p>The tight-binding model</p>
+<p>Band structures</p>
+</td>
+<td>(<a href="8/lec8.pdf">PDF - 3.3 MB</a>)</td>
+<td>(<a href="8/clean8.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Semiconductors and insulators</td>
+<td>(<a href="8/lec9.pdf">PDF - 1.5 MB</a>)</td>
+<td>(<a href="8/clean9.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Band structure engineering</td>
+<td>(<a href="8/lec10.pdf">PDF - 1.4 MB</a>)</td>
+<td>(<a href="8/clean10.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Transport of heat and electricity</td>
+<td>(<a href="8/lec11.pdf">PDF - 2.0 MB</a>)</td>
+<td>(<a href="8/clean11.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Inhomogeneous and hot carriers in semiconductors</td>
+<td>(<a href="8/lec12.pdf">PDF - 1.9 MB</a>)</td>
+<td>(<a href="8/clean12.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Mid-term exam (during class, 1:30 hours)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>The p-n diode</td>
+<td>(<a href="8/lec13.pdf">PDF - 1.2 MB</a>)</td>
+<td>(<a href="8/clean13.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td colspan="3"><strong>Optical I - Nicola Marzari</strong></td>
+</tr>
+<tr class="row">
+<td>Optical materials and refractive index</td>
+<td>(<a href="8/lec14.pdf">PDF - 2.1 MB</a>)</td>
+<td>(<a href="8/clean14.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Electromagnetism in dielectric media</td>
+<td>(<a href="8/lec15.pdf">PDF</a>)</td>
+<td>(<a href="8/clean15.pdf">PDF - 2.3 MB</a>)</td>
+</tr>
+<tr class="row">
+<td>Classic propagation of waves</td>
+<td>(<a href="8/lec16.pdf">PDF - 2.2 MB</a>)</td>
+<td>(<a href="8/clean16.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Interband absorption</td>
+<td>(<a href="8/lec17.pdf">PDF - 1.4 MB</a>)</td>
+<td>(<a href="8/clean17.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td colspan="3"><strong>Magnetic - David Paul</strong></td>
+</tr>
+<tr class="white-row">
+<td colspan="3">Fundamental of ferromagnetic materials</td>
+</tr>
+<tr class="row">
+<td colspan="3">Hysteresis loop and driving energies</td>
+</tr>
+<tr class="white-row">
+<td colspan="3">Hard materials and permanent magnets</td>
+</tr>
+<tr class="row">
+<td colspan="3">
+<p>Soft materials: thin films and nanoparticles</p>
+<p>Spintronics and GMR</p>
+</td>
+</tr>
+<tr class="white-row">
+<td colspan="3">Spin valves, spin switches, and spin tunneling</td>
+</tr>
+<tr class="row">
+<td colspan="3"><strong>Optical II - Nicola Marzari</strong></td>
+</tr>
+<tr class="alt-row">
+<td>Excitons</td>
+<td>(<a href="8/lec23.pdf">PDF - 1.4 MB</a>)</td>
+<td>(<a href="8/clean23.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Luminescence</td>
+<td>(<a href="8/lec24.pdf">PDF - 1.0 MB</a>)</td>
+<td>(<a href="8/clean24.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Semiconductor quantum wells</td>
+<td>(<a href="8/lec25.pdf">PDF - 1.0 MB</a>)</td>
+<td>(<a href="8/clean25.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Final exam</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</br>
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Problem set 1 (<a href="8/ps1.pdf">PDF</a>)</td>
+<td>(<a href="8/sol1.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 2 (<a href="8/ps2.pdf">PDF</a>)</td>
+<td>(<a href="8/sol2.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 3 (<a href="8/ps3.pdf">PDF</a>)</td>
+<td>(<a href="8/sol3.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 4 (<a href="8/ps4.pdf">PDF</a>)</td>
+<td>(<a href="8/sol4.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 5 (<a href="8/ps5.pdf">PDF</a>)</td>
+<td>(<a href="8/sol5.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 6 (<a href="8/ps6.pdf">PDF</a>)</td>
+<td>(<a href="8/sol6.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 7 (<a href="8/ps7.pdf">PDF</a>)</td>
+<td>(<a href="8/sol7.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem set 8 (<a href="8/ps8.pdf">PDF</a>)</td>
+<td>(<a href="8/sol8.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem set 12 (<a href="8/ps12.pdf">PDF</a>)</td>
+<td>(<a href="8/sol12.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+

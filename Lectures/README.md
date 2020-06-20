@@ -24,7 +24,7 @@
 <li><a href="#course23">Welding and Joining Processes</a></li>
 <li><a href="#course24">Magnetic Materials</a></li>
 <li><a href="#course25">Fracture and Fatigue</a></li>
-<li><a href="#course26">Logistical and Transportation Planning Methods</a></li>
+<li><a href="#course26">Atomistic Computer Modeling of Materials</a></li>
 <li><a href="#course27">Masters of Engineering Concepts of Engineering Practice</a></li>
 <li><a href="#course28">Foundations of Software Engineering</a></li>
 <li><a href="#course29">Transportation Policy and Environmental Limits</a></li>
@@ -3313,6 +3313,199 @@
 </tbody>
 </table>
 </br>
+<h2 id="course26">Atomistic Computer Modeling of Materials</h2>
 
+<table summary="See table caption for summary.">
+<thead>
+<tr class="alt-row">
+<th id="tbl126id0_1" scope="col">TOPICS</th>
+<th id="tbl126id0_2" scope="col">ANNOTATED&nbsp;SLIDES</th>
+<th id="tbl126id0_3" scope="col">INSTRUCTORS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td headers="tbl126id0_1">Introduction&nbsp;and Case Studies (<a href="7/2_01.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">&nbsp;</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Potentials, Supercells, Relaxation, Methodology (<a href="7/2_03.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/2_03_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Potentials for Organic Materials and Oxides; It's a Quantum World! (<a href="7/2_08.pdf">PDF - 3.0 MB</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/2_08_note.pdf">PDF - 3.0 MB</a>)</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder<br /><br />Prof. Nicola Marzari</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Lab 1:&nbsp;Energetics and Structure from Empirical Potentials (<a href="7/2_10_labintro.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">&nbsp;</td>
+<td headers="tbl126id0_3">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">First Principles Energy Methods: The Many-Body Problem (<a href="7/2_15.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/2_15_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">First Principles Energy Methods: Hartree-Fock and DFT (<a href="7/2_17.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/2_17_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Technical Aspects of Density Functional Theory (<a href="7/2_24.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/2_24_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Case Studies of DFT (<a href="7/3_01.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/3_01_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Advanced DFT -&nbsp;Success and Failure; DFT Applications and Performance&nbsp;(<a href="7/3_03.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/3_03_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari<br /><br />Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Lab 2: Density Functional Theory I</td>
+<td headers="tbl126id0_2">&nbsp;</td>
+<td headers="tbl126id0_3">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Finite Temperature - Review of Stat Mech and Thermodynamics; Excitations in Materials and How to Sample Them (<a href="7/3_10.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/3_10_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Lab 3: Density Functional Theory II</td>
+<td headers="tbl126id0_2">&nbsp;</td>
+<td headers="tbl126id0_3">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Molecular Dynamics I (<a href="7/3_17.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/3_17_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Molecular Dynamics II (<a href="7/3_29.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/3_29_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Molecular Dynamics III: First Principles (<a href="7/3_31.pdf">PDF - 1.1 MB</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/3_31_note.pdf">PDF - 1.2 MB</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Lab 4: Molecular Dynamics<br />SMA/Cambridge students off-line (no beaming)</td>
+<td headers="tbl126id0_2">&nbsp;</td>
+<td headers="tbl126id0_3">&nbsp;</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Monte Carlo Simulations: Application to Lattice Models, Sampling Errors, Metastability (<a href="7/4_07.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/4_07_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Monte Carlo Simulation II and Free Energies (<a href="7/4_12.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/4_12_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Free Energies and Physical Coarse-Graining (<a href="7/4_14.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/4_14_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Model Hamiltonions (<a href="7/4_21_1.pdf">PDF 1 of 2 - 1.1 MB</a>) (<a href="7/4_21_2.pdf">PDF 2 of 2 - 2.5 MB</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/4_21_1_note.pdf">PDF 1 of 2 - 1.1 MB</a>)&nbsp;(<a href="7/4_21_2_note.pdf">PDF 2 of 2 - 2.9 MB</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Lab 5:&nbsp;Monte Carlo</td>
+<td headers="tbl126id0_2">&nbsp;</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Ab-Initio Thermodynamics and Structure Prediction (<a href="7/4_28.pdf">PDF - 1.3 MB</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/4_28_note.pdf">PDF - 1.4 MB</a>)</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Accelerated Molecular Dynamics, Kinetic Monte Carlo, and Inhomogeneous Spatial Coarse Graining (<a href="7/5_03.pdf">PDF - 2.8 MB</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/5_03_note.pdf">PDF - 1.8 MB</a>)</td>
+<td headers="tbl126id0_3">Prof. Gerbrand Ceder</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl126id0_1">Modeling in Industry</td>
+<td headers="tbl126id0_2">&nbsp;</td>
+<td headers="tbl126id0_3">Chris Wolverton, Ford Motor Company</td>
+</tr>
+<tr class="row">
+<td headers="tbl126id0_1">Case Studies - High Pressure; Conclusions (<a href="7/5_10.pdf">PDF</a>)</td>
+<td headers="tbl126id0_2">(<a href="7/5_10_note.pdf">PDF</a>)</td>
+<td headers="tbl126id0_3">Prof. Nicola Marzari<br /><br />Prof. Gerbrand Ceder</td>
+</tr>
+</tbody>
+</table>
+</br>
 
-
+<table summary="See table caption for summary.">
+<thead>
+<tr class="alt-row">
+<th id="tbl888id0_1" scope="col">TOPICS</th>
+<th id="tbl888id0_2" scope="col">RESOURCES</th>
+<th id="tbl888id0_3" scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td headers="tbl888id0_1">Lab 1: Energetics and Structure from Empirical Potentials (<a href="7/lab1_assignment.pdf">PDF</a>)</td>
+<td headers="tbl888id0_2">
+<p>Gulp: An Empirical Energy Code (<a href="7/gulp_handout.pdf">PDF</a>)</p>
+<p>Gillan, M. J. "Calculation of the vacancy formation energy in aluminum."&nbsp;<em>J Phys: Condens Matter</em>&nbsp;1 (1989): 689-711.</p>
+</td>
+<td headers="tbl888id0_3">&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl888id0_1">Lab 2: Density Functional Theory I (<a href="7/lab_assignment2.pdf">PDF</a>)</td>
+<td headers="tbl888id0_2">
+<p><a href="http://www.quantum-espresso.org/">Quantum-Espresso</a></p>
+<p>Quantum-Espresso: A First-Principles Code (<a href="7/pwscf_handout.pdf">PDF</a>)</p>
+<p>Data Files (<a href="7/3320_lab2.zip">ZIP</a>) (The ZIP file contains: C.pz-vbc.UPF, C.scf.in, C.scf.j, INPUT_PW.txt, MIT3_320_Lab_Assignment2_2005.sxw, and results-lab2.sxc.)</p>
+</td>
+<td headers="tbl888id0_3">(<a href="7/lab_assign2_soln.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="tbl888id0_1">Lab 3: Density Functional Theory II (<a href="7/lab3_problem_set.pdf">PDF</a>)</td>
+<td headers="tbl888id0_2">
+<p><a href="http://www.quantum-espresso.org/">Quantum-Espresso</a></p>
+<p>Quantum-Espresso:&nbsp;A First Principles Code, Part 2 (<a href="7/lab3_handout.pdf">PDF</a>)</p>
+<p>INPUT_PW.txt (<a href="7/INPUT_PW.txt">TXT</a>)</p>
+<p>Data Files (<a href="7/3320_lab3.zip">ZIP</a>) (The ZIP file contains: 4 .in files, 5 .UPF files, 3 .bash files, 8 .j files, and 5 .sh files.)</p>
+</td>
+<td headers="tbl888id0_3">(<a href="7/lab3_solution.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td headers="tbl888id0_1">Lab 4: Molecular Dynamics (<a href="7/lab_assignment4.pdf">PDF</a>)</td>
+<td headers="tbl888id0_2">
+<p>Moldy: Molecular Dynamics (<a href="7/moldy_handout.pdf">PDF</a>)</p>
+<p>Morris, J. R., et al. "Melting line of aluminum from simulations of coexisting phases."&nbsp;<em>Physical Review B</em>&nbsp;49, no. 5 (1994): 3109-3115.</p>
+<p>Data Files (<a href="7/3320_lab4.zip">ZIP</a>) (The ZIP file contains: Kr.in, Kr_SL.in, run_gulp.j, run_moldy.j, and Kr.restart.store.)</p>
+</td>
+<td headers="tbl888id0_3">(<a href="7/lab_assign4_soln.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td headers="tbl888id0_1">Lab 5: Monte Carlo (<a href="7/lab_assignment5.pdf">PDF</a>)</td>
+<td headers="tbl888id0_2">
+<p>2DMC-1.0.jar (<a href="7/2DMC10.jar">JAR</a>)</p>
+<p>input_example.txt (<a href="7/input_example.txt">TXT</a>)</p>
+</td>
+<td headers="tbl888id0_3">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</br>

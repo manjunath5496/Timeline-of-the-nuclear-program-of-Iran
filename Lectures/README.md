@@ -32,24 +32,9 @@
 <li><a href="#course31">Materials at Equilibrium</a></li>
 <li><a href="#course32">Transport Phenomena in Materials Engineering</a></li>
 <li><a href="#course33">Electrical, Optical & Magnetic Materials and Devices</a></li>
-<li><a href="#course34">Waste Containment and Remediation Technology</a></li>
+<li><a href="#course34">Attraction and Repulsion: The Magic of Magnets</a></li>
 <li><a href="#course35">Soil Behavior</a></li>
-<li><a href="#course36">Public Transportation Systems</a></li>
-<li><a href="#course37">Transit Management</a></li>
-<li><a href="#course38">Water Resource Systems</a></li>
-<li><a href="#course39">Water Quality Control</a></li>
-<li><a href="#course40">Environmental Engineering Applications of Geographic Information Systems</a></li>
-<li><a href="#course41">Groundwater Hydrology</a></li>
-<li><a href="#course42">A Sustainable Transportation Plan for MIT</a></li>
-<li><a href="#course43">Environmental Microbiology</a></li>
-<li><a href="#course44">Atmospheric Chemistry</a></li>
-<li><a href="#course45">Aquatic Chemistry</a></li>
-<li><a href="#course46">Database, Internet, and Systems Integration Technologies</a></li>
-<li><a href="#course47">Environmental Engineering Masters of Engineering Project</a></li>
-<li><a href="#course48">Chemicals in the Environment: Fate and Transport</a></li>
-<li><a href="#course49">Design for Sustainability</a></li>
-<li><a href="#course50">From Nano to Macro: Introduction to Atomistic Modeling Techniques</a></li>
-<li><a href="#course51">Water and Wastewater Treatment Engineering</a></li>   
+ 
 </ul>
 <p>&nbsp;</p>
 <h2 id="course1">Thermodynamics of Materials</h2>
@@ -4488,6 +4473,9 @@ Illustrates the behavior of the concentration around a line source that is diffu
 </tbody>
 </table>
 </br>
+<h2 id="course34">Attraction and Repulsion: The Magic of Magnets</h2>
 
-
-
+<h2 class="subhead">Examples of Research Papers</h2>
+<p>Magnetism and Relativity (<a href="11/mag_relativity.pdf">PDF</a>) (Courtesy of Robert Moffatt. Used with permission.)</p>
+<p>The "Gauss Rifle" (<a href="11/gauss_rifle.pdf">PDF</a>) (Courtesy of Meghan Reedy. Used with permission.)</p>
+</br>

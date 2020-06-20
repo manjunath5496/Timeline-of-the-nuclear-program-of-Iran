@@ -7,7 +7,7 @@
 <li><a href="#course6">Fundamentals of Materials Science</a></li>
 <li><a href="#course7">Electronic, Optical and Magnetic Properties of Materials</a></li>
 <li><a href="#course8">Polymer Engineering</a></li>
-<li><a href="#course9">Mechanics and Design of Concrete Structures</a></li>
+<li><a href="#course9">Mechanics of Materials</a></li>
 <li><a href="#course10">Structural Engineering Design</a></li>
 <li><a href="#course11">Solid Mechanics</a></li>
 <li><a href="#course12">Engineering Mechanics I</a></li>
@@ -1393,6 +1393,56 @@
 <tr class="alt-row">
 <td>Design for Manufacturing, Stiffness, and Strength</td>
 </tr>
+</tbody>
+</table>
+</br>
+<h2 id="course9">Mechanics of Materials</h2>
+
+<table summary="See table caption for summary.">
+<thead>
+<tr>
+<th>MODULE</th>
+<th>DESCRIPTION</th>
+<th>TOPICS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Tensile Response of Materials</td>
+<td>The modules in this section will outline some of the basic concepts of materials mechanical response by restricting the geometry to a case of simple uniaxial tension. Many of the atomistic and mechanistic concepts in our materials-oriented approach to solid mechanics can be introduced in this way, without the mathematical and conceptual complications that more realistic gemoetries entail. Subsequent modules will extend these concepts to geometrically more complicated situations, and introduce gradually the mathematical language used by the literature of the field to describe them.</td>
+<td><a href="1/MIT3_11F99_elas_1.pdf">Introduction to Elastic Response (PDF)</a><br /><br /><a href="1/MIT3_11F99_elas_2.pdf">Atomistics of Elasticity (PDF)</a><br /><br /><a href="1/MIT3_11F99_composites.pdf">Introduction to Composites (PDF)</a><br /><br /><a href="1/MIT3_11F99_ss.pdf">Stress-Strain Curves (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Simple Tensile and Shear Structures</td>
+<td>The modules in this section will outline some of the basic concepts of materials mechanical response by restricting the geometry to a case of simple uniaxial tension. Many of the atomistic and mechanistic concepts in our materials-oriented approach to solid mechanics can be introduced in this way, without the mathematical and conceptual complications that more realistic gemoetries entail. Subsequent modules will extend these concepts to geometrically more complicated situations, and introduce gradually the mathematical language used by the literature of the field to describe them.</td>
+<td><a href="1/MIT3_11F99_truss.pdf">Trusses (PDF)</a><br /><br /><a href="1/MIT3_11F99_pv.pdf">Pressure Vessels (PDF)</a><br /><br /><a href="1/MIT3_11F99_torsion.pdf">Shear and Torsion (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>General Concepts ofStress and Strain</td>
+<td>In extending the direct method of stress analysis presented in previous modules to geometrically more complex structures, it will be convenient to have available somewhat more general mathematical statements of the kinematic, equilibrium, and constitutive equations; this is the objective of the present chapter. These equations also form the basis for more theoretical methods in stress analysis, as well as for numerical approaches such as the finite element method. We will also seek to introduce some of the notational schemes used widely in the technical literature for such entities as stress and strain. Depending on the specific application, both index and matrix notations can be very convenient; these are described in a separate module.</td>
+<td><a href="1/MIT3_11F99_kin.pdf">Kinematics (PDF)</a><br /><br /><a href="1/MIT3_11F99_eq.pdf">Equilibrium (PDF)</a><br /><br /><a href="1/MIT3_11F99_trans.pdf">Tensor Transformations (PDF)</a><br /><br /><a href="1/MIT3_11F99_const.pdf">Constitutive Relations (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Bending</td>
+<td>This modules in this section will develop relations between stresses, deflections, and applied loads for beams and flat plates subjected to bending loads. This will be done using the direct method employed in Module 7 for circular shafts in torsion. However, bending problems have a higher order of dimensionality than twisted shafts, and it will be convenient to use the more general formulations developed in Modules 8 - 11. In particular, pseudovector-matrix notation will allow easy extension of beam concepts to flat plates.</td>
+<td><a href="1/MIT3_11F99_statics.pdf">Shear and Bending Moment Diagrams (PDF)</a><br /><br /><a href="1/MIT3_11F99_bstress.pdf">Stresses in Beams (PDF)</a><br /><br /><a href="1/MIT3_11F99_bdisp.pdf">Beam Displacements (PDF)</a><br /><br /><a href="1/MIT3_11F99_laminates.pdf">Laminated Composite Plates (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>General Stress Analysis</td>
+<td>The results presented in earlier modules for trusses, beams, and other simple shapes provide much of the information needed in design of load-bearing structures. However, materials and structural engineers routinely need to estimate stresses and deflections in geometrically more irregular articles. This is the function of stress analysis, by which we mean the collection of theoretical and experimental techniques that goes beyond the direct-analysis approach used up to now. This is a career field in its own right, and these modules will limit themselves to outlining only a few of its principal features.</td>
+<td><a href="1/MIT3_11F99_airy.pdf">Closed-Form Solutions (PDF)</a><br /><br /><a href="1/MIT3_11F99_expt.pdf">Experimental Solutions (PDF)</a><br /><br /><a href="1/MIT3_11F99_fea.pdf">Finite Element Analysis (PDF)</a><br /><br /><a href="1/MIT3_11F99_visco.pdf">Linear Viscoelasticity (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>Yield and Fracture</td>
+<td>&nbsp;</td>
+<td><a href="1/MIT3_11F99_yield.pdf">Yield and Plastic Flow (PDF)</a><br /><br /><a href="1/MIT3_11F99_dn.pdf">Dislocation Basis of Yield and Creep (PDF)</a><br /><br /><a href="1/MIT3_11F99_stat.pdf">Statistics of Fracture (PDF)</a><br /><br /><a href="1/MIT3_11F99_frac.pdf">Introduction to Fracture Mechanics (PDF)</a><br /><br /><a href="1/MIT3_11F99_fatigue.pdf">Fatigue (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>Appendices</td>
+<td>&nbsp;</td>
+<td><a href="1/MIT3_11F99_props.pdf">Material Properties (PDF)</a><br /><br /><a href="1/MIT3_11F99_index.pdf">Matrix and Index Notation (PDF)</a><br /><br /><a href="1/MIT3_11F99_sym.pdf">List of Symbols (PDF)</a><br /><br /><a href="1/MIT3_11F99_units.pdf">Unit Conversion Factors (PDF)</a></td>
+</tr>
+
 </tbody>
 </table>
 </br>

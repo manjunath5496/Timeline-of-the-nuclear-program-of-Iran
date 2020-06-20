@@ -29,7 +29,7 @@
 <li><a href="#course28">Electronic and Mechanical Properties of Materials</a></li>
 <li><a href="#course29">Kinetic Processes in Materials</a></li>
 <li><a href="#course30">Thermodynamics and Kinetics of Materials</a></li>
-<li><a href="#course31">The Impact of Globalization on the Built Environment</a></li>
+<li><a href="#course31">Materials at Equilibrium</a></li>
 <li><a href="#course32">Strategic Management in the Design and Construction Value Chain</a></li>
 <li><a href="#course33">E-Commerce and the Internet in Real Estate and Construction</a></li>
 <li><a href="#course34">Waste Containment and Remediation Technology</a></li>
@@ -4132,3 +4132,131 @@ Illustrates the behavior of the concentration around a line source that is diffu
 </tbody>
 </table>
 </br>
+<h2 id="course31">Materials at Equilibrium</h2>
+
+
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>Problem Set 1 (<a href="10/ps1.pdf">PDF</a>)</td>
+<td>(<a href="10/ps1solns.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 2 (<a href="10/ps2.pdf">PDF</a>)</td>
+<td>(<a href="10/ps2solns.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 3 (<a href="10/ps3.pdf">PDF</a>)</td>
+<td>(<a href="10/ps3solns.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 4 (<a href="10/ps4.pdf">PDF</a>)</td>
+<td>(<a href="10/ps4solns.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 5 (<a href="10/ps5.pdf">PDF</a>)</td>
+<td>(<a href="10/ps5solns.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>Problem Set 6 (<a href="10/ps6.pdf">PDF</a>)</td>
+<td>(<a href="10/ps6solns.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>Problem Set 7 (<a href="10/ps7.pdf">PDF</a>)</td>
+<td>(<a href="10/ps7solns.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+
+</br>
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">YEAR</th>
+<th scope="col">EXAM 1</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>2001</td>
+<td>(<a href="10/2001_e1.pdf">PDF</a>)</td>
+<td>(<a href="10/2001_e1_s.pdf">PDF</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>2002</td>
+<td>(<a href="10/2002_e1.pdf">PDF</a>)</td>
+<td>(<a href="10/2002_e1_s.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>2003</td>
+<td>(<a href="10/2003_e1.pdf">PDF</a>)</td>
+<td>(<a href="10/2003_e1_s.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">YEAR</th>
+<th scope="col">EXAM 2</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>2000</td>
+<td>(<a href="10/2000_e2.pdf">PDF</a>)</td>
+<td>(<a href="10/2000_e2_s.pdf">PDF - 1.1 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>2001</td>
+<td>(<a href="10/2001_e2.pdf">PDF</a>)</td>
+<td>(<a href="10/2001_e2_s.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>2002</td>
+<td>(<a href="10/2002_e2.pdf">PDF</a>)</td>
+<td>(<a href="10/2002_e2_s.pdf">PDF</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">YEAR</th>
+<th scope="col">FINAL</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>2000</td>
+<td>(<a href="10/2000_f.pdf">PDF</a>)</td>
+<td>(<a href="10/2001_f_s.pdf">PDF - 1.3 MB</a>)</td>
+</tr>
+<tr class="alt-row">
+<td>2001</td>
+<td>(<a href="10/2001_f.pdf">PDF</a>)</td>
+<td>(<a href="10/2002_f_s.pdf">PDF</a>)</td>
+</tr>
+<tr class="row">
+<td>2002</td>
+<td>(<a href="10/2002_f.pdf">PDF</a>)</td>
+<td>(<a href="10/2002_f_s.pdf">PDF - 1.5 MB</a>)</td>
+</tr>
+</tbody>
+</table>
+</br>
+
+
+

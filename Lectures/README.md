@@ -11,7 +11,7 @@
 <li><a href="#course10">Physical Metallurgy</a></li>
 <li><a href="#course11">Amorphous Materials</a></li>
 <li><a href="#course12">Nanomechanics of Materials and Biomaterials</a></li>
-<li><a href="#course13">Project Management</a></li>
+<li><a href="#course13">Materials Processing</a></li>
 <li><a href="#course14">Advanced Soil Mechanics</a></li>
 <li><a href="#course15">Introduction to Network Models</a></li>
 <li><a href="#course16">Mechanics of Material Systems: An Energy Approach</a></li>
@@ -1802,6 +1802,333 @@
 <p>Final Exam Solutions (<a href="2/final_sol.pdf">PDF</a>)</p>
 
 </br>
+<h2 id="course13">Materials Processing</h2>
 
 
+<table class="tablewidth100" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">TOPICS</th>
+<th scope="col">LECTURE&nbsp;NOTES</th>
+<th scope="col">ADDITIONAL&nbsp;MATERIALS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>
+<p>What is materials processing?</p>
+<p>Course overview</p>
+<p>Heat conduction equation</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec01.pdf">Lecture 1 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>Heat conduction equation review</td>
+<td><a href="2/MIT3_044S13_Lec02.pdf">Lecture 2 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>
+<p>Comparing heat transfer processes</p>
+<p>Three important cases</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec03.pdf">Lecture 3 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Biot number</p>
+<p>Newtonian heating / cooling</p>
+<p>Transient solutions and dimensionless variables</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec04.pdf">Lecture 4 (PDF)</a></td>
+<td>&nbsp;<a href="2/MIT3_044S13_TranHeaCondSol.pdf">Transient heat conduction solutions (PDF)</a></td>
+</tr>
+<tr class="row">
+<td>
+<p>Glass fibers &amp; thermal spray industrial processes</p>
+<p>Analyzing thermal spray coatings</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec05.pdf">Lecture 5 (PDF)</a></td>
+<td>
+<h3 class="subsubhead">Glass fiber production</h3>
+<p>Gulf Broadcast. "Abahsain Fiber Glass." March 23, 2011. YouTube. Accessed February 25, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=GAlZc9v17bw">http://www.youtube.com/watch?v=GAlZc9v17bw</a></p>
+<p>Adeelz channel [adeelahmed26]. "How it's made s6 ep8 - Fibreglass Insulation." December 1, 2008. YouTube. Accessed February 25, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=1O0jFDdkyV8">http://www.youtube.com/watch?v=1O0jFDdkyV8</a></p>
+<h3 class="subsubhead">Thermal spray</h3>
+<p>Avweld. "HVAF Thermal Spraying, Tungsten Carbide, Paper Industry Roll." November 14, 2007. YouTube. Accessed February 25, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=HQAdQvDrSl0">http://www.youtube.com/watch?v=HQAdQvDrSl0</a></p>
+<h3 class="subsubhead">Remanufacturing</h3>
+<p>CatRCD. "Caterpillar Remanufacturing Overview." February 14, 2012. YouTube. Accessed February 25, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=sWKaB1MaUA0">http://www.youtube.com/watch?v=sWKaB1MaUA0</a></p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Hot rolling steel</p>
+<p>2D analysis, superposition &amp; friction welding setup</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec06.pdf">Lecture 6 (PDF)</a></td>
+<td>
+<h3 class="subsubhead">Steel heat treatment</h3>
+<p>CorusBCSATraining. "Steelmaking: Rolling." July 26, 2007. YouTube. Accessed February 27, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=6xnKmt_gsLs">http://www.youtube.com/watch?v=6xnKmt_gsLs</a></p>
+</td>
+</tr>
+<tr class="row">
+<td>
+<p>Friction welding</p>
+<p>Introduction to radiation</p>
+<p>Black bodies, emissivity &amp; radiation M number</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec07.pdf">Lecture 7 (PDF)</a></td>
+<td>
+<h3 class="subsubhead">Friction welding</h3>
+<p>Doug W. "Inertia Friction Welding Demonstration - Manufacturing Technology, Inc." January 18, 2009. YouTube. Accessed March 4, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=-aEuAK8bsQg">http://www.youtube.com/watch?v=-aEuAK8bsQg</a></p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Introduction to solidification</p>
+<p>Stefan condition, simplifying thermal profile</p>
+<p>Solidification in a thick mold</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec08.pdf">Lecture 8 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>
+<p>Sand casting, lost foam, &amp; cooled molds</p>
+<p>Interface resistance-limited solidification</p>
+<p>Single crystal production</p>
+<p>Introduction to binary solidification</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec09.pdf">Lecture 9 (PDF)</a></td>
+<td>
+<p>ManufacturingET. "Sand Casting." April 11, 2008. YouTube. Accessed March 18, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=rgL2Jn5mk1A">http://www.youtube.com/watch?v=rgL2Jn5mk1A</a></p>
+<p>AutomotiveTv. "Ferrari V12 Engine." February 21, 2008. YouTube. Accessed March 18, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=AdcoVurVY30">http://www.youtube.com/watch?v=AdcoVurVY30</a></p>
+<p>Robert Lee. "Titanium Hammer Manufacturing." February 7, 2008. YouTube. Accessed March 18, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=NTclPnK9p9c">http://www.youtube.com/watch?v=NTclPnK9p9c</a></p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Binary solidification, no diffusion in the solid</p>
+<p>Solute balance, partition coefficient</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec10.pdf">Lecture 10 (PDF)</a></td>
+<td>Jallepalli SATYA SUNITHA. "Dendritic Solidification." August 24, 2008. YouTube. Accessed March 20, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=S07fPo45BvM">http://www.youtube.com/watch?v=S07fPo45BvM</a></td>
+</tr>
+<tr class="row">
+<td>
+<p>Zone refining</p>
+<p>Solidification with finite diffusion in liquid</p>
+<p>Unstable solidification fronts</p>
+<p>Engineering binary alloy microstructures</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec11.pdf">Lecture 11 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Fluid mechanics</p>
+<p>Introduction to fluid flow</p>
+</td>
+<td>No lecture notes</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>
+<p>Introduction to fluid flow</p>
+<p>Momentum conservation</p>
+<p>Flow between parallel plates</p>
+<p>Fluid free surface boundary condition</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec13.pdf">Lecture 13 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>1D fluid flow with body forces</p>
+<p>Flow through plates</p>
+<p>Chart of all math in 3.044</p>
+<p>Introduction to glass production</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec14.pdf">Lecture 14 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>
+<p>Pilkington glass process&ndash;fluid flow</p>
+<p>Pilkington glass process&ndash;heat transfer</p>
+<p>Drag force</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec15.pdf">Lecture 15 (PDF)</a></td>
+<td>
+<h3 class="subsubhead">Pilkington glass</h3>
+<p>ProskillsUK. "Floatglass.mp4." September 7, 2010. YouTube. Accessed April 17, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=dw7623hu7wM">http://www.youtube.com/watch?v=dw7623hu7wM</a></p>
+<h3 class="subsubhead">Corning: Fusion glass</h3>
+<p>CorningIncorporated. "The Fusion Process: At the core of Corning's glass innovations." January 11, 2012. YouTube. Accessed April 17, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=q4ZU7zUxdM8">http://www.youtube.com/watch?v=q4ZU7zUxdM8</a></p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Navier-Stokes equation</p>
+<p>Reynolds number</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec16.pdf">Lecture 16 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row">
+<td>
+<p>Class canceled</p>
+</td>
+<td>No lecture notes</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Newtonian flow</p>
+<p>Introduction to non-Newtonian</p>
+<p>Solid state shape forming</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec18.pdf">Lecture 18 (PDF)</a></td>
+<td>The Bluemint Video Haven. "How Plastic Bottles are Made." September 10, 2006. YouTube. Accessed April 24, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=T01i_vp2mJE">http://www.youtube.com/watch?v=T01i_vp2mJE</a></td>
+</tr>
+<tr class="row">
+<td>More on Newtonian and non-Newtonian flow</td>
+<td><a href="2/MIT3_044S13_Lec19.pdf">Lecture 19 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Blow molding, compressive forming</p>
+<p>Introduction to powder processing</p>
+<p>Sintering, slurry processing</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec20.pdf">Lecture 20 (PDF)</a></td>
+<td>
+<p>Sunnyczh. "LDPE/HDPE Film Blowing Machine." May 25, 2008. YouTube. Accessed May 6, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=zgct8CpNWdg">http://www.youtube.com/watch?v=zgct8CpNWdg</a></p>
+<p>ElkayPlastics. "How Poly Bags Are Made movie.wmv." December 14, 2010. YouTube. Accessed May 6, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=O7BLsexJn0c">http://www.youtube.com/watch?v=O7BLsexJn0c</a></p>
+<p>Superformusa. "A Tour of Superform USA - Shaping the Future Together." May 30, 2012. YouTube. Accessed May 6, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=_zto5xDPIwo">http://www.youtube.com/watch?v=_zto5xDPIwo</a></p>
+</td>
+</tr>
+<tr class="row">
+<td>
+<p>Colloid processing</p>
+<p>Slurry settling / casting</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec21.pdf">Lecture 21 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr class="alt-row">
+<td>
+<p>Introduction to steel making</p>
+<p>Steel fluid flow analysis</p>
+<p>Steel solidification analysis</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec22.pdf">Lecture 22 (PDF)</a></td>
+<td>
+<h3 class="subsubhead">Steelmaking</h3>
+<p>Dan Izzo. "Steel making." July 29, 2007. YouTube. Accessed May 13, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=wAcnOpOHeCU">http://www.youtube.com/watch?v=wAcnOpOHeCU</a></p>
+<p>CorusBCSATraining. "Steelmaking: Continuous Casting." July 25, 2007. YouTube. Accessed May 13, 2013.&nbsp;<a href="http://www.youtube.com/watch?v=d-72gc6I-_E">http://www.youtube.com/watch?v=d-72gc6I-_E</a></p>
+</td>
+</tr>
+<tr class="row">
+<td>
+<p>Steel solidification continued</p>
+<p>Steel factory design</p>
+<p>A bit about electronics manufacturing</p>
+</td>
+<td><a href="2/MIT3_044S13_Lec23.pdf">Lecture 23 (PDF)</a></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+</br>
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">ASSIGNMENTS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td><a href="2/MIT3_044S13_pset1.pdf">Homework 1 (PDF)</a></td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="2/MIT3_044S13_pset1solns.pdf">Homework 1 solutions (PDF - 1.3MB)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="2/MIT3_044S13_pset2.pdf">Homework 2 (PDF)</a></td>
+<td><a href="2/MIT3_044S13_pset2solns.pdf">Homework 2 solutions (PDF)</a></td>
+</tr>
+<tr class="row">
+<td><a href="2/MIT3_044S13_pset3.pdf">Homework 3 (PDF)</a></td>
+<td><a href="2/MIT3_044S13_pset3solns.pdf">Homework 3 solutions (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="2/MIT3_044S13_videoassgn.pdf">Video project assignment (PDF)</a></td>
+<td>Not available</td>
+</tr>
+<tr class="row">
+<td><a href="2/MIT3_044S13_pset4.pdf">Homework 4 (PDF)</a></td>
+<td><a href="2/MIT3_044S13_pset4solns.pdf">Homework 4 solutions (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td><a href="2/MIT3_044S13_pset5.pdf">Homework 5 (PDF)</a></td>
+<td><a href="2/MIT3_044S13_pset5solns.pdf">Homework 5 solutions (PDF)</a></td>
+</tr>
+</tbody>
+</table>
+</br>
+
+
+<table class="tablewidth50" summary="See table caption for summary.">
+<thead>
+<tr>
+<th scope="col">YEAR</th>
+<th scope="col">EXAMS</th>
+<th scope="col">SOLUTIONS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row">
+<td>2009</td>
+<td><a href="2/MIT3_044S13_2009final.pdf">Final (PDF)</a></td>
+<td><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="2/MIT3_044S13_2009finalsolns.pdf">Final solutions (PDF)</a></td>
+</tr>
+<tr class="alt-row">
+<td>2011</td>
+<td>
+<p><a href="2/MIT3_044S13_2011exam1.pdf">Exam 1 (PDF)</a></p>
+<p><a href="2/MIT3_044S13_2011exam2.pdf">Exam 2 (PDF)</a></p>
+</td>
+<td>
+<p><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="2/MIT3_044S13_2011exam1solns.pdf">Exam 1 solutions (PDF)</a></p>
+<p><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="2/MIT3_044S13_2011exam2solns.pdf">Exam 2 solutions (PDF)</a></p>
+</td>
+</tr>
+<tr class="row">
+<td>2012</td>
+<td>
+<p><a href="2/MIT3_044S13_2012exam1.pdf">Exam 1 (PDF)</a></p>
+<p><a href="2/MIT3_044S13_2012exam2.pdf">Exam 2 (PDF)</a></p>
+</td>
+<td>
+<p><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="2/MIT3_044S13_2012exam1solns.pdf">Exam 1 solutions (PDF)</a></p>
+<p><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="2/MIT3_044S13_2012exam2solns.pdf">Exam 2 solutions (PDF)</a></p>
+</td>
+</tr>
+<tr class="alt-row">
+<td>2013</td>
+<td>
+<p><a href="2/MIT3_044S13_2013exam1.pdf">Exam 1 (PDF)</a></p>
+<p><a href="2/MIT3_044S13_2013exam2.pdf">Exam 2 (PDF)</a></p>
+</td>
+<td>
+<p><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="2/MIT3_044S13_2013exam1solns.pdf">Exam 1 solutions (PDF)</a></p>
+<p><img src="inacessible.gif" alt="This resource may not render correctly in a screen reader." /><a href="2/MIT3_044S13_2013exam2solns.pdf">Exam 2 solutions (PDF)</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</br>
 
